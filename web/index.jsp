@@ -11,6 +11,6 @@
     <title>Hello world</title>
   </head>
   <body>
-           Wat is dit?
+           GroepI, I for Insane Awesomeness
   </body>
 </html>
