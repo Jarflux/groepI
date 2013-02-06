@@ -1,6 +1,5 @@
 <component name="libraryTable">
-  <library name="struts2-2.3.7" type="struts2">
-    <properties version="2.3.7" />
+  <library name="struts2-2.3.7">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/struts2-core.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/freemarker.jar!/" />
