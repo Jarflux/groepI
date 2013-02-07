@@ -12,7 +12,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "T_REQUIREMENT")
-public class Requirement implements Serializable{
+public class Requirement implements Serializable {
+
     @Id
     @GeneratedValue
     long fId;
@@ -23,7 +24,7 @@ public class Requirement implements Serializable{
     public Requirement() {
     }
 
-    public Requirement(String description){
+    public Requirement(String description) {
         this.fDescription = description;
     }
 
@@ -41,5 +42,10 @@ public class Requirement implements Serializable{
 
     public String getDescription() {
         return fDescription;
+    }
+
+    @Override
+    public String toString() {
+        return "Requirement:" + fDescription;
     }
 }

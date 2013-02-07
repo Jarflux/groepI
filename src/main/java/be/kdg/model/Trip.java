@@ -1,8 +1,8 @@
 package be.kdg.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Set;
+import javax.persistence.*;
 
 /**
  * Author: Ben Oeyen
@@ -75,5 +75,8 @@ public class Trip implements Serializable{
         return fAvailable;
     }
 
-
+    @Override
+    public String toString(){
+        return "Trip:" + fTitle + ", " + fDescription + " Public: " + fAvailable ;
+    }
 }

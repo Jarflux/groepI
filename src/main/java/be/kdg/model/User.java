@@ -80,4 +80,9 @@ public class User implements Serializable{
     public void setDateOfBirth(Date fDateOfBirth) {
         this.fDateOfBirth = fDateOfBirth;
     }
+    
+    @Override
+    public String toString(){
+        return "User:" + fName + ", " + fEmail;
+    }
 }
