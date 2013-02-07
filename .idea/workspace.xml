@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/Service/CostService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Service/CostService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/Service/MessageService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Service/MessageService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/Model/Requirement.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Model/Requirement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/Service/RequirementService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Service/RequirementService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/Service/TripService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Service/TripService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/Service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/groepI.iml" afterPath="$PROJECT_DIR$/groepI.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="groepI.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360244487534" ignored="false" />
+    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360245538050" ignored="false" />
     <file path="/README" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1359642779202" ignored="false" />
     <file path="/index.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360071317953" ignored="false" />
     <file path="/fragment.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360190237226" ignored="false" />
@@ -189,7 +182,7 @@
       <file leaf-file-name="Requirement.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Model/Requirement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="52" selection-start="278" selection-end="278" vertical-scroll-proportion="0.4313433">
+            <state line="20" column="52" selection-start="346" selection-end="346" vertical-scroll-proportion="0.4313433">
               <folding />
             </state>
           </provider>
@@ -938,6 +931,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33054394" sideWeight="0.5043042" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32839224" sideWeight="0.4914621" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32775453" sideWeight="0.49067432" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914925" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -949,7 +943,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914925" sideWeight="0.49713057" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32775453" sideWeight="0.49067432" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3990878" sideWeight="0.49786553" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1126,7 +1119,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Model/Requirement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="52" selection-start="278" selection-end="278" vertical-scroll-proportion="0.4313433">
+        <state line="20" column="52" selection-start="346" selection-end="346" vertical-scroll-proportion="0.4313433">
           <folding />
         </state>
       </provider>
