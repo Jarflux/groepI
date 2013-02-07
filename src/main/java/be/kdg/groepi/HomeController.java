@@ -24,7 +24,7 @@ public class HomeController {
     @RequestMapping(value = "/")
     public String home() {
         System.out.println("HomeController: Passing through...");
-        UserController.addUser();
+        UserController.AddUser();
         return "home";
     }
 

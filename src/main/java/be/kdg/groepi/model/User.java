@@ -2,54 +2,79 @@ package be.kdg.groepi.model;
 
 import javax.persistence.*;
 import java.util.Date;
-
+import java.util.Set;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Gregory
- * Date: 7/02/13
- * Time: 14:15
- * To change this template use File | Settings | File Templates.
+ * Author: Ben Oeyen
+ * Date: 6/02/13
+ * Class: User
+ * Description:
  */
+
 @Entity
-@Table(name = "T_User")
+@Table(name = "T_USER")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue
+    long fId;
     @Column(name = "name")
-    private String name;
-    @Column(name = "birthDate")
-    private Date birthDate;
+    String fName;
+    @Column(name = "email")
+    String fEmail;
+    @Column(name = "password")
+    String fPassword;
+    @Column(name = "date_of_birth")
+    Date fDateOfBirth;
 
+
+        // Hibernates needs empty constructor
     public User() {
     }
 
-    public User(String name, Date birthDate) {
-        this.name = name;
-        this.birthDate = birthDate;
+    public User(String name, String email, String password, Date dateOfBirth){
+        this.fName = name;
+        this.fEmail = email;
+        this.fPassword = password;
+        this.fDateOfBirth = dateOfBirth;
+    }
+
+    public long getId() {
+        return fId;
+    }
+
+    public void setId(long fId) {
+        this.fId = fId;
     }
 
     public String getName() {
-        return name;
+        return fName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.fName = name;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
+    public String getEmail() {
+        return fEmail;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setEmail(String fEmail) {
+        this.fEmail = fEmail;
     }
 
-    public Integer getId() {
-        return id;
+    public String getPassword() {
+        return fPassword;
     }
-    public void setId(Integer id) {
-        this.id = id;
+
+    public void setPassword(String fPassword) {
+        this.fPassword = fPassword;
+    }
+
+    public Date getDateOfBirth() {
+        return fDateOfBirth;
+    }
+
+    public void setDateOfBirth(Date fDateOfBirth) {
+        this.fDateOfBirth = fDateOfBirth;
     }
 }

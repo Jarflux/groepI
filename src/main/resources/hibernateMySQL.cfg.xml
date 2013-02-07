@@ -11,7 +11,7 @@
         <property name="connection.password">groepi_pass</property>
 
         <!-- SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 
         <!-- Enable Hibernate's automatic session context management -->
         <property name="current_session_context_class">thread</property>
