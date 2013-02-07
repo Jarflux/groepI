@@ -1,68 +1,34 @@
 package be.kdg.Service;
 
-import javax.persistence.*;
+import be.kdg.Model.Trip;
+import java.util.List;
 
 /**
  * Author: Ben Oeyen
  * Date: 6/02/13
- * Class: TripService
+ * Class: Trip Service
  * Description:
  */
 
-@Entity
-@Table(name = "T_TRIP")
 public class TripService {
-    @Id
-    @GeneratedValue
-    private Long fId;
-    @Column(name = "title")
-    private String fTitle;
-    @Column(name = "description")
-    private String fDescription;
-    @Column(name = "public")
-    private Boolean fAvailable;
 
-    // Hibernates needs empty constructor
-    public TripService() {
+    public static Trip getTripById(long Id) {
+        return null;
     }
 
-    public TripService(String title, String description, boolean available) {
-        this.fTitle = title;
-        this.fDescription = description;
-        this.fAvailable = available;
+    public static Trip createTrip(Trip trip) {
+        return null;
     }
 
-    public Long setId() {
-        return fId;
+    public static Trip updateTrip(Trip trip){
+        return null;
     }
 
-    public Long getId() {
-        return fId;
+    public static Trip deleteTrip(Trip trip) {
+        return null;
     }
 
-    public void setTitle(String fTitle) {
-        this.fTitle = fTitle;
+    public static List<Trip> getAllTrips() {
+        return null;
     }
-
-    public String getTitle() {
-        return fTitle;
-    }
-
-    public void setDescription(String fDescription) {
-        this.fDescription = fDescription;
-    }
-
-    public String getDescription() {
-        return fDescription;
-    }
-
-    public void setAvailable(Boolean fAvailable) {
-        this.fAvailable = fAvailable;
-    }
-
-    public Boolean isAvailable() {
-        return fAvailable;
-    }
-
-
 }

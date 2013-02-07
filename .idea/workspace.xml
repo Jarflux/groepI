@@ -2,30 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Controller/RestCostController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Controller/RestMessageController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Controller/RestRequirementController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Controller/RestTripController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Controller/RestUserController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Controller/_ExampleController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Model/_ExampleModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Service/_ExampleService.java" />
-      <change type="DELETED" beforePath="C:\Users\JarFlux\Documents\Project Software Engineering\groepI\.idea\libraries\Maven__log4j_log4j_1_2_16.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\JarFlux\Documents\Project Software Engineering\groepI\src\main\java\be\kdg\Controller\UserController.java" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\JarFlux\Documents\Project Software Engineering\groepI\src\main\java\be\kdg\Controller\HibernateUtil.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Service/HibernateUtil.java" />
-      <change type="MODIFICATION" beforePath="C:\Users\JarFlux\Documents\Project Software Engineering\groepI\src\main\java\be\kdg\Model\Cost.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Model/Cost.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/Model/User.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Model/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/Service/CostService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Service/CostService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/Service/MessageService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Service/MessageService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/Model/Requirement.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Model/Requirement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/Service/RequirementService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Service/RequirementService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/Service/TripService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Service/TripService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/Service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/Service/UserService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/groepI.iml" afterPath="$PROJECT_DIR$/groepI.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/groepI_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/groepI_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="groepI.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360199644174" ignored="false" />
+    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360244487534" ignored="false" />
     <file path="/README" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1359642779202" ignored="false" />
     <file path="/index.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360071317953" ignored="false" />
     <file path="/fragment.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360190237226" ignored="false" />
@@ -47,7 +35,7 @@
     <file path="/Cost.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360202304071" ignored="false" />
     <file path="/Trip.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360197761017" ignored="false" />
     <file path="/Message.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360189468071" ignored="false" />
-    <file path="/UserService.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360202083528" ignored="false" />
+    <file path="/UserService.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360244895396" ignored="false" />
     <file path="/hibernateMySQL.cfg" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360195225904" ignored="false" />
     <file path="/RestRequirementController.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360200260678" ignored="false" />
     <file path="/RestCostController.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360200243233" ignored="false" />
@@ -58,6 +46,10 @@
     <file path="/_ExampleModel.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360202397729" ignored="false" />
     <file path="/_ExampleController.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360202989186" ignored="false" />
     <file path="/log4j.properties" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360205291221" ignored="false" />
+    <file path="/TripService.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360245169822" ignored="false" />
+    <file path="/RequirementService.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360245385392" ignored="false" />
+    <file path="/MessageService.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360245409121" ignored="false" />
+    <file path="/CostService.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360245482506" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +64,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -106,7 +99,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -120,29 +112,16 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Controller/RestUserController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="38" column="96" selection-start="1403" selection-end="1403" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="log4j.properties" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="367" selection-end="367" vertical-scroll-proportion="0.32985073">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Trip.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Model/Trip.java">
+      <file leaf-file-name="log4j.properties" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="13" selection-start="197" selection-end="197" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="13" column="0" selection-start="367" selection-end="367" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -151,17 +130,6 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Model/User.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="32" column="84" selection-start="588" selection-end="588" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="21" selection-start="2468" selection-end="2468" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -170,7 +138,16 @@
       <file leaf-file-name="UserService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Service/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="29" selection-start="496" selection-end="496" vertical-scroll-proportion="0.0">
+            <state line="10" column="15" selection-start="180" selection-end="180" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CostService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Service/CostService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="80" selection-start="472" selection-end="472" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -178,39 +155,50 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_ExampleService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Service/_ExampleService.java">
+      <file leaf-file-name="TripService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Service/TripService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="0" selection-start="3061" selection-end="3061" vertical-scroll-proportion="0.0">
+            <state line="8" column="15" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#0#3061#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_ExampleModel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Model/_ExampleModel.java">
+      <file leaf-file-name="RequirementService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Service/RequirementService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="61" selection-start="380" selection-end="380" vertical-scroll-proportion="0.0">
+            <state line="13" column="4" selection-start="213" selection-end="692" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MessageService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Service/MessageService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="28" selection-start="53" selection-end="53" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_ExampleController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Controller/_ExampleController.java">
+      <file leaf-file-name="Requirement.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Model/Requirement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="98" column="48" selection-start="4213" selection-end="4213" vertical-scroll-proportion="0.0">
+            <state line="17" column="52" selection-start="278" selection-end="278" vertical-scroll-proportion="0.4313433">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Cost.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Model/Cost.java">
+      <file leaf-file-name="_ExampleService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Service/_ExampleService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="42" selection-start="559" selection-end="559" vertical-scroll-proportion="0.0">
+            <state line="11" column="0" selection-start="202" selection-end="902" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -236,14 +224,8 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/Controller/RestMessageController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/Controller/RestRequirementController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/Controller/RestTripController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/Controller/TicketController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/Controller/ExampleController.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/Service/ExampleController.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/Service/ExampleService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/Service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/Model/Cost.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/Model/_ExampleModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/Service/_ExampleService.java" />
@@ -252,6 +234,12 @@
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/Model/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/Controller/RestUserController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/be/kdg/Service/RequirementService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/be/kdg/Service/TripService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/be/kdg/Service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/be/kdg/Service/CostService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/be/kdg/Service/MessageService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/be/kdg/Model/Requirement.java" />
       </list>
     </option>
   </component>
@@ -458,7 +446,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="2" />
+    <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -473,6 +461,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -679,7 +668,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -699,8 +687,8 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -780,25 +768,6 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote">
-      <option name="LOCAL" value="false" />
-      <deployment />
-      <server-settings>
-        <data>
-          <option name="transportHostId" />
-        </data>
-      </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="50407" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="false" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment />
@@ -842,6 +811,25 @@
           <option name="PROGRAM_PARAMETERS" value="" />
         </SHUTDOWN>
       </ConfigurationWrapper>
+      <method />
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote">
+      <option name="LOCAL" value="false" />
+      <deployment />
+      <server-settings>
+        <data>
+          <option name="transportHostId" />
+        </data>
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="50407" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
     <configuration default="false" name="Tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0">
@@ -945,24 +933,24 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32775453" sideWeight="0.49359658" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914925" sideWeight="0.49713057" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.49786553" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33054394" sideWeight="0.5043042" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32839224" sideWeight="0.4914621" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32775453" sideWeight="0.49067432" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914925" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2647059" sideWeight="0.35146442" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964131" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.64853555" sideWeight="0.48078975" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914925" sideWeight="0.49713057" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32775453" sideWeight="0.49067432" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3990878" sideWeight="0.49786553" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1025,54 +1013,10 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/HomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="5" selection-start="772" selection-end="772" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/AppConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="1317" selection-end="1317" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Controller/RestCostController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="10" selection-start="80" selection-end="100" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Controller/RestRequirementController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="21" selection-start="91" selection-end="91" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Controller/RestTripController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="14" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Controller/RestMessageController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="0" selection-start="28" selection-end="165" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="29" selection-start="496" selection-end="496" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1087,15 +1031,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="61" selection-start="380" selection-end="380" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Service/_ExampleService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="0" selection-start="3061" selection-end="3061" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#3061#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1116,33 +1051,82 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Model/Trip.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="13" selection-start="197" selection-end="197" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Model/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="32" column="84" selection-start="588" selection-end="588" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Controller/RestUserController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="38" column="96" selection-start="1403" selection-end="1403" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="367" selection-end="367" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Service/_ExampleService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="202" selection-end="902" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Service/TripService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="15" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="367" selection-end="367" vertical-scroll-proportion="0.32985073">
+        <state line="10" column="15" selection-start="180" selection-end="180" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Service/CostService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="80" selection-start="472" selection-end="472" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Service/MessageService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="28" selection-start="53" selection-end="53" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Service/RequirementService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="4" selection-start="213" selection-end="692" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/Model/Requirement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="52" selection-start="278" selection-end="278" vertical-scroll-proportion="0.4313433">
           <folding />
         </state>
       </provider>

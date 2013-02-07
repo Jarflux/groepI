@@ -1,26 +1,37 @@
 package be.kdg.Service;
 
+import be.kdg.Model.Cost;
+
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Author: Ben Oeyen
  * Date: 6/02/13
- * Class: CostService
+ * Class: Cost Service
  * Description:
  */
 
 @Entity
 @Table(name = "T_COST")
 public class CostService {
-    @Id
-    @GeneratedValue
-    long fId;
-    @Column(name = "description")
-    String fDescription;
-    @Column(name = "amount")
-    Double fAmount;
+    public static Cost getCostById(long Id) {
+        return null;
+    }
 
-    // Hibernates needs empty constructor
-    public CostService() {
+    public static Cost createCost(Cost  cost) {
+        return null;
+    }
+
+    public static Cost updateCost(Cost cost){
+        return null;
+    }
+
+    public static Cost deleteCost(Cost cost) {
+        return null;
+    }
+
+    public static List<Cost> getAllCosts() {
+        return null;
     }
 }

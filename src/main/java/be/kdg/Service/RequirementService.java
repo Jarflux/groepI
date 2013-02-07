@@ -1,24 +1,34 @@
 package be.kdg.Service;
 
-import javax.persistence.*;
+import be.kdg.Model.Requirement;
+import java.util.List;
 
 /**
  * Author: Ben Oeyen
  * Date: 6/02/13
- * Class: RequirementService
+ * Class: Requirement Service
  * Description:
  */
 
-@Entity
-@Table(name = "T_REQUIREMENT")
 public class RequirementService {
-    @Id
-    @GeneratedValue
-    long fId;
-    @Column(name = "description")
-    String fDescription;
+    public static Requirement getRequirementById(long Id) {
+        return null;
+    }
 
-    // Hibernates needs empty constructor
-    public RequirementService() {
+    public static Requirement  createRequirement(Requirement  requirement) {
+        return null;
+    }
+
+    public static Requirement updateRequirement(Requirement requirement){
+        return null;
+    }
+
+    public static Requirement deleteRequirement(Requirement requirement) {
+        return null;
+    }
+
+    public static List<Requirement> getAllRequirements() {
+        return null;
     }
 }
+

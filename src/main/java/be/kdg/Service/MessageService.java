@@ -1,27 +1,33 @@
 package be.kdg.Service;
 
-import javax.persistence.*;
-import java.sql.Date;
+import be.kdg.Model.Message;
+import java.util.List;
 
 /**
  * Author: Ben Oeyen
  * Date: 6/02/13
- * Class:
+ * Class: Message Service
  * Description:
  */
 
-@Entity
-@Table(name = "T_MESSAGE")
 public class MessageService {
-    @Id
-    @GeneratedValue
-    long fId;
-    @Column(name = "content")
-    String fContent;
-    @Column(name = "date")
-    Date fDate;
+    public static Message getMessageById(long Id) {
+        return null;
+    }
 
-    // Hibernates needs empty constructor
-    public MessageService() {
+    public static Message  createMessage(Message  message) {
+        return null;
+    }
+
+    public static Message updateMessage(Message message){
+        return null;
+    }
+
+    public static Message deleteMessage(Message message) {
+        return null;
+    }
+
+    public static List<Message> getAllMessages() {
+        return null;
     }
 }
