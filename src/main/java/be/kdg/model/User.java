@@ -1,7 +1,8 @@
-package be.kdg.groepi.model;
+package be.kdg.model;
 
+import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Set;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "T_USER")
-public class User {
+public class User implements Serializable{
     @Id
     @GeneratedValue
     long fId;
@@ -26,8 +27,10 @@ public class User {
     @Column(name = "date_of_birth")
     Date fDateOfBirth;
 
+    @OneToMany
+    private Set<Trip> organizedTrips;
 
-        // Hibernates needs empty constructor
+    // Hibernates needs empty constructor
     public User() {
     }
 

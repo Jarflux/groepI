@@ -8,13 +8,9 @@ package be.kdg.groepi;
  * To change this template use File | Settings | File Templates.
  */
 
-import be.kdg.groepi.controller.UserController;
-import org.springframework.beans.factory.annotation.Autowired;
+import be.kdg.service.UserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Handles requests for the application home page.
@@ -24,10 +20,7 @@ public class HomeController {
     @RequestMapping(value = "/")
     public String home() {
         System.out.println("HomeController: Passing through...");
-        UserController.AddUser();
+        UserService.createUser();
         return "home";
     }
-
-
-
 }

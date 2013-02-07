@@ -1,4 +1,4 @@
-package be.kdg.groepi.persistence;
+package be.kdg.service;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -6,8 +6,10 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
 /**
- * User: Ben Oeyen & Gregory Lambrechts
- * Date: 26/10/12
+ * Author: Ben Oeyen
+ * Date: 7/02/13
+ * Class:
+ * Description:
  */
 public class HibernateUtil {
     private static SessionFactory sessionFactory;
