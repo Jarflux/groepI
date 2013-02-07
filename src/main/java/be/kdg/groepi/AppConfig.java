@@ -18,8 +18,6 @@ import java.util.Locale;
 public class AppConfig {
 
     // Resolve logical view names to .jsp resources in the /WEB-INF/views directory
-
-
     @Bean
     MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
