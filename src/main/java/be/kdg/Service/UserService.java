@@ -1,6 +1,9 @@
 package be.kdg.Service;
 
+import be.kdg.Model.User;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Author: Ben Oeyen
@@ -10,19 +13,23 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class UserService{
+public class UserService {
 
-//    @Autowired(required=true)
-//    private User user;
-//
-//    @Transactional
-//    public User createUser(User user) {
-//        return this.user.persistOrMerge(user);
-//    }
-//
-//    @Transactional(readOnly=true)
-//    public User retrieveUser(Long id) {
-//        return this.user.findById(id);
-//    }
+    public static User createUser(User user) {
+        return null;
+    }
+
+    public static User getUserById(long Id) {
+        return null;
+    }
+
+    public static List<User> getAllUsers() {
+        return null;
+    }
+
+    public static User deleteUser(User user) {
+        return null;
+    }
+
 
 }

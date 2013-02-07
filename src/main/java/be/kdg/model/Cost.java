@@ -24,6 +24,11 @@ public class Cost {
     public Cost() {
     }
 
+    public Cost(String description, Double amount) {
+        this.fDescription = description;
+        this.fAmount = amount;
+    }
+
     public long getId() {
         return fId;
     }

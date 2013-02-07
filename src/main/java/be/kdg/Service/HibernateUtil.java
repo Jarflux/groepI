@@ -1,4 +1,4 @@
-package be.kdg.Controller;
+package be.kdg.Service;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
