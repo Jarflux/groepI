@@ -39,21 +39,18 @@
             <version>${org.springframework-version}</version>
         </dependency>
 
-        <!-- Hibernate and sql-->
+        <!-- Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
-            <artifactId>ejb3-persistence</artifactId>
-            <version>1.0.1.GA</version>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.1.9.Final</version>
         </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-annotations</artifactId>
-            <version>3.3.1.GA</version>
-        </dependency>
+
+        <!-- MySQL -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.10</version>
+            <version>5.1.22</version>
         </dependency>
 
         <!-- CGLIB, only required and used for @Configuration usage -->

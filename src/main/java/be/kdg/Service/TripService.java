@@ -1,18 +1,17 @@
-package be.kdg.Model;
+package be.kdg.Service;
 
 import javax.persistence.*;
-import java.util.Set;
 
 /**
  * Author: Ben Oeyen
  * Date: 6/02/13
- * Class: Trip
+ * Class: TripService
  * Description:
  */
 
 @Entity
 @Table(name = "T_TRIP")
-public class Trip {
+public class TripService {
     @Id
     @GeneratedValue
     private Long fId;
@@ -23,20 +22,11 @@ public class Trip {
     @Column(name = "public")
     private Boolean fAvailable;
 
-    @OneToMany
-    private Set<User> participants;
-    @OneToMany
-    private Set<Cost> costs;
-    @OneToMany
-    private Set<Requirement> requirements;
-    @OneToMany
-    private Set<Message> messages;
-
     // Hibernates needs empty constructor
-    public Trip() {
+    public TripService() {
     }
 
-    public Trip(String title, String description, boolean available) {
+    public TripService(String title, String description, boolean available) {
         this.fTitle = title;
         this.fDescription = description;
         this.fAvailable = available;
