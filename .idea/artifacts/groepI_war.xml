@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="groepI:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="groepI-1.0.0-BUILD-SNAPSHOT.war">
+    <root id="archive" name="groepI_war.war">
       <element id="artifact" artifact-name="groepI:war exploded" />
     </root>
   </artifact>

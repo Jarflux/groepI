@@ -94,3 +94,20 @@ body,html
     padding: 15px;
 
 }
+.small
+{
+    font-size: 12px;
+}
+.button
+{
+    border:0;
+    padding: 5px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+
+    background: #066178;
+    font-size: 16px;
+    color: white;
+    font-family: "PT Sans Narrow";
+}

@@ -19,9 +19,12 @@
     <div id="logincontainer" class="column">
         <div class="loginmiddlebox"><h2>Login</h2>
         <form action="" method="post">
-                  <input type="text" class="loginbox" placeholder="Gebruikersnaam">      <br>
-            <input type="password" class="loginbox" placeholder="Wachtwoord">      <br>
+                  <input type="text" class="loginbox" placeholder="<spring:message code='text.gebruikersnaam'/>" />      <br>
+            <input type="password" class="loginbox" placeholder="<spring:message code='text.wachtwoord'/>" />      <br>
 
+            <input type="submit" class="button" value="<spring:message code='text.aanmelden'/>" /> &nbsp;
+
+            <span class="small"><spring:message code="text.wachtwoordreset_link" /></span>
                   </form>
 
 
@@ -30,7 +33,7 @@
     </div>
     <div id="maincontainer" class="column">
 
-        <div class="loginmiddlebox"><h2>My Trip Advisor</h2>
+        <div class="loginmiddlebox"><h2>My Trip Assistant</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo, magna quis accumsan euismod, urna purus viverra nulla, non commodo
             erat risus ac sapien. Duis quis odio est. Mauris luctus odio eget dui accumsan nec mollis massa vulputate. Sed elementum lobortis lobortis.
             Nunc dapibus, est ac laoreet laoreet, justo purus pharetra massa, eget dictum odio dolor eu libero. Nunc leo odio, dapibus sit amet tristique eget,
@@ -48,5 +51,10 @@
 
 
 </div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="/js/placeholder.js"></script>
+<script src="/js/functions.js"></script>
+
+
 </body>
 </html>
