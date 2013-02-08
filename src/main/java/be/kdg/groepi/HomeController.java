@@ -23,4 +23,9 @@ public class HomeController {
         UserService.createUser();
         return "home";
     }
+    @RequestMapping(value = "/login")
+    public String login() {
+        System.out.println("Login: Passing through...");
+        return "login/showlogin";
+    }
 }
