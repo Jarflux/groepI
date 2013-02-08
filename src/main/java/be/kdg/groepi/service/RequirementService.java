@@ -1,6 +1,6 @@
-package be.kdg.service;
+package be.kdg.groepi.service;
 
-import be.kdg.model.Requirement;
+import be.kdg.groepi.model.Requirement;
 import java.util.List;
 
 /**

@@ -1,4 +1,4 @@
-package be.kdg.model;
+package be.kdg.groepi.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -17,18 +17,18 @@ import java.util.Set;
 public class User implements Serializable{
     @Id
     @GeneratedValue
-    long fId;
+    private long fId;
     @Column(name = "name")
-    String fName;
+    private String fName;
     @Column(name = "email")
-    String fEmail;
+    private String fEmail;
     @Column(name = "password")
-    String fPassword;
+    private String fPassword;
     @Column(name = "date_of_birth")
-    Date fDateOfBirth;
+    private Date fDateOfBirth;
 
-    @OneToMany
-    private Set<Trip> organizedTrips;
+    //@OneToMany
+    //private Set<Trip> organizedTrips;
 
     // Hibernates needs empty constructor
     public User() {

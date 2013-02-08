@@ -1,6 +1,6 @@
-package be.kdg.service;
+package be.kdg.groepi.service;
 
-import be.kdg.model.User;
+import be.kdg.groepi.model.User;
 
 import java.util.List;
 

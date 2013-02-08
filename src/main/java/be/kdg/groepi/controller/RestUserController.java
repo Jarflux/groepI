@@ -1,7 +1,7 @@
-package be.kdg.controller;
+package be.kdg.groepi.controller;
 
-import be.kdg.model.User;
-import be.kdg.service.UserService;
+import be.kdg.groepi.model.User;
+import be.kdg.groepi.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,10 +1,10 @@
-package be.kdg.controller;
+package be.kdg.groepi.controller;
 
 /**
  * Author: Ben Oeyen
  * Date: 7/02/13
- * Class: Trip REST Controller
+ * Class:  Message REST Controller
  * Description:  Controller to handle REST service calls
  */
-public class RestTripController {
+public class RestMessageController {
 }

@@ -1,4 +1,4 @@
-package be.kdg.controller;
+package be.kdg.groepi.controller;
 
 /**
  * Author: Ben Oeyen

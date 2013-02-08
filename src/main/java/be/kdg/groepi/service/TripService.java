@@ -1,6 +1,6 @@
-package be.kdg.service;
+package be.kdg.groepi.service;
 
-import be.kdg.model.Trip;
+import be.kdg.groepi.model.Trip;
 import java.util.List;
 
 /**

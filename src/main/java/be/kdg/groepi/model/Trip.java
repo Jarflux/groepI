@@ -1,4 +1,4 @@
-package be.kdg.model;
+package be.kdg.groepi.model;
 
 import java.io.Serializable;
 import javax.persistence.*;

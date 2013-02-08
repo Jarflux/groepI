@@ -1,6 +1,4 @@
-package be.kdg.model;
-
-import javax.persistence.*;
+package be.kdg.groepi.model;
 
 /**
  * Author: Ben Oeyen

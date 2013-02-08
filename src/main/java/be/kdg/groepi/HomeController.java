@@ -8,7 +8,7 @@ package be.kdg.groepi;
  * To change this template use File | Settings | File Templates.
  */
 
-import be.kdg.service.UserService;
+import be.kdg.groepi.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

@@ -1,4 +1,4 @@
-package be.kdg.service;
+package be.kdg.groepi.service;
 
 //package be.kdg.Service;
 

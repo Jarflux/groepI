@@ -1,6 +1,6 @@
-package be.kdg.service;
+package be.kdg.groepi.service;
 
-import be.kdg.model.Cost;
+import be.kdg.groepi.model.Cost;
 import java.util.List;
 
 /**
