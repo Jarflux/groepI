@@ -20,7 +20,7 @@ public class HomeController {
     @RequestMapping(value = "/")
     public String home() {
         System.out.println("HomeController: Passing through...");
-        UserService.createUser();
+        //UserService.createUser(); //TODO: HEY DAVE
         return "home";
     }
     @RequestMapping(value = "/login")
