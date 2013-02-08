@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,15 +20,15 @@ public class UserService {
     private static Session session = HibernateUtil.getSessionFactory().openSession();
     private static Transaction tx = session.beginTransaction();
 
-//    private final Session session = HibernateUtil.getSessionFactory().openSession();
-    //private final UserService userService = new UserService();
-
-//    @Autowired
-//    private static SessionFactory sessionFactory;
 
     public static User getUserById(long Id) {
-        User user = (User) session.createQuery("FROM User user WHERE user.id = :Id").setString("Id", String.valueOf(Id)).list().get(0);
-        return user;
+        List<User> users = session.createQuery("FROM User user WHERE user.id = :Id").setString("Id", String.valueOf(Id)).list();
+        //User user = (User) session.createQuery("FROM User user WHERE user.id = :Id").setString("Id", String.valueOf(Id)).list().get(0);
+        if (users.size() > 0) {
+            return users.get(0);
+        } else {
+            return null;
+        }
     }
 
     public static User createUser(User user) {
@@ -41,10 +42,13 @@ public class UserService {
     }
 
     public static User deleteUser(User user) {
-        return null;
+        session.delete(user);
+        return null;  //TODO: return?!
     }
 
     public static List<User> getAllUsers() {
-        return null;
+        /*List<User> users = session.createQuery("FROM User").list();
+        return users;*/
+        return session.createQuery("FROM User").list();
     }
 }

@@ -26,6 +26,7 @@ public class UserTest {
     //private final UserService userService = new UserService();
     private User user;
 
+
     @Before
     public void beforeEachTest() {
         Calendar cal = Calendar.getInstance();
@@ -38,12 +39,15 @@ public class UserTest {
     @After
     public void afterEachTest() {
         user = null;
+        for (User user : UserService.getAllUsers()) {
+            UserService.deleteUser(user);
+        }
     }
 
     @Test
     public void createUser() {
         UserService.createUser(user);
-        assertEquals(user, UserService.getUserById(user.getId()));
+        assertEquals("createUser: userEquals", user, UserService.getUserById(user.getId()));
     }
 
 
@@ -64,11 +68,30 @@ public class UserTest {
 
         UserService.updateUser(user);
 
-        assertFalse("name", oldUser.getName().equals(user.getName()));
-        assertFalse("password", oldUser.getPassword().equals(user.getPassword()));
-        assertFalse("dateOfBirth", oldUser.getDateOfBirth().equals(user.getDateOfBirth()));
-        assertFalse("email", oldUser.getEmail().equals(user.getEmail()));
+        assertFalse("updateUser: name", oldUser.getName().equals(user.getName()));
+        assertFalse("updateUser: password", oldUser.getPassword().equals(user.getPassword()));
+        assertFalse("updateUser: dateOfBirth", oldUser.getDateOfBirth().equals(user.getDateOfBirth()));
+        assertFalse("updateUser: email", oldUser.getEmail().equals(user.getEmail()));
     }
 
+    @Test
+    public void deleteUser() {
+        UserService.createUser(user);
 
+        assertNotNull("deleteUser: User found", UserService.getUserById(user.getId()));
+
+        UserService.deleteUser(user);
+
+        assertNull("deleteUser: User not found", UserService.getUserById(user.getId()));
+    }
+
+    @Test
+    public void getAllUsers() {
+        for (int i = 1; i <= 10; i++) {
+            User newUser = new User("User " + i, "user" + i + "@M.EH", "pwd", user.getDateOfBirth());
+            UserService.createUser(newUser);
+        }
+
+        assertEquals("getAllUsers: listsize", 10, UserService.getAllUsers().size());
+    }
 }
