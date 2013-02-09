@@ -8,11 +8,8 @@ package be.kdg.groepi;
  * To change this template use File | Settings | File Templates.
  */
 
-import be.kdg.groepi.controller.RestUserController;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Handles requests for the application home page.
@@ -32,16 +29,4 @@ public class HomeController {
         return "login/showlogin";
     }
 
-
-    /*@RequestMapping(value = "/profile")
-    public String profile() {
-        System.out.println("Profile: passing through...");
-        return "profile/user";
-    }
-
-    @RequestMapping(value = "/profile/{userid}")
-    public ModelAndView profile(){
-        RestUserController restUserController = new RestUserController();
-        return restUserController.getUser("1");
-    } */
 }

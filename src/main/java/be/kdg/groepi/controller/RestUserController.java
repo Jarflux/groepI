@@ -23,7 +23,7 @@ public class RestUserController {
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
     public ModelAndView getUser(@PathVariable("userId") String userId) {
-        User user = null;
+        User user;
 
         // validate input
         /*if (userId.isEmpty() || userId.length() < 5) {

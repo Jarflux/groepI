@@ -2,27 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/AppConfig.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/AppConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Cost.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Cost.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/CostService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/CostService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/HomeController.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/HomeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Message.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Message.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/MessageService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/MessageService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Requirement.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Requirement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/RequirementService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/RequirementService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestUserController.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestUserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/be/kdg/groepi/controller/RestUserControllerTest.java" afterPath="$PROJECT_DIR$/src/test/java/be/kdg/groepi/controller/RestUserControllerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Trip.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Trip.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/TripService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/TripService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/User.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/user.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/user.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="groepI.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360441229171" ignored="false" />
+    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360441472323" ignored="false" />
     <file path="/README" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1359642779202" ignored="false" />
     <file path="/index.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360071317953" ignored="false" />
     <file path="/fragment.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360422747957" ignored="false" />
@@ -50,6 +37,7 @@
     <file path="/UserServiceTest.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360422988248" ignored="false" />
     <file path="/user.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360440969826" ignored="false" />
     <file path="/File Header.txt.ft" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360424306681" ignored="false" />
+    <file path="/UserService.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360441844088" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +113,7 @@
       <file leaf-file-name="RestUserController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestUserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="58" selection-start="1475" selection-end="1475" vertical-scroll-proportion="0.0">
+            <state line="38" column="37" selection-start="1357" selection-end="1357" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -136,7 +124,18 @@
       <file leaf-file-name="HomeController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/HomeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="0" selection-start="931" selection-end="931" vertical-scroll-proportion="0.0">
+            <state line="10" column="0" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserService.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="58" selection-start="637" selection-end="637" vertical-scroll-proportion="0.24926686">
               <folding />
             </state>
           </provider>
@@ -163,16 +162,16 @@
       <file leaf-file-name="user.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/user.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="41" selection-start="453" selection-end="453" vertical-scroll-proportion="-10.461538">
+            <state line="16" column="58" selection-start="462" selection-end="462" vertical-scroll-proportion="-7.3846154">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="User.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="23" selection-start="337" selection-end="337" vertical-scroll-proportion="0.33333334">
+            <state line="19" column="23" selection-start="337" selection-end="337" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -220,7 +219,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/controller/RestUserController.java" />
         <option value="$PROJECT_DIR$/src/main/css/main.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/showlogin.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/servlet-context.xml" />
@@ -230,12 +228,13 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/main.css" />
         <option value="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/UserServiceTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/HomeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/AppConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestUserController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/user.jsp" />
         <option value="$PROJECT_DIR$/src/test/java/be/kdg/groepi/controller/RestUserControllerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestUserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/HomeController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java" />
       </list>
     </option>
   </component>
@@ -1276,7 +1275,11 @@
       <created>1360423835516</created>
       <updated>1360423835516</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="RestUserController: getUser() mapped to /profile/{userId}&#10;&#10;Currently returns view with User-object if one exists with the userId given or the requested userId as a string otherwise">
+      <created>1360441490400</created>
+      <updated>1360441490400</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1408,13 +1411,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="13" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/showlogin.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="41" selection-start="749" selection-end="749" vertical-scroll-proportion="1.4585799">
@@ -1501,16 +1497,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="23" selection-start="337" selection-end="337" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/user.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="41" selection-start="453" selection-end="453" vertical-scroll-proportion="-10.461538">
+        <state line="16" column="58" selection-start="462" selection-end="462" vertical-scroll-proportion="-7.3846154">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestUserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="58" selection-start="1475" selection-end="1475" vertical-scroll-proportion="0.0">
+        <state line="38" column="37" selection-start="1357" selection-end="1357" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1519,14 +1522,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/HomeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="0" selection-start="931" selection-end="931" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="10" column="0" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/User.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="23" selection-start="337" selection-end="337" vertical-scroll-proportion="0.33333334">
+        <state line="23" column="58" selection-start="637" selection-end="637" vertical-scroll-proportion="0.24926686">
           <folding />
         </state>
       </provider>

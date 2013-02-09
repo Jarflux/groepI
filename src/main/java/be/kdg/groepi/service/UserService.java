@@ -4,6 +4,7 @@ import be.kdg.groepi.model.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +20,8 @@ public class UserService {
 
 
     public static User getUserById(long Id) {
-        List<User> users = session.createQuery("FROM User user WHERE user.id = :Id").setString("Id", String.valueOf(Id)).list();
+        List<User> users = session.createQuery("FROM User user WHERE user.id = :Id").
+                setString("Id", String.valueOf(Id)).list();
         //User user = (User) session.createQuery("FROM User user WHERE user.id = :Id").setString("Id", String.valueOf(Id)).list().get(0);
         if (users.size() > 0) {
             return users.get(0);
