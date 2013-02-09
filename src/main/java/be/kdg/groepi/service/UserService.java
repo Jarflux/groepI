@@ -2,11 +2,8 @@ package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.User;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

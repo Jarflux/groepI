@@ -1,7 +1,7 @@
 package be.kdg.groepi.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
@@ -13,7 +13,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "T_MESSAGE")
-public class Message implements Serializable{
+public class Message implements Serializable {
     @Id
     @GeneratedValue
     long fId;
@@ -26,7 +26,7 @@ public class Message implements Serializable{
     public Message() {
     }
 
-    public Message(String content, Date date){
+    public Message(String content, Date date) {
         this.fContent = content;
         this.fDate = date;
     }

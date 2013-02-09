@@ -1,7 +1,7 @@
 package be.kdg.groepi.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Author: Ben Oeyen
@@ -12,7 +12,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "T_COST")
-public class Cost implements Serializable{
+public class Cost implements Serializable {
     @Id
     @GeneratedValue
     long fId;

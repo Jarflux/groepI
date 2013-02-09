@@ -1,6 +1,7 @@
 package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.Trip;
+
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public class TripService {
         return null;
     }
 
-    public static Trip updateTrip(Trip trip){
+    public static Trip updateTrip(Trip trip) {
         return null;
     }
 

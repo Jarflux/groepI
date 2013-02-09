@@ -1,9 +1,8 @@
 package be.kdg.groepi.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
-import java.util.Set;
 
 /**
  * Author: Ben Oeyen
@@ -14,7 +13,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "T_USER")
-public class User implements Serializable{
+public class User implements Serializable {
     @Id
     @GeneratedValue
     private long fId;
@@ -34,7 +33,7 @@ public class User implements Serializable{
     public User() {
     }
 
-    public User(String name, String email, String password, Date dateOfBirth){
+    public User(String name, String email, String password, Date dateOfBirth) {
         this.fName = name;
         this.fEmail = email;
         this.fPassword = password;

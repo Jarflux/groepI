@@ -1,6 +1,7 @@
 package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.Message;
+
 import java.util.List;
 
 /**
@@ -15,11 +16,11 @@ public class MessageService {
         return null;
     }
 
-    public static Message  createMessage(Message  message) {
+    public static Message createMessage(Message message) {
         return null;
     }
 
-    public static Message updateMessage(Message message){
+    public static Message updateMessage(Message message) {
         return null;
     }
 

@@ -1,6 +1,7 @@
 package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.Requirement;
+
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ public class RequirementService {
         return null;
     }
 
-    public static Requirement updateRequirement(Requirement requirement){
+    public static Requirement updateRequirement(Requirement requirement) {
         return null;
     }
 

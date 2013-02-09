@@ -1,7 +1,7 @@
 package be.kdg.groepi.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -13,7 +13,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "T_TRIP")
-public class Trip implements Serializable{
+public class Trip implements Serializable {
     @Id
     @GeneratedValue
     private Long fId;

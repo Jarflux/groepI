@@ -1,6 +1,7 @@
 package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.Cost;
+
 import java.util.List;
 
 /**
@@ -15,11 +16,11 @@ public class CostService {
         return null;
     }
 
-    public static Cost createCost(Cost  cost) {
+    public static Cost createCost(Cost cost) {
         return null;
     }
 
-    public static Cost updateCost(Cost cost){
+    public static Cost updateCost(Cost cost) {
         return null;
     }
 

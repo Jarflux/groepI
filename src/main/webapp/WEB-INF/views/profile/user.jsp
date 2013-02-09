@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Dave
@@ -11,6 +12,8 @@
     <title>User Profile</title>
 </head>
 <body>
-      <h1>Greetings visitor, this will one day be a glorious profile page.</h1>
+<h1>Greetings visitor, this will one day be a glorious profile page.</h1>
+
+<p>Profile of user #<c:out value="${userId}"/></p>
 </body>
 </html>
