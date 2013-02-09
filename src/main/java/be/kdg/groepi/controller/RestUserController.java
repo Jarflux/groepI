@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Author: Ben Oeyen
@@ -18,7 +19,7 @@ public class RestUserController {
     private static final Logger logger = Logger.getLogger(RestUserController.class);
 
     @RequestMapping(value = "/rest/users/{userId}", method = RequestMethod.GET)
-    public void getUser(@PathVariable("userId") String userId) {
+    public ModelAndView getUser(@PathVariable("userId") String userId) {
         User user = null;
 
         // validate input
@@ -27,13 +28,18 @@ public class RestUserController {
             // return createErrorResponse(sMessage);
         }
 
-        try {
-            user = UserService.getUserById(Long.parseLong(userId));
-        } catch (Exception e) {
+        //try {
+        user = UserService.getUserById(Long.parseLong(userId));
+        if (user != null) {
+            logger.debug("Returning User: " + user.toString());
+        }
+        return new ModelAndView("user.jsp"); //TODO: betere naam voor de pagina?
+        /*} catch (Exception e) {
             String sMessage = "Error invoking getFund. [%1$s]";
             //return createErrorResponse(String.format(sMessage, e.toString()));
-        }
+        }*/
 
-        logger.debug("Returning User: " + user.toString());
+        //
+
     }
 }

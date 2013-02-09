@@ -1,12 +1,8 @@
-package be.kdg.groepi;
+package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.User;
-import be.kdg.groepi.service.HibernateUtil;
-import be.kdg.groepi.service.UserService;
-import org.hibernate.Session;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.sql.Date;
@@ -21,7 +17,7 @@ import static org.junit.Assert.*;
  * Time: 10:20
  * To change this template use File | Settings | File Templates.
  */
-public class UserTest {
+public class UserServiceTest {
     //    private final Session session = HibernateUtil.getSessionFactory().openSession();
     //private final UserService userService = new UserService();
     private User user;
@@ -45,14 +41,14 @@ public class UserTest {
     }
 
     @Test
-    public void createUser() {
+    public void testCreateUser() {
         UserService.createUser(user);
         assertEquals("createUser: userEquals", user, UserService.getUserById(user.getId()));
     }
 
 
     @Test
-    public void updateUser() {
+    public void testUpdateUser() {
         UserService.createUser(user);
 
         Calendar cal = Calendar.getInstance();
@@ -75,7 +71,7 @@ public class UserTest {
     }
 
     @Test
-    public void deleteUser() {
+    public void testDeleteUser() {
         UserService.createUser(user);
 
         assertNotNull("deleteUser: User found", UserService.getUserById(user.getId()));
@@ -86,7 +82,7 @@ public class UserTest {
     }
 
     @Test
-    public void getAllUsers() {
+    public void testGetAllUsers() {
         for (int i = 1; i <= 10; i++) {
             User newUser = new User("User " + i, "user" + i + "@M.EH", "pwd", user.getDateOfBirth());
             UserService.createUser(newUser);
