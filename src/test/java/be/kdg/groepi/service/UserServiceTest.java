@@ -25,9 +25,8 @@ public class UserServiceTest {
 
     @Before
     public void beforeEachTest() {
-        Calendar cal = Calendar.getInstance();
-        cal.set(1992, Calendar.JULY, 15);
-        Date dateOfBirth = new Date(cal.getTime().getTime());
+
+        Date dateOfBirth = fillDate();
 
         user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateOfBirth);
     }
@@ -51,16 +50,16 @@ public class UserServiceTest {
     public void testUpdateUser() {
         UserService.createUser(user);
 
-        Calendar cal = Calendar.getInstance();
-        cal.set(2007, Calendar.MAY, 12);
-        Date dateOfBirth = new Date(cal.getTime().getTime());
+        Date dateOfBirth = fillDate();
 
         User oldUser = new User(user.getName(), user.getEmail(), user.getPassword(), user.getDateOfBirth());
+        oldUser.setProfilePicture("http://i.telegraph.co.uk/multimedia/archive/02429/eleanor_scriven_2429776k.jpg");
 
         user.setName("NOT TIMMEH");
         user.setPassword("hemmitton");
         user.setDateOfBirth(dateOfBirth);
         user.setEmail("NOTTIM@M.EH");
+        user.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
 
         UserService.updateUser(user);
 
@@ -68,6 +67,19 @@ public class UserServiceTest {
         assertFalse("updateUser: password", oldUser.getPassword().equals(user.getPassword()));
         assertFalse("updateUser: dateOfBirth", oldUser.getDateOfBirth().equals(user.getDateOfBirth()));
         assertFalse("updateUser: email", oldUser.getEmail().equals(user.getEmail()));
+        assertFalse("updateUser: profilePicture", oldUser.getProfilePicture().equals(user.getProfilePicture()));
+    }
+
+    @Test
+    public void testNullPicture(){
+        UserService.createUser(user);
+        assertEquals("User profile picture should be null.", user.getProfilePicture(), null);
+    }
+
+    private Date fillDate() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(2007, Calendar.MAY, 12);
+        return new Date(cal.getTime().getTime());
     }
 
     @Test

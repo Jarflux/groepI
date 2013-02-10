@@ -25,6 +25,8 @@ public class User implements Serializable {
     private String fPassword;
     @Column(name = "date_of_birth")
     private Date fDateOfBirth;
+    @Column(name = "profile_picture", nullable = true)
+    private String fProfilePicture;
 
     //@OneToMany
     //private Set<Trip> organizedTrips;
@@ -78,5 +80,13 @@ public class User implements Serializable {
 
     public void setDateOfBirth(Date fDateOfBirth) {
         this.fDateOfBirth = fDateOfBirth;
+    }
+
+    public String getProfilePicture() {
+        return fProfilePicture;
+    }
+
+    public void setProfilePicture(String fProfilePicture) {
+        this.fProfilePicture = fProfilePicture;
     }
 }
