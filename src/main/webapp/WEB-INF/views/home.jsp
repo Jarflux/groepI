@@ -26,6 +26,7 @@
 
             <span class="small"><spring:message code="text.wachtwoordreset_link" /></span>
                   </form>
+            <a href="profile/register">Create an account</a>
 
 
         </div>

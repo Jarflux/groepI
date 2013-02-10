@@ -47,4 +47,13 @@ public class RestUserControllerTest {
         assertEquals("This user does not exist, so getUser should return \"5\".",
                 "5", modelAndView.getModel().get("userId"));
     }
+
+    @Test
+    public void testCreateUser(){
+        //TODO: uit commentaar halen als code werkt
+        /*ModelAndView modelAndView = restUserController.createUser(user);
+        assertNotNull("User object should exist", modelAndView.getModel().get("userObject"));
+        User createdUser = (User) modelAndView.getModel().get("userObject");
+        assertNotNull("User should have a name", createdUser.getName());*/
+    }
 }

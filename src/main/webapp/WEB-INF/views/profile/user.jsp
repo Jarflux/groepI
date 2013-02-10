@@ -14,6 +14,20 @@
 <body>
 <h1>Greetings visitor, this will one day be a glorious profile page.</h1>
 
-<p>Profile of user #<c:out value="${userId}"/></p>
+<p>
+    <c:choose>
+        <c:when test="${userObject != null}">
+            <c:out value="Profile of user #${userObject.id}"/>
+            <c:out value="Name ${userObject.name}"/>
+            <c:out value="Mail ${userObject.email}"/>
+            <c:out value="Password ${userObject.password}"/>
+            <c:out value="Date of birth ${userObject.dateOfBirth}"/>
+            <c:out value="Profile picture ${userObject.profilePicture}"/>
+        </c:when>
+        <c:when test="${userObject == null}">
+            <c:out value="Profile of user #${userId}"/>
+        </c:when>
+
+    </c:choose></p>
 </body>
 </html>

@@ -29,4 +29,10 @@ public class HomeController {
         return "login/showlogin";
     }
 
+    @RequestMapping(value = "/profile/register")
+    public String register(){
+        System.out.println("Register: Passing through...");
+        return "profile/register";
+    }
+
 }
