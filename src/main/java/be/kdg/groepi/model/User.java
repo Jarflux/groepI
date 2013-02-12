@@ -25,7 +25,7 @@ public class User implements Serializable {
     private String fPassword;
     @Column(name = "date_of_birth")
     private Date fDateOfBirth;
-    @Column(name = "profile_picture", nullable = true)
+    @Column(name = "profile_picture")
     private String fProfilePicture;
 
     //@OneToMany

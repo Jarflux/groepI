@@ -47,6 +47,7 @@ public class RestUserController {
 
     @RequestMapping(value = "/createUser", method = RequestMethod.POST)
     public ModelAndView createUser(@ModelAttribute("userObject") User user) {
+        //TODO: encrypt password
         UserService.createUser(user);
         return new ModelAndView("profile/user", "userObject", user);
     }

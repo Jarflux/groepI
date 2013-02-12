@@ -18,7 +18,7 @@
 
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">false</property>
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
         <property name="format_sql">false</property>
         <property name="use_sql_comments">false</property>
 
