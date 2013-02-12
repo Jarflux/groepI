@@ -50,10 +50,9 @@ public class RestUserControllerTest {
 
     @Test
     public void testCreateUser(){
-        //TODO: uit commentaar halen als code werkt
-        /*ModelAndView modelAndView = restUserController.createUser(user);
+        ModelAndView modelAndView = restUserController.createUser(user);
         assertNotNull("User object should exist", modelAndView.getModel().get("userObject"));
         User createdUser = (User) modelAndView.getModel().get("userObject");
-        assertNotNull("User should have a name", createdUser.getName());*/
+        assertNotNull("User should have a name", createdUser.getName());
     }
 }

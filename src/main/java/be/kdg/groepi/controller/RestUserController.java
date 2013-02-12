@@ -4,6 +4,7 @@ import be.kdg.groepi.model.User;
 import be.kdg.groepi.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,12 +45,10 @@ public class RestUserController {
         }*/
     }
 
-    //TODO: object vanuit form doorgeven naar deze methode
-    /*
     @RequestMapping(value = "/createUser", method = RequestMethod.POST)
-    public ModelAndView createUser(@ModelAttribute("user") User user) {
+    public ModelAndView createUser(@ModelAttribute("userObject") User user) {
         UserService.createUser(user);
         return new ModelAndView("profile/user", "userObject", user);
-    }*/
+    }
 
 }

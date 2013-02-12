@@ -15,39 +15,58 @@ import java.util.List;
  */
 
 public class UserService {
-    private static Session session = HibernateUtil.getSessionFactory().openSession();
-    private static Transaction tx = session.beginTransaction();
-
 
     public static User getUserById(long Id) {
-        List<User> users = session.createQuery("FROM User user WHERE user.id = :Id").
-                setString("Id", String.valueOf(Id)).list();
-        //User user = (User) session.createQuery("FROM User user WHERE user.id = :Id").setString("Id", String.valueOf(Id)).list().get(0);
-        if (users.size() > 0) {
-            return users.get(0);
-        } else {
-            return null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        List<User> users = new ArrayList<>();
+        try {
+            users = session.createQuery("FROM User user WHERE user.id = :Id").
+                    setString("Id", String.valueOf(Id)).setReadOnly(true).list();
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            session.close();
+            if (users.size() > 0) {
+                return users.get(0);
+            } else {
+                return null;
+            }
         }
     }
 
     public static User createUser(User user) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
         session.save(user);
+        tx.commit();
         return null;  //TODO: return?!
     }
 
     public static User updateUser(User user) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
         session.update(user);
+        tx.commit();
         return null;  //TODO: return?!
     }
 
     public static User deleteUser(User user) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
         session.delete(user);
+        tx.commit();
         return null;  //TODO: return?!
     }
 
     public static List<User> getAllUsers() {
         /*List<User> users = session.createQuery("FROM User").list();
         return users;*/
-        return session.createQuery("FROM User").list();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        List<User> users = session.createQuery("FROM User").list();
+        tx.commit();
+        return users;
     }
 }
