@@ -35,6 +35,7 @@ public class Trip implements Serializable {
 
     // Hibernates needs empty constructor
     public Trip() {
+
     }
 
     public Trip(String title, String description, boolean available) {

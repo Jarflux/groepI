@@ -25,9 +25,7 @@ public class UserServiceTest {
 
     @Before
     public void beforeEachTest() {
-
         Date dateOfBirth = fillDate();
-
         user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateOfBirth);
     }
 

@@ -15,7 +15,7 @@ import java.util.List;
  */
 
 public class UserService {
-
+    //TODO: Hibernate transaction management nodig bij GET? (-> Dirty read?)
     public static User getUserById(long Id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
