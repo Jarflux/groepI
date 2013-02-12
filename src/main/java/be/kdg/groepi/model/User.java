@@ -10,6 +10,7 @@ import java.sql.Date;
  * Class: User
  * Description:
  */
+//TODO: boolean veld 'Active' toevoegen
 
 @Entity
 @Table(name = "T_USER")
