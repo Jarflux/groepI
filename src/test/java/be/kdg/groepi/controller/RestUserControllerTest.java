@@ -37,15 +37,15 @@ public class RestUserControllerTest {
 
     @Test
     public void testGetUser() {
-        ModelAndView modelAndView = restUserController.getUser("1");
+        ModelAndView modelAndView = restUserController.getUser(String.valueOf(user.getId()));
         assertEquals("profile/user", modelAndView.getViewName());
         assertNotNull("Model should not be null", modelAndView.getModel());
         User returnedUser = (User) modelAndView.getModel().get("userObject");
         assertNotNull("User with ID 1 should be present in the ModelAndView", returnedUser);
-
-        modelAndView = restUserController.getUser("5");
-        assertEquals("This user does not exist, so getUser should return \"5\".",
-                "5", modelAndView.getModel().get("userId"));
+        
+        modelAndView = restUserController.getUser(String.valueOf(user.getId()+1)); // + 1 om een user te krijgen die niet bestaat.
+        assertEquals("This user does not exist, so getUser should return \"" + (user.getId()+1) + "\".",
+                String.valueOf(user.getId()+1), modelAndView.getModel().get("userId"));
     }
 
     @Test
