@@ -8,7 +8,6 @@ package be.kdg.groepi;
  * To change this template use File | Settings | File Templates.
  */
 
-import be.kdg.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,7 +19,20 @@ public class HomeController {
     @RequestMapping(value = "/")
     public String home() {
         System.out.println("HomeController: Passing through...");
-        UserService.createUser();
+        //UserService.createUser(); //TODO: HEY DAVE
         return "home";
     }
+
+    @RequestMapping(value = "/login")
+    public String login() {
+        System.out.println("Login: Passing through...");
+        return "login/showlogin";
+    }
+
+    @RequestMapping(value = "/profile/register")
+    public String register(){
+        System.out.println("Register: Passing through...");
+        return "profile/register";
+    }
+
 }
