@@ -10,6 +10,8 @@
 <html>
 <head>
     <title>User Profile</title>
+    <link href="css/blue.css" rel="StyleSheet" />
+
 </head>
 <body>
 <h1>Greetings visitor, this will one day be a glorious profile page.</h1>

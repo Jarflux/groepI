@@ -10,13 +10,13 @@
 
 <html>
 <head>
-    <link href="/css/main.css" rel="StyleSheet" />
+    <link href="css/blue.css" rel="StyleSheet" />
 
     <title>My Trip Assistant</title>
 </head>
 <body>
 <div id="container">
-    <div id="logincontainer" class="column">
+    <div id="logincontainer" class="column light">
         <div class="loginmiddlebox"><h2>Login</h2>
         <form action="" method="post">
                   <input type="text" class="loginbox" placeholder="<spring:message code='text.gebruikersnaam'/>" />      <br>
@@ -26,13 +26,13 @@
 
             <span class="small"><spring:message code="text.wachtwoordreset_link" /></span>
                   </form>
-            <a href="profile/register">Create an account</a>
+            <a href="profile/register"><spring:message code='text.maakaccount'/></a>
 
 
         </div>
 
     </div>
-    <div id="maincontainer" class="column">
+    <div id="maincontainer" class="column dark">
 
         <div class="loginmiddlebox"><h2>My Trip Assistant</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo, magna quis accumsan euismod, urna purus viverra nulla, non commodo

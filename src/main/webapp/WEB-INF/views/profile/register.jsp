@@ -11,35 +11,43 @@
 <html>
 <head>
     <title>Register</title>
+    <link href="/css/blue.css" rel="StyleSheet" />
+
 </head>
 <body>
-<h2><spring:message code="text.maakaccount"/></h2>
+<div id="wrapper">
+    <div id="topmenu" class="column dark">
+
+    </div>
+    <div id="content" class="column light">
+        <h2><spring:message code="text.maakaccount"/></h2>
 
 
-<%--Deze code geeft de error
-<form:form method="post" action="createUser" modelAttribute="userObject">
-    <table>
-        <tr>
-            <td>
-                Naam
-            </td>
-            <td>
-                <form:input path="userObject.name"/>
-            </td>
-        </tr>
-    </table>
-    tot hier--%>
+<form method="post" action="createUser" class="mainstyle">
+    <div class="row"> <span><spring:message code='text.naam'/></span>            <input type="text" class="" name="name" placeholder=""/>
+    </div>
 
-<form method="post" action="createUser">
-    <input type="text" class="loginbox" name="name" placeholder="<spring:message code='text.naam'/>"/> <br>
-    <input type="password" class="loginbox" name="password" placeholder="<spring:message code='text.wachtwoord'/>"/> <br>
-    <input type="password" class="loginbox" name="password2" placeholder="<spring:message code='text.wachtwoordherhalen'/>"/> <br>
-    <input type="text" class="loginbox" name="email" placeholder="<spring:message code='text.mail'/>"/> <br>
-    <input type="datetime" class="loginbox" name="dateOfBirth" placeholder="<spring:message code='text.geboortedatum'/>"/> <br>
-    <input type="text" class="loginbox" name="profilePicture" placeholder="<spring:message code='text.profielfoto'/>"/> <br>
+    <div class="row"> <span><spring:message code='text.wachtwoord'/></span>         <input type="password" class="" name="password" placeholder=""/>
+    </div>
+    <div class="row"> <span><spring:message code='text.wachtwoordherhalen'/></span>        <input type="password" class="" name="password2" placeholder=""/>
+    </div>
 
-    <input type="submit" class="button" value="<spring:message code='text.registreren'/>"/> &nbsp;
+      <div class="row"> <span><spring:message code='text.mail'/></span>             <input type="text" class="" name="email" placeholder=""/>
+    </div>
+    <div class="row"> <span><spring:message code='text.geboortedatum'/></span>          <input type="datetime" class="" name="dateOfBirth" placeholder=""/>
+    </div>
+    <div class="row"> <span><spring:message code='text.profielfoto'/></span>           <input type="text" class="" name="profilePicture" placeholder=""/>
+    </div>
+    <div class="row"> <span></span>       <input type="submit" class="button" value="<spring:message code='text.registreren'/>"/>
+    </div>
+
+
+
+
+
 
 </form>
+        </div>
+    </div>
 </body>
 </html>
