@@ -3,7 +3,7 @@
 body
 {
     margin:0;
-    min-width: 750px;
+    min-width: 1100px;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
@@ -102,6 +102,10 @@ body,html
         #topmenu
         {
             height: 75px;
+
+            -webkit-box-shadow:  0px 3px 10px 0px #666;
+
+            box-shadow:  0px 3px 10px 0px #666;
         }
         #wrapper
         {
@@ -135,7 +139,7 @@ body,html
 #content
 {
     width: 1100px;
-    margin: 0 auto  0 auto;
+    margin: 20px auto  0 auto;
 }
 form.mainstyle input, form.mainstyle textarea
 {
@@ -186,3 +190,17 @@ form.mainstyle input, form.mainstyle textarea
             .row input,.row textarea, .row select{
                 float: left;
             }
+.tooltip {
+    background-color:#000;
+    border:1px solid #fff;
+    padding:10px 15px;
+    width:200px;
+    display:none;
+    color:#fff;
+    text-align:left;
+    font-size:12px;
+
+    /* outline radius for mozilla/firefox only */
+    -moz-box-shadow:0 0 10px #000;
+    -webkit-box-shadow:0 0 10px #000;
+}

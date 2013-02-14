@@ -11,7 +11,7 @@
 <html>
 <head>
     <title>Register</title>
-    <link href="/css/blue.css" rel="StyleSheet" />
+    <link href="/css/blue.css" rel="stylesheet"/>
 
 </head>
 <body>
@@ -24,21 +24,21 @@
 
 
 <form method="post" action="createUser" class="mainstyle">
-    <div class="row"> <span><spring:message code='text.naam'/></span>            <input type="text" class="" name="name" placeholder=""/>
+    <div class="row"> <span><spring:message code='text.naam'/></span>            <input type="text" class="" name="name" placeholder="" title="Gelieve uw volledige naam in te geven"/>
     </div>
 
-    <div class="row"> <span><spring:message code='text.wachtwoord'/></span>         <input type="password" class="" name="password" placeholder=""/>
+    <div class="row"> <span><spring:message code='text.wachtwoord'/></span>         <input type="password" class="" name="password" placeholder="" title="Kies een sterk wachtwoord"/>
     </div>
-    <div class="row"> <span><spring:message code='text.wachtwoordherhalen'/></span>        <input type="password" class="" name="password2" placeholder=""/>
+    <div class="row"> <span><spring:message code='text.wachtwoordherhalen'/></span>        <input type="password" class="" name="password2" placeholder="" title="Herhaal uw wachtwoord"/>
     </div>
 
-      <div class="row"> <span><spring:message code='text.mail'/></span>             <input type="text" class="" name="email" placeholder=""/>
+      <div class="row"> <span><spring:message code='text.mail'/></span>             <input type="text" class="" name="email" placeholder="" title="Gelieve een geldig e-mailadres in te geven. Dit wordt ook uw gebruikernsaam."/>
     </div>
-    <div class="row"> <span><spring:message code='text.geboortedatum'/></span>          <input type="datetime" class="" name="dateOfBirth" placeholder=""/>
+    <div class="row"> <span><spring:message code='text.geboortedatum'/></span>          <input type="datetime" class="" name="dateOfBirth" placeholder="" title="Gelieve uw geboortedatum in te geven"/>
     </div>
-    <div class="row"> <span><spring:message code='text.profielfoto'/></span>           <input type="text" class="" name="profilePicture" placeholder=""/>
+    <div class="row"> <span><spring:message code='text.profielfoto'/></span>           <input type="text" class="" name="profilePicture" placeholder=""title="Dit mag in principe weg"/>
     </div>
-    <div class="row"> <span></span>       <input type="submit" class="button" value="<spring:message code='text.registreren'/>"/>
+    <div class="row"> <span></span>       <input type="submit" class="button" value="<spring:message code='text.registreren'/>" />
     </div>
 
 
@@ -49,5 +49,18 @@
 </form>
         </div>
     </div>
+<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+<script src="/js/functions.js"></script>
+
+<script lang="javascript">
+
+    $(function()
+    {
+               preparetooltips();
+
+    })
+
+
+</script>
 </body>
 </html>
