@@ -17,7 +17,7 @@
 <body>
 <div id="wrapper">
     <div id="topmenu" class="column dark">
-
+                            <jsp:include page="/topmenu"   />
     </div>
     <div id="content" class="column light">
         <h2><spring:message code="text.maakaccount"/></h2>

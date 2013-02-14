@@ -10,11 +10,16 @@
 <html>
 <head>
     <title>User Profile</title>
-    <link href="css/blue.css" rel="StyleSheet" />
+    <link href="/css/blue.css" rel="stylesheet" />
 
 </head>
 <body>
-<h1>Greetings visitor, this will one day be a glorious profile page.</h1>
+<div id="wrapper">
+    <div id="topmenu" class="column dark">
+        <jsp:include page="/topmenu"   />
+    </div>
+    <div id="content" class="column light">
+<h2>Greetings visitor, this will one day be a glorious profile page.</h2>
 
 <p>
     <c:choose>
@@ -31,5 +36,6 @@
         </c:when>
 
     </c:choose></p>
+        </div></div>
 </body>
 </html>

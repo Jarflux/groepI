@@ -28,6 +28,12 @@ public class HomeController {
         System.out.println("Login: Passing through...");
         return "login/showlogin";
     }
+    @RequestMapping(value = "/topmenu")
+    public String topmenu() {
+        System.out.println("Topmenu: Passing through...");
+        return "menu/topmenu";
+    }
+
 
     @RequestMapping(value = "/profile/register")
     public String register(){
