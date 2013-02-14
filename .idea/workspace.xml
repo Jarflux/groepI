@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/menu/topmenu.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/HomeController.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/HomeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/css/blue.css" afterPath="$PROJECT_DIR$/src/main/webapp/css/blue.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/register.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/register.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/user.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/user.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="groepI.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360861360442" ignored="false" />
+    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360863001574" ignored="false" />
     <file path="/README" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1359642779202" ignored="false" />
     <file path="/index.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360071317953" ignored="false" />
     <file path="/fragment.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360422747957" ignored="false" />
@@ -137,7 +133,7 @@
       <file leaf-file-name="user.jsp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/user.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="20" selection-start="1241" selection-end="1241" vertical-scroll-proportion="0.7675781">
+            <state line="40" column="40" selection-start="1364" selection-end="1364" vertical-scroll-proportion="0.8339844">
               <folding />
             </state>
           </provider>
@@ -185,7 +181,7 @@
       <file leaf-file-name="register.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/register.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="59" selection-start="467" selection-end="645" vertical-scroll-proportion="6.9615383">
+            <state line="51" column="0" selection-start="2192" selection-end="2314" vertical-scroll-proportion="-12.653846">
               <folding />
             </state>
           </provider>
@@ -1451,7 +1447,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Main styling, register page (forms in general)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Styling profile page" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1478,6 +1474,7 @@
     <MESSAGE value="Register.jsp + methode createUser in RestUserController (gepusht in commentaar want geeft nog errors)" />
     <MESSAGE value="Selenium dependency" />
     <MESSAGE value="Main styling, register page (forms in general)" />
+    <MESSAGE value="Styling profile page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1590,14 +1587,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/register.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="59" selection-start="467" selection-end="645" vertical-scroll-proportion="6.9615383">
+        <state line="51" column="0" selection-start="2192" selection-end="2314" vertical-scroll-proportion="-12.653846">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/user.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="20" selection-start="1241" selection-end="1241" vertical-scroll-proportion="0.7675781">
+        <state line="40" column="40" selection-start="1364" selection-end="1364" vertical-scroll-proportion="0.8339844">
           <folding />
         </state>
       </provider>
