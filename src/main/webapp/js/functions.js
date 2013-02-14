@@ -1,11 +1,11 @@
 $(function()
 {
-
+          preparetooltips();
 })
 
 function preparetooltips()
 {
-    $("input").tooltip({
+    $("form.tooltips input").tooltip({
 
         // place tooltip on the right edge
         position: "center right",

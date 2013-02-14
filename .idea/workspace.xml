@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/css/blue.css" afterPath="$PROJECT_DIR$/src/main/webapp/css/blue.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/functions.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/functions.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/register.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/register.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="groepI.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360861160018" ignored="false" />
+    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360861180646" ignored="false" />
     <file path="/README" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1359642779202" ignored="false" />
     <file path="/index.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360071317953" ignored="false" />
     <file path="/fragment.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360422747957" ignored="false" />
@@ -32,13 +31,13 @@
     <file path="/RestUserController.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360672785229" ignored="false" />
     <file path="/main.css" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360335641420" ignored="false" />
     <file path="/showlogin.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360320561869" ignored="false" />
-    <file path="/functions.js" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360860381171" ignored="false" />
+    <file path="/functions.js" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360861270754" ignored="false" />
     <file path="/RestUserControllerTest.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360516892537" ignored="false" />
     <file path="/UserServiceTest.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360503513817" ignored="false" />
     <file path="/user.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360516863970" ignored="false" />
     <file path="/File Header.txt.ft" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360424306681" ignored="false" />
     <file path="/UserService.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360675901208" ignored="false" />
-    <file path="/register.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360860699728" ignored="false" />
+    <file path="/register.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360861243126" ignored="false" />
     <file path="$USER_HOME$/.IntelliJIdea12/config/colors/TestFullLineCoverage.xml" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360676308868" ignored="false" />
     <file path="/blue.css" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360859121812" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -113,10 +112,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="functions.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="functions.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/js/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="18" selection-start="216" selection-end="216" vertical-scroll-proportion="0.0">
+            <state line="7" column="21" selection-start="98" selection-end="98" vertical-scroll-proportion="0.21364452">
               <folding />
             </state>
           </provider>
@@ -170,10 +169,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.jsp" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="register.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/register.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="130" selection-start="2070" selection-end="2070" vertical-scroll-proportion="0.33204633">
+            <state line="53" column="0" selection-start="2254" selection-end="2254" vertical-scroll-proportion="-14.692307">
               <folding />
             </state>
           </provider>
@@ -239,9 +238,9 @@
         <option value="$PROJECT_DIR$/src/main/resources/text_nl.properties" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/functions.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/blue.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/register.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/functions.js" />
       </list>
     </option>
   </component>
@@ -1596,13 +1595,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="18" selection-start="216" selection-end="216" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/css/blue.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="18" selection-start="134" selection-end="134" vertical-scroll-proportion="0.0">
@@ -1612,7 +1604,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/register.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="130" selection-start="2070" selection-end="2070" vertical-scroll-proportion="0.33204633">
+        <state line="53" column="0" selection-start="2254" selection-end="2254" vertical-scroll-proportion="-14.692307">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="21" selection-start="98" selection-end="98" vertical-scroll-proportion="0.21364452">
           <folding />
         </state>
       </provider>

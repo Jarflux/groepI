@@ -23,7 +23,7 @@
         <h2><spring:message code="text.maakaccount"/></h2>
 
 
-<form method="post" action="createUser" class="mainstyle">
+<form method="post" action="createUser" class="mainstyle tooltips">
     <div class="row"> <span><spring:message code='text.naam'/></span>            <input type="text" class="" name="name" placeholder="" title="Gelieve uw volledige naam in te geven"/>
     </div>
 
@@ -52,15 +52,5 @@
 <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
 <script src="/js/functions.js"></script>
 
-<script lang="javascript">
-
-    $(function()
-    {
-               preparetooltips();
-
-    })
-
-
-</script>
 </body>
 </html>
