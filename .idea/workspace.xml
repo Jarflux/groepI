@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" name="Default" comment="TODO's">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/TimedTrip.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/addtrip.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/trip.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/HomeController.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/HomeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestTripController.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestTripController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Trip.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Trip.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/TripService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/TripService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/TripServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/TripServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/text_nl.properties" afterPath="$PROJECT_DIR$/src/main/resources/text_nl.properties" />
+    <list default="true" id="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/addtrip.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/addtrip.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="groepI.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360939076033" ignored="false" />
+    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360951466356" ignored="false" />
     <file path="/README" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1359642779202" ignored="false" />
     <file path="/index.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360071317953" ignored="false" />
     <file path="/fragment.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360422747957" ignored="false" />
@@ -126,7 +118,7 @@
       <file leaf-file-name="addtrip.jsp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/addtrip.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="95" selection-start="2134" selection-end="2134" vertical-scroll-proportion="0.6699029">
+            <state line="43" column="97" selection-start="2136" selection-end="2136" vertical-scroll-proportion="0.6699029">
               <folding />
             </state>
           </provider>
@@ -1561,7 +1553,11 @@
       <created>1360679747476</created>
       <updated>1360679747476</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="addtrip.jsp, trip.jsp, wijzigingen Trip model, service &amp; controller, wijzgingen nl properties + homecontroller&#10;&#10;rest volgt nog :)">
+      <created>1360951522341</created>
+      <updated>1360951522341</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1655,7 +1651,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="TODO's" />
+    <option name="LAST_COMMIT_MESSAGE" value="addtrip.jsp, trip.jsp, wijzigingen Trip model, service &amp; controller, wijzgingen nl properties + homecontroller&#10;&#10;rest volgt nog :)" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1682,6 +1678,7 @@
     <MESSAGE value="Register.jsp + methode createUser in RestUserController (gepusht in commentaar want geeft nog errors)" />
     <MESSAGE value="Trip test klasse" />
     <MESSAGE value="TODO's" />
+    <MESSAGE value="addtrip.jsp, trip.jsp, wijzigingen Trip model, service &amp; controller, wijzgingen nl properties + homecontroller&#10;&#10;rest volgt nog :)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1810,7 +1807,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/addtrip.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="95" selection-start="2134" selection-end="2134" vertical-scroll-proportion="0.6699029">
+        <state line="43" column="97" selection-start="2136" selection-end="2136" vertical-scroll-proportion="0.6699029">
           <folding />
         </state>
       </provider>

@@ -41,7 +41,7 @@
                 <span><spring:message code='text.enddate'/></span>
                 <input type="datetime" class="" name="start" placeholder="" title="<spring:message code='text.enddateTooltip'/>"/>
             </div>
-            <input type="submit" class="button" value="<spring:message code='text.available'/>"
+            <input type="submit" class="button" value="<spring:message code='text.available'/>"/>
         </form>
     </div>
  </div>
