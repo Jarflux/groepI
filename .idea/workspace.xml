@@ -2,20 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/interdit-256.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/noprofile_jpg.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/error/displayerror.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/HomeController.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/HomeController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/view.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestTripController.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestTripController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/css/blue.css" afterPath="$PROJECT_DIR$/src/main/webapp/css/blue.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/servlet-context.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/servlet-context.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/error/displayerror.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/error/displayerror.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/text_nl.properties" afterPath="$PROJECT_DIR$/src/main/resources/text_nl.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/user.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/user.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="groepI.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361098486821" ignored="false" />
+    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361110505098" ignored="false" />
     <file path="/README" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1359642779202" ignored="false" />
     <file path="/index.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360071317953" ignored="false" />
     <file path="/fragment.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360422747957" ignored="false" />
@@ -29,7 +25,7 @@
     <file path="/mvc-dispatcher.xml" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360145465430" ignored="false" />
     <file path="/mvcController.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360145338683" ignored="false" />
     <file path="/text.properties" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360146316235" ignored="false" />
-    <file path="/text_nl.properties" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361109385664" ignored="false" />
+    <file path="/text_nl.properties" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361111239435" ignored="false" />
     <file path="/text_en_US.properties" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360156119477" ignored="false" />
     <file path="/User.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360502739290" ignored="false" />
     <file path="/hibernateMySQL.cfg.xml" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360674356206" ignored="false" />
@@ -46,9 +42,11 @@
     <file path="/UserService.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360675901208" ignored="false" />
     <file path="/register.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360861599923" ignored="false" />
     <file path="$USER_HOME$/.IntelliJIdea12/config/colors/TestFullLineCoverage.xml" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360676308868" ignored="false" />
-    <file path="/blue.css" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361107848860" ignored="false" />
+    <file path="/blue.css" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361112090471" ignored="false" />
     <file path="/topmenu.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360862785404" ignored="false" />
-    <file path="/displayerror.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361109887197" ignored="false" />
+    <file path="/displayerror.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361111019943" ignored="false" />
+    <file path="/view.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361112077667" ignored="false" />
+    <file path="/RestTripController.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361111602544" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,37 +119,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="topmenu.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/menu/topmenu.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="66" selection-start="186" selection-end="186" vertical-scroll-proportion="-3.2692308">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="user.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/user.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state line="32" column="20" selection-start="1300" selection-end="1397" vertical-scroll-proportion="-13.5">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AppConfig.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/AppConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="13" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="servlet-context.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/servlet-context.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="141" selection-start="986" selection-end="986" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -175,28 +146,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomeController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/HomeController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="96" selection-start="1037" selection-end="1037" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="displayerror.jsp" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="displayerror.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/error/displayerror.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="51" selection-start="1138" selection-end="1138" vertical-scroll-proportion="0.8930582">
+            <state line="29" column="111" selection-start="997" selection-end="997" vertical-scroll-proportion="-13.076923">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blue.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="view.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/view.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="18" selection-start="748" selection-end="748" vertical-scroll-proportion="-13.307693">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/register.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="37" column="69" selection-start="1813" selection-end="1813" vertical-scroll-proportion="-10.192307">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="blue.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/css/blue.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="161" column="14" selection-start="3198" selection-end="3198" vertical-scroll-proportion="0.0">
+            <state line="154" column="22" selection-start="2989" selection-end="2989" vertical-scroll-proportion="0.69588554">
               <folding />
             </state>
           </provider>
@@ -208,7 +188,7 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="138" selection-start="761" selection-end="761" vertical-scroll-proportion="-10.2">
+            <state line="17" column="40" selection-start="906" selection-end="906" vertical-scroll-proportion="-11.56">
               <folding />
             </state>
           </provider>
@@ -217,8 +197,19 @@
       <file leaf-file-name="RestUserController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestUserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="121" selection-start="840" selection-end="840" vertical-scroll-proportion="0.0">
+            <state line="17" column="69" selection-start="677" selection-end="677" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RestTripController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestTripController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="35" selection-start="507" selection-end="507" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -243,8 +234,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/be/kdg/groepi/controller/RestUserControllerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestUserController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/showlogin.jsp" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" />
@@ -256,9 +245,11 @@
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/HomeController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/user.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/text_nl.properties" />
-        <option value="$PROJECT_DIR$/src/main/webapp/css/blue.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/error/displayerror.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/text_nl.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestTripController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/view.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/css/blue.css" />
       </list>
     </option>
   </component>
@@ -675,6 +666,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="trips" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="profile" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -959,6 +984,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1022,6 +1077,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Vincent\IdeaProjects\groepI\src\main\webapp\WEB-INF\views\trips" />
       <recent name="C:\Users\Vincent\IdeaProjects\groepI\src\main\webapp\WEB-INF\views\error" />
       <recent name="C:\Users\Vincent\IdeaProjects\groepI\src\main\webapp\WEB-INF\views\login" />
     </key>
@@ -1526,7 +1582,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Styling profile page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Error pages + error config + profile page" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1554,6 +1610,7 @@
     <MESSAGE value="Selenium dependency" />
     <MESSAGE value="Main styling, register page (forms in general)" />
     <MESSAGE value="Styling profile page" />
+    <MESSAGE value="Error pages + error config + profile page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1563,34 +1620,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="151" column="21" selection-start="5223" selection-end="5223" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="21" selection-start="98" selection-end="98" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="58" selection-start="213" selection-end="285" vertical-scroll-proportion="-5.230769">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/register.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="0" selection-start="2192" selection-end="2314" vertical-scroll-proportion="-33.346153">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/showlogin.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="16" selection-start="316" selection-end="316" vertical-scroll-proportion="-5.0">
@@ -1615,13 +1644,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="13" selection-start="281" selection-end="281" vertical-scroll-proportion="-0.42565057">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestUserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="121" selection-start="840" selection-end="840" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1663,9 +1685,16 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/error/displayerror.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="111" selection-start="997" selection-end="997" vertical-scroll-proportion="-13.076923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/text_nl.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="138" selection-start="761" selection-end="761" vertical-scroll-proportion="-10.2">
+        <state line="17" column="40" selection-start="906" selection-end="906" vertical-scroll-proportion="-11.56">
           <folding />
         </state>
       </provider>
@@ -1673,16 +1702,46 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/blue.css">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/register.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="161" column="14" selection-start="3198" selection-end="3198" vertical-scroll-proportion="0.0">
+        <state line="37" column="69" selection-start="1813" selection-end="1813" vertical-scroll-proportion="-10.192307">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/error/displayerror.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestRequirementController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="51" selection-start="1138" selection-end="1138" vertical-scroll-proportion="0.8930582">
+        <state line="8" column="13" selection-start="188" selection-end="188" vertical-scroll-proportion="0.24329159">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="69" selection-start="677" selection-end="677" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestTripController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="35" selection-start="507" selection-end="507" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/view.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="18" selection-start="748" selection-end="748" vertical-scroll-proportion="-13.307693">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/blue.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="154" column="22" selection-start="2989" selection-end="2989" vertical-scroll-proportion="0.69588554">
           <folding />
         </state>
       </provider>

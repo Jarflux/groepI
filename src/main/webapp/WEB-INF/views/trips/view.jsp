@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title><spring:message code='text.error' /></title>
+    <title><spring:message code='text.bekijktripinfo' /></title>
     <link href="/css/blue.css" rel="stylesheet" />
 
 </head>
@@ -20,17 +20,20 @@
         <jsp:include page="/topmenu"   />
     </div>
     <div id="content" class="column light">
-<h2> <spring:message code='text.error' /> </h2>
+<h2> <spring:message code='text.bekijktripinfo' /> </h2>
 
          <section>
-             <div class="quarter"><img src="/images/interdit-256.png" width="250" /></div>
-             <div class="three-quarter">
-<p><spring:message code="text.spijt"/><p>
+<div class="gmap"></div>
 
-             <div class="errormsg"><spring:message code='text.${errorid}' /><p class="small">Error: ${errorid}
-
-    </p></div>
-                 </div>
+         <div class="row">
+             <span class="tripnumber">1</span>  Eerste stop blabla
+         </div>
+             <div class="row">
+                 <span class="tripnumber">2</span>  Tweede stop blabla
+             </div>
+             <div class="row">
+                 <span class="tripnumber">3</span>  Derde stop blabla
+             </div>
              </section>
         </div></div>
 <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
