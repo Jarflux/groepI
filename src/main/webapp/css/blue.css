@@ -99,11 +99,76 @@ body,html
         }
 
 .column{
-    -webkit-box-sizing: border-box; /
+    -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     padding: 15px;
 
+}
+    .profilepic
+    {
+        border: 1px solid #0ac5f4;
+    }
+section
+{
+    width: 100%;
+}
+
+.quarter
+{
+    width: 25%;
+    -webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 15px;
+    float: left;
+}
+.half
+{
+    width: 50%;
+    -webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 15px;
+    float: left;
+}
+.third
+{
+    width: 33.33%;
+    -webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 15px;
+    float: left;
+}
+.three-quarter
+{
+    width: 75%;
+    -webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 15px;
+    float: left;
+}
+.errormsg
+{
+    background: #FAC0C0;
+    color: black;
+    padding: 5px;
+    border:  1px solid red;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+}
+.two-third
+{
+    width: 66.66%;
+    -webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 15px;
+    float: left;
 }
 .small
 {
