@@ -1,5 +1,7 @@
 package be.kdg.groepi.model;
 
+import com.sun.org.apache.xpath.internal.operations.Equals;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
@@ -14,7 +16,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "T_USER")
-public class User implements Serializable {
+public class User implements Serializable{
     @Id
     @GeneratedValue
     private long fId;
@@ -89,5 +91,35 @@ public class User implements Serializable {
 
     public void setProfilePicture(String fProfilePicture) {
         this.fProfilePicture = fProfilePicture;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        User user = (User) obj;
+
+        // if (this == user) return false;
+
+        int comparison = this.fName.compareTo(user.getName());
+        if (comparison != 0) return false;
+
+        comparison = this.fEmail.compareTo(user.getEmail());
+        if (comparison != 0) return false;
+
+        /*comparison = this.fDateOfBirth.equals(user.getDateOfBirth());
+        if (comparison != 0) return false;    */
+
+        comparison = this.fPassword.compareTo(user.getPassword());
+        if (comparison != 0) return false;
+
+        if (this.fProfilePicture != null && user.getProfilePicture() != null) {
+            comparison = this.fProfilePicture.compareTo(user.getProfilePicture());
+            if (comparison != 0) return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }

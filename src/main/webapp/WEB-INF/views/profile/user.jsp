@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Dave
@@ -9,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>User Profile</title>
+    <title><spring:message code='text.bekijkprofiel' /></title>
     <link href="/css/blue.css" rel="stylesheet" />
 
 </head>
@@ -19,23 +20,29 @@
         <jsp:include page="/topmenu"   />
     </div>
     <div id="content" class="column light">
-<h2>Greetings visitor, this will one day be a glorious profile page.</h2>
+<h2> <spring:message code='text.bekijkprofiel' /> </h2>
 
-<p>
-    <c:choose>
-        <c:when test="${userObject != null}">
-            <c:out value="Profile of user #${userObject.id}"/>
-            <c:out value="Name ${userObject.name}"/>
-            <c:out value="Mail ${userObject.email}"/>
-            <c:out value="Password ${userObject.password}"/>
-            <c:out value="Date of birth ${userObject.dateOfBirth}"/>
-            <c:out value="Profile picture ${userObject.profilePicture}"/>
+         <section>
+             <div class="quarter"><img src="/images/noprofile.png" width='150' class="profilepic"/></div>
+             <div class="three-quarter">
+             <c:choose>
+        <c:when test="${userObject != null}"><div class="row">            <c:out value="Profile of user #${userObject.id}"/></div>
+            <div class="row"><c:out value="Name ${userObject.name}"/>           </div>
+            <div class="row">  <c:out value="Mail ${userObject.email}"/></div>
+            <div class="row">            <c:out value="Date of birth ${userObject.dateOfBirth}"/></div>
+            <div class="row"><c:out value="Profile picture ${userObject.profilePicture}"/></div>
+
+
+
+
         </c:when>
         <c:when test="${userObject == null}">
-            <c:out value="Profile of user #${userId}"/>
+            <jsp:forward page="/error/invaliduser" />
         </c:when>
 
-    </c:choose></p>
+    </c:choose>
+                 </div>
+             </section>
         </div></div>
 <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
 <script src="/js/functions.js"></script>

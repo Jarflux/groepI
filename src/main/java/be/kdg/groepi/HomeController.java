@@ -9,7 +9,9 @@ package be.kdg.groepi;
  */
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Handles requests for the application home page.
@@ -34,11 +36,21 @@ public class HomeController {
         return "menu/topmenu";
     }
 
-
+    @RequestMapping(value = "/error/{error}")
+    public ModelAndView errorpage(@PathVariable("error") String errorid) {
+        System.out.println("Error page");
+        return new ModelAndView("error/displayerror", "errorid", errorid);
+    }
     @RequestMapping(value = "/profile/register")
     public String register(){
         System.out.println("Register: Passing through...");
         return "profile/register";
+    }
+
+    @RequestMapping(value = "/trips/addtrip")
+    public String addtrip(){
+        System.out.println("AddTrip: Passing through...");
+        return "trips/addtrip";
     }
 
 }

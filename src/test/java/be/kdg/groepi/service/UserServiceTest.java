@@ -37,17 +37,17 @@ public class UserServiceTest {
         }
     }
 
+    private Date fillDate() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(2007, Calendar.MAY, 12, 0, 0, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return new Date(cal.getTime().getTime());
+    }
+
     @Test
     public void testCreateUser() {
         UserService.createUser(user);
-        
-        //TODO: Fix assert?? gives error:
-        // testCreateUser(be.kdg.groepi.service.UserServiceTest): createUser: 
-        // userEquals expected:<be.kdg.groepi.model.User@3aa9623e> 
-        // but was:<be.kdg.groepi.model.User@5cc6d24>
-      
-        assertEquals("createUser: userEquals", user, user);
-        //assertEquals("createUser: userEquals", user, UserService.getUserById(user.getId()));
+        assertTrue("createUser: users aren't the same", user.equals(UserService.getUserById(user.getId())));
     }
 
 
@@ -68,23 +68,13 @@ public class UserServiceTest {
 
         UserService.updateUser(user);
 
-        assertFalse("updateUser: name", oldUser.getName().equals(user.getName()));
-        assertFalse("updateUser: password", oldUser.getPassword().equals(user.getPassword()));
-        assertFalse("updateUser: dateOfBirth", oldUser.getDateOfBirth().equals(user.getDateOfBirth()));
-        assertFalse("updateUser: email", oldUser.getEmail().equals(user.getEmail()));
-        assertFalse("updateUser: profilePicture", oldUser.getProfilePicture().equals(user.getProfilePicture()));
+        assertFalse("testUpdateUser: users are the same", user.equals(oldUser));
     }
 
     @Test
-    public void testNullPicture(){
+    public void testNullPicture() {
         UserService.createUser(user);
         assertEquals("User profile picture should be null.", user.getProfilePicture(), null);
-    }
-
-    private Date fillDate() {
-        Calendar cal = Calendar.getInstance();
-        cal.set(2007, Calendar.MAY, 12);
-        return new Date(cal.getTime().getTime());
     }
 
     @Test
@@ -104,7 +94,29 @@ public class UserServiceTest {
             User newUser = new User("User " + i, "user" + i + "@M.EH", "pwd", user.getDateOfBirth());
             UserService.createUser(newUser);
         }
-
         assertEquals("getAllUsers: listsize", 10, UserService.getAllUsers().size());
+    }
+
+    @Test
+    public void testChangePassword() {
+        String newPassword = "newPassword";
+
+        UserService.createUser(user);
+
+        user.setPassword(newPassword);
+        UserService.updateUser(user);
+
+        assertTrue("testChangePassword: password wasn't reset", user.getPassword().equals(newPassword));
+    }
+
+    @Test
+    public void testResetPassword() {
+        String oldPassword = user.getPassword();
+
+        UserService.createUser(user);
+
+        UserService.resetPassword(user);
+
+        assertFalse("testChangePassword: password wasn't changed", user.getPassword().equals(oldPassword));
     }
 }
