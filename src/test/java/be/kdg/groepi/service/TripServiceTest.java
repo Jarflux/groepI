@@ -29,6 +29,7 @@ public class TripServiceTest {
     @After
     public void afterEachTest(){
         trip = null;
+        trip = null;
         for (Trip trip : TripService.getAllTrips()) {
             TripService.deleteTrip(trip);
         }
