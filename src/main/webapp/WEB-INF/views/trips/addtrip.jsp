@@ -20,7 +20,7 @@
         <jsp:include page="/topmenu"   />
     </div>
     <div id="content" class="column light">
-        <form method="post" action="createTrip" class="mainstyle tooltips">
+        <form method="post" action="addtrip" class="mainstyle tooltips">
             <div class="row">
                 <span><spring:message code='text.title'/></span>
                 <input type="text" class="" name="title" placeholder="" title="<spring:message code='text.titleTooltip'/>"/>

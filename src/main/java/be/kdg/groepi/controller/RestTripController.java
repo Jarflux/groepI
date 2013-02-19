@@ -1,19 +1,52 @@
 package be.kdg.groepi.controller;
 
-import be.kdg.groepi.model.User;
-import be.kdg.groepi.service.UserService;
+import be.kdg.groepi.model.Trip;
+import be.kdg.groepi.service.TripService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.apache.log4j.Logger;
 
 @Controller
 @RequestMapping("trip")
 public class RestTripController {
+    private static final Logger logger = Logger.getLogger(RestTripController.class);
+    
     @RequestMapping(value = "view")
     public ModelAndView viewTrip() {
 
         return new ModelAndView("trips/view");
     }
+    @RequestMapping(value = "/addtrip", method = RequestMethod.POST)
+    public ModelAndView createUser(@ModelAttribute("tripObject") Trip trip) {
+        //TODO: encrypt password
+        TripService.createTrip(trip);
+        return new ModelAndView("trips/addtrip", "tripObject", trip);
+    }
+    @RequestMapping(value = "/{tripId}", method = RequestMethod.GET)
+    public ModelAndView getUser(@PathVariable("tripId") String tripId) {
+        Trip trip;
+        // validate input
+        /*if (tripId.isEmpty() || tripId.length() < 5) {
+            String sMessage = "Error invoking getFund - Invalid fund Id parameter";
+            // return createErrorResponse(sMessage);
+        }*/
+        //try {
+        trip = TripService.getTripById(Long.parseLong(tripId));
+        if (trip != null) {
+            logger.debug("Returning Trip: " + trip.toString() + " with trip #" + tripId);
+            return new ModelAndView("trips/trip", "tripObject", trip);
+        } else {
+            return new ModelAndView("trips/trip", "tripId", tripId);
+        }
+        /*} catch (Exception e) {
+            String sMessage = "Error invoking getFund. [%1$s]";
+            //return createErrorResponse(String.format(sMessage, e.toString()));
+        }*/
+    }
+    
 }
+
