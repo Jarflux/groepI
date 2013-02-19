@@ -10,7 +10,7 @@
 
 <html>
 <head>
-    <link href="/css/main.css" rel="StyleSheet" />
+    <link href="css/blue.css" rel="StyleSheet" />
 
     <title></title>
 </head>

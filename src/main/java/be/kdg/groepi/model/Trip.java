@@ -2,6 +2,7 @@ package be.kdg.groepi.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.Set;
 
 /**
@@ -11,11 +12,20 @@ import java.util.Set;
  * Description:
  */
 
+/*
+Hibernate Inheritance: Table Per Subclass
+http://viralpatel.net/blogs/hibernate-inheritance-table-per-subclass-annotation-xml-mapping/
+Hibernate Inheritance: Table Per Class Hierarchy
+http://viralpatel.net/blogs/hibernate-inheritence-table-per-hierarchy-mapping/
+*/
+
 @Entity
 @Table(name = "T_TRIP")
+//@Inheritance(strategy=InheritanceType.JOINED)  //Hibernate Inheritance: Table Per Subclass
 public class Trip implements Serializable {
     @Id
     @GeneratedValue
+    @Column(name = "id")
     private Long fId;
     @Column(name = "title")
     private String fTitle;
@@ -23,6 +33,10 @@ public class Trip implements Serializable {
     private String fDescription;
     @Column(name = "public")
     private Boolean fAvailable;
+    @Column(name="start")
+    private Date fStart;
+    @Column(name="end")
+    private Date fEnd;
 
     @OneToMany
     private Set<User> participants;
@@ -38,10 +52,12 @@ public class Trip implements Serializable {
 
     }
 
-    public Trip(String title, String description, boolean available) {
-        this.fTitle = title;
-        this.fDescription = description;
-        this.fAvailable = available;
+    public Trip(String fTitle, String fDescription, Boolean fAvailable, Date fStart, Date fEnd) {
+        this.fTitle = fTitle;
+        this.fDescription = fDescription;
+        this.fAvailable = fAvailable;
+        this.fStart = fStart;
+        this.fEnd = fEnd;
     }
 
     public Long setId() {
@@ -76,5 +92,19 @@ public class Trip implements Serializable {
         return fAvailable;
     }
 
+    public Date getStart() {
+        return fStart;
+    }
 
+    public void setStart(Date fStart) {
+        this.fStart = fStart;
+    }
+
+    public Date getEnd() {
+        return fEnd;
+    }
+
+    public void setEnd(Date fEnd) {
+        this.fEnd = fEnd;
+    }
 }
