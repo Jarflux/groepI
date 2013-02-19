@@ -48,12 +48,7 @@ public class UserServiceTest {
     @Test
     public void testUpdateUser() {
         UserService.createUser(user);
-
         Date dateOfBirth = fillDate();
-
-        User oldUser = new User(user.getName(), user.getEmail(), user.getPassword(), user.getDateOfBirth());
-        oldUser.setProfilePicture("http://i.telegraph.co.uk/multimedia/archive/02429/eleanor_scriven_2429776k.jpg");
-
         user.setName("NOT TIMMEH");
         user.setPassword("hemmitton");
         user.setDateOfBirth(dateOfBirth);
@@ -62,11 +57,14 @@ public class UserServiceTest {
 
         UserService.updateUser(user);
 
+        assertEquals("updateUser: equals",user,UserService.getUserById(user.getId()));
+        /*
         assertFalse("updateUser: name", oldUser.getName().equals(user.getName()));
         assertFalse("updateUser: password", oldUser.getPassword().equals(user.getPassword()));
         assertFalse("updateUser: dateOfBirth", oldUser.getDateOfBirth().equals(user.getDateOfBirth()));
         assertFalse("updateUser: email", oldUser.getEmail().equals(user.getEmail()));
         assertFalse("updateUser: profilePicture", oldUser.getProfilePicture().equals(user.getProfilePicture()));
+        */
     }
 
     @Test

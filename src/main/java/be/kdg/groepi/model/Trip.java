@@ -22,7 +22,7 @@ http://viralpatel.net/blogs/hibernate-inheritence-table-per-hierarchy-mapping/
 @Entity
 @Table(name = "T_TRIP")
 //@Inheritance(strategy=InheritanceType.JOINED)  //Hibernate Inheritance: Table Per Subclass
-public class Trip implements Serializable, Comparable {
+public class Trip implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "id")
@@ -111,25 +111,30 @@ public class Trip implements Serializable, Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
+    public boolean equals(Object o) {
         Trip trip = (Trip) o;
-        if (this == trip) return 0;
+        if (this == trip) return true;
 
         int comparison = this.fTitle.compareTo(trip.getTitle());
-        if (comparison != 0) return comparison;
+        if (comparison != 0) return false;
 
         comparison = this.fDescription.compareTo(trip.getDescription());
-        if (comparison != 0) return comparison;
+        if (comparison != 0) return false;
 
         comparison = this.fAvailable.compareTo(trip.isAvailable());
-        if (comparison != 0) return comparison;
+        if (comparison != 0) return false;
 
         comparison = this.fStart.compareTo(trip.getStart());
-        if (comparison != 0) return comparison;
+        if (comparison != 0) return false;
 
         comparison = this.fEnd.compareTo(trip.getEnd());
-        if (comparison != 0) return comparison;
+        if (comparison != 0) return false;
 
-        return 0;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();    //To change body of overridden methods use File | Settings | File Templates.
     }
 }
