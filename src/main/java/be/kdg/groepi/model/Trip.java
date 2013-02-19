@@ -3,6 +3,7 @@ package be.kdg.groepi.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -113,7 +114,7 @@ public class Trip implements Serializable {
     @Override
     public boolean equals(Object o) {
         Trip trip = (Trip) o;
-        if (this == trip) return true;
+        if (this == trip) return false;
 
         int comparison = this.fTitle.compareTo(trip.getTitle());
         if (comparison != 0) return false;
@@ -124,17 +125,20 @@ public class Trip implements Serializable {
         comparison = this.fAvailable.compareTo(trip.isAvailable());
         if (comparison != 0) return false;
 
+        /*
         comparison = this.fStart.compareTo(trip.getStart());
-        if (comparison != 0) return false;
+        if (comparison != 0) return comparison;
 
         comparison = this.fEnd.compareTo(trip.getEnd());
-        if (comparison != 0) return false;
+        if (comparison != 0) return comparison;
+        */
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();    //To change body of overridden methods use File | Settings | File Templates.
+        return super.hashCode();
     }
+ 
 }

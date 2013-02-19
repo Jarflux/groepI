@@ -150,6 +150,13 @@
             <artifactId>selenium-firefox-driver</artifactId>
             <version>2.28.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.5</version>
+        </dependency>
+
     </dependencies>
     <repositories>
         <repository>
@@ -228,6 +235,21 @@
                             <groupId>org.codehaus.mojo</groupId>
                             <artifactId>findbugs-maven-plugin</artifactId>
                             <version>2.4.0</version>
+                        </plugin>
+                        <!-- Plugin om nieuwere versies te checken -->
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>versions-maven-plugin</artifactId>
+                            <version>2.0</version>
+                            <reportSets>
+                                <reportSet>
+                                    <reports>
+                                        <report>dependency-updates-report</report>
+                                        <report>plugin-updates-report</report>
+                                        <report>property-updates-report</report>
+                                    </reports>
+                                </reportSet>
+                            </reportSets>
                         </plugin>
                     </reportPlugins>
                 </configuration>

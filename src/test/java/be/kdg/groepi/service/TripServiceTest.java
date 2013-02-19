@@ -1,13 +1,12 @@
 package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.Trip;
-import be.kdg.groepi.model.User;
 import org.junit.*;
 
 import java.sql.Date;
 import java.util.Calendar;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,11 +22,12 @@ public class TripServiceTest {
 
     @Before
     public void beforeEachTest(){
-        trip = new Trip("Stadwandeling Nieuw Zuid", "Ho-ho-ho", Boolean.TRUE,fillDate(),fillDate());// trip aanmaken
+        trip = new Trip("Stadwandeling Nieuw Zuid", "Ho-ho-ho", Boolean.TRUE, null,null);// trip aanmaken
     }
 
     @After
     public void afterEachTest(){
+        trip = null;
         trip = null;
         for (Trip trip : TripService.getAllTrips()) {
             TripService.deleteTrip(trip);
@@ -49,13 +49,11 @@ public class TripServiceTest {
 
     @Test
     public void updateTrip(){
-        TripService.createTrip(trip);
         trip.setAvailable(Boolean.FALSE);
         trip.setDescription("Ho-ho-ho edited");
         trip.setStart(fillDate());
         trip.setEnd(fillDate());
-        TripService.updateTrip(trip);
-        assertEquals("updateTrip: tripEquals", trip, TripService.getTripById(trip.getId()));
+        assertFalse("updateUser: userEquals", trip.equals(TripService.getTripById(trip.getId())));
     }
 
     @Test
