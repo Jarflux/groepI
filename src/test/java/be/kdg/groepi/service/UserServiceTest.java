@@ -40,7 +40,8 @@ public class UserServiceTest {
     @Test
     public void testCreateUser() {
         UserService.createUser(user);
-        assertEquals("createUser: userEquals", user, UserService.getUserById(user.getId()));
+        //assertEquals("createUser: userEquals", user, UserService.getUserById(user.getId()));
+        assertTrue("createUser: userEquals", user.equals( UserService.getUserById(user.getId())));
     }
 
 
@@ -97,7 +98,6 @@ public class UserServiceTest {
             User newUser = new User("User " + i, "user" + i + "@M.EH", "pwd", user.getDateOfBirth());
             UserService.createUser(newUser);
         }
-
         assertEquals("getAllUsers: listsize", 10, UserService.getAllUsers().size());
     }
 }

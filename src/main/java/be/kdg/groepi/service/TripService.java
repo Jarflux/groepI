@@ -61,6 +61,10 @@ public class TripService {
     }
 
     public static List<Trip> getAllTrips() {
-        return null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        List<Trip> trips = session.createQuery("FROM Trip").list();
+        tx.commit();
+        return trips;
     }
 }

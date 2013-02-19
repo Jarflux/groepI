@@ -1,6 +1,7 @@
 package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.Trip;
+import be.kdg.groepi.model.User;
 import org.junit.*;
 
 import java.sql.Date;
@@ -17,51 +18,55 @@ import static org.junit.Assert.assertEquals;
  */
 public class TripServiceTest {
 
-    //private Trip trip;
-    private Long tripId;
+    private Trip trip;
+    //private Long tripId;
 
     @Before
     public void beforeEachTest(){
-
+        trip = new Trip("Stadwandeling Nieuw Zuid", "Ho-ho-ho", Boolean.TRUE, null,null);// trip aanmaken
     }
+
     @After
     public void afterEachTest(){
-
+        trip = null;
+        for (Trip trip : TripService.getAllTrips()) {
+            TripService.deleteTrip(trip);
+        }
     }
 
     private Date fillDate() {
         Calendar cal = Calendar.getInstance();
-        cal.set(2007, Calendar.MAY, 12);
+        cal.set(2007, Calendar.MAY, 12,0,0,0);
+        cal.set(Calendar.MILLISECOND, 0);
         return new Date(cal.getTime().getTime());
     }
 
     @Test
     public void createTrip(){
-        Trip trip = new Trip("Stadwandeling Nieuw Zuid", "Ho-ho-ho", Boolean.TRUE, null,null);
         TripService.createTrip(trip);
-        tripId = trip.getId();
-        assertEquals("createUser: userEquals", trip, TripService.getTripById(trip.getId()));
+        assertEquals("createTrip: tripEquals", trip, TripService.getTripById(trip.getId()));
     }
+
     @Test
     public void updateTrip(){
-        Trip trip = TripService.getTripById(tripId);
         trip.setAvailable(Boolean.FALSE);
         trip.setDescription("Ho-ho-ho edited");
         trip.setStart(fillDate());
         trip.setEnd(fillDate());
         assertEquals("updateUser: userEquals", trip, TripService.getTripById(trip.getId()));
     }
+
     @Test
     public void deleteTrip(){
-        Trip trip = TripService.getTripById(tripId);
         TripService.deleteTrip(trip);
     }
+
     /*@Test
     public void createTimedTrip(){}
     @Test
     public void updateTimedTrip(){}
     @Test
-    public void deleteTimedTrip(){}*/
+    public void deleteTimedTrip(){}
     @Test
     public void createRecurrentTrip(){}
     @Test
@@ -69,5 +74,5 @@ public class TripServiceTest {
     @Test
     public void deleteRecurrenceInstances(){}
     @Test
-    public void deleteRecurrence(){}
+    public void deleteRecurrence(){} */
 }

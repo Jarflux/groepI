@@ -1,5 +1,7 @@
 package be.kdg.groepi.model;
 
+import com.sun.org.apache.xpath.internal.operations.Equals;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
@@ -14,7 +16,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "T_USER")
-public class User implements Serializable, Comparable {
+public class User implements Serializable{
     @Id
     @GeneratedValue
     private long fId;
@@ -92,37 +94,32 @@ public class User implements Serializable, Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
-        User user = (User) o;
+    public boolean equals(Object obj) {
+        User user = (User) obj;
 
-        if (this == user) return 0;
+        // if (this == user) return false;
 
         int comparison = this.fName.compareTo(user.getName());
-        if (comparison != 0) return comparison;
+        if (comparison != 0) return false;
 
         comparison = this.fEmail.compareTo(user.getEmail());
-        if (comparison != 0) return comparison;
+        if (comparison != 0) return false;
 
-/*        if (this.fDateOfBirth.before(user.())) return -1;
-        if (this.fDateOfBirth.after(user.getDateOfBirth())) return 1;*/
-
-        //if (this.fDateOfBirth.)
-       // this.fDateOfBirth.
-
-        comparison = this.fDateOfBirth.compareTo(user.getDateOfBirth());
-        if (comparison != 0) return comparison;
+        /*comparison = this.fDateOfBirth.equals(user.getDateOfBirth());
+        if (comparison != 0) return false;    */
 
         comparison = this.fPassword.compareTo(user.getPassword());
-        if (comparison != 0) return comparison;
+        if (comparison != 0) return false;
 
-        if (this.fProfilePicture != null) {
-            if (user.getProfilePicture() != null) {
-                comparison = this.fProfilePicture.compareTo(user.getProfilePicture());
-                if (comparison != 0) return comparison;
-            }
-            return 1;
+        if (this.fProfilePicture != null && user.getProfilePicture() != null) {
+            comparison = this.fProfilePicture.compareTo(user.getProfilePicture());
+            if (comparison != 0) return false;
         }
+        return true;
+    }
 
-        return 0;
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }
