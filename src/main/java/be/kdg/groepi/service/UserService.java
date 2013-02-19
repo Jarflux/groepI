@@ -13,60 +13,132 @@ import java.util.List;
  * Class: User Service
  * Description:
  */
-
 public class UserService {
-    //TODO: Hibernate transaction management nodig bij GET? (-> Dirty read?)
+
     public static User getUserById(long Id) {
+        User user = null;
+
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        List<User> users = new ArrayList<>();
+        Transaction tx = null;
         try {
+            tx = session.beginTransaction();
+
+            // start work
+            List<User> users = new ArrayList<>();
             users = session.createQuery("FROM User user WHERE user.id = :Id").
                     setString("Id", String.valueOf(Id)).setReadOnly(true).list();
+            if (users.size() > 0) {
+                user = users.get(0);
+            }
+            // end work 
+
             tx.commit();
-        } catch (Exception e) {
-            tx.rollback();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
         } finally {
             session.close();
-            if (users.size() > 0) {
-                return users.get(0);
-            } else {
-                return null;
+        }
+        return user;
+    }
+
+    
+    public static void createUser(User user) {
+//        Session session = HibernateUtil.getSessionFactory().openSession();
+//        Transaction tx = session.beginTransaction();
+//        session.save(user);
+//        tx.commit();
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+
+            session.save(user);
+
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
             }
+        } finally {
+            session.close();
+        }
+
+    }
+
+    public static void updateUser(User user) {
+//        Session session = HibernateUtil.getSessionFactory().openSession();
+//        Transaction tx = session.beginTransaction();
+//        session.update(user);
+//        tx.commit();
+
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+
+            session.update(user);
+
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
         }
     }
 
-    public static User createUser(User user) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        session.save(user);
-        tx.commit();
-        return null;  //TODO: return?!
-    }
+    public static void deleteUser(User user) {
+//        Session session = HibernateUtil.getSessionFactory().openSession();
+//        Transaction tx = session.beginTransaction();
+//        session.delete(user);
+//        tx.commit();
 
-    public static User updateUser(User user) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        session.update(user);
-        tx.commit();
-        return null;  //TODO: return?!
-    }
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
 
-    public static User deleteUser(User user) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        session.delete(user);
-        tx.commit();
-        return null;  //TODO: return?!
+            session.delete(user);
+
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
     }
 
     public static List<User> getAllUsers() {
-        /*List<User> users = session.createQuery("FROM User").list();
-        return users;*/
+//        Session session = HibernateUtil.getSessionFactory().openSession();
+//        Transaction tx = session.beginTransaction();
+//        List<User> users = session.createQuery("FROM User").list();
+//        tx.commit();
+//        return users;
+
+        List<User> users = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        List<User> users = session.createQuery("FROM User").list();
-        tx.commit();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+
+            users = session.createQuery("FROM User").list();
+
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
         return users;
+
     }
 }
