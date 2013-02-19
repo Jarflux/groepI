@@ -49,11 +49,13 @@ public class TripServiceTest {
 
     @Test
     public void updateTrip(){
+        TripService.createTrip(trip);
         trip.setAvailable(Boolean.FALSE);
         trip.setDescription("Ho-ho-ho edited");
         trip.setStart(fillDate());
         trip.setEnd(fillDate());
-        assertFalse("updateUser: userEquals", trip.equals(TripService.getTripById(trip.getId())));
+        TripService.updateTrip(trip);
+        assertEquals("updateUser: userEquals",trip,TripService.getTripById(trip.getId()));
     }
 
     @Test

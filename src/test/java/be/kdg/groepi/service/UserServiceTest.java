@@ -47,7 +47,7 @@ public class UserServiceTest {
     @Test
     public void testCreateUser() {
         UserService.createUser(user);
-        assertTrue("createUser: users aren't the same", user.equals(UserService.getUserById(user.getId())));
+        assertEquals("createUser: users are the same",user,UserService.getUserById(user.getId()));
     }
 
 
@@ -56,10 +56,6 @@ public class UserServiceTest {
         UserService.createUser(user);
 
         Date dateOfBirth = fillDate();
-
-        User oldUser = new User(user.getName(), user.getEmail(), user.getPassword(), user.getDateOfBirth());
-        oldUser.setProfilePicture("http://i.telegraph.co.uk/multimedia/archive/02429/eleanor_scriven_2429776k.jpg");
-
         user.setName("NOT TIMMEH");
         user.setPassword("hemmitton");
         user.setDateOfBirth(dateOfBirth);
@@ -67,8 +63,7 @@ public class UserServiceTest {
         user.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
 
         UserService.updateUser(user);
-
-        assertFalse("testUpdateUser: users are the same", user.equals(oldUser));
+        assertEquals(user, UserService.getUserById(user.getId()));
     }
 
     @Test
