@@ -1,13 +1,12 @@
 package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.Trip;
-import be.kdg.groepi.model.User;
 import org.junit.*;
 
 import java.sql.Date;
 import java.util.Calendar;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -54,7 +53,7 @@ public class TripServiceTest {
         trip.setDescription("Ho-ho-ho edited");
         trip.setStart(fillDate());
         trip.setEnd(fillDate());
-        assertEquals("updateUser: userEquals", trip, TripService.getTripById(trip.getId()));
+        assertFalse("updateUser: userEquals", trip.equals(TripService.getTripById(trip.getId())));
     }
 
     @Test
