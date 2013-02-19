@@ -14,7 +14,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "T_USER")
-public class User implements Serializable {
+public class User implements Serializable, Comparable {
     @Id
     @GeneratedValue
     private long fId;
@@ -89,5 +89,40 @@ public class User implements Serializable {
 
     public void setProfilePicture(String fProfilePicture) {
         this.fProfilePicture = fProfilePicture;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        User user = (User) o;
+
+        if (this == user) return 0;
+
+        int comparison = this.fName.compareTo(user.getName());
+        if (comparison != 0) return comparison;
+
+        comparison = this.fEmail.compareTo(user.getEmail());
+        if (comparison != 0) return comparison;
+
+/*        if (this.fDateOfBirth.before(user.())) return -1;
+        if (this.fDateOfBirth.after(user.getDateOfBirth())) return 1;*/
+
+        //if (this.fDateOfBirth.)
+       // this.fDateOfBirth.
+
+        comparison = this.fDateOfBirth.compareTo(user.getDateOfBirth());
+        if (comparison != 0) return comparison;
+
+        comparison = this.fPassword.compareTo(user.getPassword());
+        if (comparison != 0) return comparison;
+
+        if (this.fProfilePicture != null) {
+            if (user.getProfilePicture() != null) {
+                comparison = this.fProfilePicture.compareTo(user.getProfilePicture());
+                if (comparison != 0) return comparison;
+            }
+            return 1;
+        }
+
+        return 0;
     }
 }
