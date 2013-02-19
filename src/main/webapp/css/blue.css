@@ -175,6 +175,17 @@ section
     box-sizing: border-box;
     width: 100%;
 }
+.inputerror
+{
+    background: #FAC0C0;
+    color: black;
+    padding: 5px;
+    border:  1px solid red;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 10px;
+}
 .tripnumber
 {
     margin:0;
