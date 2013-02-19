@@ -1,3 +1,4 @@
+var formfout=false;
 $(function()
 {
           preparetooltips();
@@ -30,6 +31,7 @@ function preparetooltips()
             /* Required validatie */
             if ($(this).hasClass("required"))
             {
+                $(this).prev("span").append("<span style='color: red;width:20px;margin:0;padding:0;'>*</span>");
                 $(this).on("blur",function()
                 {
                     lengte=$(this).val().length;
