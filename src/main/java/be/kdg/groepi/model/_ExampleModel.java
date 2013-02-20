@@ -28,4 +28,9 @@ package be.kdg.groepi.model;
 //    }
 //
 //    // Getters & Setters
+//
+//    @Override
+//    public String toString(){
+//        return "";
+//    }
 //}

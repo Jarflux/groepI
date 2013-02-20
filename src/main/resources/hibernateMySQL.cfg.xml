@@ -24,6 +24,7 @@
 
         <!-- Reference to all the mapping files used -->
         <mapping class="be.kdg.groepi.model.User"/>
+        <mapping class="be.kdg.groepi.model.Trip"/>
 
 
     </session-factory>

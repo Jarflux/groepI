@@ -54,4 +54,9 @@ public class Message implements Serializable {
     public void setDate(Date fDate) {
         this.fDate = fDate;
     }
+    
+    @Override
+    public String toString(){
+        return "Message:" + fDate + ": " + fContent;
+    }
 }

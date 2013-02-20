@@ -3,6 +3,7 @@ package be.kdg.groepi.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -38,6 +39,7 @@ public class Trip implements Serializable {
     @Column(name="end")
     private Date fEnd;
 
+    /*
     @OneToMany
     private Set<User> participants;
     @OneToMany
@@ -46,6 +48,7 @@ public class Trip implements Serializable {
     private Set<Requirement> requirements;
     @OneToMany
     private Set<Message> messages;
+    */
 
     // Hibernates needs empty constructor
     public Trip() {
@@ -107,4 +110,35 @@ public class Trip implements Serializable {
     public void setEnd(Date fEnd) {
         this.fEnd = fEnd;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        Trip trip = (Trip) o;
+        if (this == trip) return false;
+
+        int comparison = this.fTitle.compareTo(trip.getTitle());
+        if (comparison != 0) return false;
+
+        comparison = this.fDescription.compareTo(trip.getDescription());
+        if (comparison != 0) return false;
+
+        comparison = this.fAvailable.compareTo(trip.isAvailable());
+        if (comparison != 0) return false;
+
+        /*
+        comparison = this.fStart.compareTo(trip.getStart());
+        if (comparison != 0) return comparison;
+
+        comparison = this.fEnd.compareTo(trip.getEnd());
+        if (comparison != 0) return comparison;
+        */
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+ 
 }

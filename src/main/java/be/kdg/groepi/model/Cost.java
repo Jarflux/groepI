@@ -53,4 +53,9 @@ public class Cost implements Serializable {
     public void setAmount(Double fAmount) {
         this.fAmount = fAmount;
     }
+    
+    @Override
+    public String toString(){
+        return "Cost:" + fDescription + " Amount:" + fAmount;
+    }
 }
