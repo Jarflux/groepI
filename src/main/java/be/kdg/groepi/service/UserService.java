@@ -172,7 +172,7 @@ public class UserService {
         TripMail tim = (TripMail) context.getBean("tripMail");
 
         //TODO: can't connect to host
-        tim.sendMail("info@trippie.be", "vincentjanv@gmail.com", "Subject?",
-                "text\n\nHEY MEZELF WAT ZIE JE ER GOED UIT\n" + newPassword);
+        tim.sendMail("info@trippie.be", "info@trippie.be", "Subject?",
+                "Je nieuw wachtwoord is:\n" + newPassword);
     }
 }

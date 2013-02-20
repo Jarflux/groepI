@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/Spring-Mail.xml" afterPath="$PROJECT_DIR$/src/main/resources/Spring-Mail.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/groepI.iml" afterPath="$PROJECT_DIR$/groepI.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="groepI.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361285638120" ignored="false" />
+    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361349355650" ignored="false" />
     <file path="/README" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1359642779202" ignored="false" />
     <file path="/index.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360071317953" ignored="false" />
     <file path="/fragment.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361348367081" ignored="false" />
@@ -150,10 +148,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserServiceTest.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="UserServiceTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/UserServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="42" selection-start="2982" selection-end="2982" vertical-scroll-proportion="0.0">
+            <state line="107" column="19" selection-start="3002" selection-end="3002" vertical-scroll-proportion="0.9897084">
               <folding />
             </state>
           </provider>
@@ -177,10 +175,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Spring-Mail.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Spring-Mail.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/Spring-Mail.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="106" selection-start="346" selection-end="346" vertical-scroll-proportion="0.15232974">
+            <state line="5" column="106" selection-start="346" selection-end="346" vertical-scroll-proportion="-3.4">
               <folding />
             </state>
           </provider>
@@ -198,7 +196,7 @@
       <file leaf-file-name="UserService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="174" column="62" selection-start="4962" selection-end="4962" vertical-scroll-proportion="0.0">
+            <state line="175" column="40" selection-start="5011" selection-end="5011" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -247,8 +245,8 @@
         <option value="$PROJECT_DIR$/src/main/webapp/css/blue.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/functions.js" />
         <option value="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/TripServiceTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/Spring-Mail.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java" />
       </list>
     </option>
   </component>
@@ -1772,7 +1770,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Input validatie (required + equalsto), zie voorbeeld register user" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mail settings ok" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1801,6 +1799,7 @@
     <MESSAGE value="TODO's" />
     <MESSAGE value="addtrip.jsp, trip.jsp, wijzigingen Trip model, service &amp; controller, wijzgingen nl properties + homecontroller&#10;&#10;rest volgt nog :)" />
     <MESSAGE value="Input validatie (required + equalsto), zie voorbeeld register user" />
+    <MESSAGE value="Mail settings ok" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1884,20 +1883,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/TripService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="81" selection-start="690" selection-end="690" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="174" column="62" selection-start="4962" selection-end="4962" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/TripServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="13" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0">
@@ -1914,13 +1899,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/UserServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="42" selection-start="2982" selection-end="2982" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/META-INF/context.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -1930,7 +1908,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/Spring-Mail.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="106" selection-start="346" selection-end="346" vertical-scroll-proportion="0.15232974">
+        <state line="5" column="106" selection-start="346" selection-end="346" vertical-scroll-proportion="-3.4">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/TripService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="81" selection-start="690" selection-end="690" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="175" column="40" selection-start="5011" selection-end="5011" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/UserServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="107" column="19" selection-start="3002" selection-end="3002" vertical-scroll-proportion="0.9897084">
           <folding />
         </state>
       </provider>
