@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Random;
 
@@ -119,20 +120,27 @@ public class UserService {
         return users;
     }
 
-    public static void resetPassword(User user) {                    //TODO: mail new password to user
+    public static void resetPassword(User user) {
+        final int RESET_TIME = 3;
+
         String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         Random rnd = new Random();
 
-        StringBuilder sb = new StringBuilder(16);
-        for (int i = 0; i < 16; i++) {
+        StringBuilder sb = new StringBuilder(32);
+        for (int i = 0; i < 32; i++) {
             sb.append(AB.charAt(rnd.nextInt(AB.length())));
         }
 
-        String newPassword = sb.toString();
+        String passwordResetString = sb.toString();
 
-        System.out.println(newPassword);
+        Calendar cal = Calendar.getInstance();
+        //cal.set(Calendar.MILLISECOND, 0);
+        cal.set(Calendar.HOUR, cal.get(Calendar.HOUR_OF_DAY) + RESET_TIME);
 
-        user.setPassword(newPassword);
+        Timestamp passwordResetTimestamp = new Timestamp(cal.getTime().getTime());
+
+        user.setPasswordResetString(passwordResetString);
+        user.setPasswordResetTimestamp(passwordResetTimestamp);
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
@@ -144,7 +152,7 @@ public class UserService {
         TripMail tim = (TripMail) context.getBean("tripMail");
 
         //TODO: can't connect to host
-        tim.sendMail("info@trippie.be", "info@trippie.be", "Subject?",
-                "Je nieuw wachtwoord is:\n" + newPassword);
+        tim.sendMail("info@trippie.be", "vincentjanv@gmail.com", "Subject?",
+                "text\n\nHEY MEZELF WAT ZIE JE ER GOED UIT\n" + newPassword);
     }
 }

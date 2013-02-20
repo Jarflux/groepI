@@ -4,6 +4,8 @@ import com.sun.org.apache.xpath.internal.operations.Equals;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * Author: Ben Oeyen
@@ -29,6 +31,10 @@ public class User implements Serializable{
     private Long fDateOfBirth;
     @Column(name = "profile_picture")
     private String fProfilePicture;
+    @Column(name = "passwordResetString")
+    private String fPasswordResetString;
+    @Column(name = "passwordResetTimestamp")
+    private Timestamp fPasswordResetTimestamp;
 
     //@OneToMany
     //private Set<Trip> organizedTrips;
@@ -90,6 +96,22 @@ public class User implements Serializable{
 
     public void setProfilePicture(String fProfilePicture) {
         this.fProfilePicture = fProfilePicture;
+    }
+
+    public String getPasswordResetString() {
+        return fPasswordResetString;
+    }
+
+    public void setPasswordResetString(String fPasswordResetString) {
+        this.fPasswordResetString = fPasswordResetString;
+    }
+
+    public Timestamp getPasswordResetTimestamp() {
+        return fPasswordResetTimestamp;
+    }
+
+    public void setPasswordResetTimestamp(Timestamp fPasswordResetTimestamp) {
+        this.fPasswordResetTimestamp = fPasswordResetTimestamp;
     }
 
     @Override

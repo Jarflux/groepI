@@ -52,4 +52,6 @@ public class RestUserController {
         return new ModelAndView("profile/user", "userObject", user);
     }
 
+
+
 }
