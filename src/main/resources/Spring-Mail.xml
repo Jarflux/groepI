@@ -7,16 +7,16 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
         <!--<property name="host" value="smtp.gmail.com" />
         <property name="port" value="587" />-->
         <property name="host" value="mysql.vincentverbist.be"/>
-        <property name="port" value="25"/>
-        <property name="protocol" value="smtps"/>
+        <property name="port" value="443"/>
+        <property name="protocol" value="smtp"/>
         <property name="username" value="info@trippie.be" />
         <property name="password" value="info_pass" />
 
         <property name="javaMailProperties">
             <props>
-                <prop key="mail.smtps.auth">true</prop>
-                <prop key="mail.smtp.ssl.enable">true</prop>
-                <prop key="mail.transport.protocol">smtps</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.ssl.enable">false</prop>
+                <prop key="mail.transport.protocol">smtp</prop>
                 <!--<prop key="mail.debug">true</prop>-->
             </props>
         </property>
