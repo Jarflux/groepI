@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
@@ -134,7 +135,6 @@ public class UserService {
         String passwordResetString = sb.toString();
 
         Calendar cal = Calendar.getInstance();
-        //cal.set(Calendar.MILLISECOND, 0);
         cal.set(Calendar.HOUR, cal.get(Calendar.HOUR_OF_DAY) + RESET_TIME);
 
         Timestamp passwordResetTimestamp = new Timestamp(cal.getTime().getTime());
@@ -152,7 +152,8 @@ public class UserService {
         TripMail tim = (TripMail) context.getBean("tripMail");
 
         //TODO: can't connect to host
-        tim.sendMail("info@trippie.be", "vincentjanv@gmail.com", "Subject?",
-                "text\n\nHEY MEZELF WAT ZIE JE ER GOED UIT\n" + newPassword);
+        tim.sendMail("info@trippie.be", "info@trippie.be", "Reset password",
+                "Please follow this link to reset your password:\n http://localhost:8080/profile/" +
+                        user.getId() + "/" + passwordResetString + "\n\nThis link expires at:\n" + passwordResetTimestamp);
     }
 }
