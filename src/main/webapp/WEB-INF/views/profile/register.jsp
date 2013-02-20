@@ -34,7 +34,7 @@
 
       <div class="row"> <span><spring:message code='text.mail'/></span>             <input type="text" class="required" name="email" placeholder="" title="Gelieve een geldig e-mailadres in te geven. Dit wordt ook uw gebruikernsaam."/>
     </div>
-    <div class="row"> <span><spring:message code='text.geboortedatum'/></span>          <input type="datetime" class="required" name="dateOfBirth" placeholder="" title="Gelieve uw geboortedatum in te geven"/>
+    <div class="row"> <span><spring:message code='text.geboortedatum'/></span>          <input type="datetime" class="required date" name="dateOfBirth" placeholder="" title="Gelieve uw geboortedatum in te geven"/>
     </div>
 
     <div class="row"> <span></span>       <input type="submit" class="button" value="<spring:message code='text.registreren'/>" />
