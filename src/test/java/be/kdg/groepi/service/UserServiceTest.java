@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.sql.Date;
 import java.util.Calendar;
 
+import static be.kdg.groepi.utils.DateUtil.dateToLong;
 import static org.junit.Assert.*;
 
 /**
@@ -25,8 +26,7 @@ public class UserServiceTest {
 
     @Before
     public void beforeEachTest() {
-        Date dateOfBirth = fillDate();
-        user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateOfBirth);
+        user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4,5,2011,15,32,0));
     }
 
     @After
@@ -35,13 +35,6 @@ public class UserServiceTest {
         for (User user : UserService.getAllUsers()) {
             UserService.deleteUser(user);
         }
-    }
-
-    private Date fillDate() {
-        Calendar cal = Calendar.getInstance();
-        cal.set(2007, Calendar.MAY, 12, 0, 0, 0);
-        cal.set(Calendar.MILLISECOND, 0);
-        return new Date(cal.getTime().getTime());
     }
 
     @Test
@@ -55,10 +48,9 @@ public class UserServiceTest {
     public void testUpdateUser() {
         UserService.createUser(user);
 
-        Date dateOfBirth = fillDate();
         user.setName("NOT TIMMEH");
         user.setPassword("hemmitton");
-        user.setDateOfBirth(dateOfBirth);
+        user.setDateOfBirth(dateToLong(3,6,2012,12,45,0));
         user.setEmail("NOTTIM@M.EH");
         user.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
 

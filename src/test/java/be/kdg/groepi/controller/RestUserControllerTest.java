@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.sql.Date;
 import java.util.Calendar;
 
+import static be.kdg.groepi.utils.DateUtil.dateToLong;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -21,12 +22,7 @@ public class RestUserControllerTest {
     @Before
     public void beforeEachTest() {
         restUserController = new RestUserController();
-
-        Calendar cal = Calendar.getInstance();
-        cal.set(1992, Calendar.JULY, 15);
-        Date dateOfBirth = new Date(cal.getTime().getTime());
-
-        user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateOfBirth);
+        user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4,5,2011,15,32,0));
         UserService.createUser(user);
     }
 

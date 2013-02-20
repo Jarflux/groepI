@@ -4,11 +4,10 @@ import com.sun.org.apache.xpath.internal.operations.Equals;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
 
 /**
  * Author: Ben Oeyen
- * Date: 6/02/13
+ * Long: 6/02/13
  * Class: User
  * Description:
  */
@@ -27,7 +26,7 @@ public class User implements Serializable{
     @Column(name = "password")
     private String fPassword;
     @Column(name = "date_of_birth")
-    private Date fDateOfBirth;
+    private Long fDateOfBirth;
     @Column(name = "profile_picture")
     private String fProfilePicture;
 
@@ -38,7 +37,7 @@ public class User implements Serializable{
     public User() {
     }
 
-    public User(String name, String email, String password, Date dateOfBirth) {
+    public User(String name, String email, String password, Long dateOfBirth) {
         this.fName = name;
         this.fEmail = email;
         this.fPassword = password;
@@ -77,11 +76,11 @@ public class User implements Serializable{
         this.fPassword = fPassword;
     }
 
-    public Date getDateOfBirth() {
+    public Long getDateOfBirth() {
         return fDateOfBirth;
     }
 
-    public void setDateOfBirth(Date fDateOfBirth) {
+    public void setDateOfBirth(Long fDateOfBirth) {
         this.fDateOfBirth = fDateOfBirth;
     }
 
@@ -105,8 +104,8 @@ public class User implements Serializable{
         comparison = this.fEmail.compareTo(user.getEmail());
         if (comparison != 0) return false;
 
-        /*comparison = this.fDateOfBirth.equals(user.getDateOfBirth());
-        if (comparison != 0) return false;    */
+        comparison = this.fDateOfBirth.compareTo(user.getDateOfBirth());
+        if (comparison != 0) return false;  
 
         comparison = this.fPassword.compareTo(user.getPassword());
         if (comparison != 0) return false;

@@ -1,4 +1,4 @@
-package be.kdg.groepi.service;
+package be.kdg.groepi.utils;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

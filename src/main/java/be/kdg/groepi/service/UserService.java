@@ -2,12 +2,12 @@ package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.TripMail;
 import be.kdg.groepi.model.User;
+import be.kdg.groepi.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -22,20 +22,16 @@ public class UserService {
 
     public static User getUserById(long Id) {
         User user = null;
-
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
 
-            // start work
-            List<User> users = new ArrayList<>();
-            users = session.createQuery("FROM User user WHERE user.id = :Id").
+            List<User> users = session.createQuery("FROM User user WHERE user.id = :Id").
                     setString("Id", String.valueOf(Id)).setReadOnly(true).list();
             if (users.size() > 0) {
                 user = users.get(0);
             }
-            // end work 
 
             tx.commit();
         } catch (RuntimeException e) {
@@ -50,11 +46,6 @@ public class UserService {
 
     
     public static void createUser(User user) {
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//        Transaction tx = session.beginTransaction();
-//        session.save(user);
-//        tx.commit();
-
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
@@ -70,16 +61,9 @@ public class UserService {
         } finally {
             session.close();
         }
-
     }
 
     public static void updateUser(User user) {
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//        Transaction tx = session.beginTransaction();
-//        session.update(user);
-//        tx.commit();
-
-
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
@@ -98,11 +82,6 @@ public class UserService {
     }
 
     public static void deleteUser(User user) {
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//        Transaction tx = session.beginTransaction();
-//        session.delete(user);
-//        tx.commit();
-
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
@@ -121,12 +100,6 @@ public class UserService {
     }
 
     public static List<User> getAllUsers() {
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//        Transaction tx = session.beginTransaction();
-//        List<User> users = session.createQuery("FROM User").list();
-//        tx.commit();
-//        return users;
-
         List<User> users = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
@@ -144,7 +117,6 @@ public class UserService {
             session.close();
         }
         return users;
-
     }
 
     public static void resetPassword(User user) {                    //TODO: mail new password to user

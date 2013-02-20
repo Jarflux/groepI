@@ -35,9 +35,9 @@ public class Trip implements Serializable {
     @Column(name = "public")
     private Boolean fAvailable;
     @Column(name="start")
-    private Date fStart;
+    private Long fStart;
     @Column(name="end")
-    private Date fEnd;
+    private Long fEnd;
 
     /*
     @OneToMany
@@ -55,7 +55,7 @@ public class Trip implements Serializable {
 
     }
 
-    public Trip(String fTitle, String fDescription, Boolean fAvailable, Date fStart, Date fEnd) {
+    public Trip(String fTitle, String fDescription, Boolean fAvailable, Long fStart, Long fEnd) {
         this.fTitle = fTitle;
         this.fDescription = fDescription;
         this.fAvailable = fAvailable;
@@ -95,19 +95,19 @@ public class Trip implements Serializable {
         return fAvailable;
     }
 
-    public Date getStart() {
+    public Long getStart() {
         return fStart;
     }
 
-    public void setStart(Date fStart) {
+    public void setStart(Long fStart) {
         this.fStart = fStart;
     }
 
-    public Date getEnd() {
+    public Long getEnd() {
         return fEnd;
     }
 
-    public void setEnd(Date fEnd) {
+    public void setEnd(Long fEnd) {
         this.fEnd = fEnd;
     }
 
@@ -125,13 +125,11 @@ public class Trip implements Serializable {
         comparison = this.fAvailable.compareTo(trip.isAvailable());
         if (comparison != 0) return false;
 
-        /*
         comparison = this.fStart.compareTo(trip.getStart());
-        if (comparison != 0) return comparison;
+        if (comparison != 0) return false;
 
         comparison = this.fEnd.compareTo(trip.getEnd());
-        if (comparison != 0) return comparison;
-        */
+        if (comparison != 0) return false;
 
         return true;
     }

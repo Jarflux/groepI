@@ -1,10 +1,10 @@
 package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.Trip;
+import be.kdg.groepi.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,54 +17,94 @@ import java.util.List;
 public class TripService {
 
     public static Trip getTripById(long Id) {
+        Trip trip = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        List<Trip> trips = new ArrayList<>();
+        Transaction tx = null;
         try {
-            trips = session.createQuery("FROM Trip trip WHERE trip.id = :Id").
+            tx = session.beginTransaction();
+
+            List<Trip> trips = session.createQuery("FROM Trip trip WHERE trip.id = :Id").
                     setString("Id", String.valueOf(Id)).setReadOnly(true).list();
+            if (trips.size() > 0) {
+                trip = trips.get(0);
+            }
+
             tx.commit();
-        } catch (Exception e) {
-            tx.rollback();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
         } finally {
             session.close();
-            if (trips.size() > 0) {
-                return trips.get(0);
-            } else {
-                return null;
+        }
+        return trip;
+    }
+
+    public static void createTrip(Trip trip) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.save(trip);
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
             }
+        } finally {
+            session.close();
         }
     }
 
-    public static Trip createTrip(Trip trip) {
+    public static void updateTrip(Trip trip) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        session.save(trip);
-        tx.commit();
-        return null;  //TODO: return?!
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.update(trip);
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
     }
 
-    public static Trip updateTrip(Trip trip) {
+    public static void deleteTrip(Trip trip) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        session.update(trip);
-        tx.commit();
-        return null;  //TODO: return?!
-    }
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
 
-    public static Trip deleteTrip(Trip trip) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        session.delete(trip);
-        tx.commit();
-        return null;  //TODO: return?!
+            session.delete(trip);
+
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
     }
 
     public static List<Trip> getAllTrips() {
+        List<Trip> trips = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        List<Trip> trips = session.createQuery("FROM Trip").list();
-        tx.commit();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            trips = session.createQuery("FROM Trip").list();
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
         return trips;
     }
 }

@@ -6,6 +6,7 @@ import org.junit.*;
 import java.sql.Date;
 import java.util.Calendar;
 
+import static be.kdg.groepi.utils.DateUtil.dateToLong;
 import static org.junit.Assert.*;
 
 /**
@@ -22,23 +23,15 @@ public class TripServiceTest {
 
     @Before
     public void beforeEachTest(){
-        trip = new Trip("Stadwandeling Nieuw Zuid", "Ho-ho-ho", Boolean.TRUE, null,null);// trip aanmaken
+        trip = new Trip("Stadwandeling Nieuw Zuid", "Ho-ho-ho", Boolean.TRUE, dateToLong(4,5,2011,15,32,0),dateToLong(4,5,2011,19,32,0));// trip aanmaken
     }
 
     @After
     public void afterEachTest(){
         trip = null;
-        trip = null;
         for (Trip trip : TripService.getAllTrips()) {
             TripService.deleteTrip(trip);
         }
-    }
-
-    private Date fillDate() {
-        Calendar cal = Calendar.getInstance();
-        cal.set(2007, Calendar.MAY, 12,0,0,0);
-        cal.set(Calendar.MILLISECOND, 0);
-        return new Date(cal.getTime().getTime());
     }
 
     @Test
@@ -52,8 +45,8 @@ public class TripServiceTest {
         TripService.createTrip(trip);
         trip.setAvailable(Boolean.FALSE);
         trip.setDescription("Ho-ho-ho edited");
-        trip.setStart(fillDate());
-        trip.setEnd(fillDate());
+        trip.setStart(dateToLong(4,5,2011,15,32,0));
+        trip.setEnd(dateToLong(4,5,2011,15,32,0));
         TripService.updateTrip(trip);
         assertEquals("updateUser: userEquals",trip,TripService.getTripById(trip.getId()));
     }
