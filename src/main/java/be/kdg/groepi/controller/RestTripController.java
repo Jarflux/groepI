@@ -20,14 +20,16 @@ public class RestTripController {
 
         return new ModelAndView("trips/view");
     }
+
     @RequestMapping(value = "/addtrip", method = RequestMethod.POST)
-    public ModelAndView createUser(@ModelAttribute("tripObject") Trip trip) {
+    public ModelAndView createTrip(@ModelAttribute("tripObject") Trip trip) {
         //TODO: encrypt password
         TripService.createTrip(trip);
         return new ModelAndView("trips/addtrip", "tripObject", trip);
     }
+
     @RequestMapping(value = "/{tripId}", method = RequestMethod.GET)
-    public ModelAndView getUser(@PathVariable("tripId") String tripId) {
+    public ModelAndView getTrip(@PathVariable("tripId") String tripId) {
         Trip trip;
         // validate input
         /*if (tripId.isEmpty() || tripId.length() < 5) {

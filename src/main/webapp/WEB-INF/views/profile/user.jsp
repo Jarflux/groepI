@@ -23,24 +23,23 @@
 <h2> <spring:message code='text.bekijkprofiel' /> </h2>
 
          <section>
-             <div class="quarter"><img src="/images/noprofile.png" width='150' class="profilepic"/></div>
-             <div class="three-quarter">
-             <c:choose>
-        <c:when test="${userObject != null}"><div class="row">            <c:out value="Profile of user #${userObject.id}"/></div>
-            <div class="row"><c:out value="Name ${userObject.name}"/>           </div>
-            <div class="row">  <c:out value="Mail ${userObject.email}"/></div>
-            <div class="row">            <c:out value="Date of birth ${userObject.dateOfBirth}"/></div>
-            <div class="row"><c:out value="Profile picture ${userObject.profilePicture}"/></div>
+            <div class="quarter"><img src="/images/noprofile.png" width='150' class="profilepic"/></div>
+            <div class="three-quarter">
+            <c:choose>
+                 <c:when test="${userObject != null}">
+                    <div class="row">
+                        <c:out value="Profile of user #${userObject.id}"/>
+                    </div>
+                    <div class="row"><c:out value="Name ${userObject.name}"/>           </div>
+                    <div class="row"><c:out value="Mail ${userObject.email}"/></div>
+                    <div class="row"><c:out value="Date of birth ${userObject.dateOfBirth}"/></div>
+                    <div class="row"><c:out value="Profile picture ${userObject.profilePicture}"/></div>
+                </c:when>
+                <c:when test="${userObject == null}">
+                    <jsp:forward page="/error/invaliduser" />
+                </c:when>
 
-
-
-
-        </c:when>
-        <c:when test="${userObject == null}">
-            <jsp:forward page="/error/invaliduser" />
-        </c:when>
-
-    </c:choose>
+            </c:choose>
                  </div>
              </section>
         </div></div>

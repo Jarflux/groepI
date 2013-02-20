@@ -21,21 +21,27 @@
     </div>
     <div id="content" class="column light">
 <h2> <spring:message code='text.bekijktripinfo' /> </h2>
+<section>
+    <div class="row">
+        <c:choose>
+            <c:when test="${tripObject != null}">
+                <p>
+                    <c:out value="${tripObject.title}"/>
+                    <br/>
+                    <c:out value="${tripObject.description}"/>
+                </p>
+            </c:when>
+            <c:when test="${tripObject == null}">
+                <jsp:forward page="/error/invalidtrip" />
+            </c:when>
+        </c:choose>
+    </div>
+    <div class="gmap">
 
-         <section>
-<div class="gmap"></div>
-
-         <div class="row">
-             <span class="tripnumber">1</span>  Eerste stop blabla
-         </div>
-             <div class="row">
-                 <span class="tripnumber">2</span>  Tweede stop blabla
-             </div>
-             <div class="row">
-                 <span class="tripnumber">3</span>  Derde stop blabla
-             </div>
-             </section>
-        </div></div>
+    </div>
+</section>
+</div>
+</div>
 <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
 <script src="/js/functions.js"></script>
 </body>
