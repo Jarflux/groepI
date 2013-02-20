@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Calendar;
+
 /**
  * Author: Ben Oeyen
  * Date: 7/02/13
@@ -50,6 +52,22 @@ public class RestUserController {
         //TODO: encrypt password
         UserService.createUser(user);
         return new ModelAndView("profile/user", "userObject", user);
+    }
+
+    @RequestMapping(value = "/resetPassword/{resetString}", method = RequestMethod.GET)
+    public ModelAndView resetPassword(@PathVariable("resetString") String resetString){
+        User user = UserService.getUserByResetString(resetString);
+        if(user != null){
+            if(user.getPasswordResetTimestamp().getTime() > Calendar.getInstance().getTime().getTime()){
+                return new ModelAndView("profile/resetPassword", "userObject", user);
+            }else{
+                // TODO: Gemakkelijk custom error creÃ«ren
+                return new ModelAndView("error/displayerror");
+            }
+        }else{
+            return new ModelAndView("error/displayerror");
+        }
+
     }
 
 
