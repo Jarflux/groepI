@@ -25,6 +25,13 @@
         <!-- Reference to all the mapping files used -->
         <mapping class="be.kdg.groepi.model.User"/>
         <mapping class="be.kdg.groepi.model.Trip"/>
+        <mapping class="be.kdg.groepi.model.Stop"/>
+        <mapping class="be.kdg.groepi.model.Cost"/>
+        <mapping class="be.kdg.groepi.model.Answer"/>
+        <mapping class="be.kdg.groepi.model.Requirement"/>
+        <mapping class="be.kdg.groepi.model.Message"/>
+        <mapping class="be.kdg.groepi.model.Answer"/>
+        <mapping class="be.kdg.groepi.model.StopPictures"/>
 
 
     </session-factory>
