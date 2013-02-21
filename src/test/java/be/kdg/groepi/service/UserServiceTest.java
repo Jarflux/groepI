@@ -102,7 +102,7 @@ public class UserServiceTest {
 
         UserService.createUser(user);
 
-        UserService.resetPassword(user);
+        UserService.resetPassword(user.getEmail());
 
         //assertFalse("testResetPassword: ", user.getPassword().equals(oldPassword));
     }

@@ -10,7 +10,7 @@
 
 <html>
 <head>
-    <link href="css/blue.css" rel="StyleSheet" />
+    <link href="css/blue.css" rel="StyleSheet"/>
 
     <title>My Trip Assistant</title>
 </head>
@@ -18,14 +18,16 @@
 <div id="container">
     <div id="logincontainer" class="column light">
         <div class="loginmiddlebox"><h2>Login</h2>
-        <form action="" method="post">
-                  <input type="text" class="loginbox" placeholder="<spring:message code='text.gebruikersnaam'/>" />      <br>
-            <input type="password" class="loginbox" placeholder="<spring:message code='text.wachtwoord'/>" />      <br>
 
-            <input type="submit" class="button" value="<spring:message code='text.aanmelden'/>" /> &nbsp;
+            <form action="" method="post">
+                <input type="text" class="loginbox" placeholder="<spring:message code='text.gebruikersnaam'/>"/> <br>
+                <input type="password" class="loginbox" placeholder="<spring:message code='text.wachtwoord'/>"/> <br>
 
-            <span class="small"><spring:message code="text.wachtwoordreset_link" /></span>
-                  </form>
+                <input type="submit" class="button" value="<spring:message code='text.aanmelden'/>"/> &nbsp;
+
+                <span class="small"><a href="/profile/reset/forgotPassword"><spring:message
+                        code="text.wachtwoordreset_link"/></a></span>
+            </form>
             <a href="profile/register"><spring:message code='text.maakaccount'/></a>
 
 
@@ -35,17 +37,27 @@
     <div id="maincontainer" class="column dark">
 
         <div class="loginmiddlebox"><h2>My Trip Assistant</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo, magna quis accumsan euismod, urna purus viverra nulla, non commodo
-            erat risus ac sapien. Duis quis odio est. Mauris luctus odio eget dui accumsan nec mollis massa vulputate. Sed elementum lobortis lobortis.
-            Nunc dapibus, est ac laoreet laoreet, justo purus pharetra massa, eget dictum odio dolor eu libero. Nunc leo odio, dapibus sit amet tristique eget,
-            accumsan eu nunc. Quisque id purus lectus. Curabitur ac odio in urna faucibus rhoncus eu dictum elit. Fusce ac lorem id ligula venenatis rutrum
-            sed vel est. Aliquam quis turpis eget nisl iaculis pulvinar nec iaculis erat. Vivamus auctor augue id nunc vulputate sit amet ultrices nulla porttitor.
-            Quisque vulputate pellentesque ipsum at consequat. Praesent nec eros lorem, ut pretium nibh.     </p>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo, magna quis accumsan euismod, urna purus viverra nulla, non commodo
-            erat risus ac sapien. Duis quis odio est. Mauris luctus odio eget dui accumsan nec mollis massa vulputate. Sed elementum lobortis lobortis.
-            Nunc dapibus, est ac laoreet laoreet, justo purus pharetra massa, eget dictum odio dolor eu libero. Nunc leo odio, dapibus sit amet tristique eget,
-            accumsan eu nunc. Quisque id purus lectus. Curabitur ac odio in urna faucibus rhoncus eu dictum elit. </p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo, magna quis accumsan euismod, urna
+                purus viverra nulla, non commodo
+                erat risus ac sapien. Duis quis odio est. Mauris luctus odio eget dui accumsan nec mollis massa
+                vulputate. Sed elementum lobortis lobortis.
+                Nunc dapibus, est ac laoreet laoreet, justo purus pharetra massa, eget dictum odio dolor eu libero. Nunc
+                leo odio, dapibus sit amet tristique eget,
+                accumsan eu nunc. Quisque id purus lectus. Curabitur ac odio in urna faucibus rhoncus eu dictum elit.
+                Fusce ac lorem id ligula venenatis rutrum
+                sed vel est. Aliquam quis turpis eget nisl iaculis pulvinar nec iaculis erat. Vivamus auctor augue id
+                nunc vulputate sit amet ultrices nulla porttitor.
+                Quisque vulputate pellentesque ipsum at consequat. Praesent nec eros lorem, ut pretium nibh. </p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo, magna quis accumsan euismod, urna
+                purus viverra nulla, non commodo
+                erat risus ac sapien. Duis quis odio est. Mauris luctus odio eget dui accumsan nec mollis massa
+                vulputate. Sed elementum lobortis lobortis.
+                Nunc dapibus, est ac laoreet laoreet, justo purus pharetra massa, eget dictum odio dolor eu libero. Nunc
+                leo odio, dapibus sit amet tristique eget,
+                accumsan eu nunc. Quisque id purus lectus. Curabitur ac odio in urna faucibus rhoncus eu dictum
+                elit. </p>
 
         </div>
     </div>

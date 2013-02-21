@@ -5,10 +5,7 @@ import be.kdg.groepi.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Calendar;
@@ -55,21 +52,35 @@ public class RestUserController {
     }
 
     @RequestMapping(value = "/resetPassword/{resetString}", method = RequestMethod.GET)
-    public ModelAndView resetPassword(@PathVariable("resetString") String resetString){
+    public ModelAndView resetPassword(@PathVariable("resetString") String resetString) {
         User user = UserService.getUserByResetString(resetString);
-        if(user != null){
-            if(user.getPasswordResetTimestamp().getTime() > Calendar.getInstance().getTime().getTime()){
+        if (user != null) {
+            if (user.getPasswordResetTimestamp().getTime() > Calendar.getInstance().getTime().getTime()) {
                 return new ModelAndView("profile/resetPassword", "userObject", user);
-            }else{
-                // TODO: Gemakkelijk custom error creÃ«ren
-                return new ModelAndView("error/displayerror");
+            } else {
+                return new ModelAndView("error/displayerror/text.resetpasswordtimeerror");
             }
-        }else{
+        } else {
             return new ModelAndView("error/displayerror");
         }
 
     }
 
+    @RequestMapping(value = "/reset/forgotPassword")
+    public ModelAndView forgotpassword() {
+        System.out.println("forgotpassword: Passing through...");
+//        return "profile/forgotpassword";
 
+        return new ModelAndView("profile/forgotpassword", "message", "");
+    }
+
+    @RequestMapping(value = "/reset/doResetPassword", method = RequestMethod.POST)
+    public ModelAndView doResetPassword(@RequestParam(value = "email") String email) {
+        if (UserService.resetPassword(email)) {
+            return new ModelAndView("profile/forgotpassword", "message", "An email has been sent. Please check your inbox for further instructions.");
+        } else {
+            return new ModelAndView("profile/forgotpassword", "message", "Email address not found!");
+        }
+    }
 
 }

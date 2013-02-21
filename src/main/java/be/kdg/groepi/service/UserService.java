@@ -46,14 +46,14 @@ public class UserService {
         return user;
     }
 
-    public static User getUserByResetString(String resetString){
+    public static User getUserByResetString(String resetString) {
         User user = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
             List<User> users = session.createQuery("FROM User user WHERE user.passwordResetString = :resetString").
-                    setString("resetString",resetString).setReadOnly(true).list();
+                    setString("resetString", resetString).setReadOnly(true).list();
             if (users.size() > 0) {
                 user = users.get(0);
             }
@@ -68,14 +68,14 @@ public class UserService {
         return user;
     }
 
-    public static User getUserByEmail(String email){
+    public static User getUserByEmail(String email) {
         User user = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
             List<User> users = session.createQuery("FROM User user WHERE user.email = :email").
-                    setString("email",email).setReadOnly(true).list();
+                    setString("email", email).setReadOnly(true).list();
             if (users.size() > 0) {
                 user = users.get(0);
             }
@@ -89,7 +89,7 @@ public class UserService {
         }
         return user;
     }
-    
+
     public static void createUser(User user) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
@@ -165,8 +165,7 @@ public class UserService {
     }
 
 
-
-    public static void resetPassword(User user) {
+    public static boolean resetPassword(String email) {
         final int RESET_TIME = 3;
 
         String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -184,20 +183,30 @@ public class UserService {
 
         Timestamp passwordResetTimestamp = new Timestamp(cal.getTime().getTime());
 
-        user.setPasswordResetString(passwordResetString);
-        user.setPasswordResetTimestamp(passwordResetTimestamp);
+        User user = getUserByEmail(email);
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        session.update(user);
-        tx.commit();
+        if (user != null) {
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("Spring-Mail.xml");
+            user.setPasswordResetString(passwordResetString);
+            user.setPasswordResetTimestamp(passwordResetTimestamp);
 
-        TripMail tim = (TripMail) context.getBean("tripMail");
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            Transaction tx = session.beginTransaction();
+            session.update(user);
+            tx.commit();
 
-        //TODO: can't connect to host
-        /*tim.sendMail("info@trippie.be", "tim.bogaert@student.kdg.be", "Subject?",
-                "text\n\nHEY MEZELF WAT ZIE JE ER GOED UIT\n" + newPassword);*/
+            ApplicationContext context = new ClassPathXmlApplicationContext("Spring-Mail.xml");
+
+            TripMail tim = (TripMail) context.getBean("tripMail");
+
+            //TODO: pas email aan aan die van de gebruiker
+            tim.sendMail("info@trippie.be", "info@trippie.be", "Reset password",
+                    "Please follow this link to reset your password:\n http://localhost:8080/profile/" +
+                            user.getId() + "/" + passwordResetString + "\n\nThis link expires at:\n" + passwordResetTimestamp);
+
+            return true;
+        } else {
+            return false;
+        }
     }
 }
