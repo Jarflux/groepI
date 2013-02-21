@@ -46,11 +46,4 @@ public class HomeController {
         System.out.println("Register: Passing through...");
         return "profile/register";
     }
-
-    @RequestMapping(value = "/trips/addtrip")
-    public String addtrip(){
-        System.out.println("AddTrip: Passing through...");
-        return "trips/addtrip";
-    }
-
 }
