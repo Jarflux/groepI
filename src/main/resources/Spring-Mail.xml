@@ -22,7 +22,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
         </property>
     </bean>
 
-    <bean id="tripMail" class="be.kdg.groepi.model.TripMail">
+    <bean id="tripMail" class="be.kdg.groepi.utils.TripMail">
         <property name="mailSender" ref="mailSender" />
     </bean>
 

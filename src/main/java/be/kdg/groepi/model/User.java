@@ -4,6 +4,7 @@ import com.sun.org.apache.xpath.internal.operations.Equals;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Author: Ben Oeyen
@@ -18,6 +19,7 @@ import java.io.Serializable;
 public class User implements Serializable{
     @Id
     @GeneratedValue
+    @Column(name = "user_id")
     private long fId;
     @Column(name = "name")
     private String fName;
@@ -30,8 +32,8 @@ public class User implements Serializable{
     @Column(name = "profile_picture")
     private String fProfilePicture;
 
-    //@OneToMany
-    //private Set<Trip> organizedTrips;
+//    @OneToMany(fetch = FetchType.LAZY)
+//    private Set<Trip> organizedTrips;
 
     // Hibernates needs empty constructor
     public User() {

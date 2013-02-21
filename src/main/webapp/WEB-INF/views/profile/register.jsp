@@ -40,11 +40,6 @@
     <div class="row"> <span></span>       <input type="submit" class="button" value="<spring:message code='text.registreren'/>" />
     </div>
 
-
-
-
-
-
 </form>
         </div>
     </div>
