@@ -37,7 +37,7 @@ public class TripServiceTest {
     @Test
     public void createTrip(){
         TripService.createTrip(trip);
-        assertEquals("createTrip: tripEquals", trip, TripService.getTripById(trip.getId()));
+        assertEquals("createTrip: ", trip, TripService.getTripById(trip.getId()));
     }
 
     @Test
@@ -48,12 +48,14 @@ public class TripServiceTest {
         trip.setStart(dateToLong(4,5,2011,15,32,0));
         trip.setEnd(dateToLong(4,5,2011,15,32,0));
         TripService.updateTrip(trip);
-        assertEquals("updateUser: userEquals",trip,TripService.getTripById(trip.getId()));
+        assertEquals("updateTrip: ",trip,TripService.getTripById(trip.getId()));
     }
 
     @Test
     public void deleteTrip(){
+        TripService.createTrip(trip);
         TripService.deleteTrip(trip);
+        assertEquals("deleteTrip: ",trip,TripService.getTripById(trip.getId()));
     }
 
     /*@Test
