@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/utils/CompareUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/StopPictures.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/StopPictures.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Trip.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Trip.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/TripServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/TripServiceTest.java" />
+    <list default="true" id="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" name="Default" comment="test push">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/groepI.iml" afterPath="$PROJECT_DIR$/groepI.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/hibernateMySQL.cfg.xml" afterPath="$PROJECT_DIR$/src/main/resources/hibernateMySQL.cfg.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="groepI.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361454963899" ignored="false" />
+    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361462186002" ignored="false" />
     <file path="/README" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1359642779202" ignored="false" />
     <file path="/index.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360071317953" ignored="false" />
     <file path="/fragment.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360422747957" ignored="false" />
@@ -30,7 +24,7 @@
     <file path="/text_nl.properties" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361277547000" ignored="false" />
     <file path="/text_en_US.properties" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360156119477" ignored="false" />
     <file path="/User.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361352771437" ignored="false" />
-    <file path="/hibernateMySQL.cfg.xml" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361460835514" ignored="false" />
+    <file path="/hibernateMySQL.cfg.xml" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361462008396" ignored="false" />
     <file path="/UserController.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360249108081" ignored="false" />
     <file path="$USER_HOME$/.IntelliJIdea12/config/options/runner.layout.xml" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360249762214" ignored="false" />
     <file path="/RestUserController.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360672785229" ignored="false" />
@@ -44,15 +38,14 @@
     <file path="/UserService.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360679643107" ignored="false" />
     <file path="/register.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361279167884" ignored="false" />
     <file path="$USER_HOME$/.IntelliJIdea12/config/colors/TestFullLineCoverage.xml" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360676308868" ignored="false" />
-    <file path="/TripServiceTest.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361461307220" ignored="false" />
+    <file path="/TripServiceTest.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361353590829" ignored="false" />
     <file path="/TimedTrip.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360832143625" ignored="false" />
     <file path="/TripService.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361349613353" ignored="false" />
     <file path="/RestTripController.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361276357097" ignored="false" />
     <file path="/addtrip.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360951363072" ignored="false" />
     <file path="/blue.css" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361281508325" ignored="false" />
-    <file path="/Trip.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361460769660" ignored="false" />
+    <file path="/Trip.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361352616513" ignored="false" />
     <file path="/DateUtil.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361353561144" ignored="false" />
-    <file path="/CompareUtil.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361458744114" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +74,6 @@
     <sortChildren value="false" />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -116,6 +108,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -125,46 +118,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="UserService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="88" column="0" selection-start="2734" selection-end="2734" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Trip.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Trip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="162" column="0" selection-start="4470" selection-end="4470" vertical-scroll-proportion="-5.96">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1441#1447#0" expanded="true" />
-                <element signature="e#1699#1705#0" expanded="true" />
-                <element signature="e#1978#1984#0" expanded="true" />
-                <element signature="e#2245#2251#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nb-configuration.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nb-configuration.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="63" column="45" selection-start="2549" selection-end="2549" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hibernateMySQL.cfg.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/hibernateMySQL.cfg.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="75" selection-start="1151" selection-end="1151" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CompareUtil.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/utils/CompareUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="4" selection-start="496" selection-end="512" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -173,6 +140,24 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/User.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="97" column="0" selection-start="2140" selection-end="2140" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserServiceTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/UserServiceTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="50" column="54" selection-start="1268" selection-end="1268" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DateUtil.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/utils/DateUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="27" selection-start="470" selection-end="470" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -190,7 +175,7 @@
       <file leaf-file-name="TripService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/TripService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="309" selection-end="309" vertical-scroll-proportion="0.0">
+            <state line="16" column="84" selection-start="308" selection-end="308" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -198,28 +183,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StopPictures.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/StopPictures.java">
+      <file leaf-file-name="hibernateMySQL.cfg.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/hibernateMySQL.cfg.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="29" selection-start="250" selection-end="250" vertical-scroll-proportion="0.0">
+            <state line="33" column="56" selection-start="1695" selection-end="1695" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TripServiceTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Cost.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Cost.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="13" selection-start="211" selection-end="211" vertical-scroll-proportion="0.4556701">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TripServiceTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/TripServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="95" selection-start="1194" selection-end="1194" vertical-scroll-proportion="0.68432206">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserServiceTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/UserServiceTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="0" selection-start="1837" selection-end="2092" vertical-scroll-proportion="0.0">
+            <state line="45" column="0" selection-start="1185" selection-end="1185" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -246,22 +231,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/HomeController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/addtrip.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestTripController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/text_nl.properties" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/register.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/blue.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/functions.js" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/TripService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Trip.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/utils/DateUtil.java" />
         <option value="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/UserServiceTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/be/kdg/groepi/controller/RestUserControllerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/StopPictures.java" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/utils/MathUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/utils/CompareUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Trip.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/hibernateMySQL.cfg.xml" />
         <option value="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/TripServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/hibernateMySQL.cfg.xml" />
       </list>
     </option>
   </component>
@@ -513,7 +498,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -820,20 +805,20 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="128" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="OverrideImplement.combined" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="157" />
+    <property name="OverrideImplement.combined" value="false" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="151" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="151" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="159" />
@@ -848,9 +833,9 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
@@ -858,8 +843,8 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -876,7 +861,7 @@
       <recent name="C:\DevelopmentSM\groepI\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TripServiceTest">
+  <component name="RunManager" selected="JUnit.UserServiceTest">
     <configuration default="false" name="groepI [test]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -1113,31 +1098,6 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
-      <method />
-    </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote">
-      <option name="LOCAL" value="false" />
-      <deployment />
-      <server-settings>
-        <data>
-          <option name="transportHostId" />
-        </data>
-      </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="50407" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="false" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment />
@@ -1182,6 +1142,31 @@
           <option name="PROGRAM_PARAMETERS" value="" />
         </SHUTDOWN>
       </ConfigurationWrapper>
+      <method />
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote">
+      <option name="LOCAL" value="false" />
+      <deployment />
+      <server-settings>
+        <data>
+          <option name="transportHostId" />
+        </data>
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="50407" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
     <configuration default="false" name="Tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0">
@@ -1270,8 +1255,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.TripServiceTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.UserServiceTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.UserServiceTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.TripServiceTest" />
         <item index="2" class="java.lang.String" itemvalue="Maven.groepI [site]" />
         <item index="3" class="java.lang.String" itemvalue="JUnit.RestUserControllerTest" />
         <item index="4" class="java.lang.String" itemvalue="Maven.groepI [test]" />
@@ -1466,6 +1451,16 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/register.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="126" selection-start="1829" selection-end="1829" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="100" selection-start="1132" selection-end="1132" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestCostController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="13" selection-start="182" selection-end="182" vertical-scroll-proportion="0.0">
@@ -1499,9 +1494,16 @@
         <state line="333" column="45" selection-start="14364" selection-end="14364" vertical-scroll-proportion="-8.62388" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/UserServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="54" selection-start="1268" selection-end="1268" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/utils/DateUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="470" selection-end="470" vertical-scroll-proportion="0.0">
+        <state line="20" column="27" selection-start="470" selection-end="470" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1513,41 +1515,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/TripService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Trip.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="309" selection-end="309" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/StopPictures.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="29" selection-start="250" selection-end="250" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/utils/CompareUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="4" selection-start="496" selection-end="512" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nb-configuration.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernateMySQL.cfg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="75" selection-start="1151" selection-end="1151" vertical-scroll-proportion="0.0">
+        <state line="63" column="45" selection-start="2549" selection-end="2549" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1559,29 +1529,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Trip.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/TripServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="162" column="0" selection-start="4470" selection-end="4470" vertical-scroll-proportion="-5.96">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1441#1447#0" expanded="true" />
-            <element signature="e#1699#1705#0" expanded="true" />
-            <element signature="e#1978#1984#0" expanded="true" />
-            <element signature="e#2245#2251#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/UserServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="0" selection-start="1837" selection-end="2092" vertical-scroll-proportion="0.0">
+        <state line="45" column="0" selection-start="1185" selection-end="1185" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/TripServiceTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/TripService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="95" selection-start="1194" selection-end="1194" vertical-scroll-proportion="0.68432206">
+        <state line="16" column="84" selection-start="308" selection-end="308" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernateMySQL.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="56" selection-start="1695" selection-end="1695" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Cost.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="13" selection-start="211" selection-end="211" vertical-scroll-proportion="0.4556701">
           <folding />
         </state>
       </provider>
