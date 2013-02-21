@@ -1,6 +1,7 @@
 package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.Trip;
+import be.kdg.groepi.model.User;
 import org.junit.*;
 
 import java.sql.Date;
@@ -23,7 +24,9 @@ public class TripServiceTest {
 
     @Before
     public void beforeEachTest(){
-        trip = new Trip("Stadwandeling Nieuw Zuid", "Ho-ho-ho", Boolean.TRUE, dateToLong(4,5,2011,15,32,0),dateToLong(4,5,2011,19,32,0));// trip aanmaken
+        User user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4,5,2011,15,32,0));
+        UserService.createUser(user);
+        trip = new Trip("Stadwandeling Nieuw Zuid", "Ho-ho-ho", Boolean.TRUE, dateToLong(4,5,2011,15,32,0),dateToLong(4,5,2011,19,32,0),user );// trip aanmaken
     }
 
     @After
@@ -37,7 +40,7 @@ public class TripServiceTest {
     @Test
     public void createTrip(){
         TripService.createTrip(trip);
-        assertEquals("createTrip: tripEquals", trip, TripService.getTripById(trip.getId()));
+        assertEquals("createTrip: ", trip, TripService.getTripById(trip.getId()));
     }
 
     @Test
@@ -48,12 +51,14 @@ public class TripServiceTest {
         trip.setStart(dateToLong(4,5,2011,15,32,0));
         trip.setEnd(dateToLong(4,5,2011,15,32,0));
         TripService.updateTrip(trip);
-        assertEquals("updateUser: userEquals",trip,TripService.getTripById(trip.getId()));
+        assertEquals("updateTrip: ",trip,TripService.getTripById(trip.getId()));
     }
 
     @Test
     public void deleteTrip(){
+        TripService.createTrip(trip);
         TripService.deleteTrip(trip);
+        assertEquals("deleteTrip: ",trip,TripService.getTripById(trip.getId()));
     }
 
     /*@Test

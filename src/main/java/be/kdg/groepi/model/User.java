@@ -4,7 +4,6 @@ import com.sun.org.apache.xpath.internal.operations.Equals;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
@@ -20,6 +19,7 @@ import java.sql.Timestamp;
 public class User implements Serializable{
     @Id
     @GeneratedValue
+    @Column(name = "user_id")
     private long fId;
     @Column(name = "name")
     private String fName;

@@ -26,7 +26,7 @@ http://viralpatel.net/blogs/hibernate-inheritence-table-per-hierarchy-mapping/
 public class Trip implements Serializable {
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "trip_id")
     private Long fId;
     @Column(name = "title")
     private String fTitle;
@@ -39,9 +39,11 @@ public class Trip implements Serializable {
     @Column(name="end")
     private Long fEnd;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User fOrganiser;
+
     /*
-    @OneToMany
-    private Set<User> participants;
     @OneToMany
     private Set<Cost> costs;
     @OneToMany
@@ -55,12 +57,13 @@ public class Trip implements Serializable {
 
     }
 
-    public Trip(String fTitle, String fDescription, Boolean fAvailable, Long fStart, Long fEnd) {
+    public Trip(String fTitle, String fDescription, Boolean fAvailable, Long fStart, Long fEnd, User fOrganiser) {
         this.fTitle = fTitle;
         this.fDescription = fDescription;
         this.fAvailable = fAvailable;
         this.fStart = fStart;
         this.fEnd = fEnd;
+        this.fOrganiser =  fOrganiser;
     }
 
     public Long setId() {
@@ -109,6 +112,14 @@ public class Trip implements Serializable {
 
     public void setEnd(Long fEnd) {
         this.fEnd = fEnd;
+    }
+
+    public User getOrganiser() {
+        return fOrganiser;
+    }
+
+    public void setOrganiser(User fOrganiser) {
+        this.fOrganiser = fOrganiser;
     }
 
     @Override

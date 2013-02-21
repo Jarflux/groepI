@@ -1,4 +1,4 @@
-package be.kdg.groepi.model;
+package be.kdg.groepi.utils;
 
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
