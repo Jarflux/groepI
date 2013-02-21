@@ -11,24 +11,23 @@ import org.springframework.web.servlet.ModelAndView;
 import org.apache.log4j.Logger;
 
 @Controller
-@RequestMapping("trip")
+@RequestMapping("trips")
 public class RestTripController {
     private static final Logger logger = Logger.getLogger(RestTripController.class);
-    
-    @RequestMapping(value = "view")
-    public ModelAndView viewTrip() {
 
-        return new ModelAndView("trips/view");
+    @RequestMapping(value = "/addtrip")
+    public String addtrip(){
+        System.out.println("AddTrip: Passing through...");
+        return "trips/addtrip";
     }
 
-    @RequestMapping(value = "/addtrip", method = RequestMethod.POST)
+    @RequestMapping(value = "/createTrip", method = RequestMethod.POST)
     public ModelAndView createTrip(@ModelAttribute("tripObject") Trip trip) {
-        //TODO: encrypt password
         TripService.createTrip(trip);
-        return new ModelAndView("trips/addtrip", "tripObject", trip);
+        return new ModelAndView("trips/view", "tripObject", trip);
     }
 
-    @RequestMapping(value = "/{tripId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/view/{tripId}", method = RequestMethod.GET)
     public ModelAndView getTrip(@PathVariable("tripId") String tripId) {
         Trip trip;
         // validate input
@@ -40,9 +39,9 @@ public class RestTripController {
         trip = TripService.getTripById(Long.parseLong(tripId));
         if (trip != null) {
             logger.debug("Returning Trip: " + trip.toString() + " with trip #" + tripId);
-            return new ModelAndView("trips/trip", "tripObject", trip);
+            return new ModelAndView("trips/view", "tripObject", trip);
         } else {
-            return new ModelAndView("trips/trip", "tripId", tripId);
+            return new ModelAndView("trips/view", "tripId", tripId);
         }
         /*} catch (Exception e) {
             String sMessage = "Error invoking getFund. [%1$s]";
