@@ -67,6 +67,28 @@ public class UserService {
         }
         return user;
     }
+
+    public static User getUserByEmail(String email){
+        User user = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            List<User> users = session.createQuery("FROM User user WHERE user.email = :email").
+                    setString("email",email).setReadOnly(true).list();
+            if (users.size() > 0) {
+                user = users.get(0);
+            }
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return user;
+    }
     
     public static void createUser(User user) {
         Session session = HibernateUtil.getSessionFactory().openSession();
