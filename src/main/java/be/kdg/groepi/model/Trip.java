@@ -2,10 +2,9 @@ package be.kdg.groepi.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
+import be.kdg.groepi.utils.CompareUtil;
 
 /**
  * Author: Ben Oeyen
@@ -35,31 +34,28 @@ public class Trip implements Serializable {
     private String fDescription;
     @Column(name = "public")
     private Boolean fAvailable;
-    @Column(name="start")
+    @Column(name = "start")
     private Long fStart;
-    @Column(name="end")
+    @Column(name = "end")
     private Long fEnd;
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     private User fOrganiser;
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "TRIP_USER", joinColumns = { @JoinColumn(name = "trip_id") }, inverseJoinColumns = { @JoinColumn(name = "user_id") })
-    Set<User> participants = new HashSet<User>();
-
-    /*
-    @OneToMany
-    private Set<Cost> costs;
-    @OneToMany
-    private Set<Requirement> requirements;
-    @OneToMany
-    private Set<Message> messages;
-    */
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "T_TRIP_PARTICIPANT", joinColumns = {@JoinColumn(name = "trip_id")}, inverseJoinColumns = {@JoinColumn(name = "user_id")})
+    private Set<User> fParticipants = new HashSet<User>();
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "T_TRIP_COST", joinColumns = {@JoinColumn(name = "trip_id")}, inverseJoinColumns = {@JoinColumn(name = "cost_id")})
+    private Set<User> fCosts = new HashSet<User>();
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "T_TRIP_REQUIREMENT", joinColumns = {@JoinColumn(name = "trip_id")}, inverseJoinColumns = {@JoinColumn(name = "requirement_id")})
+    private Set<User> fRequirements = new HashSet<User>();
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "T_TRIP_MESSAGE", joinColumns = {@JoinColumn(name = "trip_id")}, inverseJoinColumns = {@JoinColumn(name = "message_id")})
+    private Set<User> fMessages = new HashSet<User>();
 
     // Hibernates needs empty constructor
     public Trip() {
-
     }
 
     public Trip(String fTitle, String fDescription, Boolean fAvailable, Long fStart, Long fEnd, User fOrganiser) {
@@ -68,7 +64,7 @@ public class Trip implements Serializable {
         this.fAvailable = fAvailable;
         this.fStart = fStart;
         this.fEnd = fEnd;
-        this.fOrganiser =  fOrganiser;
+        this.fOrganiser = fOrganiser;
     }
 
     public Long setId() {
@@ -79,20 +75,20 @@ public class Trip implements Serializable {
         return fId;
     }
 
-    public void setTitle(String fTitle) {
-        this.fTitle = fTitle;
-    }
-
     public String getTitle() {
         return fTitle;
     }
 
-    public void setDescription(String fDescription) {
-        this.fDescription = fDescription;
+    public void setTitle(String fTitle) {
+        this.fTitle = fTitle;
     }
 
     public String getDescription() {
         return fDescription;
+    }
+
+    public void setDescription(String fDescription) {
+        this.fDescription = fDescription;
     }
 
     public void setAvailable(Boolean fAvailable) {
@@ -128,11 +124,35 @@ public class Trip implements Serializable {
     }
 
     public Set<User> getParticipants() {
-        return this.participants;
+        return this.fParticipants;
     }
 
     public void setParticipants(Set<User> participants) {
-        this.participants = participants;
+        this.fParticipants = participants;
+    }
+
+    public Set<User> getCosts() {
+        return fCosts;
+    }
+
+    public void setCosts(Set<User> fCosts) {
+        this.fCosts = fCosts;
+    }
+
+    public Set<User> getRequirements() {
+        return fRequirements;
+    }
+
+    public void setRequirements(Set<User> fRequirements) {
+        this.fRequirements = fRequirements;
+    }
+
+    public Set<User> getMessages() {
+        return fMessages;
+    }
+
+    public void setMessages(Set<User> fMessages) {
+        this.fMessages = fMessages;
     }
 
     @Override
@@ -152,9 +172,22 @@ public class Trip implements Serializable {
         comparison = this.fStart.compareTo(trip.getStart());
         if (comparison != 0) return false;
 
-        comparison = this.fEnd.compareTo(trip.getEnd());
-        if (comparison != 0) return false;
 
+        if (!(CompareUtil.compareSet(this.fParticipants, trip.getParticipants()))){
+            return false;
+        }
+
+        if (!(CompareUtil.compareSet(this.fCosts, trip.getCosts()))){
+            return false;
+        }
+
+        if (!(CompareUtil.compareSet(this.fRequirements, trip.getRequirements()))){
+            return false;
+        }
+
+        if (!(CompareUtil.compareSet(this.fMessages, trip.getMessages()))){
+            return false;
+        }
         return true;
     }
 
@@ -162,5 +195,5 @@ public class Trip implements Serializable {
     public int hashCode() {
         return super.hashCode();
     }
- 
+
 }

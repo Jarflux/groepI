@@ -10,7 +10,7 @@ import javax.persistence.*;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "T_STOPPICTURE")
+@Table(name = "T_STOP_PICTURE")
 public class StopPictures {
     @Id
     @GeneratedValue

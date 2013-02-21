@@ -57,9 +57,12 @@ public class TripServiceTest {
     @Test
     public void deleteTrip(){
         TripService.createTrip(trip);
+        assertNotNull("deleteTrip: Trip found", TripService.getTripById(trip.getId()));
         TripService.deleteTrip(trip);
-        assertEquals("deleteTrip: ",trip,TripService.getTripById(trip.getId()));
+        assertNull("deleteTrip: Trip not found", TripService.getTripById(trip.getId()));
     }
+
+
 
     /*@Test
     public void createTimedTrip(){}
