@@ -15,6 +15,7 @@ import java.io.Serializable;
 public class Requirement implements Serializable {
     @Id
     @GeneratedValue
+    @Column(name = "requirement_id")
     long fId;
     @Column(name = "description")
     String fDescription;

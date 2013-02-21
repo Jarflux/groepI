@@ -21,7 +21,7 @@ import javax.persistence.*;
 public class Stop {
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "stop_id")
     private Long fId;
     @Column(name= "name")
     private String fName;

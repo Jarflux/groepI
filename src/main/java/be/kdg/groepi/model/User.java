@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 
 /**
  * Author: Ben Oeyen
- * Long: 6/02/13
+ * Date: 6/02/13
  * Class: User
  * Description:
  */

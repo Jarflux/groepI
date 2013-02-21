@@ -16,6 +16,7 @@ import java.sql.Date;
 public class Message implements Serializable {
     @Id
     @GeneratedValue
+    @Column(name = "message_id")
     long fId;
     @Column(name = "content")
     String fContent;

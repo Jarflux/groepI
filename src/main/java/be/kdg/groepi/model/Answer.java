@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Answer {
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "answer_id")
     private Long fId;
     @Column(name = "answerText")
     private String fAnswerText;

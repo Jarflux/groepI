@@ -175,8 +175,7 @@ public class UserService {
         TripMail tim = (TripMail) context.getBean("tripMail");
 
         //TODO: can't connect to host
-        tim.sendMail("info@trippie.be", "info@trippie.be", "Reset password",
-                "Please follow this link to reset your password:\n http://localhost:8080/profile/" +
-                        user.getId() + "/" + passwordResetString + "\n\nThis link expires at:\n" + passwordResetTimestamp);
+        /*tim.sendMail("info@trippie.be", "tim.bogaert@student.kdg.be", "Subject?",
+                "text\n\nHEY MEZELF WAT ZIE JE ER GOED UIT\n" + newPassword);*/
     }
 }

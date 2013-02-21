@@ -15,6 +15,7 @@ import java.io.Serializable;
 public class Cost implements Serializable {
     @Id
     @GeneratedValue
+    @Column(name = "cost_id")
     long fId;
     @Column(name = "description")
     String fDescription;

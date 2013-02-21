@@ -10,11 +10,11 @@ import javax.persistence.*;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "T_TRIPPICTURE")
+@Table(name = "T_STOPPICTURE")
 public class StopPictures {
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "stoppictures_id")
     private Long fId;
     @Column(name = "path")
     private String fPath;

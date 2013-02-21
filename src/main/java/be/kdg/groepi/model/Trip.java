@@ -3,6 +3,7 @@ package be.kdg.groepi.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -42,6 +43,10 @@ public class Trip implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User fOrganiser;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "TRIP_USER", joinColumns = { @JoinColumn(name = "trip_id") }, inverseJoinColumns = { @JoinColumn(name = "user_id") })
+    Set<User> participants = new HashSet<User>();
 
     /*
     @OneToMany
@@ -120,6 +125,14 @@ public class Trip implements Serializable {
 
     public void setOrganiser(User fOrganiser) {
         this.fOrganiser = fOrganiser;
+    }
+
+    public Set<User> getParticipants() {
+        return this.participants;
+    }
+
+    public void setParticipants(Set<User> participants) {
+        this.participants = participants;
     }
 
     @Override
