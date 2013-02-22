@@ -50,20 +50,11 @@ public class RestUserController {
         UserService.createUser(user);
         return new ModelAndView("profile/user", "userObject", user);
     }
-
-    @RequestMapping(value = "/resetPassword/{resetString}", method = RequestMethod.GET)
-    public ModelAndView resetPassword(@PathVariable("resetString") String resetString) {
-        User user = UserService.getUserByResetString(resetString);
-        if (user != null) {
-            if (user.getPasswordResetTimestamp().getTime() > Calendar.getInstance().getTime().getTime()) {
-                return new ModelAndView("profile/resetPassword", "userObject", user);
-            } else {
-                return new ModelAndView("error/displayerror/text.resetpasswordtimeerror");
-            }
-        } else {
-            return new ModelAndView("error/displayerror");
-        }
-
+    @RequestMapping(value = "/myprofile")
+    public ModelAndView myProfile(@ModelAttribute("userObject") User user) {
+        //TODO: encrypt password
+        UserService.createUser(user);
+        return new ModelAndView("profile/userprofile", "userObject", user);
     }
 
     @RequestMapping(value = "/reset/forgotPassword")
@@ -83,4 +74,34 @@ public class RestUserController {
         }
     }
 
+    @RequestMapping(value = "/reset/{resetString}", method = RequestMethod.GET)
+    public ModelAndView resetPassword(@PathVariable("resetString") String resetString) {
+        User user = UserService.getUserByResetString(resetString);
+        if (user != null) {
+            if (user.getPasswordResetTimestamp().getTime() > Calendar.getInstance().getTime().getTime()) {
+                return new ModelAndView("profile/resetpassword", "passwordResetString", user.getPasswordResetString());
+            } else {
+                return new ModelAndView("error/displayerror/text.resetpasswordtimeerror");
+            }
+        } else {
+            return new ModelAndView("error/displayerror");
+        }
+
+    }
+
+    @RequestMapping(value = "/reset/setNewPassword", method = RequestMethod.POST)
+    public String setNewPassword(/*@RequestParam(value = "userObject")*/ /*@ModelAttribute("userObject") User user,*/
+                                 @RequestParam(value = "passwordResetString") String passwordResetString,
+                                 @RequestParam(value = "password") String password) {
+        User user = UserService.getUserByResetString(passwordResetString);
+
+        user.setPassword(password);
+        UserService.updateUser(user);
+
+
+        //navigeer naar login
+        //tekst van resetpassword.jsp aanpassen
+
+        return "/home";
+    }
 }

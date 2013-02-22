@@ -200,8 +200,8 @@ public class UserService {
 
             //TODO: pas email aan aan die van de gebruiker
             tim.sendMail("info@trippie.be", "info@trippie.be", "Reset password",
-                    "Please follow this link to reset your password:\n http://localhost:8080/profile/" +
-                            user.getId() + "/" + passwordResetString + "\n\nThis link expires at:\n" + passwordResetTimestamp);
+                    "Please follow this link to reset your password:\n http://localhost:8080/profile/reset/" +
+                            /*user.getId() + "/" + */ passwordResetString + "\n\nThis link expires at:\n" + passwordResetTimestamp);
 
             return true;
         } else {
