@@ -6,26 +6,45 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
-    <link href="css/blue.css" rel="StyleSheet" />
+    <link href="/css/blue.css" rel="StyleSheet" />
 
     <title></title>
 </head>
 <body>
-<div id="container">
-    <div id="logincontainer" class="column">
-                     <div class="loginmiddlebox"><h2>Login</h2></div>
-
+<div id="wrapper">
+    <div id="topmenu" class="column dark">
+        <jsp:include page="/topmenu"   />
     </div>
-                             <div id="maincontainer" class="column">
+    <div id="content" class="column light">
+        <h2><spring:message code="text.aanmelden"/></h2>
+        <c:if test="${not empty errormsg}">
+            <div class="errormsg">
+               ${errormsg}
+            </div>
+        </c:if>
 
-                                 <div class="loginmiddlebox"><h2>My Trip Advisor</h2></div>
-                             </div>
+        <form method="post" action="j_spring_security_check" class="mainstyle validate">
+            <div class="row"> <span><spring:message code='text.gebruikersnaam'/></span>          	<input type="text" name="j_username" id="j_username" />
+
+            </div>
+
+            <div class="row"> <span><spring:message code='text.wachtwoord'/></span>         <input type="password" class="required"  name="j_password" id="j_password" placeholder=""/>
+            </div>
 
 
+            <div class="row"> <span></span>       <input type="submit" class="button" value="<spring:message code='text.registreren'/>" />
+            </div>
+
+        </form>
+    </div>
 </div>
+<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+<script src="/js/functions.js"></script>
 </body>
 </html>
