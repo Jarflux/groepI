@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" name="Default" comment="Date picker">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Cost.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Cost.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Message.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Message.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Stop.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Stop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Trip.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Trip.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/TripService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/TripService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/TripServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/TripServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/groepI.iml" afterPath="$PROJECT_DIR$/groepI.iml" />
+    <list default="true" id="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" name="Default" comment="Optimized imports&#10;Changed Date to Long in Message&#10;Added field AccessCode in Trip + edited Set-types&#10;Updated TripServiceTest&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="groepI.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361527045444" ignored="false" />
+    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361528023024" ignored="false" />
     <file path="/README" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1359642779202" ignored="false" />
     <file path="/index.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360071317953" ignored="false" />
     <file path="/fragment.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361527131652" ignored="false" />
@@ -127,36 +117,7 @@
       </breakpoint>
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/UserServiceTest.java" line="42" class="be.kdg.groepi.service.UserServiceTest" package="be.kdg.groepi.service">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/User.java" line="120" class="be.kdg.groepi.model.User" package="be.kdg.groepi.model">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -166,19 +127,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Trip.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Trip.java">
+      <file leaf-file-name="TripServiceTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/TripServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="148" column="33" selection-start="4178" selection-end="4178" vertical-scroll-proportion="0.0">
+            <state line="54" column="0" selection-start="1517" selection-end="1517" vertical-scroll-proportion="-0.4448598">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TripServiceTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/TripServiceTest.java">
+      <file leaf-file-name="UserServiceTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/UserServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="0" selection-start="1517" selection-end="1517" vertical-scroll-proportion="0.0">
+            <state line="42" column="0" selection-start="1042" selection-end="1042" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -188,13 +149,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/TripService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="93" column="0" selection-start="2420" selection-end="2420" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="method#getTripById#0;class#TripService#0" expanded="false" />
-                <element signature="method#createTrip#0;class#TripService#0" expanded="false" />
-                <element signature="method#updateTrip#0;class#TripService#0" expanded="false" />
-                <element signature="method#deleteTrip#0;class#TripService#0" expanded="false" />
-                <element signature="method#getAllTrips#0;class#TripService#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -203,9 +158,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/utils/CompareUtil.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="11" column="13" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="method#compareSet#0;class#CompareUtil#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -214,16 +167,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="210" column="33" selection-start="6327" selection-end="6327" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="method#getUserById#0;class#UserService#0" expanded="false" />
-                <element signature="method#getUserByResetString#0;class#UserService#0" expanded="false" />
-                <element signature="method#getUserByEmail#0;class#UserService#0" expanded="false" />
-                <element signature="method#createUser#0;class#UserService#0" expanded="false" />
-                <element signature="method#updateUser#0;class#UserService#0" expanded="false" />
-                <element signature="method#deleteUser#0;class#UserService#0" expanded="false" />
-                <element signature="method#getAllUsers#0;class#UserService#0" expanded="false" />
-                <element signature="method#resetPassword#0;class#UserService#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -259,21 +203,15 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/RequirementService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="13" column="13" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="method#getRequirementById#0;class#RequirementService#0" expanded="false" />
-                <element signature="method#createRequirement#0;class#RequirementService#0" expanded="false" />
-                <element signature="method#updateRequirement#0;class#RequirementService#0" expanded="false" />
-                <element signature="method#deleteRequirement#0;class#RequirementService#0" expanded="false" />
-                <element signature="method#getAllRequirements#0;class#RequirementService#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RestUserController.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="RestUserController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestUserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="13" selection-start="564" selection-end="564" vertical-scroll-proportion="-2.4985507">
+            <state line="21" column="13" selection-start="564" selection-end="564" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -566,7 +504,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -915,20 +853,20 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="128" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="157" />
-    <property name="OverrideImplement.combined" value="false" />
     <property name="project.structure.proportion" value="0.15" />
+    <property name="OverrideImplement.combined" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="157" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="recentsLimit" value="5" />
-    <property name="MemberChooser.sorted" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="151" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="159" />
@@ -943,9 +881,9 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
@@ -953,8 +891,8 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -1213,6 +1151,31 @@
       <patterns />
       <method />
     </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
+      <method />
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote">
+      <option name="LOCAL" value="false" />
+      <deployment />
+      <server-settings>
+        <data>
+          <option name="transportHostId" />
+        </data>
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="50407" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment />
@@ -1257,31 +1220,6 @@
           <option name="PROGRAM_PARAMETERS" value="" />
         </SHUTDOWN>
       </ConfigurationWrapper>
-      <method />
-    </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote">
-      <option name="LOCAL" value="false" />
-      <deployment />
-      <server-settings>
-        <data>
-          <option name="transportHostId" />
-        </data>
-      </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="50407" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="false" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
     <configuration default="false" name="Tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0">
@@ -1464,7 +1402,11 @@
       <created>1361523076240</created>
       <updated>1361523076240</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Optimized imports&#10;Changed Date to Long in Message&#10;Added field AccessCode in Trip + edited Set-types&#10;Updated TripServiceTest&#10;">
+      <created>1361527907492</created>
+      <updated>1361527907492</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1495,7 +1437,6 @@
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21060605" sideWeight="0.22184874" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18686868" sideWeight="0.4878788" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15757576" sideWeight="0.692437" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39663866" sideWeight="0.49786553" order="3" side_tool="false" content_ui="tabs" />
@@ -1504,8 +1445,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32436976" sideWeight="0.48932764" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3210084" sideWeight="0.4719697" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35075757" sideWeight="0.6806723" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21060605" sideWeight="0.23529412" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -1513,10 +1452,13 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2030303" sideWeight="0.70535713" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22803031" sideWeight="0.6806723" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31932774" sideWeight="0.5772727" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31774193" sideWeight="0.5772727" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35075757" sideWeight="0.6806723" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18686868" sideWeight="0.4878788" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3210084" sideWeight="0.4719697" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3990878" sideWeight="0.49786553" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1558,7 +1500,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="UserService queries edited" />
+    <option name="LAST_COMMIT_MESSAGE" value="Optimized imports&#10;Changed Date to Long in Message&#10;Added field AccessCode in Trip + edited Set-types&#10;Updated TripServiceTest&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1592,6 +1534,7 @@
     <MESSAGE value="Date picker" />
     <MESSAGE value="test description edited: testDeleteUser" />
     <MESSAGE value="UserService queries edited" />
+    <MESSAGE value="Optimized imports&#10;Changed Date to Long in Message&#10;Added field AccessCode in Trip + edited Set-types&#10;Updated TripServiceTest&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1604,13 +1547,6 @@
     <entry file="file://$PROJECT_DIR$/.idea/dataSources.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/UserServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="0" selection-start="1042" selection-end="1042" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/nb-configuration.xml">
@@ -1641,23 +1577,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="29" selection-start="927" selection-end="927" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="26" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/TripServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="0" selection-start="1517" selection-end="1517" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1672,38 +1594,21 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/utils/CompareUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="13" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="method#compareSet#0;class#CompareUtil#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="210" column="33" selection-start="6327" selection-end="6327" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="method#getUserById#0;class#UserService#0" expanded="false" />
-            <element signature="method#getUserByResetString#0;class#UserService#0" expanded="false" />
-            <element signature="method#getUserByEmail#0;class#UserService#0" expanded="false" />
-            <element signature="method#createUser#0;class#UserService#0" expanded="false" />
-            <element signature="method#updateUser#0;class#UserService#0" expanded="false" />
-            <element signature="method#deleteUser#0;class#UserService#0" expanded="false" />
-            <element signature="method#getAllUsers#0;class#UserService#0" expanded="false" />
-            <element signature="method#resetPassword#0;class#UserService#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/TripService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="93" column="0" selection-start="2420" selection-end="2420" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="method#getTripById#0;class#TripService#0" expanded="false" />
-            <element signature="method#createTrip#0;class#TripService#0" expanded="false" />
-            <element signature="method#updateTrip#0;class#TripService#0" expanded="false" />
-            <element signature="method#deleteTrip#0;class#TripService#0" expanded="false" />
-            <element signature="method#getAllTrips#0;class#TripService#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1717,19 +1622,34 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/RequirementService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="13" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="method#getRequirementById#0;class#RequirementService#0" expanded="false" />
-            <element signature="method#createRequirement#0;class#RequirementService#0" expanded="false" />
-            <element signature="method#updateRequirement#0;class#RequirementService#0" expanded="false" />
-            <element signature="method#deleteRequirement#0;class#RequirementService#0" expanded="false" />
-            <element signature="method#getAllRequirements#0;class#RequirementService#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestUserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="13" selection-start="564" selection-end="564" vertical-scroll-proportion="-2.4985507">
+        <state line="21" column="13" selection-start="564" selection-end="564" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/UserServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="0" selection-start="1042" selection-end="1042" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="29" selection-start="927" selection-end="927" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/TripServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="0" selection-start="1517" selection-end="1517" vertical-scroll-proportion="-0.4448598">
           <folding />
         </state>
       </provider>
