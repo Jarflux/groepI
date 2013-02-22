@@ -26,7 +26,7 @@ public class UserServiceTest {
 
     @Before
     public void beforeEachTest() {
-        user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
+        user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4,5,2011,15,32,0));
     }
 
     @After
@@ -40,7 +40,7 @@ public class UserServiceTest {
     @Test
     public void testCreateUser() {
         UserService.createUser(user);
-        assertEquals("createUser: users are the same", user, UserService.getUserById(user.getId()));
+        assertEquals("createUser: users are the same",user,UserService.getUserById(user.getId()));
     }
 
 
@@ -50,7 +50,7 @@ public class UserServiceTest {
 
         user.setName("NOT TIMMEH");
         user.setPassword("hemmitton");
-        user.setDateOfBirth(dateToLong(3, 6, 2012, 12, 45, 0));
+        user.setDateOfBirth(dateToLong(3,6,2012,12,45,0));
         user.setEmail("NOTTIM@M.EH");
         user.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
 
@@ -96,7 +96,7 @@ public class UserServiceTest {
         assertTrue("testChangePassword: password wasn't reset", user.getPassword().equals(newPassword));
     }
 
-/*    @Test
+    @Test
     public void testResetPassword() {
         String oldPassword = user.getPassword();
 
@@ -105,31 +105,5 @@ public class UserServiceTest {
         UserService.resetPassword(user.getEmail());
 
         //assertFalse("testResetPassword: ", user.getPassword().equals(oldPassword));
-    }*/
-
-    @Test
-    public void testGetUserBy() {
-        User userById;
-
-        User userByResetString;
-        String resetString = "abcde";
-        user.setPasswordResetString(resetString);
-
-        User userByEmail;
-        String email = user.getEmail();
-
-        UserService.createUser(user);
-        Long id = user.getId();
-
-        userById = UserService.getUserById(id);
-        userByResetString = UserService.getUserByResetString(resetString);
-        userByEmail = UserService.getUserByEmail(email);
-
-        assertNotNull("testGetUserBy: userById is null", userById);
-        assertNotNull("testGetUserBy: userByResetString is null", userByResetString);
-        assertNotNull("testGetUserBy: userByEmail is null", userByEmail);
-
-        assertTrue("testGetUserBy: userById <> userByResetString", userById.equals(userByResetString));
-        assertTrue("testGetUserBy: userById <> userByEmail", userById.equals(userByEmail));
     }
 }
