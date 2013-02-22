@@ -30,6 +30,13 @@ public class HomeController {
         System.out.println("Login: Passing through...");
         return "login/showlogin";
     }
+    @RequestMapping(value = "/login/incorrect")
+    public ModelAndView loginincorrect(String errormessage) {
+
+        System.out.println("Login is incorrect");
+        errormessage="Deze gegevens konden niet worden gevalideerd. Probeer opnieuw";
+        return new ModelAndView("login/showlogin","errormsg",errormessage);
+    }
     @RequestMapping(value = "/topmenu")
     public String topmenu() {
         System.out.println("Topmenu: Passing through...");

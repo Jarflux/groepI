@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -22,7 +23,11 @@
     </div>
     <div id="content" class="column light">
         <h2><spring:message code="text.aanmelden"/></h2>
-
+        <c:if test="${not empty errormsg}">
+            <div class="errormsg">
+               ${errormsg}
+            </div>
+        </c:if>
 
         <form method="post" action="j_spring_security_check" class="mainstyle validate">
             <div class="row"> <span><spring:message code='text.gebruikersnaam'/></span>          	<input type="text" name="j_username" id="j_username" />
