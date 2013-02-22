@@ -29,7 +29,7 @@ public class UserService {
         try {
             tx = session.beginTransaction();
 
-            List<User> users = session.createQuery("FROM User user WHERE user.id = :Id").
+            List<User> users = session.createQuery("FROM User user WHERE user.fId = :Id").
                     setString("Id", String.valueOf(Id)).setReadOnly(true).list();
             if (users.size() > 0) {
                 user = users.get(0);
@@ -52,7 +52,7 @@ public class UserService {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            List<User> users = session.createQuery("FROM User user WHERE user.passwordResetString = :resetString").
+            List<User> users = session.createQuery("FROM User user WHERE user.fPasswordResetString = :resetString").
                     setString("resetString", resetString).setReadOnly(true).list();
             if (users.size() > 0) {
                 user = users.get(0);
@@ -74,7 +74,7 @@ public class UserService {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            List<User> users = session.createQuery("FROM User user WHERE user.email = :email").
+            List<User> users = session.createQuery("FROM User user WHERE user.fEmail = :email").
                     setString("email", email).setReadOnly(true).list();
             if (users.size() > 0) {
                 user = users.get(0);
