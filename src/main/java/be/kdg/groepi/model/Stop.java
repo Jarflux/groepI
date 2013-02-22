@@ -27,14 +27,14 @@ public class Stop {
     private String fName;
     @Column(name = "location")
     private String fLocation;
-    @Column(name = "order")
-    private Integer fOrder;
+    @Column(name = "stopnumber")
+    private Integer fStopnumber;
     @Column(name = "type")
     private Integer fType;
     @Column(name = "displayMode")
     private Integer fDisplayMode;
     @Column(name = "stopText")
-    @Type(type = "text")
+    //@Type(type = "text")
     private String fStopText;
 
     public Stop() {
@@ -43,7 +43,7 @@ public class Stop {
     public Stop(String fName, String fLocation, Integer fOrder, Integer fType, Integer fDisplayMode, String fStopText) {
         this.fName = fName;
         this.fLocation = fLocation;
-        this.fOrder = fOrder;
+        this.fStopnumber = fOrder;
         this.fType = fType;
         this.fDisplayMode = fDisplayMode;
         this.fStopText = fStopText;
@@ -74,11 +74,11 @@ public class Stop {
     }
 
     public Integer getOrder() {
-        return fOrder;
+        return fStopnumber;
     }
 
     public void setOrder(Integer fOrder) {
-        this.fOrder = fOrder;
+        this.fStopnumber = fOrder;
     }
 
     public Integer getType() {
