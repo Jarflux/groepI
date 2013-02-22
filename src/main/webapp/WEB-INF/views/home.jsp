@@ -19,9 +19,9 @@
     <div id="logincontainer" class="column light">
         <div class="loginmiddlebox"><h2>Login</h2>
 
-            <form action="" method="post">
-                <input type="text" class="loginbox" placeholder="<spring:message code='text.gebruikersnaam'/>"/> <br>
-                <input type="password" class="loginbox" placeholder="<spring:message code='text.wachtwoord'/>"/> <br>
+            <form action="j_spring_security_check" method="post">
+                <input type="text" class="loginbox" placeholder="<spring:message code='text.gebruikersnaam'/>" name="j_username" id="j_username"/> <br>
+                <input type="password" class="loginbox" placeholder="<spring:message code='text.wachtwoord'/>" name="j_password" id="j_password"/> <br>
 
                 <input type="submit" class="button" value="<spring:message code='text.aanmelden'/>"/> &nbsp;
 

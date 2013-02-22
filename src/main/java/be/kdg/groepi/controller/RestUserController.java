@@ -22,7 +22,7 @@ import java.util.Calendar;
 public class RestUserController {
     private static final Logger logger = Logger.getLogger(RestUserController.class);
 
-    @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/view/{userId}", method = RequestMethod.GET)
     public ModelAndView getUser(@PathVariable("userId") String userId) {
         User user;
         // validate input
@@ -34,9 +34,9 @@ public class RestUserController {
         user = UserService.getUserById(Long.parseLong(userId));
         if (user != null) {
             logger.debug("Returning User: " + user.toString() + " with user #" + userId);
-            return new ModelAndView("profile/user", "userObject", user);
+            return new ModelAndView("profile/view", "userObject", user);
         } else {
-            return new ModelAndView("profile/user", "userId", userId);
+            return new ModelAndView("profile/view", "userId", userId);
         }
         /*} catch (Exception e) {
             String sMessage = "Error invoking getFund. [%1$s]";
@@ -48,9 +48,14 @@ public class RestUserController {
     public ModelAndView createUser(@ModelAttribute("userObject") User user) {
         //TODO: encrypt password
         UserService.createUser(user);
-        return new ModelAndView("profile/user", "userObject", user);
+        return new ModelAndView("profile/view", "userObject", user);
     }
-
+    @RequestMapping(value = "/myprofile")
+    public ModelAndView myProfile(@ModelAttribute("userObject") User user) {
+        //TODO: encrypt password
+        UserService.createUser(user);
+        return new ModelAndView("profile/userprofile", "userObject", user);
+    }
     @RequestMapping(value = "/resetPassword/{resetString}", method = RequestMethod.GET)
     public ModelAndView resetPassword(@PathVariable("resetString") String resetString) {
         User user = UserService.getUserByResetString(resetString);

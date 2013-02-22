@@ -21,7 +21,7 @@
         <intercept-url pattern="/profile/reset/**" access="permitAll" />
 
         <intercept-url pattern="/**" access="isAuthenticated()" />
-        <form-login login-page="/login" />
+        <form-login login-page="/login" default-target-url="/profile/myprofile" />
     </http>
 
     <authentication-manager>
