@@ -1,7 +1,5 @@
 package be.kdg.groepi.model;
 
-import com.sun.org.apache.xpath.internal.operations.Equals;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -16,7 +14,7 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "T_USER")
-public class User implements Serializable{
+public class User implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "user_id")
@@ -127,7 +125,7 @@ public class User implements Serializable{
         if (comparison != 0) return false;
 
         comparison = this.fDateOfBirth.compareTo(user.getDateOfBirth());
-        if (comparison != 0) return false;  
+        if (comparison != 0) return false;
 
         comparison = this.fPassword.compareTo(user.getPassword());
         if (comparison != 0) return false;

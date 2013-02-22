@@ -164,7 +164,6 @@ public class UserService {
         return users;
     }
 
-
     public static boolean resetPassword(String email) {
         final int RESET_TIME = 3;
 

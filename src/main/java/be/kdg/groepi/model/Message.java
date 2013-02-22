@@ -21,13 +21,13 @@ public class Message implements Serializable {
     @Column(name = "content")
     String fContent;
     @Column(name = "date")
-    Date fDate;
+    Long fDate;
 
     // Hibernates needs empty constructor
     public Message() {
     }
 
-    public Message(String content, Date date) {
+    public Message(String content, Long date) {
         this.fContent = content;
         this.fDate = date;
     }
@@ -48,16 +48,16 @@ public class Message implements Serializable {
         this.fContent = fContent;
     }
 
-    public Date getDate() {
+    public Long getDate() {
         return fDate;
     }
 
-    public void setDate(Date fDate) {
+    public void setDate(Long fDate) {
         this.fDate = fDate;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return "Message:" + fDate + ": " + fContent;
     }
 }

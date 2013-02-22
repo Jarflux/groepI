@@ -1,7 +1,5 @@
 package be.kdg.groepi.model;
 
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
 
 /**
@@ -23,7 +21,7 @@ public class Stop {
     @GeneratedValue
     @Column(name = "stop_id")
     private Long fId;
-    @Column(name= "name")
+    @Column(name = "name")
     private String fName;
     @Column(name = "location")
     private String fLocation;

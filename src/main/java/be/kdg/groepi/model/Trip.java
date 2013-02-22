@@ -1,10 +1,11 @@
 package be.kdg.groepi.model;
 
+import be.kdg.groepi.utils.CompareUtil;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-import be.kdg.groepi.utils.CompareUtil;
 
 /**
  * Author: Ben Oeyen
@@ -38,21 +39,23 @@ public class Trip implements Serializable {
     private Long fStart;
     @Column(name = "end")
     private Long fEnd;
+    @Column(name = "accessCode")
+    private String fAccessCode;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     private User fOrganiser;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "T_TRIP_PARTICIPANT", joinColumns = {@JoinColumn(name = "trip_id")}, inverseJoinColumns = {@JoinColumn(name = "user_id")})
-    private Set<User> fParticipants = new HashSet<User>();
+    private Set<User> fParticipants = new HashSet<>();
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "T_TRIP_COST", joinColumns = {@JoinColumn(name = "trip_id")}, inverseJoinColumns = {@JoinColumn(name = "cost_id")})
-    private Set<User> fCosts = new HashSet<User>();
+    private Set<Cost> fCosts = new HashSet<>();
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "T_TRIP_REQUIREMENT", joinColumns = {@JoinColumn(name = "trip_id")}, inverseJoinColumns = {@JoinColumn(name = "requirement_id")})
-    private Set<User> fRequirements = new HashSet<User>();
+    private Set<Requirement> fRequirements = new HashSet<>();
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "T_TRIP_MESSAGE", joinColumns = {@JoinColumn(name = "trip_id")}, inverseJoinColumns = {@JoinColumn(name = "message_id")})
-    private Set<User> fMessages = new HashSet<User>();
+    private Set<Message> fMessages = new HashSet<>();
 
     // Hibernates needs empty constructor
     public Trip() {
@@ -111,6 +114,14 @@ public class Trip implements Serializable {
         return fEnd;
     }
 
+    public String getfAccessCode() {
+        return fAccessCode;
+    }
+
+    public void setfAccessCode(String fAccessCode) {
+        this.fAccessCode = fAccessCode;
+    }
+
     public void setEnd(Long fEnd) {
         this.fEnd = fEnd;
     }
@@ -131,28 +142,44 @@ public class Trip implements Serializable {
         this.fParticipants = participants;
     }
 
-    public Set<User> getCosts() {
+    public Set<Cost> getCosts() {
         return fCosts;
     }
 
-    public void setCosts(Set<User> fCosts) {
+    public void setCosts(Set<Cost> fCosts) {
         this.fCosts = fCosts;
     }
 
-    public Set<User> getRequirements() {
+    public Set<Requirement> getRequirements() {
         return fRequirements;
     }
 
-    public void setRequirements(Set<User> fRequirements) {
+    public void setRequirements(Set<Requirement> fRequirements) {
         this.fRequirements = fRequirements;
     }
 
-    public Set<User> getMessages() {
+    public Set<Message> getMessages() {
         return fMessages;
     }
 
-    public void setMessages(Set<User> fMessages) {
+    public void setMessages(Set<Message> fMessages) {
         this.fMessages = fMessages;
+    }
+
+    public void addParticipantToTrip(User user){
+        this.fParticipants.add(user);
+    }
+
+    public void addCostToTrip(Cost cost){
+        this.fCosts.add(cost);
+    }
+
+    public void addRequirementToTrip(Requirement requirement){
+        this.fRequirements.add(requirement);
+    }
+
+    public void addMessageToTrip(Message message){
+        this.fMessages.add(message);
     }
 
     @Override
@@ -173,19 +200,19 @@ public class Trip implements Serializable {
         if (comparison != 0) return false;
 
 
-        if (!(CompareUtil.compareSet(this.fParticipants, trip.getParticipants()))){
+        if (!(CompareUtil.compareSet(this.fParticipants, trip.getParticipants()))) {
             return false;
         }
 
-        if (!(CompareUtil.compareSet(this.fCosts, trip.getCosts()))){
+        if (!(CompareUtil.compareSet(this.fCosts, trip.getCosts()))) {
             return false;
         }
 
-        if (!(CompareUtil.compareSet(this.fRequirements, trip.getRequirements()))){
+        if (!(CompareUtil.compareSet(this.fRequirements, trip.getRequirements()))) {
             return false;
         }
 
-        if (!(CompareUtil.compareSet(this.fMessages, trip.getMessages()))){
+        if (!(CompareUtil.compareSet(this.fMessages, trip.getMessages()))) {
             return false;
         }
         return true;
