@@ -68,11 +68,11 @@ public class UserServiceTest {
     public void testDeleteUser() {
         UserService.createUser(user);
 
-        assertNotNull("deleteUser: User found", UserService.getUserById(user.getId()));
+        assertNotNull("deleteUser: User must exist", UserService.getUserById(user.getId()));
 
         UserService.deleteUser(user);
 
-        assertNull("deleteUser: User not found", UserService.getUserById(user.getId()));
+        assertNull("deleteUser: User may not exist", UserService.getUserById(user.getId()));
     }
 
     @Test
