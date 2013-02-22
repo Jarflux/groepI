@@ -31,7 +31,9 @@
             </div>
             <div class="row">
                 <span><spring:message code='text.description'/></span>
-                <textarea name="description" title="<spring:message code='text.descriptionTooltip'/>"></textarea>
+                <textarea name="description" title="<spring:message code='text.descriptionTooltip'/>">
+
+                </textarea>
             </div>
             <div class="row">
                 <span><spring:message code='text.startdate'/></span>

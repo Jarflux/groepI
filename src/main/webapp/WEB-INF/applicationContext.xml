@@ -17,11 +17,13 @@
         <intercept-url pattern="/" access="permitAll" />
 
         <intercept-url pattern="/login" access="permitAll" />
+        <intercept-url pattern="/login/**" access="permitAll" />
+
         <intercept-url pattern="/profile/register" access="permitAll" />
         <intercept-url pattern="/profile/reset/**" access="permitAll" />
 
         <intercept-url pattern="/**" access="isAuthenticated()" />
-        <form-login login-page="/login" default-target-url="/profile/myprofile" />
+        <form-login login-page="/login" default-target-url="/profile/myprofile" authentication-failure-url="/login/incorrect" />
     </http>
 
     <authentication-manager>

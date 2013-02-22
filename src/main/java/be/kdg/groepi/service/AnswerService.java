@@ -1,10 +1,12 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package be.kdg.groepi.service;
 
-import be.kdg.groepi.model.Cost;
-import be.kdg.groepi.model.Cost;
-import be.kdg.groepi.model.Trip;
+import be.kdg.groepi.model.Answer;
+import be.kdg.groepi.model.Answer;
 import be.kdg.groepi.utils.HibernateUtil;
-
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,22 +14,22 @@ import org.hibernate.Transaction;
 /**
  * Author: Ben Oeyen
  * Date: 6/02/13
- * Class: Cost Service
+ * Class: Requirement Service
  * Description:
  */
 
-public class CostService {
-    public static Cost getCostById(long Id) {
-        Cost cost = null;
+public class AnswerService {
+    public static Answer getAnswerById(long Id) {
+        Answer answer = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
 
-            List<Cost> costs = session.createQuery("FROM Cost cost WHERE cost.fId = :Id").
+            List<Answer> answers = session.createQuery("FROM Answer answer WHERE answer.fId = :Id").
                     setString("Id", String.valueOf(Id)).setReadOnly(true).list();
-            if (costs.size() > 0) {
-                cost = costs.get(0);
+            if (answers.size() > 0) {
+                answer = answers.get(0);
             }
 
             tx.commit();
@@ -38,31 +40,15 @@ public class CostService {
         } finally {
             session.close();
         }
-        return cost;
+        return answer;
     }
 
-    public static void createCost(Cost cost) {
+    public static void createAnswer(Answer answer) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            session.save(cost);
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-    }
-
-    public static void updateCost(Cost cost) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            session.update(cost);
+            session.save(answer);
             tx.commit();
         } catch (RuntimeException e) {
             if (tx != null) {
@@ -73,13 +59,29 @@ public class CostService {
         }
     }
 
-    public static void deleteCost(Cost cost) {
+    public static void updateAnswer(Answer answer) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.update(answer);
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+    }
+
+    public static void deleteAnswer(Answer answer) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
 
-            session.delete(cost);
+            session.delete(answer);
 
             tx.commit();
         } catch (RuntimeException e) {
@@ -91,13 +93,13 @@ public class CostService {
         }
     }
 
-    public static List<Cost> getAllCosts() {
-        List<Cost> costs = null;
+    public static List<Answer> getAllAnswers() {
+        List<Answer> answers = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            costs = session.createQuery("FROM Cost").list();
+            answers = session.createQuery("FROM Answer").list();
             tx.commit();
         } catch (RuntimeException e) {
             if (tx != null) {
@@ -106,6 +108,6 @@ public class CostService {
         } finally {
             session.close();
         }
-        return costs;
+        return answers;
     }
 }

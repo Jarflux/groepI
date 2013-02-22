@@ -1,10 +1,11 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package be.kdg.groepi.service;
 
-import be.kdg.groepi.model.Cost;
-import be.kdg.groepi.model.Cost;
-import be.kdg.groepi.model.Trip;
+import be.kdg.groepi.model.Stop;
 import be.kdg.groepi.utils.HibernateUtil;
-
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,22 +13,22 @@ import org.hibernate.Transaction;
 /**
  * Author: Ben Oeyen
  * Date: 6/02/13
- * Class: Cost Service
+ * Class: Requirement Service
  * Description:
  */
 
-public class CostService {
-    public static Cost getCostById(long Id) {
-        Cost cost = null;
+public class StopService {
+    public static Stop getStopById(long Id) {
+        Stop stop = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
 
-            List<Cost> costs = session.createQuery("FROM Cost cost WHERE cost.fId = :Id").
+            List<Stop> stops = session.createQuery("FROM Stop stop WHERE stop.fId = :Id").
                     setString("Id", String.valueOf(Id)).setReadOnly(true).list();
-            if (costs.size() > 0) {
-                cost = costs.get(0);
+            if (stops.size() > 0) {
+                stop = stops.get(0);
             }
 
             tx.commit();
@@ -38,15 +39,15 @@ public class CostService {
         } finally {
             session.close();
         }
-        return cost;
+        return stop;
     }
 
-    public static void createCost(Cost cost) {
+    public static void createStop(Stop stop) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            session.save(cost);
+            session.save(stop);
             tx.commit();
         } catch (RuntimeException e) {
             if (tx != null) {
@@ -57,12 +58,12 @@ public class CostService {
         }
     }
 
-    public static void updateCost(Cost cost) {
+    public static void updateStop(Stop stop) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            session.update(cost);
+            session.update(stop);
             tx.commit();
         } catch (RuntimeException e) {
             if (tx != null) {
@@ -73,13 +74,13 @@ public class CostService {
         }
     }
 
-    public static void deleteCost(Cost cost) {
+    public static void deleteStop(Stop stop) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
 
-            session.delete(cost);
+            session.delete(stop);
 
             tx.commit();
         } catch (RuntimeException e) {
@@ -91,13 +92,13 @@ public class CostService {
         }
     }
 
-    public static List<Cost> getAllCosts() {
-        List<Cost> costs = null;
+    public static List<Stop> getAllStops() {
+        List<Stop> stops = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            costs = session.createQuery("FROM Cost").list();
+            stops = session.createQuery("FROM Stop").list();
             tx.commit();
         } catch (RuntimeException e) {
             if (tx != null) {
@@ -106,6 +107,6 @@ public class CostService {
         } finally {
             session.close();
         }
-        return costs;
-    }
+        return stops;
+    }    
 }
