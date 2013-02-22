@@ -6,14 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="org.springframework.security.ui.webapp.AuthenticationProcessingFilter" %>
-<%@ page import="org.springframework.security.ui.AbstractProcessingFilter" %>
-<%@ page import="org.springframework.security.AuthenticationException" %>
+
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <html>
 <head>
-    <link href="css/blue.css" rel="StyleSheet" />
+    <link href="/css/blue.css" rel="StyleSheet" />
 
     <title></title>
 </head>
@@ -27,7 +25,7 @@
 
 
         <form method="post" action="j_spring_security_check" class="mainstyle validate">
-            <div class="row"> <span><spring:message code='text.gebruikersnaam'/></span>          	<input type="text" name="j_username" id="j_username" <c:if test="${not empty param.login_error}">value='<%= session.getAttribute(AuthenticationProcessingFilter.SPRING_SECURITY_LAST_USERNAME_KEY) %>'</c:if>/>
+            <div class="row"> <span><spring:message code='text.gebruikersnaam'/></span>          	<input type="text" name="j_username" id="j_username" />
 
             </div>
 
