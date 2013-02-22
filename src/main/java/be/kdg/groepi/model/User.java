@@ -3,6 +3,9 @@ package be.kdg.groepi.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+/*import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.userdetails.User;*/
 
 /**
  * Author: Ben Oeyen
