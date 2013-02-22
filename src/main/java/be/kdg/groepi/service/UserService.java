@@ -13,16 +13,9 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
-
-/**
- * Author: Ben Oeyen
- * Date: 6/02/13
- * Class: User Service
- * Description:
- */
 public class UserService {
 
-    public static User getUserById(long Id) {
+    public static be.kdg.groepi.model.User getUserById(long Id) {
         User user = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
