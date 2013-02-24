@@ -2,12 +2,15 @@
 <beans:beans xmlns="http://www.springframework.org/schema/security"
              xmlns:beans="http://www.springframework.org/schema/beans"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:context="http://www.springframework.org/schema/context"
              xsi:schemaLocation="http://www.springframework.org/schema/beans
                     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
                     http://www.springframework.org/schema/security
-                    http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+                    http://www.springframework.org/schema/security/spring-security-3.1.xsd
+                    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--<http pattern="/favicon.ico" security="none" />-->
+    <context:component-scan base-package="be.kdg.groepi" />
     <http use-expressions="true">
         <intercept-url pattern="/home" access="permitAll" />
         <intercept-url pattern="/css/**" access="permitAll" />
@@ -26,23 +29,19 @@
         <form-login login-page="/login" default-target-url="/profile/myprofile" authentication-failure-url="/login/incorrect" />
     </http>
 
-    <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="rod" password="koala" authorities="supervisor, teller, user" />
-                <user name="dianne" password="emu" authorities="teller, user" />
-                <user name="scott" password="wombat" authorities="user" />
-                <user name="peter" password="opal" authorities="user" />
-            </user-service>
-            <!--<jdbc-user-service data-source-ref="dataSource" users-by-username-query="select email,password,true from t_user where email=?"/>-->
-        </authentication-provider>
-    </authentication-manager>
-
-    <beans:bean id="dataSource"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <beans:property name="url" value="jdbc:mysql://mysql.vincentverbist.be:3306/trippidb" />
-        <beans:property name="username" value="groepi_user" />
-        <beans:property name="password" value="groepi_pass" />
+    <beans:bean id="daoAuthenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+        <beans:property name="userDetailsService" ref="userDetailsService"/>
     </beans:bean>
+
+    <beans:bean id="authenticationManager" class="org.springframework.security.authentication.ProviderManager">
+        <beans:property name="providers">
+            <beans:list>
+                <beans:ref local="daoAuthenticationProvider" />
+            </beans:list>
+        </beans:property>
+    </beans:bean>
+    <authentication-manager>
+    <authentication-provider user-service-ref="userDetailsService">
+    </authentication-provider>
+    </authentication-manager>
 </beans:beans>
