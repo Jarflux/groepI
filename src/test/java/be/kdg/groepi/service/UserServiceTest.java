@@ -47,13 +47,11 @@ public class UserServiceTest {
     @Test
     public void testUpdateUser() {
         UserService.createUser(user);
-
         user.setName("NOT TIMMEH");
         user.setPassword("hemmitton");
         user.setDateOfBirth(dateToLong(3,6,2012,12,45,0));
         user.setEmail("NOTTIM@M.EH");
         user.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
-
         UserService.updateUser(user);
         assertEquals(user, UserService.getUserById(user.getId()));
     }
@@ -67,11 +65,8 @@ public class UserServiceTest {
     @Test
     public void testDeleteUser() {
         UserService.createUser(user);
-
         assertNotNull("deleteUser: User must exist", UserService.getUserById(user.getId()));
-
         UserService.deleteUser(user);
-
         assertNull("deleteUser: User may not exist", UserService.getUserById(user.getId()));
     }
 
@@ -87,23 +82,25 @@ public class UserServiceTest {
     @Test
     public void testChangePassword() {
         String newPassword = "newPassword";
-
         UserService.createUser(user);
-
         user.setPassword(newPassword);
         UserService.updateUser(user);
-
         assertTrue("testChangePassword: password wasn't reset", user.getPassword().equals(newPassword));
     }
 
     @Test
     public void testResetPassword() {
         String oldPassword = user.getPassword();
-
         UserService.createUser(user);
-
         UserService.resetPassword(user.getEmail());
-
         //assertFalse("testResetPassword: ", user.getPassword().equals(oldPassword));
+    }
+
+    @Test
+    public void testGetByEmail() {
+        String oldPassword = user.getPassword();
+        UserService.createUser(user);
+        UserService.getUserByEmail("TIM@M.EH");
+        assertEquals("testGetUserByEmail: ", user, UserService.getUserById(user.getId()));
     }
 }

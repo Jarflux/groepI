@@ -28,19 +28,18 @@
                ${errormsg}
             </div>
         </c:if>
-
         <form method="post" action="j_spring_security_check" class="mainstyle validate">
-            <div class="row"> <span><spring:message code='text.gebruikersnaam'/></span>          	<input type="text" name="j_username" id="j_username" />
-
+            <div class="row">
+                <span><spring:message code='text.gebruikersnaam'/></span>
+                <input type="text" name="j_username" id="j_username" />
             </div>
-
-            <div class="row"> <span><spring:message code='text.wachtwoord'/></span>         <input type="password" class="required"  name="j_password" id="j_password" placeholder=""/>
+            <div class="row">
+                <span><spring:message code='text.wachtwoord'/></span>
+                <input type="password" class="required"  name="j_password" id="j_password" placeholder=""/>
             </div>
-
-
-            <div class="row"> <span></span>       <input type="submit" class="button" value="<spring:message code='text.registreren'/>" />
+            <div class="row">
+                <input type="submit" class="button" value="<spring:message code='text.aanmelden'/>" />
             </div>
-
         </form>
     </div>
 </div>

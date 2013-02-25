@@ -27,7 +27,7 @@ function preparetooltips()
 }
     function validateform()
     {
-        $(".dateregister").dateinput({format: 'yyyy/mm/dd',yearRange: [-80, -12],firstDay: 1,selectors: true,value: "Today"  });
+        $(".dateregister").dateinput({format: 'yyyy-mm-dd',yearRange: [-80, -12],firstDay: 1,selectors: true,value: "Today"  });
         $(".date").dateinput({format: 'yyyy-mm-dd',yearRange: [0, 1],firstDay: 1,selectors: true,value: "Today"  });
 
 

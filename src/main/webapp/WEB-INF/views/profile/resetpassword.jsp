@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -20,9 +21,9 @@
         <jsp:include page="/topmenu"/>
     </div>
     <div id="content" class="column light">
-        <h2><spring:message code="text.maakaccount"/></h2>
-
-        <form method="post" action="!!!!!!!!!!!!!!!!!!!!!!!setUserPassword" class="mainstyle tooltips validate">
+        <h2><spring:message code="text.resetpassword"/></h2>
+        <form method="post" action="setNewPassword" class="mainstyle tooltips validate">
+            <input type="hidden" name="passwordResetString" value="${passwordResetString}"/>
             <div class="row"><span><spring:message code='text.wachtwoord'/></span>
                 <input type="password" class="required equalsto" equalsto="password2" name="password"
                        placeholder="" title="Kies een sterk wachtwoord"/>
@@ -32,7 +33,7 @@
                        placeholder="" title="Herhaal uw wachtwoord"/>
             </div>
             <div class="row"><span></span>
-                <input type="submit" class="button" value="<spring:message code='text.registreren'/>"/>
+                <input type="submit" class="button" value="<spring:message code='text.resetpassword'/>"/>
             </div>
         </form>
     </div>
