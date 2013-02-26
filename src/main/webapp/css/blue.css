@@ -255,6 +255,10 @@ form.mainstyle input, form.mainstyle textarea
     font-family: "PT Sans Narrow";
 
 }
+form.mainstyle input[type="checkbox"]
+{
+    width: auto !important;
+}
 
 .button
 {

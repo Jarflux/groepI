@@ -32,6 +32,7 @@
         <mapping class="be.kdg.groepi.model.Message"/>
         <mapping class="be.kdg.groepi.model.Answer"/>
         <mapping class="be.kdg.groepi.model.StopPictures"/>
+        <mapping class="be.kdg.groepi.model.TripInstance"/>
 
 
     </session-factory>

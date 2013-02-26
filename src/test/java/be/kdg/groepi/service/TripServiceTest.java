@@ -56,21 +56,7 @@ public class TripServiceTest {
         assertNull("deleteTrip: Trip not found", TripService.getTripById(trip.getId()));
     }
 
-    @Test
-    public void addUserToTrip(){
-        assertTrue("Trip: trip should have no participants", trip.getParticipants().isEmpty());
-       // trip.addParticipantToTrip(user);
-        assertFalse("Trip: trip should have participants", trip.getParticipants().isEmpty());
-    }
 
-    @Test
-    public void addCostToTrip(){
-        assertTrue("Trip: trip should have no costs", trip.getCosts().isEmpty());
-        Cost cost = new Cost("BEN's cost", 35.53);
-        CostService.createCost(cost);
-        //trip.addCostToTrip(cost);
-        assertFalse("Trip: trip should have costs", trip.getCosts().isEmpty());
-    }
 
     @Test
     public void addRequirementToTrip(){
@@ -81,14 +67,6 @@ public class TripServiceTest {
         assertFalse("Trip: trip should have requirements", trip.getRequirements().isEmpty());
     }
 
-    @Test
-    public void addMessageToTrip(){
-        assertTrue("Trip: trip should have no messages", trip.getMessages().isEmpty());
-        Message message = new Message("BEN's message", dateToLong(12, 10, 1990, 8, 17, 35));
-        MessageService.createMessage(message);
-        //trip.addMessageToTrip(message);
-        assertFalse("Trip: trip should have messages", trip.getMessages().isEmpty());
-    }
 
 
 

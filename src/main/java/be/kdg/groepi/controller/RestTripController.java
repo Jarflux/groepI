@@ -28,7 +28,7 @@ public class RestTripController {
         tempuser.setId(1);
         trip.setOrganiser(tempuser);
         TripService.createTrip(trip);
-        return new ModelAndView("trips/view", "tripObject", trip);
+        return new ModelAndView("trips/addinstance", "tripObject", trip);
     }
 
     @RequestMapping(value = "/view/{tripId}", method = RequestMethod.GET)
