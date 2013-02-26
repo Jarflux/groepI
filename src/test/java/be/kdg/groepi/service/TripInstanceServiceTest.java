@@ -28,6 +28,7 @@ public class TripInstanceServiceTest {
         UserService.createUser(user);
         // TODO: Relatie leggen tussen trip en tripinstance
        Trip trip = new Trip("Onze eerste trip","Hopelijk is deze niet te saai!",true,true,user);// trip aanmaken
+        TripService.createTrip(trip);
         tripinstance = new TripInstance("Bachelor feestje","Iemand gaat trouwen, bier en vrouwen ole",false,user,trip);
        TripInstanceService.createTripInstance(tripinstance);
     }
@@ -35,8 +36,8 @@ public class TripInstanceServiceTest {
     @After
     public void afterEachTest(){
         tripinstance = null;
-        for (Trip trip : TripService.getAllTrips()) {
-            TripService.deleteTrip(trip);
+        for (TripInstance tripInstance : TripInstanceService.getAllTripInstances()) {
+            TripInstanceService.deleteTripInstance(tripinstance);
         }
     }
 
