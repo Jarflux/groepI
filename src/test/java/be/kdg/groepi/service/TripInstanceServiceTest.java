@@ -42,7 +42,7 @@ public class TripInstanceServiceTest {
 
     @Test
     public void createTripInstance(){
-        assertEquals("createTripInstance: ", tripinstance, TripService.getTripById(tripinstance.getId()));
+        assertEquals("createTripInstance: ", tripinstance, TripInstanceService.getTripInstanceById(tripinstance.getId()));
     }
 
     @Test
