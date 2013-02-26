@@ -22,7 +22,7 @@ import java.util.Calendar;
 public class RestUserController {
     private static final Logger logger = Logger.getLogger(RestUserController.class);
 
-    @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/view/{userId}", method = RequestMethod.GET)
     public ModelAndView getUser(@PathVariable("userId") String userId) {
         User user;
         // validate input
@@ -52,8 +52,6 @@ public class RestUserController {
     }
     @RequestMapping(value = "/myprofile")
     public ModelAndView myProfile(@ModelAttribute("userObject") User user) {
-        //TODO: encrypt password
-        UserService.createUser(user);
         return new ModelAndView("profile/userprofile", "userObject", user);
     }
 
