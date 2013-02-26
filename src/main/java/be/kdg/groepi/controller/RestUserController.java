@@ -49,7 +49,7 @@ public class RestUserController {
     @RequestMapping(value = "/createUser", method = RequestMethod.POST)
     public ModelAndView createUser(@ModelAttribute("userObject") User user, @RequestParam(value = "BirthDate") String DateOfBirth) {
         //TODO: encrypt password
-        user.setDateOfBirth(DateUtil.parseToDate(DateOfBirth,"0:0:0"));
+        user.setDateOfBirth(DateUtil.dateStringToLong(DateOfBirth));
         UserService.createUser(user);
         return new ModelAndView("profile/user", "userObject", user);
     }

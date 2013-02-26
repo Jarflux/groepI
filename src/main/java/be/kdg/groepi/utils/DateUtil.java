@@ -12,16 +12,40 @@ public class DateUtil {
         return cal.getTime().getTime();
     }
 
-    public static Long parseToDate(String dateString, String timeString){
+    public static Long dateStringToLong(String dateString){
         String[] dateArray = dateString.split("-");
         int day = Integer.parseInt(dateArray[2]);
         int month = Integer.parseInt(dateArray[1]);
         int year = Integer.parseInt(dateArray[0]);
-        String[] timeArray = dateString.split(":");
-        int hour = Integer.parseInt(dateArray[0]);
-        int min = Integer.parseInt(dateArray[1]);
-        int sec = Integer.parseInt(dateArray[2]);
+        Long date = DateUtil.dateToLong(day,month,year,0,0,0);
+        return date;
+    }
+
+    public static Long dateTimeStringToLong(String dateString, String timeString){
+        String[] dateArray = dateString.split("-");
+        int day = Integer.parseInt(dateArray[2]);
+        int month = Integer.parseInt(dateArray[1]);
+        int year = Integer.parseInt(dateArray[0]);
+        String[] timeArray = timeString.split(":");
+        int hour = Integer.parseInt(timeArray[0]);
+        int min = Integer.parseInt(timeArray[1]);
+        int sec = Integer.parseInt(timeArray[2]);
         Long date = DateUtil.dateToLong(day,month,year,hour,min,sec);
         return date;
+    }
+
+    public static Long timeStringToLong(String timeString){
+        String[] timeArray = timeString.split(":");
+        int hour = Integer.parseInt(timeArray[0]);
+        int min = Integer.parseInt(timeArray[1]);
+        int sec = Integer.parseInt(timeArray[2]);
+        Long date = DateUtil.dateToLong(0,0,0,hour,min,sec);
+        return date;
+    }
+
+    public static Date longToDate(Long date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(date);
+        return cal.getTime();
     }
 }
