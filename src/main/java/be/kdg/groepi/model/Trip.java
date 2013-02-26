@@ -150,6 +150,24 @@ public class Trip implements Serializable {
         this.fMessages = fMessages;
     }
 
+
+    public void addParticipantToTrip(User user) {
+        this.fParticipants.add(user);
+    }
+
+    public void addCostToTrip(Cost cost) {
+        this.fCosts.add(cost);
+    }
+
+    public void addRequirementToTrip(Requirement requirement) {
+        this.fRequirements.add(requirement);
+    }
+
+    public void addMessageToTrip(Message message) {
+        this.fMessages.add(message);
+    }
+
+
     @Override
     public boolean equals(Object o) {
         Trip trip = (Trip) o;
@@ -167,8 +185,8 @@ public class Trip implements Serializable {
         comparison = this.fRepeatable.compareTo(trip.getRepeatable());
         if (comparison != 0) return false;
 
-        if (! this.fOrganiser.equals(trip.getOrganiser())){
-              return false;
+        if (!this.fOrganiser.equals(trip.getOrganiser())) {
+            return false;
         }
 
         if (!(CompareUtil.compareSet(this.fParticipants, trip.getParticipants()))) {
@@ -186,12 +204,6 @@ public class Trip implements Serializable {
         if (!(CompareUtil.compareSet(this.fMessages, trip.getMessages()))) {
             return false;
         }
-
-     /*
-
-        this.fOrganiser = fOrganiser;
-         */
-
         return true;
     }
 
