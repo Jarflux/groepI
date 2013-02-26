@@ -12,34 +12,22 @@ public class DateUtil {
         return cal.getTime().getTime();
     }
 
-    public static Long dateStringToLong(String dateString){
-        String[] dateArray = dateString.split("-");
-        int day = Integer.parseInt(dateArray[2]);
-        int month = Integer.parseInt(dateArray[1]);
-        int year = Integer.parseInt(dateArray[0]);
-        Long date = DateUtil.dateToLong(day,month,year,0,0,0);
-        return date;
-    }
+    public static Long dateStringToLong(String dateString, String timeString){
+        int day=0,month=0,year=0,hour=0,min=0,sec=0;
 
-    public static Long dateTimeStringToLong(String dateString, String timeString){
+        if(dateString != null){
         String[] dateArray = dateString.split("-");
-        int day = Integer.parseInt(dateArray[2]);
-        int month = Integer.parseInt(dateArray[1]);
-        int year = Integer.parseInt(dateArray[0]);
+        day = Integer.parseInt(dateArray[2]);
+        month = Integer.parseInt(dateArray[1]);
+        year = Integer.parseInt(dateArray[0]);
+        }
+        if(dateString != null){
         String[] timeArray = timeString.split(":");
-        int hour = Integer.parseInt(timeArray[0]);
-        int min = Integer.parseInt(timeArray[1]);
-        int sec = Integer.parseInt(timeArray[2]);
+        hour = Integer.parseInt(timeArray[0]);
+        min = Integer.parseInt(timeArray[1]);
+        sec = Integer.parseInt(timeArray[2]);
+        }
         Long date = DateUtil.dateToLong(day,month,year,hour,min,sec);
-        return date;
-    }
-
-    public static Long timeStringToLong(String timeString){
-        String[] timeArray = timeString.split(":");
-        int hour = Integer.parseInt(timeArray[0]);
-        int min = Integer.parseInt(timeArray[1]);
-        int sec = Integer.parseInt(timeArray[2]);
-        Long date = DateUtil.dateToLong(0,0,0,hour,min,sec);
         return date;
     }
 
