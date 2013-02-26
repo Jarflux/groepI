@@ -9,6 +9,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.mail.Session;
+import javax.servlet.http.HttpSession;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -33,6 +35,7 @@ public class RestUserController {
             // return createErrorResponse(sMessage);
         }*/
         //try {
+
         user = UserService.getUserById(Long.parseLong(userId));
         if (user != null) {
             logger.debug("Returning User: " + user.toString() + " with user #" + userId);
@@ -54,8 +57,8 @@ public class RestUserController {
         return new ModelAndView("profile/user", "userObject", user);
     }
     @RequestMapping(value = "/myprofile")
-    public ModelAndView myProfile(@ModelAttribute("userObject") User user) {
-        return new ModelAndView("profile/userprofile", "userObject", user);
+    public ModelAndView myProfile(HttpSession session) {
+        return new ModelAndView("profile/userprofile", "userObject", (User) session.getAttribute("userObject"));
     }
 
     @RequestMapping(value = "/reset/forgotPassword")
