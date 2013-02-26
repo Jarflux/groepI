@@ -54,7 +54,7 @@ public class RestUserController {
     public ModelAndView myProfile(@ModelAttribute("userObject") User user) {
         //TODO: encrypt password
         UserService.createUser(user);
-        return new ModelAndView("profile/userprofile", "userObject", user);
+        return new ModelAndView("profile/myprofile", "userObject", user);
     }
 
     @RequestMapping(value = "/reset/forgotPassword")
