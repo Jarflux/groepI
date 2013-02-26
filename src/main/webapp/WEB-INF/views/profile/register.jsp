@@ -42,7 +42,7 @@
     </div>
     <div class="row">
         <span><spring:message code='text.dateofbirth'/></span>
-        <input type="datetime" class="required dateregister" name="dateOfBirth" placeholder="" title="Gelieve uw geboortedatum in te geven"/>
+        <input type="datetime" class="required dateregister" name="BirthDate" placeholder="" title="Gelieve uw geboortedatum in te geven"/>
     </div>
     <div class="row">
         <span></span>

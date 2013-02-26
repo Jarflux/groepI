@@ -52,6 +52,11 @@ public class RestTripController {
             //return createErrorResponse(String.format(sMessage, e.toString()));
         }*/
     }
-    
+
+    @RequestMapping(value = "/addstop")
+    public String addstop(){
+        System.out.println("AddStop: Passing through...");
+        return "trips/addstop";
+    }
 }
 

@@ -21,7 +21,7 @@ public class DateUtil {
         month = Integer.parseInt(dateArray[1]);
         year = Integer.parseInt(dateArray[0]);
         }
-        if(dateString != null){
+        if(timeString != null){
         String[] timeArray = timeString.split(":");
         hour = Integer.parseInt(timeArray[0]);
         min = Integer.parseInt(timeArray[1]);
