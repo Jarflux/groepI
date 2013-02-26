@@ -37,6 +37,9 @@ public class TripInstance implements Serializable {
     private Boolean fAvailable;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "trip_id", nullable = false)
+    private Trip fTrip;
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     private User fOrganiser;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -56,15 +59,24 @@ public class TripInstance implements Serializable {
     public TripInstance() {
     }
 
-    public TripInstance(String fTitle, String fDescription, Boolean fAvailable, Boolean fRepeatable, User fOrganiser) {
+    public TripInstance(String fTitle, String fDescription, Boolean fAvailable, User fOrganiser, Trip fTrip) {
         this.fTitle = fTitle;
         this.fDescription = fDescription;
         this.fAvailable = fAvailable;
         this.fOrganiser = fOrganiser;
+        this.fTrip = fTrip;
         this.fParticipants = fParticipants;
         this.fCosts = fCosts;
         this.fRequirements = fRequirements;
         this.fMessages = fMessages;
+    }
+
+    public Trip getTrip() {
+        return fTrip;
+    }
+
+    public void setTrip(Trip fTrip) {
+        this.fTrip = fTrip;
     }
 
     public Long getId() {
@@ -98,7 +110,6 @@ public class TripInstance implements Serializable {
     public void setAvailable(Boolean fAvailable) {
         this.fAvailable = fAvailable;
     }
-
 
 
     public User getOrganiser() {

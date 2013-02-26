@@ -27,8 +27,8 @@ public class TripInstanceServiceTest {
         user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4,5,2011,15,32,0));
         UserService.createUser(user);
         // TODO: Relatie leggen tussen trip en tripinstance
-      // Trip trip = new Trip("Onze eerste trip","Hopelijk is deze niet te saai!",true,true,user);// trip aanmaken
-        tripinstance = new TripInstance("Bachelor feestje","Iemand gaat trouwen, bier en vrouwen ole",false,false,user);
+       Trip trip = new Trip("Onze eerste trip","Hopelijk is deze niet te saai!",true,true,user);// trip aanmaken
+        tripinstance = new TripInstance("Bachelor feestje","Iemand gaat trouwen, bier en vrouwen ole",false,user,trip);
        TripInstanceService.createTripInstance(tripinstance);
     }
 
