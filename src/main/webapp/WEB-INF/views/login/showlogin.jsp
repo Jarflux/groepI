@@ -22,7 +22,7 @@
         <jsp:include page="/topmenu"   />
     </div>
     <div id="content" class="column light">
-        <h2><spring:message code="text.aanmelden"/></h2>
+        <h2><spring:message code="text.login"/></h2>
         <c:if test="${not empty errormsg}">
             <div class="errormsg">
                ${errormsg}
@@ -30,15 +30,15 @@
         </c:if>
         <form method="post" action="j_spring_security_check" class="mainstyle validate">
             <div class="row">
-                <span><spring:message code='text.gebruikersnaam'/></span>
+                <span><spring:message code='text.username'/></span>
                 <input type="text" name="j_username" id="j_username" />
             </div>
             <div class="row">
-                <span><spring:message code='text.wachtwoord'/></span>
+                <span><spring:message code='text.password'/></span>
                 <input type="password" class="required"  name="j_password" id="j_password" placeholder=""/>
             </div>
             <div class="row">
-                <input type="submit" class="button" value="<spring:message code='text.aanmelden'/>" />
+                <input type="submit" class="button" value="<spring:message code='text.login'/>" />
             </div>
         </form>
     </div>

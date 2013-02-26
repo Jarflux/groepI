@@ -25,7 +25,7 @@
          <section>
              <div class="quarter"><img src="/images/interdit-256.png" width="250" /></div>
              <div class="three-quarter">
-<p><spring:message code="text.spijt"/><p>
+<p><spring:message code="text.sorry"/><p>
 
              <div class="errormsg"><spring:message code='text.${errorid}' /><p class="small">Error: ${errorid}
 

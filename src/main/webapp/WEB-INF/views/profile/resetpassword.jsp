@@ -24,11 +24,11 @@
         <h2><spring:message code="text.resetpassword"/></h2>
         <form method="post" action="setNewPassword" class="mainstyle tooltips validate">
             <input type="hidden" name="passwordResetString" value="${passwordResetString}"/>
-            <div class="row"><span><spring:message code='text.wachtwoord'/></span>
+            <div class="row"><span><spring:message code='text.password'/></span>
                 <input type="password" class="required equalsto" equalsto="password2" name="password"
                        placeholder="" title="Kies een sterk wachtwoord"/>
             </div>
-            <div class="row"><span><spring:message code='text.wachtwoordherhalen'/></span>
+            <div class="row"><span><spring:message code='text.repeatpassword'/></span>
                 <input type="password" class="required equalsto" equalsto="password" name="password2"
                        placeholder="" title="Herhaal uw wachtwoord"/>
             </div>

@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title><spring:message code='text.bekijkprofiel' /></title>
+    <title><spring:message code='text.viewprofile' /></title>
     <link href="/css/blue.css" rel="stylesheet" />
 
 </head>
@@ -20,7 +20,7 @@
         <jsp:include page="/topmenu"   />
     </div>
     <div id="content" class="column light">
-<h2> <spring:message code='text.bekijkprofiel' /> </h2>
+<h2> <spring:message code='text.viewprofile' /> </h2>
 
          <section>
             <div class="quarter"><img src="/images/noprofile.png" width='150' class="profilepic"/></div>

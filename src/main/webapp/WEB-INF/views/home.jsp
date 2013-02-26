@@ -20,15 +20,15 @@
         <div class="loginmiddlebox"><h2>Login</h2>
 
             <form action="j_spring_security_check" method="post">
-                <input type="text" name="j_username" id="j_username" class="loginbox" placeholder="<spring:message code='text.gebruikersnaam'/>"/> <br>
-                <input type="password" class="loginbox" name="j_password" id="j_password" placeholder="<spring:message code='text.wachtwoord'/>"/> <br>
+                <input type="text" name="j_username" id="j_username" class="loginbox" placeholder="<spring:message code='text.username'/>"/> <br>
+                <input type="password" class="loginbox" name="j_password" id="j_password" placeholder="<spring:message code='text.password'/>"/> <br>
 
-                <input type="submit" class="button" value="<spring:message code='text.aanmelden'/>"/> &nbsp;
+                <input type="submit" class="button" value="<spring:message code='text.login'/>"/> &nbsp;
 
                 <span class="small"><a href="/profile/reset/forgotPassword"><spring:message
-                        code="text.wachtwoordreset_link"/></a></span>
+                        code="text.resetpasswordlink"/></a></span>
             </form>
-            <a href="profile/register"><spring:message code='text.maakaccount'/></a>
+            <a href="profile/register"><spring:message code='text.createaccount'/></a>
 
 
         </div>
