@@ -27,7 +27,7 @@
         <intercept-url pattern="/profile/createUser" access="permitAll" />
 
         <intercept-url pattern="/**" access="isAuthenticated()" />
-        <form-login login-page="/login" default-target-url="/profile/myprofile" authentication-failure-url="/login/incorrect" />
+        <form-login login-page="/login" authentication-failure-url="/login/incorrect" authentication-success-handler-ref="successHandler"/>
     </http>
 
     <beans:bean id="daoAuthenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
@@ -41,8 +41,17 @@
             </beans:list>
         </beans:property>
     </beans:bean>
+
+    <beans:bean id="successHandler" class="be.kdg.groepi.security.MyAuthenticationSuccessHandler"/>
+    <!--<beans:bean id="authenticationFilter" class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
+        &lt;!&ndash; There might be more properties here, depending on your auth filter!! &ndash;&gt;
+        <beans:property name="filterProcessesUrl" value="/j_spring_security_check" />
+        <beans:property name="authenticationManager" ref="authenticationManager" />
+        <beans:property name="authenticationSuccessHandler" ref="successHandler" />
+    </beans:bean>-->
+
     <authentication-manager>
-    <authentication-provider user-service-ref="userDetailsService">
-    </authentication-provider>
+        <authentication-provider user-service-ref="userDetailsService">
+        </authentication-provider>
     </authentication-manager>
 </beans:beans>

@@ -2,13 +2,17 @@ package be.kdg.groepi.controller;
 
 import be.kdg.groepi.model.User;
 import be.kdg.groepi.service.UserService;
+import be.kdg.groepi.utils.DateUtil;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.mail.Session;
+import javax.servlet.http.HttpSession;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Author: Ben Oeyen
@@ -31,6 +35,7 @@ public class RestUserController {
          * // return createErrorResponse(sMessage);
          * } */
         //try {
+
         user = UserService.getUserById(Long.parseLong(userId));
         if (user != null) {
             logger.debug("Returning User: " + user.toString() + " with user #" + userId);
@@ -45,8 +50,9 @@ public class RestUserController {
     }
 
     @RequestMapping(value = "/createUser", method = RequestMethod.POST)
-    public ModelAndView createUser(@ModelAttribute("userObject") User user) {
+    public ModelAndView createUser(@ModelAttribute("userObject") User user, @RequestParam(value = "BirthDate") String DateOfBirth) {
         //TODO: encrypt password
+        user.setDateOfBirth(DateUtil.dateStringToLong(DateOfBirth));
         UserService.createUser(user);
         return new ModelAndView("profile/user", "userObject", user);
     }
