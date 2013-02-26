@@ -20,7 +20,7 @@
         <jsp:include page="/topmenu"   />
     </div>
     <div id="content" class="column light">
-<h2> <spring:message code='text.mijnprofiel' /> </h2>
+<h2> <spring:message code='text.myprofile' /> </h2>
 
          <section>
             <div class="quarter"><img src="/images/noprofile.png" width='150' class="profilepic"/></div>

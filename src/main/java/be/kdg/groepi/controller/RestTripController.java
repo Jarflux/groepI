@@ -1,6 +1,7 @@
 package be.kdg.groepi.controller;
 
 import be.kdg.groepi.model.Trip;
+import be.kdg.groepi.model.User;
 import be.kdg.groepi.service.TripService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,6 +24,9 @@ public class RestTripController {
 
     @RequestMapping(value = "/createTrip", method = RequestMethod.POST)
     public ModelAndView createTrip(@ModelAttribute("tripObject") Trip trip) {
+        User tempuser = new User();
+        tempuser.setId(1);
+        trip.setOrganiser(tempuser);
         TripService.createTrip(trip);
         return new ModelAndView("trips/view", "tripObject", trip);
     }

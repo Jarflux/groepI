@@ -22,6 +22,9 @@
     <div id="content" class="column light">
 <h2> <spring:message code='text.bekijktripinfo' /> </h2>
 <section>
+    <div class="gmap">
+
+    </div>
     <div class="row">
         <c:choose>
             <c:when test="${tripObject != null}">
@@ -36,9 +39,7 @@
             </c:when>
         </c:choose>
     </div>
-    <div class="gmap">
 
-    </div>
 </section>
 </div>
 </div>

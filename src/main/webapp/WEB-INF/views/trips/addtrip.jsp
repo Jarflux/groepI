@@ -20,6 +20,7 @@
         <jsp:include page="/topmenu"   />
     </div>
     <div id="content" class="column light">
+        <h2><spring:message code="text.createtrip"/></h2>
         <form method="post" action="createTrip" class="mainstyle tooltips">
             <div class="row">
                 <span><spring:message code='text.title'/></span>
@@ -34,13 +35,13 @@
                 <textarea name="description" title="<spring:message code='text.descriptionTooltip'/>"></textarea>
             </div>
             <div class="row">
-                <span><spring:message code='text.startdate'/></span>
-                <input type="datetime" class="date" name="start" placeholder="" title="<spring:message code='text.startdateTooltip'/>"/>
+                <span><spring:message code='text.repeatabletrip'/></span>
+          <input type="checkbox" name="repeatable" value="true" title="Is je trip herhaalbaar?"/>
             </div>
-            <div class="row">
-                <span><spring:message code='text.enddate'/></span>
-                <input type="datetime" class="date" name="end" placeholder="" title="<spring:message code='text.enddateTooltip'/>"/>
-            </div>
+
+
+
+
             <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
         </form>
     </div>

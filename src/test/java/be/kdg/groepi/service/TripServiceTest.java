@@ -23,7 +23,7 @@ public class TripServiceTest {
     public void beforeEachTest(){
         user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4,5,2011,15,32,0));
         UserService.createUser(user);
-        trip = new Trip("Stadwandeling Nieuw Zuid", "Ho-ho-ho", Boolean.TRUE, dateToLong(4,5,2011,15,32,0),dateToLong(4,5,2011,19,32,0),user );// trip aanmaken
+        trip = new Trip("Onze eerste trip","Hopelijk is deze niet te saai!",true,true,user);// trip aanmaken
         TripService.createTrip(trip);
     }
 
@@ -44,8 +44,7 @@ public class TripServiceTest {
     public void updateTrip(){
         trip.setAvailable(Boolean.FALSE);
         trip.setDescription("Ho-ho-ho edited");
-        trip.setStart(dateToLong(4,5,2011,15,32,0));
-        trip.setEnd(dateToLong(4,5,2011,15,32,0));
+
         TripService.updateTrip(trip);
         assertEquals("updateTrip: ",trip,TripService.getTripById(trip.getId()));
     }
@@ -60,7 +59,7 @@ public class TripServiceTest {
     @Test
     public void addUserToTrip(){
         assertTrue("Trip: trip should have no participants", trip.getParticipants().isEmpty());
-        trip.addParticipantToTrip(user);
+       // trip.addParticipantToTrip(user);
         assertFalse("Trip: trip should have participants", trip.getParticipants().isEmpty());
     }
 
@@ -69,7 +68,7 @@ public class TripServiceTest {
         assertTrue("Trip: trip should have no costs", trip.getCosts().isEmpty());
         Cost cost = new Cost("BEN's cost", 35.53);
         CostService.createCost(cost);
-        trip.addCostToTrip(cost);
+        //trip.addCostToTrip(cost);
         assertFalse("Trip: trip should have costs", trip.getCosts().isEmpty());
     }
 
@@ -78,7 +77,7 @@ public class TripServiceTest {
         assertTrue("Trip: trip should have no requirements", trip.getRequirements().isEmpty());
         Requirement requirement = new Requirement("BEN");
         RequirementService.createRequirement(requirement);
-        trip.addRequirementToTrip(requirement);
+       // trip.addRequirementToTrip(requirement);
         assertFalse("Trip: trip should have requirements", trip.getRequirements().isEmpty());
     }
 
@@ -87,7 +86,7 @@ public class TripServiceTest {
         assertTrue("Trip: trip should have no messages", trip.getMessages().isEmpty());
         Message message = new Message("BEN's message", dateToLong(12, 10, 1990, 8, 17, 35));
         MessageService.createMessage(message);
-        trip.addMessageToTrip(message);
+        //trip.addMessageToTrip(message);
         assertFalse("Trip: trip should have messages", trip.getMessages().isEmpty());
     }
 
