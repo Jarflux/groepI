@@ -35,12 +35,9 @@ public class Trip implements Serializable {
     private String fDescription;
     @Column(name = "public")
     private Boolean fAvailable;
-    @Column(name = "start")
-    private Long fStart;
-    @Column(name = "end")
-    private Long fEnd;
-    @Column(name = "accessCode")
-    private String fAccessCode;
+    @Column(name = "repeatable")
+    private Boolean fRepeatable;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     private User fOrganiser;
@@ -61,21 +58,24 @@ public class Trip implements Serializable {
     public Trip() {
     }
 
-    public Trip(String fTitle, String fDescription, Boolean fAvailable, Long fStart, Long fEnd, User fOrganiser) {
+    public Trip(String fTitle, String fDescription, Boolean fAvailable, Boolean fRepeatable, User fOrganiser) {
         this.fTitle = fTitle;
         this.fDescription = fDescription;
         this.fAvailable = fAvailable;
-        this.fStart = fStart;
-        this.fEnd = fEnd;
+        this.fRepeatable = fRepeatable;
         this.fOrganiser = fOrganiser;
-    }
-
-    public Long setId() {
-        return fId;
+        this.fParticipants = fParticipants;
+        this.fCosts = fCosts;
+        this.fRequirements = fRequirements;
+        this.fMessages = fMessages;
     }
 
     public Long getId() {
         return fId;
+    }
+
+    public void setId(Long fId) {
+        this.fId = fId;
     }
 
     public String getTitle() {
@@ -94,36 +94,20 @@ public class Trip implements Serializable {
         this.fDescription = fDescription;
     }
 
+    public Boolean getAvailable() {
+        return fAvailable;
+    }
+
     public void setAvailable(Boolean fAvailable) {
         this.fAvailable = fAvailable;
     }
 
-    public Boolean isAvailable() {
-        return fAvailable;
+    public Boolean getRepeatable() {
+        return fRepeatable;
     }
 
-    public Long getStart() {
-        return fStart;
-    }
-
-    public void setStart(Long fStart) {
-        this.fStart = fStart;
-    }
-
-    public Long getEnd() {
-        return fEnd;
-    }
-
-    public String getfAccessCode() {
-        return fAccessCode;
-    }
-
-    public void setfAccessCode(String fAccessCode) {
-        this.fAccessCode = fAccessCode;
-    }
-
-    public void setEnd(Long fEnd) {
-        this.fEnd = fEnd;
+    public void setRepeatable(Boolean fRepeatable) {
+        this.fRepeatable = fRepeatable;
     }
 
     public User getOrganiser() {
@@ -135,11 +119,11 @@ public class Trip implements Serializable {
     }
 
     public Set<User> getParticipants() {
-        return this.fParticipants;
+        return fParticipants;
     }
 
-    public void setParticipants(Set<User> participants) {
-        this.fParticipants = participants;
+    public void setParticipants(Set<User> fParticipants) {
+        this.fParticipants = fParticipants;
     }
 
     public Set<Cost> getCosts() {
@@ -166,21 +150,23 @@ public class Trip implements Serializable {
         this.fMessages = fMessages;
     }
 
-    public void addParticipantToTrip(User user){
+
+    public void addParticipantToTrip(User user) {
         this.fParticipants.add(user);
     }
 
-    public void addCostToTrip(Cost cost){
+    public void addCostToTrip(Cost cost) {
         this.fCosts.add(cost);
     }
 
-    public void addRequirementToTrip(Requirement requirement){
+    public void addRequirementToTrip(Requirement requirement) {
         this.fRequirements.add(requirement);
     }
 
-    public void addMessageToTrip(Message message){
+    public void addMessageToTrip(Message message) {
         this.fMessages.add(message);
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -193,12 +179,15 @@ public class Trip implements Serializable {
         comparison = this.fDescription.compareTo(trip.getDescription());
         if (comparison != 0) return false;
 
-        comparison = this.fAvailable.compareTo(trip.isAvailable());
+        comparison = this.fAvailable.compareTo(trip.getAvailable());
         if (comparison != 0) return false;
 
-        comparison = this.fStart.compareTo(trip.getStart());
+        comparison = this.fRepeatable.compareTo(trip.getRepeatable());
         if (comparison != 0) return false;
 
+        if (!this.fOrganiser.equals(trip.getOrganiser())) {
+            return false;
+        }
 
         if (!(CompareUtil.compareSet(this.fParticipants, trip.getParticipants()))) {
             return false;
