@@ -81,12 +81,11 @@ public class RestUserController {
             if (user.getPasswordResetTimestamp().getTime() > Calendar.getInstance().getTime().getTime()) {
                 return new ModelAndView("profile/resetpassword", "passwordResetString", user.getPasswordResetString());
             } else {
-                return new ModelAndView("error/displayerror/text.resetpasswordtimeerror");
+                return new ModelAndView("error/displayerror/resetpasswordtimeerror"); //TODO: pagenotfound
             }
         } else {
-            return new ModelAndView("error/displayerror");
+            return new ModelAndView("error/displayerror/resetstringnotfound"); //TODO: pagenotfound
         }
-
     }
 
     @RequestMapping(value = "/reset/setNewPassword", method = RequestMethod.POST)
@@ -96,11 +95,11 @@ public class RestUserController {
         User user = UserService.getUserByResetString(passwordResetString);
 
         user.setPassword(password);
+        user.setPasswordResetString(null);
+        user.setPasswordResetTimestamp(null);
         UserService.updateUser(user);
 
-
-        //navigeer naar login
-        //tekst van resetpassword.jsp aanpassen
+        //TODO: navigeer succesvol naar login (ipv naar home ZONDER css)
 
         return "/home";
     }
