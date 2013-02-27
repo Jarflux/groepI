@@ -34,6 +34,11 @@
                     <div class="row"><c:out value="Mail ${userObject.email}"/></div>
                     <div class="row"><c:out value="Date of birth ${userObject.dateOfBirth}"/></div>
                     <div class="row"><c:out value="Profile picture ${userObject.profilePicture}"/></div>
+                    <div class="row">
+                        <form action="/profile/myprofile/edit">
+                            <input type="submit" class="button" value="<spring:message code='text.edit'/>" />
+                        </form>
+                    </div>
                 </c:when>
                 <c:when test="${userObject == null}">
                     <jsp:forward page="/error/invaliduser" />

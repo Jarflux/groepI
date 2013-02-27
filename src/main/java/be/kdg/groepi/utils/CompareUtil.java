@@ -1,6 +1,7 @@
 package be.kdg.groepi.utils;
 
 import java.io.Serializable;
+import java.security.MessageDigest;
 import java.util.Set;
 
 /**
@@ -10,14 +11,27 @@ import java.util.Set;
  * Description:
  */
 public class CompareUtil {
+
     public static boolean compareSet(Set<?> x, Set<?> y) {
-        if ((x == null || y == null) && !(x == null && y == null)){
+        if ((x == null || y == null) && !(x == null && y == null)) {
             return false;
-        }else if (x != null && y != null) {
+        } else if (x != null && y != null) {
             if (!(x.containsAll(y) && y.containsAll(x))) {
                 return false;
             }
         }
         return true;
+    }
+
+    public static String getHashedPassword(String password) {
+        try{
+        byte[] bytesOfMessage = password.getBytes("UTF-8");
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] thedigest = md.digest(bytesOfMessage);
+        return thedigest.toString();
+        }catch(Exception e){
+            
+        }
+        return null;
     }
 }

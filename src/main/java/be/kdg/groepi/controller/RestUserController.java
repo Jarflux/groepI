@@ -2,6 +2,7 @@ package be.kdg.groepi.controller;
 
 import be.kdg.groepi.model.User;
 import be.kdg.groepi.service.UserService;
+import be.kdg.groepi.utils.CompareUtil;
 import be.kdg.groepi.utils.DateUtil;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -29,44 +30,43 @@ public class RestUserController {
     @RequestMapping(value = "/view/{userId}", method = RequestMethod.GET)
     public ModelAndView getUser(@PathVariable("userId") String userId) {
         User user;
-        // validate input
-        /* if (userId.isEmpty() || userId.length() < 5) {
-         * String sMessage = "Error invoking getFund - Invalid fund Id parameter";
-         * // return createErrorResponse(sMessage);
-         * } */
-        //try {
-
         user = UserService.getUserById(Long.parseLong(userId));
         if (user != null) {
             logger.debug("Returning User: " + user.toString() + " with user #" + userId);
             return new ModelAndView("profile/user", "userObject", user);
         } else {
-            return new ModelAndView("profile/user", "userId", userId);
+            return new ModelAndView("error/displayerror");
         }
-        /* } catch (Exception e) {
-         * String sMessage = "Error invoking getFund. [%1$s]";
-         * //return createErrorResponse(String.format(sMessage, e.toString()));
-         * } */
     }
 
     @RequestMapping(value = "/createUser", method = RequestMethod.POST)
-    public ModelAndView createUser(@ModelAttribute("userObject") User user, @RequestParam(value = "BirthDate") String DateOfBirth) {
-        //TODO: encrypt password
+    public ModelAndView createUser(@ModelAttribute("userObject") User user, @RequestParam(value = "BirthDate") String DateOfBirth) {                 
         user.setDateOfBirth(DateUtil.dateStringToLong(DateOfBirth,null));
+        user.setPassword(CompareUtil.getHashedPassword(user.getPassword())); //TODO Uncomment to encrypt passwords 
         UserService.createUser(user);
         return new ModelAndView("profile/user", "userObject", user);
     }
 
     @RequestMapping(value = "/myprofile")
-    public ModelAndView myProfile(@ModelAttribute("userObject") User user) {
-        return new ModelAndView("profile/userprofile", "userObject", user);
+    public ModelAndView myProfile(HttpSession session) {
+        return new ModelAndView("profile/userprofile", "userObject", (User) session.getAttribute("userObject"));
     }
 
     @RequestMapping(value = "/myprofile/edit", method = RequestMethod.GET)
-    public ModelAndView editUser(@ModelAttribute("userObject") User user) {
-        user = UserService.getUserById(Long.parseLong("1")); //TODO: user hardcoded remove after testing
-        return new ModelAndView("profile/editprofile", "userObject", user);
+    public ModelAndView editUserView(HttpSession session){
+        return new ModelAndView("profile/editprofile", "userObject", (User) session.getAttribute("userObject"));
     }
+    
+    @RequestMapping(value = "/editUser", method = RequestMethod.POST)
+    public ModelAndView editUser(HttpSession session, @ModelAttribute("userObject") User user) {
+        User sessionUser = (User) session.getAttribute("userObject");
+        sessionUser.setName(user.getName());
+        sessionUser.setEmail(user.getEmail());
+        sessionUser.setDateOfBirth(user.getDateOfBirth());
+        UserService.updateUser(sessionUser); 
+        return new ModelAndView("profile/userprofile", "userObject", (User) session.getAttribute("userObject"));
+    }
+    
 
     @RequestMapping(value = "/reset/forgotPassword")
     public ModelAndView forgotpassword() {
@@ -113,4 +113,5 @@ public class RestUserController {
 
         return "/home";
     }
+
 }

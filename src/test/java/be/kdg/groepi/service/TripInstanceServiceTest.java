@@ -1,7 +1,6 @@
 package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.*;
-import com.sun.xml.internal.bind.v2.TODO;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
