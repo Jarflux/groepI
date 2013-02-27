@@ -22,8 +22,10 @@
     </div>
     <div id="content" class="column light">
         <h2><spring:message code="text.resetpassword"/></h2>
+
         <form method="post" action="setNewPassword" class="mainstyle tooltips validate">
             <input type="hidden" name="passwordResetString" value="${passwordResetString}"/>
+
             <div class="row"><span><spring:message code='text.password'/></span>
                 <input type="password" class="required equalsto" equalsto="password2" name="password"
                        placeholder="" title="Kies een sterk wachtwoord"/>

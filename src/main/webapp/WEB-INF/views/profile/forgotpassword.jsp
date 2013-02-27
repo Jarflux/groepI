@@ -17,22 +17,22 @@
 <body>
 <div id="wrapper">
     <div id="topmenu" class="column dark">
-        <jsp:include page="/topmenu"   />
+        <jsp:include page="/topmenu"/>
     </div>
     <div id="content" class="column light">
         <%--<h2><spring:message code="text.resetpassword"/></h2>--%>
-                <h2>
-                    <c:out value="${message}"/>
-                </h2>
+        <h2>
+            <c:out value="${message}"/>
+        </h2>
 
         <form method="post" action="doResetPassword" class="mainstyle tooltips validate">
 
-            <div class="row"> <span><spring:message code='text.mail'/></span>
+            <div class="row"><span><spring:message code='text.mail'/></span>
                 <input type="text" class="required" name="email" placeholder=""
                        title="Gelieve je e-mailadres in te geven."/>
             </div>
-            <div class="row"> <span></span>
-                <input type="submit" class="button" value="<spring:message code='text.resetpassword'/>" />
+            <div class="row"><span></span>
+                <input type="submit" class="button" value="<spring:message code='text.resetpassword'/>"/>
             </div>
 
         </form>

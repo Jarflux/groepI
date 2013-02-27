@@ -40,8 +40,8 @@ public class RestUserController {
     }
 
     @RequestMapping(value = "/createUser", method = RequestMethod.POST)
-    public ModelAndView createUser(@ModelAttribute("userObject") User user, @RequestParam(value = "BirthDate") String DateOfBirth) {                 
-        user.setDateOfBirth(DateUtil.dateStringToLong(DateOfBirth,null));
+    public ModelAndView createUser(@ModelAttribute("userObject") User user, @RequestParam(value = "dob") String dateOfBirth) {
+        user.setDateOfBirth(DateUtil.dateStringToLong(dateOfBirth,null));
         user.setPassword(CompareUtil.getHashedPassword(user.getPassword())); //TODO Uncomment to encrypt passwords 
         UserService.createUser(user);
         return new ModelAndView("profile/user", "userObject", user);
@@ -58,11 +58,11 @@ public class RestUserController {
     }
     
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)
-    public ModelAndView editUser(HttpSession session, @ModelAttribute("userObject") User user) {
+    public ModelAndView editUser(HttpSession session, @ModelAttribute("userObject") User user, @RequestParam(value = "dob") String dateOfBirth) {
         User sessionUser = (User) session.getAttribute("userObject");
         sessionUser.setName(user.getName());
         sessionUser.setEmail(user.getEmail());
-        sessionUser.setDateOfBirth(user.getDateOfBirth());
+        sessionUser.setDateOfBirth(DateUtil.dateStringToLong(dateOfBirth,null));
         UserService.updateUser(sessionUser); 
         return new ModelAndView("profile/userprofile", "userObject", (User) session.getAttribute("userObject"));
     }
