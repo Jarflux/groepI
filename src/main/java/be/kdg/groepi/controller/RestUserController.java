@@ -42,9 +42,9 @@ public class RestUserController {
     @RequestMapping(value = "/createUser", method = RequestMethod.POST)
     public ModelAndView createUser(@ModelAttribute("userObject") User user, @RequestParam(value = "dob") String dateOfBirth) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         user.setDateOfBirth(DateUtil.dateStringToLong(dateOfBirth,null));
-        user.setPassword(CompareUtil.getHashedPassword(user.getPassword())); //TODO Uncomment to encrypt passwords 
+        user.setPassword(CompareUtil.getHashedPassword(user.getPassword()));
         UserService.createUser(user);
-        return new ModelAndView("profile/user", "userObject", user);
+        return new ModelAndView("home", "userObject", user);
     }
 
     @RequestMapping(value = "/myprofile")
@@ -117,7 +117,7 @@ public class RestUserController {
 
         //TODO: navigeer succesvol naar login (ipv naar home ZONDER css)
 
-        return "/home";
+        return "home";
     }
 
 }

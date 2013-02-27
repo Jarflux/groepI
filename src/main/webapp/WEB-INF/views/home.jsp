@@ -7,17 +7,19 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <html>
 <head>
-    <link href="css/blue.css" rel="StyleSheet"/>
+    <link href="/css/blue.css" rel="StyleSheet"/>
 
     <title>My Trip Assistant</title>
 </head>
 <body>
 <div id="container">
-    <div id="logincontainer" class="column light">
-        <div class="loginmiddlebox"><h2>Login</h2>
+    <div id="logincontainer" class="column light"> <sec:authorize access="isAnonymous()">
+
+    <div class="loginmiddlebox"><h2>Login</h2>
 
             <form action="j_spring_security_check" method="post">
                 <input type="text" name="j_username" id="j_username" class="loginbox" placeholder="<spring:message code='text.username'/>"/> <br>
@@ -32,7 +34,10 @@
 
 
         </div>
-
+        </sec:authorize>
+        <sec:authorize access="isAuthenticated()">
+                           <h2>Hallo</h2> Welkom,${userObject.name}
+            </sec:authorize>
     </div>
     <div id="maincontainer" class="column dark">
 
