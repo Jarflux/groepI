@@ -6,9 +6,10 @@ package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.Stop;
 import be.kdg.groepi.utils.HibernateUtil;
-import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import java.util.List;
 
 /**
  * Author: Ben Oeyen

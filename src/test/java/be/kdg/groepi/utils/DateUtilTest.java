@@ -1,17 +1,11 @@
 package be.kdg.groepi.utils;
 
-import be.kdg.groepi.model.User;
-import be.kdg.groepi.service.UserService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.sql.Date;
 import java.util.Calendar;
 
-import static be.kdg.groepi.utils.DateUtil.dateToLong;
-import static be.kdg.groepi.utils.DateUtil.longToDate;
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -53,5 +47,6 @@ public class DateUtilTest {
         Long longDate = cal.getTime().getTime();
         assertEquals("De datum die wordt gereturned is incorrect", DateUtil.longToDate(longDate),cal.getTime());
     }
+
 
 }

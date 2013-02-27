@@ -5,9 +5,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.sql.Date;
-import java.util.Calendar;
-
 import static be.kdg.groepi.utils.DateUtil.dateToLong;
 import static org.junit.Assert.*;
 

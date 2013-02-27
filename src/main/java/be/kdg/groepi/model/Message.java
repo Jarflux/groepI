@@ -2,7 +2,6 @@ package be.kdg.groepi.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
 
 /**
  * Author: Ben Oeyen

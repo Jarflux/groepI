@@ -6,14 +6,12 @@ import be.kdg.groepi.utils.CompareUtil;
 import be.kdg.groepi.utils.DateUtil;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.mail.Session;
 import javax.servlet.http.HttpSession;
 import java.util.Calendar;
-import java.util.Date;
+
 
 /**
  * Author: Ben Oeyen
@@ -49,7 +47,10 @@ public class RestUserController {
 
     @RequestMapping(value = "/myprofile")
     public ModelAndView myProfile(HttpSession session) {
-        return new ModelAndView("profile/userprofile", "userObject", (User) session.getAttribute("userObject"));
+        ModelAndView modelAndView = new ModelAndView("profile/userprofile");
+        modelAndView.addObject("userObject", (User) session.getAttribute("userObject"));
+        modelAndView.addObject("dob", DateUtil.formatDate(session));
+        return modelAndView;
     }
 
     @RequestMapping(value = "/myprofile/edit", method = RequestMethod.GET)
@@ -63,8 +64,11 @@ public class RestUserController {
         sessionUser.setName(user.getName());
         sessionUser.setEmail(user.getEmail());
         sessionUser.setDateOfBirth(DateUtil.dateStringToLong(dateOfBirth,null));
-        UserService.updateUser(sessionUser); 
-        return new ModelAndView("profile/userprofile", "userObject", (User) session.getAttribute("userObject"));
+        UserService.updateUser(sessionUser);
+        ModelAndView modelAndView = new ModelAndView("profile/userprofile");
+        modelAndView.addObject("userObject", sessionUser);
+        modelAndView.addObject("dob", DateUtil.formatDate(session));
+        return modelAndView;
     }
     
 

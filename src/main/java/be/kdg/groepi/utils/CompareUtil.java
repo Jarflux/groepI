@@ -1,6 +1,5 @@
 package be.kdg.groepi.utils;
 
-import java.io.Serializable;
 import java.security.MessageDigest;
 import java.util.Set;
 
@@ -24,13 +23,13 @@ public class CompareUtil {
     }
 
     public static String getHashedPassword(String password) {
-        try{
-        byte[] bytesOfMessage = password.getBytes("UTF-8");
-        MessageDigest md = MessageDigest.getInstance("MD5");
-        byte[] thedigest = md.digest(bytesOfMessage);
-        return thedigest.toString();
-        }catch(Exception e){
-            
+        try {
+            byte[] bytesOfMessage = password.getBytes("UTF-8");
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] thedigest = md.digest(bytesOfMessage);
+            return thedigest.toString();
+        } catch (Exception e) {
+
         }
         return null;
     }

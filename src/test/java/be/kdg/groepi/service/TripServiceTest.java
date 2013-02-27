@@ -1,7 +1,11 @@
 package be.kdg.groepi.service;
 
-import be.kdg.groepi.model.*;
-import org.junit.*;
+import be.kdg.groepi.model.Requirement;
+import be.kdg.groepi.model.Trip;
+import be.kdg.groepi.model.User;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import static be.kdg.groepi.utils.DateUtil.dateToLong;
 import static org.junit.Assert.*;

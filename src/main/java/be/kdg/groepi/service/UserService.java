@@ -1,8 +1,8 @@
 package be.kdg.groepi.service;
 
-import be.kdg.groepi.utils.TripMail;
 import be.kdg.groepi.model.User;
 import be.kdg.groepi.utils.HibernateUtil;
+import be.kdg.groepi.utils.TripMail;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
