@@ -53,8 +53,8 @@
                             </div>
                             <div class="row">
                                 <span><spring:message code='text.dateofbirth'/></span>
-                                <input type="datetime" class="required dateregister" name="dob" placeholder=""
-                                       title="Gelieve uw geboortedatum in te geven" value=""/>
+                                <input type="text" class="required dateregister" name="dob" placeholder=""
+                                       title="Gelieve uw geboortedatum in te geven" value="${dob}"/>
                             </div>
                             <div class="row">
                                 <span><spring:message code='text.profilepicture'/></span>
