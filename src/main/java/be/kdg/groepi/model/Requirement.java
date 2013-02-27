@@ -19,6 +19,9 @@ public class Requirement implements Serializable {
     long fId;
     @Column(name = "description")
     String fDescription;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", nullable = true)
+    private User fUser;
 
     // Hibernates needs empty constructor
     public Requirement() {
@@ -26,6 +29,20 @@ public class Requirement implements Serializable {
 
     public Requirement(String description) {
         this.fDescription = description;
+        this.fUser = null;
+    }
+
+    public Requirement(String fDescription, User fUser) {
+        this.fDescription = fDescription;
+        this.fUser = fUser;
+    }
+
+    public User getUser() {
+        return fUser;
+    }
+
+    public void setUser(User fUser) {
+        this.fUser = fUser;
     }
 
     public Long setId() {

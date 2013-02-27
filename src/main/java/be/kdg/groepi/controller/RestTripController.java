@@ -1,15 +1,17 @@
 package be.kdg.groepi.controller;
 
+import be.kdg.groepi.model.Requirement;
 import be.kdg.groepi.model.Trip;
 import be.kdg.groepi.model.User;
+import be.kdg.groepi.service.RequirementService;
 import be.kdg.groepi.service.TripService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("trips")
@@ -17,19 +19,40 @@ public class RestTripController {
     private static final Logger logger = Logger.getLogger(RestTripController.class);
 
     @RequestMapping(value = "/addtrip")
-    public String addtrip(){
+    public String addtrip() {
         System.out.println("AddTrip: Passing through...");
         return "trips/addtrip";
     }
 
     @RequestMapping(value = "/createTrip", method = RequestMethod.POST)
-    public ModelAndView createTrip(@ModelAttribute("tripObject") Trip trip) {
-        User tempuser = new User();
-        tempuser.setId(1);
-        trip.setOrganiser(tempuser);
+    public ModelAndView createTrip(HttpSession session, @ModelAttribute("tripObject") Trip trip) {
+
+        User user = (User) session.getAttribute("userObject");
+
+        trip.setOrganiser(user);
         TripService.createTrip(trip);
-        return new ModelAndView("trips/addinstance", "tripObject", trip);
+        return new ModelAndView("trips/addtriprequirement", "tripId", trip.getId().toString());
     }
+
+    @RequestMapping(value = "/doAddTripRequirement", method = RequestMethod.POST)
+    public ModelAndView doAddTripRequirement(@RequestParam(value = "tripId") String tripId,/*
+                                             @ModelAttribute("requirementObject") Requirement requirement*/
+                                             @RequestParam(value = "description") String description) {
+//
+        Requirement requirement = new Requirement(description);
+
+        /*User user = (User) session.getAttribute("userObject");
+        requirement.setUser(user);*/
+        requirement.setUser(null);
+
+        System.out.println(tripId);
+        Trip trip = TripService.getTripById(Long.parseLong("1"));
+        RequirementService.createRequirement(requirement);
+        trip.addRequirementToTrip(requirement);
+        TripService.updateTrip(trip);
+        return new ModelAndView("trips/addtriprequirement", "tripId", trip.getId().toString());
+    }
+
 
     @RequestMapping(value = "/view/{tripId}", method = RequestMethod.GET)
     public ModelAndView getTrip(@PathVariable("tripId") String tripId) {
@@ -54,7 +77,7 @@ public class RestTripController {
     }
 
     @RequestMapping(value = "/addstop")
-    public String addstop(){
+    public String addstop() {
         System.out.println("AddStop: Passing through...");
         return "trips/addstop";
     }
