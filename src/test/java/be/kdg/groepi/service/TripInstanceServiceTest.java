@@ -1,6 +1,7 @@
 package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.*;
+import be.kdg.groepi.utils.DateUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,7 +29,9 @@ public class TripInstanceServiceTest {
         // TODO: Relatie leggen tussen trip en tripinstance
        Trip trip = new Trip("Onze eerste trip","Hopelijk is deze niet te saai!",true,true,user);// trip aanmaken
         TripService.createTrip(trip);
-        tripinstance = new TripInstance("Bachelor feestje","Iemand gaat trouwen, bier en vrouwen ole",false,user,trip);
+        long startDate = DateUtil.dateToLong(27,02,2013,16,00,00);
+        long endDate = DateUtil.dateToLong(27,02,2013,20,00,00);
+        tripinstance = new TripInstance("Bachelor feestje","Iemand gaat trouwen, bier en vrouwen ole",false, startDate, endDate, user,trip);
        TripInstanceService.createTripInstance(tripinstance);
     }
 

@@ -35,6 +35,10 @@ public class TripInstance implements Serializable {
     private String fDescription;
     @Column(name = "public")
     private Boolean fAvailable;
+    @Column(name = "startdate")
+    private long fStartDate;
+    @Column(name = "enddate")
+    private long fEndDate;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "trip_id", nullable = false)
@@ -59,16 +63,34 @@ public class TripInstance implements Serializable {
     public TripInstance() {
     }
 
-    public TripInstance(String fTitle, String fDescription, Boolean fAvailable, User fOrganiser, Trip fTrip) {
+    public TripInstance(String fTitle, String fDescription, Boolean fAvailable, long fStartDate, long fEndDate, User fOrganiser, Trip fTrip) {
         this.fTitle = fTitle;
         this.fDescription = fDescription;
         this.fAvailable = fAvailable;
+        this.fStartDate = fStartDate;
+        this.fEndDate = fEndDate;
         this.fOrganiser = fOrganiser;
         this.fTrip = fTrip;
         this.fParticipants = fParticipants;
         this.fCosts = fCosts;
         this.fRequirements = fRequirements;
         this.fMessages = fMessages;
+    }
+
+    public long getStartDate() {
+        return fStartDate;
+    }
+
+    public void setStartDate(long fStartDate) {
+        this.fStartDate = fStartDate;
+    }
+
+    public long getEndDate() {
+        return fEndDate;
+    }
+
+    public void setEndDate(long fEndDate) {
+        this.fEndDate = fEndDate;
     }
 
     public Trip getTrip() {
