@@ -71,10 +71,6 @@ public class TripInstance implements Serializable {
         this.fEndDate = fEndDate;
         this.fOrganiser = fOrganiser;
         this.fTrip = fTrip;
-        this.fParticipants = fParticipants;
-        this.fCosts = fCosts;
-        this.fRequirements = fRequirements;
-        this.fMessages = fMessages;
     }
 
     public long getStartDate() {

@@ -63,7 +63,7 @@ public class TripServiceTest {
         assertTrue("Trip: trip should have no requirements", trip.getRequirements().isEmpty());
         Requirement requirement = new Requirement("BEN");
         RequirementService.createRequirement(requirement);
-       // trip.addRequirementToTrip(requirement);
+        trip.addRequirementToTrip(requirement);
         assertFalse("Trip: trip should have requirements", trip.getRequirements().isEmpty());
     }
 
