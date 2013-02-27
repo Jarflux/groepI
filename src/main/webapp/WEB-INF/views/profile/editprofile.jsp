@@ -54,12 +54,18 @@
                             <div class="row">
                                 <span><spring:message code='text.dateofbirth'/></span>
                                 <input type="datetime" class="required dateregister" name="dob" placeholder=""
-                                       title="Gelieve uw geboortedatum in te geven" value="${userObject.dateOfBirth}"/>
+                                       title="Gelieve uw geboortedatum in te geven" value=""/>
+                            </div>
+                            <div class="row">
+                                <span><spring:message code='text.profilepicture'/></span>
+                                <input type="text" class="" name="profilePicture" placeholder=""
+                                       title="Hier kan u uw profielfoto instellen" value="${userObject.profilePicture}"/>
                             </div>
                             <div class="row">
                                 <span></span>
                                 <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
-                                <input type="submit" class="button" value="<spring:message code='text.cancel'/>"/>
+                                <%--<input type="submit" class="button" value="<spring:message code='text.cancel'/>"/>--%>
+                                <h3>Cancel knop maken? type=submit voert editUser uit tenzij de value nagekeken wordt ofzo?</h3>
                             </div>
                         </form>
                     </c:when>

@@ -48,5 +48,4 @@ public class DateUtilTest {
         assertEquals("De datum die wordt gereturned is incorrect", DateUtil.longToDate(longDate),cal.getTime());
     }
 
-
 }

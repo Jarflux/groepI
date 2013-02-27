@@ -57,7 +57,10 @@ public class RestUserController {
 
     @RequestMapping(value = "/myprofile/edit", method = RequestMethod.GET)
     public ModelAndView editUserView(HttpSession session){
-        return new ModelAndView("profile/editprofile", "userObject", (User) session.getAttribute("userObject"));
+        ModelAndView modelAndView = new ModelAndView("profile/editprofile");
+        modelAndView.addObject("userObject", (User) session.getAttribute("userObject"));
+        modelAndView.addObject("dob", DateUtil.formatDate(session));
+        return modelAndView;
     }
     
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)
@@ -66,6 +69,7 @@ public class RestUserController {
         sessionUser.setName(user.getName());
         sessionUser.setEmail(user.getEmail());
         sessionUser.setDateOfBirth(DateUtil.dateStringToLong(dateOfBirth,null));
+        sessionUser.setProfilePicture(user.getProfilePicture());
         UserService.updateUser(sessionUser);
         ModelAndView modelAndView = new ModelAndView("profile/userprofile");
         modelAndView.addObject("userObject", sessionUser);

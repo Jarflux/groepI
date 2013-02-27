@@ -33,7 +33,6 @@ public class StandardPasswordEncoder implements PasswordEncoder {
 
     @Override
     public boolean isPasswordValid(String encPass, String rawPass, Object salt) {
-
         String tempencode = null;
         try {
             tempencode = CompareUtil.getHashedPassword(rawPass);
