@@ -23,33 +23,32 @@ public class TripInstanceServiceTest {
     //private Long tripId;
 
     @Before
-    public void beforeEachTest(){
-        user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4,5,2011,15,32,0));
+    public void beforeEachTest() {
+        user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
         UserService.createUser(user);
-        // TODO: Relatie leggen tussen trip en tripinstance
-       Trip trip = new Trip("Onze eerste trip","Hopelijk is deze niet te saai!",true,true,user);// trip aanmaken
+        Trip trip = new Trip("Onze eerste trip", "Hopelijk is deze niet te saai!", true, true, user);// trip aanmaken
         TripService.createTrip(trip);
-        long startDate = DateUtil.dateToLong(27,02,2013,16,00,00);
-        long endDate = DateUtil.dateToLong(27,02,2013,20,00,00);
-        tripinstance = new TripInstance("Bachelor feestje","Iemand gaat trouwen, bier en vrouwen ole",false, startDate, endDate, user,trip);
-       TripInstanceService.createTripInstance(tripinstance);
+        long startDate = DateUtil.dateToLong(27, 02, 2013, 16, 00, 00);
+        long endDate = DateUtil.dateToLong(27, 02, 2013, 20, 00, 00);
+        tripinstance = new TripInstance("Bachelor feestje", "Iemand gaat trouwen, bier en vrouwen ole", false, startDate, endDate, user, trip);
+        TripInstanceService.createTripInstance(tripinstance);
     }
 
     @After
-    public void afterEachTest(){
+    public void afterEachTest() {
         tripinstance = null;
         for (TripInstance tripInstance : TripInstanceService.getAllTripInstances()) {
-            TripInstanceService.deleteTripInstance(tripinstance);
+            TripInstanceService.deleteTripInstance(tripInstance);
         }
     }
 
     @Test
-    public void createTripInstance(){
+    public void createTripInstance() {
         assertEquals("createTripInstance: ", tripinstance, TripInstanceService.getTripInstanceById(tripinstance.getId()));
     }
 
     @Test
-    public void updateTripInstances(){
+    public void updateTripInstances() {
         tripinstance.setAvailable(Boolean.FALSE);
         tripinstance.setDescription("Ho-ho-ho edited");
 
@@ -58,21 +57,21 @@ public class TripInstanceServiceTest {
     }
 
     @Test
-    public void deleteTripInstance(){
+    public void deleteTripInstance() {
         assertNotNull("deleteTripInstance: Trip found", TripInstanceService.getTripInstanceById(tripinstance.getId()));
         TripInstanceService.deleteTripInstance(tripinstance);
         assertNull("deleteTripInstance: TripInstance not found", TripInstanceService.getTripInstanceById(tripinstance.getId()));
     }
 
     @Test
-    public void addUserToTripInstance(){
+    public void addUserToTripInstance() {
         assertTrue("TripInstance: tripInstance should have no participants", tripinstance.getParticipants().isEmpty());
         tripinstance.addParticipantToTripInstance(user);
         assertFalse("TripInstance: tripinstance should have participants", tripinstance.getParticipants().isEmpty());
     }
 
     @Test
-    public void addCostToTripInstance(){
+    public void addCostToTripInstance() {
         assertTrue("TripInstance: tripInstance should have no costs", tripinstance.getCosts().isEmpty());
         Cost cost = new Cost("BEN's cost", 35.53);
         CostService.createCost(cost);
@@ -81,7 +80,7 @@ public class TripInstanceServiceTest {
     }
 
     @Test
-    public void addRequirementToTripInstance(){
+    public void addRequirementToTripInstance() {
         assertTrue("Trip: trip should have no requirements", tripinstance.getRequirements().isEmpty());
         Requirement requirement = new Requirement("BEN");
         RequirementService.createRequirement(requirement);
@@ -90,7 +89,7 @@ public class TripInstanceServiceTest {
     }
 
     @Test
-    public void addMessageToTripInstance(){
+    public void addMessageToTripInstance() {
         assertTrue("TripInstance: tripinstance should have no messages", tripinstance.getMessages().isEmpty());
         Message message = new Message("BEN's message", dateToLong(12, 10, 1990, 8, 17, 35));
         MessageService.createMessage(message);

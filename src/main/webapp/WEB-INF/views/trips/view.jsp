@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title><spring:message code='text.viewtripdetails' /></title>
+    <title><spring:message code='text.viewtripinformation' /></title>
     <link href="/css/blue.css" rel="stylesheet" />
 
 </head>
@@ -20,7 +20,7 @@
         <jsp:include page="/topmenu"   />
     </div>
     <div id="content" class="column light">
-<h2> <spring:message code='text.viewtripdetails' /> </h2>
+<h2> <spring:message code='text.viewtripinformation' /> </h2>
 <section>
     <div class="gmap">
 

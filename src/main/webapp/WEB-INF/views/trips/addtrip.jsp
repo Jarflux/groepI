@@ -24,15 +24,15 @@
         <form method="post" action="createTrip" class="mainstyle tooltips">
             <div class="row">
                 <span><spring:message code='text.title'/></span>
-                <input type="text" class="" name="title" placeholder="" title="<spring:message code='text.titleTooltip'/>"/>
+                <input type="text" class="" name="title" placeholder="" title="<spring:message code='text.titletooltip'/>"/>
             </div>
             <div class="row">
                 <span><spring:message code='text.available'/></span>
-                <input type="checkbox" class="" name="available" placeholder="" title="<spring:message code='text.availableTooltip'/>"/>
+                <input type="checkbox" class="" name="available" placeholder="" title="<spring:message code='text.availabletooltip'/>"/>
             </div>
             <div class="row">
                 <span><spring:message code='text.description'/></span>
-                <textarea name="description" title="<spring:message code='text.descriptionTooltip'/>"></textarea>
+                <textarea name="description" title="<spring:message code='text.descriptiontooltip'/>"></textarea>
             </div>
             <div class="row">
                 <span><spring:message code='text.repeatabletrip'/></span>
