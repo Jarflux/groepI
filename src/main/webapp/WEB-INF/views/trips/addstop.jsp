@@ -12,6 +12,21 @@
     <head>
         <title>Add Stop</title>
         <link href="/css/blue.css" rel="stylesheet"/>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+        <script>
+            var map;
+            function initialize() {
+            var mapOptions = {
+            zoom: 8,
+            center: new google.maps.LatLng(-34.397, 150.644),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById('map_canvas'),
+            mapOptions);
+            }
+
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -21,34 +36,37 @@
             <div id="content" class="column light">
                 <h2><spring:message code="text.addstop"/></h2>
 
+
+
                 <form method="post" action="" class="mainstyle tooltips validate">
-                    <div class="row">
-                        <span><spring:message code='text.name'/></span>
-                        <input type="text" name="name"/>
-                    </div>
-                    <div class="row">
-                        <span><spring:message code='text.type'/></span>
-                        <select>
-                            <option><spring:message code='text.interactive'/></option>
-                            <option><spring:message code='text.informative'/></option>
-                        </select>
-                    </div>
-                    <div class="row">
-                        <span><spring:message code='text.rending'/></span>
-                        <select>
-                            <option><spring:message code='text.normal'/></option>
-                            <option>Augmented Reality</option>
-                        </select>
-                    </div>
-                    <!--
-                    <div class="row">
-                        <div class="gmap">
+                    <div class="half big">
+                        <div class="gmap" id="map_canvas">
                         </div>
                     </div>
-                    -->
-                    <div class="row">
-                        <span><spring:message code='text.description'/></span>
-                        <input type="text" name="stopText"/>
+                    <div class="half">
+                        <div class="row">
+                            <span><spring:message code='text.name'/></span>
+                            <input type="text" name="name"/>
+                        </div>
+                        <div class="row">
+                            <span><spring:message code='text.type'/></span>
+                            <select>
+                                <option value="1"><spring:message code='text.interactive'/></option>
+                                <option value="2"><spring:message code='text.informative'/></option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <span><spring:message code='text.rending'/></span>
+                            <select>
+                                <option value="1"><spring:message code='text.normal'/></option>
+                                <option value="2">Augmented Reality</option>
+                            </select>
+                        </div>
+
+                        <div class="row">
+                            <span><spring:message code='text.description'/></span>
+                            <input type="text" name="stopText"/>
+                        </div>
                     </div>
                 </form>
             </div>
