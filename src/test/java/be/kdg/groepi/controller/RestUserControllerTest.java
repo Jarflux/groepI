@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.util.Calendar;
 
@@ -45,7 +47,7 @@ public class RestUserControllerTest {
     }
 
     @Test
-    public void testCreateUser(){
+    public void testCreateUser() throws UnsupportedEncodingException, NoSuchAlgorithmException {
         ModelAndView modelAndView = restUserController.createUser(user,null);
         assertNotNull("User object should exist", modelAndView.getModel().get("userObject"));
         User createdUser = (User) modelAndView.getModel().get("userObject");

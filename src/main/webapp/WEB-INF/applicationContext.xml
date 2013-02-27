@@ -42,6 +42,8 @@
         </beans:property>
     </beans:bean>
 
+    <beans:bean id="encoder" class="be.kdg.groepi.security.StandardPasswordEncoder" />
+
     <beans:bean id="successHandler" class="be.kdg.groepi.security.MyAuthenticationSuccessHandler"/>
     <!--<beans:bean id="authenticationFilter" class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
         &lt;!&ndash; There might be more properties here, depending on your auth filter!! &ndash;&gt;
@@ -52,6 +54,8 @@
 
     <authentication-manager>
         <authentication-provider user-service-ref="userDetailsService">
+            <password-encoder ref="encoder" />
+
         </authentication-provider>
     </authentication-manager>
 </beans:beans>
