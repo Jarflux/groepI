@@ -51,6 +51,6 @@ public class CompareUtil {
                 buffer.append("0");
             buffer.append(Integer.toString(x,16));
         }
-        return null;
+        return buffer.toString();
     }
 }
