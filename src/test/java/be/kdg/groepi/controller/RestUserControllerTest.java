@@ -7,9 +7,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import java.sql.Date;
+import java.util.Calendar;
+
 import static be.kdg.groepi.utils.DateUtil.dateToLong;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 public class RestUserControllerTest {
     RestUserController restUserController;

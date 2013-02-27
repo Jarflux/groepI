@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
 
 
@@ -38,7 +40,7 @@ public class RestUserController {
     }
 
     @RequestMapping(value = "/createUser", method = RequestMethod.POST)
-    public ModelAndView createUser(@ModelAttribute("userObject") User user, @RequestParam(value = "dob") String dateOfBirth) {
+    public ModelAndView createUser(@ModelAttribute("userObject") User user, @RequestParam(value = "dob") String dateOfBirth) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         user.setDateOfBirth(DateUtil.dateStringToLong(dateOfBirth,null));
         user.setPassword(CompareUtil.getHashedPassword(user.getPassword())); //TODO Uncomment to encrypt passwords 
         UserService.createUser(user);
