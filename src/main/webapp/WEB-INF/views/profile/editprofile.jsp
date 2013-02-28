@@ -58,8 +58,8 @@
                             </div>
                             <div class="row">
                                 <span><spring:message code='text.profilepicture'/></span>
-                                <input type="text" class="" name="profilePicture" placeholder=""
-                                       title="Hier kan u uw profielfoto instellen" value="${userObject.profilePicture}"/>
+                                <%--<input type="text" class="" name="profilePicture" placeholder=""
+                                       title="Hier kan u uw profielfoto instellen" value="${userObject.profilePicture}"/>--%>
                             </div>
                             <div class="row">
                                 <span></span>
