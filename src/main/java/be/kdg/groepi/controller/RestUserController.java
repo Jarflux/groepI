@@ -111,15 +111,13 @@ public class RestUserController {
     @RequestMapping(value = "/reset/setNewPassword", method = RequestMethod.POST)
     public String setNewPassword(/* @RequestParam(value = "userObject") */ /* @ModelAttribute("userObject") User user, */
             @RequestParam(value = "passwordResetString") String passwordResetString,
-            @RequestParam(value = "password") String password) {
+            @RequestParam(value = "password") String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         User user = UserService.getUserByResetString(passwordResetString);
 
-        user.setPassword(password);
+        user.setPassword(CompareUtil.getHashedPassword(password));
         user.setPasswordResetString(null);
         user.setPasswordResetTimestamp(null);
         UserService.updateUser(user);
-
-        //TODO: navigeer succesvol naar login (ipv naar home ZONDER css)
 
         return "home";
     }
