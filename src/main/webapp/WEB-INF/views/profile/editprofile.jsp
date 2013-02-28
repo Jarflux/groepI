@@ -39,7 +39,7 @@
                         <div class="row">
                             <c:out value="Profile of user #${userObject.id}"/>
                         </div>
-                        <form method="post" action="/profile/editUser" class="mainstyle tooltips validate">
+                        <form method="post" action="/profile/editUser" class="mainstyle tooltips validate" enctype="multipart/form-data" >
                             <div class="row">
                                 <span><spring:message code='text.name'/></span>
                                 <input type="text" class="required" name="name" placeholder=""
@@ -58,6 +58,7 @@
                             </div>
                             <div class="row">
                                 <span><spring:message code='text.profilepicture'/></span>
+                                <input type="file" name="photo">
                                 <%--<input type="text" class="" name="profilePicture" placeholder=""
                                        title="Hier kan u uw profielfoto instellen" value="${userObject.profilePicture}"/>--%>
                             </div>
