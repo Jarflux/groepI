@@ -4,13 +4,6 @@ import be.kdg.groepi.utils.CompareUtil;
 
 import javax.persistence.*;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Gregory
- * Date: 20/02/13
- * Time: 10:14
- * To change this template use File | Settings | File Templates.
- */
 //public enum STOPTYPE {
 //    INFORMATIVE (0),
 //    INTERACTOVE(1);
