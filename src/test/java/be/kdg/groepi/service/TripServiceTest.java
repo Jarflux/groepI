@@ -70,22 +70,4 @@ public class TripServiceTest {
         trip.addRequirementToTrip(requirement);
         assertFalse("Trip: trip should have requirements", trip.getRequirements().isEmpty());
     }
-
-
-
-
-    /*@Test
-    public void createTimedTrip(){}
-    @Test
-    public void updateTimedTrip(){}
-    @Test
-    public void deleteTimedTrip(){}
-    @Test
-    public void createRecurrentTrip(){}
-    @Test
-    public void updateRecurrence(){}
-    @Test
-    public void deleteRecurrenceInstances(){}
-    @Test
-    public void deleteRecurrence(){} */
 }
