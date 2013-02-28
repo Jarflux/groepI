@@ -8,9 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static be.kdg.groepi.utils.DateUtil.dateToLong;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class StopServiceTest {
 
@@ -19,30 +18,36 @@ public class StopServiceTest {
 
     @Before
     public void beforeEachTest(){
-        user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4,5,2011,15,32,0));
+        user = new User("Tim", "tim@junittest.com", "tim", dateToLong(4,5,2011,15,32,0));
         UserService.createUser(user);
         trip = new Trip("Onze eerste trip","Hopelijk is deze niet te saai!",true,true,user);// trip aanmaken
         TripService.createTrip(trip);
     }
     @After
     public void afterEachTest(){
-
+        TripService.deleteTrip(trip);
+        UserService.deleteUser(user);
     }
     @Test
-    public void addStopToTrip()
+    public void createStop()
     {
-        StopService.createStop(new Stop("Stop 1", "", 1, 0, 0, "Eerste Stopplaats"));
-        StopService.createStop(new Stop("Stop 2", "", 1, 0, 0, "Tweede Stopplaats"));
-        assertFalse("TripInstance: tripInstance should have stops", trip.getStops().isEmpty());
+        Stop stop = new Stop("Stop 1", "", 1, 0, 0, "Eerste Stopplaats", trip);
+        StopService.createStop(stop);
+        assertEquals(stop, StopService.getStopById(stop.getId()));
     }
     @Test
     public void editStopFromTrip()
     {
         for (Stop s : trip.getStops())
         {
+            s.setLocation(s.getLocation().concat(" Edited"));
             s.setStopText(s.getStopText().concat(" Edited"));
+            s.setName(s.getName().concat(" Edited"));
+            s.setOrder(s.getOrder() + 1);
+            s.setType(s.getType() +1);
+            s.setDisplayMode(s.getDisplayMode() + 1);
             StopService.updateStop(s);
-            assertSame(s, StopService.getStopById(s.getId()));
+            assertEquals(s, StopService.getStopById(s.getId()));
         }
     }
     @Test
@@ -52,17 +57,6 @@ public class StopServiceTest {
         {
             StopService.deleteStop(s);
         }
-        assertTrue("TripInstance: tripInstance should have stops", trip.getStops().isEmpty());
-    }
-
-    @Test
-    public void addAndDeleteByTrip()
-    {
-        Stop stop = new Stop("Stop 1", "", 1, 0, 0, "Eerste Stopplaats via addStop");
-        trip.getStops().add(stop);
-        TripService.updateTrip(trip);
-        assertFalse("TripInstance: tripInstance should have stops", trip.getStops().isEmpty());
-        TripService.deleteTrip(trip);
-        assertTrue("TripInstance: tripInstance should have stops", trip.getStops().isEmpty());
+        assertTrue(trip.getStops().isEmpty());
     }
 }
