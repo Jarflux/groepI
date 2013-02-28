@@ -41,7 +41,7 @@ public class RestUserController {
 
     @RequestMapping(value = "/createUser", method = RequestMethod.POST)
     public ModelAndView createUser(@ModelAttribute("userObject") User user, @RequestParam(value = "dob") String dateOfBirth) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        user.setDateOfBirth(DateUtil.dateStringToLong(dateOfBirth,null));
+        user.setDateOfBirth(DateUtil.dateStringToLong(dateOfBirth, null));
         user.setPassword(CompareUtil.getHashedPassword(user.getPassword()));
         UserService.createUser(user);
         return new ModelAndView("home", "userObject", user);
@@ -56,19 +56,19 @@ public class RestUserController {
     }
 
     @RequestMapping(value = "/myprofile/edit", method = RequestMethod.GET)
-    public ModelAndView editUserView(HttpSession session){
+    public ModelAndView editUserView(HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("profile/editprofile");
         modelAndView.addObject("userObject", (User) session.getAttribute("userObject"));
         modelAndView.addObject("dob", DateUtil.formatDate(session));
         return modelAndView;
     }
-    
+
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)
     public ModelAndView editUser(HttpSession session, @ModelAttribute("userObject") User user, @RequestParam(value = "dob") String dateOfBirth) {
         User sessionUser = (User) session.getAttribute("userObject");
         sessionUser.setName(user.getName());
         sessionUser.setEmail(user.getEmail());
-        sessionUser.setDateOfBirth(DateUtil.dateStringToLong(dateOfBirth,null));
+        sessionUser.setDateOfBirth(DateUtil.dateStringToLong(dateOfBirth, null));
         sessionUser.setProfilePicture(user.getProfilePicture());
         UserService.updateUser(sessionUser);
         ModelAndView modelAndView = new ModelAndView("profile/userprofile");
@@ -76,7 +76,7 @@ public class RestUserController {
         modelAndView.addObject("dob", DateUtil.formatDate(session));
         return modelAndView;
     }
-    
+
 
     @RequestMapping(value = "/reset/forgotPassword")
     public ModelAndView forgotpassword() {
@@ -101,10 +101,12 @@ public class RestUserController {
             if (user.getPasswordResetTimestamp().getTime() > Calendar.getInstance().getTime().getTime()) {
                 return new ModelAndView("profile/resetpassword", "passwordResetString", user.getPasswordResetString());
             } else {
-                return new ModelAndView("error/displayerror/resetpasswordtimeerror"); //TODO: pagenotfound
+                String error = "resetpasswordtimeerror";
+                return new ModelAndView("error/displayerror/resetpasswordtimeerror", "errorid", error);
             }
         } else {
-            return new ModelAndView("error/displayerror/resetstringnotfound"); //TODO: pagenotfound
+            String error = "resetstringnotfound";
+            return new ModelAndView("error/displayerror/resetstringnotfound", "errorid", error);
         }
     }
 
