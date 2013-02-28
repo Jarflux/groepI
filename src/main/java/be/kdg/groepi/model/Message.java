@@ -22,13 +22,18 @@ public class Message implements Serializable {
     @Column(name = "date")
     Long fDate;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "trip_instance_id", nullable = false)
+    private TripInstance fTripInstance;
+
     // Hibernates needs empty constructor
     public Message() {
     }
 
-    public Message(String content, Long date) {
-        this.fContent = content;
-        this.fDate = date;
+    public Message(String fContent, Long fDate, TripInstance fTripInstance) {
+        this.fContent = fContent;
+        this.fDate = fDate;
+        this.fTripInstance = fTripInstance;
     }
 
     public long getId() {
@@ -53,6 +58,14 @@ public class Message implements Serializable {
 
     public void setDate(Long fDate) {
         this.fDate = fDate;
+    }
+
+    public TripInstance getTripInstance() {
+        return fTripInstance;
+    }
+
+    public void setTripInstance(TripInstance fTripInstance) {
+        this.fTripInstance = fTripInstance;
     }
 
     @Override

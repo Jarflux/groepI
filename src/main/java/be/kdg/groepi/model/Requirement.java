@@ -17,32 +17,26 @@ public class Requirement implements Serializable {
     @GeneratedValue
     @Column(name = "requirement_id")
     long fId;
+    @Column(name = "name")
+    String fName;
+    @Column(name = "amount")
+    long fAmount;
     @Column(name = "description")
     String fDescription;
+
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id", nullable = true)
-    private User fUser;
+    @JoinColumn(name = "trip_id", nullable = false)
+    private Trip fTrip;
 
     // Hibernates needs empty constructor
     public Requirement() {
     }
 
-    public Requirement(String description) {
-        this.fDescription = description;
-        this.fUser = null;
-    }
-
-    public Requirement(String fDescription, User fUser) {
+    public Requirement(String fName, long fAmount, String fDescription, Trip fTrip) {
+        this.fName = fName;
+        this.fAmount = fAmount;
         this.fDescription = fDescription;
-        this.fUser = fUser;
-    }
-
-    public User getUser() {
-        return fUser;
-    }
-
-    public void setUser(User fUser) {
-        this.fUser = fUser;
+        this.fTrip = fTrip;
     }
 
     public Long setId() {
@@ -53,11 +47,35 @@ public class Requirement implements Serializable {
         return fId;
     }
 
+    public String getName() {
+        return fName;
+    }
+
+    public void setName(String fName) {
+        this.fName = fName;
+    }
+
+    public long getAmount() {
+        return fAmount;
+    }
+
+    public void setAmount(long fAmount) {
+        this.fAmount = fAmount;
+    }
+
     public void setDescription(String fDescription) {
         this.fDescription = fDescription;
     }
 
     public String getDescription() {
         return fDescription;
+    }
+
+    public Trip getTrip() {
+        return fTrip;
+    }
+
+    public void setTrip(Trip fTrip) {
+        this.fTrip = fTrip;
     }
 }

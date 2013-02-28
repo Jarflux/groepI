@@ -37,8 +37,8 @@ public class TripInstanceServiceTest {
     @After
     public void afterEachTest() {
         tripinstance = null;
-        for (TripInstance tripInstance : TripInstanceService.getAllTripInstances()) {
-            TripInstanceService.deleteTripInstance(tripInstance);
+        for (TripInstance tempTripInstance : TripInstanceService.getAllTripInstances()) {
+            TripInstanceService.deleteTripInstance(tempTripInstance);
         }
     }
 
@@ -72,26 +72,26 @@ public class TripInstanceServiceTest {
 
     @Test
     public void addCostToTripInstance() {
-        assertTrue("TripInstance: tripInstance should have no costs", tripinstance.getCosts().isEmpty());
-        Cost cost = new Cost("BEN's cost", 35.53);
+        //assertTrue("TripInstance: tripInstance should have no costs", tripinstance.getCosts().isEmpty());
+        Cost cost = new Cost("BEN's cost", 35.53, tripinstance);
         CostService.createCost(cost);
         tripinstance.addCostToTripInstance(cost);
         assertFalse("TripInstance: tripinstance should have costs", tripinstance.getCosts().isEmpty());
     }
 
     @Test
-    public void addRequirementToTripInstance() {
-        assertTrue("Trip: trip should have no requirements", tripinstance.getRequirements().isEmpty());
-        Requirement requirement = new Requirement("BEN");
-        RequirementService.createRequirement(requirement);
-        tripinstance.addRequirementToTripInstance(requirement);
-        assertFalse("TripInstance: tripinstance should have requirements", tripinstance.getRequirements().isEmpty());
+    public void addRequirementInstanceToTripInstance() {
+        //assertTrue("TripInstance: tripInstance should have no requirementInstances", tripinstance.getRequirementInstances().isEmpty());
+        RequirementInstance requirementInstance = new RequirementInstance("BEN", 5, "descri", tripinstance);
+        RequirementInstanceService.createRequirementInstance(requirementInstance);
+        tripinstance.addRequirementInstanceToTripInstance(requirementInstance);
+        assertFalse("TripInstance: tripinstance should have requirementInstances", tripinstance.getRequirementInstances().isEmpty());
     }
 
     @Test
     public void addMessageToTripInstance() {
-        assertTrue("TripInstance: tripinstance should have no messages", tripinstance.getMessages().isEmpty());
-        Message message = new Message("BEN's message", dateToLong(12, 10, 1990, 8, 17, 35));
+        //assertTrue("TripInstance: tripinstance should have no messages", tripinstance.getMessages().isEmpty());
+        Message message = new Message("BEN's message", dateToLong(12, 10, 1990, 8, 17, 35), tripinstance);
         MessageService.createMessage(message);
         tripinstance.addMessageToTripInstance(message);
         assertFalse("TripInstance: tripInstance should have messages", tripinstance.getMessages().isEmpty());

@@ -29,14 +29,14 @@ public class StopServiceTest {
 
     }
     @Test
-    public void addStopToStrip()
+    public void addStopToTrip()
     {
         StopService.createStop(new Stop("Stop 1", "", 1, 0, 0, "Eerste Stopplaats"));
         StopService.createStop(new Stop("Stop 2", "", 1, 0, 0, "Tweede Stopplaats"));
         assertFalse("TripInstance: tripInstance should have stops", trip.getStops().isEmpty());
     }
     @Test
-    public void editStopFromStrip()
+    public void editStopFromTrip()
     {
         for (Stop s : trip.getStops())
         {

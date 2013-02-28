@@ -1,8 +1,10 @@
 package be.kdg.groepi.controller;
 
 import be.kdg.groepi.model.Requirement;
+import be.kdg.groepi.model.RequirementInstance;
 import be.kdg.groepi.model.Trip;
 import be.kdg.groepi.model.User;
+import be.kdg.groepi.service.RequirementInstanceService;
 import be.kdg.groepi.service.RequirementService;
 import be.kdg.groepi.service.TripService;
 import org.apache.log4j.Logger;
@@ -37,16 +39,14 @@ public class RestTripController {
     @RequestMapping(value = "/doAddTripRequirement", method = RequestMethod.POST)
     public ModelAndView doAddTripRequirement(@RequestParam(value = "tripId") String tripId,/*
                                              @ModelAttribute("requirementObject") Requirement requirement*/
+                                             @RequestParam(value = "name") String name,
+                                             @RequestParam(value = "amount") Long amount,
                                              @RequestParam(value = "description") String description) {
-//
-        Requirement requirement = new Requirement(description);
 
-        /*User user = (User) session.getAttribute("userObject");
-        requirement.setUser(user);*/
-        requirement.setUser(null);
+        Trip trip = TripService.getTripById(Long.parseLong(tripId));
 
-        System.out.println(tripId);
-        Trip trip = TripService.getTripById(Long.parseLong("1"));
+        Requirement requirement = new Requirement(name, amount, description, trip);
+
         RequirementService.createRequirement(requirement);
         trip.addRequirementToTrip(requirement);
         TripService.updateTrip(trip);

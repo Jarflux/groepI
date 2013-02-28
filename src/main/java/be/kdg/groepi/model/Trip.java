@@ -45,9 +45,12 @@ public class Trip implements Serializable {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTrip")
     private Set<Stop> fStops;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTrip")
+    private Set<Requirement> fRequirements;
+
+    /*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "T_TRIP_REQUIREMENT", joinColumns = {@JoinColumn(name = "trip_id")}, inverseJoinColumns = {@JoinColumn(name = "requirement_id")})
-    private Set<Requirement> fRequirements = new HashSet<>();
+    private Set<Requirement> fRequirements = new HashSet<>();*/
 
     // Hibernates needs empty constructor
     public Trip() {
@@ -59,8 +62,6 @@ public class Trip implements Serializable {
         this.fAvailable = fAvailable;
         this.fRepeatable = fRepeatable;
         this.fOrganiser = fOrganiser;
-
-        this.fRequirements = fRequirements;
     }
 
     public Long getId() {
@@ -118,6 +119,7 @@ public class Trip implements Serializable {
     public void setRequirements(Set<Requirement> fRequirements) {
         this.fRequirements = fRequirements;
     }
+
     public void addRequirementToTrip(Requirement requirement) {
         this.fRequirements.add(requirement);
     }
@@ -127,12 +129,14 @@ public class Trip implements Serializable {
     public void setStops(Set<Stop> fStops) {
         this.fStops = fStops;
     }
-    /*public void addStopToTrip(Stop stop) {
+
+    public void addStopToTrip(Stop stop) {
         this.fStops.add(stop);
     }
+
     public void removeStop(Stop stop) {
         this.fStops.add(stop);
-    }*/
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -154,13 +158,6 @@ public class Trip implements Serializable {
         if (!this.fOrganiser.equals(trip.getOrganiser())) {
             return false;
         }
-
-
-
-        if (!(CompareUtil.compareSet(this.fRequirements, trip.getRequirements()))) {
-            return false;
-        }
-
 
         return true;
     }

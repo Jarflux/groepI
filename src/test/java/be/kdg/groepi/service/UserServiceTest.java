@@ -90,13 +90,13 @@ public class UserServiceTest {
         String oldPassword = user.getPassword();
         UserService.createUser(user);
         UserService.resetPassword(user.getEmail());
-        assertFalse("testResetPassword: ", user.getPassword().equals(oldPassword));
+        assertFalse("testResetPassword: failll", user.getPassword().equals(oldPassword));
     }
 
     @Test
     public void testGetByEmail() {
         UserService.createUser(user);
         UserService.getUserByEmail("TIM@M.EH");
-        assertEquals("testGetUserByEmail: ", user, UserService.getUserById(user.getId()));
+        assertEquals("testGetUserByEmail: kztugelhiugshdl EMAILNOTHERE", user, UserService.getUserById(user.getId()));
     }
 }

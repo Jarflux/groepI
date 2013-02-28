@@ -1,6 +1,8 @@
 package be.kdg.groepi.model;
 
 import be.kdg.groepi.utils.CompareUtil;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -46,24 +48,33 @@ public class TripInstance implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     private User fOrganiser;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
+    @Cascade(value = CascadeType.ALL)
     @JoinTable(name = "T_TRIP_INSTANCE_PARTICIPANT", joinColumns = {@JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {@JoinColumn(name = "user_id")})
     private Set<User> fParticipants = new HashSet<>();
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTripInstance")
+    private Set<RequirementInstance> fRequirementInstances;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTripInstance")
+    private Set<Cost> fCosts;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTripInstance")
+    private Set<Message> fMessages;
+
+/*    *//*!!*//*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "T_TRIP_INSTANCE_COST", joinColumns = {@JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {@JoinColumn(name = "cost_id")})
     private Set<Cost> fCosts = new HashSet<>();
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    *//*!!*//*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "T_TRIP_INSTANCE_REQUIREMENT", joinColumns = {@JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {@JoinColumn(name = "requirement_id")})
     private Set<Requirement> fRequirements = new HashSet<>();
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    *//*!!*//*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "T_TRIP_INSTANCE_MESSAGE", joinColumns = {@JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {@JoinColumn(name = "message_id")})
-    private Set<Message> fMessages = new HashSet<>();
+    private Set<Message> fMessages = new HashSet<>();*/
 
     // Hibernates needs empty constructor
     public TripInstance() {
     }
 
-    public TripInstance(String fTitle, String fDescription, Boolean fAvailable, long fStartDate, long fEndDate, User fOrganiser, Trip fTrip) {
+    public TripInstance(String fTitle, String fDescription, Boolean fAvailable, long fStartDate, long fEndDate, User fOrganiser, Trip fTrip/*, RequirementInstance requirementInstance*/) {
         this.fTitle = fTitle;
         this.fDescription = fDescription;
         this.fAvailable = fAvailable;
@@ -71,6 +82,7 @@ public class TripInstance implements Serializable {
         this.fEndDate = fEndDate;
         this.fOrganiser = fOrganiser;
         this.fTrip = fTrip;
+        //this.requirementInstance = requirementInstance;
     }
 
     public long getStartDate() {
@@ -146,20 +158,20 @@ public class TripInstance implements Serializable {
         this.fParticipants = fParticipants;
     }
 
+    public Set<RequirementInstance> getRequirementInstances() {
+        return fRequirementInstances;
+    }
+
+    public void setRequirementInstances(Set<RequirementInstance> fRequirementInstances) {
+        this.fRequirementInstances = fRequirementInstances;
+    }
+
     public Set<Cost> getCosts() {
         return fCosts;
     }
 
     public void setCosts(Set<Cost> fCosts) {
         this.fCosts = fCosts;
-    }
-
-    public Set<Requirement> getRequirements() {
-        return fRequirements;
-    }
-
-    public void setRequirements(Set<Requirement> fRequirements) {
-        this.fRequirements = fRequirements;
     }
 
     public Set<Message> getMessages() {
@@ -170,7 +182,6 @@ public class TripInstance implements Serializable {
         this.fMessages = fMessages;
     }
 
-
     public void addParticipantToTripInstance(User user) {
         this.fParticipants.add(user);
     }
@@ -179,8 +190,8 @@ public class TripInstance implements Serializable {
         this.fCosts.add(cost);
     }
 
-    public void addRequirementToTripInstance(Requirement requirement) {
-        this.fRequirements.add(requirement);
+    public void addRequirementInstanceToTripInstance(RequirementInstance requirementInstance) {
+        this.fRequirementInstances.add(requirementInstance);
     }
 
     public void addMessageToTripInstance(Message message) {
@@ -211,7 +222,7 @@ public class TripInstance implements Serializable {
             return false;
         }
 
-        if (!(CompareUtil.compareSet(this.fCosts, trip.getCosts()))) {
+/*        if (!(CompareUtil.compareSet(this.fCosts, trip.getCosts()))) {
             return false;
         }
 
@@ -221,7 +232,7 @@ public class TripInstance implements Serializable {
 
         if (!(CompareUtil.compareSet(this.fMessages, trip.getMessages()))) {
             return false;
-        }
+        }*/
         return true;
     }
 

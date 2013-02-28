@@ -22,13 +22,18 @@ public class Cost implements Serializable {
     @Column(name = "amount")
     Double fAmount;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "trip_instance_id", nullable = false)
+    private TripInstance fTripInstance;
+
     // Hibernates needs empty constructor
     public Cost() {
     }
 
-    public Cost(String description, Double amount) {
-        this.fDescription = description;
-        this.fAmount = amount;
+    public Cost(String fDescription, Double fAmount, TripInstance fTripInstance) {
+        this.fDescription = fDescription;
+        this.fAmount = fAmount;
+        this.fTripInstance = fTripInstance;
     }
 
     public long getId() {
@@ -53,6 +58,14 @@ public class Cost implements Serializable {
 
     public void setAmount(Double fAmount) {
         this.fAmount = fAmount;
+    }
+
+    public TripInstance getTripInstance() {
+        return fTripInstance;
+    }
+
+    public void setTripInstance(TripInstance fTripInstance) {
+        this.fTripInstance = fTripInstance;
     }
 
     @Override

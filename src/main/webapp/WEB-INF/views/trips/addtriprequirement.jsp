@@ -17,19 +17,27 @@
 <body>
 <div id="wrapper">
     <div id="topmenu" class="column dark">
-        <jsp:include page="/topmenu"   />
+        <jsp:include page="/topmenu"/>
     </div>
     <div id="content" class="column light">
         <h2><spring:message code="text.createtrip"/></h2>
         <form method="post" action="doAddTripRequirement" class="mainstyle tooltips">
             <input type="hidden" name="tripId" title="tripId" value="${tripId}"/>
             <div class="row">
+                <span><spring:message code='text.name'/></span>
+                <textarea name="name" title="<spring:message code='text.requirementname'/>"></textarea>
+            </div>
+            <div class="row">
+                <span><spring:message code='text.amount'/></span>
+                <textarea name="amount" title="<spring:message code='text.requirementamount'/>"></textarea>
+            </div>
+            <div class="row">
                 <span><spring:message code='text.description'/></span>
                 <textarea name="description" title="<spring:message code='text.requirementdescription'/>"></textarea>
             </div>
             <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
         </form>
-        <form method="post" action="/trips/view/${requirementObject.id}" class="mainstyle tooltips">        <%--TODO:flaschenkopfen--%>
+        <form method="get" action="/trips/view/${tripId}" class="mainstyle tooltips">        <%--TODO:flaschenkopfen--%>
             <input type="submit" class="button" value="<spring:message code='text.finishediting'/>"/>
         </form>
     </div>
