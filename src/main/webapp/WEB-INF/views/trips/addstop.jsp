@@ -8,11 +8,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
     <head>
         <title>Add Stop</title>
         <link href="/css/blue.css" rel="stylesheet"/>
-        <%--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>--%>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
         <%--<script>
             var map;
             function initialize() {
@@ -27,9 +28,9 @@
 
             google.maps.event.addDomListener(window, 'load', initialize);
         </script>--%>
-        <script type="text/javascript"
+        <%--<script type="text/javascript"
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPqDCjf9lJDNy4kgA6CMphIibJHG5-OFw&sensor=false">
-        </script>
+        </script>--%>
         <script>
             var map;
             var myCenter=new google.maps.LatLng(51.508742,-0.120850);
@@ -41,7 +42,7 @@
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
 
-                map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+                map = new google.maps.Map(document.getElementById("map_canvas"),mapProp);
                 var marker = new google.maps.Marker({
                     position: myCenter,
                     title:'Click to zoom'
@@ -52,7 +53,23 @@
                     map.setZoom(9);
                     map.setCenter(marker.getPosition());
                 });
+                google.maps.event.addListener(map, 'click', function(event) {
+                    placeMarker(event.latLng);
+                });
             }
+
+            function placeMarker(location) {
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map:map
+                });
+                var infowindow = new google.maps.InfoWindow({
+                    content: 'Latitude: ' + location.lat() +
+                            '<br>Longitude: ' + location.lng()
+                });
+                infowindow.open(map,marker);
+            }
+
             google.maps.event.addDomListener(window, 'load', initialize);
         </script>
     </head>
