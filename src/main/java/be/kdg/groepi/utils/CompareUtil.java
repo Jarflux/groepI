@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -24,6 +25,18 @@ public class CompareUtil {
         }
         return true;
     }
+
+    public static boolean compareList(List<?> x, List<?> y) {
+        if ((x == null || y == null) && !(x == null && y == null)) {
+            return false;
+        } else if (x != null && y != null) {
+            if (!(x.containsAll(y) && y.containsAll(x))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static String getHashedPassword(String text)
             throws NoSuchAlgorithmException, UnsupportedEncodingException {
 
@@ -40,16 +53,18 @@ public class CompareUtil {
 
     private static String convertToHex(byte[] data) {
         StringBuffer buffer = new StringBuffer();
-        for (int i=0; i<data.length; i++)
-        {
-            if (i % 4 == 0 && i != 0)
+        for (int i = 0; i < data.length; i++) {
+            if (i % 4 == 0 && i != 0) {
                 buffer.append("");
+            }
             int x = (int) data[i];
-            if (x<0)
-                x+=256;
-            if (x<16)
+            if (x < 0) {
+                x += 256;
+            }
+            if (x < 16) {
                 buffer.append("0");
-            buffer.append(Integer.toString(x,16));
+            }
+            buffer.append(Integer.toString(x, 16));
         }
         return buffer.toString();
     }

@@ -1,12 +1,15 @@
 package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.*;
+import be.kdg.groepi.utils.CompareUtil;
 import be.kdg.groepi.utils.DateUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import static be.kdg.groepi.utils.DateUtil.dateToLong;
+import java.util.ArrayList;
+import java.util.List;
 import static org.junit.Assert.*;
 
 /**
@@ -19,6 +22,7 @@ import static org.junit.Assert.*;
 public class TripInstanceServiceTest {
 
     private TripInstance tripinstance;
+    private Trip trip;
     private User user;
     //private Long tripId;
 
@@ -26,7 +30,7 @@ public class TripInstanceServiceTest {
     public void beforeEachTest() {
         user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
         UserService.createUser(user);
-        Trip trip = new Trip("Onze eerste trip", "Hopelijk is deze niet te saai!", true, true, user);// trip aanmaken
+        trip = new Trip("Onze eerste trip", "Hopelijk is deze niet te saai!", true, true, user);// trip aanmaken
         TripService.createTrip(trip);
         long startDate = DateUtil.dateToLong(27, 02, 2013, 16, 00, 00);
         long endDate = DateUtil.dateToLong(27, 02, 2013, 20, 00, 00);
@@ -96,4 +100,22 @@ public class TripInstanceServiceTest {
         tripinstance.addMessageToTripInstance(message);
         assertFalse("TripInstance: tripInstance should have messages", tripinstance.getMessages().isEmpty());
     }
+    
+    @Test
+    public void getAllTripInstances() {
+        long startDate = DateUtil.dateToLong(27, 02, 2013, 16, 00, 00);
+        long endDate = DateUtil.dateToLong(27, 02, 2013, 20, 00, 00);
+        TripInstance tripinstance1 = new TripInstance("Bachelor feestje 1", "Iemand gaat trouwen, bier en vrouwen ole", false, startDate, endDate, user, trip);
+        TripInstanceService.createTripInstance(tripinstance1);
+        TripInstance tripinstance2 = new TripInstance("Bachelor feestje 2", "Iemand gaat trouwen, bier en vrouwen ole", false, startDate, endDate, user, trip);
+        TripInstanceService.createTripInstance(tripinstance2);
+        TripInstance tripinstance3 = new TripInstance("Bachelor feestje 3", "Iemand gaat trouwen, bier en vrouwen ole", false, startDate, endDate, user, trip);
+        TripInstanceService.createTripInstance(tripinstance3);
+        List<TripInstance> tripList = new ArrayList<>();
+        tripList.add(tripinstance1);
+        tripList.add(tripinstance2);
+        tripList.add(tripinstance3);
+        assertFalse("TripInstance: tripList does not contain the tripInstances it should", CompareUtil.compareList(TripInstanceService.getAllTripInstances(), tripList));
+    }
+    
 }

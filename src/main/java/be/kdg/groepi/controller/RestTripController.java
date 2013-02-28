@@ -3,10 +3,13 @@ package be.kdg.groepi.controller;
 import be.kdg.groepi.model.Requirement;
 import be.kdg.groepi.model.RequirementInstance;
 import be.kdg.groepi.model.Trip;
+import be.kdg.groepi.model.TripInstance;
 import be.kdg.groepi.model.User;
 import be.kdg.groepi.service.RequirementInstanceService;
 import be.kdg.groepi.service.RequirementService;
+import be.kdg.groepi.service.TripInstanceService;
 import be.kdg.groepi.service.TripService;
+import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +21,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("trips")
 public class RestTripController {
+
     private static final Logger logger = Logger.getLogger(RestTripController.class);
 
     @RequestMapping(value = "/addtrip")
@@ -38,10 +42,10 @@ public class RestTripController {
 
     @RequestMapping(value = "/doAddTripRequirement", method = RequestMethod.POST)
     public ModelAndView doAddTripRequirement(@RequestParam(value = "tripId") String tripId,/*
-                                             @ModelAttribute("requirementObject") Requirement requirement*/
-                                             @RequestParam(value = "name") String name,
-                                             @RequestParam(value = "amount") Long amount,
-                                             @RequestParam(value = "description") String description) {
+             @ModelAttribute("requirementObject") Requirement requirement*/
+            @RequestParam(value = "name") String name,
+            @RequestParam(value = "amount") Long amount,
+            @RequestParam(value = "description") String description) {
 
         Trip trip = TripService.getTripById(Long.parseLong(tripId));
 
@@ -53,15 +57,14 @@ public class RestTripController {
         return new ModelAndView("trips/addtriprequirement", "tripId", trip.getId().toString());
     }
 
-
     @RequestMapping(value = "/view/{tripId}", method = RequestMethod.GET)
     public ModelAndView getTrip(@PathVariable("tripId") String tripId) {
         Trip trip;
         // validate input
         /*if (tripId.isEmpty() || tripId.length() < 5) {
-            String sMessage = "Error invoking getFund - Invalid fund Id parameter";
-            // return createErrorResponse(sMessage);
-        }*/
+         String sMessage = "Error invoking getFund - Invalid fund Id parameter";
+         // return createErrorResponse(sMessage);
+         }*/
         //try {
         trip = TripService.getTripById(Long.parseLong(tripId));
         if (trip != null) {
@@ -71,9 +74,9 @@ public class RestTripController {
             return new ModelAndView("trips/view", "tripId", tripId);
         }
         /*} catch (Exception e) {
-            String sMessage = "Error invoking getFund. [%1$s]";
-            //return createErrorResponse(String.format(sMessage, e.toString()));
-        }*/
+         String sMessage = "Error invoking getFund. [%1$s]";
+         //return createErrorResponse(String.format(sMessage, e.toString()));
+         }*/
     }
 
     @RequestMapping(value = "/addstop")
@@ -81,5 +84,15 @@ public class RestTripController {
         System.out.println("AddStop: Passing through...");
         return "trips/addstop";
     }
-}
 
+    @RequestMapping(value = "/list")
+    public ModelAndView getAllTrips() {
+        List<TripInstance> tripList = TripInstanceService.getAllTripInstances();
+        if( tripList != null){
+        logger.debug("Returning TripList containing " + tripList.size() + " TripInstances");
+        }else{
+        logger.debug("Returning TripList = NULL");
+        }
+        return new ModelAndView("trips/list", "tripListObject", tripList);
+    }
+}
