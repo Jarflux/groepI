@@ -35,6 +35,10 @@ public class Stop {
     //@Type(type = "text")
     private String fStopText;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "trip_id", nullable = false)
+    private Trip fTrip;
+
     public Stop() {
     }
 
@@ -101,5 +105,13 @@ public class Stop {
 
     public void setStopText(String fStopText) {
         this.fStopText = fStopText;
+    }
+
+    public Trip getTrip() {
+        return fTrip;
+    }
+
+    public void setTrip(Trip fTrip) {
+        this.fTrip = fTrip;
     }
 }

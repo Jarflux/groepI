@@ -42,6 +42,8 @@ public class Trip implements Serializable {
     @JoinColumn(name = "user_id", nullable = false)
     private User fOrganiser;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTrip")
+    private Set<Stop> fStops;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "T_TRIP_REQUIREMENT", joinColumns = {@JoinColumn(name = "trip_id")}, inverseJoinColumns = {@JoinColumn(name = "requirement_id")})
@@ -109,8 +111,6 @@ public class Trip implements Serializable {
         this.fOrganiser = fOrganiser;
     }
 
-
-
     public Set<Requirement> getRequirements() {
         return fRequirements;
     }
@@ -118,12 +118,21 @@ public class Trip implements Serializable {
     public void setRequirements(Set<Requirement> fRequirements) {
         this.fRequirements = fRequirements;
     }
-
-
     public void addRequirementToTrip(Requirement requirement) {
         this.fRequirements.add(requirement);
     }
-
+    public Set<Stop> getStops() {
+        return fStops;
+    }
+    public void setStops(Set<Stop> fStops) {
+        this.fStops = fStops;
+    }
+    /*public void addStopToTrip(Stop stop) {
+        this.fStops.add(stop);
+    }
+    public void removeStop(Stop stop) {
+        this.fStops.add(stop);
+    }*/
 
     @Override
     public boolean equals(Object o) {

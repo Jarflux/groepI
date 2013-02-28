@@ -96,21 +96,4 @@ public class TripInstanceServiceTest {
         tripinstance.addMessageToTripInstance(message);
         assertFalse("TripInstance: tripInstance should have messages", tripinstance.getMessages().isEmpty());
     }
-
-
-
-    /*@Test
-    public void createTimedTrip(){}
-    @Test
-    public void updateTimedTrip(){}
-    @Test
-    public void deleteTimedTrip(){}
-    @Test
-    public void createRecurrentTrip(){}
-    @Test
-    public void updateRecurrence(){}
-    @Test
-    public void deleteRecurrenceInstances(){}
-    @Test
-    public void deleteRecurrence(){} */
 }
