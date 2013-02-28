@@ -87,6 +87,7 @@ public class UserServiceTest {
 
     @Test
     public void testResetPassword() {
+        //TODO Password encryption
         String oldPassword = user.getPassword();
         UserService.createUser(user);
         UserService.resetPassword(user.getEmail());

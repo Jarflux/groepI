@@ -11,13 +11,6 @@ import org.hibernate.Transaction;
 
 import java.util.List;
 
-/**
- * Author: Ben Oeyen
- * Date: 6/02/13
- * Class: Requirement Service
- * Description:
- */
-
 public class StopService {
     public static Stop getStopById(long Id) {
         Stop stop = null;

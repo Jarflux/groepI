@@ -1,5 +1,7 @@
 package be.kdg.groepi.model;
 
+import be.kdg.groepi.utils.CompareUtil;
+
 import javax.persistence.*;
 
 /**
@@ -42,13 +44,14 @@ public class Stop {
     public Stop() {
     }
 
-    public Stop(String fName, String fLocation, Integer fOrder, Integer fType, Integer fDisplayMode, String fStopText) {
+    public Stop(String fName, String fLocation, Integer fOrder, Integer fType, Integer fDisplayMode, String fStopText, Trip fTrip) {
         this.fName = fName;
         this.fLocation = fLocation;
         this.fStopnumber = fOrder;
         this.fType = fType;
         this.fDisplayMode = fDisplayMode;
         this.fStopText = fStopText;
+        this.fTrip = fTrip;
     }
 
     public Long getId() {
@@ -113,5 +116,36 @@ public class Stop {
 
     public void setTrip(Trip fTrip) {
         this.fTrip = fTrip;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        Stop stop = (Stop) o;
+        if (this == stop) return false;
+
+        int comparison = this.fName.compareTo(stop.getName());
+        if (comparison != 0) return false;
+
+        comparison = this.fLocation.compareTo(stop.getLocation());
+        if (comparison != 0) return false;
+
+        comparison = this.fStopnumber.compareTo(stop.getOrder());
+        if (comparison != 0) return false;
+
+        comparison = this.fStopText.compareTo(stop.getStopText());
+        if (comparison != 0) return false;
+
+        comparison = this.fDisplayMode.compareTo(stop.getDisplayMode());
+        if (comparison != 0) return false;
+
+        comparison = this.fType.compareTo(stop.getType());
+        if (comparison != 0) return false;
+
+        comparison = this.fStopnumber.compareTo(stop.getOrder());
+        if (comparison != 0) return false;
+
+     // cant test because trip is lazyloaded and cant do get<trip on trip proxy
+     //   if (!(this.fTrip.equals(stop.getTrip()))) return false;
+        return true;
     }
 }
