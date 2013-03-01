@@ -18,8 +18,10 @@ public class Stop {
     private Long fId;
     @Column(name = "name")
     private String fName;
-    @Column(name = "location")
-    private String fLocation;
+    @Column(name = "longtitude")
+    private String fLongitude;
+    @Column(name = "latitude")
+    private String fLatitude;
     @Column(name = "stopnumber")
     private Integer fStopnumber;
     @Column(name = "type")
@@ -37,9 +39,10 @@ public class Stop {
     public Stop() {
     }
 
-    public Stop(String fName, String fLocation, Integer fOrder, Integer fType, Integer fDisplayMode, String fStopText, Trip fTrip) {
+    public Stop(String fName, String fLongitude, String fLatitude, Integer fOrder, Integer fType, Integer fDisplayMode, String fStopText, Trip fTrip) {
         this.fName = fName;
-        this.fLocation = fLocation;
+        this.fLongitude = fLongitude;
+        this.fLatitude = fLatitude;
         this.fStopnumber = fOrder;
         this.fType = fType;
         this.fDisplayMode = fDisplayMode;
@@ -63,12 +66,20 @@ public class Stop {
         this.fName = fName;
     }
 
-    public String getLocation() {
-        return fLocation;
+    public String getLongitude() {
+        return fLongitude;
     }
 
-    public void setLocation(String fLocation) {
-        this.fLocation = fLocation;
+    public void setLongitude(String fLongitude) {
+        this.fLongitude = fLongitude;
+    }
+
+    public String getLatitude() {
+        return fLatitude;
+    }
+
+    public void setLatitude(String fLatitude) {
+        this.fLatitude = fLatitude;
     }
 
     public Integer getOrder() {
@@ -119,7 +130,10 @@ public class Stop {
         int comparison = this.fName.compareTo(stop.getName());
         if (comparison != 0) return false;
 
-        comparison = this.fLocation.compareTo(stop.getLocation());
+        comparison = this.fLatitude.compareTo(stop.getLatitude());
+        if (comparison != 0) return false;
+
+        comparison = this.fLongitude.compareTo(stop.getLongitude());
         if (comparison != 0) return false;
 
         comparison = this.fStopnumber.compareTo(stop.getOrder());

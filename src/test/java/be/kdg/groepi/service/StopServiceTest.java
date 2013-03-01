@@ -31,7 +31,7 @@ public class StopServiceTest {
     @Test
     public void createStop()
     {
-        Stop stop = new Stop("Stop 1", "", 1, 0, 0, "Eerste Stopplaats", trip);
+        Stop stop = new Stop("Stop 1","", "", 1, 0, 0, "Eerste Stopplaats", trip);
         StopService.createStop(stop);
         assertEquals(stop, StopService.getStopById(stop.getId()));
     }
@@ -40,7 +40,8 @@ public class StopServiceTest {
     {
         for (Stop s : trip.getStops())
         {
-            s.setLocation(s.getLocation().concat(" Edited"));
+            s.setLatitude(s.getLatitude().concat(" Edited"));
+            s.setLongitude(s.getLongitude().concat(" Edited"));
             s.setStopText(s.getStopText().concat(" Edited"));
             s.setName(s.getName().concat(" Edited"));
             s.setOrder(s.getOrder() + 1);
