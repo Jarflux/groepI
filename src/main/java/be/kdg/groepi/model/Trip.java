@@ -140,12 +140,14 @@ public class Trip implements Serializable {
     public void setStops(Set<Stop> fStops) {
         this.fStops = fStops;
     }
-    /*public void addStopToTrip(Stop stop) {
+
+    public void addStopToTrip(Stop stop) {
         this.fStops.add(stop);
     }
+
     public void removeStop(Stop stop) {
-        this.fStops.add(stop);
-    }*/
+        this.fStops.remove(stop);
+    }
 
     @Override
     public boolean equals(Object o) {

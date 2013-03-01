@@ -185,6 +185,15 @@ public class TripInstance implements Serializable {
         this.fParticipants.add(user);
     }
 
+    public void removeParticipantFromTripInstance(User user) {
+        this.fParticipants.remove(user);
+    }
+
+    public void removeCostFromTripInstance(Cost cost) {
+        this.fCosts.remove(cost);
+    }
+
+
     public void addCostToTripInstance(Cost cost) {
         this.fCosts.add(cost);
     }
@@ -193,8 +202,16 @@ public class TripInstance implements Serializable {
         this.fRequirementInstances.add(requirementInstance);
     }
 
+    public void removeRequirementInstanceFromTripInstance(RequirementInstance requirementInstance) {
+        this.fRequirementInstances.remove(requirementInstance);
+    }
+
     public void addMessageToTripInstance(Message message) {
         this.fMessages.add(message);
+    }
+
+    public void removeMessageFromTripInstance(Message message) {
+        this.fMessages.remove(message);
     }
 
 
