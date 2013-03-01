@@ -26,7 +26,7 @@
             <div class="quarter">
                 <c:choose>
                     <c:when test="${userObject.profilePicture == null}">
-                        <img src="/images/noprofile.jpg" width='150' class="profilepic"/>
+                        <img src="${pageContext.request.contextPath}/images/noprofile.jpg" width='150' class="profilepic"/>
                     </c:when>
                     <c:when test="${userObject.profilePicture != null}">
                         <img src="${userObject.profilePicture}"/>
