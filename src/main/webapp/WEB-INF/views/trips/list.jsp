@@ -21,7 +21,7 @@
             </div>
             <div id="content" class="column light">
                 <h2> <spring:message code='text.trips'/>
-                    <form method="post" action="addTrip">
+                    <form method="post" action="addtrip">
                         <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
                     </form>
                 </h2>
