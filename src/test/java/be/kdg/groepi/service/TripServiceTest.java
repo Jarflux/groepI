@@ -7,10 +7,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 import static be.kdg.groepi.utils.DateUtil.dateToLong;
 import static org.junit.Assert.*;
 
 public class TripServiceTest {
+    //TODO: cascade delete-dinges
 
     private Trip trip;
     private User user;
@@ -27,7 +30,8 @@ public class TripServiceTest {
     @After
     public void afterEachTest(){
         trip = null;
-        for (Trip trip : TripService.getAllTrips()) {
+        List<Trip> trips = TripService.getAllTrips();
+        for (Trip trip : trips) {
             TripService.deleteTrip(trip);
         }
     }
@@ -53,12 +57,12 @@ public class TripServiceTest {
         assertNull("deleteTrip: Trip not found", TripService.getTripById(trip.getId()));
     }
 
-//    @Test
-//    public void addRequirementToTrip(){
-//        assertTrue("Trip: trip should have no requirements", trip.getRequirements().isEmpty());
-//        Requirement requirement = new Requirement("BEN", 1, "", trip);
-//        RequirementService.createRequirement(requirement);
-//        trip.addRequirementToTrip(requirement);
-//        assertFalse("Trip: trip should have requirements", trip.getRequirements().isEmpty());
-//    }
+    @Test
+    public void addRequirementToTrip(){
+        assertTrue("Trip: trip should have no requirements", trip.getRequirements().isEmpty());
+        Requirement requirement = new Requirement("BEN", 1, "", trip);
+        RequirementService.createRequirement(requirement);
+        trip.addRequirementToTrip(requirement);
+        assertFalse("Trip: trip should have requirements", trip.getRequirements().isEmpty());
+    }
 }
