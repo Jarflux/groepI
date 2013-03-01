@@ -48,10 +48,10 @@ public class Trip implements Serializable {
     @Cascade(CascadeType.DELETE)
     private Set<Stop> fStops = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @Cascade(CascadeType.ALL)
-    @JoinTable(name = "T_TRIP_REQUIREMENT", joinColumns = {@JoinColumn(name = "trip_id")}, inverseJoinColumns = {@JoinColumn(name = "requirement_id")})
-    private Set<Requirement> fRequirements = new HashSet<>();
+   // @ManyToMany(fetch = FetchType.EAGER)
+   // @Cascade(CascadeType.ALL)
+   // @JoinTable(name = "T_TRIP_REQUIREMENT", joinColumns = {@JoinColumn(name = "trip_id")}, inverseJoinColumns = {@JoinColumn(name = "requirement_id")})
+   // private Set<Requirement> fRequirements = new HashSet<>();
 
     // Hibernates needs empty constructor
     public Trip() {
@@ -63,8 +63,6 @@ public class Trip implements Serializable {
         this.fAvailable = fAvailable;
         this.fRepeatable = fRepeatable;
         this.fOrganiser = fOrganiser;
-
-        this.fRequirements = fRequirements;
     }
 
     public Long getId() {
@@ -115,16 +113,16 @@ public class Trip implements Serializable {
         this.fOrganiser = fOrganiser;
     }
 
-    public Set<Requirement> getRequirements() {
-        return fRequirements;
-    }
-
-    public void setRequirements(Set<Requirement> fRequirements) {
-        this.fRequirements = fRequirements;
-    }
-    public void addRequirementToTrip(Requirement requirement) {
-        this.fRequirements.add(requirement);
-    }
+//    public Set<Requirement> getRequirements() {
+//        return fRequirements;
+//    }
+//
+//    public void setRequirements(Set<Requirement> fRequirements) {
+//        this.fRequirements = fRequirements;
+//    }
+//    public void addRequirementToTrip(Requirement requirement) {
+//        this.fRequirements.add(requirement);
+//    }
     public Set<Stop> getStops() {
         return fStops;
     }
@@ -158,9 +156,9 @@ public class Trip implements Serializable {
         if (!this.fOrganiser.equals(trip.getOrganiser())) {
             return false;
         }
-        if (!(CompareUtil.compareSet(this.fRequirements, trip.getRequirements()))) {
-            return false;
-        }
+      //  if (!(CompareUtil.compareSet(this.fRequirements, trip.getRequirements()))) {
+      //      return false;
+      //  }
         return true;
     }
 

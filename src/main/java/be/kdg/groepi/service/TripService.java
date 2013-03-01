@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
+import org.hibernate.Query;
 
 /**
  * Author: Ben Oeyen
@@ -96,7 +97,8 @@ public class TripService {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            trips = session.createQuery("FROM Trip").list();
+            Query query = session.createQuery("from Trip");
+            trips = (List<Trip>) query.list();
             tx.commit();
         } catch (RuntimeException e) {
             if (tx != null) {

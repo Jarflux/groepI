@@ -53,12 +53,12 @@ public class TripServiceTest {
         assertNull("deleteTrip: Trip not found", TripService.getTripById(trip.getId()));
     }
 
-    @Test
-    public void addRequirementToTrip(){
-        assertTrue("Trip: trip should have no requirements", trip.getRequirements().isEmpty());
-        Requirement requirement = new Requirement("BEN", 1, "", trip);
-        RequirementService.createRequirement(requirement);
-        trip.addRequirementToTrip(requirement);
-        assertFalse("Trip: trip should have requirements", trip.getRequirements().isEmpty());
-    }
+//    @Test
+//    public void addRequirementToTrip(){
+//        assertTrue("Trip: trip should have no requirements", trip.getRequirements().isEmpty());
+//        Requirement requirement = new Requirement("BEN", 1, "", trip);
+//        RequirementService.createRequirement(requirement);
+//        trip.addRequirementToTrip(requirement);
+//        assertFalse("Trip: trip should have requirements", trip.getRequirements().isEmpty());
+//    }
 }

@@ -96,7 +96,7 @@ public class TripInstanceService {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            tripinstances = session.createQuery("FROM TripInstance").list();
+            tripinstances = session.createQuery("FROM TripInstance tripinstance").list();
             tx.commit();
         } catch (RuntimeException e) {
             if (tx != null) {

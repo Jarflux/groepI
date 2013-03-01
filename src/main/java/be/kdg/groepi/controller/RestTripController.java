@@ -52,7 +52,7 @@ public class RestTripController {
         Requirement requirement = new Requirement(name, amount, description, trip);
 
         RequirementService.createRequirement(requirement);
-        trip.addRequirementToTrip(requirement);
+ //       trip.addRequirementToTrip(requirement);
         TripService.updateTrip(trip);
         return new ModelAndView("trips/addtriprequirement", "tripId", trip.getId().toString());
     }
@@ -87,7 +87,7 @@ public class RestTripController {
 
     @RequestMapping(value = "/list")
     public ModelAndView getAllTrips() {
-        List<TripInstance> tripList = TripInstanceService.getAllTripInstances();
+        List<Trip> tripList = TripService.getAllTrips();
         if( tripList != null){
         logger.debug("Returning TripList containing " + tripList.size() + " TripInstances");
         }else{

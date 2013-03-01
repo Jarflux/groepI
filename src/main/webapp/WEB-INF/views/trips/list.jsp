@@ -21,28 +21,26 @@
             </div>
             <div id="content" class="column light">
                 <h2> <spring:message code='text.trips'/>
-                    <form method="post" action="addinstance">
+                    <form method="post" action="addTrip">
                         <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
                     </form>
                 </h2>
                 <section>
                     <div class="row">
                         <c:choose>
-                            <c:when test="${tripListObject != null}">
-                                <p>
+                            <c:when test="${!empty tripListObject}">
                                     <table>
                                         <c:forEach var="trip" items="${tripListObject}">
-                                            <c:out value="${trip.description}"/>
-                                            <tr><td>${trip.id}</td><td>${trip.name}</td><td>${trip.description}</td></tr>
+                                            <tr><td>${trip.id}</td><td>${trip.title}</td><td>${trip.description}</td><td><a href="/trips/view/${trip.id}" class="active"><spring:message code='text.detail'/></a></td></tr>
                                         </c:forEach>
                                     </table>
-                                </p>
                             </c:when>
-                            <c:when test="${tripList == null}">
-                                <p>
-                                    <spring:message code='text.notripsfound' />
-                                </p>
-                            </c:when>
+                            <c:otherwise>
+                                <c:choose>
+                                <c:when test="${tripListObject == null}">tripList == null</c:when>
+                                <c:otherwise><spring:message code='text.notripsfound' /></c:otherwise>
+                                </c:choose>
+                            </c:otherwise>
                         </c:choose>
                     </div>
                 </section>
