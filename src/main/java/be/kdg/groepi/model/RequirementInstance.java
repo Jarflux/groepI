@@ -49,7 +49,7 @@ public class RequirementInstance implements Serializable {
         this.fTripInstance = fTripInstance;
     }
 
-    public RequirementInstance(String fName, long fAmount, String fDescription, User fUser, TripInstance fTripInstance) {
+    public RequirementInstance(String fName, long fAmount, String fDescription, TripInstance fTripInstance, User fUser) {
         this.fName = fName;
         this.fAmount = fAmount;
         this.fDescription = fDescription;

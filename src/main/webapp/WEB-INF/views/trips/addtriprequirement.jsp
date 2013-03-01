@@ -25,11 +25,11 @@
             <input type="hidden" name="tripId" title="tripId" value="${tripId}"/>
             <div class="row">
                 <span><spring:message code='text.name'/></span>
-                <textarea name="name" title="<spring:message code='text.requirementname'/>"></textarea>
+                <input name="name" title="<spring:message code='text.requirementname'/>"/>
             </div>
             <div class="row">
                 <span><spring:message code='text.amount'/></span>
-                <textarea name="amount" title="<spring:message code='text.requirementamount'/>"></textarea>
+                <input name="amount" title="<spring:message code='text.requirementamount'/>"/> <%--TODO: number-validation--%>
             </div>
             <div class="row">
                 <span><spring:message code='text.description'/></span>
