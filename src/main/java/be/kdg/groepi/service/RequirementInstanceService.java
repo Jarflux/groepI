@@ -1,6 +1,5 @@
 package be.kdg.groepi.service;
 
-import be.kdg.groepi.model.Requirement;
 import be.kdg.groepi.model.RequirementInstance;
 import be.kdg.groepi.utils.HibernateUtil;
 import org.hibernate.Session;

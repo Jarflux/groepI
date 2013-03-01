@@ -12,33 +12,33 @@
 
 <html>
 <head>
-    <link href="/css/blue.css" rel="StyleSheet" />
+    <link href="/css/blue.css" rel="StyleSheet"/>
 
     <title></title>
 </head>
 <body>
 <div id="wrapper">
     <div id="topmenu" class="column dark">
-        <jsp:include page="/topmenu"   />
+        <jsp:include page="/topmenu"/>
     </div>
     <div id="content" class="column light">
         <h2><spring:message code="text.login"/></h2>
         <c:if test="${not empty errormsg}">
             <div class="errormsg">
-               ${errormsg}
+                    ${errormsg}
             </div>
         </c:if>
         <form method="post" action="j_spring_security_check" class="mainstyle validate">
             <div class="row">
                 <span><spring:message code='text.mail'/></span>
-                <input type="text" name="j_username" id="j_username" />
+                <input type="text" name="j_username" id="j_username"/>
             </div>
             <div class="row">
                 <span><spring:message code='text.password'/></span>
-                <input type="password" class="required"  name="j_password" id="j_password" placeholder=""/>
+                <input type="password" class="required" name="j_password" id="j_password" placeholder=""/>
             </div>
             <div class="row">
-                <input type="submit" class="button" value="<spring:message code='text.login'/>" />
+                <input type="submit" class="button" value="<spring:message code='text.login'/>"/>
             </div>
         </form>
     </div>

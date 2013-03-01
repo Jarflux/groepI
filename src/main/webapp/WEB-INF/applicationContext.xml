@@ -10,45 +10,47 @@
                     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--<http pattern="/favicon.ico" security="none" />-->
-    <context:component-scan base-package="be.kdg.groepi" />
+    <context:component-scan base-package="be.kdg.groepi"/>
     <http use-expressions="true">
-        <intercept-url pattern="/home" access="permitAll" />
-        <intercept-url pattern="/css/**" access="permitAll" />
-        <intercept-url pattern="/js/**" access="permitAll" />
-        <intercept-url pattern="/topmenu" access="permitAll" />
-        <intercept-url pattern="/error/**" access="permitAll" />
-        <intercept-url pattern="/" access="permitAll" />
+        <intercept-url pattern="/home" access="permitAll"/>
+        <intercept-url pattern="/css/**" access="permitAll"/>
+        <intercept-url pattern="/js/**" access="permitAll"/>
+        <intercept-url pattern="/topmenu" access="permitAll"/>
+        <intercept-url pattern="/error/**" access="permitAll"/>
+        <intercept-url pattern="/" access="permitAll"/>
 
-        <intercept-url pattern="/login" access="permitAll" />
-        <intercept-url pattern="/login/**" access="permitAll" />
+        <intercept-url pattern="/login" access="permitAll"/>
+        <intercept-url pattern="/login/**" access="permitAll"/>
 
-        <intercept-url pattern="/profile/register" access="permitAll" />
-        <intercept-url pattern="/profile/reset/**" access="permitAll" />
-        <intercept-url pattern="/profile/createUser" access="permitAll" />
+        <intercept-url pattern="/profile/register" access="permitAll"/>
+        <intercept-url pattern="/profile/reset/**" access="permitAll"/>
+        <intercept-url pattern="/profile/createUser" access="permitAll"/>
 
-        <intercept-url pattern="/**" access="isAuthenticated()" />
-        <form-login login-page="/login" authentication-failure-url="/login/incorrect" authentication-success-handler-ref="successHandler"/>
+        <intercept-url pattern="/**" access="isAuthenticated()"/>
+        <form-login login-page="/login" authentication-failure-url="/login/incorrect"
+                    authentication-success-handler-ref="successHandler"/>
     </http>
 
-    <beans:bean id="daoAuthenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+    <beans:bean id="daoAuthenticationProvider"
+                class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
         <beans:property name="userDetailsService" ref="userDetailsService"/>
     </beans:bean>
 
     <beans:bean id="authenticationManager" class="org.springframework.security.authentication.ProviderManager">
         <beans:property name="providers">
             <beans:list>
-                <beans:ref local="daoAuthenticationProvider" />
+                <beans:ref local="daoAuthenticationProvider"/>
             </beans:list>
         </beans:property>
     </beans:bean>
 
-    <beans:bean id="encoder" class="be.kdg.groepi.security.StandardPasswordEncoder" />
+    <beans:bean id="encoder" class="be.kdg.groepi.security.StandardPasswordEncoder"/>
 
     <beans:bean id="successHandler" class="be.kdg.groepi.security.MyAuthenticationSuccessHandler"/>
 
     <authentication-manager>
         <authentication-provider user-service-ref="userDetailsService">
-            <password-encoder ref="encoder" />
+            <password-encoder ref="encoder"/>
         </authentication-provider>
     </authentication-manager>
 </beans:beans>

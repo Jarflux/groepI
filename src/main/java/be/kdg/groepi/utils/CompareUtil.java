@@ -1,6 +1,5 @@
 package be.kdg.groepi.utils;
 
-import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

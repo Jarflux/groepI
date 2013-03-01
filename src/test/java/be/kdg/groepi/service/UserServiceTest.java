@@ -2,7 +2,6 @@ package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.User;
 import be.kdg.groepi.security.StandardPasswordEncoder;
-import be.kdg.groepi.utils.CompareUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

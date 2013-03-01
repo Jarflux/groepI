@@ -20,15 +20,15 @@ public class TripServiceTest {
     //private Long tripId;
 
     @Before
-    public void beforeEachTest(){
-        user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4,5,2011,15,32,0));
+    public void beforeEachTest() {
+        user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
         UserService.createUser(user);
-        trip = new Trip("Onze eerste trip","Hopelijk is deze niet te saai!",true,true,user);// trip aanmaken
+        trip = new Trip("Onze eerste trip", "Hopelijk is deze niet te saai!", true, true, user);// trip aanmaken
         TripService.createTrip(trip);
     }
 
     @After
-    public void afterEachTest(){
+    public void afterEachTest() {
         trip = null;
         List<Trip> trips = TripService.getAllTrips();
         for (Trip trip : trips) {
@@ -37,28 +37,28 @@ public class TripServiceTest {
     }
 
     @Test
-    public void createTrip(){
+    public void createTrip() {
         assertEquals("createTrip: ", trip, TripService.getTripById(trip.getId()));
     }
 
     @Test
-    public void updateTrip(){
+    public void updateTrip() {
         trip.setAvailable(Boolean.FALSE);
         trip.setDescription("Ho-ho-ho edited");
 
         TripService.updateTrip(trip);
-        assertEquals("updateTrip: ",trip,TripService.getTripById(trip.getId()));
+        assertEquals("updateTrip: ", trip, TripService.getTripById(trip.getId()));
     }
 
     @Test
-    public void deleteTrip(){
+    public void deleteTrip() {
         assertNotNull("deleteTrip: Trip found", TripService.getTripById(trip.getId()));
         TripService.deleteTrip(trip);
         assertNull("deleteTrip: Trip not found", TripService.getTripById(trip.getId()));
     }
 
     @Test
-    public void addAndRemoveRequirementToTrip(){
+    public void addAndRemoveRequirementToTrip() {
         assertTrue("Trip: trip should have no requirements", trip.getRequirements().isEmpty());
         Requirement requirement = new Requirement("BEN", 1, "", trip);
         RequirementService.createRequirement(requirement);

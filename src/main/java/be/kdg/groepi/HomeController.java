@@ -30,13 +30,15 @@ public class HomeController {
         System.out.println("Login: Passing through...");
         return "login/showlogin";
     }
+
     @RequestMapping(value = "/login/incorrect")
     public ModelAndView loginincorrect(String errormessage) {
 
         System.out.println("Login is incorrect");
-        errormessage="Deze gegevens konden niet worden gevalideerd. Probeer opnieuw";
-        return new ModelAndView("login/showlogin","errormsg",errormessage);
+        errormessage = "Deze gegevens konden niet worden gevalideerd. Probeer opnieuw";
+        return new ModelAndView("login/showlogin", "errormsg", errormessage);
     }
+
     @RequestMapping(value = "/topmenu")
     public String topmenu() {
         System.out.println("Topmenu: Passing through...");
@@ -48,8 +50,9 @@ public class HomeController {
         System.out.println("Error page");
         return new ModelAndView("error/displayerror", "errorid", errorid);
     }
+
     @RequestMapping(value = "/profile/register")
-    public String register(){
+    public String register() {
         System.out.println("Register: Passing through...");
         return "profile/register";
     }

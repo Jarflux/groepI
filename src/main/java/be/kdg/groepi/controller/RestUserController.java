@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -46,7 +45,7 @@ public class RestUserController {
     @RequestMapping(value = "/createUser", method = RequestMethod.POST)
     public ModelAndView createUser(@ModelAttribute("userObject") User user,
                                    @RequestParam(value = "dob") String dateOfBirth)
-                                    throws UnsupportedEncodingException, NoSuchAlgorithmException {
+            throws UnsupportedEncodingException, NoSuchAlgorithmException {
         user.setDateOfBirth(DateUtil.dateStringToLong(dateOfBirth, null));
         user.setPassword(CompareUtil.getHashedPassword(user.getPassword()));
         UserService.createUser(user);

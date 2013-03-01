@@ -39,7 +39,8 @@
                         <div class="row">
                             <c:out value="Profile of user #${userObject.id}"/>
                         </div>
-                        <form method="post" action="/profile/editUser" class="mainstyle tooltips validate" enctype="multipart/form-data" >
+                        <form method="post" action="/profile/editUser" class="mainstyle tooltips validate"
+                              enctype="multipart/form-data">
                             <div class="row">
                                 <span><spring:message code='text.name'/></span>
                                 <input type="text" class="required" name="name" placeholder=""
@@ -59,14 +60,15 @@
                             <div class="row">
                                 <span><spring:message code='text.profilepicture'/></span>
                                 <input type="file" name="photo">
-                                <%--<input type="text" class="" name="profilePicture" placeholder=""
-                                       title="Hier kan u uw profielfoto instellen" value="${userObject.profilePicture}"/>--%>
+                                    <%--<input type="text" class="" name="profilePicture" placeholder=""
+                                           title="Hier kan u uw profielfoto instellen" value="${userObject.profilePicture}"/>--%>
                             </div>
                             <div class="row">
                                 <span></span>
                                 <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
-                                <%--<input type="submit" class="button" value="<spring:message code='text.cancel'/>"/>--%>
-                                <h3>Cancel knop maken? type=submit voert editUser uit tenzij de value nagekeken wordt ofzo?</h3>
+                                    <%--<input type="submit" class="button" value="<spring:message code='text.cancel'/>"/>--%>
+                                <h3>Cancel knop maken? type=submit voert editUser uit tenzij de value nagekeken wordt
+                                    ofzo?</h3>
                             </div>
                         </form>
                     </c:when>

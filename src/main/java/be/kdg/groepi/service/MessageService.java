@@ -15,7 +15,7 @@ import java.util.List;
  */
 
 public class MessageService {
-        public static Message getMessageById(long Id) {
+    public static Message getMessageById(long Id) {
         Message message = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;

@@ -7,9 +7,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static be.kdg.groepi.utils.DateUtil.dateToLong;
 import java.util.ArrayList;
 import java.util.List;
+
+import static be.kdg.groepi.utils.DateUtil.dateToLong;
 import static org.junit.Assert.*;
 
 /**
@@ -108,7 +109,7 @@ public class TripInstanceServiceTest {
         tripinstance.removeMessageFromTripInstance(message);
         assertTrue("TripInstance: tripinstance should have no messages", tripinstance.getMessages().isEmpty());
     }
-    
+
     @Test
     public void getAllTripInstances() {
         long startDate = DateUtil.dateToLong(27, 02, 2013, 16, 00, 00);

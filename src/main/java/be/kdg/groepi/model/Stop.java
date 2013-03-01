@@ -1,7 +1,5 @@
 package be.kdg.groepi.model;
 
-import be.kdg.groepi.utils.CompareUtil;
-
 import javax.persistence.*;
 
 //public enum STOPTYPE {
@@ -18,7 +16,7 @@ public class Stop {
     private Long fId;
     @Column(name = "name")
     private String fName;
-    @Column(name = "longtitude")
+    @Column(name = "longitude")
     private String fLongitude;
     @Column(name = "latitude")
     private String fLatitude;
@@ -151,8 +149,8 @@ public class Stop {
         comparison = this.fStopnumber.compareTo(stop.getOrder());
         if (comparison != 0) return false;
 
-     // cant test because trip is lazyloaded and cant do get<trip on trip proxy
-     //   if (!(this.fTrip.equals(stop.getTrip()))) return false;
+        // cant test because trip is lazyloaded and cant do get<trip on trip proxy
+        //   if (!(this.fTrip.equals(stop.getTrip()))) return false;
         return true;
     }
 }

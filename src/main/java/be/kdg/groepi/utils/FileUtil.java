@@ -1,11 +1,8 @@
 package be.kdg.groepi.utils;
 
 import org.apache.commons.io.FileUtils;
-import org.hibernate.Session;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;

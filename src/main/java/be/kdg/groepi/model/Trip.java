@@ -1,6 +1,5 @@
 package be.kdg.groepi.model;
 
-import be.kdg.groepi.utils.CompareUtil;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 

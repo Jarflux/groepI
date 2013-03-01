@@ -102,5 +102,5 @@ public class StopService {
             session.close();
         }
         return stops;
-    }    
+    }
 }

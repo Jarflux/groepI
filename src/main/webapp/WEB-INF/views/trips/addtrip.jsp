@@ -17,18 +17,21 @@
 <body>
 <div id="wrapper">
     <div id="topmenu" class="column dark">
-        <jsp:include page="/topmenu"   />
+        <jsp:include page="/topmenu"/>
     </div>
     <div id="content" class="column light">
         <h2><spring:message code="text.createtrip"/></h2>
+
         <form method="post" action="createTrip" class="mainstyle tooltips">
             <div class="row">
                 <span><spring:message code='text.title'/></span>
-                <input type="text" class="" name="title" placeholder="" title="<spring:message code='text.titletooltip'/>"/>
+                <input type="text" class="" name="title" placeholder=""
+                       title="<spring:message code='text.titletooltip'/>"/>
             </div>
             <div class="row">
                 <span><spring:message code='text.available'/></span>
-                <input type="checkbox" class="" name="available" placeholder="" title="<spring:message code='text.availabletooltip'/>"/>
+                <input type="checkbox" class="" name="available" placeholder=""
+                       title="<spring:message code='text.availabletooltip'/>"/>
             </div>
             <div class="row">
                 <span><spring:message code='text.description'/></span>
@@ -36,16 +39,14 @@
             </div>
             <div class="row">
                 <span><spring:message code='text.repeatabletrip'/></span>
-          <input type="checkbox" name="repeatable" value="true" title="Is je trip herhaalbaar?"/>
+                <input type="checkbox" name="repeatable" value="true" title="Is je trip herhaalbaar?"/>
             </div>
-
-
 
 
             <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
         </form>
     </div>
- </div>
+</div>
 <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
 <script src="/js/functions.js"></script>
 </body>

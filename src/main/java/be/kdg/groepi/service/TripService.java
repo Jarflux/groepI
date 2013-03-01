@@ -2,11 +2,11 @@ package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.Trip;
 import be.kdg.groepi.utils.HibernateUtil;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
-import org.hibernate.Query;
 
 /**
  * Author: Ben Oeyen

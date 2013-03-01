@@ -12,32 +12,28 @@
 
     <!-- Scans within the base package of the application for @Components to configure as beans -->
     <!-- @Controller, @Service, @Configuration, etc. -->
-    <context:component-scan base-package="be.kdg.groepi" />
+    <context:component-scan base-package="be.kdg.groepi"/>
 
     <!-- Enables the Spring MVC @Controller programming model -->
-    <mvc:annotation-driven />
+    <mvc:annotation-driven/>
 
 
     <bean id="localeResolver"
           class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
-        <property name="defaultLocale" value="nl" />
+        <property name="defaultLocale" value="nl"/>
     </bean>
 
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 
     <mvc:interceptors>
-        <bean  id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+        <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
             <property name="paramName" value="lang"></property>
         </bean>
     </mvc:interceptors>
-    <mvc:resources mapping="/css/**" location="/css/" />
-    <mvc:resources mapping="/js/**" location="/js/" />
-    <mvc:resources mapping="/images/**" location="/images/" />
-
-
-
-
+    <mvc:resources mapping="/css/**" location="/css/"/>
+    <mvc:resources mapping="/js/**" location="/js/"/>
+    <mvc:resources mapping="/images/**" location="/images/"/>
 
 
     <!-- Register the bean -->

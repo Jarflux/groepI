@@ -21,15 +21,18 @@
     </div>
     <div id="content" class="column light">
         <h2><spring:message code="text.createtrip"/></h2>
+
         <form method="post" action="doAddTripRequirement" class="mainstyle tooltips">
             <input type="hidden" name="tripId" title="tripId" value="${tripId}"/>
+
             <div class="row">
                 <span><spring:message code='text.name'/></span>
                 <input name="name" title="<spring:message code='text.requirementname'/>"/>
             </div>
             <div class="row">
                 <span><spring:message code='text.amount'/></span>
-                <input name="amount" title="<spring:message code='text.requirementamount'/>"/> <%--TODO: number-validation--%>
+                <input name="amount"
+                       title="<spring:message code='text.requirementamount'/>"/> <%--TODO: number-validation--%>
             </div>
             <div class="row">
                 <span><spring:message code='text.description'/></span>

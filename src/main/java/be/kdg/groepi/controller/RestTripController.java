@@ -1,22 +1,17 @@
 package be.kdg.groepi.controller;
 
 import be.kdg.groepi.model.Requirement;
-import be.kdg.groepi.model.RequirementInstance;
 import be.kdg.groepi.model.Trip;
-import be.kdg.groepi.model.TripInstance;
 import be.kdg.groepi.model.User;
-import be.kdg.groepi.service.RequirementInstanceService;
 import be.kdg.groepi.service.RequirementService;
-import be.kdg.groepi.service.TripInstanceService;
 import be.kdg.groepi.service.TripService;
-import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("trips")
@@ -43,16 +38,16 @@ public class RestTripController {
     @RequestMapping(value = "/doAddTripRequirement", method = RequestMethod.POST)
     public ModelAndView doAddTripRequirement(@RequestParam(value = "tripId") String tripId,/*
              @ModelAttribute("requirementObject") Requirement requirement*/
-            @RequestParam(value = "name") String name,
-            @RequestParam(value = "amount") Long amount,
-            @RequestParam(value = "description") String description) {
+                                             @RequestParam(value = "name") String name,
+                                             @RequestParam(value = "amount") Long amount,
+                                             @RequestParam(value = "description") String description) {
 
         Trip trip = TripService.getTripById(Long.parseLong(tripId));
 
         Requirement requirement = new Requirement(name, amount, description, trip);
 
         RequirementService.createRequirement(requirement);
- //       trip.addRequirementToTrip(requirement);
+        //       trip.addRequirementToTrip(requirement);
         TripService.updateTrip(trip);
         return new ModelAndView("trips/addtriprequirement", "tripId", trip.getId().toString());
     }
@@ -88,10 +83,10 @@ public class RestTripController {
     @RequestMapping(value = "/list")
     public ModelAndView getAllTrips() {
         List<Trip> tripList = TripService.getAllTrips();
-        if( tripList != null){
-        logger.debug("Returning TripList containing " + tripList.size() + " TripInstances");
-        }else{
-        logger.debug("Returning TripList = NULL");
+        if (tripList != null) {
+            logger.debug("Returning TripList containing " + tripList.size() + " TripInstances");
+        } else {
+            logger.debug("Returning TripList = NULL");
         }
         return new ModelAndView("trips/list", "tripListObject", tripList);
     }

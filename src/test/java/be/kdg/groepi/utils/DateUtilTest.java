@@ -1,12 +1,19 @@
 package be.kdg.groepi.utils;
 
+import be.kdg.groepi.model.User;
+import be.kdg.groepi.service.UserService;
+import org.hibernate.Session;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.mock.web.MockHttpSession;
 
+import javax.servlet.http.HttpSession;
 import java.util.Calendar;
 
+import static be.kdg.groepi.utils.DateUtil.dateToLong;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created with IntelliJ IDEA.
@@ -29,23 +36,32 @@ public class DateUtilTest {
     }
 
     @Test
-    public void testDateToLong(){
-        cal.set(1992,05,30,0,0,0);
+    public void testDateToLong() {
+        cal.set(1992, 05, 30, 0, 0, 0);
         cal.set(Calendar.MILLISECOND, 0);
-        assertEquals("De long die wordt gereturned is incorrect",DateUtil.dateToLong(30,06,1992,0,0,0),(Long)cal.getTimeInMillis());
+        assertEquals("De long die wordt gereturned is incorrect", DateUtil.dateToLong(30, 06, 1992, 0, 0, 0), (Long) cal.getTimeInMillis());
     }
 
     @Test
-    public void testDateStringToLong(){
-     cal.set(1992,05,30,0,0,0);
-     cal.set(Calendar.MILLISECOND, 0);
-     assertEquals("De long die wordt gereturned is incorrect",DateUtil.dateStringToLong("1992-06-30","0:0:0"),(Long)cal.getTimeInMillis());
+    public void testDateStringToLong() {
+        cal.set(1992, 05, 30, 0, 0, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        assertEquals("De long die wordt gereturned is incorrect", DateUtil.dateStringToLong("1992-06-30", "0:0:0"), (Long) cal.getTimeInMillis());
     }
 
     @Test
-    public void testLongToDate(){
+    public void testLongToDate() {
         Long longDate = cal.getTime().getTime();
-        assertEquals("De datum die wordt gereturned is incorrect", DateUtil.longToDate(longDate),cal.getTime());
+        assertEquals("De datum die wordt gereturned is incorrect", DateUtil.longToDate(longDate), cal.getTime());
+    }
+
+    @Test
+    public void testFormatDate(){
+        MockHttpSession mockHttpSession = new MockHttpSession();
+        User user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
+        UserService.createUser(user);
+        mockHttpSession.setAttribute("userObject", user);
+        assertTrue("Formatted date should be yyyy-MM-dd", DateUtil.formatDate(mockHttpSession).equals("2011-05-04"));
     }
 
 }

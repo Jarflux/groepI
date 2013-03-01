@@ -17,13 +17,15 @@
 </head>
 <body>
 <div id="container">
-    <div id="logincontainer" class="column light"> <sec:authorize access="isAnonymous()">
+    <div id="logincontainer" class="column light"><sec:authorize access="isAnonymous()">
 
-    <div class="loginmiddlebox"><h2>Login</h2>
+        <div class="loginmiddlebox"><h2>Login</h2>
 
             <form action="j_spring_security_check" method="post">
-                <input type="text" name="j_username" id="j_username" class="loginbox" placeholder="<spring:message code='text.username'/>"/> <br>
-                <input type="password" class="loginbox" name="j_password" id="j_password" placeholder="<spring:message code='text.password'/>"/> <br>
+                <input type="text" name="j_username" id="j_username" class="loginbox"
+                       placeholder="<spring:message code='text.username'/>"/> <br>
+                <input type="password" class="loginbox" name="j_password" id="j_password"
+                       placeholder="<spring:message code='text.password'/>"/> <br>
 
                 <input type="submit" class="button" value="<spring:message code='text.login'/>"/> &nbsp;
 
@@ -34,10 +36,10 @@
 
 
         </div>
-        </sec:authorize>
+    </sec:authorize>
         <sec:authorize access="isAuthenticated()">
-                           <h2>Hallo</h2> Welkom,${userObject.name}
-            </sec:authorize>
+            <h2>Hallo</h2> Welkom,${userObject.name}
+        </sec:authorize>
     </div>
     <div id="maincontainer" class="column dark">
 
