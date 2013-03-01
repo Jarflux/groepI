@@ -1,6 +1,8 @@
 package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.User;
+import be.kdg.groepi.security.StandardPasswordEncoder;
+import be.kdg.groepi.utils.CompareUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +25,7 @@ public class UserServiceTest {
 
     @Before
     public void beforeEachTest() {
-        user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4,5,2011,15,32,0));
+        user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
     }
 
     @After
@@ -37,7 +39,7 @@ public class UserServiceTest {
     @Test
     public void testCreateUser() {
         UserService.createUser(user);
-        assertEquals("createUser: users are the same",user,UserService.getUserById(user.getId()));
+        assertEquals("createUser: users are the same", user, UserService.getUserById(user.getId()));
     }
 
 
@@ -46,7 +48,7 @@ public class UserServiceTest {
         UserService.createUser(user);
         user.setName("NOT TIMMEH");
         user.setPassword("hemmitton");
-        user.setDateOfBirth(dateToLong(3,6,2012,12,45,0));
+        user.setDateOfBirth(dateToLong(3, 6, 2012, 12, 45, 0));
         user.setEmail("NOTTIM@M.EH");
         user.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
         UserService.updateUser(user);
@@ -69,11 +71,12 @@ public class UserServiceTest {
 
     @Test
     public void testGetAllUsers() {
+        int sizeBeforeThisTest = UserService.getAllUsers().size();
         for (int i = 1; i <= 10; i++) {
             User newUser = new User("User " + i, "user" + i + "@M.EH", "pwd", user.getDateOfBirth());
             UserService.createUser(newUser);
         }
-        assertEquals("getAllUsers: listsize", 10, UserService.getAllUsers().size());
+        assertEquals("getAllUsers: listsize", sizeBeforeThisTest + 10, UserService.getAllUsers().size());
     }
 
     @Test
@@ -87,11 +90,13 @@ public class UserServiceTest {
 
     @Test
     public void testResetPassword() {
-        //TODO Password encryption
+        StandardPasswordEncoder spe = new StandardPasswordEncoder();
         String oldPassword = user.getPassword();
         UserService.createUser(user);
-        UserService.resetPassword(user.getEmail());
-        assertFalse("testResetPassword: failll", user.getPassword().equals(oldPassword));
+        user.setPassword(spe.encodePassword("newpassword", user));
+        UserService.updateUser(user);
+        assertTrue("testResetPassword: user was not found", UserService.resetPassword(user.getEmail()));
+        assertFalse("testResetPassword: password was not changed", user.getPassword().equals(oldPassword));
     }
 
     @Test

@@ -39,6 +39,9 @@ public class RestUserControllerTest {
         assertNotNull("User with ID 1 should be present in the ModelAndView", returnedUser);
 
         modelAndView = restUserController.getUser(String.valueOf(user.getId() + 1)); // + 1 om een user te krijgen die niet bestaat.
+/*        String str1 = String.valueOf(user.getId() + 1);
+        String str2 = modelAndView.getModel().get("userId").toString();*/
+
         assertEquals("This user does not exist, so getUser should return \"" + (user.getId() + 1) + "\".",
                 String.valueOf(user.getId() + 1), modelAndView.getModel().get("userId"));
     }

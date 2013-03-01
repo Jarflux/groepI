@@ -35,11 +35,11 @@ public class RequirementInstance implements Serializable {
     public RequirementInstance() {
     }
 
-    public RequirementInstance(Requirement requirement) {
+    public RequirementInstance(Requirement requirement, TripInstance tripInstance) {
         this.fName = requirement.getName();
         this.fAmount = requirement.getAmount();
         this.fDescription = requirement.getDescription();
-        //this.tripInstance = requirement.get;
+        this.fTripInstance = tripInstance;
     }
 
     public RequirementInstance(String fName, long fAmount, String fDescription, TripInstance fTripInstance) {

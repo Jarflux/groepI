@@ -54,11 +54,11 @@ public class TripInstance implements Serializable {
     private Set<User> fParticipants = new HashSet<>();
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTripInstance")
-    private Set<RequirementInstance> fRequirementInstances;
+    private Set<RequirementInstance> fRequirementInstances = new HashSet<RequirementInstance>();
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTripInstance")
-    private Set<Cost> fCosts;
+    private Set<Cost> fCosts = new HashSet<Cost>();
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTripInstance")
-    private Set<Message> fMessages;
+    private Set<Message> fMessages = new HashSet<Message>();
 
 /*    *//*!!*//*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "T_TRIP_INSTANCE_COST", joinColumns = {@JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {@JoinColumn(name = "cost_id")})
@@ -82,7 +82,6 @@ public class TripInstance implements Serializable {
         this.fEndDate = fEndDate;
         this.fOrganiser = fOrganiser;
         this.fTrip = fTrip;
-        //this.requirementInstance = requirementInstance;
     }
 
     public long getStartDate() {
