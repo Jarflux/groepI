@@ -45,6 +45,7 @@ public class Trip implements Serializable {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTrip")
     @Cascade(CascadeType.DELETE)
+    @OrderBy(value = "stopnumber")
     private Set<Stop> fStops = new HashSet<>();
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTrip")

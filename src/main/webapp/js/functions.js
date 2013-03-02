@@ -1,13 +1,11 @@
 var formfout=false;
-var map;
-var myCenter=new google.maps.LatLng(51.508742,-0.120850);
+/*$("#stopType option[stoptype=1]").attr({"selected":"selected"})*/
 
 $(function()
 {
     preparetooltips();
     validateform();
 })
-
 function preparetooltips()
 {
     $("form.tooltips input").tooltip({
@@ -68,41 +66,56 @@ function validateform()
             }
         })
     }
+
+/*Google Map Functions*/
+/*http://jsfiddle.net/fatihacet/CKegk/*/
+var map;
+var myOptions = {
+    zoom: 7,
+    center: new google.maps.LatLng(51.221212,4.399166),
+    mapTypeId: 'roadmap'
+};
+var markers = {};
+
 function initializeGMaps()
 {
-    var mapProp = {
-        center: myCenter,
-        zoom:5,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-
-    map = new google.maps.Map(document.getElementById("map_canvas"),mapProp);
-    var marker = new google.maps.Marker({
-        position: myCenter,
-        title:'Click to zoom'
-    });
-    marker.setMap(map);
-    // Zoom to 9 when clicking on marker
-    google.maps.event.addListener(marker,'click',function() {
-        map.setZoom(9);
-        map.setCenter(marker.getPosition());
-    });
-    google.maps.event.addListener(map, 'click', function(event) {
-        placeMarker(event.latLng);
+    map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+    google.maps.event.addListener(map, 'click', function(e) {
+        var lat = e.latLng.lat(); // lat of clicked point
+        var lng = e.latLng.lng(); // lng of clicked point
+        var markerId = getMarkerUniqueId(lat, lng); // an that will be used to cache this marker in markers object.
+        var marker = new google.maps.Marker({
+            position: getLatLng(lat, lng),
+            map: map,
+            draggable:true,
+            id: 'marker_' + markerId
+        });
+        markers[markerId] = marker; // cache marker in markers object
+        bindMarkerEvents(marker); // bind right click event to marker
     });
 }
-/*$("#stopType option[stoptype=1]").attr({"selected":"selected"})*/
-function placeMarker(location) {
-    var marker = new google.maps.Marker({
-        position: location,
-        map:map
-    });
-    var infowindow = new google.maps.InfoWindow({
-        content: 'Latitude: ' + location.lat() +
-            '<br>Longitude: ' + location.lng()
-    });
-    infowindow.open(map,marker);
+var getMarkerUniqueId= function(lat, lng) {
+    return lat + '_' + lng;
 }
-function selectMarker(){
-
-}
+var getLatLng = function(lat, lng) {
+    return new google.maps.LatLng(lat, lng);
+};
+var bindMarkerEvents = function(marker) {
+    google.maps.event.addListener(marker, "click", function (point) {
+        var markerId = getMarkerUniqueId(point.latLng.lat(), point.latLng.lng()); // get marker id by using clicked point's coordinate
+        var marker = markers[markerId]; // find marker
+        removeMarker(marker, markerId); // remove it
+    });
+    google.maps.event.addListener(marker, "rightclick", function (point) {
+        var window = new google.maps.InfoWindow({});
+        var markerId = getMarkerUniqueId(point.latLng.lat(), point.latLng.lng()); // get marker id by using clicked point's coordinate
+        var marker = markers[markerId];
+        window.setPosition(point.latLng);
+        window.setContent(point.latLng.toString());
+        window.open(map, marker);
+    });
+};
+var removeMarker = function(marker, markerId) {
+    marker.setMap(null); // set markers setMap to null to remove it from map
+    delete markers[markerId]; // delete marker instance from markers object
+};

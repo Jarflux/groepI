@@ -1,6 +1,7 @@
 package be.kdg.groepi.controller;
 
 import be.kdg.groepi.model.Requirement;
+import be.kdg.groepi.model.Stop;
 import be.kdg.groepi.model.Trip;
 import be.kdg.groepi.model.User;
 import be.kdg.groepi.service.RequirementService;
@@ -70,14 +71,24 @@ public class RestTripController {
         }
         /*} catch (Exception e) {
          String sMessage = "Error invoking getFund. [%1$s]";
-         //return createErrorResponse(String.format(sMessage, e.toString()));
+         //return createErrorResponse(Str
+         ing.format(sMessage, e.toString()));
          }*/
     }
 
-    @RequestMapping(value = "/addstop")
-    public String addstop() {
+    @RequestMapping(value = "/addstop", method = RequestMethod.GET)
+    public ModelAndView addStop(HttpSession session) {
         System.out.println("AddStop: Passing through...");
-        return "trips/addstop";
+        User user = (User) session.getAttribute("userObject");
+        Trip trip = new Trip("The Candy Land Tour", "You had my curiosity. But now you have my attention.", true, true, user);
+
+        return new ModelAndView("trips/addstop", "tripObject", trip);
+    }
+
+    @RequestMapping(value = "/createStop", method = RequestMethod.POST)
+    public ModelAndView createStop(HttpSession session, @ModelAttribute("tripObject") Trip trip) {
+        TripService.createTrip(trip);
+        return new ModelAndView("trips/addtriprequirement", "tripId", trip.getId().toString());
     }
 
     @RequestMapping(value = "/list")
