@@ -1,13 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Mitch Va Daele
-  Date: 26-2-13
-  Time: 21:49
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -22,15 +15,14 @@
             </div>
             <div id="content" class="column light">
                 <h2><spring:message code="text.addstop"/></h2>
-                <form method="post" action="" class="mainstyle tooltips validate">
                     <section>
                         <div class="half big">
                             <div class="gmap" id="map_canvas">
                             </div>
                         </div>
                     </section>
-                    <section>
-                        <div>
+                    <%--<section>
+                        <div class="half">
                             <c:choose>
                                 <c:when test="${!empty tripObject.stops}">
                                     <ul>
@@ -44,12 +36,13 @@
                                 </c:otherwise>
                             </c:choose>
                         </div>
-                    </section>
+                    </section>--%>
                     <section>
                         <div class="half">
+                        <form method="post" action="" class="mainstyle tooltips validate">
                             <div class="row">
                                 <span><spring:message code='text.trip'/></span>
-                                <c:out value="Trip titel #${tripObject.title}"/>
+                                <c:out value="${tripObject.title}"/>
                             </div>
                             <div id="stopDetails">
                                 <div class="row">
@@ -58,7 +51,7 @@
                                 </div>
                                 <div class="row">
                                     <span><spring:message code='text.type'/></span>
-                                    <select id="stopType">
+                                    <select name="stopType">
                                         <option value="0"><spring:message code='text.interactive'/></option>
                                         <option value="1"><spring:message code='text.informative'/></option>
                                     </select>
@@ -84,7 +77,7 @@
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
         <script src="/js/functions.js"></script>
         <script>
-            $(function(){initializeGMaps()})
+            $(function(){google.maps.event.addDomListener(window, 'load', initializeGMaps);})
         </script>
     </body>
 </html>

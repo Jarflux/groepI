@@ -78,4 +78,22 @@ public class Requirement implements Serializable {
     public void setTrip(Trip fTrip) {
         this.fTrip = fTrip;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        Requirement requirement = (Requirement) o;
+//        if (this == requirement) return true;
+
+        int comparison = this.fName.compareTo(requirement.getName());
+        if (comparison != 0) return false;
+
+        if (this.fAmount != requirement.getAmount()) return false;
+
+        comparison = this.fDescription.compareTo(requirement.getDescription());
+        if (comparison != 0) return false;
+
+        if (this.fTrip.getId() != requirement.getTrip().getId()) return false;
+
+        return true;
+    }
 }
