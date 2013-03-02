@@ -1,4 +1,4 @@
-package trippie.controller;
+package trippie.controllers;
 
 
 import android.preference.PreferenceActivity;
@@ -13,9 +13,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.http.MediaType;
-import org.springframework.web.client.RestTemplate;
-
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -29,7 +26,6 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class Controller {
-    RestTemplate restTemplate;
 
     /*@POST
     @Produces(MediaType.TEXT_PLAIN)
