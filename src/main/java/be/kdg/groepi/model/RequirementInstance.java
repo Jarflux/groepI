@@ -73,19 +73,19 @@ public class RequirementInstance implements Serializable {
         return fId;
     }
 
-    public String getfName() {
+    public String getName() {
         return fName;
     }
 
-    public void setfName(String fName) {
+    public void setName(String fName) {
         this.fName = fName;
     }
 
-    public long getfAmount() {
+    public long getAmount() {
         return fAmount;
     }
 
-    public void setfAmount(long fAmount) {
+    public void setAmount(long fAmount) {
         this.fAmount = fAmount;
     }
 
@@ -97,11 +97,31 @@ public class RequirementInstance implements Serializable {
         return fDescription;
     }
 
-    public TripInstance getfTripInstance() {
+    public TripInstance getTripInstance() {
         return fTripInstance;
     }
 
-    public void setfTripInstance(TripInstance fTripInstance) {
+    public void setTripInstance(TripInstance fTripInstance) {
         this.fTripInstance = fTripInstance;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        RequirementInstance requirementInstance = (RequirementInstance) o;
+//        if (this == requirement) return true;
+
+        int comparison = this.fName.compareTo(requirementInstance.getName());
+        if (comparison != 0) return false;
+
+        if (this.fAmount != requirementInstance.getAmount()) return false;
+
+        comparison = this.fDescription.compareTo(requirementInstance.getDescription());
+        if (comparison != 0) return false;
+
+        if (fUser != null && this.fUser.getId() != (requirementInstance.getUser().getId())) return false;
+
+        if (!this.fTripInstance.getId().equals(requirementInstance.getTripInstance().getId())) return false;
+
+        return true;
     }
 }

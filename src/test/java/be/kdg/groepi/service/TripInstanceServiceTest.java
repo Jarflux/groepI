@@ -80,7 +80,7 @@ public class TripInstanceServiceTest {
     @Test
     public void addAndRemoveCostToTripInstance() {
         //assertTrue("TripInstance: tripInstance should have no costs", tripinstance.getCosts().isEmpty());
-        Cost cost = new Cost("BEN's cost", 35.53, tripinstance);
+        Cost cost = new Cost("BEN's cost", 35.53, tripinstance, user);
         CostService.createCost(cost);
         tripinstance.addCostToTripInstance(cost);
         assertFalse("TripInstance: tripinstance should have costs", tripinstance.getCosts().isEmpty());
@@ -102,7 +102,7 @@ public class TripInstanceServiceTest {
     @Test
     public void addAndRemoveMessageToTripInstance() {
         assertTrue("TripInstance: tripinstance should have no messages", tripinstance.getMessages().isEmpty());
-        Message message = new Message("BEN's message", dateToLong(12, 10, 1990, 8, 17, 35), tripinstance);
+        Message message = new Message("BEN's message", dateToLong(12, 10, 1990, 8, 17, 35), tripinstance, user);
         MessageService.createMessage(message);
         tripinstance.addMessageToTripInstance(message);
         assertFalse("TripInstance: tripInstance should have messages", tripinstance.getMessages().isEmpty());

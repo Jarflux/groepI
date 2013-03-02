@@ -1,5 +1,7 @@
 package be.kdg.groepi.model;
 
+import be.kdg.groepi.utils.DateUtil;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -26,14 +28,19 @@ public class Message implements Serializable {
     @JoinColumn(name = "trip_instance_id", nullable = false)
     private TripInstance fTripInstance;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User fUser;
+
     // Hibernates needs empty constructor
     public Message() {
     }
 
-    public Message(String fContent, Long fDate, TripInstance fTripInstance) {
+    public Message(String fContent, Long fDate, TripInstance fTripInstance, User fUser) {
         this.fContent = fContent;
         this.fDate = fDate;
         this.fTripInstance = fTripInstance;
+        this.fUser = fUser;
     }
 
     public long getId() {
@@ -68,8 +75,33 @@ public class Message implements Serializable {
         this.fTripInstance = fTripInstance;
     }
 
+    public User getUser() {
+        return fUser;
+    }
+
+    public void setUser(User fUser) {
+        this.fUser = fUser;
+    }
+
     @Override
     public String toString() {
         return "Message:" + fDate + ": " + fContent;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        Message message = (Message) o;
+
+        int comparison = this.fContent.compareTo(message.getContent());
+        if (comparison != 0) return false;
+
+        comparison = this.fDate.compareTo(message.getDate());
+        if (comparison != 0) return false;
+
+        if (!this.fTripInstance.getId().equals(message.fTripInstance.getId())) return false;
+        if (this.fUser.getId() != (message.getUser().getId())) return false;
+
+        return true;
     }
 }
