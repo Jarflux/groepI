@@ -58,14 +58,6 @@ public class AnswerServiceTest {
 
     @Test
     public void createAnswer() {
-/*        List<String> answers = new ArrayList<String>();
-        answers.add("Answer 1");
-        answers.add("Answer 2");
-        answers.add("Answer 3");
-        Answer answer = new Answer(answers, 1, "Answer 2 is correct because it too is correct.", stop);
-
-        AnswerService.createAnswer(answer);*/
-
         assertTrue("createAnswer: answer was not created", answer.equals(AnswerService.getAnswerById(answer.getId())));
     }
 

@@ -25,15 +25,19 @@ public class Cost implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "trip_instance_id", nullable = false)
     private TripInstance fTripInstance;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User fUser;
 
     // Hibernates needs empty constructor
     public Cost() {
     }
 
-    public Cost(String fDescription, Double fAmount, TripInstance fTripInstance) {
+    public Cost(String fDescription, Double fAmount, TripInstance fTripInstance, User fUser) {
         this.fDescription = fDescription;
         this.fAmount = fAmount;
         this.fTripInstance = fTripInstance;
+        this.fUser = fUser;
     }
 
     public long getId() {
@@ -68,8 +72,30 @@ public class Cost implements Serializable {
         this.fTripInstance = fTripInstance;
     }
 
+    public User getUser() {
+        return fUser;
+    }
+
+    public void setUser(User fUser) {
+        this.fUser = fUser;
+    }
+
     @Override
     public String toString() {
         return "Cost:" + fDescription + " Amount:" + fAmount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        Cost cost = (Cost) o;
+
+        int comparison = this.fDescription.compareTo(cost.getDescription());
+        if (comparison != 0) return false;
+
+        if (!this.fAmount.equals(cost.getAmount())) return false;
+        if (!this.fTripInstance.getId().equals(cost.fTripInstance.getId())) return false;
+        if (this.fUser.getId() != (cost.getUser().getId())) return false;
+
+        return true;
     }
 }
