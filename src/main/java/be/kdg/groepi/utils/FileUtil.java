@@ -3,6 +3,7 @@ package be.kdg.groepi.utils;
 import org.apache.commons.io.FileUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -15,27 +16,18 @@ import java.io.IOException;
  * To change this template use File | Settings | File Templates.
  */
 public class FileUtil {
-    private static String destination = "src/main/webapp/images/profilepictures/";
+    private static String destination = "/images/profilepictures/";
     //String srcPath = config.getServletContext().getRealPath("/");
 
 
-    public static String savePicture(MultipartFile file, long id) throws IOException {
-        String sRootPath = new File("").getAbsolutePath();
-        File savedFile = new File(destination + id + ".jpg");
-        //File savedFile = new File(id + ".jpg");
-        //file.transferTo(savedFile);
+    public static String savePicture(HttpSession session, MultipartFile file, long id) throws IOException {
+        String path = session.getServletContext().getRealPath(destination);
+        File savedFile = new File(path + "\\" + id + ".jpg");
         FileUtils.writeByteArrayToFile(savedFile, file.getBytes());
-        /*java.io.File filelocationtest = new java.io.File(".");  */
-        String pathdinges = savedFile.getAbsolutePath();
-        String tomcatbase = System.getProperty("catalina.base");
         File[] testFileSave = findFile(id);
 
-
         if (testFileSave.length == 1) {  // return waarde van profilePicture-attribuut van User
-            //UserService.updateUser(user); --> Gebeurt in RestUserController: editUser
             return destination + id + ".jpg";
-            //return "images/profilepictures/ " + id + ".jpg";
-            //return id + ".jpg";
         } else {
             return null;
         }

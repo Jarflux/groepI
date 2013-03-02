@@ -8,9 +8,11 @@ import be.kdg.groepi.utils.FileUtil;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -26,7 +28,7 @@ import java.util.Calendar;
  */
 @Controller
 @RequestMapping("profile")
-public class RestUserController {
+public class RestUserController implements ServletContextAware{
 
     private static final Logger logger = Logger.getLogger(RestUserController.class);
 
@@ -76,7 +78,7 @@ public class RestUserController {
         sessionUser.setName(user.getName());
         sessionUser.setEmail(user.getEmail());
         sessionUser.setDateOfBirth(DateUtil.dateStringToLong(dateOfBirth, null));
-        sessionUser.setProfilePicture(FileUtil.savePicture(uploadedFile, sessionUser.getId()));
+        sessionUser.setProfilePicture(FileUtil.savePicture(session, uploadedFile, sessionUser.getId()));
         //sessionUser.setProfilePicture(user.getProfilePicture());
         UserService.updateUser(sessionUser);
         ModelAndView modelAndView = new ModelAndView("profile/userprofile");
@@ -131,4 +133,8 @@ public class RestUserController {
         return "home";
     }
 
+    @Override
+    public void setServletContext(ServletContext servletContext) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

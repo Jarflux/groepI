@@ -5,6 +5,7 @@ import be.kdg.groepi.service.UserService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.mock.web.MockMultipartFile;
 
 import java.io.IOException;
@@ -37,10 +38,12 @@ public class FileUtilTest {
     public void testUpload() throws IOException {
         User user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
         UserService.createUser(user);
-        assertEquals("File has not been uploaded",FileUtil.savePicture(file,user.getId()),
-                "src/main/webapp/images/profilepictures/" + user.getId() + ".jpg");
+        MockHttpSession mockHttpSession = new MockHttpSession();
+        assertEquals("File has not been uploaded",FileUtil.savePicture(mockHttpSession, file, user.getId()),
+                "/images/profilepictures/" + user.getId() + ".jpg");
 
-        assertTrue("File paths are not equal", FileUtil.savePicture(file,
-                user.getId()).equals("src/main/webapp/images/profilepictures/" + user.getId() + ".jpg"));
+
+        assertTrue("File paths are not equal", FileUtil.savePicture(mockHttpSession, file,
+                user.getId()).equals("/images/profilepictures/" + user.getId() + ".jpg"));
     }
 }
