@@ -84,12 +84,12 @@ public class AnswerServiceTest {
 
     @Test
     public void deleteAnswer() {
-        //assertFalse("deleteAnswer: answer should exist", AnswerService.getAllAnswers().contains(answer));
-        AnswerService.deleteAnswer(answer);
-/*        for (Answer a : AnswerService.getAllAnswers()) {
-            AnswerService.deleteAnswer(a);
-        }*/
-//        assertFalse("deleteAnswer: answer should not exist", AnswerService.getAllAnswers().contains(answer));
+
+        while (!AnswerService.getAllAnswers().isEmpty()) {
+            Answer firstAnswer = AnswerService.getAllAnswers().get(0);
+            AnswerService.deleteAnswer(firstAnswer);
+        }
+        assertTrue(AnswerService.getAllAnswers().isEmpty());
     }
 
     @Test
@@ -135,6 +135,10 @@ public class AnswerServiceTest {
         assertTrue("test: ophalen met arrAnswers 2", testAnswers.size() > 0);
     }
 
-
+    @Test
+    public void isAnswerCorrect() {
+        assertTrue("isAnswerCorrect", answer.isAnswerCorrect(1));
+        assertFalse("isAnswerCorrect", answer.isAnswerCorrect(0));
+    }
 
 }

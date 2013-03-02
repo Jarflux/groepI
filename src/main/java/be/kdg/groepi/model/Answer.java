@@ -35,7 +35,6 @@ public class Answer {
     private Stop fStop;
 
 
-
     public Answer() {
     }
 
@@ -116,6 +115,13 @@ public class Answer {
         this.fStop = fStop;
     }
 
+    public boolean isAnswerCorrect(int givenAnswer) {
+        if (givenAnswer == fCorrectAnswer) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     //TODO: equals methoden in TripInstance + afgeleiden
 
     @Override
@@ -134,4 +140,5 @@ public class Answer {
 
         return true;
     }
+
 }
