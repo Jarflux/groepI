@@ -38,7 +38,7 @@
                         </div>
                     </section>--%>
                     <section>
-                        <div class="half">
+                    <div class="half">
                         <form method="post" action="" class="mainstyle tooltips validate">
                             <div class="row">
                                 <span><spring:message code='text.trip'/></span>
@@ -50,6 +50,18 @@
                                     <input type="text" name="name"/>
                                 </div>
                                 <div class="row">
+                                    <span><spring:message code='text.latitude'/></span>
+                                    <input type="text" name="latitude" id="latitude"/>
+                                </div>
+                                <div class="row">
+                                    <span><spring:message code='text.longitude'/></span>
+                                    <input type="text" name="longitude" id="longitude"/>
+                                </div>
+                                <div class="row">
+                                    <span><spring:message code='text.description'/></span>
+                                    <input type="text" name="stopText"/>
+                                </div>
+                                <%--<div class="row">
                                     <span><spring:message code='text.type'/></span>
                                     <select name="stopType">
                                         <option value="0"><spring:message code='text.interactive'/></option>
@@ -62,15 +74,11 @@
                                         <option value="1"><spring:message code='text.normal'/></option>
                                         <option value="2">Augmented Reality</option>
                                     </select>
-                                </div>
-                                <div class="row">
-                                    <span><spring:message code='text.description'/></span>
-                                    <input type="text" name="stopText"/>
-                                </div>
-                            </div>
+                                </div>--%>
+                        </form>
                         </div>
                     </section>
-                </form>
+                </div>
             </div>
         </div>
         <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
