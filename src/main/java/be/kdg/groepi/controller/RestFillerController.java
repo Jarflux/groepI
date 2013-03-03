@@ -89,6 +89,6 @@ public class RestFillerController {
         } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        return "/";
+        return "home";
     }
 }
