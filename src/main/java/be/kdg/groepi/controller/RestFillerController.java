@@ -4,9 +4,11 @@
  */
 package be.kdg.groepi.controller;
 
+import be.kdg.groepi.model.Stop;
 import be.kdg.groepi.model.Trip;
 import be.kdg.groepi.model.TripInstance;
 import be.kdg.groepi.model.User;
+import be.kdg.groepi.service.StopService;
 import be.kdg.groepi.service.TripInstanceService;
 import be.kdg.groepi.service.TripService;
 import be.kdg.groepi.service.UserService;
@@ -55,6 +57,18 @@ public class RestFillerController {
             TripService.createTrip(tripA);
             TripService.createTrip(tripB);
             TripService.createTrip(tripC);
+
+            StopService.createStop(new Stop("Stopplaats 1", "51.221212", "4.389166", 0, 1, 1, "Dit is de eerste stopplaats", tripA));
+            StopService.createStop(new Stop("Stopplaats 2", "51.221220", "4.399147", 0, 1, 1, "Dit is de tweede stopplaats", tripA));
+            StopService.createStop(new Stop("Stopplaats 3", "51.224012", "4.409166", 0, 1, 1, "Dit is de derde stopplaats", tripA));
+
+            StopService.createStop(new Stop("Stopplaats 1", "51.221212", "4.389166", 0, 1, 1, "Dit is de eerste stopplaats", tripB));
+            StopService.createStop(new Stop("Stopplaats 2", "51.221220", "4.399147", 0, 1, 1, "Dit is de tweede stopplaats", tripB));
+            StopService.createStop(new Stop("Stopplaats 3", "51.224012", "4.409166", 0, 1, 1, "Dit is de derde stopplaats", tripB));
+
+            StopService.createStop(new Stop("Stopplaats 1", "51.221212", "4.389166", 0, 1, 1, "Dit is de eerste stopplaats", tripC));
+            StopService.createStop(new Stop("Stopplaats 2", "51.221220", "4.399147", 0, 1, 1, "Dit is de tweede stopplaats", tripC));
+            StopService.createStop(new Stop("Stopplaats 3", "51.224012", "4.409166", 0, 1, 1, "Dit is de derde stopplaats", tripC));
 
             long startDate1 = DateUtil.dateToLong(27, 02, 2013, 16, 00, 00);
             long endDate1 = DateUtil.dateToLong(27, 02, 2013, 20, 00, 00);
