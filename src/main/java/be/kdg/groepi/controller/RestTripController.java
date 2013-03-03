@@ -5,6 +5,7 @@ import be.kdg.groepi.model.Stop;
 import be.kdg.groepi.model.Trip;
 import be.kdg.groepi.model.User;
 import be.kdg.groepi.service.RequirementService;
+import be.kdg.groepi.service.StopService;
 import be.kdg.groepi.service.TripService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -81,14 +82,18 @@ public class RestTripController {
         System.out.println("AddStop: Passing through...");
         User user = (User) session.getAttribute("userObject");
         Trip trip = new Trip("The Candy Land Tour", "You had my curiosity. But now you have my attention.", true, true, user);
-
+        TripService.createTrip(trip);
         return new ModelAndView("trips/addstop", "tripObject", trip);
     }
 
     @RequestMapping(value = "/createStop", method = RequestMethod.POST)
-    public ModelAndView createStop(HttpSession session, @ModelAttribute("tripObject") Trip trip) {
-        TripService.createTrip(trip);
-        return new ModelAndView("trips/addtriprequirement", "tripId", trip.getId().toString());
+    public ModelAndView createStop(HttpSession session, @ModelAttribute("stopObject") Stop stop, @RequestParam(value = "tripId") String tripId) {
+        Trip trip = TripService.getTripById(Long.parseLong(tripId));
+        /*trip.addStopToTrip(stop);
+        TripService.updateTrip(trip);*/
+        stop.setTrip(trip);
+        StopService.createStop(stop);
+        return new ModelAndView("trips/addstop", "tripObject", trip);
     }
 
     @RequestMapping(value = "/list")

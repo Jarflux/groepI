@@ -39,10 +39,9 @@
                     </section>--%>
                     <section>
                     <div class="half">
-                        <form method="post" action="" class="mainstyle tooltips validate">
+                        <form method="post" action="createStop" class="mainstyle tooltips validate">
                             <div class="row">
-                                <span><spring:message code='text.trip'/></span>
-                                <c:out value="${tripObject.title}"/>
+                                <span><spring:message code='text.trip'/></span> <c:out value="${tripObject.title}"/>
                             </div>
                             <div id="stopDetails">
                                 <div class="row">
@@ -51,31 +50,39 @@
                                 </div>
                                 <div class="row">
                                     <span><spring:message code='text.latitude'/></span>
-                                    <input type="text" name="latitude" id="latitude"/>
+                                    <input type="text" name="latitude" id="latitude" disabled="disabled"/>
                                 </div>
                                 <div class="row">
                                     <span><spring:message code='text.longitude'/></span>
-                                    <input type="text" name="longitude" id="longitude"/>
+                                    <input type="text" name="longitude" id="longitude" disabled="disabled"/>
                                 </div>
                                 <div class="row">
                                     <span><spring:message code='text.description'/></span>
                                     <input type="text" name="stopText"/>
                                 </div>
+                                <div class="row">
+                                    <span><spring:message code='text.order'/></span>
+                                    <input type="text" name="stopnumber"/>
+                                </div>
                                 <%--<div class="row">
                                     <span><spring:message code='text.type'/></span>
-                                    <select name="stopType">
+                                    <select name="type">
                                         <option value="0"><spring:message code='text.interactive'/></option>
                                         <option value="1"><spring:message code='text.informative'/></option>
                                     </select>
                                 </div>
                                 <div class="row">
                                     <span><spring:message code='text.rending'/></span>
-                                    <select>
-                                        <option value="1"><spring:message code='text.normal'/></option>
-                                        <option value="2">Augmented Reality</option>
+                                    <select name="displayMode">
+                                        <option value="0"><spring:message code='text.normal'/></option>
+                                        <option value="1">Augmented Reality</option>
                                     </select>
                                 </div>--%>
-                        </form>
+                                <div class="row">
+                                    <input type="hidden" name="tripId" value="<c:out value="${tripObject.id.toString()}"/>"/>
+                                    <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
+                                </div>
+                            </form>
                         </div>
                     </section>
                 </div>
