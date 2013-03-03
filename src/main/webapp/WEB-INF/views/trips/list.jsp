@@ -35,7 +35,7 @@
                                     <td>${trip.id}</td>
                                     <td>${trip.title}</td>
                                     <td>${trip.description}</td>
-                                    <td><a href="/trips/view/${trip.id}" class="active"><spring:message
+                                    <td><a href="/trips/editTrip/${trip.id}" class="active"><spring:message
                                             code='text.detail'/></a></td>
                                 </tr>
                             </c:forEach>

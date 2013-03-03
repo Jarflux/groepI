@@ -34,7 +34,7 @@ public class RestTripController {
 
         trip.setOrganiser(user);
         TripService.createTrip(trip);
-        return new ModelAndView("trips/addtriprequirement", "tripId", trip.getId().toString());
+        return new ModelAndView("trips/view", "tripId", trip.getId().toString());
     }
 
     @RequestMapping(value = "/doAddTripRequirement", method = RequestMethod.POST)
@@ -57,12 +57,6 @@ public class RestTripController {
     @RequestMapping(value = "/view/{tripId}", method = RequestMethod.GET)
     public ModelAndView getTrip(@PathVariable("tripId") String tripId) {
         Trip trip;
-        // validate input
-        /*if (tripId.isEmpty() || tripId.length() < 5) {
-         String sMessage = "Error invoking getFund - Invalid fund Id parameter";
-         // return createErrorResponse(sMessage);
-         }*/
-        //try {
         trip = TripService.getTripById(Long.parseLong(tripId));
         if (trip != null) {
             logger.debug("Returning Trip: " + trip.toString() + " with trip #" + tripId);
@@ -70,27 +64,17 @@ public class RestTripController {
         } else {
             return new ModelAndView("trips/view", "tripId", tripId);
         }
-        /*} catch (Exception e) {
-         String sMessage = "Error invoking getFund. [%1$s]";
-         //return createErrorResponse(Str
-         ing.format(sMessage, e.toString()));
-         }*/
     }
 
-    @RequestMapping(value = "/addstop", method = RequestMethod.GET)
-    public ModelAndView addStop(HttpSession session) {
-        System.out.println("AddStop: Passing through...");
-        User user = (User) session.getAttribute("userObject");
-        Trip trip = new Trip("The Candy Land Tour", "You had my curiosity. But now you have my attention.", true, true, user);
-        TripService.createTrip(trip);
+    @RequestMapping(value = "/addstop/{tripId}", method = RequestMethod.GET)
+    public ModelAndView addStop(@PathVariable("tripId") String tripId) {
+        Trip trip = TripService.getTripById(Long.parseLong(tripId));
         return new ModelAndView("trips/addstop", "tripObject", trip);
     }
 
     @RequestMapping(value = "/createStop", method = RequestMethod.POST)
     public ModelAndView createStop(HttpSession session, @ModelAttribute("stopObject") Stop stop, @RequestParam(value = "tripId") String tripId) {
         Trip trip = TripService.getTripById(Long.parseLong(tripId));
-        /*trip.addStopToTrip(stop);
-        TripService.updateTrip(trip);*/
         stop.setTrip(trip);
         StopService.createStop(stop);
         return new ModelAndView("trips/addstop", "tripObject", trip);
@@ -105,5 +89,18 @@ public class RestTripController {
             logger.debug("Returning TripList = NULL");
         }
         return new ModelAndView("trips/list", "tripListObject", tripList);
+    }
+
+    @RequestMapping(value = "/editTrip/{tripId}", method = RequestMethod.GET)
+    public ModelAndView editTripView(@PathVariable("tripId") String tripId) {
+        ModelAndView modelAndView = new ModelAndView("trips/edittrip");
+        modelAndView.addObject("tripObject", TripService.getTripById(Long.parseLong(tripId)));
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/updateTrip", method = RequestMethod.POST)
+    public ModelAndView editUser(@ModelAttribute("tripObject") Trip trip) {
+        TripService.updateTrip(trip);
+        return new ModelAndView("trips/view", "tripObject", trip);
     }
 }

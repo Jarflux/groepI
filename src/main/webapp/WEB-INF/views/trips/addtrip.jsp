@@ -41,8 +41,6 @@
                 <span><spring:message code='text.repeatabletrip'/></span>
                 <input type="checkbox" name="repeatable" value="true" title="Is je trip herhaalbaar?"/>
             </div>
-
-
             <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
         </form>
     </div>
