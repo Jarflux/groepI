@@ -59,8 +59,8 @@
                     <p>Stap 1: klik op volgende link om de database te vullen<br />
                         <a href="/database/fill" class="active">FILL DATABASE</a><br />  
                     </p>
-                    <p>Stap 3: watch tot /database/fill in de url verschijnt</p>
-                    <p>Stap 2: log in met een van volgende gebruikers:<br />
+                    <p>Stap 2: watch tot /database/fill in de url verschijnt</p>
+                    <p>Stap 3: log in met een van volgende gebruikers:<br />
                         "django@candyland.com", "Django" <br />               
                         "Ben@trippie.com", "ben"<br />
                         "Tim@trippie.com", "tim"<br />
