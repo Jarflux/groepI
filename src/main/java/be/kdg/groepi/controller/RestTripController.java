@@ -41,9 +41,9 @@ public class RestTripController {
     @RequestMapping(value = "/doAddTripRequirement", method = RequestMethod.POST)
     public ModelAndView doAddTripRequirement(@RequestParam(value = "tripId") String tripId,/*
              @ModelAttribute("requirementObject") Requirement requirement*/
-                                             @RequestParam(value = "name") String name,
-                                             @RequestParam(value = "amount") Long amount,
-                                             @RequestParam(value = "description") String description) {
+            @RequestParam(value = "name") String name,
+            @RequestParam(value = "amount") Long amount,
+            @RequestParam(value = "description") String description) {
 
         Trip trip = TripService.getTripById(Long.parseLong(tripId));
 
@@ -72,7 +72,7 @@ public class RestTripController {
         }
     }
 
-    @RequestMapping(value = "/addstop/{tripId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/addstop/{tripId}", method = RequestMethod.POST)
     public ModelAndView addStop(@PathVariable("tripId") String tripId) {
         Trip trip = TripService.getTripById(Long.parseLong(tripId));
         return new ModelAndView("trips/addstop", "tripObject", trip);

@@ -39,7 +39,7 @@
         </section>--%>
         <section>
             <div class="half">
-                <form method="post" action="createStop" class="mainstyle tooltips validate">
+                <form method="post" action="/trips/createStop" class="mainstyle tooltips validate">
                     <div class="row">
                         <span><spring:message code='text.trip'/></span> <c:out value="${tripObject.title}"/>
                     </div>

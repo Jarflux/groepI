@@ -32,7 +32,7 @@
 
                 <section>
                     <h2><spring:message code='text.stops'/>
-                        <form method="get" action="addstop/${tripObject.id}">
+                        <form method="post" action="/trips/addstop/${tripObject.id}">
                             <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
                         </form></h2>
 
@@ -57,7 +57,7 @@
 
                 <section>
                     <h2><spring:message code='text.instances'/>
-                        <form method="get" action="addinstance/${tripObject.id}">   
+                        <form method="post" action="/trips/addinstance/${tripObject.id}">   
                             <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
                         </form></h2>
                         <c:choose>
