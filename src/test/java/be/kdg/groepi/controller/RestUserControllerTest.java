@@ -42,8 +42,8 @@ public class RestUserControllerTest {
 /*        String str1 = String.valueOf(user.getId() + 1);
         String str2 = modelAndView.getModel().get("userId").toString();*/
 
-        assertEquals("This user does not exist, so getUser should return \"" + (user.getId() + 1) + "\".",
-                String.valueOf(user.getId() + 1), modelAndView.getModel().get("userId"));
+        assertEquals("This user does not exist, so getUser should return \"error/displayerror\"",
+                "error/displayerror", modelAndView.getViewName());
     }
 
     @Test

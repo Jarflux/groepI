@@ -1,11 +1,9 @@
 package be.kdg.groepi.model;
 
 import be.kdg.groepi.utils.CompareUtil;
-import com.sun.deploy.util.ArrayUtil;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -24,7 +22,7 @@ public class Answer {
     private Long fId;
     @Column(name = "answers")
     @ElementCollection(fetch = FetchType.EAGER)
-    private List<String> fAnswers = new ArrayList<String>();// = new ArrayList<String>();
+    private List<String> fAnswers = new ArrayList<>();// = new ArrayList<String>();
     @Column(name = "correctAnswer")
     private int fCorrectAnswer;
     @Column(name = "correctAnswerDescription")
