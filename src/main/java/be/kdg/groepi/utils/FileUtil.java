@@ -24,7 +24,7 @@ public class FileUtil {
         String path = session.getServletContext().getRealPath(destination);
         File savedFile = new File(path + "\\" + id + ".jpg");
         FileUtils.writeByteArrayToFile(savedFile, file.getBytes());
-        File[] testFileSave = findFile(id);
+        File[] testFileSave = findFile(session, id);
 
         if (testFileSave.length == 1) {  // return waarde van profilePicture-attribuut van User
             return destination + id + ".jpg";
@@ -34,8 +34,8 @@ public class FileUtil {
 
     }
 
-    public static File[] findFile(final long id) {
-        File dir = new File(destination);
+    public static File[] findFile(HttpSession session, final long id) {
+        File dir = new File(session.getServletContext().getRealPath(destination));
 
         return dir.listFiles(new FilenameFilter() {
             public boolean accept(File dir, String filename) {
