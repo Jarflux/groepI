@@ -126,4 +126,21 @@ public class TripInstanceServiceTest {
         tripList.add(tripinstance3);
         assertFalse("TripInstance: tripList does not contain the tripInstances it should", CompareUtil.compareList(TripInstanceService.getAllTripInstances(), tripList));
     }
+
+    @Test
+    public void getAllTripInstancesByTripId() {
+        long startDate = DateUtil.dateToLong(27, 02, 2013, 16, 00, 00);
+        long endDate = DateUtil.dateToLong(27, 02, 2013, 20, 00, 00);
+        TripInstance tripinstance1 = new TripInstance("Bachelor feestje 1", "Iemand gaat trouwen, bier en vrouwen ole", false, startDate, endDate, user, trip);
+        TripInstanceService.createTripInstance(tripinstance1);
+        TripInstance tripinstance2 = new TripInstance("Bachelor feestje 2", "Iemand gaat trouwen, bier en vrouwen ole", false, startDate, endDate, user, trip);
+        TripInstanceService.createTripInstance(tripinstance2);
+        TripInstance tripinstance3 = new TripInstance("Bachelor feestje 3", "Iemand gaat trouwen, bier en vrouwen ole", false, startDate, endDate, user, trip);
+        TripInstanceService.createTripInstance(tripinstance3);
+        List<TripInstance> tripList = new ArrayList<>();
+        tripList.add(tripinstance1);
+        tripList.add(tripinstance2);
+        tripList.add(tripinstance3);
+        assertFalse("TripInstance: tripList does not contain the tripInstances it should", CompareUtil.compareList(TripInstanceService.getAllTripInstancesByTripId(trip.getId()), tripList));
+    }
 }
