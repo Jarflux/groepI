@@ -1,4 +1,4 @@
-package trippie.controllers;
+package com.controllers;
 
 
 import android.preference.PreferenceActivity;
