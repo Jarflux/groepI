@@ -6,6 +6,7 @@ import be.kdg.groepi.model.Trip;
 import be.kdg.groepi.model.User;
 import be.kdg.groepi.service.RequirementService;
 import be.kdg.groepi.service.StopService;
+import be.kdg.groepi.service.TripInstanceService;
 import be.kdg.groepi.service.TripService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -55,14 +56,19 @@ public class RestTripController {
     }
 
     @RequestMapping(value = "/view/{tripId}", method = RequestMethod.GET)
-    public ModelAndView getTrip(@PathVariable("tripId") String tripId) {
+    public ModelAndView getTrip(@PathVariable("tripId") String tripId, HttpSession session) {
         Trip trip;
         trip = TripService.getTripById(Long.parseLong(tripId));
+
         if (trip != null) {
             logger.debug("Returning Trip: " + trip.toString() + " with trip #" + tripId);
-            return new ModelAndView("trips/view", "tripObject", trip);
+            ModelAndView modelAndView = new ModelAndView("trips/view");
+            modelAndView.addObject("tripObject", trip);
+            modelAndView.addObject("stopListObject", StopService.getAllTripStopsByTripId(trip.getId()));
+            modelAndView.addObject("tripInstanceListObject", TripInstanceService.getAllTripInstancesByTripId(trip.getId()));
+            return modelAndView;
         } else {
-            return new ModelAndView("trips/view", "tripId", tripId);
+            return new ModelAndView("error/displayerror");
         }
     }
 
