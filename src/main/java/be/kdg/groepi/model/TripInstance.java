@@ -17,16 +17,16 @@ import java.util.Set;
  */
 
 /*
-Hibernate Inheritance: Table Per Subclass
-http://viralpatel.net/blogs/hibernate-inheritance-table-per-subclass-annotation-xml-mapping/
-Hibernate Inheritance: Table Per Class Hierarchy
-http://viralpatel.net/blogs/hibernate-inheritence-table-per-hierarchy-mapping/
-*/
-
+ Hibernate Inheritance: Table Per Subclass
+ http://viralpatel.net/blogs/hibernate-inheritance-table-per-subclass-annotation-xml-mapping/
+ Hibernate Inheritance: Table Per Class Hierarchy
+ http://viralpatel.net/blogs/hibernate-inheritence-table-per-hierarchy-mapping/
+ */
 @Entity
 @Table(name = "T_TRIP_INSTANCE")
 //@Inheritance(strategy=InheritanceType.JOINED)  //Hibernate Inheritance: Table Per Subclass
 public class TripInstance implements Serializable {
+
     @Id
     @GeneratedValue
     @Column(name = "trip_instance_id")
@@ -41,7 +41,6 @@ public class TripInstance implements Serializable {
     private long fStartDate;
     @Column(name = "enddate")
     private long fEndDate;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "trip_id", nullable = false)
     private Trip fTrip;
@@ -50,9 +49,10 @@ public class TripInstance implements Serializable {
     private User fOrganiser;
     @ManyToMany(fetch = FetchType.EAGER)
     @Cascade(value = CascadeType.ALL)
-    @JoinTable(name = "T_TRIP_INSTANCE_PARTICIPANT", joinColumns = {@JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {@JoinColumn(name = "user_id")})
+    @JoinTable(name = "T_TRIP_INSTANCE_PARTICIPANT", joinColumns = {
+        @JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "user_id")})
     private Set<User> fParticipants = new HashSet<>();
-
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTripInstance")
     private Set<RequirementInstance> fRequirementInstances = new HashSet<RequirementInstance>();
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTripInstance")
@@ -60,17 +60,22 @@ public class TripInstance implements Serializable {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTripInstance")
     private Set<Message> fMessages = new HashSet<Message>();
 
-/*    *//*!!*//*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "T_TRIP_INSTANCE_COST", joinColumns = {@JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {@JoinColumn(name = "cost_id")})
-    private Set<Cost> fCosts = new HashSet<>();
-    *//*!!*//*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "T_TRIP_INSTANCE_REQUIREMENT", joinColumns = {@JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {@JoinColumn(name = "requirement_id")})
-    private Set<Requirement> fRequirements = new HashSet<>();
-    *//*!!*//*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "T_TRIP_INSTANCE_MESSAGE", joinColumns = {@JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {@JoinColumn(name = "message_id")})
-    private Set<Message> fMessages = new HashSet<>();*/
+    /*    *//*!!*//*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+     @JoinTable(name = "T_TRIP_INSTANCE_COST", joinColumns = {@JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {@JoinColumn(name = "cost_id")})
+     private Set<Cost> fCosts = new HashSet<>();
+     *//*!!*//*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+     @JoinTable(name = "T_TRIP_INSTANCE_REQUIREMENT", joinColumns = {@JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {@JoinColumn(name = "requirement_id")})
+     private Set<Requirement> fRequirements = new HashSet<>();
+     *//*!!*//*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+     @JoinTable(name = "T_TRIP_INSTANCE_MESSAGE", joinColumns = {@JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {@JoinColumn(name = "message_id")})
+     private Set<Message> fMessages = new HashSet<>();*/
 
     // Hibernates needs empty constructor
+
+
+
+
+
     public TripInstance() {
     }
 
@@ -136,7 +141,6 @@ public class TripInstance implements Serializable {
         this.fAvailable = fAvailable;
     }
 
-
     public User getOrganiser() {
         return fOrganiser;
     }
@@ -189,7 +193,6 @@ public class TripInstance implements Serializable {
         this.fCosts.remove(cost);
     }
 
-
     public void addCostToTripInstance(Cost cost) {
         this.fCosts.add(cost);
     }
@@ -210,24 +213,25 @@ public class TripInstance implements Serializable {
         this.fMessages.remove(message);
     }
 
-
     @Override
     public boolean equals(Object o) {
-        if(o == null) return false;
-        TripInstance trip = (TripInstance) o;      
+        if (o == null) {
+            return false;
+        }
+        TripInstance trip = (TripInstance) o;
         if (!CompareUtil.compareString(fTitle, trip.getTitle())) {
             return false;
         }
         if (!CompareUtil.compareString(fDescription, trip.getDescription())) {
             return false;
         }
-        if ( fAvailable != trip.getAvailable()) {
+        if (fAvailable != trip.getAvailable()) {
             return false;
         }
         if (!this.fOrganiser.equals(trip.getOrganiser())) {
             return false;
         }
-       if (!(CompareUtil.compareSet(this.fParticipants, trip.getParticipants()))) {
+        if (!(CompareUtil.compareSet(this.fParticipants, trip.getParticipants()))) {
             return false;
         }
         if (!(CompareUtil.compareSet(this.fCosts, trip.getCosts()))) {
@@ -246,5 +250,4 @@ public class TripInstance implements Serializable {
     public int hashCode() {
         return super.hashCode();
     }
-
 }

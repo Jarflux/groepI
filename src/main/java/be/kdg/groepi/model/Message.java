@@ -90,7 +90,7 @@ public class Message implements Serializable {
         if (!CompareUtil.compareLong(fDate, message.getDate())) {
             return false;
         }
-        if (!fTripInstance.equals(message.fTripInstance)) {
+        if (!fTripInstance.equals(message.getTripInstance())) {
             return false;
         }
         if (!fUser.equals(message.getUser())) {
