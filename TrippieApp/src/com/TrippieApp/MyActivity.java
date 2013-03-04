@@ -27,11 +27,16 @@ public class MyActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        button.setText("c,kd");
-        String password = passwordField.getText().toString();
-        String username = usernameField.getText().toString();
+        Thread thread = new Thread("New Thread") {
+            public void run(){
+                String password = passwordField.getText().toString();
+                String username = usernameField.getText().toString();
+                Controller.login("{\"password\":\"" + password + "\",\"username\":\"" + username + "\"}");
+            }
+        };
 
-        Controller.login("{\"password\":\"" + password + "\",\"username\":\"" + username + "\"}");
+        thread.start();
+
     }
 
 }

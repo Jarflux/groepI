@@ -37,13 +37,14 @@ public class Controller {
         String password = "";
         try {
             jo = new JSONObject(credentials);
-            jo.put("password","supersecret");
             name = jo.getString("username");
             password = jo.getString("password");
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
         HttpResponse r = springSecurityCheck(name, password);
+
         for (Header h : r.getAllHeaders()) {
             System.out.println(h.getName() + " " + " " + h.getValue() + "");
         }
@@ -74,25 +75,18 @@ public class Controller {
     public static HttpResponse springSecurityCheck(String name, String password) {
 
         DefaultHttpClient client = new DefaultHttpClient();
-        HttpPost requestLogin = new HttpPost(
-                "http://localhost:8080/j_spring_security_check?");
+        HttpPost requestLogin = new HttpPost("http://192.168.1.137:8080/j_spring_security_check?");
         HttpResponse response = null;
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("j_username", name));
         params.add(new BasicNameValuePair("j_password", password));
-        params.add(new BasicNameValuePair("_spring_security_remember_me","true"));
+
         try {
-            requestLogin
-                    .setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+            requestLogin.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
             response = client.execute(requestLogin);
-            return response;
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        }catch(Exception e){
             e.printStackTrace();
         }
-        return null;
+        return response;
     }
 }
