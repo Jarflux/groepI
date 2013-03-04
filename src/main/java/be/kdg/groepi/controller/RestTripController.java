@@ -64,7 +64,7 @@ public class RestTripController {
             logger.debug("Returning Trip: " + trip.toString() + " with trip #" + tripId);
             ModelAndView modelAndView = new ModelAndView("trips/view");
             modelAndView.addObject("tripObject", trip);
-            modelAndView.addObject("stopListObject", StopService.getAllTripStopsByTripId(trip.getId()));
+            /*modelAndView.addObject("stopListObject", StopService.getAllTripStopsByTripId(trip.getId()));*/
             modelAndView.addObject("tripInstanceListObject", TripInstanceService.getAllTripInstancesByTripId(trip.getId()));
             return modelAndView;
         } else {
@@ -72,7 +72,7 @@ public class RestTripController {
         }
     }
 
-    @RequestMapping(value = "/addstop/{tripId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/addstop/{tripId}", method = RequestMethod.GET)
     public ModelAndView addStop(@PathVariable("tripId") String tripId) {
         Trip trip = TripService.getTripById(Long.parseLong(tripId));
         return new ModelAndView("trips/addstop", "tripObject", trip);
@@ -105,8 +105,21 @@ public class RestTripController {
     }
 
     @RequestMapping(value = "/updateTrip", method = RequestMethod.POST)
-    public ModelAndView editUser(@ModelAttribute("tripObject") Trip trip) {
+    public ModelAndView updateTrip(@ModelAttribute("tripObject") Trip trip) {
         TripService.updateTrip(trip);
         return new ModelAndView("trips/view", "tripObject", trip);
+    }
+
+    @RequestMapping(value = "/editStop/{stopId}", method = RequestMethod.GET)
+    public ModelAndView editStopView(@PathVariable("stopId") String stopId) {
+        ModelAndView modelAndView = new ModelAndView("trips/editstop");
+        modelAndView.addObject("stopObject", StopService.getStopById(Long.parseLong(stopId)));
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/updateStop", method = RequestMethod.POST)
+    public ModelAndView updateStop(@ModelAttribute("tripObject") Stop stop) {
+        StopService.updateStop(stop);
+        return new ModelAndView("trips/view", "stopObject", stop);
     }
 }

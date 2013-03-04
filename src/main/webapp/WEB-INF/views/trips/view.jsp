@@ -32,22 +32,17 @@
 
                 <section>
                     <h2><spring:message code='text.stops'/>
-                        <form method="post" action="/trips/addstop/${tripObject.id}">
+                        <form method="get" action="/trips/addstop/${tripObject.id}">
                             <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
                         </form></h2>
 
                         <c:choose>
-                            <c:when test="${!empty stopListObject}">
-                                <table>
-                                    <c:forEach var="stop" items="${stopListObject}">
-                                        <tr>
-                                            <td>${stop.id}</td>
-                                            <td>${stop.stopNumber}</td>
-                                            <td>${stop.type}</td>
-                                            <td>${stop.displaymode}</td>
-                                        </tr>
+                            <c:when test="${!empty tripObject.stops}">
+                                <ul>
+                                    <c:forEach var="stop" items="${tripObject.stops}">
+                                            <li>${stop.order}: <a href="/trips/editStop/${stop.id}" class="active"><c:out value="${stop.name}"/></a></li>
                                     </c:forEach>
-                                </table>
+                                </ul>
                             </c:when>
                             <c:otherwise>
                                 <spring:message code='text.nostopsfound'/>
