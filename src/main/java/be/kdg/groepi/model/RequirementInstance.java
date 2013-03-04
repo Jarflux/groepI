@@ -1,5 +1,6 @@
 package be.kdg.groepi.model;
 
+import be.kdg.groepi.utils.CompareUtil;
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -9,10 +10,10 @@ import java.io.Serializable;
  * Class: Requirement
  * Description:
  */
-
 @Entity
 @Table(name = "T_REQUIREMENT_INSTANCE")
 public class RequirementInstance implements Serializable {
+
     @Id
     @GeneratedValue
     @Column(name = "requirement_instance_id")
@@ -26,7 +27,6 @@ public class RequirementInstance implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = true)
     private User fUser;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "trip_instance_id", nullable = false)
     private TripInstance fTripInstance;
@@ -63,10 +63,6 @@ public class RequirementInstance implements Serializable {
 
     public void setUser(User fUser) {
         this.fUser = fUser;
-    }
-
-    public Long setId() {
-        return fId;
     }
 
     public Long getId() {
@@ -107,21 +103,25 @@ public class RequirementInstance implements Serializable {
 
     @Override
     public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
         RequirementInstance requirementInstance = (RequirementInstance) o;
-//        if (this == requirement) return true;
-
-        int comparison = this.fName.compareTo(requirementInstance.getName());
-        if (comparison != 0) return false;
-
-        if (this.fAmount != requirementInstance.getAmount()) return false;
-
-        comparison = this.fDescription.compareTo(requirementInstance.getDescription());
-        if (comparison != 0) return false;
-
-        if (fUser != null && this.fUser.getId() != (requirementInstance.getUser().getId())) return false;
-
-        if (!this.fTripInstance.getId().equals(requirementInstance.getTripInstance().getId())) return false;
-
+        if (!CompareUtil.compareString(fName, requirementInstance.getName())) {
+            return false;
+        }
+        if (!CompareUtil.compareString(fDescription, requirementInstance.getDescription())) {
+            return false;
+        }
+        if (!CompareUtil.compareLong(fAmount, requirementInstance.getAmount())) {
+            return false;
+        }
+        if (!CompareUtil.compareUser(fUser, requirementInstance.getUser())) {
+            return false;
+        }
+        if (!this.fTripInstance.equals(requirementInstance.getTripInstance())) {
+            return false;
+        }
         return true;
     }
 }

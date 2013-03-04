@@ -1,5 +1,6 @@
 package be.kdg.groepi.model;
 
+import be.kdg.groepi.utils.CompareUtil;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
@@ -16,16 +17,16 @@ import java.util.Set;
  */
 
 /*
-Hibernate Inheritance: Table Per Subclass
-http://viralpatel.net/blogs/hibernate-inheritance-table-per-subclass-annotation-xml-mapping/
-Hibernate Inheritance: Table Per Class Hierarchy
-http://viralpatel.net/blogs/hibernate-inheritence-table-per-hierarchy-mapping/
-*/
-
+ Hibernate Inheritance: Table Per Subclass
+ http://viralpatel.net/blogs/hibernate-inheritance-table-per-subclass-annotation-xml-mapping/
+ Hibernate Inheritance: Table Per Class Hierarchy
+ http://viralpatel.net/blogs/hibernate-inheritence-table-per-hierarchy-mapping/
+ */
 @Entity
 @Table(name = "T_TRIP")
 //@Inheritance(strategy=InheritanceType.JOINED)  //Hibernate Inheritance: Table Per Subclass
 public class Trip implements Serializable {
+
     @Id
     @GeneratedValue
     @Column(name = "trip_id")
@@ -38,16 +39,13 @@ public class Trip implements Serializable {
     private Boolean fAvailable;
     @Column(name = "repeatable")
     private Boolean fRepeatable;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     private User fOrganiser;
-
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTrip")
     @Cascade(CascadeType.DELETE)
     @OrderBy(value = "stopnumber")
     private Set<Stop> fStops = new HashSet<>();
-
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTrip")
     @Cascade(CascadeType.DELETE)
     private Set<Requirement> fRequirements = new HashSet<>();
@@ -56,7 +54,6 @@ public class Trip implements Serializable {
     // @Cascade(CascadeType.ALL)
     // @JoinTable(name = "T_TRIP_REQUIREMENT", joinColumns = {@JoinColumn(name = "trip_id")}, inverseJoinColumns = {@JoinColumn(name = "requirement_id")})
     // private Set<Requirement> fRequirements = new HashSet<>();
-
     // Hibernates needs empty constructor
     public Trip() {
     }
@@ -71,10 +68,6 @@ public class Trip implements Serializable {
 
     public Long getId() {
         return fId;
-    }
-
-    public void setId(Long fId) {
-        this.fId = fId;
     }
 
     public String getTitle() {
@@ -151,27 +144,28 @@ public class Trip implements Serializable {
 
     @Override
     public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
         Trip trip = (Trip) o;
-        if (this == trip) return false;
-
-        int comparison = this.fTitle.compareTo(trip.getTitle());
-        if (comparison != 0) return false;
-
-        comparison = this.fDescription.compareTo(trip.getDescription());
-        if (comparison != 0) return false;
-
-        comparison = this.fAvailable.compareTo(trip.getAvailable());
-        if (comparison != 0) return false;
-
-        comparison = this.fRepeatable.compareTo(trip.getRepeatable());
-        if (comparison != 0) return false;
-
+        if (!CompareUtil.compareString(fTitle, trip.getTitle())) {
+            return false;
+        }
+        if (!CompareUtil.compareString(fDescription, trip.getDescription())) {
+            return false;
+        }
+        if (fAvailable != trip.getAvailable()) {
+            return false;
+        }
+        if (fRepeatable != trip.getRepeatable()) {
+            return false;
+        }
         if (!this.fOrganiser.equals(trip.getOrganiser())) {
             return false;
         }
-        //  if (!(CompareUtil.compareSet(this.fRequirements, trip.getRequirements()))) {
-        //      return false;
-        //  }
+        if (!(CompareUtil.compareSet(this.fRequirements, trip.getRequirements()))) {
+            return false;
+        }
         return true;
     }
 
@@ -179,5 +173,4 @@ public class Trip implements Serializable {
     public int hashCode() {
         return super.hashCode();
     }
-
 }

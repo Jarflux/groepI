@@ -54,6 +54,7 @@ public class RequirementServiceTest {
         Requirement originalRequirement = new Requirement(requirement.getName(),
                 requirement.getAmount(), requirement.getDescription(), requirement.getTrip());
 
+        requirement.setName("New name");
         requirement.setAmount(25);
         requirement.setDescription("HOLY SHITBALLS THAT'S A LOT OF FLASHLIGHTS");
 

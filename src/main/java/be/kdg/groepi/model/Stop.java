@@ -1,15 +1,16 @@
 package be.kdg.groepi.model;
 
+import be.kdg.groepi.utils.CompareUtil;
 import javax.persistence.*;
 
 //public enum STOPTYPE {
 //    INFORMATIVE (0),
 //    INTERACTOVE(1);
 //}
-
 @Entity
 @Table(name = "T_STOP")
 public class Stop {
+
     @Id
     @GeneratedValue
     @Column(name = "stop_id")
@@ -29,7 +30,6 @@ public class Stop {
     @Column(name = "stopText")
     //@Type(type = "text")
     private String fStopText;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "trip_id", nullable = false)
     private Trip fTrip;
@@ -50,10 +50,6 @@ public class Stop {
 
     public Long getId() {
         return fId;
-    }
-
-    public void setId(Long fId) {
-        this.fId = fId;
     }
 
     public String getName() {
@@ -122,32 +118,31 @@ public class Stop {
 
     @Override
     public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
         Stop stop = (Stop) o;
-        if (this == stop) return false;
-
-        int comparison = this.fName.compareTo(stop.getName());
-        if (comparison != 0) return false;
-
-        comparison = this.fLatitude.compareTo(stop.getLatitude());
-        if (comparison != 0) return false;
-
-        comparison = this.fLongitude.compareTo(stop.getLongitude());
-        if (comparison != 0) return false;
-
-        comparison = this.fStopnumber.compareTo(stop.getOrder());
-        if (comparison != 0) return false;
-
-        comparison = this.fStopText.compareTo(stop.getStopText());
-        if (comparison != 0) return false;
-
-        comparison = this.fDisplayMode.compareTo(stop.getDisplayMode());
-        if (comparison != 0) return false;
-
-        comparison = this.fType.compareTo(stop.getType());
-        if (comparison != 0) return false;
-
-        comparison = this.fStopnumber.compareTo(stop.getOrder());
-        if (comparison != 0) return false;
+        if (!CompareUtil.compareString(fName, stop.getName())) {
+            return false;
+        }
+        if (!CompareUtil.compareString(fLatitude, stop.getLatitude())) {
+            return false;
+        }
+        if (!CompareUtil.compareString(fLongitude, stop.getLongitude())) {
+            return false;
+        }
+        if (!CompareUtil.compareInteger(fStopnumber, stop.getOrder())) {
+            return false;
+        }
+        if (!CompareUtil.compareString(fStopText, stop.getStopText())) {
+            return false;
+        }
+        if (!CompareUtil.compareInteger(fDisplayMode, stop.getDisplayMode())) {
+            return false;
+        }
+        if (!CompareUtil.compareInteger(fType, stop.getType())) {
+            return false;
+        }
 
         // cant test because trip is lazyloaded and cant do get<trip on trip proxy
         //   if (!(this.fTrip.equals(stop.getTrip()))) return false;

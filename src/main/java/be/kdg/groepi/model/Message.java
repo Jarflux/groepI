@@ -1,5 +1,6 @@
 package be.kdg.groepi.model;
 
+import be.kdg.groepi.utils.CompareUtil;
 import be.kdg.groepi.utils.DateUtil;
 
 import javax.persistence.*;
@@ -11,10 +12,10 @@ import java.io.Serializable;
  * Class: Message
  * Description:
  */
-
 @Entity
 @Table(name = "T_MESSAGE")
 public class Message implements Serializable {
+
     @Id
     @GeneratedValue
     @Column(name = "message_id")
@@ -23,11 +24,9 @@ public class Message implements Serializable {
     String fContent;
     @Column(name = "date")
     Long fDate;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "trip_instance_id", nullable = false)
     private TripInstance fTripInstance;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     private User fUser;
@@ -45,10 +44,6 @@ public class Message implements Serializable {
 
     public long getId() {
         return fId;
-    }
-
-    public void setId(long fId) {
-        this.fId = fId;
     }
 
     public String getContent() {
@@ -84,24 +79,23 @@ public class Message implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "Message:" + fDate + ": " + fContent;
-    }
-
-
-    @Override
     public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
         Message message = (Message) o;
-
-        int comparison = this.fContent.compareTo(message.getContent());
-        if (comparison != 0) return false;
-
-        comparison = this.fDate.compareTo(message.getDate());
-        if (comparison != 0) return false;
-
-        if (!this.fTripInstance.getId().equals(message.fTripInstance.getId())) return false;
-        if (this.fUser.getId() != (message.getUser().getId())) return false;
-
+        if (!CompareUtil.compareString(fContent, message.getContent())) {
+            return false;
+        }
+        if (!CompareUtil.compareLong(fDate, message.getDate())) {
+            return false;
+        }
+        if (!fTripInstance.equals(message.fTripInstance)) {
+            return false;
+        }
+        if (!fUser.equals(message.getUser())) {
+            return false;
+        }
         return true;
     }
 }

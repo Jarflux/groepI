@@ -1,5 +1,6 @@
 package be.kdg.groepi.model;
 
+import be.kdg.groepi.utils.CompareUtil;
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -9,10 +10,10 @@ import java.io.Serializable;
  * Class: Requirement
  * Description:
  */
-
 @Entity
 @Table(name = "T_REQUIREMENT")
 public class Requirement implements Serializable {
+
     @Id
     @GeneratedValue
     @Column(name = "requirement_id")
@@ -23,7 +24,6 @@ public class Requirement implements Serializable {
     long fAmount;
     @Column(name = "description")
     String fDescription;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "trip_id", nullable = false)
     private Trip fTrip;
@@ -37,10 +37,6 @@ public class Requirement implements Serializable {
         this.fAmount = fAmount;
         this.fDescription = fDescription;
         this.fTrip = fTrip;
-    }
-
-    public Long setId() {
-        return fId;
     }
 
     public Long getId() {
@@ -81,19 +77,22 @@ public class Requirement implements Serializable {
 
     @Override
     public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
         Requirement requirement = (Requirement) o;
-//        if (this == requirement) return true;
-
-        int comparison = this.fName.compareTo(requirement.getName());
-        if (comparison != 0) return false;
-
-        if (this.fAmount != requirement.getAmount()) return false;
-
-        comparison = this.fDescription.compareTo(requirement.getDescription());
-        if (comparison != 0) return false;
-
-        if (this.fTrip.getId() != requirement.getTrip().getId()) return false;
-
+        if (!CompareUtil.compareString(fName, requirement.getName())) {
+            return false;
+        }
+        if (!CompareUtil.compareString(fDescription, requirement.getDescription())) {
+            return false;
+        }
+        if (!CompareUtil.compareLong(fAmount, requirement.getAmount())) {
+            return false;
+        }
+        if (!this.fTrip.equals(requirement.getTrip())) {
+            return false;
+        }
         return true;
     }
 }

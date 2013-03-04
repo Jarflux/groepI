@@ -14,6 +14,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "T_ANSWER_INSTANCE")
 public class AnswerInstance {
+
     @Id
     @GeneratedValue
     @Column(name = "answer_instance_id")
@@ -22,7 +23,6 @@ public class AnswerInstance {
     private String fGivenAnswer;
     @Column(name = "correct")
     private boolean fCorrect;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "answer_id", nullable = false)
     private Answer fAnswer;
@@ -32,7 +32,6 @@ public class AnswerInstance {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "stop_instance_id", nullable = false)
     private StopInstance fStopInstance;
-
 
     public AnswerInstance() {
     }
@@ -44,27 +43,23 @@ public class AnswerInstance {
         this.fGivenAnswer = fGivenAnswer;
         this.fCorrect = fCorrect;
     }
-/*
-    public AnswerInstance(Stop fStop) {
-        this.fStop = fStop;
-    }*/
-/*
-    public AnswerInstance(List<String> answers, int correctAnswer, String correctAnswerDescription, Stop fStop) {
-        this.fAnswers = answers;
-        if (correctAnswer < 0 || correctAnswer >= answers.size()) {
-            correctAnswer = 0;
-        }
-        this.fCorrectAnswer = correctAnswer;
-        this.fCorrectAnswerDescription = correctAnswerDescription;
-        this.fStop = fStop;
-    }*/
+    /*
+     public AnswerInstance(Stop fStop) {
+     this.fStop = fStop;
+     }*/
+    /*
+     public AnswerInstance(List<String> answers, int correctAnswer, String correctAnswerDescription, Stop fStop) {
+     this.fAnswers = answers;
+     if (correctAnswer < 0 || correctAnswer >= answers.size()) {
+     correctAnswer = 0;
+     }
+     this.fCorrectAnswer = correctAnswer;
+     this.fCorrectAnswerDescription = correctAnswerDescription;
+     this.fStop = fStop;
+     }*/
 
     public Long getId() {
         return fId;
-    }
-
-    public void setId(Long fId) {
-        this.fId = fId;
     }
 
     public String getGivenAnswer() {
@@ -114,18 +109,25 @@ public class AnswerInstance {
 
     @Override
     public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
         AnswerInstance answerInstance = (AnswerInstance) o;
-//        if (this == answer) return false;
-
-        if (!this.fGivenAnswer.equals(answerInstance.getGivenAnswer())) return false;
-
-        if (this.fCorrect != answerInstance.isCorrect()) return false;
-
-        if (!this.fAnswer.getId().equals(answerInstance.getAnswer().getId())) return false;
-
-        if (this.fUser.getId() != (answerInstance.getUser().getId())) return false;
-
-        return this.fStopInstance.getId().equals(answerInstance.getStopInstance().getId());
-
+        if (!CompareUtil.compareString(fGivenAnswer, answerInstance.getGivenAnswer())) {
+            return false;
+        }
+        if (this.fCorrect != answerInstance.isCorrect()) {
+            return false;
+        }
+        if (!this.fAnswer.equals(answerInstance.getAnswer())) {
+            return false;
+        }
+        if (!this.fUser.equals(answerInstance.getUser())) {
+            return false;
+        }
+        if (!this.fStopInstance.equals(answerInstance.getStopInstance())) {
+            return false;
+        }
+        return true;
     }
 }

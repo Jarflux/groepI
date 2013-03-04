@@ -42,7 +42,7 @@
                                     <c:forEach var="stop" items="${stopListObject}">
                                         <tr>
                                             <td>${stop.id}</td>
-                                            <td>${stop.stopNumber}</td>
+                                            <td>${stop.stopnumber}</td>
                                             <td>${stop.type}</td>
                                             <td>${stop.displaymode}</td>
                                         </tr>

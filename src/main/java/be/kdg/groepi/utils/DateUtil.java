@@ -1,11 +1,10 @@
 package be.kdg.groepi.utils;
 
 import be.kdg.groepi.model.User;
-
-import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import javax.servlet.http.HttpSession;
 
 public class DateUtil {
 

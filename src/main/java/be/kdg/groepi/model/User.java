@@ -1,5 +1,6 @@
 package be.kdg.groepi.model;
 
+import be.kdg.groepi.utils.CompareUtil;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -11,10 +12,10 @@ import java.sql.Timestamp;
  * Description:
  */
 //TODO: boolean veld 'Active' toevoegen
-
 @Entity
 @Table(name = "T_USER")
 public class User implements Serializable {
+
     @Id
     @GeneratedValue
     @Column(name = "user_id")
@@ -36,7 +37,6 @@ public class User implements Serializable {
 
     //@OneToMany
     //private Set<Trip> organizedTrips;
-
     // Hibernates needs empty constructor
     public User() {
     }
@@ -50,10 +50,6 @@ public class User implements Serializable {
 
     public long getId() {
         return fId;
-    }
-
-    public void setId(long fId) {
-        this.fId = fId;
     }
 
     public String getName() {
@@ -113,26 +109,31 @@ public class User implements Serializable {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        User user = (User) obj;
-
-        // if (this == user) return false;
-
-        int comparison = this.fName.compareTo(user.getName());
-        if (comparison != 0) return false;
-
-        comparison = this.fEmail.compareTo(user.getEmail());
-        if (comparison != 0) return false;
-
-        comparison = this.fDateOfBirth.compareTo(user.getDateOfBirth());
-        if (comparison != 0) return false;
-
-        comparison = this.fPassword.compareTo(user.getPassword());
-        if (comparison != 0) return false;
-
-        if (this.fProfilePicture != null && user.getProfilePicture() != null) {
-            comparison = this.fProfilePicture.compareTo(user.getProfilePicture());
-            if (comparison != 0) return false;
+    public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
+        User user = (User) o;
+        if (!CompareUtil.compareString(fName, user.getName())) {
+            return false;
+        }
+        if (!CompareUtil.compareString(fEmail, user.getEmail())) {
+            return false;
+        }
+        if (!CompareUtil.compareLong(fDateOfBirth, user.getDateOfBirth())) {
+            return false;
+        }
+        if (!CompareUtil.compareString(fPassword, user.getPassword())) {
+            return false;
+        }
+        if (!CompareUtil.compareString(fPasswordResetString, user.getPasswordResetString())) {
+            return false;
+        }
+        if (!CompareUtil.compareTimestamp(fPasswordResetTimestamp, user.getPasswordResetTimestamp())) {
+            return false;
+        }
+        if (!CompareUtil.compareString(fProfilePicture, user.getProfilePicture())) {
+            return false;
         }
         return true;
     }

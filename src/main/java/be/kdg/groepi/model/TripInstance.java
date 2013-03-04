@@ -112,10 +112,6 @@ public class TripInstance implements Serializable {
         return fId;
     }
 
-    public void setId(Long fId) {
-        this.fId = fId;
-    }
-
     public String getTitle() {
         return fTitle;
     }
@@ -217,38 +213,32 @@ public class TripInstance implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        TripInstance trip = (TripInstance) o;
-        if (this == trip) return false;
-
-        int comparison = this.fTitle.compareTo(trip.getTitle());
-        if (comparison != 0) return false;
-
-        comparison = this.fDescription.compareTo(trip.getDescription());
-        if (comparison != 0) return false;
-
-        comparison = this.fAvailable.compareTo(trip.getAvailable());
-        if (comparison != 0) return false;
-
-
+        if(o == null) return false;
+        TripInstance trip = (TripInstance) o;      
+        if (!CompareUtil.compareString(fTitle, trip.getTitle())) {
+            return false;
+        }
+        if (!CompareUtil.compareString(fDescription, trip.getDescription())) {
+            return false;
+        }
+        if ( fAvailable != trip.getAvailable()) {
+            return false;
+        }
         if (!this.fOrganiser.equals(trip.getOrganiser())) {
             return false;
         }
-
-        if (!(CompareUtil.compareSet(this.fParticipants, trip.getParticipants()))) {
+       if (!(CompareUtil.compareSet(this.fParticipants, trip.getParticipants()))) {
             return false;
         }
-
-/*        if (!(CompareUtil.compareSet(this.fCosts, trip.getCosts()))) {
+        if (!(CompareUtil.compareSet(this.fCosts, trip.getCosts()))) {
             return false;
         }
-
-        if (!(CompareUtil.compareSet(this.fRequirements, trip.getRequirements()))) {
+        if (!(CompareUtil.compareSet(this.fRequirementInstances, trip.getRequirementInstances()))) {
             return false;
         }
-
         if (!(CompareUtil.compareSet(this.fMessages, trip.getMessages()))) {
             return false;
-        }*/
+        }
         return true;
     }
 

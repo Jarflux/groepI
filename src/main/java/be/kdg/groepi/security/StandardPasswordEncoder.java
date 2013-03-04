@@ -20,9 +20,7 @@ public class StandardPasswordEncoder implements PasswordEncoder {
     public String encodePassword(String rawPass, Object o) {
         try {
             return CompareUtil.getHashedPassword(rawPass);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (UnsupportedEncodingException e) {
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
         return null;
@@ -34,9 +32,7 @@ public class StandardPasswordEncoder implements PasswordEncoder {
         String tempencode = null;
         try {
             tempencode = CompareUtil.getHashedPassword(rawPass);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (UnsupportedEncodingException e) {
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
         return tempencode.equals(encPass);
