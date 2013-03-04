@@ -46,13 +46,11 @@ public class RestTripController {
             @RequestParam(value = "description") String description) {
 
         Trip trip = TripService.getTripById(Long.parseLong(tripId));
-
         Requirement requirement = new Requirement(name, amount, description, trip);
-
         RequirementService.createRequirement(requirement);
         //       trip.addRequirementToTrip(requirement);
-        TripService.updateTrip(trip);
-        return new ModelAndView("trips/addtriprequirement", "tripId", trip.getId().toString());
+        trip = TripService.getTripById(trip.getId());
+        return new ModelAndView("trips/view", "tripObject", trip);
     }
 
     @RequestMapping(value = "/view/{tripId}", method = RequestMethod.GET)
