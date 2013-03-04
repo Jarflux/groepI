@@ -122,4 +122,10 @@ public class RestTripController {
         StopService.updateStop(stop);
         return new ModelAndView("trips/view", "stopObject", stop);
     }
+
+    @RequestMapping(value = "/addrequirement/{tripId}", method = RequestMethod.GET)
+    public ModelAndView addRequirement(@PathVariable(value = "tripId") String tripId) {
+        return new ModelAndView("trips/addtriprequirement", "tripId", tripId);
+    }
+    /*return new ModelAndView("trips/addtriprequirement", "tripId", trip.getId().toString());*/
 }
