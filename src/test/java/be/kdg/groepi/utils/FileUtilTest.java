@@ -5,9 +5,15 @@ import be.kdg.groepi.service.UserService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.core.io.DescriptiveResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.mock.web.MockServletContext;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 import static be.kdg.groepi.utils.DateUtil.dateToLong;
@@ -38,8 +44,10 @@ public class FileUtilTest {
     public void testUpload() throws IOException {
         User user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
         UserService.createUser(user);
-        MockHttpSession mockHttpSession = new MockHttpSession();
-        assertEquals("File has not been uploaded",FileUtil.savePicture(mockHttpSession, file, user.getId()),
+        ServletContext servletContext = new MockServletContext("file:C:/images");
+        HttpSession mockHttpSession = new MockHttpSession(servletContext);
+
+        assertEquals("File has not been uploaded", FileUtil.savePicture(mockHttpSession, file, user.getId()),
                 "/images/profilepictures/" + user.getId() + ".jpg");
 
 
