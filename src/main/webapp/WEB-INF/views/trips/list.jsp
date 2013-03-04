@@ -31,15 +31,15 @@
                 <c:choose>
                     <c:when test="${!empty tripInstanceListObject}">
                         <table>
+                            <tr>
+                                <td>ID - moet nog weg</td>
+                                <td><spring:message code="text.tripname"/></td>
+                                <td><spring:message code="text.tripdescription"/></td>
+                                <td><spring:message code="text.tripnumberofparticipants"/></td>
+                                <td><spring:message code="text.tripstartdate"/></td>
+                                <td><spring:message code="text.tripenddate"/></td>
+                            </tr>
                             <c:forEach var="tripInstance" items="${tripInstanceListObject}">
-                                <tr>
-                                    <td>ID - moet nog weg</td>
-                                    <td><spring:message code="text.tripname"/></td>
-                                    <td><spring:message code="text.tripdescription"/></td>
-                                    <td><spring:message code="text.tripnumberofparticipants"/></td>
-                                    <td><spring:message code="text.tripstartdate"/></td>
-                                    <td><spring:message code="text.tripenddate"/></td>
-                                </tr>
                                 <tr>
                                     <td>${tripInstance.id}</td>
                                     <td>${tripInstance.title}</td>
