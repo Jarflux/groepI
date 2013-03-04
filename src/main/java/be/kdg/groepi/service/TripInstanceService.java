@@ -1,7 +1,9 @@
 package be.kdg.groepi.service;
 
+import be.kdg.groepi.model.Trip;
 import be.kdg.groepi.model.TripInstance;
 import be.kdg.groepi.utils.HibernateUtil;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -118,6 +120,26 @@ public class TripInstanceService {
                     setString("tripId", String.valueOf(tripId)).
                     setReadOnly(true).
                     list();
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return tripinstances;
+    }
+
+    public static List<TripInstance> getPublicTripInstances(){
+        List<TripInstance> tripinstances = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Query query = session.createQuery("from TripInstance tripinstance where tripinstance.fAvailable = :Availability").
+                    setInteger("Availability", 1);
+            tripinstances = (List<TripInstance>) query.list();
             tx.commit();
         } catch (RuntimeException e) {
             if (tx != null) {
