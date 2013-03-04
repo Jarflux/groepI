@@ -77,6 +77,10 @@ var myOptions = {
 };
 var marker = new google.maps.Marker({});
 var info = new google.maps.InfoWindow({});
+var yMarker = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
+var gMarker = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+var bMarker = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
+var pMarker = 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png';
 
 function initializeGMaps()
 {
@@ -119,4 +123,14 @@ var removeMarker = function(marker) {
 };
 function setInputText(text, controlId){
     $('[name="' + controlId + '"]').val(text);
+}
+
+function placeStopMarker(latitude, longitude){
+    marker = new google.maps.Marker({
+        position: new google.maps.LatLng(latitude,longitude),
+        map: map,
+        draggable:true,
+        icon:gMarker
+    });
+    bindMarkerEvents(marker);
 }

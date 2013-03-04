@@ -1,20 +1,21 @@
 package be.kdg.groepi.controller;
 
-import be.kdg.groepi.model.Requirement;
-import be.kdg.groepi.model.Stop;
-import be.kdg.groepi.model.Trip;
-import be.kdg.groepi.model.User;
+import be.kdg.groepi.model.*;
 import be.kdg.groepi.service.RequirementService;
 import be.kdg.groepi.service.StopService;
 import be.kdg.groepi.service.TripInstanceService;
 import be.kdg.groepi.service.TripService;
+import be.kdg.groepi.utils.DateUtil;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("trips")
@@ -46,15 +47,14 @@ public class RestTripController {
             @RequestParam(value = "description") String description) {
 
         Trip trip = TripService.getTripById(Long.parseLong(tripId));
-
         Requirement requirement = new Requirement(name, amount, description, trip);
-
         RequirementService.createRequirement(requirement);
         //       trip.addRequirementToTrip(requirement);
-        TripService.updateTrip(trip);
-        return new ModelAndView("trips/addtriprequirement", "tripId", trip.getId().toString());
+        trip = TripService.getTripById(trip.getId());
+        return new ModelAndView("trips/view", "tripObject", trip);
     }
 
+    //TODO trip-instance van maken?
     @RequestMapping(value = "/view/{tripId}", method = RequestMethod.GET)
     public ModelAndView getTrip(@PathVariable("tripId") String tripId, HttpSession session) {
         Trip trip;
@@ -64,7 +64,7 @@ public class RestTripController {
             logger.debug("Returning Trip: " + trip.toString() + " with trip #" + tripId);
             ModelAndView modelAndView = new ModelAndView("trips/view");
             modelAndView.addObject("tripObject", trip);
-            modelAndView.addObject("stopListObject", StopService.getAllTripStopsByTripId(trip.getId()));
+            /*modelAndView.addObject("stopListObject", StopService.getAllTripStopsByTripId(trip.getId()));*/
             modelAndView.addObject("tripInstanceListObject", TripInstanceService.getAllTripInstancesByTripId(trip.getId()));
             return modelAndView;
         } else {
@@ -72,7 +72,7 @@ public class RestTripController {
         }
     }
 
-    @RequestMapping(value = "/addstop/{tripId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/addstop/{tripId}", method = RequestMethod.GET)
     public ModelAndView addStop(@PathVariable("tripId") String tripId) {
         Trip trip = TripService.getTripById(Long.parseLong(tripId));
         return new ModelAndView("trips/addstop", "tripObject", trip);
@@ -87,14 +87,26 @@ public class RestTripController {
     }
 
     @RequestMapping(value = "/list")
-    public ModelAndView getAllTrips() {
-        List<Trip> tripList = TripService.getAllTrips();
-        if (tripList != null) {
-            logger.debug("Returning TripList containing " + tripList.size() + " TripInstances");
+    public ModelAndView getPublicTrips() {
+        List<TripInstance> tripInstanceList = TripInstanceService.getPublicTripInstances();
+        if (tripInstanceList != null) {
+            logger.debug("Returning TripList containing " + tripInstanceList.size() + " TripInstances");
         } else {
             logger.debug("Returning TripList = NULL");
         }
-        return new ModelAndView("trips/list", "tripListObject", tripList);
+        Map<Long, String> tripInstanceStartDates = new HashMap<>();
+        Map<Long, String> tripInstanceEndDates = new HashMap<>();
+        for (TripInstance tripInstance: tripInstanceList){
+            tripInstanceStartDates.put(tripInstance.getTrip().getId(),
+                    DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartDate())));
+            tripInstanceEndDates.put(tripInstance.getTrip().getId(),
+                    DateUtil.formatDate(DateUtil.longToDate(tripInstance.getEndDate())));
+        }
+        ModelAndView modelAndView = new ModelAndView("trips/list");
+        modelAndView.addObject("tripInstanceListObject", tripInstanceList);
+        modelAndView.addObject("tripInstanceStartDates", tripInstanceStartDates);
+        modelAndView.addObject("tripInstanceEndDates", tripInstanceEndDates);
+        return modelAndView;
     }
 
     @RequestMapping(value = "/editTrip/{tripId}", method = RequestMethod.GET)
@@ -105,8 +117,36 @@ public class RestTripController {
     }
 
     @RequestMapping(value = "/updateTrip", method = RequestMethod.POST)
-    public ModelAndView editUser(@ModelAttribute("tripObject") Trip trip) {
+    public ModelAndView updateTrip(@ModelAttribute("tripObject") Trip trip) {
         TripService.updateTrip(trip);
         return new ModelAndView("trips/view", "tripObject", trip);
     }
+
+    @RequestMapping(value = "/jointrip", method = RequestMethod.POST)
+    public ModelAndView joinTrip(HttpSession session, @RequestParam ("tripId") String tripId) {
+        User sessionUser = (User) session.getAttribute("userObject");
+        TripInstance tripInstance = TripInstanceService.getTripInstanceById(Long.parseLong(tripId));
+        tripInstance.addParticipantToTripInstance(sessionUser);
+        TripInstanceService.updateTripInstance(tripInstance);
+        return getPublicTrips();
+    }
+
+    @RequestMapping(value = "/editStop/{stopId}", method = RequestMethod.GET)
+    public ModelAndView editStopView(@PathVariable("stopId") String stopId) {
+        ModelAndView modelAndView = new ModelAndView("trips/editstop");
+        modelAndView.addObject("stopObject", StopService.getStopById(Long.parseLong(stopId)));
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/updateStop", method = RequestMethod.POST)
+    public ModelAndView updateStop(@ModelAttribute("tripObject") Stop stop) {
+        StopService.updateStop(stop);
+        return new ModelAndView("trips/view", "stopObject", stop);
+    }
+
+    @RequestMapping(value = "/addrequirement/{tripId}", method = RequestMethod.GET)
+    public ModelAndView addRequirement(@PathVariable(value = "tripId") String tripId) {
+        return new ModelAndView("trips/addtriprequirement", "tripId", tripId);
+    }
+    /*return new ModelAndView("trips/addtriprequirement", "tripId", trip.getId().toString());*/
 }

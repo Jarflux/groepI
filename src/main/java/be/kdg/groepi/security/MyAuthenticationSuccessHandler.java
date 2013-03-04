@@ -20,6 +20,7 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
         User user = UserService.getUserByEmail(authentication.getName());
         HttpSession session = request.getSession();
         session.setAttribute("userObject", user);
+        response.addHeader("Validated","true");
         response.sendRedirect("/profile/myprofile");
     }
 }

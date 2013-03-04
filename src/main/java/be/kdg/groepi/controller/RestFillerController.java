@@ -4,9 +4,11 @@
  */
 package be.kdg.groepi.controller;
 
+import be.kdg.groepi.model.Stop;
 import be.kdg.groepi.model.Trip;
 import be.kdg.groepi.model.TripInstance;
 import be.kdg.groepi.model.User;
+import be.kdg.groepi.service.StopService;
 import be.kdg.groepi.service.TripInstanceService;
 import be.kdg.groepi.service.TripService;
 import be.kdg.groepi.service.UserService;
@@ -56,6 +58,18 @@ public class RestFillerController {
             TripService.createTrip(tripB);
             TripService.createTrip(tripC);
 
+            StopService.createStop(new Stop("Stopplaats 1", "51.221212", "4.389166", 0, 1, 1, "Dit is de eerste stopplaats", tripA));
+            StopService.createStop(new Stop("Stopplaats 2", "51.221220", "4.399147", 0, 1, 1, "Dit is de tweede stopplaats", tripA));
+            StopService.createStop(new Stop("Stopplaats 3", "51.224012", "4.409166", 0, 1, 1, "Dit is de derde stopplaats", tripA));
+
+            StopService.createStop(new Stop("Stopplaats 1", "51.221212", "4.389166", 0, 1, 1, "Dit is de eerste stopplaats", tripB));
+            StopService.createStop(new Stop("Stopplaats 2", "51.221220", "4.399147", 0, 1, 1, "Dit is de tweede stopplaats", tripB));
+            StopService.createStop(new Stop("Stopplaats 3", "51.224012", "4.409166", 0, 1, 1, "Dit is de derde stopplaats", tripB));
+
+            StopService.createStop(new Stop("Stopplaats 1", "51.221212", "4.389166", 0, 1, 1, "Dit is de eerste stopplaats", tripC));
+            StopService.createStop(new Stop("Stopplaats 2", "51.221220", "4.399147", 0, 1, 1, "Dit is de tweede stopplaats", tripC));
+            StopService.createStop(new Stop("Stopplaats 3", "51.224012", "4.409166", 0, 1, 1, "Dit is de derde stopplaats", tripC));
+
             long startDate1 = DateUtil.dateToLong(27, 02, 2013, 16, 00, 00);
             long endDate1 = DateUtil.dateToLong(27, 02, 2013, 20, 00, 00);
             long startDate2 = DateUtil.dateToLong(27, 03, 2013, 16, 00, 00);
@@ -64,7 +78,7 @@ public class RestFillerController {
             long endDate3 = DateUtil.dateToLong(27, 04, 2013, 20, 00, 00);
             
             TripInstance tripinstance1A = new TripInstance("Bachelor feestje", "eerste Trip, eerste Instance", false, startDate1, endDate1, gregory, tripA);
-            TripInstance tripinstance2A = new TripInstance("Bachelor feestje", "eerste Trip, tweede Instance", false, startDate2, endDate2, vincent, tripA);
+            TripInstance tripinstance2A = new TripInstance("Bachelor feestje", "eerste Trip, tweede Instance", true, startDate2, endDate2, vincent, tripA);
             TripInstance tripinstance3A = new TripInstance("Bachelor feestje", "eerste Trip, derde Instance", false, startDate3, endDate3, tim, tripA);
             
             TripInstance tripinstance1B = new TripInstance("Bachelor feestje", "tweede  Trip, eerste Instance", false, startDate1, endDate1, ben, tripB);
