@@ -7,43 +7,103 @@
   Time: 16:26
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title><spring:message code='text.viewtripinformation'/></title>
-    <link href="/css/blue.css" rel="stylesheet"/>
-
-</head>
-<body>
-<div id="wrapper">
-    <div id="topmenu" class="column dark">
-        <jsp:include page="/topmenu"/>
-    </div>
-    <div id="content" class="column light">
-        <h2><spring:message code='text.viewtripinformation'/></h2>
-        <section>
-            <div class="gmap">
-
+    <head>
+        <title><spring:message code='text.viewtripinformation'/></title>
+        <link href="/css/blue.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="topmenu" class="column dark">
+                <jsp:include page="/topmenu"/>
             </div>
-            <div class="row">
-                <c:choose>
-                    <c:when test="${tripObject != null}">
-                        <p>
-                            <c:out value="${tripObject.title}"/>
-                            <br/>
-                            <c:out value="${tripObject.description}"/>
-                        </p>
-                    </c:when>
-                    <c:when test="${tripObject == null}">
-                        <jsp:forward page="/error/invalidtrip"/>
-                    </c:when>
-                </c:choose>
+            <div id="content" class="column light">
+                <h2><spring:message code='text.viewtripinformation'/></h2>
+                <section>
+                    <h2>
+                        ${tripObject.id}
+                        ${tripObject.title}
+                    </h2>
+                    ${tripObject.description}
+                </section>
+                <div class="quarter">
+                    <section>
+                        <h3><spring:message code='text.stops'/></h3>
+                        <%--<form method="get" action="/trips/addstop/${tripObject.id}">
+                            <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
+                        </form>--%>
+                        <a href="/trips/addstop/${tripObject.id}" class="active"><spring:message code='text.add'/></a>
+                        <c:choose>
+                            <c:when test="${!empty tripObject.stops}">
+                                <ul>
+                                    <c:forEach var="stop" items="${tripObject.stops}">
+                                        <li>${stop.order}: <a href="/trips/editStop/${stop.id}" class="active"><c:out value="${stop.name}"/></a></li>
+                                    </c:forEach>
+                                </ul>
+                            </c:when>
+                            <c:otherwise>
+                                <spring:message code='text.nostopsfound'/>
+                            </c:otherwise>
+                        </c:choose>
+                    </section>
+                </div>
+                <div class="quarter">
+                    <section>
+                        <h3><spring:message code='text.requirements'/></h3>
+                        <%--<form method="get" action="/trips/addRequirement/${tripObject.id}">
+                            <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
+                        </form>--%>
+                        <a href="/trips/addrequirement/${tripObject.id}" class="active"><spring:message code='text.add'/></a>
+                        <c:choose>
+                            <c:when test="${!empty tripObject.requirements}">
+                                <table>
+                                    <c:forEach var="requirement" items="${tripObject.requirements}">
+                                        <tr>
+                                            <td><a href="/trips/editTriprequirement/${requirement.id}" class="active">${requirement.name}</a></td>
+                                            <td>${requirement.amount}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">${requirement.description}</td>
+                                        </tr>
+                                    </c:forEach>
+                                </table>
+                            </c:when>
+                            <c:otherwise>
+                                <br />
+                                <spring:message code='text.norequirementsfound'/>
+                            </c:otherwise>
+                        </c:choose>
+                    </section>
+                </div>
+                <div class="quarter">
+                    <section>
+                        <h3><spring:message code='text.instances'/></h3>
+                            <%--<form method="post" action="/trips/addinstance/${tripObject.id}">
+                                <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
+                            </form>--%>
+                        <a href="/trips/addinstance/${tripObject.id}" class="active"><spring:message code='text.add'/></a>
+                        <c:choose>
+                            <c:when test="${!empty tripInstanceListObject}">
+                                <table>
+                                    <c:forEach var="tripInstance" items="${tripInstanceListObject}">
+                                        <tr>
+                                            <td>${tripInstance.id}</td>
+                                            <td>${tripInstance.description}</td>
+                                        </tr>
+                                    </c:forEach>
+                                </table>
+                            </c:when>
+                            <c:otherwise>
+                                <spring:message code='text.notripinstancesfound'/>
+                            </c:otherwise>
+                        </c:choose>
+                    </section>
+                </div>
             </div>
-
-        </section>
-    </div>
-</div>
-<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
-<script src="/js/functions.js"></script>
-</body>
+        </div>
+        <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+        <script src="/js/functions.js"></script>
+    </body>
 </html>

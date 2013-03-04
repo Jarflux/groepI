@@ -73,7 +73,7 @@ public class MessageServiceTest {
             Message firstMessage = MessageService.getAllMessages().get(0);
             MessageService.deleteMessage(firstMessage);
         }
-        assertTrue(CostService.getAllCosts().isEmpty());
+        assertTrue(MessageService.getAllMessages().isEmpty());
     }
 
 }

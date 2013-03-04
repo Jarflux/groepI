@@ -30,7 +30,7 @@ public class Stop {
     //@Type(type = "text")
     private String fStopText;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "trip_id", nullable = false)
     private Trip fTrip;
 

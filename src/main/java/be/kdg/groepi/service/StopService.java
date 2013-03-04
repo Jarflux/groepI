@@ -103,4 +103,25 @@ public class StopService {
         }
         return stops;
     }
+    
+        public static Object getAllTripStopsByTripId(Long tripId) {
+        List<Stop> stops = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            stops = session.createQuery("FROM Stop stop WHERE stop.fTrip = :tripId").
+                    setString("tripId", String.valueOf(tripId)).
+                    setReadOnly(true).
+                    list();
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return stops;
+    }
 }

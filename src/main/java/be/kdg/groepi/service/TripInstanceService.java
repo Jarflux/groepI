@@ -108,5 +108,24 @@ public class TripInstanceService {
         return tripinstances;
     }
 
-
+        public static List<TripInstance> getAllTripInstancesByTripId(long tripId) {
+        List<TripInstance> tripinstances = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            tripinstances = session.createQuery("FROM TripInstance tripinstance WHERE tripinstance.fTrip = :tripId").
+                    setString("tripId", String.valueOf(tripId)).
+                    setReadOnly(true).
+                    list();
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return tripinstances;
+    }
 }
