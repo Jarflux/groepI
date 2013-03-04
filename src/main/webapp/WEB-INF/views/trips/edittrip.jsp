@@ -35,7 +35,7 @@
                 </div>
                 <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
             </form>
-            <a href="/trips/addstop/${tripObject.id}" class="active"><spring:message code='text.newstop'/></a>
+            <%--<a href="/trips/addstop/${tripObject.id}" class="active"><spring:message code='text.newstop'/></a>--%>
         </c:when>
         <c:when test="${tripObject == null}">
             <jsp:forward page="/error/emptyobject"/>

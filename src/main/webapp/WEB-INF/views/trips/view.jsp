@@ -31,11 +31,11 @@
                 </section>
 
                 <section>
-                    <h2><spring:message code='text.stops'/>
-                        <form method="get" action="/trips/addstop/${tripObject.id}">
+                    <h2><spring:message code='text.stops'/></h2>
+                        <%--<form method="get" action="/trips/addstop/${tripObject.id}">
                             <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
-                        </form></h2>
-
+                        </form>--%>
+                        <a href="/trips/addstop/${tripObject.id}" class="active"><spring:message code='text.add'/></a>
                         <c:choose>
                             <c:when test="${!empty tripObject.stops}">
                                 <ul>
