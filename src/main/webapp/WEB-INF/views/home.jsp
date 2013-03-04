@@ -56,16 +56,18 @@
                 sed vel est. Aliquam quis turpis eget nisl iaculis pulvinar nec iaculis erat. Vivamus auctor augue id
                 nunc vulputate sit amet ultrices nulla porttitor.
                 Quisque vulputate pellentesque ipsum at consequat. Praesent nec eros lorem, ut pretium nibh. </p>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo, magna quis accumsan euismod, urna
-                purus viverra nulla, non commodo
-                erat risus ac sapien. Duis quis odio est. Mauris luctus odio eget dui accumsan nec mollis massa
-                vulputate. Sed elementum lobortis lobortis.
-                Nunc dapibus, est ac laoreet laoreet, justo purus pharetra massa, eget dictum odio dolor eu libero. Nunc
-                leo odio, dapibus sit amet tristique eget,
-                accumsan eu nunc. Quisque id purus lectus. Curabitur ac odio in urna faucibus rhoncus eu dictum
-                elit. </p>
-
+                    <p>Stap 1: klik op volgende link om de database te vullen<br />
+                        <a href="/database/fill" class="active">FILL DATABASE</a><br />  
+                    </p>
+                    <p>Stap 2: watch tot /database/fill in de url verschijnt</p>
+                    <p>Stap 3: log in met een van volgende gebruikers:<br />
+                        "django@candyland.com", "Django" <br />               
+                        "Ben@trippie.com", "ben"<br />
+                        "Tim@trippie.com", "tim"<br />
+                        "Mitch@trippie.com", "mitch"<br />
+                        "Vincent@trippie.com", "vincent"<br />
+                        "Gregory@trippie.com", "gregory"<br />
+                        "Dave@trippie.com", "dave"</p>
         </div>
     </div>
 

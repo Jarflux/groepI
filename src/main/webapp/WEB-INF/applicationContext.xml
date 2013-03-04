@@ -17,6 +17,7 @@
         <intercept-url pattern="/js/**" access="permitAll"/>
         <intercept-url pattern="/topmenu" access="permitAll"/>
         <intercept-url pattern="/error/**" access="permitAll"/>
+        <intercept-url pattern="/database/fill" access="permitAll"/>
         <intercept-url pattern="/" access="permitAll"/>
 
         <intercept-url pattern="/login" access="permitAll"/>
