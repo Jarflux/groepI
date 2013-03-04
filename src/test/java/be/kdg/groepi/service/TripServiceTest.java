@@ -67,4 +67,6 @@ public class TripServiceTest {
         trip.removeRequirementFromTrip(requirement);
         assertTrue("Trip: trip should have no requirements", trip.getRequirements().isEmpty());
     }
+
+
 }

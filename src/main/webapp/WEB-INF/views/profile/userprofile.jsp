@@ -26,7 +26,7 @@
             <div class="quarter">
                 <c:choose>
                     <c:when test="${userObject.profilePicture == null}">
-                        <img src="/images/noprofile.jpg" width="150"
+                        <img src="images/noprofile.jpg" width="150"
                              class="profilepic"/>
                     </c:when>
                     <c:when test="${userObject.profilePicture != null}">
@@ -46,11 +46,41 @@
                         <div class="row"><c:out value="Mail ${userObject.email}"/></div>
                         <div class="row">
                             <c:out value="Date of birth ${dob}"/></div>
-                        <div class="row"><c:out value="Profile picture ${userObject.profilePicture}"/>"</div>
+                        <div class="row"><c:out value="Profile picture ${userObject.profilePicture}"/></div>
                         <div class="row">
                             <form action="/profile/myprofile/edit">
                                 <input type="submit" class="button" value="<spring:message code='text.edit'/>"/>
                             </form>
+                        </div>
+
+                        <div class="row">
+                            <table>
+                            <c:forEach var="tripInstance" items="${userTripInstances}">
+                                <td><spring:message code="text.tripname"/></td>
+                                <td><spring:message code="text.tripdescription"/></td>
+                                <td><spring:message code="text.tripstartdate"/></td>
+                                <td><spring:message code="text.tripenddate"/></td>
+                                    <caption><spring:message code="text.tripsparticipated"/></caption>
+                                    <tr>
+                                        <td>${tripInstance.title}</td>
+                                        <td>${tripInstance.description}</td>
+                                        <c:forEach var="startDate" items="${tripInstanceStartDates}">
+                                            <c:choose>
+                                                <c:when test="${startDate.key == tripInstance.trip.id}">
+                                                    <td>${startDate.value}</td>
+                                                </c:when>
+                                            </c:choose>
+                                        </c:forEach>
+                                        <c:forEach var="endDate" items="${tripInstanceEndDates}">
+                                            <c:choose>
+                                                <c:when test="${endDate.key == tripInstance.trip.id}">
+                                                    <td>${endDate.value}</td>
+                                                </c:when>
+                                            </c:choose>
+                                        </c:forEach>
+                                    </tr>
+                                </table>
+                            </c:forEach>
                         </div>
                     </c:when>
                     <c:when test="${userObject == null}">

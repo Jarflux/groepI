@@ -10,6 +10,7 @@ import org.springframework.mock.web.MockHttpSession;
 
 import javax.servlet.http.HttpSession;
 import java.util.Calendar;
+import java.util.Date;
 
 import static be.kdg.groepi.utils.DateUtil.dateToLong;
 import static org.junit.Assert.assertEquals;
@@ -62,6 +63,10 @@ public class DateUtilTest {
         UserService.createUser(user);
         mockHttpSession.setAttribute("userObject", user);
         assertTrue("Formatted date should be yyyy-MM-dd", DateUtil.formatDate(mockHttpSession).equals("2011-05-04"));
+        Calendar cal = Calendar.getInstance();
+        cal.set(2011, Calendar.MAY, 4);
+        Date date = new Date(cal.getTime().getTime());
+        assertTrue("Formatted date should be yyyy-MM-dd", DateUtil.formatDate(date).equals("2011-05-04"));
     }
 
 }
