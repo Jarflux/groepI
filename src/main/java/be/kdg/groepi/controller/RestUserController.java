@@ -1,6 +1,8 @@
 package be.kdg.groepi.controller;
 
+import be.kdg.groepi.model.TripInstance;
 import be.kdg.groepi.model.User;
+import be.kdg.groepi.service.TripInstanceService;
 import be.kdg.groepi.service.UserService;
 import be.kdg.groepi.utils.CompareUtil;
 import be.kdg.groepi.utils.DateUtil;
@@ -17,7 +19,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Calendar;
+import java.util.*;
 
 
 /**
@@ -28,7 +30,7 @@ import java.util.Calendar;
  */
 @Controller
 @RequestMapping("profile")
-public class RestUserController implements ServletContextAware{
+public class RestUserController {
 
     private static final Logger logger = Logger.getLogger(RestUserController.class);
 
@@ -56,9 +58,34 @@ public class RestUserController implements ServletContextAware{
 
     @RequestMapping(value = "/myprofile")
     public ModelAndView myProfile(HttpSession session) {
+        User sessionUser = (User) session.getAttribute("userObject");
+        Map<Long, String> tripInstanceStartDates = new HashMap<>();
+        Map<Long, String> tripInstanceEndDates = new HashMap<>();
+        List<TripInstance> userTripInstances = new ArrayList<>();
+        List<TripInstance> tripInstances = TripInstanceService.getAllTripInstances();
+        List<User> tripParticipants = new ArrayList<>();
+        for (TripInstance tripInstance : tripInstances){
+            tripInstanceStartDates.put(tripInstance.getTrip().getId(),
+                    DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartDate())));
+
+            tripInstanceEndDates.put(tripInstance.getTrip().getId(),
+                    DateUtil.formatDate(DateUtil.longToDate(tripInstance.getEndDate())));
+            tripParticipants.addAll(tripInstance.getParticipants());
+            for (User participant : tripParticipants){
+                if (sessionUser.getId() == participant.getId()){
+                    userTripInstances.add(tripInstance);
+                }
+            }
+            tripParticipants.clear();
+        }
+
+
         ModelAndView modelAndView = new ModelAndView("profile/userprofile");
-        modelAndView.addObject("userObject", (User) session.getAttribute("userObject"));
+        modelAndView.addObject("userObject", session.getAttribute("userObject"));
         modelAndView.addObject("dob", DateUtil.formatDate(session));
+        modelAndView.addObject("userTripInstances", userTripInstances);
+        modelAndView.addObject("tripInstanceStartDates", tripInstanceStartDates);
+        modelAndView.addObject("tripInstanceEndDates", tripInstanceEndDates);
         return modelAndView;
     }
 
@@ -133,8 +160,5 @@ public class RestUserController implements ServletContextAware{
         return "home";
     }
 
-    @Override
-    public void setServletContext(ServletContext servletContext) {
-        //To change body of implemented methods use File | Settings | File Templates.
-    }
+
 }

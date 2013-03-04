@@ -2,6 +2,8 @@ package com.controllers;
 
 
 import android.preference.PreferenceActivity;
+import com.model.User;
+import com.utils.DateUtil;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -33,24 +35,35 @@ public class Controller {
 
     public static String login(String credentials) {
         JSONObject jo = null;
-        String name = "";
+        User user = null;
+        String email = "";
         String password = "";
+        boolean isError = true;
         try {
             jo = new JSONObject(credentials);
-            name = jo.getString("username");
+            email = jo.getString("username");
             password = jo.getString("password");
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        HttpResponse r = springSecurityCheck(name, password);
+        HttpResponse r = springSecurityCheck(email, password);
 
-        for (Header h : r.getAllHeaders()) {
-            System.out.println(h.getName() + " " + " " + h.getValue() + "");
+        try {
+            jo = new JSONObject(r.getFirstHeader("User").getValue());
+            password = jo.getJSONObject("user").getString("password");
+            email = jo.getJSONObject("user").getString("email");
+            String name = jo.getJSONObject("user").getString("name");
+            Long dateOfBirth = Long.parseLong(jo.getJSONObject("user").getString("dateOfBirth"));
+            Long id = Long.parseLong(jo.getJSONObject("user").getString("id"));
+            user = new User(id,name,email,password,dateOfBirth);
+        } catch (JSONException e) {
+            user=null;
+        }
+        if(user != null){
+            isError = false ;
         }
 
-        String s = r.getFirstHeader("Location").toString();
-        boolean isError = s.contains("login_error");
 
         if (!isError) {
             Header[] cookies = r.getHeaders("Set-Cookie");
@@ -66,7 +79,7 @@ public class Controller {
                 }
             }
         }
-        System.out.println(" ----- Login from" + name
+        System.out.println(" ----- Login from" + email
                 + " failed----- ");
         return "newLogin";
 
