@@ -20,12 +20,7 @@ import static org.junit.Assert.assertTrue;
 public class RequirementInstanceServiceTest {
     User user;
     Trip trip;
-    //    Stop stop;
-//    Answer answer;
-//    StopInstance stopInstance;
     TripInstance tripInstance;
-    //    AnswerInstance answerInstance;
-    //  Requirement requirement;
     RequirementInstance requirementInstance;
 
     @Before

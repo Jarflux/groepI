@@ -37,16 +37,8 @@ public class StopInstance {
         return fStop;
     }
 
-    public void setStop(Stop fStop) {
-        this.fStop = fStop;
-    }
-
     public TripInstance getTripInstance() {
         return fTripInstance;
-    }
-
-    public void setTripInstance(TripInstance fTripInstance) {
-        this.fTripInstance = fTripInstance;
     }
 
     @Override

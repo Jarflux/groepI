@@ -162,10 +162,13 @@ public class Trip implements Serializable {
         }
         if (!this.fOrganiser.equals(trip.getOrganiser())) {
             return false;
+        } /*
+        if (!(CompareUtil.compareSet(this.fStops, trip.getStops()))) {
+            return false;
         }
         if (!(CompareUtil.compareSet(this.fRequirements, trip.getRequirements()))) {
             return false;
-        }
+        } */
         return true;
     }
 

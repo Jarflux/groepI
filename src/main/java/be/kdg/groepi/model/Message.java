@@ -39,6 +39,7 @@ public class Message implements Serializable {
         this.fContent = fContent;
         this.fDate = fDate;
         this.fTripInstance = fTripInstance;
+        this.fTripInstance.addMessageToTripInstance(this);
         this.fUser = fUser;
     }
 

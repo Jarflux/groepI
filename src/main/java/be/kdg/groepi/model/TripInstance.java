@@ -72,10 +72,6 @@ public class TripInstance implements Serializable {
 
     // Hibernates needs empty constructor
 
-
-
-
-
     public TripInstance() {
     }
 
@@ -233,7 +229,7 @@ public class TripInstance implements Serializable {
         }
         if (!(CompareUtil.compareSet(this.fParticipants, trip.getParticipants()))) {
             return false;
-        }
+        } /*
         if (!(CompareUtil.compareSet(this.fCosts, trip.getCosts()))) {
             return false;
         }
@@ -242,7 +238,7 @@ public class TripInstance implements Serializable {
         }
         if (!(CompareUtil.compareSet(this.fMessages, trip.getMessages()))) {
             return false;
-        }
+        } */
         return true;
     }
 
