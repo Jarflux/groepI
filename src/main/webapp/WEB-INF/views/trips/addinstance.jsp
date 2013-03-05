@@ -27,6 +27,7 @@
         <form method="post" action="/trips/createinstance" class="mainstyle tooltips">
             <%--<input type="hidden" name="tripId" title="tripId" value="${tripObject.id}"/>--%>
             <input type="hidden" name="tripId" title="tripId" value="${tripObject.id}"/>
+
             <div class="row">
                 <span><spring:message code='text.title'/></span>
                 <input type="text" class="" name="title" placeholder=""
@@ -44,7 +45,7 @@
             <%--date + starttime + endtime--%>
             <div class="row">
                 <span><spring:message code='text.date'/></span>
-                <input type="date" name="date" title="<spring:message code='text.instancedate'/>">
+                <input type="text" class="date" name="date" title="<spring:message code='text.instancedate'/>">
             </div>
             <div class="row">
                 <span><spring:message code='text.starttime'/></span>

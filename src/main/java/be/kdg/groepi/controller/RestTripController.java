@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import java.sql.Date;
+//import java.sql.Date;
 import java.util.Calendar;
-//import java.util.Date;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -86,7 +86,7 @@ public class RestTripController {
         return new ModelAndView("trips/editstop", "tripObject", trip);
     }
 
-    @RequestMapping(value = "/list")
+    @RequestMapping(value = "/list")        //TODO: maak hier een TRIPlijst van (ipv TripInstance)
     public ModelAndView getPublicTrips() {
         List<TripInstance> tripInstanceList = TripInstanceService.getPublicTripInstances();
         if (tripInstanceList != null) {
@@ -103,6 +103,29 @@ public class RestTripController {
                     DateUtil.formatDate(DateUtil.longToDate(tripInstance.getEndTime())));
         }
         ModelAndView modelAndView = new ModelAndView("trips/list");
+        modelAndView.addObject("tripInstanceListObject", tripInstanceList);
+        modelAndView.addObject("tripInstanceStartDates", tripInstanceStartDates);
+        modelAndView.addObject("tripInstanceEndDates", tripInstanceEndDates);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/instancelist")
+    public ModelAndView getPublicTripInstances() {
+        List<TripInstance> tripInstanceList = TripInstanceService.getPublicTripInstances();
+        if (tripInstanceList != null) {
+            logger.debug("Returning TripList containing " + tripInstanceList.size() + " TripInstances");
+        } else {
+            logger.debug("Returning TripList = NULL");
+        }
+        Map<Long, String> tripInstanceStartDates = new HashMap<>();
+        Map<Long, String> tripInstanceEndDates = new HashMap<>();
+        for (TripInstance tripInstance : tripInstanceList) {
+            tripInstanceStartDates.put(tripInstance.getTrip().getId(),
+                    DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartTime())));
+            tripInstanceEndDates.put(tripInstance.getTrip().getId(),
+                    DateUtil.formatDate(DateUtil.longToDate(tripInstance.getEndTime())));
+        }
+        ModelAndView modelAndView = new ModelAndView("trips/instancelist");
         modelAndView.addObject("tripInstanceListObject", tripInstanceList);
         modelAndView.addObject("tripInstanceStartDates", tripInstanceStartDates);
         modelAndView.addObject("tripInstanceEndDates", tripInstanceEndDates);
@@ -175,6 +198,24 @@ public class RestTripController {
         tripInstance.setOrganiser(user);
         tripInstance.setTrip(trip);
 
+
+        long startTime = DateUtil.dateStringToLong(date, startTimeString);
+        long endTime = DateUtil.dateStringToLong(date, endTimeString);
+
+        if (startTime >= endTime) {
+            endTime += 24 * 60 * 60 * 1000;
+        }
+
+        tripInstance.setStartTime(startTime);
+        tripInstance.setEndTime(endTime);
+
+        if (tripInstance.getAvailable() == null) {
+            tripInstance.setAvailable(false);
+        }
+
+        TripInstanceService.createTripInstance(tripInstance);
+
+
         for (Requirement req : trip.getRequirements()) {
             RequirementInstance reqIns = new RequirementInstance(req, tripInstance);
             RequirementInstanceService.createRequirementInstance(reqIns);
@@ -189,18 +230,8 @@ public class RestTripController {
 
         }
 
-        long startTime = DateUtil.dateStringToLong(date, startTimeString);
-        long endTime = DateUtil.dateStringToLong(date, endTimeString);
-
-        if (startTime >= endTime) {
-            endTime += 24 * 60 * 60 * 1000;
-        }
-
-        tripInstance.setStartTime(startTime);
-        tripInstance.setEndTime(endTime);
-
-        TripInstanceService.createTripInstance(tripInstance);
-
+        Date tempDate = DateUtil.longToDate(startTime);
+        Date tempDate2 = DateUtil.longToDate(endTime);
 
         return new ModelAndView("trips/viewinstance", "tripInstanceId", tripInstance.getId().toString());
 //        return new ModelAndView("trips/addtrip");
