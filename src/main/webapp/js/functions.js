@@ -134,8 +134,11 @@ function placeStopMarker(latitude, longitude){
     });
     bindMarkerEvents(marker);
 }
-function makesortable()
+function maketripsortable()
 {
-    $( ".sortable" ).sortable();
+    $( ".sortable" ).sortable({
+        update: function(event, ui) {
+            var deorde = $(this).sortable('toArray').toString();
+console.log("Order is : "+deorde)        }});
     $( ".sortable" ).disableSelection();
 }
