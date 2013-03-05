@@ -143,4 +143,6 @@ public class TripInstanceServiceTest {
         tripList.add(tripinstance3);
         assertFalse("TripInstance: tripList does not contain the tripInstances it should", CompareUtil.compareList(TripInstanceService.getAllTripInstancesByTripId(trip.getId()), tripList));
     }
+
+
 }

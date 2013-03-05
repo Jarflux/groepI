@@ -47,7 +47,7 @@ public class DateUtilTest {
     public void testDateStringToLong() {
         cal.set(1992, 05, 30, 0, 0, 0);
         cal.set(Calendar.MILLISECOND, 0);
-        assertEquals("De long die wordt gereturned is incorrect", DateUtil.dateStringToLong("1992-06-30", "0:0:0"), (Long) cal.getTimeInMillis());
+        assertEquals("De long die wordt gereturned is incorrect", DateUtil.dateStringToLong("30-06-1992", "0:0:0"), (Long) cal.getTimeInMillis());
     }
 
     @Test
@@ -62,11 +62,11 @@ public class DateUtilTest {
         User user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
         UserService.createUser(user);
         mockHttpSession.setAttribute("userObject", user);
-        assertTrue("Formatted date should be yyyy-MM-dd", DateUtil.formatDate(mockHttpSession).equals("2011-05-04"));
+        assertTrue("Formatted date should be dd-MM-yyyy", DateUtil.formatDate(mockHttpSession).equals("04-05-2011"));
         Calendar cal = Calendar.getInstance();
         cal.set(2011, Calendar.MAY, 4);
         Date date = new Date(cal.getTime().getTime());
-        assertTrue("Formatted date should be yyyy-MM-dd", DateUtil.formatDate(date).equals("2011-05-04"));
+        assertTrue("Formatted date should be dd-MM-yyyy", DateUtil.formatDate(date).equals("04-05-2011"));
     }
 
 }

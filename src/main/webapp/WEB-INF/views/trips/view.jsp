@@ -39,7 +39,7 @@
                             <c:when test="${!empty tripObject.stops}">
                                 <ul class='sortable'>
                                     <c:forEach var="stop" items="${tripObject.stops}">
-                                        <li>${stop.order}: <a href="/trips/editStop/${stop.id}" class="active"><c:out value="${stop.name}"/></a></li>
+                                        <li>${stop.stopnumber}: <a href="/trips/editStop/${stop.id}" class="active"><c:out value="${stop.name}"/></a></li>
                                     </c:forEach>
                                 </ul>
                             </c:when>

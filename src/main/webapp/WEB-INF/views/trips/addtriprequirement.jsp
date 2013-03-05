@@ -20,7 +20,7 @@
         <jsp:include page="/topmenu"/>
     </div>
     <div id="content" class="column light">
-        <h2><spring:message code="text.createtrip"/></h2>
+        <h2><spring:message code="text.createRequirement"/></h2>
 
         <form method="post" action="/trips/doAddTripRequirement" class="mainstyle tooltips">
             <input type="hidden" name="tripId" title="tripId" value="${tripId}"/>

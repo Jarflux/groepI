@@ -22,9 +22,11 @@
     <div id="content" class="column light">
         <h2><spring:message code="text.tripinstance"/></h2>
 
-        <p>Voor template: ${trip.name} </p>
+        <p>Voor template: ${tripObject.title} </p>
 
-        <form method="post" action="createTrip" class="mainstyle tooltips">
+        <form method="post" action="/trips/createinstance" class="mainstyle tooltips">
+            <%--<input type="hidden" name="tripId" title="tripId" value="${tripObject.id}"/>--%>
+            <input type="hidden" name="tripId" title="tripId" value="${tripObject.id}"/>
             <div class="row">
                 <span><spring:message code='text.title'/></span>
                 <input type="text" class="" name="title" placeholder=""
@@ -39,11 +41,19 @@
                 <span><spring:message code='text.description'/></span>
                 <textarea name="description" title="<spring:message code='text.descriptiontooltip'/>"></textarea>
             </div>
+            <%--date + starttime + endtime--%>
             <div class="row">
-                <span><spring:message code='text.repeatabletrip'/></span>
-                <input type="checkbox" name="repeatable" value="true" title="Is je trip herhaalbaar?"/>
+                <span><spring:message code='text.date'/></span>
+                <input type="date" name="date" title="<spring:message code='text.instancedate'/>">
             </div>
-
+            <div class="row">
+                <span><spring:message code='text.starttime'/></span>
+                <input type="time" name="startTimeString" title="<spring:message code='text.instancestarttime'/>">
+            </div>
+            <div class="row">
+                <span><spring:message code='text.endtime'/></span>
+                <input type="time" name="endTimeString" title="<spring:message code='text.instanceendtime'/>">
+            </div>
 
             <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
         </form>

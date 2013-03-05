@@ -80,12 +80,12 @@ public class Stop {
         this.fLatitude = fLatitude;
     }
 
-    public Integer getOrder() {
+    public Integer getStopnumber() {
         return fStopnumber;
     }
 
-    public void setOrder(Integer fOrder) {
-        this.fStopnumber = fOrder;
+    public void setStopnumber(Integer fStopnumber) {
+        this.fStopnumber = fStopnumber;
     }
 
     public Integer getType() {
@@ -134,7 +134,7 @@ public class Stop {
         comparison = this.fLongitude.compareTo(stop.getLongitude());
         if (comparison != 0) return false;
 
-        comparison = this.fStopnumber.compareTo(stop.getOrder());
+        comparison = this.fStopnumber.compareTo(stop.getStopnumber());
         if (comparison != 0) return false;
 
         comparison = this.fStopText.compareTo(stop.getStopText());
@@ -146,7 +146,7 @@ public class Stop {
         comparison = this.fType.compareTo(stop.getType());
         if (comparison != 0) return false;
 
-        comparison = this.fStopnumber.compareTo(stop.getOrder());
+        comparison = this.fStopnumber.compareTo(stop.getStopnumber());
         if (comparison != 0) return false;
 
         // cant test because trip is lazyloaded and cant do get<trip on trip proxy
