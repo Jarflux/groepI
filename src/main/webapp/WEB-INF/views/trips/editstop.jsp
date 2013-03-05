@@ -14,7 +14,7 @@
         <jsp:include page="/topmenu"/>
     </div>
     <div id="content" class="column light">
-        <h2><spring:message code="text.addstop"/></h2>
+        <h3><spring:message code="text.addstop"/></h3>
         <section>
             <div class="half big">
                 <div class="gmap" id="map_canvas">
@@ -34,10 +34,10 @@
                                 <span><spring:message code='text.name'/></span>
                                 <input type="text" name="name" value="${stopObject.name}"/>
                             </div>
-                            <div class="row">
+                            <%--<div class="row">
                                 <span><spring:message code='text.description'/></span>
                                 <textarea name="stopText" title="<spring:message code='text.descriptiontooltip'/>"><c:out value="${stopObject.stopText}"/></textarea>
-                            </div>
+                            </div>--%>
                             <div class="row">
                                 <span><spring:message code='text.type'/></span>
                                 <select name="type">
@@ -77,7 +77,8 @@
     $(function(){
         //google.maps.event.addDomListener(window, 'load', initializeGMaps);
         initializeGMaps();
-        placeStopMarker(${stopObject.latitude}, ${stopObject.longitude});
+        placeStopMarker(parseInt(${stopObject.latitude}), parseInt(${stopObject.longitude}));
+        //placeStopMarker(51.221212,4.399166);
     })
 </script>
 </body>

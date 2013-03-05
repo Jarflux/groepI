@@ -114,7 +114,7 @@ var bindMarkerEvents = function(marker) {
     });
     google.maps.event.addListener(marker, "dragend", function (point){
         setInputText(point.latLng.lat(), "latitude");
-        setInputText(point.latLng.lat(), "longitude");
+        setInputText(point.latLng.lng(), "longitude");
     });
 
 };
@@ -142,3 +142,4 @@ function maketripsortable()
 console.log("Order is : "+deorde)        }});
     $( ".sortable" ).disableSelection();
 }
+

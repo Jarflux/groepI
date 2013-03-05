@@ -58,17 +58,17 @@ public class RestFillerController {
             TripService.createTrip(tripB);
             TripService.createTrip(tripC);
 
-            StopService.createStop(new Stop("Stopplaats 1", "51.221212", "4.389166", 0, 1, 1, "Dit is de eerste stopplaats", tripA));
-            StopService.createStop(new Stop("Stopplaats 2", "51.221220", "4.399147", 0, 1, 1, "Dit is de tweede stopplaats", tripA));
-            StopService.createStop(new Stop("Stopplaats 3", "51.224012", "4.409166", 0, 1, 1, "Dit is de derde stopplaats", tripA));
+            StopService.createStop(new Stop("Stopplaats 1", "51.221212", "4.399166", 1, 1, 1, "Dit is de eerste stopplaats", tripA));
+            StopService.createStop(new Stop("Stopplaats 2", "4.399166", "51.221212", 2, 1, 1, "Dit is de tweede stopplaats", tripA));
+            StopService.createStop(new Stop("Stopplaats 3", "51.224012", "4.409166", 3, 1, 1, "Dit is de derde stopplaats", tripA));
 
-            StopService.createStop(new Stop("Stopplaats 1", "51.221212", "4.389166", 0, 1, 1, "Dit is de eerste stopplaats", tripB));
-            StopService.createStop(new Stop("Stopplaats 2", "51.221220", "4.399147", 0, 1, 1, "Dit is de tweede stopplaats", tripB));
-            StopService.createStop(new Stop("Stopplaats 3", "51.224012", "4.409166", 0, 1, 1, "Dit is de derde stopplaats", tripB));
+            StopService.createStop(new Stop("Stopplaats 1", "51.221212", "4.389166", 1, 1, 1, "Dit is de eerste stopplaats", tripB));
+            StopService.createStop(new Stop("Stopplaats 2", "51.221220", "4.399147", 2, 1, 1, "Dit is de tweede stopplaats", tripB));
+            StopService.createStop(new Stop("Stopplaats 3", "51.224012", "4.409166", 3, 1, 1, "Dit is de derde stopplaats", tripB));
 
-            StopService.createStop(new Stop("Stopplaats 1", "51.221212", "4.389166", 0, 1, 1, "Dit is de eerste stopplaats", tripC));
-            StopService.createStop(new Stop("Stopplaats 2", "51.221220", "4.399147", 0, 1, 1, "Dit is de tweede stopplaats", tripC));
-            StopService.createStop(new Stop("Stopplaats 3", "51.224012", "4.409166", 0, 1, 1, "Dit is de derde stopplaats", tripC));
+            StopService.createStop(new Stop("Stopplaats 1", "51.221212", "4.389166", 1, 1, 1, "Dit is de eerste stopplaats", tripC));
+            StopService.createStop(new Stop("Stopplaats 2", "51.221220", "4.399147", 2, 1, 1, "Dit is de tweede stopplaats", tripC));
+            StopService.createStop(new Stop("Stopplaats 3", "51.224012", "4.409166", 3, 1, 1, "Dit is de derde stopplaats", tripC));
 
             long startDate1 = DateUtil.dateToLong(27, 02, 2013, 16, 00, 00);
             long endDate1 = DateUtil.dateToLong(27, 02, 2013, 20, 00, 00);
