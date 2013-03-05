@@ -14,7 +14,7 @@
         <jsp:include page="/topmenu"/>
     </div>
     <div id="content" class="column light">
-        <h3><spring:message code="text.addstop"/></h3>
+        <h2><spring:message code="text.addstop"/></h2>
         <section>
             <div class="half big">
                 <div class="gmap" id="map_canvas">

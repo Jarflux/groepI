@@ -52,10 +52,6 @@
                             <input type="hidden" name="tripId" value="${tripObject.id.toString()}"/>
                             <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
                         </div>
-                        <div class="row">
-                            <span><spring:message code='text.description'/></span>
-                            <input type="text" name="stopText"/>
-                        </div>
                     </div>
                 </form>
             </div>
