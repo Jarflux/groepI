@@ -354,3 +354,29 @@ form.mainstyle input[type="checkbox"] {
     height: 350px;
 }
 
+.sortable
+{
+    list-style: none;
+    margin:0;
+    padding: 0;
+    width: 100%;
+
+}
+.sortable li{
+    width: 100%;
+    padding: 3px;
+    margin: 0;
+    background:#0ac5f4;
+    color: white;
+    margin-top: 1px;
+
+
+}
+.sortable li a:link, .sortable li a:visited
+{
+    text-decoration: none;
+    border: none;
+
+    color: white;
+}
+
