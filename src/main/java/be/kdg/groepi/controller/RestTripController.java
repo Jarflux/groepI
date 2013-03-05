@@ -80,7 +80,7 @@ public class RestTripController {
     @RequestMapping(value = "/createStop", method = RequestMethod.POST)
     public ModelAndView createStop(HttpSession session, @ModelAttribute("stopObject") Stop stop, @RequestParam(value = "tripId") String tripId) {
         Trip trip = TripService.getTripById(Long.parseLong(tripId));
-        stop.setOrder(trip.getStops().size());
+        stop.setStopnumber(trip.getStops().size());
         stop.setTrip(trip);
         StopService.createStop(stop);
         return new ModelAndView("trips/editstop", "tripObject", trip);
