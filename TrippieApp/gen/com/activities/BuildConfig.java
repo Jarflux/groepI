@@ -1,5 +1,5 @@
 /** Automatically generated file. DO NOT MODIFY */
-package com.TrippieApp;
+package com.activities;
 
 public final class BuildConfig {
     public final static boolean DEBUG = true;

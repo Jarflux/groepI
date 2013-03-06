@@ -8,49 +8,49 @@ package com.model;
  * To change this template use File | Settings | File Templates.
  */
 public class Message {
-    private long fId;
-    private String fContent;
-    private Long fDate;
-    private TripInstance fTripInstance;
-    private User fUser;
+    private long Id;
+    private String Content;
+    private Long Date;
+    private TripInstance TripInstance;
+    private User User;
 
-    public long getfId() {
-        return fId;
+    public long getId() {
+        return Id;
     }
 
-    public void setfId(long fId) {
-        this.fId = fId;
+    public void setId(long id) {
+        Id = id;
     }
 
-    public String getfContent() {
-        return fContent;
+    public String getContent() {
+        return Content;
     }
 
-    public void setfContent(String fContent) {
-        this.fContent = fContent;
+    public void setContent(String content) {
+        Content = content;
     }
 
-    public Long getfDate() {
-        return fDate;
+    public Long getDate() {
+        return Date;
     }
 
-    public void setfDate(Long fDate) {
-        this.fDate = fDate;
+    public void setDate(Long date) {
+        Date = date;
     }
 
-    public TripInstance getfTripInstance() {
-        return fTripInstance;
+    public TripInstance getTripInstance() {
+        return TripInstance;
     }
 
-    public void setfTripInstance(TripInstance fTripInstance) {
-        this.fTripInstance = fTripInstance;
+    public void setTripInstance(TripInstance tripInstance) {
+        TripInstance = tripInstance;
     }
 
-    public User getfUser() {
-        return fUser;
+    public User getUser() {
+        return User;
     }
 
-    public void setfUser(User fUser) {
-        this.fUser = fUser;
+    public void setUser(User user) {
+        User = user;
     }
 }

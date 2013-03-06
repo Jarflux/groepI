@@ -8,58 +8,58 @@ package com.model;
  * To change this template use File | Settings | File Templates.
  */
 public class RequirementInstance {
-    private long fId;
-    private String fName;
-    private long fAmount;
-    private String fDescription;
-    private User fUser;
-    private TripInstance fTripInstance;
+    private long Id;
+    private String Name;
+    private long Amount;
+    private String Description;
+    private User User;
+    private TripInstance TripInstance;
 
-    public long getfId() {
-        return fId;
+    public long getId() {
+        return Id;
     }
 
-    public void setfId(long fId) {
-        this.fId = fId;
+    public void setId(long id) {
+        Id = id;
     }
 
-    public String getfName() {
-        return fName;
+    public String getName() {
+        return Name;
     }
 
-    public void setfName(String fName) {
-        this.fName = fName;
+    public void setName(String name) {
+        Name = name;
     }
 
-    public long getfAmount() {
-        return fAmount;
+    public long getAmount() {
+        return Amount;
     }
 
-    public void setfAmount(long fAmount) {
-        this.fAmount = fAmount;
+    public void setAmount(long amount) {
+        Amount = amount;
     }
 
-    public String getfDescription() {
-        return fDescription;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setfDescription(String fDescription) {
-        this.fDescription = fDescription;
+    public void setDescription(String description) {
+        Description = description;
     }
 
-    public User getfUser() {
-        return fUser;
+    public User getUser() {
+        return User;
     }
 
-    public void setfUser(User fUser) {
-        this.fUser = fUser;
+    public void setUser(User user) {
+        User = user;
     }
 
-    public TripInstance getfTripInstance() {
-        return fTripInstance;
+    public TripInstance getTripInstance() {
+        return TripInstance;
     }
 
-    public void setfTripInstance(TripInstance fTripInstance) {
-        this.fTripInstance = fTripInstance;
+    public void setTripInstance(TripInstance tripInstance) {
+        TripInstance = tripInstance;
     }
 }
