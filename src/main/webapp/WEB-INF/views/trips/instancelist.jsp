@@ -36,8 +36,9 @@
                                 <td><spring:message code="text.tripname"/></td>
                                 <td><spring:message code="text.tripdescription"/></td>
                                 <td><spring:message code="text.tripnumberofparticipants"/></td>
-                                <td><spring:message code="text.tripstartdate"/></td>
-                                <td><spring:message code="text.tripenddate"/></td>
+                                <td><spring:message code="text.tripinstancedate"/></td>
+                                <td><spring:message code="text.tripinstancestarttime"/></td>
+                                <td><spring:message code="text.tripinstanceendtime"/></td>
                             </tr>
                             <c:forEach var="tripInstance" items="${tripInstanceListObject}">
                                 <tr>
@@ -45,17 +46,24 @@
                                     <td>${tripInstance.title}</td>
                                     <td>${tripInstance.description}</td>
                                     <td>${tripInstance.participants.size()}</td>
-                                    <c:forEach var="startDate" items="${tripInstanceStartDates}">
+                                    <c:forEach var="date" items="${tripInstanceDates}">
                                         <c:choose>
-                                            <c:when test="${startDate.key == tripInstance.trip.id}">
-                                                <td>${startDate.value}</td>
+                                            <c:when test="${date.key == tripInstance.trip.id}">
+                                                <td>${date.value}</td>
                                             </c:when>
-                                        </c:choose>                         <%--TODO: datum + startTIJD + eindTIJD--%>
+                                        </c:choose>
                                     </c:forEach>
-                                    <c:forEach var="endDate" items="${tripInstanceEndDates}">
+                                    <c:forEach var="startTime" items="${tripInstanceStartTimes}">
                                         <c:choose>
-                                            <c:when test="${endDate.key == tripInstance.trip.id}">
-                                                <td>${endDate.value}</td>
+                                            <c:when test="${startTime.key == tripInstance.trip.id}">
+                                                <td>${startTime.value}</td>
+                                            </c:when>
+                                        </c:choose>
+                                    </c:forEach>
+                                    <c:forEach var="endTime" items="${tripInstanceEndTimes}">
+                                        <c:choose>
+                                            <c:when test="${endTime.key == tripInstance.trip.id}">
+                                                <td>${endTime.value}</td>
                                             </c:when>
                                         </c:choose>
                                     </c:forEach>

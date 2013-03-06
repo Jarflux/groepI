@@ -53,7 +53,6 @@ public class RestTripController {
         return new ModelAndView("trips/view", "tripObject", trip);
     }
 
-    //TODO trip-instance van maken?
     @RequestMapping(value = "/view/{tripId}", method = RequestMethod.GET)
     public ModelAndView getTrip(@PathVariable("tripId") String tripId, HttpSession session) {
         Trip trip;
@@ -103,29 +102,6 @@ public class RestTripController {
                     DateUtil.formatDate(DateUtil.longToDate(tripInstance.getEndTime())));
         }
         ModelAndView modelAndView = new ModelAndView("trips/list");
-        modelAndView.addObject("tripInstanceListObject", tripInstanceList);
-        modelAndView.addObject("tripInstanceStartDates", tripInstanceStartDates);
-        modelAndView.addObject("tripInstanceEndDates", tripInstanceEndDates);
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/instancelist")
-    public ModelAndView getPublicTripInstances() {
-        List<TripInstance> tripInstanceList = TripInstanceService.getPublicTripInstances();
-        if (tripInstanceList != null) {
-            logger.debug("Returning TripList containing " + tripInstanceList.size() + " TripInstances");
-        } else {
-            logger.debug("Returning TripList = NULL");
-        }
-        Map<Long, String> tripInstanceStartDates = new HashMap<>();
-        Map<Long, String> tripInstanceEndDates = new HashMap<>();
-        for (TripInstance tripInstance : tripInstanceList) {
-            tripInstanceStartDates.put(tripInstance.getTrip().getId(),
-                    DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartTime())));
-            tripInstanceEndDates.put(tripInstance.getTrip().getId(),
-                    DateUtil.formatDate(DateUtil.longToDate(tripInstance.getEndTime())));
-        }
-        ModelAndView modelAndView = new ModelAndView("trips/instancelist");
         modelAndView.addObject("tripInstanceListObject", tripInstanceList);
         modelAndView.addObject("tripInstanceStartDates", tripInstanceStartDates);
         modelAndView.addObject("tripInstanceEndDates", tripInstanceEndDates);
@@ -235,5 +211,70 @@ public class RestTripController {
 
         return new ModelAndView("trips/viewinstance", "tripInstanceId", tripInstance.getId().toString());
 //        return new ModelAndView("trips/addtrip");
+    }
+
+
+    @RequestMapping(value = "/instancelist")
+    public ModelAndView getPublicTripInstances() {
+        List<TripInstance> tripInstanceList = TripInstanceService.getPublicTripInstances();
+        if (tripInstanceList != null) {
+            logger.debug("Returning TripList containing " + tripInstanceList.size() + " TripInstances");
+        } else {
+            logger.debug("Returning TripList = NULL");
+        }
+        Map<Long, String> tripInstanceDates = new HashMap<>();
+        Map<Long, String> tripInstanceStartTimes = new HashMap<>();
+        Map<Long, String> tripInstanceEndTimes = new HashMap<>();
+        for (TripInstance tripInstance : tripInstanceList) {
+            tripInstanceDates.put(tripInstance.getTrip().getId(),
+                    DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartTime())));
+            tripInstanceStartTimes.put(tripInstance.getTrip().getId(),
+                    DateUtil.formatTime(DateUtil.longToDate(tripInstance.getStartTime())));
+            tripInstanceEndTimes.put(tripInstance.getTrip().getId(),
+                    DateUtil.formatTime(DateUtil.longToDate(tripInstance.getEndTime())));
+        }
+        ModelAndView modelAndView = new ModelAndView("trips/instancelist");
+        modelAndView.addObject("tripInstanceListObject", tripInstanceList);
+        modelAndView.addObject("tripInstanceDates", tripInstanceDates);
+        modelAndView.addObject("tripInstanceStartTimes", tripInstanceStartTimes);
+        modelAndView.addObject("tripInstanceEndTimes", tripInstanceEndTimes);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/viewinstance/{tripInstanceId}", method = RequestMethod.GET)
+    public ModelAndView getTripInstance(@PathVariable("tripInstanceId") String tripInstanceId, HttpSession session) {
+        TripInstance tripInstance;
+        tripInstance = TripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId));
+
+        if (tripInstance != null) {
+            logger.debug("Returning TripInstance: " + tripInstance.toString() + " with tripInstance #" + tripInstanceId);
+            ModelAndView modelAndView = new ModelAndView("trips/viewinstance");
+            modelAndView.addObject("tripInstanceObject", tripInstance);
+            return modelAndView;
+        } else {
+            return new ModelAndView("error/displayerror");
+        }
+    }
+
+    @RequestMapping(value = "/addinstancerequirement/{tripInstanceId}", method = RequestMethod.GET)
+    public ModelAndView addInstanceRequirement(@PathVariable(value = "tripInstanceId") String tripInstanceId) {
+        return new ModelAndView("trips/addinstancerequirement", "tripInstanceId", tripInstanceId);
+    }
+
+    @RequestMapping(value = "/doaddinstancerequirement", method = RequestMethod.POST)
+    public/* ModelAndView*/String doAddInstanceRequirement(@RequestParam(value = "tripInstanceId") String tripInstanceId,/*
+             @ModelAttribute("requirementObject") Requirement requirement*/
+                                             @RequestParam(value = "name") String name,
+                                             @RequestParam(value = "amount") Long amount,
+                                             @RequestParam(value = "description") String description) {
+
+        TripInstance tripInstance = TripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId));
+        RequirementInstance requirementInstance = new RequirementInstance(name, amount, description, tripInstance);
+        RequirementInstanceService.createRequirementInstance(requirementInstance);
+        //       trip.addRequirementToTrip(requirement);
+//        tripInstance.addRequirementInstanceToTripInstance(requirementInstance);
+//        TripInstanceService.updateTripInstance();
+                return "trips/viewInstance/" + tripInstanceId;
+//        return new ModelAndView("trips/viewInstance", "tripInstanceObject", tripInstance);
     }
 }

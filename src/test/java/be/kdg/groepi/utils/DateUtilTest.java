@@ -57,7 +57,7 @@ public class DateUtilTest {
     }
 
     @Test
-    public void testFormatDate(){
+    public void testFormatDate() {
         MockHttpSession mockHttpSession = new MockHttpSession();
         User user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
         UserService.createUser(user);
@@ -68,16 +68,22 @@ public class DateUtilTest {
         Date date = new Date(cal.getTime().getTime());
         assertTrue("Formatted date should be dd-MM-yyyy", DateUtil.formatDate(date).equals("04-05-2011"));
     }
-    
+
     @Test
-    public void testDateStringToLong2(){      
-        assertTrue("Datetring does not return correct date",DateUtil.dateStringToLong("04-05-2011").equals(DateUtil.dateStringToLong("04-05-2011", null)));
-    }
-    @Test
-    public void timeStringToLong(){
-        assertTrue("Timestring does not return correct timestamp",DateUtil.timeStringToLong("11:30").equals(DateUtil.dateStringToLong(null, "11:30")));
+    public void testDateStringToLong2() {
+        assertTrue("Datetring does not return correct date", DateUtil.dateStringToLong("04-05-2011").equals(DateUtil.dateStringToLong("04-05-2011", null)));
     }
 
-    
+    @Test
+    public void timeStringToLong() {
+        assertTrue("Timestring does not return correct timestamp", DateUtil.timeStringToLong("11:30").equals(DateUtil.dateStringToLong(null, "11:30")));
+    }
 
+    @Test
+    public void testFormatTime() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(2011, Calendar.MAY, 4, 15, 30, 0);
+        Date date = new Date(cal.getTime().getTime());
+        assertTrue("Formatted time should be HH:mm", DateUtil.formatTime(date).equals("15:30"));
+    }
 }
