@@ -110,7 +110,6 @@ public class TripService {
         return trips;
     }
 
-    //TODO testen
     public static List<Trip> getTripsByOrganiserId(long id){
         List<Trip> trips = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -131,5 +130,23 @@ public class TripService {
         return trips;
     }
 
-
+    public static List<Trip> getPublicTrips() {
+        List<Trip> trips = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Query query = session.createQuery("from Trip trip where trip.fAvailable = :available").
+                    setBoolean("available", true);
+            trips = (List<Trip>) query.list();
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return trips;
+    }
 }

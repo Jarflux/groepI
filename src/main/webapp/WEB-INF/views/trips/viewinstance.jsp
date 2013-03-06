@@ -27,6 +27,19 @@
                 ${tripInstanceObject.title}
             </h2>
             ${tripInstanceObject.description}
+            <br/>
+            <spring:message code='text.tripcreator'/>:
+            <a href="/profile/view/${tripInstanceObject.organiser.id}" class="active">${tripInstanceObject.organiser.name}</a>
+            <br/>
+
+            <c:if test="${tripInstanceObject.organiser.id == userObject.id}">
+                <a href="/trips/editinstance/${tripInstanceObject.id}" class="active"><spring:message code='text.edittrip'/></a>
+            </c:if>
+            <c:if test="${tripInstanceObject.organiser.id != userObject.id}">
+                Zo, jij wil deze trip aanpassen? MAG NIET!
+            </c:if>
+
+
         </section>
         <div class="quarter">
             <section>
