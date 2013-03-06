@@ -2,6 +2,7 @@ package com.controllers;
 
 
 import android.preference.PreferenceActivity;
+import com.model.TripInstance;
 import com.model.User;
 import com.utils.DateUtil;
 import org.apache.http.Header;
@@ -16,8 +17,10 @@ import org.apache.http.protocol.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 
 /**
@@ -28,7 +31,6 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class Controller {
-
     /*@POST
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/login")*/
@@ -66,7 +68,7 @@ public class Controller {
 
 
         if (!isError) {
-            Header[] cookies = r.getHeaders("Set-Cookie");
+            /*Header[] cookies = r.getHeaders("Set-Cookie");
             for (int i = 0; i < cookies.length; i++) {
                 if (cookies[i].toString().contains(
                         "SPRING_SECURITY_REMEMBER_ME_COOKIE")) {
@@ -77,7 +79,7 @@ public class Controller {
                         return "token:" + token;
                     }
                 }
-            }
+            }*/
         }
         System.out.println(" ----- Login from" + email
                 + " failed----- ");
@@ -85,10 +87,26 @@ public class Controller {
 
     }
 
-    public static HttpResponse springSecurityCheck(String name, String password) {
+    public static List<TripInstance> getUserTripParticipations(String userId){
+        HttpResponse response = doRequest("trips/showUserTripParticipations",userId);
+        List<TripInstance> trips = new ArrayList<TripInstance>();
+        try {
+            InputStream stream = response.getEntity().getContent();
+            JSONObject jo = new JSONObject(stream.toString());
 
+        }catch (JSONException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return  trips;
+    }
+
+    public static HttpResponse springSecurityCheck(String name, String password) {
+        final String IP = "192.168.1.137:8080";
         DefaultHttpClient client = new DefaultHttpClient();
-        HttpPost requestLogin = new HttpPost("http://192.168.1.137:8080/j_spring_security_check?");
+        HttpPost requestLogin = new HttpPost("http://"+ IP +"/j_spring_security_check?");
         HttpResponse response = null;
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("j_username", name));
@@ -96,6 +114,19 @@ public class Controller {
 
         try {
             requestLogin.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+            response = client.execute(requestLogin);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+    public static HttpResponse doRequest(String url, String urlParameter){
+        final String IP = "192.168.1.137:8080";
+        DefaultHttpClient client = new DefaultHttpClient();
+        HttpPost requestLogin = new HttpPost("http://"+IP+"/"+url+"/"+urlParameter);
+        HttpResponse response = null;
+        try {
             response = client.execute(requestLogin);
         }catch(Exception e){
             e.printStackTrace();
