@@ -144,5 +144,81 @@ public class TripInstanceServiceTest {
         assertFalse("TripInstance: tripList does not contain the tripInstances it should", CompareUtil.compareList(TripInstanceService.getAllTripInstancesByTripId(trip.getId()), tripList));
     }
 
+    @Test
+    public void testCompareTripInstance() {
+        long startDate = DateUtil.dateToLong(27, 02, 2013, 16, 00, 00);
+        long endDate = DateUtil.dateToLong(27, 02, 2013, 20, 00, 00);
+        TripInstance tripinstance2 = new TripInstance("Bachelor feestje", "Iemand gaat trouwen, bier en vrouwen ole", false, startDate, endDate, user, trip);
+        TripInstanceService.createTripInstance(tripinstance2);
+        assertTrue("Stops should be the same", tripinstance.equals(tripinstance2));
+    }
 
+    @Test
+    public void testCompareTripInstanceNullObject() {
+        TripInstance tripinstance2 = null;
+        assertFalse("Stops should not be the same", tripinstance.equals(tripinstance2));
+    }
+
+    @Test
+    public void testCompareTripInstanceTitle() {
+        long startDate = DateUtil.dateToLong(27, 02, 2013, 16, 00, 00);
+        long endDate = DateUtil.dateToLong(27, 02, 2013, 20, 00, 00);
+        TripInstance tripinstance2 = new TripInstance("Bachelor feestje2", "Iemand gaat trouwen, bier en vrouwen ole", false, startDate, endDate, user, trip);
+        TripInstanceService.createTripInstance(tripinstance2);
+        assertFalse("Stops should  not be the same", tripinstance.equals(tripinstance2));
+    }
+
+    @Test
+    public void testCompareTripInstanceDescription() {
+        long startDate = DateUtil.dateToLong(27, 02, 2013, 16, 00, 00);
+        long endDate = DateUtil.dateToLong(27, 02, 2013, 20, 00, 00);
+        TripInstance tripinstance2 = new TripInstance("Bachelor feestje", "Iemand gaat trouwen, 2bier en vrouwen ole", false, startDate, endDate, user, trip);
+        TripInstanceService.createTripInstance(tripinstance2);
+        assertFalse("Stops should  not be the same", tripinstance.equals(tripinstance2));
+    }
+
+    @Test
+    public void testCompareTripInstanceAvailable() {
+        long startDate = DateUtil.dateToLong(27, 02, 2013, 16, 00, 00);
+        long endDate = DateUtil.dateToLong(27, 02, 2013, 20, 00, 00);
+        TripInstance tripinstance2 = new TripInstance("Bachelor feestje", "Iemand gaat trouwen, bier en vrouwen ole", true, startDate, endDate, user, trip);
+        TripInstanceService.createTripInstance(tripinstance2);
+        assertFalse("Stops should  not be the same", tripinstance.equals(tripinstance2));
+    }
+
+    @Test
+    public void testCompareTripInstanceStartDate() {
+        long startDate = DateUtil.dateToLong(27, 02, 2013, 16, 10, 00);
+        long endDate = DateUtil.dateToLong(27, 02, 2013, 20, 00, 00);
+        TripInstance tripinstance2 = new TripInstance("Bachelor feestje", "Iemand gaat trouwen, bier en vrouwen ole", false, startDate, endDate, user, trip);
+        TripInstanceService.createTripInstance(tripinstance2);
+        assertFalse("Stops should  not be the same", tripinstance.equals(tripinstance2));
+    }
+
+    @Test
+    public void testCompareTripInstanceEndDate() {
+        long startDate = DateUtil.dateToLong(27, 02, 2013, 16, 00, 00);
+        long endDate = DateUtil.dateToLong(27, 02, 2013, 22, 00, 00);
+        TripInstance tripinstance2 = new TripInstance("Bachelor feestje", "Iemand gaat trouwen, bier en vrouwen ole", false, startDate, endDate, user, trip);
+        TripInstanceService.createTripInstance(tripinstance2);
+        assertFalse("Stops should  not be the same", tripinstance.equals(tripinstance2));
+    }
+
+    @Test
+    public void testCompareTripInstanceOrganiser() {
+        long startDate = DateUtil.dateToLong(27, 02, 2013, 16, 00, 00);
+        long endDate = DateUtil.dateToLong(27, 02, 2013, 20, 00, 00);
+        TripInstance tripinstance2 = new TripInstance("Bachelor feestje", "Iemand gaat trouwen, bier en vrouwen ole", false, startDate, endDate, null, trip);
+        TripInstanceService.createTripInstance(tripinstance2);
+        assertFalse("Stops should  not be the same", tripinstance.equals(tripinstance2));
+    }
+
+    @Test
+    public void testCompareTripInstanceTrip() {
+        long startDate = DateUtil.dateToLong(27, 02, 2013, 16, 00, 00);
+        long endDate = DateUtil.dateToLong(27, 02, 2013, 20, 00, 00);
+        TripInstance tripinstance2 = new TripInstance("Bachelor feestje", "Iemand gaat trouwen, bier en vrouwen ole", false, startDate, endDate, user, null);
+        TripInstanceService.createTripInstance(tripinstance2);
+        assertFalse("Stops should  not be the same", tripinstance.equals(tripinstance2));
+    }
 }

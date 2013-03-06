@@ -41,7 +41,6 @@ public class TripInstance implements Serializable {
     private long fStartTime;
     @Column(name = "endtime")
     private long fEndTime;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "trip_id", nullable = false)
     private Trip fTrip;
@@ -62,7 +61,6 @@ public class TripInstance implements Serializable {
     private Set<Message> fMessages = new HashSet<Message>();
 
     // Hibernates needs empty constructor
-
     public TripInstance() {
     }
 
@@ -215,21 +213,30 @@ public class TripInstance implements Serializable {
         if (fAvailable != trip.getAvailable()) {
             return false;
         }
+        if (!CompareUtil.compareLong(fStartTime, trip.getStartTime())) {
+            return false;
+        }
+        if (!CompareUtil.compareLong(fEndTime, trip.getEndTime())) {
+            return false;
+        }
         if (!this.fOrganiser.equals(trip.getOrganiser())) {
             return false;
         }
-        if (!(CompareUtil.compareSet(this.fParticipants, trip.getParticipants()))) {
+        if (!this.fTrip.equals(trip.getTrip())) {
             return false;
-        } /*
-        if (!(CompareUtil.compareSet(this.fCosts, trip.getCosts()))) {
-            return false;
-        }
-        if (!(CompareUtil.compareSet(this.fRequirementInstances, trip.getRequirementInstances()))) {
-            return false;
-        }
-        if (!(CompareUtil.compareSet(this.fMessages, trip.getMessages()))) {
-            return false;
-        } */
+        } /*   
+         if (!(CompareUtil.compareSet(this.fParticipants, trip.getParticipants()))) {
+         return false;
+         } 
+         if (!(CompareUtil.compareSet(this.fCosts, trip.getCosts()))) {
+         return false;
+         }
+         if (!(CompareUtil.compareSet(this.fRequirementInstances, trip.getRequirementInstances()))) {
+         return false;
+         }
+         if (!(CompareUtil.compareSet(this.fMessages, trip.getMessages()))) {
+         return false;
+         } */
         return true;
     }
 
