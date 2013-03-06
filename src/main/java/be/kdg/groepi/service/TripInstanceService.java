@@ -1,8 +1,12 @@
 package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.Trip;
+import be.kdg.groepi.model.Trip;
 import be.kdg.groepi.model.TripInstance;
+import be.kdg.groepi.model.User;
+import be.kdg.groepi.utils.DateUtil;
 import be.kdg.groepi.utils.HibernateUtil;
+import org.hibernate.Query;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -149,5 +153,18 @@ public class TripInstanceService {
             session.close();
         }
         return tripinstances;
+    }
+
+    public static List<TripInstance> getTripInstancesByUserId(Long userId){
+        List<TripInstance> trips = null;
+        List<TripInstance> tripInstances = TripInstanceService.getAllTripInstances();
+        for (TripInstance tripInstance : tripInstances){
+            for (User participant : tripInstance.getParticipants()){
+                if (userId == participant.getId()){
+                    trips.add(tripInstance);
+                }
+            }
+        }
+        return trips;
     }
 }

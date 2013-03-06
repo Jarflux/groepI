@@ -1,6 +1,7 @@
 package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.Trip;
+import be.kdg.groepi.model.User;
 import be.kdg.groepi.utils.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;

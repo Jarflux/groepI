@@ -4,12 +4,17 @@ import be.kdg.groepi.model.*;
 import be.kdg.groepi.service.*;
 import be.kdg.groepi.utils.DateUtil;
 import org.apache.log4j.Logger;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 //import java.sql.Date;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -148,6 +153,25 @@ public class RestTripController {
         return new ModelAndView("trips/addtriprequirement", "tripId", tripId);
     }
     /*return new ModelAndView("trips/addtriprequirement", "tripId", trip.getId().toString());*/
+
+    @RequestMapping(value = "/showUserTripParticipations/{userId}", method = RequestMethod.GET)
+    public void getUserTripParticipations(@PathVariable(value = "userId") String userId,HttpServletRequest request, HttpServletResponse response) {
+        List<TripInstance> trips = TripInstanceService.getTripInstancesByUserId(Long.parseLong(userId));
+        for (TripInstance trip : trips){
+
+        }
+        JSONObject jo = new JSONObject();
+        try {
+            jo.put("trips",trips);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            response.getWriter().print(jo.toString());
+        } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+    }
 
 
     ////////////////////////////////////////
