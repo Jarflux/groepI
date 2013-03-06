@@ -345,59 +345,6 @@
                     </reportPlugins>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.0.2</version>
-                <configuration>
-                    <webResources>
-                        <resource>
-                            <filtering>true</filtering>
-                            <directory>src/main/webapp</directory>
-                            <includes>
-                                <include>**/*.xml</include>
-                                <!-- include any other file types you want to filter -->
-                            </includes>
-                        </resource>
-                    </webResources>
-                </configuration>
-            </plugin>
         </plugins>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
     </build>
-    
-    <profiles>
-        <profile>
-            <!-- Test environment @ localhost -->
-            <id>test</id>
-            <properties>
-                <db.driverClass>org.hsqldb.jdbcDriver</db.driverClass>
-                <db.connectionURL>jdbc:hsqldb:mem:test_db</db.connectionURL>
-                <db.dialect>org.hibernate.dialect.HSQLDialect</db.dialect> 
-                <db.username>sa</db.username>
-                <db.password></db.password>
-                <db.hbm2ddl>create-drop</db.hbm2ddl>
-            </properties>
-        </profile>
-        <!-- Production environment @ production server -->
-        <profile>
-            <id>production</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>  
-                <db.driverClass>com.mysql.jdbc.Driver</db.driverClass>
-                <db.connectionURL>jdbc:mysql://mysql.vincentverbist.be:3306/trippidb</db.connectionURL>
-                <db.dialect>org.hibernate.dialect.MySQLDialect</db.dialect> 
-                <db.username>groepi_user</db.username>
-                <db.password>groepi_pass</db.password>            
-                <db.hbm2ddl></db.hbm2ddl>
-            </properties>
-        </profile>
-    </profiles>
 </project>
