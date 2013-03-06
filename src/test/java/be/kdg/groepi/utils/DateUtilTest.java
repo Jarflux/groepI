@@ -62,11 +62,12 @@ public class DateUtilTest {
         User user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
         UserService.createUser(user);
         mockHttpSession.setAttribute("userObject", user);
-        assertTrue("Formatted date should be dd-MM-yyyy", DateUtil.formatDate(mockHttpSession).equals("04-05-2011"));
+        assertTrue("Formatted date should be dd-MM-yyyy [mock]", DateUtil.formatDate(mockHttpSession).equals("04-05-2011"));
         Calendar cal = Calendar.getInstance();
         cal.set(2011, Calendar.MAY, 4);
         Date date = new Date(cal.getTime().getTime());
-        assertTrue("Formatted date should be dd-MM-yyyy", DateUtil.formatDate(date).equals("04-05-2011"));
+        assertTrue("Formatted date should be dd-MM-yyyy [date]", DateUtil.formatDate(date).equals("04-05-2011"));
+        assertTrue("Formatted date should be dd-MM-yyyy [long]", DateUtil.formatDate(date.getTime()).equals("04-05-2011"));
     }
 
     @Test
@@ -84,6 +85,20 @@ public class DateUtilTest {
         Calendar cal = Calendar.getInstance();
         cal.set(2011, Calendar.MAY, 4, 15, 30, 0);
         Date date = new Date(cal.getTime().getTime());
-        assertTrue("Formatted time should be HH:mm", DateUtil.formatTime(date).equals("15:30"));
+        assertTrue("Formatted time should be HH:mm [date]", DateUtil.formatTime(date).equals("15:30"));
+        assertTrue("Formatted time should be HH:mm [long]", DateUtil.formatTime(date.getTime()).equals("15:30"));
     }
+/*
+    @Test
+    public void testLongToDateString() {
+        long date = DateUtil.dateToLong(15, 7, 1992, 16, 30, 0);
+        assertTrue("testLongToDateString: does not return correct date format", DateUtil.longToDateString(date).equals("15-07-1992"));
+    }
+
+    @Test
+    public void testLongToTimeString() {
+        long date = DateUtil.dateToLong(15, 7, 1992, 16, 30, 0);
+        assertTrue("testLongToDateString: does not return correct date format", DateUtil.longToTimeString(date).equals("16:30"));
+
+    }*/
 }
