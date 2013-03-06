@@ -58,7 +58,7 @@ public class MessageServiceTest {
     @Test
     public void updateMessage() {
         Message originalMessage = new Message(message.getContent(), message.getDate(), message.getTripInstance(), message.getUser());
-
+        
         message.setContent("Ofnee, we gaan het hebben over eenhoorns");
         message.setDate(DateUtil.dateToLong(2, 3, 2013, 17, 19, 0));
 

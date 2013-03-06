@@ -1,5 +1,6 @@
 package be.kdg.groepi.model;
 
+import be.kdg.groepi.utils.CompareUtil;
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -9,10 +10,10 @@ import java.io.Serializable;
  * Class: Cost
  * Description:
  */
-
 @Entity
 @Table(name = "T_COST")
 public class Cost implements Serializable {
+
     @Id
     @GeneratedValue
     @Column(name = "cost_id")
@@ -21,7 +22,6 @@ public class Cost implements Serializable {
     String fDescription;
     @Column(name = "amount")
     Double fAmount;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "trip_instance_id", nullable = false)
     private TripInstance fTripInstance;
@@ -42,10 +42,6 @@ public class Cost implements Serializable {
 
     public long getId() {
         return fId;
-    }
-
-    public void setId(long fId) {
-        this.fId = fId;
     }
 
     public String getDescription() {
@@ -87,15 +83,22 @@ public class Cost implements Serializable {
 
     @Override
     public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
         Cost cost = (Cost) o;
-
-        int comparison = this.fDescription.compareTo(cost.getDescription());
-        if (comparison != 0) return false;
-
-        if (!this.fAmount.equals(cost.getAmount())) return false;
-        if (!this.fTripInstance.getId().equals(cost.fTripInstance.getId())) return false;
-        if (this.fUser.getId() != (cost.getUser().getId())) return false;
-
+        if (!CompareUtil.compareString(fDescription, cost.getDescription())) {
+            return false;
+        }
+        if (!this.fAmount.equals(cost.getAmount())) {
+            return false;
+        }
+        if (!this.fTripInstance.equals(cost.getTripInstance())) {
+            return false;
+        }
+        if (!this.fUser.equals(cost.getUser())) {
+            return false;
+        }
         return true;
     }
 }

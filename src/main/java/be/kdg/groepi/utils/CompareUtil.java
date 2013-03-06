@@ -1,8 +1,10 @@
 package be.kdg.groepi.utils;
 
+import be.kdg.groepi.model.User;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
 
@@ -13,6 +15,51 @@ import java.util.Set;
  * Description:
  */
 public class CompareUtil {
+
+    public static boolean compareString(String x, String y) {
+        if ((x == null || y == null) && !(x == null && y == null)) {
+            return false;
+        } else if (x != null && y != null) {
+            return (x.compareTo(y) == 0);
+        }
+        return true;
+    }
+
+    public static boolean compareLong(Long x, Long y) {
+        if ((x == null || y == null) && !(x == null && y == null)) {
+            return false;
+        } else if (x != null && y != null) {
+            return (x.compareTo(y) == 0);
+        }
+        return true;
+    }
+
+    public static boolean compareInteger(Integer x, Integer y) {
+        if ((x == null || y == null) && !(x == null && y == null)) {
+            return false;
+        } else if (x != null && y != null) {
+            return (x.compareTo(y) == 0);
+        }
+        return true;
+    }
+
+    public static boolean compareTimestamp(Timestamp x, Timestamp y) {
+        if ((x == null || y == null) && !(x == null && y == null)) {
+            return false;
+        } else if (x != null && y != null) {
+            return (x.compareTo(y) == 0);
+        }
+        return true;
+    }
+    
+    public static boolean compareUser(User x, User y) {
+        if ((x == null || y == null) && !(x == null && y == null)) {
+            return false;
+        } else if (x != null && y != null) {
+            return (x.equals(y));
+        }
+        return true;
+    }
 
     public static boolean compareSet(Set<?> x, Set<?> y) {
         if ((x == null || y == null) && !(x == null && y == null)) {
@@ -35,6 +82,7 @@ public class CompareUtil {
         }
         return true;
     }
+
 
     public static String getHashedPassword(String text)
             throws NoSuchAlgorithmException, UnsupportedEncodingException {

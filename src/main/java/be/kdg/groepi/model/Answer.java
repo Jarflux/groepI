@@ -16,6 +16,7 @@ import java.util.List;
 @Entity
 @Table(name = "T_ANSWER")
 public class Answer {
+
     @Id
     @GeneratedValue
     @Column(name = "answer_id")
@@ -27,11 +28,9 @@ public class Answer {
     private int fCorrectAnswer;
     @Column(name = "correctAnswerDescription")
     private String fCorrectAnswerDescription;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "stop_id", nullable = false)
     private Stop fStop;
-
 
     public Answer() {
     }
@@ -52,10 +51,6 @@ public class Answer {
 
     public Long getId() {
         return fId;
-    }
-
-    public void setId(Long fId) {
-        this.fId = fId;
     }
 
     public List<String> getAnswers() {
@@ -81,14 +76,15 @@ public class Answer {
     }
 
     public void removeAnswer(int index) {
-        if (fCorrectAnswer > index) fCorrectAnswer--;
+        if (fCorrectAnswer > index) {
+            fCorrectAnswer--;
+        }
         fAnswers.remove(index);
     }
 
     public int getCorrectAnswer() {
         return fCorrectAnswer;
     }
-
 
     public void setCorrectAnswer(int fCorrectAnswer) {
         if (fCorrectAnswer < 0 || fCorrectAnswer >= fAnswers.size()) {
@@ -124,19 +120,22 @@ public class Answer {
 
     @Override
     public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
         Answer answer = (Answer) o;
-//        if (this == answer) return false;
-
-        int comparison = this.fCorrectAnswerDescription.compareTo(answer.getCorrectAnswerDescription());
-        if (comparison != 0) return false;
-
-        if (this.fCorrectAnswer != answer.getCorrectAnswer()) return false;
-
-        if (!CompareUtil.compareList(this.fAnswers, answer.getAnswers())) return false;
-
-//        if (this.fStop.getId() != answer.getStop().getId()) return false;
-
+        if (!CompareUtil.compareString(fCorrectAnswerDescription, answer.getCorrectAnswerDescription())) {
+            return false;
+        }
+        if (!CompareUtil.compareInteger(this.fCorrectAnswer, answer.getCorrectAnswer())) {
+            return false;
+        }
+        if (!CompareUtil.compareList(this.fAnswers, answer.getAnswers())) {
+            return false;
+        }
+        if (!fStop.equals(answer.getStop())) {
+            return false;
+        }
         return true;
     }
-
 }

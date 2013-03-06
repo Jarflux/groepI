@@ -22,8 +22,8 @@
     <div id="content" class="column light">
         <h2><spring:message code="text.createRequirement"/></h2>
 
-        <form method="post" action="/trips/doAddTripRequirement" class="mainstyle tooltips">
-            <input type="hidden" name="tripId" title="tripId" value="${tripId}"/>
+        <form method="post" action="/trips/doaddinstancerequirement" class="mainstyle tooltips">
+            <input type="hidden" name="tripInstanceId" title="tripInstanceId" value="${tripInstanceId}"/>
 
             <div class="row">
                 <span><spring:message code='text.name'/></span>
@@ -40,7 +40,7 @@
             </div>
             <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
         </form>
-        <form method="get" action="/trips/view/${tripId}" class="mainstyle tooltips">        <%--TODO:flaschenkopfen--%>
+        <form method="get" action="/trips/viewinstance/${tripInstanceId}" class="mainstyle tooltips">        <%--TODO:flaschenkopfen--%>
             <input type="submit" class="button" value="<spring:message code='text.finishediting'/>"/>
         </form>
     </div>

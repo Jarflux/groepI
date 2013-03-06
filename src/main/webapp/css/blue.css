@@ -83,7 +83,35 @@ h2 {
     font-size: 49px;
     font-weight: 400;
 }
+h3
+{
+    font-size: 35px;
+    background: #0e5a6d;
+    padding: 4Px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    color:  white;
+    margin:0;
+    font-weight: normal;
+    margin-bottom: 2px;
+}
 
+h4
+{
+    margin:0px;
+    background: #0e5a6d;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    color: white;
+    padding: 3px;
+    text-transform: uppercase;
+    font-weight: 300;
+
+width: 100%:
+}
+section p{
+    padding: 4px;
+}
 #topmenu {
     height: 75px;
 
@@ -112,13 +140,28 @@ h2 {
 section {
     width: 100%;
 }
+    .block
+    {
 
+           margin: 2px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        padding: 5px;
+    }
+.fill
+{
+    background: #1799b9;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    color: white;
+    padding: 5px;
+}
 .quarter {
     width: 25%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 15px;
+    margin: 5px;
     float: left;
 }
 
@@ -127,16 +170,16 @@ section {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 15px;
+    margin: 5px;
     float: left;
 }
 
 .third {
-    width: 33.33%;
+    width: 32.4%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 15px;
+    margin: 5px;
     float: left;
 }
 
@@ -159,7 +202,7 @@ section {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 15px;
+    margin: 5px;
     float: left;
 }
 
@@ -200,11 +243,11 @@ section {
 }
 
 .two-third {
-    width: 66.66%;
+    width: 65.7%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 15px;
+    margin: 5px;
     float: left;
 }
 
@@ -352,5 +395,33 @@ form.mainstyle input[type="checkbox"] {
 
 .big {
     height: 350px;
+}
+
+.sortable
+{
+    list-style: none;
+    margin:0;
+    padding: 0;
+    width: 100%;
+
+}
+.sortable li{
+    width: 100%;
+    padding: 3px;
+    margin: 0;
+    background:#0ac5f4;
+    color: white;
+    margin-top: 1px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+
+
+}
+.sortable li a:link, .sortable li a:visited
+{
+    text-decoration: none;
+    border: none;
+
+    color: white;
 }
 

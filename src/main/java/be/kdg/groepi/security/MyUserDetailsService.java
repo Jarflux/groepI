@@ -23,13 +23,6 @@ public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException, DataAccessException {
-        try {
-            UserService.createUser(new User("Django", "django@candyland.com", CompareUtil.getHashedPassword("Django"), DateUtil.dateToLong(24, 3, 1988, 0, 0, 0)));
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
         User entityUser = UserService.getUserByEmail(username);
         org.springframework.security.core.userdetails.User user =
                 new org.springframework.security.core.userdetails.User(entityUser.getEmail(), entityUser.getPassword(), true, true, true, true, getAuthorities());

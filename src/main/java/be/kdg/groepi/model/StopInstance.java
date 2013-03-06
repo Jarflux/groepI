@@ -6,15 +6,14 @@ import javax.persistence.*;
 //    INFORMATIVE (0),
 //    INTERACTOVE(1);
 //}
-
 @Entity
 @Table(name = "T_STOP_INSTANCE")
 public class StopInstance {
+
     @Id
     @GeneratedValue
     @Column(name = "stop_instance_id")
     private Long fId;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "stop_id", nullable = false)
     private Stop fStop;
@@ -34,34 +33,26 @@ public class StopInstance {
         return fId;
     }
 
-    public void setId(Long fId) {
-        this.fId = fId;
-    }
-
     public Stop getStop() {
         return fStop;
-    }
-
-    public void setStop(Stop fStop) {
-        this.fStop = fStop;
     }
 
     public TripInstance getTripInstance() {
         return fTripInstance;
     }
 
-    public void setTripInstance(TripInstance fTripInstance) {
-        this.fTripInstance = fTripInstance;
-    }
-
     @Override
     public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
         StopInstance stopInstance = (StopInstance) o;
-        if (this == stopInstance) return false;
-
-        if (!fStop.getId().equals(stopInstance.getStop().getId())) return false;
-        if (!fTripInstance.getId().equals(stopInstance.getTripInstance().getId())) return false;
-
+        if (!fStop.equals(stopInstance.getStop())) {
+            return false;
+        }
+        if (!fTripInstance.equals(stopInstance.getTripInstance())) {
+            return false;
+        }
         return true;
     }
 }

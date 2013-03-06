@@ -66,10 +66,10 @@ public class RestUserController {
         List<User> tripParticipants = new ArrayList<>();
         for (TripInstance tripInstance : tripInstances){
             tripInstanceStartDates.put(tripInstance.getTrip().getId(),
-                    DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartDate())));
+                    DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartTime())));
 
             tripInstanceEndDates.put(tripInstance.getTrip().getId(),
-                    DateUtil.formatDate(DateUtil.longToDate(tripInstance.getEndDate())));
+                    DateUtil.formatDate(DateUtil.longToDate(tripInstance.getEndTime())));
             tripParticipants.addAll(tripInstance.getParticipants());
             for (User participant : tripParticipants){
                 if (sessionUser.getId() == participant.getId()){

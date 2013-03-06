@@ -21,22 +21,6 @@
                 </div>
             </div>
         </section>
-        <%--<section>
-            <div class="half">
-                <c:choose>
-                    <c:when test="${!empty tripObject.stops}">
-                        <ul>
-                            <c:forEach var="stop" items="${tripObject.stops}">
-                                <li>${stop.name}</li>
-                            </c:forEach>
-                        </ul>
-                    </c:when>
-                    <c:otherwise>
-                        <spring:message code='text.nostopsfound' />
-                    </c:otherwise>
-                </c:choose>
-            </div>
-        </section>--%>
         <section>
             <div class="half">
                 <form method="post" action="/trips/createStop" class="mainstyle tooltips validate">
@@ -47,14 +31,6 @@
                         <div class="row">
                             <span><spring:message code='text.name'/></span>
                             <input type="text" name="name"/>
-                        </div>
-                        <div class="row">
-                            <span><spring:message code='text.description'/></span>
-                            <input type="text" name="stopText"/>
-                        </div>
-                        <div class="row">
-                            <span><spring:message code='text.order'/></span>
-                            <input type="text" name="stopnumber"/>
                         </div>
                         <div class="row">
                             <span><spring:message code='text.type'/></span>

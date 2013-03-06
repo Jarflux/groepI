@@ -2,11 +2,13 @@ package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.User;
 import be.kdg.groepi.security.StandardPasswordEncoder;
+import be.kdg.groepi.utils.CompareUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import static be.kdg.groepi.utils.DateUtil.dateToLong;
+import java.sql.Timestamp;
 import static org.junit.Assert.*;
 
 /**
@@ -19,12 +21,13 @@ import static org.junit.Assert.*;
 public class UserServiceTest {
     //    private final Session session = HibernateUtil.getSessionFactory().openSession();
     //private final UserService userService = new UserService();
-    private User user;
 
+    private User user;
 
     @Before
     public void beforeEachTest() {
         user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
+        user.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
     }
 
     @After
@@ -41,7 +44,6 @@ public class UserServiceTest {
         assertEquals("createUser: users are the same", user, UserService.getUserById(user.getId()));
     }
 
-
     @Test
     public void testUpdateUser() {
         UserService.createUser(user);
@@ -56,6 +58,7 @@ public class UserServiceTest {
 
     @Test
     public void testNullPicture() {
+        user.setProfilePicture(null);
         UserService.createUser(user);
         assertEquals("User profile picture should be null.", user.getProfilePicture(), null);
     }
@@ -103,5 +106,110 @@ public class UserServiceTest {
         UserService.createUser(user);
         UserService.getUserByEmail("TIM@M.EH");
         assertEquals("testGetUserByEmail: kztugelhiugshdl EMAILNOTHERE", user, UserService.getUserById(user.getId()));
+    }
+
+    @Test
+    public void testCompareUser() {
+        User user2 = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
+        UserService.createUser(user2);
+        user2.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
+        UserService.updateUser(user2);
+        assertTrue("Users should be the same", user.equals(user2));
+    }
+
+    @Test
+    public void testCompareUserNullObject() {
+        User user2 = null;
+        assertFalse("Users should not the same", user.equals(user2));
+    }
+
+    @Test
+    public void testCompareUserName() {
+        User user2 = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
+        UserService.createUser(user2);
+        user2.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
+        UserService.updateUser(user2);
+
+        user2.setName("nope");
+        UserService.updateUser(user2);
+        assertFalse("Users should not the same", user.equals(user2));
+    }
+
+    @Test
+    public void testCompareUserEmail() {
+        User user2 = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
+        UserService.createUser(user2);
+        user2.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
+        UserService.updateUser(user2);
+
+        user2.setEmail("email@nope.be");
+        UserService.updateUser(user2);
+        assertFalse("Users should not the same", user.equals(user2));
+    }
+
+    @Test
+    public void testCompareUserDoB() {
+        User user2 = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
+        UserService.createUser(user2);
+        user2.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
+        UserService.updateUser(user2);
+
+        user2.setDateOfBirth(dateToLong(3, 6, 2013, 12, 45, 0));
+        UserService.updateUser(user2);
+        assertFalse("Users should not the same", user.equals(user2));
+    }
+
+    @Test
+    public void testCompareUserProfilePicture() {
+        User user2 = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
+        UserService.createUser(user2);
+        user2.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
+        UserService.updateUser(user2);
+
+        user2.setProfilePicture("nope");
+        UserService.updateUser(user2);
+        assertFalse("Users should not the same", user.equals(user2));
+    }
+
+    @Test
+    public void testCompareUserPassword() {
+        user.setPassword("heheheheheh");
+        User user2 = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
+        UserService.createUser(user2);
+        user2.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
+        user2.setPassword("heheheheheh");
+        UserService.updateUser(user2);
+
+        user2.setPassword("hohohohoho");
+        UserService.updateUser(user2);
+        assertFalse("Users should not the same", user.equals(user2));
+    }
+
+    @Test
+    public void testCompareUserPasswordResetString() {
+        user.setPasswordResetString("heheheheheh");
+        User user2 = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
+        UserService.createUser(user2);
+        user2.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
+        user2.setPasswordResetString("heheheheheh");
+        UserService.updateUser(user2);
+
+        user2.setPasswordResetString("hohohohoho");
+        UserService.updateUser(user2);
+        assertFalse("Users should not the same", user.equals(user2));
+    }
+
+    @Test
+    public void testCompareUserPasswordResetTimestamp() {
+        user.setPasswordResetTimestamp(new Timestamp(1500));
+        User user2 = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
+        UserService.createUser(user2);
+        user2.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
+        user.setPasswordResetTimestamp(new Timestamp(1500));
+        UserService.updateUser(user2);
+
+        user.setPasswordResetTimestamp(new Timestamp(2000));
+        UserService.updateUser(user2);
+        assertFalse("Users should not the same", user.equals(user2));
     }
 }

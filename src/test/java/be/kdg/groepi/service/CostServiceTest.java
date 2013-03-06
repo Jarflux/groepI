@@ -23,11 +23,7 @@ import static org.junit.Assert.assertTrue;
 public class CostServiceTest {
     User user;
     Trip trip;
-    //    Stop stop;
-//    Answer answer;
-//    StopInstance stopInstance;
     TripInstance tripInstance;
-    //    AnswerInstance answerInstance;
     Cost cost;
 
     @Before

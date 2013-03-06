@@ -17,7 +17,7 @@ public class StopInstanceServiceTest {
     private TripInstance tripInstance;
     private User user;
     private Stop stop;
-    StopInstance stopInstance;
+    private StopInstance stopInstance;
 
     @Before
     public void beforeEachTest() {
@@ -44,35 +44,6 @@ public class StopInstanceServiceTest {
     public void createStopInstance() {
         assertEquals(stopInstance, StopInstanceService.getStopInstanceById(stopInstance.getId()));
     }
-
-    @Test
-    public void editStopInstance() {
-        /*for (Stop s : trip.getStops()) {
-            s.setLatitude(s.getLatitude().concat(" Edited"));
-            s.setLongitude(s.getLongitude().concat(" Edited"));
-            s.setStopText(s.getStopText().concat(" Edited"));
-            s.setName(s.getName().concat(" Edited"));
-            s.setOrder(s.getOrder() + 1);
-            s.setType(s.getType() + 1);
-            s.setDisplayMode(s.getDisplayMode() + 1);
-            StopService.updateStop(s);
-            assertEquals(s, StopService.getStopById(s.getId()));
-        }*/
-        TripInstance tempTripInstance = new TripInstance("Tripje 2", "Tweede uitvoering van de 'Onze eerste trip'-trip", true,
-                DateUtil.dateToLong(2, 5, 2013, 12, 0, 0), DateUtil.dateToLong(2, 5, 2013, 16, 0, 0), user, trip);
-        TripInstanceService.createTripInstance(tripInstance);
-        Stop tempStop = new Stop("Stop 1", "", "", 1, 0, 0, "Tweede Stopplaats", trip);
-        StopService.createStop(stop);
-
-        StopInstance tempStopInstance = new StopInstance(stopInstance.getStop(), stopInstance.getTripInstance());
-
-        stopInstance.setStop(tempStop);
-        stopInstance.setTripInstance(tempTripInstance);
-
-        StopInstanceService.updateStopInstance(stopInstance);
-        assertFalse("updateStopInstance: stopInstance was not updated", tempStopInstance.equals(StopInstanceService.getStopInstanceById(stopInstance.getId())));
-    }
-
 
     @Test
     public void deleteStopInstances() {
