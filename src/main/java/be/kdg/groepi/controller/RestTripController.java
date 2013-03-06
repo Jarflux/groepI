@@ -86,25 +86,62 @@ public class RestTripController {
     }
 
     @RequestMapping(value = "/list")        //TODO: maak hier een TRIPlijst van (ipv TripInstance)
-    public ModelAndView getPublicTrips() {
-        List<TripInstance> tripInstanceList = TripInstanceService.getPublicTripInstances();
+    public ModelAndView getPublicTrips(HttpSession session) {
+        /*
+                List<TripInstance> tripInstanceList = TripInstanceService.getPublicTripInstances();
         if (tripInstanceList != null) {
             logger.debug("Returning TripList containing " + tripInstanceList.size() + " TripInstances");
         } else {
             logger.debug("Returning TripList = NULL");
         }
+        Map<Long, String> tripInstanceDates = new HashMap<>();
+        Map<Long, String> tripInstanceStartTimes = new HashMap<>();
+        Map<Long, String> tripInstanceEndTimes = new HashMap<>();
+        for (TripInstance tripInstance : tripInstanceList) {
+            tripInstanceDates.put(tripInstance.getTrip().getId(),
+                    DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartTime())));
+            tripInstanceStartTimes.put(tripInstance.getTrip().getId(),
+                    DateUtil.formatTime(DateUtil.longToDate(tripInstance.getStartTime())));
+            tripInstanceEndTimes.put(tripInstance.getTrip().getId(),
+                    DateUtil.formatTime(DateUtil.longToDate(tripInstance.getEndTime())));
+        }
+        ModelAndView modelAndView = new ModelAndView("trips/instancelist");
+        modelAndView.addObject("tripInstanceListObject", tripInstanceList);
+        modelAndView.addObject("tripInstanceDates", tripInstanceDates);
+        modelAndView.addObject("tripInstanceStartTimes", tripInstanceStartTimes);
+        modelAndView.addObject("tripInstanceEndTimes", tripInstanceEndTimes);
+        return modelAndView;
+         */
+
+        User user = (User) session.getAttribute("userObject");
+        List<Trip> publicTrips = TripService.getPublicTrips();
+        List<Trip> ownTrips = TripService.getTripsByOrganiserId(user.getId());
+
+        if (publicTrips != null) {
+            logger.debug("Returning publicTrips containing " + publicTrips.size() + " Trips");
+        } else {
+            logger.debug("Returning publicTrips = NULL");
+        }
+        if (ownTrips != null) {
+            logger.debug("Returning ownTrips containing " + ownTrips.size() + " Trips");
+        } else {
+            logger.debug("Returning ownTrips = NULL");
+        }
+/*
         Map<Long, String> tripInstanceStartDates = new HashMap<>();
-        Map<Long, String> tripInstanceEndDates = new HashMap<>();
+        Map<Long, String> tripInstanceEndDates = new HashMap<>();*/
+/*
         for (TripInstance tripInstance : tripInstanceList) {
             tripInstanceStartDates.put(tripInstance.getTrip().getId(),
                     DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartTime())));
             tripInstanceEndDates.put(tripInstance.getTrip().getId(),
                     DateUtil.formatDate(DateUtil.longToDate(tripInstance.getEndTime())));
-        }
+        }*/
+
         ModelAndView modelAndView = new ModelAndView("trips/list");
-        modelAndView.addObject("tripInstanceListObject", tripInstanceList);
-        modelAndView.addObject("tripInstanceStartDates", tripInstanceStartDates);
-        modelAndView.addObject("tripInstanceEndDates", tripInstanceEndDates);
+        modelAndView.addObject("publicTrips", publicTrips);
+        modelAndView.addObject("ownTrips", ownTrips);
+//        modelAndView.addObject("tripInstanceEndDates", tripInstanceEndDates);
         return modelAndView;
     }
 
@@ -127,7 +164,7 @@ public class RestTripController {
         TripInstance tripInstance = TripInstanceService.getTripInstanceById(Long.parseLong(tripId));
         tripInstance.addParticipantToTripInstance(sessionUser);
         TripInstanceService.updateTripInstance(tripInstance);
-        return getPublicTrips();
+        return getPublicTrips(session);
     }
 
     @RequestMapping(value = "/editStop/{stopId}", method = RequestMethod.GET)

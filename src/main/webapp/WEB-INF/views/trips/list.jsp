@@ -28,42 +28,25 @@
         </h2>
         <section>
             <div class="row">
+                <spring:message code="text.owntrips"/>
                 <c:choose>
-                    <c:when test="${!empty tripInstanceListObject}">
+                    <c:when test="${!empty ownTrips}">
                         <table>
                             <tr>
                                 <td>ID - moet nog weg</td>
                                 <td><spring:message code="text.tripname"/></td>
                                 <td><spring:message code="text.tripdescription"/></td>
-                                <td><spring:message code="text.tripnumberofparticipants"/></td>
-                                <td><spring:message code="text.tripstartdate"/></td>
-                                <td><spring:message code="text.tripenddate"/></td>
                             </tr>
-                            <c:forEach var="tripInstance" items="${tripInstanceListObject}">
+                            <c:forEach var="ownTrips" items="${ownTrips}">
                                 <tr>
-                                    <td>${tripInstance.id}</td>
-                                    <td>${tripInstance.title}</td>
-                                    <td>${tripInstance.description}</td>
-                                    <td>${tripInstance.participants.size()}</td>
-                                    <c:forEach var="startDate" items="${tripInstanceStartDates}">
-                                        <c:choose>
-                                            <c:when test="${startDate.key == tripInstance.trip.id}">
-                                                <td>${startDate.value}</td>
-                                            </c:when>
-                                        </c:choose>
-                                    </c:forEach>
-                                    <c:forEach var="endDate" items="${tripInstanceEndDates}">
-                                        <c:choose>
-                                            <c:when test="${endDate.key == tripInstance.trip.id}">
-                                                <td>${endDate.value}</td>
-                                            </c:when>
-                                        </c:choose>
-                                    </c:forEach>
-                                    <td><a href="/trips/view/${tripInstance.id}" class="active"><spring:message
+                                    <td>${ownTrips.id}</td>
+                                    <td>${ownTrips.title}</td>
+                                    <td>${ownTrips.description}</td>
+                                    <td><a href="/trips/view/${ownTrips.id}" class="active"><spring:message
                                             code='text.detail'/></a></td>
                                     <td>
                                         <form method="post" action="jointrip">
-                                            <input type="hidden" value="${tripInstance.id}" name="tripId"/>
+                                            <input type="hidden" value="${ownTrips.id}" name="tripId"/>
                                             <input type="submit" class="button"
                                                    value="<spring:message code='text.jointrip'/>"/>
                                         </form>
@@ -74,7 +57,45 @@
                     </c:when>
                     <c:otherwise>
                         <c:choose>
-                            <c:when test="${tripInstanceListObject == null}">tripInstanceList == null</c:when>
+                            <c:when test="${ownTrips == null}">ownTrips == null</c:when>
+                            <c:otherwise><spring:message code='text.noowntripsfound'/></c:otherwise>
+                        </c:choose>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+            <br/>
+            <br/>
+            <div class="row">
+                <spring:message code="text.publictrips"/>
+                <c:choose>
+                    <c:when test="${!empty publicTrips}">
+                        <table>
+                            <tr>
+                                <td>ID - moet nog weg</td>
+                                <td><spring:message code="text.tripname"/></td>
+                                <td><spring:message code="text.tripdescription"/></td>
+                            </tr>
+                            <c:forEach var="publicTrip" items="${publicTrips}">
+                                <tr>
+                                    <td>${publicTrip.id}</td>
+                                    <td>${publicTrip.title}</td>
+                                    <td>${publicTrip.description}</td>
+                                    <td><a href="/trips/view/${publicTrip.id}" class="active"><spring:message
+                                            code='text.detail'/></a></td>
+                                    <td>
+                                        <form method="post" action="jointrip">
+                                            <input type="hidden" value="${publicTrip.id}" name="tripId"/>
+                                            <input type="submit" class="button"
+                                                   value="<spring:message code='text.jointrip'/>"/>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </c:when>
+                    <c:otherwise>
+                        <c:choose>
+                            <c:when test="${publicTrip == null}">publicTrip == null</c:when>
                             <c:otherwise><spring:message code='text.notripsfound'/></c:otherwise>
                         </c:choose>
                     </c:otherwise>
