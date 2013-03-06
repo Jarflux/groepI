@@ -35,7 +35,7 @@ public class Controller {
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/login")*/
 
-    public static String login(String credentials) {
+    public static boolean login(String credentials) {
         JSONObject jo = null;
         User user = null;
         String email = "";
@@ -80,20 +80,18 @@ public class Controller {
                     }
                 }
             }*/
+            return true;
         }
-        System.out.println(" ----- Login from" + email
-                + " failed----- ");
-        return "newLogin";
-
+        return false;
     }
 
     public static List<TripInstance> getUserTripParticipations(String userId){
         HttpResponse response = doRequest("trips/showUserTripParticipations",userId);
         List<TripInstance> trips = new ArrayList<TripInstance>();
+
         try {
             InputStream stream = response.getEntity().getContent();
             JSONObject jo = new JSONObject(stream.toString());
-
         }catch (JSONException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }

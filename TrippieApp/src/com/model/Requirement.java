@@ -8,49 +8,49 @@ package com.model;
  * To change this template use File | Settings | File Templates.
  */
 public class Requirement {
-    private long fId;
-    private String fName;
-    private long fAmount;
-    private String fDescription;
-    private Trip fTrip;
+    private long Id;
+    private String Name;
+    private long Amount;
+    private String Description;
+    private Trip Trip;
 
-    public long getfId() {
-        return fId;
+    public long getId() {
+        return Id;
     }
 
-    public void setfId(long fId) {
-        this.fId = fId;
+    public void setId(long id) {
+        Id = id;
     }
 
-    public String getfName() {
-        return fName;
+    public String getName() {
+        return Name;
     }
 
-    public void setfName(String fName) {
-        this.fName = fName;
+    public void setName(String name) {
+        Name = name;
     }
 
-    public long getfAmount() {
-        return fAmount;
+    public long getAmount() {
+        return Amount;
     }
 
-    public void setfAmount(long fAmount) {
-        this.fAmount = fAmount;
+    public void setAmount(long amount) {
+        Amount = amount;
     }
 
-    public String getfDescription() {
-        return fDescription;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setfDescription(String fDescription) {
-        this.fDescription = fDescription;
+    public void setDescription(String description) {
+        Description = description;
     }
 
-    public Trip getfTrip() {
-        return fTrip;
+    public Trip getTrip() {
+        return Trip;
     }
 
-    public void setfTrip(Trip fTrip) {
-        this.fTrip = fTrip;
+    public void setTrip(Trip trip) {
+        Trip = trip;
     }
 }

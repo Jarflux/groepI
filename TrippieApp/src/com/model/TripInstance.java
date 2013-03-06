@@ -11,112 +11,112 @@ import java.util.Set;
  * To change this template use File | Settings | File Templates.
  */
 public class TripInstance {
-    private Long fId;
-    private String fTitle;
-    private String fDescription;
-    private Boolean fAvailable;
-    private long fStartDate;
-    private long fEndDate;
-    private Trip fTrip;
-    private User fOrganiser;
-    private Set<User> fParticipants = new HashSet<User>();
-    private Set<RequirementInstance> fRequirementInstances = new HashSet<RequirementInstance>();
-    private Set<Cost> fCosts = new HashSet<Cost>();
-    private Set<Message> fMessages = new HashSet<Message>();
+    private Long Id;
+    private String Title;
+    private String Description;
+    private Boolean Available;
+    private long StartDate;
+    private long EndDate;
+    private Trip Trip;
+    private User Organiser;
+    private Set<User> Participants = new HashSet<User>();
+    private Set<RequirementInstance> RequirementInstances = new HashSet<RequirementInstance>();
+    private Set<Cost> Costs = new HashSet<Cost>();
+    private Set<Message> Messages = new HashSet<Message>();
 
-    public Long getfId() {
-        return fId;
+    public Long getId() {
+        return Id;
     }
 
-    public void setfId(Long fId) {
-        this.fId = fId;
+    public void setId(Long id) {
+        Id = id;
     }
 
-    public String getfTitle() {
-        return fTitle;
+    public String getTitle() {
+        return Title;
     }
 
-    public void setfTitle(String fTitle) {
-        this.fTitle = fTitle;
+    public void setTitle(String title) {
+        Title = title;
     }
 
-    public String getfDescription() {
-        return fDescription;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setfDescription(String fDescription) {
-        this.fDescription = fDescription;
+    public void setDescription(String description) {
+        Description = description;
     }
 
-    public Boolean getfAvailable() {
-        return fAvailable;
+    public Boolean getAvailable() {
+        return Available;
     }
 
-    public void setfAvailable(Boolean fAvailable) {
-        this.fAvailable = fAvailable;
+    public void setAvailable(Boolean available) {
+        Available = available;
     }
 
-    public long getfStartDate() {
-        return fStartDate;
+    public long getStartDate() {
+        return StartDate;
     }
 
-    public void setfStartDate(long fStartDate) {
-        this.fStartDate = fStartDate;
+    public void setStartDate(long startDate) {
+        StartDate = startDate;
     }
 
-    public long getfEndDate() {
-        return fEndDate;
+    public long getEndDate() {
+        return EndDate;
     }
 
-    public void setfEndDate(long fEndDate) {
-        this.fEndDate = fEndDate;
+    public void setEndDate(long endDate) {
+        EndDate = endDate;
     }
 
-    public Trip getfTrip() {
-        return fTrip;
+    public Trip getTrip() {
+        return Trip;
     }
 
-    public void setfTrip(Trip fTrip) {
-        this.fTrip = fTrip;
+    public void setTrip(Trip trip) {
+        Trip = trip;
     }
 
-    public User getfOrganiser() {
-        return fOrganiser;
+    public User getOrganiser() {
+        return Organiser;
     }
 
-    public void setfOrganiser(User fOrganiser) {
-        this.fOrganiser = fOrganiser;
+    public void setOrganiser(User organiser) {
+        Organiser = organiser;
     }
 
-    public Set<User> getfParticipants() {
-        return fParticipants;
+    public Set<User> getParticipants() {
+        return Participants;
     }
 
-    public void setfParticipants(Set<User> fParticipants) {
-        this.fParticipants = fParticipants;
+    public void setParticipants(Set<User> participants) {
+        Participants = participants;
     }
 
-    public Set<RequirementInstance> getfRequirementInstances() {
-        return fRequirementInstances;
+    public Set<RequirementInstance> getRequirementInstances() {
+        return RequirementInstances;
     }
 
-    public void setfRequirementInstances(Set<RequirementInstance> fRequirementInstances) {
-        this.fRequirementInstances = fRequirementInstances;
+    public void setRequirementInstances(Set<RequirementInstance> requirementInstances) {
+        RequirementInstances = requirementInstances;
     }
 
-    public Set<Cost> getfCosts() {
-        return fCosts;
+    public Set<Cost> getCosts() {
+        return Costs;
     }
 
-    public void setfCosts(Set<Cost> fCosts) {
-        this.fCosts = fCosts;
+    public void setCosts(Set<Cost> costs) {
+        Costs = costs;
     }
 
-    public Set<Message> getfMessages() {
-        return fMessages;
+    public Set<Message> getMessages() {
+        return Messages;
     }
 
-    public void setfMessages(Set<Message> fMessages) {
-        this.fMessages = fMessages;
+    public void setMessages(Set<Message> messages) {
+        Messages = messages;
     }
 }

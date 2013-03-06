@@ -8,49 +8,49 @@ package com.model;
  * To change this template use File | Settings | File Templates.
  */
 public class Cost {
-    private long fId;
-    private String fDescription;
-    private Double fAmount;
-    private TripInstance fTripInstance;
-    private User fUser;
+    private long Id;
+    private String Description;
+    private Double Amount;
+    private TripInstance TripInstance;
+    private User User;
 
-    public long getfId() {
-        return fId;
+    public long getId() {
+        return Id;
     }
 
-    public void setfId(long fId) {
-        this.fId = fId;
+    public void setId(long id) {
+        Id = id;
     }
 
-    public String getfDescription() {
-        return fDescription;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setfDescription(String fDescription) {
-        this.fDescription = fDescription;
+    public void setDescription(String description) {
+        Description = description;
     }
 
-    public Double getfAmount() {
-        return fAmount;
+    public Double getAmount() {
+        return Amount;
     }
 
-    public void setfAmount(Double fAmount) {
-        this.fAmount = fAmount;
+    public void setAmount(Double amount) {
+        Amount = amount;
     }
 
-    public TripInstance getfTripInstance() {
-        return fTripInstance;
+    public TripInstance getTripInstance() {
+        return TripInstance;
     }
 
-    public void setfTripInstance(TripInstance fTripInstance) {
-        this.fTripInstance = fTripInstance;
+    public void setTripInstance(TripInstance tripInstance) {
+        TripInstance = tripInstance;
     }
 
-    public User getfUser() {
-        return fUser;
+    public User getUser() {
+        return User;
     }
 
-    public void setfUser(User fUser) {
-        this.fUser = fUser;
+    public void setUser(User user) {
+        User = user;
     }
 }
