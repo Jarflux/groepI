@@ -37,9 +37,9 @@
                         <a href="/trips/addstop/${tripObject.id}" class="active"><spring:message code='text.add'/></a>
                         <c:choose>
                             <c:when test="${!empty tripObject.stops}">
-                                <ul>
+                                <ul class='sortable'>
                                     <c:forEach var="stop" items="${tripObject.stops}">
-                                        <li>${stop.order}: <a href="/trips/editStop/${stop.id}" class="active"><c:out value="${stop.name}"/></a></li>
+                                        <li id="stop-${stop.id}">${stop.stopnumber}: <a href="/trips/editStop/${stop.id}" class="active"><c:out value="${stop.name}"/></a></li>
                                     </c:forEach>
                                 </ul>
                             </c:when>
@@ -104,6 +104,12 @@
             </div>
         </div>
         <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
         <script src="/js/functions.js"></script>
+               <script>makesortable();
+
+
+
+               </script>
     </body>
 </html>

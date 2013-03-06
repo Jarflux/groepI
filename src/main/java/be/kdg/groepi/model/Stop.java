@@ -76,12 +76,12 @@ public class Stop {
         this.fLatitude = fLatitude;
     }
 
-    public Integer getOrder() {
+    public Integer getStopnumber() {
         return fStopnumber;
     }
 
-    public void setOrder(Integer fOrder) {
-        this.fStopnumber = fOrder;
+    public void setStopnumber(Integer fStopnumber) {
+        this.fStopnumber = fStopnumber;
     }
 
     public Integer getType() {
@@ -122,27 +122,31 @@ public class Stop {
             return false;
         }
         Stop stop = (Stop) o;
-        if (!CompareUtil.compareString(fName, stop.getName())) {
-            return false;
-        }
-        if (!CompareUtil.compareString(fLatitude, stop.getLatitude())) {
-            return false;
-        }
-        if (!CompareUtil.compareString(fLongitude, stop.getLongitude())) {
-            return false;
-        }
-        if (!CompareUtil.compareInteger(fStopnumber, stop.getOrder())) {
-            return false;
-        }
-        if (!CompareUtil.compareString(fStopText, stop.getStopText())) {
-            return false;
-        }
-        if (!CompareUtil.compareInteger(fDisplayMode, stop.getDisplayMode())) {
-            return false;
-        }
-        if (!CompareUtil.compareInteger(fType, stop.getType())) {
-            return false;
-        }
+        if (this == stop) return false;
+
+        int comparison = this.fName.compareTo(stop.getName());
+        if (comparison != 0) return false;
+
+        comparison = this.fLatitude.compareTo(stop.getLatitude());
+        if (comparison != 0) return false;
+
+        comparison = this.fLongitude.compareTo(stop.getLongitude());
+        if (comparison != 0) return false;
+
+        comparison = this.fStopnumber.compareTo(stop.getStopnumber());
+        if (comparison != 0) return false;
+
+        comparison = this.fStopText.compareTo(stop.getStopText());
+        if (comparison != 0) return false;
+
+        comparison = this.fDisplayMode.compareTo(stop.getDisplayMode());
+        if (comparison != 0) return false;
+
+        comparison = this.fType.compareTo(stop.getType());
+        if (comparison != 0) return false;
+
+        comparison = this.fStopnumber.compareTo(stop.getStopnumber());
+        if (comparison != 0) return false;
 
         // cant test because trip is lazyloaded and cant do get<trip on trip proxy
         //   if (!(this.fTrip.equals(stop.getTrip()))) return false;

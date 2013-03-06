@@ -37,10 +37,11 @@ public class TripInstance implements Serializable {
     private String fDescription;
     @Column(name = "public")
     private Boolean fAvailable;
-    @Column(name = "startdate")
-    private long fStartDate;
-    @Column(name = "enddate")
-    private long fEndDate;
+    @Column(name = "starttime")
+    private long fStartTime;
+    @Column(name = "endtime")
+    private long fEndTime;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "trip_id", nullable = false)
     private Trip fTrip;
@@ -60,45 +61,35 @@ public class TripInstance implements Serializable {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTripInstance")
     private Set<Message> fMessages = new HashSet<Message>();
 
-    /*    *//*!!*//*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-     @JoinTable(name = "T_TRIP_INSTANCE_COST", joinColumns = {@JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {@JoinColumn(name = "cost_id")})
-     private Set<Cost> fCosts = new HashSet<>();
-     *//*!!*//*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-     @JoinTable(name = "T_TRIP_INSTANCE_REQUIREMENT", joinColumns = {@JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {@JoinColumn(name = "requirement_id")})
-     private Set<Requirement> fRequirements = new HashSet<>();
-     *//*!!*//*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-     @JoinTable(name = "T_TRIP_INSTANCE_MESSAGE", joinColumns = {@JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {@JoinColumn(name = "message_id")})
-     private Set<Message> fMessages = new HashSet<>();*/
-
     // Hibernates needs empty constructor
 
     public TripInstance() {
     }
 
-    public TripInstance(String fTitle, String fDescription, Boolean fAvailable, long fStartDate, long fEndDate, User fOrganiser, Trip fTrip/*, RequirementInstance requirementInstance*/) {
+    public TripInstance(String fTitle, String fDescription, Boolean fAvailable, long fStartTime, long fEndTime, User fOrganiser, Trip fTrip) {
         this.fTitle = fTitle;
         this.fDescription = fDescription;
         this.fAvailable = fAvailable;
-        this.fStartDate = fStartDate;
-        this.fEndDate = fEndDate;
-        this.fOrganiser = fOrganiser;
+        this.fStartTime = fStartTime;
+        this.fEndTime = fEndTime;
         this.fTrip = fTrip;
+        this.fOrganiser = fOrganiser;
     }
 
-    public long getStartDate() {
-        return fStartDate;
+    public long getStartTime() {
+        return fStartTime;
     }
 
-    public void setStartDate(long fStartDate) {
-        this.fStartDate = fStartDate;
+    public void setStartTime(long fStartTime) {
+        this.fStartTime = fStartTime;
     }
 
-    public long getEndDate() {
-        return fEndDate;
+    public long getEndTime() {
+        return fEndTime;
     }
 
-    public void setEndDate(long fEndDate) {
-        this.fEndDate = fEndDate;
+    public void setEndTime(long fEndTime) {
+        this.fEndTime = fEndTime;
     }
 
     public Trip getTrip() {

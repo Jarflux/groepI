@@ -20,18 +20,24 @@ public class DateUtil {
 
         if (dateString != null) {
             String[] dateArray = dateString.split("-");
-            day = Integer.parseInt(dateArray[2]);
+            day = Integer.parseInt(dateArray[0]);
             month = Integer.parseInt(dateArray[1]);
-            year = Integer.parseInt(dateArray[0]);
+            year = Integer.parseInt(dateArray[2]);
         }
         if (timeString != null) {
             String[] timeArray = timeString.split(":");
             hour = Integer.parseInt(timeArray[0]);
             min = Integer.parseInt(timeArray[1]);
-            sec = Integer.parseInt(timeArray[2]);
+//            sec = Integer.parseInt(timeArray[2]);
         }
         Long date = DateUtil.dateToLong(day, month, year, hour, min, sec);
         return date;
+    }
+    public static Long dateStringToLong(String dateString){
+        return dateStringToLong(dateString, null);
+    }
+    public static Long timeStringToLong(String timeString){
+        return dateStringToLong(null, timeString);
     }
 
     public static Date longToDate(Long date) {
@@ -42,7 +48,7 @@ public class DateUtil {
 
     public static String formatDate(HttpSession session) {
         Date date = DateUtil.longToDate(((User) session.getAttribute("userObject")).getDateOfBirth());
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         return dateFormat.format(date);
     }
 

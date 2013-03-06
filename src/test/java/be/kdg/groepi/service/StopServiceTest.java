@@ -44,7 +44,7 @@ public class StopServiceTest {
             s.setLongitude(s.getLongitude().concat(" Edited"));
             s.setStopText(s.getStopText().concat(" Edited"));
             s.setName(s.getName().concat(" Edited"));
-            s.setOrder(s.getOrder() + 1);
+            s.setStopnumber(s.getStopnumber() + 1);
             s.setType(s.getType() +1);
             s.setDisplayMode(s.getDisplayMode() + 1);
             StopService.updateStop(s);
