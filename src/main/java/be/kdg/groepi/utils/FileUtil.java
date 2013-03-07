@@ -27,7 +27,7 @@ public class FileUtil {
         File[] testFileSave = findFile(session, id);
 
         if (testFileSave.length == 1) {  // return waarde van profilePicture-attribuut van User
-            return destination + id + ".jpg";
+            return destination + File.separator + id + ".jpg";
         } else {
             return null;
         }
