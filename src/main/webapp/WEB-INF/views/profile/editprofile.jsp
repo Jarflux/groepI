@@ -29,7 +29,7 @@
                         <img src="/images/noprofile.jpg" width='150' class="profilepic"/>
                     </c:when>
                     <c:when test="${userObject.profilePicture != null}">
-                        <img src="${userObject.profilePicture}"/>
+                        <img src="${userObject.profilePicture}" width="150" class="profilepic"/>
                     </c:when>
                 </c:choose>
             </div>
