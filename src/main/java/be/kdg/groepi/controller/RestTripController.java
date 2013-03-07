@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-//import java.sql.Date;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+//import java.sql.Date;
 
 @Controller
 @RequestMapping("trips")
@@ -274,11 +274,11 @@ public class RestTripController {
     }
 
     @RequestMapping(value = "/doaddinstancerequirement", method = RequestMethod.POST)
-    public/* ModelAndView*/String doAddInstanceRequirement(@RequestParam(value = "tripInstanceId") String tripInstanceId,/*
+    public ModelAndView doAddInstanceRequirement(@RequestParam(value = "tripInstanceId") String tripInstanceId,/*
              @ModelAttribute("requirementObject") Requirement requirement*/
-                                                           @RequestParam(value = "name") String name,
-                                                           @RequestParam(value = "amount") Long amount,
-                                                           @RequestParam(value = "description") String description) {
+                                                 @RequestParam(value = "name") String name,
+                                                 @RequestParam(value = "amount") Long amount,
+                                                 @RequestParam(value = "description") String description) {
 
         TripInstance tripInstance = TripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId));
         RequirementInstance requirementInstance = new RequirementInstance(name, amount, description, tripInstance);
@@ -286,7 +286,26 @@ public class RestTripController {
         //       trip.addRequirementToTrip(requirement);
 //        tripInstance.addRequirementInstanceToTripInstance(requirementInstance);
 //        TripInstanceService.updateTripInstance();
-        return "trips/viewInstance/" + tripInstanceId;
-//        return new ModelAndView("trips/viewInstance", "tripInstanceObject", tripInstance);
+//        return "trips/viewInstance/" + tripInstanceId;
+        return new ModelAndView("trips/viewInstance", "tripInstanceObject", tripInstance);
+    }
+
+    @RequestMapping(value = "/addmessage/{tripInstanceId}", method = RequestMethod.GET)
+    public ModelAndView addMessage(@PathVariable("tripInstanceId") String tripInstanceId) {
+        return new ModelAndView("trips/addmessage", "tripInstanceId", tripInstanceId);
+    }
+
+    @RequestMapping(value = "/doaddmessage", method = RequestMethod.POST)
+    public ModelAndView doAddMessage(HttpSession session, @RequestParam(value = "tripInstanceId") String tripInstanceId,
+                                     @RequestParam(value = "content") String content) {
+
+        TripInstance tripInstance = TripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId));
+        User sessionUser = (User) session.getAttribute("userObject");
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(System.currentTimeMillis());
+        Long date = cal.getTime().getTime();
+        Message message = new Message(content, date, tripInstance, sessionUser);
+        MessageService.createMessage(message);
+        return new ModelAndView("trips/viewinstance", "tripInstanceObject", tripInstance);
     }
 }

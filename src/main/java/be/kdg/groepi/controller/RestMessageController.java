@@ -7,4 +7,6 @@ package be.kdg.groepi.controller;
  * Description:  Controller to handle REST service calls
  */
 public class RestMessageController {
+
+
 }
