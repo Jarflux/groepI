@@ -15,11 +15,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -60,27 +58,26 @@ public class RestUserController {
         UserService.createUser(user);
         return new ModelAndView("home", "userObject", user);
     }
-    @RequestMapping(value = "/fblogin", method = RequestMethod.POST)
-    public ModelAndView fbLogin(   @RequestParam(value = "id") String FBUserID, @RequestParam(value = "name") String naam, @RequestParam(value = "email") String email,@RequestParam(value = "birthday") String verjaardag,HttpSession session)
-          {
-     User  user = UserService.getUserByFBUserID(FBUserID);
-      if (user == null)
-      {
-          user = new User();
-                        user.setName(naam);
-                        user.setEmail(email);
-          user.setDateOfBirth(DateUtil.dateStringToLongAlt(verjaardag,null));
-                         user.setFBUserID(FBUserID);
-          user.setPassword(" ");
-                                     UserService.createUser(user);
-      }
 
-              MyUserDetailsService userDetailsService = new MyUserDetailsService();
-              UserDetails userDetails = userDetailsService.loadUserByUsername(email);
-              Authentication authentication =  new UsernamePasswordAuthenticationToken(userDetails, " ", userDetails.getAuthorities());
-              SecurityContextHolder.getContext().setAuthentication(authentication);
-              session.setAttribute("userObject",user);
-               String response ="OK";
+    @RequestMapping(value = "/fblogin", method = RequestMethod.POST)
+    public ModelAndView fbLogin(@RequestParam(value = "id") String FBUserID, @RequestParam(value = "name") String naam, @RequestParam(value = "email") String email, @RequestParam(value = "birthday") String verjaardag, HttpSession session) {
+        User user = UserService.getUserByFBUserID(FBUserID);
+        if (user == null) {
+            user = new User();
+            user.setName(naam);
+            user.setEmail(email);
+            user.setDateOfBirth(DateUtil.dateStringToLongAlt(verjaardag, null));
+            user.setFBUserID(FBUserID);
+            user.setPassword(" ");
+            UserService.createUser(user);
+        }
+
+        MyUserDetailsService userDetailsService = new MyUserDetailsService();
+        UserDetails userDetails = userDetailsService.loadUserByUsername(email);
+        Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, " ", userDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        session.setAttribute("userObject", user);
+        String response = "OK";
         return new ModelAndView("jsonresponse", "antwoord", response);
     }
 
@@ -92,15 +89,15 @@ public class RestUserController {
         List<TripInstance> userTripInstances = new ArrayList<>();
         List<TripInstance> tripInstances = TripInstanceService.getAllTripInstances();
         List<User> tripParticipants = new ArrayList<>();
-        for (TripInstance tripInstance : tripInstances){
+        for (TripInstance tripInstance : tripInstances) {
             tripInstanceStartDates.put(tripInstance.getTrip().getId(),
                     DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartTime())));
 
             tripInstanceEndDates.put(tripInstance.getTrip().getId(),
                     DateUtil.formatDate(DateUtil.longToDate(tripInstance.getEndTime())));
             tripParticipants.addAll(tripInstance.getParticipants());
-            for (User participant : tripParticipants){
-                if (sessionUser.getId() == participant.getId()){
+            for (User participant : tripParticipants) {
+                if (sessionUser.getId() == participant.getId()) {
                     userTripInstances.add(tripInstance);
                 }
             }
@@ -134,7 +131,6 @@ public class RestUserController {
         sessionUser.setEmail(user.getEmail());
         sessionUser.setDateOfBirth(DateUtil.dateStringToLong(dateOfBirth, null));
         sessionUser.setProfilePicture(FileUtil.savePicture(session, uploadedFile, sessionUser.getId()));
-        //sessionUser.setProfilePicture(user.getProfilePicture());
         UserService.updateUser(sessionUser);
         ModelAndView modelAndView = new ModelAndView("profile/userprofile");
         modelAndView.addObject("userObject", sessionUser);

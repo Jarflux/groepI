@@ -17,8 +17,6 @@ import java.io.IOException;
  */
 public class FileUtil {
     private static String destination = File.separator + "images" + File.separator + "profilepictures";
-    //String srcPath = config.getServletContext().getRealPath("/");
-
 
     public static String savePicture(HttpSession session, MultipartFile file, long id) throws IOException {
         String path = session.getServletContext().getRealPath(destination);
