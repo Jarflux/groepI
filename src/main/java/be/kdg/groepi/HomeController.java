@@ -24,7 +24,11 @@ public class HomeController {
         //UserService.createUser(); //TODO: HEY DAVE
         return "home";
     }
-
+    @RequestMapping(value = "/fbloginpage")
+    public String fbloginpage() {
+        System.out.println("FBLOgin needed: Passing through...");
+        return "fbloginpage";
+    }
     @RequestMapping(value = "/login")
     public String login() {
         System.out.println("Login: Passing through...");

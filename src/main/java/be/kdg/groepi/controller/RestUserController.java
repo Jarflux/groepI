@@ -2,12 +2,17 @@ package be.kdg.groepi.controller;
 
 import be.kdg.groepi.model.TripInstance;
 import be.kdg.groepi.model.User;
+import be.kdg.groepi.security.MyUserDetailsService;
 import be.kdg.groepi.service.TripInstanceService;
 import be.kdg.groepi.service.UserService;
 import be.kdg.groepi.utils.CompareUtil;
 import be.kdg.groepi.utils.DateUtil;
 import be.kdg.groepi.utils.FileUtil;
 import org.apache.log4j.Logger;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.ServletContextAware;
@@ -54,6 +59,29 @@ public class RestUserController {
         user.setPassword(CompareUtil.getHashedPassword(user.getPassword()));
         UserService.createUser(user);
         return new ModelAndView("home", "userObject", user);
+    }
+    @RequestMapping(value = "/fblogin", method = RequestMethod.POST)
+    public ModelAndView fbLogin(   @RequestParam(value = "id") String FBUserID, @RequestParam(value = "name") String naam, @RequestParam(value = "email") String email,@RequestParam(value = "birthday") String verjaardag,HttpSession session)
+          {
+     User  user = UserService.getUserByFBUserID(FBUserID);
+      if (user == null)
+      {
+          user = new User();
+                        user.setName(naam);
+                        user.setEmail(email);
+          user.setDateOfBirth(DateUtil.dateStringToLongAlt(verjaardag,null));
+                         user.setFBUserID(FBUserID);
+          user.setPassword(" ");
+                                     UserService.createUser(user);
+      }
+
+              MyUserDetailsService userDetailsService = new MyUserDetailsService();
+              UserDetails userDetails = userDetailsService.loadUserByUsername(email);
+              Authentication authentication =  new UsernamePasswordAuthenticationToken(userDetails, " ", userDetails.getAuthorities());
+              SecurityContextHolder.getContext().setAuthentication(authentication);
+              session.setAttribute("userObject",user);
+               String response ="OK";
+        return new ModelAndView("jsonresponse", "antwoord", response);
     }
 
     @RequestMapping(value = "/myprofile")
