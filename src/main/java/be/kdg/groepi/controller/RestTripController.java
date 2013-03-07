@@ -268,7 +268,7 @@ public class RestTripController {
 
 
     @RequestMapping(value = "/listinstance")
-    public ModelAndView getPublicTripInstances(HttpSession session) {           //TODO: OWN INSTANCES + PUBLIC
+    public ModelAndView getPublicTripInstances(HttpSession session) {
         User user = (User) session.getAttribute("userObject");
         List<TripInstance> publicTripInstances = TripInstanceService.getPublicTripInstances();
         List<TripInstance> ownTripInstances = TripInstanceService.getTripInstancesByOrganiserId(user.getId());

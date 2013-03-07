@@ -116,7 +116,6 @@ public class Answer {
             return false;
         }
     }
-    //TODO: equals methoden in TripInstance + afgeleiden
 
     @Override
     public boolean equals(Object o) {

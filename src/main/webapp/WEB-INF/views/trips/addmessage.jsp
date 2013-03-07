@@ -33,7 +33,7 @@
             <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
         </form>
         <form method="get" action="/trips/viewinstance/${tripInstanceId}"
-              class="mainstyle tooltips">        <%--TODO:flaschenkopfen--%>
+              class="mainstyle tooltips">
             <input type="submit" class="button" value="<spring:message code='text.finishediting'/>"/>
         </form>
     </div>

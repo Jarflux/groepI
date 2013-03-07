@@ -11,7 +11,6 @@ import java.sql.Timestamp;
  * Class: User
  * Description:
  */
-//TODO: boolean veld 'Active' toevoegen
 @Entity
 @Table(name = "T_USER")
 public class User implements Serializable {
