@@ -16,6 +16,40 @@
     <title>My Trip Assistant</title>
 </head>
 <body>
+<script>
+
+
+    window.fbAsyncInit = function() {
+        // init the FB JS SDK
+        FB.init({
+            appId      : '349005061872374', // App ID from the App Dashboard
+            channelUrl : '/fbloginpage', // Channel File for x-domain communication
+            status     : true, // check the login status upon init?
+            cookie     : true, // set sessions cookies to allow your server to access the session?
+            xfbml      : true  // parse XFBML tags on this page?
+        });
+
+        // Additional initialization code such as adding Event Listeners goes here
+
+    };
+
+    // Load the SDK's source Asynchronously
+    // Note that the debug version is being actively developed and might
+    // contain some type checks that are overly strict.
+    // Please report such bugs using the bugs tool.
+    (function(d, debug){
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
+        ref.parentNode.insertBefore(js, ref);
+    }(document, /*debug*/ false));
+
+
+
+
+
+</script>
 <div id="container">
     <div id="logincontainer" class="column light"><sec:authorize access="isAnonymous()">
 
@@ -32,6 +66,8 @@
                 <span class="small"><a href="/profile/reset/forgotPassword"><spring:message
                         code="text.resetpasswordlink"/></a></span>
             </form>
+
+            <p id="fblogin">Login met FB</p>
             <a href="profile/register"><spring:message code='text.createaccount'/></a>
 
 
@@ -70,10 +106,13 @@
 
 
 </div>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-<script src="/js/placeholder.js"></script>
-<script src="/js/functions.js"></script>
+<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
 
+<div id="fb-root"></div>
+<script src="/js/placeholder.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+
+<script src="/js/functions.js"></script>
 
 </body>
 </html>

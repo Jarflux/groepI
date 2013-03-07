@@ -34,12 +34,16 @@ public class User implements Serializable {
     private String fPasswordResetString;
     @Column(name = "passwordResetTimestamp")
     private Timestamp fPasswordResetTimestamp;
-
+    @Column(name = "FBUserID")
+    private String fFBUserID;
     //@OneToMany
     //private Set<Trip> organizedTrips;
     // Hibernates needs empty constructor
     public User() {
     }
+
+
+
 
     public User(String name, String email, String password, Long dateOfBirth) {
         this.fName = name;
@@ -108,6 +112,14 @@ public class User implements Serializable {
         this.fPasswordResetTimestamp = fPasswordResetTimestamp;
     }
 
+    public String getFBUserID() {
+        return fFBUserID;
+    }
+
+    public void setFBUserID(String fFBUserID) {
+        this.fFBUserID = fFBUserID;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null) {
@@ -133,6 +145,9 @@ public class User implements Serializable {
             return false;
         }
         if (!CompareUtil.compareString(fProfilePicture, user.getProfilePicture())) {
+            return false;
+        }
+        if (!CompareUtil.compareString(fFBUserID, user.getFBUserID())) {
             return false;
         }
         return true;

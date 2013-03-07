@@ -1,6 +1,6 @@
 (function ($) {
     $.fn.placeholder = function (options) {
-        msie = (jQuery.browser.msie) ? true : false;
+        msie = false;
         setup = {set_class: true, class_name: "placeholder", skip: false, ie_submit_swap: true, ie_password_callback: ""};
         if (options) {
             $.extend(setup, options)

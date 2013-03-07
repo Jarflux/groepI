@@ -58,8 +58,8 @@
                             <c:forEach var="tripInstance" items="${userTripInstances}">
                                 <td><spring:message code="text.tripname"/></td>
                                 <td><spring:message code="text.tripdescription"/></td>
-                                <td><spring:message code="text.tripstartdate"/></td>
-                                <td><spring:message code="text.tripenddate"/></td>
+                                <td><spring:message code="text.tripinstancestarttime"/></td>
+                                <td><spring:message code="text.tripinstanceendtime"/></td>
                                     <caption><spring:message code="text.tripsparticipated"/></caption>
                                     <tr>
                                         <td>${tripInstance.title}</td>

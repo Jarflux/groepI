@@ -107,6 +107,13 @@ public class UserServiceTest {
         UserService.getUserByEmail("TIM@M.EH");
         assertEquals("testGetUserByEmail: kztugelhiugshdl EMAILNOTHERE", user, UserService.getUserById(user.getId()));
     }
+    @Test
+    public void testGetByFBUserID() {
+        UserService.createUser(user);
+        user.setFBUserID("123456789");
+         UserService.updateUser(user);
+        assertEquals("testGetByFBUserID: ", user, UserService.getUserByFBUserID(user.getFBUserID()));
+    }
 
     @Test
     public void testCompareUser() {

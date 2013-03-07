@@ -5,6 +5,11 @@ $(function()
 {
     preparetooltips();
     validateform();
+
+    $("#fblogin").on("click",function()
+    {
+        fblogin();
+    })
 })
 function preparetooltips()
 {
@@ -114,7 +119,7 @@ var bindMarkerEvents = function(marker) {
     });
     google.maps.event.addListener(marker, "dragend", function (point){
         setInputText(point.latLng.lat(), "latitude");
-        setInputText(point.latLng.lng(), "longitude");
+        setInputText(point.latLng.lat(), "longitude");
     });
 
 };
@@ -141,5 +146,51 @@ function maketripsortable()
             var deorde = $(this).sortable('toArray').toString();
 console.log("Order is : "+deorde)        }});
     $( ".sortable" ).disableSelection();
+}
+
+function login() {
+    FB.login(function(response) {
+        if (response.authResponse) {
+            // User heeft toestemming gegeven aan de app, controleer of user bestaat met userid in DB en anders aanmaken.
+            performLogin()
+        } else {
+
+            // User heeft geen toestemming gegeven, helaas:(
+            //TODO: Geef foutboodschap dat er geanulleerd is.
+        }    // extra rechten nodig om aan e-mailadres te kunnen en
+    },{scope:'email,publish_stream,user_birthday'});
+}
+
+function fblogin()
+{
+    FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+            //user is ingelogd op FB en heeft reeds toestemming gegeven voor de app, check dus of user bestaat met userid in DB anders aanmaken
+            console.log("gebruiker is ingelogd al");
+            var uid = response.authResponse.userID;
+            var accessToken = response.authResponse.accessToken;
+            console.log("uid: "+uid+" en token: "+accessToken);
+            performLogin();
+        } else if (response.status === 'not_authorized') {
+           //User is ingelogd op FB maar heeft (nog) geen toestemming gegeven voor de app, toon permissie-dialoog
+            login();
+        } else {
+            // User is zelfs niet ingelogd op FB, toon dialoog om in te loggen (en dan toestemming te geven)
+            login();
+        }
+    });
+}
+function performLogin() {
+
+
+    FB.api('/me', function(response) {
+    var gegevens= JSON.stringify(response);
+               console.log(response);
+        $.post("/profile/fblogin",response,function(resultaat)
+        {
+            window.location ="/profile/myprofile"
+        })
+
+    });
 }
 

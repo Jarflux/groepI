@@ -29,11 +29,13 @@
             ${tripInstanceObject.description}
             <br/>
             <spring:message code='text.tripcreator'/>:
-            <a href="/profile/view/${tripInstanceObject.organiser.id}" class="active">${tripInstanceObject.organiser.name}</a>
+            <a href="/profile/view/${tripInstanceObject.organiser.id}"
+               class="active">${tripInstanceObject.organiser.name}</a>
             <br/>
 
             <c:if test="${tripInstanceObject.organiser.id == userObject.id}">
-                <a href="/trips/editinstance/${tripInstanceObject.id}" class="active"><spring:message code='text.edittrip'/></a>
+                <a href="/trips/editinstance/${tripInstanceObject.id}" class="active"><spring:message
+                        code='text.edittrip'/></a>
             </c:if>
             <c:if test="${tripInstanceObject.organiser.id != userObject.id}">
                 Zo, jij wil deze trip aanpassen? MAG NIET!
@@ -76,7 +78,7 @@
                         <table>
                             <c:forEach var="requirementInstance" items="${tripInstanceObject.requirementInstances}">
                                 <tr>
-                                    <td><a href="/trips/editTriprequirementInstance/${requirementInstance.id}"
+                                    <td><a href="/trips/editinstancerequirement/${requirementInstance.id}"
                                            class="active">${requirementInstance.name}</a></td>
                                     <td><spring:message code="text.amount"/>: ${requirementInstance.amount}</td>
                                 </tr>
@@ -89,7 +91,8 @@
                                             <td>${requirementInstance.user.name}</td>
                                         </c:when>
                                         <c:otherwise>
-                                            <td><spring:message code="text.requirementinstancebrings"/>: <spring:message code='text.requirementinstanceforallusers'/></td>
+                                            <td><spring:message code="text.requirementinstancebrings"/>: <spring:message
+                                                    code='text.requirementinstanceforallusers'/></td>
                                         </c:otherwise>
                                     </c:choose>
                                     <td>assign user to reqInstance (anchor of javascript? idk)</td>
@@ -172,11 +175,12 @@
                             <c:forEach var="user" items="${tripInstanceObject.participants}">
                                 <tr>
                                     <td>${user.name}</td>
-                                </tr><%--
-                                <tr>
-                                    <td>${user.}</td>                      TODO: cost/message aanmaken
-                                    <td>${cost.description}</td>
-                                </tr>--%>
+                                </tr>
+                                <%--
+                                                                <tr>
+                                                                    <td>${user.}</td>                      TODO: cost/message aanmaken
+                                                                    <td>${cost.description}</td>
+                                                                </tr>--%>
                             </c:forEach>
                         </table>
                     </c:when>

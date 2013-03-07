@@ -16,18 +16,16 @@ import java.io.IOException;
  * To change this template use File | Settings | File Templates.
  */
 public class FileUtil {
-    private static String destination = "/images/profilepictures/";
-    //String srcPath = config.getServletContext().getRealPath("/");
-
+    private static String destination = File.separator + "images" + File.separator + "profilepictures";
 
     public static String savePicture(HttpSession session, MultipartFile file, long id) throws IOException {
         String path = session.getServletContext().getRealPath(destination);
-        File savedFile = new File(path + "\\" + id + ".jpg");
+        File savedFile = new File(path + File.separator + id + ".jpg");
         FileUtils.writeByteArrayToFile(savedFile, file.getBytes());
         File[] testFileSave = findFile(session, id);
 
         if (testFileSave.length == 1) {  // return waarde van profilePicture-attribuut van User
-            return destination + id + ".jpg";
+            return destination + File.separator + id + ".jpg";
         } else {
             return null;
         }
