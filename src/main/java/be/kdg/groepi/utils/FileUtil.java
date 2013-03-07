@@ -22,7 +22,7 @@ public class FileUtil {
 
     public static String savePicture(HttpSession session, MultipartFile file, long id) throws IOException {
         String path = session.getServletContext().getRealPath(destination);
-        File savedFile = new File(path + File.pathSeparator + id + ".jpg");
+        File savedFile = new File(path + File.separator + id + ".jpg");
         FileUtils.writeByteArrayToFile(savedFile, file.getBytes());
         File[] testFileSave = findFile(session, id);
 
