@@ -15,6 +15,7 @@
     <c:choose>
         <c:when test="${tripInstanceObject != null}">
             <form method="post" action="/trips/updateinstance" class="mainstyle tooltips">
+                <input type="hidden" value="${tripInstanceObject.id}" name="tripInstanceId"/>
                 <div class="row">
                     <span><spring:message code='text.title'/></span>
                     <input type="text" class="" name="title" placeholder="" value="${tripInstanceObject.title}"
@@ -22,17 +23,19 @@
                 </div>
                 <div class="row">
                     <span><spring:message code='text.available'/></span>
-                    <input type="checkbox" class="" name="available" placeholder="" checked="${tripInstanceObject.available}"
+                    <input type="checkbox" class="" name="available" placeholder=""
+                           checked="${tripInstanceObject.available}"
                            title="<spring:message code='text.availabletooltip'/>"/>
                 </div>
                 <div class="row">
                     <span><spring:message code='text.description'/></span>
-                    <textarea name="description" title="<spring:message code='text.descriptiontooltip'/>">${tripInstanceObject.description}</textarea>
+                    <textarea name="description"
+                              title="<spring:message code='text.descriptiontooltip'/>">${tripInstanceObject.description}</textarea>
                 </div>
                 <div class="row">
                     <span><spring:message code='text.date'/></span>
                     <input type="text" class="date" name="date" title="<spring:message code='text.instancedate'/> "
-                            value="${date}">
+                           value="${date}">
                 </div>
                 <div class="row">
                     <span><spring:message code='text.starttime'/></span>
@@ -53,5 +56,7 @@
         </c:when>
     </c:choose>
 </div>
+<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+<script src="/js/functions.js"></script>
 </body>
 </html>

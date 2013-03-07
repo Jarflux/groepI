@@ -44,13 +44,13 @@
                                     <td>${ownTrips.description}</td>
                                     <td><a href="/trips/view/${ownTrips.id}" class="active"><spring:message
                                             code='text.detail'/></a></td>
-                                    <td>
+                                    <%--<td>
                                         <form method="post" action="jointrip">
                                             <input type="hidden" value="${ownTrips.id}" name="tripId"/>
                                             <input type="submit" class="button"
                                                    value="<spring:message code='text.jointrip'/>"/>
                                         </form>
-                                    </td>
+                                    </td>--%>
                                 </tr>
                             </c:forEach>
                         </table>
@@ -64,7 +64,9 @@
                 </c:choose>
             </div>
             <br/>
-            <br/>
+            <c:forEach begin="1" end="${ownTrips.size()}">
+                <br/>
+            </c:forEach>
             <div class="row">
                 <spring:message code="text.publictrips"/>
                 <c:choose>
@@ -82,13 +84,13 @@
                                     <td>${publicTrip.description}</td>
                                     <td><a href="/trips/view/${publicTrip.id}" class="active"><spring:message
                                             code='text.detail'/></a></td>
-                                    <td>
+                                    <%--<td>
                                         <form method="post" action="jointrip">
                                             <input type="hidden" value="${publicTrip.id}" name="tripId"/>
                                             <input type="submit" class="button"
                                                    value="<spring:message code='text.jointrip'/>"/>
                                         </form>
-                                    </td>
+                                    </td>--%>
                                 </tr>
                             </c:forEach>
                         </table>

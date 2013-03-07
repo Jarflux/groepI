@@ -221,4 +221,34 @@ public class TripInstanceServiceTest {
         TripInstanceService.createTripInstance(tripinstance2);
         assertFalse("Stops should  not be the same", tripinstance.equals(tripinstance2));
     }
+
+    @Test
+    public void getPublicTripInstances() {
+        int size = TripInstanceService.getPublicTripInstances().size();
+        long startDate = DateUtil.dateToLong(27, 2, 2013, 16, 0, 0);
+        long endDate = DateUtil.dateToLong(27, 2, 2013, 20, 0, 0);
+        TripInstance newFalseTripInstance = new TripInstance("falsetripInstance", "mdahnebzalem", false, startDate, endDate, user, trip);
+        TripInstanceService.createTripInstance(newFalseTripInstance);
+        TripInstance newTrueTripInstance = new TripInstance("truetripInstance", "first false tripInstance in test", true, startDate, endDate, user, trip);
+        TripInstanceService.createTripInstance(newTrueTripInstance);
+        List<TripInstance> tripInstances = TripInstanceService.getPublicTripInstances();
+        assertTrue("getPublicTripInstances: didn't receive public-only tripInstances", tripInstances.size() == size + 1);
+    }
+
+    @Test
+    public void getTripInstancesByOrganiserId() {
+        int size = TripInstanceService.getTripInstancesByOrganiserId(user.getId()).size();
+        long startDate = DateUtil.dateToLong(27, 2, 2013, 16, 0, 0);
+        long endDate = DateUtil.dateToLong(27, 2, 2013, 20, 0, 0);
+        TripInstance oldOrganiserTripInstance = new TripInstance("Bachelor feestje", "Iemand gaat trouwen, bier en vrouwen ole", false, startDate, endDate, user, trip);
+        TripInstanceService.createTripInstance(oldOrganiserTripInstance);
+
+        User newUser = new User("newUser", "new@us.er", "yitfluyfkytfglkyu", DateUtil.dateToLong(15, 7, 1992, 0, 0, 0));
+        UserService.createUser(newUser);
+        TripInstance newOrganiserTripInstance = new TripInstance("Bachelor feestje", "Iemand gaat trouwen, bier en vrouwen ole", false, startDate, endDate, newUser, trip);
+        TripInstanceService.createTripInstance(newOrganiserTripInstance);
+
+        List<TripInstance> tripInstances = TripInstanceService.getTripInstancesByOrganiserId(user.getId());
+        assertTrue("getPublicTripInstances: didn't receive user-only tripInstances", tripInstances.size() == size + 1);
+    }
 }

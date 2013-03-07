@@ -131,6 +131,26 @@ public class TripInstanceService {
         return tripinstances;
     }
 
+    public static List<TripInstance> getTripInstancesByOrganiserId(long id){
+        List<TripInstance> tripInstances = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Query query = session.createQuery("from TripInstance tripInstance where tripInstance.fOrganiser = :Organiser").
+                    setLong("Organiser", id);
+            tripInstances = (List<TripInstance>) query.list();
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return tripInstances;
+    }
+
     public static List<TripInstance> getPublicTripInstances(){
         List<TripInstance> tripinstances = null;
         Session session = HibernateUtil.getSessionFactory().openSession();

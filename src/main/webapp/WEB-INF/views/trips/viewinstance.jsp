@@ -28,14 +28,14 @@
             </h2>
             ${tripInstanceObject.description}
             <br/>
-            <spring:message code='text.tripcreator'/>:
-            <a href="/profile/view/${tripInstanceObject.organiser.id}"
-               class="active">${tripInstanceObject.organiser.name}</a>
-            <br/>
+            <spring:message code='text.triporganiser'/>:
+            <a href="/profile/view/${tripInstanceObject.organiser.id}" class="active">${tripInstanceObject.organiser.name}</a> <br/>
+            <spring:message code='text.date'/>: ${date} <br/>
+            <spring:message code='text.from'/>: ${startTimeString} <br/>
+            <spring:message code='text.to'/>: ${endTimeString} <br/>
 
             <c:if test="${tripInstanceObject.organiser.id == userObject.id}">
-                <a href="/trips/editinstance/${tripInstanceObject.id}" class="active"><spring:message
-                        code='text.edittrip'/></a>
+                <a href="/trips/editinstance/${tripInstanceObject.id}" class="active"><spring:message code='text.edittrip'/></a>
             </c:if>
             <c:if test="${tripInstanceObject.organiser.id != userObject.id}">
                 Zo, jij wil deze trip aanpassen? MAG NIET!
@@ -54,8 +54,8 @@
                     <c:when test="${!empty tripInstanceObject.trip.stops}">
                         <ul class='sortable'>
                             <c:forEach var="stop" items="${tripInstanceObject.trip.stops}">
-                                <%--<li id="stop-${stop.id}">${stop.stopnumber}: <a href="/trips/editStop/${stop.id}" class="active"><c:out value="${stop.name}"/></a></li>--%>
-                                <li>view die stop jongeuh</li>
+                                <li id="stop-${stop.id}">${stop.stopnumber}: <a href="/trips/editStop/${stop.id}" class="active"><c:out value="${stop.name}"/></a></li>
+                                <%--<li>view die stop jongeuh</li>--%>
                             </c:forEach>
                         </ul>
                     </c:when>
@@ -175,12 +175,11 @@
                             <c:forEach var="user" items="${tripInstanceObject.participants}">
                                 <tr>
                                     <td>${user.name}</td>
-                                </tr>
-                                <%--
-                                                                <tr>
-                                                                    <td>${user.}</td>                      TODO: cost/message aanmaken
-                                                                    <td>${cost.description}</td>
-                                                                </tr>--%>
+                                </tr><%--
+                                <tr>
+                                    <td>${user.}</td>                      TODO: cost/message aanmaken
+                                    <td>${cost.description}</td>
+                                </tr>--%>
                             </c:forEach>
                         </table>
                     </c:when>

@@ -71,7 +71,7 @@ public class TripServiceTest {
 
     @Test
     public void getPublicTrips() {
-        int size = TripService.getAllTrips().size();
+        int size = TripService.getPublicTrips().size();
         Trip newFalseTrip = new Trip("falsetrip", "mdahnebzalem", false, true, user);
         TripService.createTrip(newFalseTrip);
         Trip newTrueTrip = new Trip("truetrip", "first false trip in test", true, true, user);
@@ -82,13 +82,13 @@ public class TripServiceTest {
 
     @Test
     public void getTripsByOrganiserId() {
-        int size = TripService.getAllTrips().size();
-        Trip oldOrganiserTrip = new Trip("falsetrip", "mdahnebzalem", false, true, user);
+        int size = TripService.getTripsByOrganiserId(user.getId()).size();
+        Trip oldOrganiserTrip = new Trip("newusertrip", "mdahnebzalem", false, true, user);
         TripService.createTrip(oldOrganiserTrip);
 
         User newUser = new User("newUser", "new@us.er", "yitfluyfkytfglkyu", DateUtil.dateToLong(15, 7, 1992, 0, 0, 0));
         UserService.createUser(newUser);
-        Trip newOrganiserTrip = new Trip("truetrip", "first false trip in test", false, true, newUser);
+        Trip newOrganiserTrip = new Trip("newusertrip", "first new user trip in test", false, true, newUser);
         TripService.createTrip(newOrganiserTrip);
 
         List<Trip> trips = TripService.getTripsByOrganiserId(user.getId());
