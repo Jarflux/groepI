@@ -16,7 +16,7 @@ import java.io.IOException;
  * To change this template use File | Settings | File Templates.
  */
 public class FileUtil {
-    private static String destination = "/images/profilepictures/";
+    private static String destination = File.separator + "images" + File.separator + "profilepictures";
     //String srcPath = config.getServletContext().getRealPath("/");
 
 
