@@ -3,12 +3,21 @@ package com.activities;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Message;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.controllers.Controller;
 import com.model.TripInstance;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import org.springframework.http.*;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;

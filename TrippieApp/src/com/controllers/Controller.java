@@ -2,7 +2,9 @@ package com.controllers;
 
 
 import android.content.Intent;
+import android.os.Message;
 import android.preference.PreferenceActivity;
+import android.util.Log;
 import com.activities.UserTripsActivity;
 import com.model.TripInstance;
 import com.model.User;
@@ -20,6 +22,11 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.http.*;
+import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -53,12 +60,12 @@ public class Controller {
         return  trips;
     }
 
-    public static JSONObject springSecurityCheck(String name, String password) {
+    public static JSONObject springSecurityCheck(String username, String password) {
         DefaultHttpClient client = new DefaultHttpClient();
         HttpPost requestLogin = new HttpPost("http://"+ adres +"/j_spring_security_check?");
         JSONObject jUser = null;
         List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("j_username", name));
+        params.add(new BasicNameValuePair("j_username", username));
         params.add(new BasicNameValuePair("j_password", password));
 
         try {
@@ -70,6 +77,27 @@ public class Controller {
             e.printStackTrace();
         }
         return jUser;
+
+        // Set the username and password for creating a Basic Auth request
+        HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
+        HttpHeaders requestHeaders = new HttpHeaders();
+        requestHeaders.setAuthorization(authHeader);
+        HttpEntity<?> requestEntity = new HttpEntity<Object>(requestHeaders);
+
+        // Create a new RestTemplate instance
+        RestTemplate restTemplate = new RestTemplate();
+
+        // Add the String message converter
+        restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+
+        try {
+            // Make the HTTP GET request to the Basic Auth protected URL
+            ResponseEntity<Message> response = restTemplate.exchange("dkd", HttpMethod.GET, requestEntity, String.class);
+            return response.getBody();
+        } catch (HttpClientErrorException e) {
+            Log.e(TAG, e.getLocalizedMessage(), e);
+            // Handle 401 Unauthorized response
+        }
     }
 
     public static JSONObject doRequest(String url, String urlParameter){
