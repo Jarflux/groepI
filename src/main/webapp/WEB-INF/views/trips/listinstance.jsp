@@ -48,27 +48,30 @@
                                     <td>${tripInstance.title}</td>
                                     <td>${tripInstance.description}</td>
                                     <td>${tripInstance.participants.size()}</td>
-                                    <c:forEach var="date" items="${ownTripInstanceDates}">
+                                    <td>${ownTripInstanceDates.get(tripInstance.id)}</td>
+                                    <td>${ownTripInstanceStartTimes.get(tripInstance.id)}</td>
+                                    <td>${ownTripInstanceEndTimes.get(tripInstance.id)}</td>
+                                    <%--<c:forEach var="date" items="${ownTripInstanceDates}">
                                         <c:choose>
                                             <c:when test="${date.key == tripInstance.id}">
                                                 <td>${date.value}</td>
                                             </c:when>
                                         </c:choose>
-                                    </c:forEach>
-                                    <c:forEach var="startTime" items="${ownTripInstanceStartTimes}">
+                                    </c:forEach>--%>
+                                    <%--<c:forEach var="startTime" items="${ownTripInstanceStartTimes}">
                                         <c:choose>
                                             <c:when test="${startTime.key == tripInstance.id}">
                                                 <td>${startTime.value}</td>
                                             </c:when>
                                         </c:choose>
-                                    </c:forEach>
-                                    <c:forEach var="endTime" items="${ownTripInstanceEndTimes}">
+                                    </c:forEach>--%>
+                                   <%-- <c:forEach var="endTime" items="${ownTripInstanceEndTimes}">
                                         <c:choose>
                                             <c:when test="${endTime.key == tripInstance.id}">
                                                 <td>${endTime.value}</td>
                                             </c:when>
                                         </c:choose>
-                                    </c:forEach>
+                                    </c:forEach>--%>
                                     <td><a href="/trips/viewinstance/${tripInstance.id}" class="active"><spring:message
                                             code='text.detail'/></a></td>
                                     <td>
@@ -84,6 +87,7 @@
                     </c:when>
                     <c:otherwise>
                         <c:choose>
+                            <br/>
                             <c:when test="${ownTripInstanceListObject == null}">tripInstanceList == null</c:when>
                             <c:otherwise><spring:message code='text.notripinstancesfound'/></c:otherwise>
                         </c:choose>
@@ -117,27 +121,30 @@
                                     <td>${tripInstance.title}</td>
                                     <td>${tripInstance.description}</td>
                                     <td>${tripInstance.participants.size()}</td>
-                                    <c:forEach var="date" items="${publicTripInstanceDates}">
+                                    <td>${publicTripInstanceDates.get(tripInstance.id)}</td>
+                                    <td>${publicTripInstanceStartTimes.get(tripInstance.id)}</td>
+                                    <td>${publicTripInstanceEndTimes.get(tripInstance.id)}</td>
+                                    <%--<c:forEach var="date" items="${publicTripInstanceDates}">
                                         <c:choose>
                                             <c:when test="${date.key == tripInstance.id}">
                                                 <td>${date.value}</td>
                                             </c:when>
                                         </c:choose>
-                                    </c:forEach>
-                                    <c:forEach var="startTime" items="${publicTripInstanceStartTimes}">
+                                    </c:forEach>--%>
+                                    <%--<c:forEach var="startTime" items="${publicTripInstanceStartTimes}">
                                         <c:choose>
                                             <c:when test="${startTime.key == tripInstance.id}">
                                                 <td>${startTime.value}</td>
                                             </c:when>
                                         </c:choose>
-                                    </c:forEach>
-                                    <c:forEach var="endTime" items="${publicTripInstanceEndTimes}">
+                                    </c:forEach>--%>
+                                    <%--<c:forEach var="endTime" items="${publicTripInstanceEndTimes}">
                                         <c:choose>
                                             <c:when test="${endTime.key == tripInstance.id}">
                                                 <td>${endTime.value}</td>
                                             </c:when>
                                         </c:choose>
-                                    </c:forEach>
+                                    </c:forEach>--%>
                                     <td><a href="/trips/viewinstance/${tripInstance.id}" class="active"><spring:message
                                             code='text.detail'/></a></td>
                                     <td>
@@ -153,6 +160,7 @@
                     </c:when>
                     <c:otherwise>
                         <c:choose>
+                            <br/>
                             <c:when test="${publicTripInstanceListObject == null}">tripInstanceList == null</c:when>
                             <c:otherwise><spring:message code='text.notripinstancesfound'/></c:otherwise>
                         </c:choose>

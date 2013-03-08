@@ -284,6 +284,8 @@ public class RestTripController {
             logger.debug("Returning ownTripInstances = NULL");
         }
 
+
+
         Map<Long, String> publicTripInstanceDates = new HashMap<>();
         Map<Long, String> publicTripInstanceStartTimes = new HashMap<>();
         Map<Long, String> publicTripInstanceEndTimes = new HashMap<>();
