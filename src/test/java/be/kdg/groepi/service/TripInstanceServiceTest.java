@@ -3,6 +3,10 @@ package be.kdg.groepi.service;
 import be.kdg.groepi.model.*;
 import be.kdg.groepi.utils.CompareUtil;
 import be.kdg.groepi.utils.DateUtil;
+import be.kdg.groepi.utils.HibernateUtil;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -142,6 +146,14 @@ public class TripInstanceServiceTest {
         tripList.add(tripinstance2);
         tripList.add(tripinstance3);
         assertFalse("TripInstance: tripList does not contain the tripInstances it should", CompareUtil.compareList(TripInstanceService.getAllTripInstancesByTripId(trip.getId()), tripList));
+    }
+
+    @Test
+    public void getTripInstancesByUserId(){
+        List<User> users = UserService.getAllUsers();
+        User testUser = users.get(0);
+        List<TripInstance> trips = TripInstanceService.getTripInstancesByUserId(testUser.getId());
+        assertTrue(!trips.isEmpty());
     }
 
     @Test

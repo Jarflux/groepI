@@ -31,7 +31,7 @@
 
         <intercept-url pattern="/**" access="isAuthenticated()"/>
         <form-login login-page="/login" authentication-failure-url="/login/incorrect"
-                    authentication-success-handler-ref="successHandler"/>
+                    authentication-success-handler-ref="successHandler" />
     </http>
 
     <beans:bean id="daoAuthenticationProvider"
