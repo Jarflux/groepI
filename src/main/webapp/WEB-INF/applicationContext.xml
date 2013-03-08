@@ -19,6 +19,7 @@
         <intercept-url pattern="/error/**" access="permitAll"/>
         <intercept-url pattern="/database/fill" access="permitAll"/>
         <intercept-url pattern="/" access="permitAll"/>
+        <intercept-url pattern="/fbloginpage" access="permitAll"/>
 
         <intercept-url pattern="/login" access="permitAll"/>
         <intercept-url pattern="/login/**" access="permitAll"/>
@@ -26,6 +27,7 @@
         <intercept-url pattern="/profile/register" access="permitAll"/>
         <intercept-url pattern="/profile/reset/**" access="permitAll"/>
         <intercept-url pattern="/profile/createUser" access="permitAll"/>
+        <intercept-url pattern="/profile/fblogin" access="permitAll"/>
 
         <intercept-url pattern="/**" access="isAuthenticated()"/>
         <form-login login-page="/login" authentication-failure-url="/login/incorrect"

@@ -1,6 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://www.springframework.org/tags/form" %>
+<%--<%@ taglib prefix="c" uri="http://www.springframework.org/tags/form" %> --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Gregory
@@ -55,6 +56,21 @@
                 <span><spring:message code='text.endtime'/></span>
                 <input type="time" name="endTimeString" title="<spring:message code='text.instanceendtime'/>">
             </div>
+
+                <c:choose>
+                    <c:when test="${tripObject.repeatable}">
+                        <label><input type="radio" name="repeatable" value="daily"><i><spring:message code='text.daily'/></i></label><br />
+                        <label><input type="radio" name="repeatable" value="weekly"><i><spring:message code='text.weekly'/></i></label><br />
+                        <div class="row">
+                            <span><spring:message code='text.dateuntil'/></span>
+                            <input type="text" class="date" name="endDate" title="<spring:message code='text.dateuntiltooltip'/>">
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <input type="hidden" name="repeatable" value=""/>
+                        <input type="hidden" name="endDate" value=""/>
+                    </c:otherwise>
+                </c:choose>
 
             <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
         </form>

@@ -74,6 +74,16 @@ public class TripInstance implements Serializable {
         this.fOrganiser = fOrganiser;
     }
 
+    public TripInstance(TripInstance tripInstance, long fStartTime, long fEndTime) {
+        this.fTitle = tripInstance.getTitle();
+        this.fDescription = tripInstance.getDescription();
+        this.fAvailable = tripInstance.getAvailable();
+        this.fTrip = tripInstance.getTrip();
+        this.fOrganiser = tripInstance.getOrganiser();
+        this.fStartTime = fStartTime;
+        this.fEndTime = fEndTime;
+    }
+
     public long getStartTime() {
         return fStartTime;
     }

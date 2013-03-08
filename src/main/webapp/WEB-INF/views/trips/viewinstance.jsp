@@ -28,9 +28,11 @@
             </h2>
             ${tripInstanceObject.description}
             <br/>
-            <spring:message code='text.tripcreator'/>:
-            <a href="/profile/view/${tripInstanceObject.organiser.id}" class="active">${tripInstanceObject.organiser.name}</a>
-            <br/>
+            <spring:message code='text.triporganiser'/>:
+            <a href="/profile/view/${tripInstanceObject.organiser.id}" class="active">${tripInstanceObject.organiser.name}</a> <br/>
+            <spring:message code='text.date'/>: ${date} <br/>
+            <spring:message code='text.from'/>: ${startTimeString} <br/>
+            <spring:message code='text.to'/>: ${endTimeString} <br/>
 
             <c:if test="${tripInstanceObject.organiser.id == userObject.id}">
                 <a href="/trips/editinstance/${tripInstanceObject.id}" class="active"><spring:message code='text.edittrip'/></a>
@@ -52,8 +54,8 @@
                     <c:when test="${!empty tripInstanceObject.trip.stops}">
                         <ul class='sortable'>
                             <c:forEach var="stop" items="${tripInstanceObject.trip.stops}">
-                                <%--<li id="stop-${stop.id}">${stop.stopnumber}: <a href="/trips/editStop/${stop.id}" class="active"><c:out value="${stop.name}"/></a></li>--%>
-                                <li>view die stop jongeuh</li>
+                                <li id="stop-${stop.id}">${stop.stopnumber}: <a href="/trips/editStop/${stop.id}" class="active"><c:out value="${stop.name}"/></a></li>
+                                <%--<li>view die stop jongeuh</li>--%>
                             </c:forEach>
                         </ul>
                     </c:when>
@@ -76,7 +78,7 @@
                         <table>
                             <c:forEach var="requirementInstance" items="${tripInstanceObject.requirementInstances}">
                                 <tr>
-                                    <td><a href="/trips/editTriprequirementInstance/${requirementInstance.id}"
+                                    <td><a href="/trips/editinstancerequirement/${requirementInstance.id}"
                                            class="active">${requirementInstance.name}</a></td>
                                     <td><spring:message code="text.amount"/>: ${requirementInstance.amount}</td>
                                 </tr>
@@ -89,7 +91,8 @@
                                             <td>${requirementInstance.user.name}</td>
                                         </c:when>
                                         <c:otherwise>
-                                            <td><spring:message code="text.requirementinstancebrings"/>: <spring:message code='text.requirementinstanceforallusers'/></td>
+                                            <td><spring:message code="text.requirementinstancebrings"/>: <spring:message
+                                                    code='text.requirementinstanceforallusers'/></td>
                                         </c:otherwise>
                                     </c:choose>
                                     <td>assign user to reqInstance (anchor of javascript? idk)</td>
