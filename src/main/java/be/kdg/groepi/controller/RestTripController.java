@@ -251,15 +251,13 @@ public class RestTripController {
         ModelAndView modelAndView = new ModelAndView("trips/editinstance");
         TripInstance tripInstance = TripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId));
         modelAndView.addObject("tripInstanceObject", tripInstance);
-//        modelAndView.addObject("date", DateUtil.formatDate(tripInstance.getStartTime()));
         modelAndView.addObject("startTimeString", DateUtil.formatTime(tripInstance.getStartTime()));
         modelAndView.addObject("endTimeString", DateUtil.formatTime(tripInstance.getEndTime()));
         return modelAndView;
     }
 
     @RequestMapping(value = "/updateinstance", method = RequestMethod.POST)
-    public ModelAndView updateInstance(//@ModelAttribute("tripInstanceObject") TripInstance tripInstance,
-                                       @RequestParam(value = "tripInstanceId") Long tripInstanceId,
+    public ModelAndView updateInstance(@RequestParam(value = "tripInstanceId") Long tripInstanceId,
                                        @RequestParam(value = "title") String title,
                                        @RequestParam(value = "description") String description,
                                        @RequestParam(value = "available") Boolean available,
@@ -300,6 +298,7 @@ public class RestTripController {
         } else {
             logger.debug("Returning ownTripInstances = NULL");
         }
+
 
         Map<Long, String> publicTripInstanceDates = new HashMap<>();
         Map<Long, String> publicTripInstanceStartTimes = new HashMap<>();
@@ -347,8 +346,17 @@ public class RestTripController {
 
         if (tripInstance != null) {
             logger.debug("Returning TripInstance: " + tripInstance.toString() + " with tripInstance #" + tripInstanceId);
+
+            Map<Long, String> messageDates = new HashMap<>();
+            List<Message> messages = MessageService.getMessagesByTripInstanceId(Long.parseLong(tripInstanceId));
+
+            for (Message message : messages) {
+                messageDates.put(Long.parseLong(tripInstanceId), DateUtil.formatDate(DateUtil.longToDate(message.getDate())));
+            }
+
             ModelAndView modelAndView = new ModelAndView("trips/viewinstance");
             modelAndView.addObject("tripInstanceObject", tripInstance);
+            modelAndView.addObject("messageDates", messageDates);
             modelAndView.addObject("userObject", session.getAttribute("userObject"));
             modelAndView.addObject("date", DateUtil.formatDate(tripInstance.getStartTime()));
             modelAndView.addObject("startTimeString", DateUtil.formatTime(tripInstance.getStartTime()));
@@ -365,8 +373,7 @@ public class RestTripController {
     }
 
     @RequestMapping(value = "/doaddinstancerequirement", method = RequestMethod.POST)
-    public ModelAndView doAddInstanceRequirement(@RequestParam(value = "tripInstanceId") String tripInstanceId,/*
-             @ModelAttribute("requirementObject") Requirement requirement*/
+    public ModelAndView doAddInstanceRequirement(@RequestParam(value = "tripInstanceId") String tripInstanceId,
                                                  @RequestParam(value = "name") String name,
                                                  @RequestParam(value = "amount") Long amount,
                                                  @RequestParam(value = "description") String description) {
@@ -374,11 +381,9 @@ public class RestTripController {
         TripInstance tripInstance = TripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId));
         RequirementInstance requirementInstance = new RequirementInstance(name, amount, description, tripInstance);
         RequirementInstanceService.createRequirementInstance(requirementInstance);
-        //       trip.addRequirementToTrip(requirement);
-//        tripInstance.addRequirementInstanceToTripInstance(requirementInstance);
-//        TripInstanceService.updateTripInstance();
-//        return "trips/viewInstance/" + tripInstanceId;
-        return new ModelAndView("trips/viewInstance", "tripInstanceObject", tripInstance);
+        ModelAndView modelAndView = new ModelAndView("redirect:/trips/addinstancerequirement/" + tripInstanceId);
+        modelAndView.addObject("tripInstanceObject", tripInstance);
+        return modelAndView;
     }
 
     @RequestMapping(value = "/addmessage/{tripInstanceId}", method = RequestMethod.GET)
@@ -397,6 +402,23 @@ public class RestTripController {
         Long date = cal.getTime().getTime();
         Message message = new Message(content, date, tripInstance, sessionUser);
         MessageService.createMessage(message);
-        return new ModelAndView("trips/viewinstance", "tripInstanceObject", tripInstance);
+        return new ModelAndView("redirect:/trips/addmessage/" + tripInstanceId, "tripInstanceObject", tripInstance);
+    }
+
+    @RequestMapping(value = "/addcost/{tripInstanceId}", method = RequestMethod.GET)
+    public ModelAndView addCost(@PathVariable("tripInstanceId") String tripInstanceId) {
+        return new ModelAndView("trips/addcost", "tripInstanceId", tripInstanceId);
+    }
+
+    @RequestMapping(value = "/doaddcost", method = RequestMethod.POST)
+    public ModelAndView doAddCost(HttpSession session, @RequestParam(value = "tripInstanceId") String tripInstanceId,
+                                  @RequestParam(value = "description") String description,
+                                  @RequestParam(value = "amount") String amount) {
+
+        TripInstance tripInstance = TripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId));
+        User sessionUser = (User) session.getAttribute("userObject");
+        Cost cost = new Cost(description, Double.parseDouble(amount), tripInstance, sessionUser);
+        CostService.createCost(cost);
+        return new ModelAndView("redirect:/trips/addcost/" + tripInstanceId, "tripInstanceObject", tripInstance);
     }
 }

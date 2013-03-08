@@ -26,6 +26,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             JSONObject user = Controller.springSecurityCheck(email, password);
             if(user != null){
                 sessionEditor.putString("User",user.toString());
+                sessionEditor.commit();
                 Intent intent = new Intent(getApplicationContext(),UserTripsActivity.class);
                 startActivity(intent);
             }
@@ -44,7 +45,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        if(!loginThread.isAlive()){
         loginThread.start();
+        }
     }
 
 }

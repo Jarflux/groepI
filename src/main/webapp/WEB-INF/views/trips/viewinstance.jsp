@@ -29,13 +29,15 @@
             ${tripInstanceObject.description}
             <br/>
             <spring:message code='text.triporganiser'/>:
-            <a href="/profile/view/${tripInstanceObject.organiser.id}" class="active">${tripInstanceObject.organiser.name}</a> <br/>
+            <a href="/profile/view/${tripInstanceObject.organiser.id}"
+               class="active">${tripInstanceObject.organiser.name}</a> <br/>
             <spring:message code='text.date'/>: ${date} <br/>
             <spring:message code='text.from'/>: ${startTimeString} <br/>
             <spring:message code='text.to'/>: ${endTimeString} <br/>
 
             <c:if test="${tripInstanceObject.organiser.id == userObject.id}">
-                <a href="/trips/editinstance/${tripInstanceObject.id}" class="active"><spring:message code='text.edittrip'/></a>
+                <a href="/trips/editinstance/${tripInstanceObject.id}" class="active"><spring:message
+                        code='text.edittrip'/></a>
             </c:if>
             <c:if test="${tripInstanceObject.organiser.id != userObject.id}">
                 Zo, jij wil deze trip aanpassen? MAG NIET!
@@ -54,7 +56,9 @@
                     <c:when test="${!empty tripInstanceObject.trip.stops}">
                         <ul class='sortable'>
                             <c:forEach var="stop" items="${tripInstanceObject.trip.stops}">
-                                <li id="stop-${stop.id}">${stop.stopnumber}: <a href="/trips/editStop/${stop.id}" class="active"><c:out value="${stop.name}"/></a></li>
+                                <li id="stop-${stop.id}">${stop.stopnumber}: <a href="/trips/editStop/${stop.id}"
+                                                                                class="active"><c:out
+                                        value="${stop.name}"/></a></li>
                                 <%--<li>view die stop jongeuh</li>--%>
                             </c:forEach>
                         </ul>
@@ -68,9 +72,6 @@
         <div class="quarter">
             <section>
                 <h3><spring:message code='text.requirements'/></h3>
-                <%--<form method="get" action="/trips/addRequirement/${tripObject.id}">
-                    <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
-                </form>--%>
                 <a href="/trips/addinstancerequirement/${tripInstanceObject.id}" class="active"><spring:message
                         code='text.add'/></a>
                 <c:choose>
@@ -110,9 +111,6 @@
         <div class="quarter">
             <section>
                 <h3><spring:message code='text.messages'/></h3>
-                <%--<form method="post" action="/trips/addinstance/${tripObject.id}">
-                    <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
-                </form>--%>
                 <a href="/trips/addmessage/${tripInstanceObject.id}" class="active"><spring:message
                         code='text.add'/></a>
                 <c:choose>
@@ -121,7 +119,15 @@
                             <c:forEach var="message" items="${tripInstanceObject.messages}">
                                 <tr>
                                     <td>${message.user.name}</td>
-                                    <td>${message.date}</td>
+
+                                    <c:forEach var="messageDate" items="${messageDates}">
+                                        <c:choose>
+                                            <c:when test="${messageDate.key == tripInstanceObject.id}">
+                                                <td>${messageDate.value}</td>
+                                            </c:when>
+                                        </c:choose>
+                                    </c:forEach>
+
                                 </tr>
                                 <tr>
                                     <td rowspan="2">${message.content}</td>
@@ -138,9 +144,6 @@
         <div class="quarter">
             <section>
                 <h3><spring:message code='text.costs'/></h3>
-                <%--<form method="post" action="/trips/addinstance/${tripObject.id}">
-                    <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
-                </form>--%>
                 <a href="/trips/addcost/${tripInstanceObject.id}" class="active"><spring:message code='text.add'/></a>
                 <c:choose>
                     <c:when test="${!empty tripInstanceObject.costs}">
@@ -165,21 +168,14 @@
         <div class="quarter">
             <section>
                 <h3><spring:message code='text.participants'/></h3>
-                <%--<form method="post" action="/trips/addinstance/${tripObject.id}">
-                    <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
-                </form>--%>
-                <%--<a href="/trips/addcost/${tripInstanceObject.id}" class="active"><spring:message code='text.add'/></a>--%>
                 <c:choose>
                     <c:when test="${!empty tripInstanceObject.participants}">
                         <table>
                             <c:forEach var="user" items="${tripInstanceObject.participants}">
                                 <tr>
+                                        <%--TODO: link naar profiel maybe?--%>
                                     <td>${user.name}</td>
-                                </tr><%--
-                                <tr>
-                                    <td>${user.}</td>                      TODO: cost/message aanmaken
-                                    <td>${cost.description}</td>
-                                </tr>--%>
+                                </tr>
                             </c:forEach>
                         </table>
                     </c:when>

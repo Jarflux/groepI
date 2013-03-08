@@ -5,7 +5,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Post A Message</title>
+    <title>Add A Cost</title>
     <link href="/css/blue.css" rel="stylesheet"/>
 </head>
 <body>
@@ -14,14 +14,19 @@
         <jsp:include page="/topmenu"/>
     </div>
     <div id="content" class="column light">
-        <h2><spring:message code="text.addmessage"/></h2>
+        <h2><spring:message code="text.addcost"/></h2>
 
-        <form method="post" action="/trips/doaddmessage" class="mainstyle tooltips">
+        <form method="post" action="/trips/doaddcost" class="mainstyle tooltips">
             <input type="hidden" name="tripInstanceId" title="tripInstanceId" value="${tripInstanceId}"/>
 
             <div class="row">
-                <span><spring:message code='text.messagecontent'/></span>
-                <input name="content" title="<spring:message code='text.messagecontent'/>"/>
+                <span><spring:message code='text.costdescription'/></span>
+                <input name="description" title="<spring:message code='text.costdescription'/>"/>
+            </div>
+
+            <div class="row">
+                <span><spring:message code='text.costamount'/></span>
+                <input name="amount" title="<spring:message code='text.costamount'/>"/>
             </div>
 
             <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
