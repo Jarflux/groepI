@@ -13,6 +13,7 @@
 <head>
     <title><spring:message code='text.viewtripinformation'/></title>
     <link href="/css/blue.css" rel="stylesheet"/>
+    <link href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" rel="stylesheet"/>
 </head>
 <body>
 <div id="wrapper">
@@ -96,7 +97,9 @@
                                                     code='text.requirementinstanceforallusers'/></td>
                                         </c:otherwise>
                                     </c:choose>
-                                    <td>assign user to reqInstance (anchor of javascript? idk)</td>
+                                    <td class='addrequirement' inid='${requirementInstance.id}'>assign user to
+                                        reqInstance (anchor of javascript? idk)
+                                    </td>
                                 </tr>
                             </c:forEach>
                         </table>
@@ -127,6 +130,15 @@
                                             </c:when>
                                         </c:choose>
                                     </c:forEach>
+                                    <td>
+                                        <form method="post" action="/trips/deletemessage">
+                                            <input type="hidden" value="${message.id}" name="messageId"/>
+                                            <input type="hidden" value="${tripInstanceObject.id}"
+                                                   name="tripInstanceId"/>
+                                            <input type="submit" class="button"
+                                                   value="<spring:message code='text.deletemessage'/>"/>
+                                        </form>
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -187,10 +199,28 @@
         </div>
     </div>
 </div>
+<div id="assignRequirementToParticipant" title="<spring:message code="text.assignrequirementtoparticipant"/>">
+    <p>
+
+    <form method="POST" action="/trips/assignrequirementtouser">
+        <input type="hidden" id="requirementinstanceid" name="requirementinstanceid"/>
+        <select name="responsibleuser">
+            <option value="0">Iedereen</option>
+            <c:forEach var="participant" items="${tripInstanceObject.participants}">
+                <option value="${participant.id}">${participant.name}</option>
+            </c:forEach>
+            <input type="submit" class="button" value="<spring:message code="text.save"/>"/>
+        </select>
+    </form>
+    </p>
+
+
+</div>
 <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 <script src="/js/functions.js"></script>
-<script>makesortable();
+<script>maketripsortable();
+preparemodal();
 </script>
 </body>
 </html>
