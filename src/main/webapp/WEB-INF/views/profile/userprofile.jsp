@@ -55,32 +55,24 @@
 
                         <div class="row">
                             <table>
-                            <c:forEach var="tripInstance" items="${userTripInstances}">
-                                <td><spring:message code="text.tripname"/></td>
-                                <td><spring:message code="text.tripdescription"/></td>
-                                <td><spring:message code="text.tripinstancestarttime"/></td>
-                                <td><spring:message code="text.tripinstanceendtime"/></td>
-                                    <caption><spring:message code="text.tripsparticipated"/></caption>
+                                <caption><spring:message code="text.tripsparticipated"/></caption>
+                                <tr>
+                                    <td><spring:message code="text.tripname"/></td>
+                                    <td><spring:message code="text.tripdescription"/></td>
+                                    <td><spring:message code="text.date"/></td>
+                                    <td><spring:message code="text.starttime"/></td>
+                                    <td><spring:message code="text.endtime"/></td>
+                                </tr>
+                                <c:forEach var="tripInstance" items="${userTripInstances}">
                                     <tr>
                                         <td>${tripInstance.title}</td>
                                         <td>${tripInstance.description}</td>
-                                        <c:forEach var="startDate" items="${tripInstanceStartDates}">
-                                            <c:choose>
-                                                <c:when test="${startDate.key == tripInstance.trip.id}">
-                                                    <td>${startDate.value}</td>
-                                                </c:when>
-                                            </c:choose>
-                                        </c:forEach>
-                                        <c:forEach var="endDate" items="${tripInstanceEndDates}">
-                                            <c:choose>
-                                                <c:when test="${endDate.key == tripInstance.trip.id}">
-                                                    <td>${endDate.value}</td>
-                                                </c:when>
-                                            </c:choose>
-                                        </c:forEach>
+                                        <td>${tripInstanceDates.get(tripInstance.id)}</td>
+                                        <td>${tripInstanceStartTimes.get(tripInstance.id)}</td>
+                                        <td>${tripInstanceEndTimes.get(tripInstance.id)}</td>
                                     </tr>
-                                </table>
-                            </c:forEach>
+                                </c:forEach>
+                            </table>
                         </div>
                     </c:when>
                     <c:when test="${userObject == null}">
