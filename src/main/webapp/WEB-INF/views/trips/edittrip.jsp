@@ -27,11 +27,13 @@
                 </div>
                 <div class="row">
                     <span><spring:message code='text.description'/></span>
-                    <textarea name="description" title="<spring:message code='text.descriptiontooltip'/>">${tripObject.description}</textarea>
+                    <textarea name="description"
+                              title="<spring:message code='text.descriptiontooltip'/>">${tripObject.description}</textarea>
                 </div>
                 <div class="row">
                     <span><spring:message code='text.repeatabletrip'/></span>
-                    <input type="checkbox" name="repeatable" value="true" title="Is je trip herhaalbaar?" checked="${tripObject.repeatable}"/>
+                    <input type="checkbox" name="repeatable" value="true" title="Is je trip herhaalbaar?"
+                           checked="${tripObject.repeatable}"/>
                 </div>
                 <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
             </form>

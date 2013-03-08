@@ -38,10 +38,11 @@
                 <span><spring:message code='text.description'/></span>
                 <textarea name="description" title="<spring:message code='text.requirementdescription'/>"></textarea>
             </div>
-            <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
+            <input title="<spring:message code='text.save'/>" type="submit" class="button"
+                   value="<spring:message code='text.save'/>"/>
         </form>
-        <form method="get" action="/trips/viewinstance/${tripInstanceId}" class="mainstyle tooltips">
-            <input type="submit" class="button" value="<spring:message code='text.finishediting'/>"/>
+        <form method="get" action="/trips/viewinstance/${tripInstanceId}" class="mainstyle">
+            <input title="" type="submit" class="button" value="<spring:message code='text.finishediting'/>"/>
         </form>
     </div>
 </div>
