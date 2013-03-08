@@ -24,48 +24,42 @@ public class AnswerInstanceServiceTest {
     User user;
     Trip trip;
     Stop stop;
-    Answer answer;
-    StopInstance stopInstance;
+    //Answer answer;
     TripInstance tripInstance;
     AnswerInstance answerInstance;
+    long id;
 
     @Before
     public void beforeEachTest() {
-        user = new User("Tim", "tim@junittest.com", "tim", dateToLong(4, 5, 2011, 15, 32, 0));
+        user = new User("Gregory", "gregory@trippie.com", "greg", dateToLong(4, 5, 1988, 15, 32, 0));
         UserService.createUser(user);
-        trip = new Trip("Onze eerste trip", "Hopelijk is deze niet te saai!", true, true, user);// trip aanmaken
+        trip = new Trip("Stadswandeling, Antwerp Edition", "Een wandeling doorheen het centrum met als afsluiter een etentje op het nieuwe Zuid.", true, true, user);// trip aanmaken
         TripService.createTrip(trip);
-
-        tripInstance = new TripInstance("Tripje 1", "Eerste uitvoering van de 'Onze eerste trip'-trip", true,
-                DateUtil.dateToLong(2, 3, 2013, 12, 0, 0), DateUtil.dateToLong(2, 3, 2013, 16, 0, 0), user, trip);
-        TripInstanceService.createTripInstance(tripInstance);
-
-        stop = new Stop("Stop 1", "", "", 1, 0, 0, "Eerste Stopplaats", trip);
+        stop = new Stop("Groenplaats",  "4.399166", "51.221212", 1, 1, 1, "Van wie is dit stambeeld?", trip);
+        stop.getAnswers().add(new Answer("Van Gogh", false, null));
+        stop.getAnswers().add(new Answer("Rubens", true, null));
+        stop.getAnswers().add(new Answer("Picasso", false, null));
+        stop.getAnswers().add(new Answer("Rembrandt", false, null));
         StopService.createStop(stop);
-        stopInstance = new StopInstance(stop, tripInstance);
-        StopInstanceService.createStopInstance(stopInstance);
-
-        List<String> answers = new ArrayList<String>();
-        answers.add("Answer 1");
-        answers.add("Answer 2");
-        answers.add("Answer 3");
-        answer = new Answer(answers, 1, "Answer 2 is correct because it too is correct.", stop);
-        AnswerService.createAnswer(answer);
-
-        answerInstance = new AnswerInstance(answer, user, stopInstance, answer.getAnswers().get(1), answer.isAnswerCorrect(1));
+        tripInstance = new TripInstance("KdG's Stadswandeling, Antwerp Edition", "Karel de Grote organizeert een stadswandeling met Trippie Trip Advisor", true,
+                DateUtil.dateToLong(2, 3, 2013, 12, 0, 0), DateUtil.dateToLong(2, 3, 2013, 16, 0, 0), user, trip);
+        stop = StopService.getStopById(stop.getId());
+        TripInstanceService.createTripInstance(tripInstance);
+        answerInstance = new AnswerInstance(stop.getAnswers().get(0),user,tripInstance);
         AnswerInstanceService.createAnswerInstance(answerInstance);
+        id = answerInstance.getId();
     }
 
     @After
     public void afterEachTest() {
-/*        if (AnswerService.getAllAnswers().contains(answer)) AnswerService.deleteAnswer(answer);
         StopService.deleteStop(stop);
         TripService.deleteTrip(trip);
-        UserService.deleteUser(user);*/
+        UserService.deleteUser(user);
     }
 
     @Test
     public void createAnswerInstance() {
+        long id2 = answerInstance.getId();
         assertTrue("createAnswerInstance: answerInstance was not created",
                 answerInstance.equals(AnswerInstanceService.getAnswerInstanceById(answerInstance.getId())));
     }
@@ -73,23 +67,15 @@ public class AnswerInstanceServiceTest {
 
     @Test
     public void updateAnswerInstance() {
-        AnswerInstance originalAnswerInstance = new AnswerInstance(answerInstance.getAnswer(), answerInstance.getUser(),
-                answerInstance.getStopInstance(), answerInstance.getGivenAnswer(), answerInstance.isCorrect());
-
-        answerInstance.answerQuestion(answer.getAnswers().get(2), answer.isAnswerCorrect(2));
-
+        answerInstance.setAnswer(stop.getAnswers().get(1));
         AnswerInstanceService.updateAnswerInstance(answerInstance);
-        AnswerInstance newAnswerInstance = AnswerInstanceService.getAnswerInstanceById(answerInstance.getId());
-        assertFalse("updateAnswer: answer was not updated",
-                originalAnswerInstance.equals(AnswerInstanceService.getAnswerInstanceById(answerInstance.getId())));
+        answerInstance = AnswerInstanceService.getAnswerInstanceById(answerInstance.getId());
+        assertTrue("Answer should be correct now:", answerInstance.isCorrect());
     }
 
     @Test
     public void deleteAnswerInstances() {
-        while (!AnswerInstanceService.getAllAnswerInstances().isEmpty()) {
-            AnswerInstance firstAnswerInstance = AnswerInstanceService.getAllAnswerInstances().get(0);
-            AnswerInstanceService.deleteAnswerInstance(firstAnswerInstance);
-        }
+        AnswerInstanceService.deleteAnswerInstance(answerInstance);
         assertTrue(AnswerInstanceService.getAllAnswerInstances().isEmpty());
     }
 

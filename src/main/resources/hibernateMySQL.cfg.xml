@@ -18,7 +18,7 @@
 
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">false</property>
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create-drop</property>
         <property name="format_sql">false</property>
         <property name="use_sql_comments">false</property>
 
@@ -35,6 +35,5 @@
         <mapping class="be.kdg.groepi.model.TripInstance"/>
         <mapping class="be.kdg.groepi.model.RequirementInstance"/>
         <mapping class="be.kdg.groepi.model.AnswerInstance"/>
-        <mapping class="be.kdg.groepi.model.StopInstance"/>
     </session-factory>
 </hibernate-configuration>

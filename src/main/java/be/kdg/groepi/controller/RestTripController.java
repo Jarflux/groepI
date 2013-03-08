@@ -33,9 +33,7 @@ public class RestTripController {
 
     @RequestMapping(value = "/createTrip", method = RequestMethod.POST)
     public ModelAndView createTrip(HttpSession session, @ModelAttribute("tripObject") Trip trip) {
-
         User user = (User) session.getAttribute("userObject");
-
         trip.setOrganiser(user);
         TripService.createTrip(trip);
         return new ModelAndView("trips/view", "tripId", trip.getId().toString());
@@ -113,10 +111,20 @@ public class RestTripController {
     }
 
     @RequestMapping(value = "/edittrip/{tripId}", method = RequestMethod.GET)
-    public ModelAndView editTripView(@PathVariable("tripId") String tripId) {
-        ModelAndView modelAndView = new ModelAndView("trips/edittrip");
-        modelAndView.addObject("tripObject", TripService.getTripById(Long.parseLong(tripId)));
-        return modelAndView;
+    public ModelAndView editTripView(@PathVariable("tripId") String tripId, HttpSession session) {
+        User user = (User) session.getAttribute("userObject");
+        Trip trip = TripService.getTripById(Long.parseLong(tripId));
+        if (trip.getOrganiser().getId() == user.getId())
+        {
+            ModelAndView modelAndView = new ModelAndView("trips/edittrip");
+            modelAndView.addObject("tripObject", trip);
+            return modelAndView;
+        }
+        else
+        {
+            //TODO correcte error weergeven
+            return new ModelAndView("error/displayerror");
+        }
     }
 
     @RequestMapping(value = "/updateTrip", method = RequestMethod.POST)
@@ -135,14 +143,24 @@ public class RestTripController {
     }
 
     @RequestMapping(value = "/editStop/{stopId}", method = RequestMethod.GET)
-    public ModelAndView editStopView(@PathVariable("stopId") String stopId) {
+    public ModelAndView editStopView(@PathVariable("stopId") String stopId, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("trips/editstop");
-        modelAndView.addObject("stopObject", StopService.getStopById(Long.parseLong(stopId)));
-        return modelAndView;
+        Stop stop = StopService.getStopById(Long.parseLong(stopId));
+        User user = (User) session.getAttribute("userObject");
+        if (stop.getTrip().getOrganiser().getId() == user.getId())
+        {
+            modelAndView.addObject("stopObject", stop);
+            return modelAndView;
+        }
+        else
+        {
+            //TODO correcte error weergeven
+            return new ModelAndView("error/displayerror");
+        }
+
     }
 
     @RequestMapping(value = "/updateStop", method = RequestMethod.POST)
-//    public ModelAndView updateStop(@ModelAttribute("tripObject") Stop stop) {
     public ModelAndView updateStop(@ModelAttribute("stopObject") Stop stop) {
         StopService.updateStop(stop);
         return new ModelAndView("trips/view", "stopObject", stop);
@@ -231,11 +249,6 @@ public class RestTripController {
         for (Requirement req : tempTripInstance.getTrip().getRequirements()) {
             RequirementInstance reqIns = new RequirementInstance(req, tripInstance);
             RequirementInstanceService.createRequirementInstance(reqIns);
-        }
-
-        for (Stop stop : tempTripInstance.getTrip().getStops()) {
-            StopInstance stopIns = new StopInstance(stop, tripInstance);
-            StopInstanceService.createStopInstance(stopIns);
         }
 
         return tripInstance;

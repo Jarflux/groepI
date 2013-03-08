@@ -6,13 +6,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Gregory
- * Date: 21/02/13
- * Time: 13:26
- * To change this template use File | Settings | File Templates.
- */
+
 @Entity
 @Table(name = "T_ANSWER")
 public class Answer {
@@ -21,31 +15,21 @@ public class Answer {
     @GeneratedValue
     @Column(name = "answer_id")
     private Long fId;
-    @Column(name = "answers")
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<String> fAnswers = new ArrayList<>();// = new ArrayList<String>();
-    @Column(name = "correctAnswer")
-    private int fCorrectAnswer;
-    @Column(name = "correctAnswerDescription")
-    private String fCorrectAnswerDescription;
+    @Column(name = "answerText")
+    private String fAnswerText;
+    @Column(name = "isCorrect")
+    private boolean fIsCorrect;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "stop_id", nullable = false)
     private Stop fStop;
-
+    
     public Answer() {
     }
 
-    public Answer(Stop fStop) {
-        this.fStop = fStop;
-    }
-
-    public Answer(List<String> answers, int correctAnswer, String correctAnswerDescription, Stop fStop) {
-        this.fAnswers = answers;
-        if (correctAnswer < 0 || correctAnswer >= answers.size()) {
-            correctAnswer = 0;
-        }
-        this.fCorrectAnswer = correctAnswer;
-        this.fCorrectAnswerDescription = correctAnswerDescription;
+    public Answer(String fAnswerText, boolean fIsCorrect, Stop fStop) {
+        this.fAnswerText = fAnswerText;
+        this.fIsCorrect = fIsCorrect;
         this.fStop = fStop;
     }
 
@@ -53,52 +37,24 @@ public class Answer {
         return fId;
     }
 
-    public List<String> getAnswers() {
-        return fAnswers;
+    public void setId(Long fId) {
+        this.fId = fId;
     }
 
-    public void setAnswers(List<String> fAnswers) {
-        this.fAnswers = fAnswers;
+    public String getAnswerText() {
+        return fAnswerText;
     }
 
-    public void addAnswer(String answer) {
-        fAnswers.add(answer);
+    public void setAnswerText(String fAnswerText) {
+        this.fAnswerText = fAnswerText;
     }
 
-    public void removeAnswer(String answer) {
-        int indexOfAnswer = fAnswers.indexOf(answer);
-        if (fCorrectAnswer > indexOfAnswer) {
-            fCorrectAnswer--;
-        } else if (fCorrectAnswer == indexOfAnswer) {
-            fCorrectAnswer = 0;
-        }
-        fAnswers.remove(answer);
+    public boolean getIsCorrect() {
+        return fIsCorrect;
     }
 
-    public void removeAnswer(int index) {
-        if (fCorrectAnswer > index) {
-            fCorrectAnswer--;
-        }
-        fAnswers.remove(index);
-    }
-
-    public int getCorrectAnswer() {
-        return fCorrectAnswer;
-    }
-
-    public void setCorrectAnswer(int fCorrectAnswer) {
-        if (fCorrectAnswer < 0 || fCorrectAnswer >= fAnswers.size()) {
-            fCorrectAnswer = 0;
-        }
-        this.fCorrectAnswer = fCorrectAnswer;
-    }
-
-    public String getCorrectAnswerDescription() {
-        return fCorrectAnswerDescription;
-    }
-
-    public void setCorrectAnswerDescription(String fCorrectAnswerDescription) {
-        this.fCorrectAnswerDescription = fCorrectAnswerDescription;
+    public void setIsCorrect(boolean fIsCorrect) {
+        this.fIsCorrect = fIsCorrect;
     }
 
     public Stop getStop() {
@@ -108,30 +64,22 @@ public class Answer {
     public void setStop(Stop fStop) {
         this.fStop = fStop;
     }
-
-    public boolean isAnswerCorrect(int givenAnswer) {
-        if (givenAnswer == fCorrectAnswer) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
+    
     @Override
     public boolean equals(Object o) {
         if (o == null) {
             return false;
         }
         Answer answer = (Answer) o;
-        if (!CompareUtil.compareString(fCorrectAnswerDescription, answer.getCorrectAnswerDescription())) {
+        if (!CompareUtil.compareString(fAnswerText, answer.getAnswerText())) {
             return false;
         }
-        if (!CompareUtil.compareInteger(this.fCorrectAnswer, answer.getCorrectAnswer())) {
+        if (fIsCorrect != answer.getIsCorrect()) {
             return false;
         }
-        if (!CompareUtil.compareList(this.fAnswers, answer.getAnswers())) {
+        /*if (!CompareUtil.compareList(this.fAnswers, answer.getAnswers())) {
             return false;
-        }
+        }*/
         if (!fStop.equals(answer.getStop())) {
             return false;
         }

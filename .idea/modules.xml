@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TrippieApp/TrippieApp.iml" filepath="$PROJECT_DIR$/TrippieApp/TrippieApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/groepI.iml" filepath="$PROJECT_DIR$/groepI.iml" />
     </modules>
   </component>

@@ -4,13 +4,6 @@ import be.kdg.groepi.utils.CompareUtil;
 
 import javax.persistence.*;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Gregory
- * Date: 21/02/13
- * Time: 13:26
- * To change this template use File | Settings | File Templates.
- */
 @Entity
 @Table(name = "T_ANSWER_INSTANCE")
 public class AnswerInstance {
@@ -19,63 +12,31 @@ public class AnswerInstance {
     @GeneratedValue
     @Column(name = "answer_instance_id")
     private Long fId;
-    @Column(name = "givenAnswer")
-    private String fGivenAnswer;
-    @Column(name = "correct")
-    private boolean fCorrect;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "answer_id", nullable = false)
     private Answer fAnswer;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     private User fUser;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "stop_instance_id", nullable = false)
-    private StopInstance fStopInstance;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "trip_instance_id", nullable = false)
+    private TripInstance fTripInstance;
 
     public AnswerInstance() {
     }
 
-    public AnswerInstance(Answer fAnswer, User fUser, StopInstance fStopInstance, String fGivenAnswer, boolean fCorrect) {
+    public AnswerInstance(Answer fAnswer, User fUser, TripInstance fTripInstance) {
         this.fAnswer = fAnswer;
         this.fUser = fUser;
-        this.fStopInstance = fStopInstance;
-        this.fGivenAnswer = fGivenAnswer;
-        this.fCorrect = fCorrect;
+        this.fTripInstance = fTripInstance;
     }
-    /*
-     public AnswerInstance(Stop fStop) {
-     this.fStop = fStop;
-     }*/
-    /*
-     public AnswerInstance(List<String> answers, int correctAnswer, String correctAnswerDescription, Stop fStop) {
-     this.fAnswers = answers;
-     if (correctAnswer < 0 || correctAnswer >= answers.size()) {
-     correctAnswer = 0;
-     }
-     this.fCorrectAnswer = correctAnswer;
-     this.fCorrectAnswerDescription = correctAnswerDescription;
-     this.fStop = fStop;
-     }*/
 
     public Long getId() {
         return fId;
     }
 
-    public String getGivenAnswer() {
-        return fGivenAnswer;
-    }
-
-    public void setGivenAnswer(String fGivenAnswer) {
-        this.fGivenAnswer = fGivenAnswer;
-    }
-
-    public boolean isCorrect() {
-        return fCorrect;
-    }
-
-    public void setCorrect(boolean fCorrect) {
-        this.fCorrect = fCorrect;
+    public void setId(Long fId) {
+        this.fId = fId;
     }
 
     public Answer getAnswer() {
@@ -94,17 +55,17 @@ public class AnswerInstance {
         this.fUser = fUser;
     }
 
-    public StopInstance getStopInstance() {
-        return fStopInstance;
+    public TripInstance getTripInstance() {
+        return fTripInstance;
     }
 
-    public void setStopInstance(StopInstance fStopInstance) {
-        this.fStopInstance = fStopInstance;
+    public void setTripInstance(TripInstance fTripInstance) {
+        this.fTripInstance = fTripInstance;
     }
 
-    public void answerQuestion(String givenAnswer, boolean correct) {
-        this.fGivenAnswer = givenAnswer;
-        this.fCorrect = correct;
+    public boolean isCorrect()
+    {
+        return this.fAnswer.getIsCorrect();
     }
 
     @Override
@@ -113,19 +74,14 @@ public class AnswerInstance {
             return false;
         }
         AnswerInstance answerInstance = (AnswerInstance) o;
-        if (!CompareUtil.compareString(fGivenAnswer, answerInstance.getGivenAnswer())) {
-            return false;
-        }
-        if (this.fCorrect != answerInstance.isCorrect()) {
-            return false;
-        }
+
         if (!this.fAnswer.equals(answerInstance.getAnswer())) {
             return false;
         }
         if (!this.fUser.equals(answerInstance.getUser())) {
             return false;
         }
-        if (!this.fStopInstance.equals(answerInstance.getStopInstance())) {
+        if (!this.fTripInstance.equals(answerInstance.getTripInstance())) {
             return false;
         }
         return true;

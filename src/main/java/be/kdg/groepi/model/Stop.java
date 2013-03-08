@@ -1,7 +1,18 @@
 package be.kdg.groepi.model;
 
 import be.kdg.groepi.utils.CompareUtil;
+import org.apache.commons.collections.FactoryUtils;
+import org.apache.commons.collections.list.LazyList;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
+
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 //public enum STOPTYPE {
 //    INFORMATIVE (0),
@@ -10,7 +21,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "T_STOP")
 public class Stop {
-
     @Id
     @GeneratedValue
     @Column(name = "stop_id")
@@ -28,20 +38,24 @@ public class Stop {
     @Column(name = "displayMode")
     private Integer fDisplayMode;
     @Column(name = "stopText")
-    //@Type(type = "text")
     private String fStopText;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "trip_id", nullable = false)
     private Trip fTrip;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "fStop")
+    @Cascade({CascadeType.DELETE, CascadeType.SAVE_UPDATE})
+    private List<Answer> fAnswers = LazyList.decorate(new ArrayList<Answer>(), FactoryUtils.instantiateFactory(Answer.class));
+
     public Stop() {
     }
 
-    public Stop(String fName, String fLongitude, String fLatitude, Integer fOrder, Integer fType, Integer fDisplayMode, String fStopText, Trip fTrip) {
+    public Stop(String fName, String fLongitude, String fLatitude, Integer fStopnumber, Integer fType, Integer fDisplayMode, String fStopText, Trip fTrip) {
         this.fName = fName;
         this.fLongitude = fLongitude;
         this.fLatitude = fLatitude;
-        this.fStopnumber = fOrder;
+        this.fStopnumber = fStopnumber;
         this.fType = fType;
         this.fDisplayMode = fDisplayMode;
         this.fStopText = fStopText;
@@ -114,6 +128,14 @@ public class Stop {
 
     public void setTrip(Trip fTrip) {
         this.fTrip = fTrip;
+    }
+
+    public List<Answer> getAnswers() {
+        return fAnswers;
+    }
+
+    public void setAnswers(List<Answer> fAnswers) {
+        this.fAnswers = fAnswers;
     }
 
     @Override

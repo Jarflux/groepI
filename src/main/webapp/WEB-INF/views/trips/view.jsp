@@ -22,15 +22,15 @@
     <div id="content" class="column light">
         <h2><spring:message code='text.viewtripinformation'/></h2>
         <section>
-            <h2>
-                ${tripObject.id}
+            <h3>
                 ${tripObject.title}
-            </h2>
+            </h3>
             ${tripObject.description}
             <br/>
             <spring:message code='text.tripcreator'/>:
             <a href="/profile/view/${tripObject.organiser.id}" class="active">${tripObject.organiser.name}</a>
             <br/>
+
 
             <c:if test="${tripObject.organiser.id == userObject.id}">
                 <a href="/trips/edittrip/${tripObject.id}" class="active"><spring:message code='text.edittrip'/></a>

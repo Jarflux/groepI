@@ -6,6 +6,7 @@ package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.Answer;
 import be.kdg.groepi.utils.HibernateUtil;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -93,13 +94,15 @@ public class AnswerService {
         }
     }
 
-    public static List<Answer> getAllAnswers() {
+    public static List<Answer> getAnswersByStopID(long id) {
         List<Answer> answers = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            answers = session.createQuery("FROM Answer").list();
+            Query query = session.createQuery("from Answer answer where answer.fStop = :Stop").
+                    setLong("Stop", id);
+            answers = query.list();
             tx.commit();
         } catch (RuntimeException e) {
             if (tx != null) {
