@@ -42,7 +42,7 @@ public class FileUtilTest {
     public void testUpload() throws IOException {
         User user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
         UserService.createUser(user);
-        ServletContext servletContext = new MockServletContext("file:C:/images");
+        ServletContext servletContext = new MockServletContext("file:C:" + File.separator + "images");
         HttpSession mockHttpSession = new MockHttpSession(servletContext);
 
         assertEquals("File has not been uploaded", FileUtil.savePicture(mockHttpSession, file, user.getId()),
