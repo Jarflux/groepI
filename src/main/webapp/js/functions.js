@@ -17,12 +17,28 @@ function preparemodal() {
         autoOpen: false
 
     });
+
     $('.addrequirement').on("click", function () {
         $("#assignRequirementToParticipant").dialog('open');
         var instid = $(this).attr("inid");
         $("#requirementinstanceid").val(instid);
 
-    })
+    });
+
+    $("#editCost").dialog({
+        modal: true,
+        autoOpen: false
+    });
+
+    $('.editcost').on("click", function () {
+        $("#editCost").dialog("open");
+        var instcostid = $(this).attr("incostid");
+        var instdesc = $(this).attr("indesc");
+        var instam = $(this).attr("inam");
+        $("#costid").val(instcostid);
+        $("#descval").val(instdesc);
+        $("#amval").val(instam);
+    });
 }
 
 function preparetooltips() {

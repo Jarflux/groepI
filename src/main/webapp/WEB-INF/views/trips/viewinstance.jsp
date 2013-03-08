@@ -93,12 +93,12 @@
                                             <td>${requirementInstance.user.name}</td>
                                         </c:when>
                                         <c:otherwise>
-                                            <td><spring:message code="text.requirementinstancebrings"/>: <spring:message
-                                                    code='text.requirementinstanceforallusers'/></td>
+                                            <td><spring:message code="text.requirementinstancebrings"/>:
+                                                <spring:message code='text.requirementinstanceforallusers'/></td>
                                         </c:otherwise>
                                     </c:choose>
-                                    <td class='addrequirement' inid='${requirementInstance.id}'>assign user to
-                                        reqInstance (anchor of javascript? idk)
+                                    <td class='addrequirement' inid='${requirementInstance.id}'>
+                                        Click to assign to participant
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -167,6 +167,9 @@
                                 <tr>
                                     <td>${cost.amount}</td>
                                     <td>${cost.description}</td>
+                                    <td class="editcost" inid="${tripInstanceObject.id}" incostid="${cost.id}"
+                                        indesc="${cost.description}" inam="${cost.amount}">
+                                            <spring:message code="text.edit"/>
                                     <td>
                                         <form method="post" action="/trips/deletecost">
                                             <input type="hidden" value="${cost.id}" name="costId"/>
@@ -195,8 +198,7 @@
                         <table>
                             <c:forEach var="user" items="${tripInstanceObject.participants}">
                                 <tr>
-                                        <%--TODO: link naar profiel maybe?--%>
-                                    <td>${user.name}</td>
+                                    <td><a href="/profile/view/${user.id}">${user.name}</a></td>
                                 </tr>
                             </c:forEach>
                         </table>
@@ -209,11 +211,12 @@
         </div>
     </div>
 </div>
+
 <div id="assignRequirementToParticipant" title="<spring:message code="text.assignrequirementtoparticipant"/>">
     <p>
 
     <form method="POST" action="/trips/assignrequirementtouser">
-        <input type="hidden" id="requirementinstanceid" name="requirementinstanceid"/>
+        <input type="hidden" name="requirementinstanceid"/>
         <select name="responsibleuser">
             <option value="0">Iedereen</option>
             <c:forEach var="participant" items="${tripInstanceObject.participants}">
@@ -223,9 +226,23 @@
         </select>
     </form>
     </p>
+</div>
 
+<div id="editCost" title="<spring:message code="text.editcost"/>">
+    <p>
+
+    <form method="POST" action="/trips/editcost">
+        <input type="hidden" id="costid" name="costid"/>
+        <input type="text" name="description" id="descval"
+               title="<spring:message code="text.costdescription"/>"/>
+        <input type="text" name="amount" id="amval"
+               title="<spring:message code="text.costamount"/>"/>
+        <input type="submit" class="button" value="<spring:message code="text.save"/>"/>
+    </form>
+    </p>
 
 </div>
+
 <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 <script src="/js/functions.js"></script>

@@ -94,7 +94,7 @@ public class TripInstanceService {
     }
 
     public static List<TripInstance> getAllTripInstances() {
-        List<TripInstance> tripinstances = null;
+        List<TripInstance> tripinstances = new ArrayList<>();
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
@@ -112,7 +112,7 @@ public class TripInstanceService {
     }
 
     public static List<TripInstance> getAllTripInstancesByTripId(long tripId) {
-        List<TripInstance> tripinstances = null;
+        List<TripInstance> tripinstances = new ArrayList<>();
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
@@ -133,7 +133,7 @@ public class TripInstanceService {
     }
 
     public static List<TripInstance> getTripInstancesByOrganiserId(long id) {
-        List<TripInstance> tripInstances = null;
+        List<TripInstance> tripInstances = new ArrayList<>();
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
@@ -153,7 +153,7 @@ public class TripInstanceService {
     }
 
     public static List<TripInstance> getPublicTripInstances() {
-        List<TripInstance> tripinstances = null;
+        List<TripInstance> tripinstances = new ArrayList<>();
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {

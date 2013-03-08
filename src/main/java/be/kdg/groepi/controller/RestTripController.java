@@ -439,6 +439,19 @@ public class RestTripController {
                 TripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId)));
     }
 
+    @RequestMapping(value = "/editcost", method = RequestMethod.POST)
+    public ModelAndView editCost(HttpSession session,
+                                 @RequestParam(value = "description") String description,
+                                 @RequestParam(value = "amount") String amount,
+                                 @RequestParam(value = "costid") String costId) {
+        Cost cost = CostService.getCostById(Long.parseLong(costId));
+        cost.setDescription(description);
+        cost.setAmount(Double.parseDouble(amount));
+        CostService.updateCost(cost);
+        return getModelAndViewForViewInstance(session,
+                TripInstanceService.getTripInstanceById(cost.getTripInstance().getId()));
+    }
+
     private ModelAndView getModelAndViewForViewInstance(HttpSession session, TripInstance tripInstance) {
         Map<Long, String> messageDates = new HashMap<>();
         List<Message> messages = MessageService.getMessagesByTripInstanceId(tripInstance.getId());
