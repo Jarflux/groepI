@@ -430,6 +430,15 @@ public class RestTripController {
                 TripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId)));
     }
 
+    @RequestMapping(value = "/deletecost", method = RequestMethod.POST)
+    public ModelAndView deleteCostFromTripInstance(HttpSession session,
+                                                   @RequestParam(value = "costId") String costId,
+                                                   @RequestParam(value = "tripInstanceId") String tripInstanceId) {
+        CostService.deleteCost(CostService.getCostById(Long.parseLong(costId)));
+        return getModelAndViewForViewInstance(session,
+                TripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId)));
+    }
+
     private ModelAndView getModelAndViewForViewInstance(HttpSession session, TripInstance tripInstance) {
         Map<Long, String> messageDates = new HashMap<>();
         List<Message> messages = MessageService.getMessagesByTripInstanceId(tripInstance.getId());

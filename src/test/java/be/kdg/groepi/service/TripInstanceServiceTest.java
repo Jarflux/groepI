@@ -3,10 +3,6 @@ package be.kdg.groepi.service;
 import be.kdg.groepi.model.*;
 import be.kdg.groepi.utils.CompareUtil;
 import be.kdg.groepi.utils.DateUtil;
-import be.kdg.groepi.utils.HibernateUtil;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -41,6 +37,8 @@ public class TripInstanceServiceTest {
         long endDate = DateUtil.dateToLong(27, 02, 2013, 20, 00, 00);
         tripinstance = new TripInstance("Bachelor feestje", "Iemand gaat trouwen, bier en vrouwen ole", false, startDate, endDate, user, trip);
         TripInstanceService.createTripInstance(tripinstance);
+        tripinstance.addParticipantToTripInstance(user);
+        TripInstanceService.updateTripInstance(tripinstance);
     }
 
     @After
@@ -149,11 +147,11 @@ public class TripInstanceServiceTest {
     }
 
     @Test
-    public void getTripInstancesByUserId(){
+    public void getTripInstancesByUserId() {
         List<User> users = UserService.getAllUsers();
         User testUser = users.get(0);
         List<TripInstance> trips = TripInstanceService.getTripInstancesByUserId(testUser.getId());
-        assertTrue(!trips.isEmpty());
+        assertTrue("There should be trips", !trips.isEmpty());
     }
 
     @Test

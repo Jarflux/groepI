@@ -167,7 +167,17 @@
                                 <tr>
                                     <td>${cost.amount}</td>
                                     <td>${cost.description}</td>
+                                    <td>
+                                        <form method="post" action="/trips/deletecost">
+                                            <input type="hidden" value="${cost.id}" name="costId"/>
+                                            <input type="hidden" value="${tripInstanceObject.id}"
+                                                   name="tripInstanceId"/>
+                                            <input type="submit" class="button"
+                                                   value="<spring:message code='text.deletecost'/>"/>
+                                        </form>
+                                    </td>
                                 </tr>
+
                             </c:forEach>
                         </table>
                     </c:when>
