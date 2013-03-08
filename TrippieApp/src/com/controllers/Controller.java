@@ -35,12 +35,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class Controller {
-    final static String adres = "192.168.1.137:8080";
-    private Thread thread = new Thread("New Thread") {
-        public void run(){
-
-            }
-        };
+    final static String adres = "10.132.106.192:8080";
 
     public static List<TripInstance> getUserTripParticipations(Long userId){
         JSONObject jTrips = doRequest("trips/showUserTripParticipations",userId.toString());
@@ -61,20 +56,20 @@ public class Controller {
     public static JSONObject springSecurityCheck(String name, String password) {
         DefaultHttpClient client = new DefaultHttpClient();
         HttpPost requestLogin = new HttpPost("http://"+ adres +"/j_spring_security_check?");
-        JSONObject user = null;
+        JSONObject jUser = null;
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("j_username", name));
         params.add(new BasicNameValuePair("j_password", password));
 
         try {
             requestLogin.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-            ResponseHandler<String> responseHandler=new BasicResponseHandler();
-            String userString = client.execute(requestLogin,responseHandler);
-            user = new JSONObject(userString);
+            HttpResponse response = client.execute(requestLogin);
+            String user = response.getFirstHeader("user").getValue();
+            jUser = new JSONObject(user);
         }catch(Exception e){
             e.printStackTrace();
         }
-        return user;
+        return jUser;
     }
 
     public static JSONObject doRequest(String url, String urlParameter){
