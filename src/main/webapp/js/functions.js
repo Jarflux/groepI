@@ -1,14 +1,59 @@
-var formfout = false;
-/*$("#stopType option[stoptype=1]").attr({"selected":"selected"})*/
 
-$(function () {
+window.fbAsyncInit = function() {
+    // init the FB JS SDK
+    FB.init({
+        appId      : '349005061872374', // App ID from the App Dashboard
+        channelUrl : '/fbloginpage', // Channel File for x-domain communication
+        status     : true, // check the login status upon init?
+        cookie     : true, // set sessions cookies to allow your server to access the session?
+        xfbml      : true  // parse XFBML tags on this page?
+    });
+
+    // Additional initialization code such as adding Event Listeners goes here
+
+};
+
+// Load the SDK's source Asynchronously
+// Note that the debug version is being actively developed and might
+// contain some type checks that are overly strict.
+// Please report such bugs using the bugs tool.
+(function(d, debug){
+    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement('script'); js.id = id; js.async = true;
+    js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
+    ref.parentNode.insertBefore(js, ref);
+}(document, /*debug*/ false));
+
+
+var formfout=false;
+
+$(function()
+{
     preparetooltips();
     validateform();
 
+    addhandlers();
 
-    $("#fblogin").on("click", function () {
+
+
+
+
+})
+function addhandlers()
+{
+    $("#fblogin").on("click",function()
+    {
         fblogin();
     })
+
+    $("#invitefriends").on("click",function()
+    {
+        invitefriendsdialog();
+    })
+}
+function preparetooltips()
+{
 })
 
 function preparemodal() {
@@ -87,16 +132,16 @@ function validateform() {
                 }
             })
 
-        }
-    })
-}
+            }
+        })
+    }
 
 /*Google Map Functions*/
 /*http://jsfiddle.net/fatihacet/CKegk/*/
 var map;
 var myOptions = {
     zoom: 7,
-    center: new google.maps.LatLng(51.221212, 4.399166),
+    center: new google.maps.LatLng(51.221212,4.399166),
     mapTypeId: 'roadmap'
 };
 var marker = new google.maps.Marker({});
@@ -106,68 +151,69 @@ var gMarker = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
 var bMarker = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
 var pMarker = 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png';
 
-function initializeGMaps() {
-    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-    google.maps.event.addListener(map, 'click', function (e) {
+function initializeGMaps()
+{
+    map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+    google.maps.event.addListener(map, 'click', function(e) {
         var lat = e.latLng.lat(); // lat of clicked point
         var lng = e.latLng.lng(); // lng of clicked point
         marker.setMap(null);
         marker = new google.maps.Marker({
             position: getLatLng(lat, lng),
             map: map,
-            draggable: true
+            draggable:true
         });
         setInputText(lat, "latitude");
         setInputText(lng, "longitude");
         bindMarkerEvents(marker); // bind right click event to marker
     });
 }
-var getLatLng = function (lat, lng) {
+var getLatLng = function(lat, lng) {
     return new google.maps.LatLng(lat, lng);
 };
-var bindMarkerEvents = function (marker) {
+var bindMarkerEvents = function(marker) {
     /*google.maps.event.addListener(marker, "click", function (point) {
-     });*/
+    });*/
     google.maps.event.addListener(marker, "rightclick", function (point) {
         /*window.close()
-         window.setPosition(point.latLng);
-         window.setContent(point.latLng.toString());
-         window.open(map, marker);*/
+        window.setPosition(point.latLng);
+        window.setContent(point.latLng.toString());
+        window.open(map, marker);*/
         removeMarker(marker); // remove it
     });
-    google.maps.event.addListener(marker, "dragend", function (point) {
+    google.maps.event.addListener(marker, "dragend", function (point){
         setInputText(point.latLng.lat(), "latitude");
         setInputText(point.latLng.lat(), "longitude");
     });
 
 };
-var removeMarker = function (marker) {
+var removeMarker = function(marker) {
     marker.setMap(null); // set markers setMap to null to remove it from map
 };
-function setInputText(text, controlId) {
+function setInputText(text, controlId){
     $('[name="' + controlId + '"]').val(text);
 }
 
-function placeStopMarker(latitude, longitude) {
+function placeStopMarker(latitude, longitude){
     marker = new google.maps.Marker({
-        position: new google.maps.LatLng(latitude, longitude),
+        position: new google.maps.LatLng(latitude,longitude),
         map: map,
-        draggable: true,
-        icon: gMarker
+        draggable:true,
+        icon:gMarker
     });
     bindMarkerEvents(marker);
 }
-function maketripsortable() {
-    $(".sortable").sortable({
-        update: function (event, ui) {
+function maketripsortable()
+{
+    $( ".sortable" ).sortable({
+        update: function(event, ui) {
             var deorde = $(this).sortable('toArray').toString();
-            console.log("Order is : " + deorde)
-        }});
-    $(".sortable").disableSelection();
+console.log("Order is : "+deorde)        }});
+    $( ".sortable" ).disableSelection();
 }
 
 function login() {
-    FB.login(function (response) {
+    FB.login(function(response) {
         if (response.authResponse) {
             // User heeft toestemming gegeven aan de app, controleer of user bestaat met userid in DB en anders aanmaken.
             performLogin()
@@ -176,20 +222,21 @@ function login() {
             // User heeft geen toestemming gegeven, helaas:(
             //TODO: Geef foutboodschap dat er geanulleerd is.
         }    // extra rechten nodig om aan e-mailadres te kunnen en
-    }, {scope: 'email,publish_stream,user_birthday'});
+    },{scope:'email,publish_stream,user_birthday'});
 }
 
-function fblogin() {
-    FB.getLoginStatus(function (response) {
+function fblogin()
+{
+    FB.getLoginStatus(function(response) {
         if (response.status === 'connected') {
             //user is ingelogd op FB en heeft reeds toestemming gegeven voor de app, check dus of user bestaat met userid in DB anders aanmaken
-            console.log("gebruiker is al ingelogd");
+            console.log("gebruiker is ingelogd al");
             var uid = response.authResponse.userID;
             var accessToken = response.authResponse.accessToken;
-            console.log("uid: " + uid + " en token: " + accessToken);
+            console.log("uid: "+uid+" en token: "+accessToken);
             performLogin();
         } else if (response.status === 'not_authorized') {
-            //User is ingelogd op FB maar heeft (nog) geen toestemming gegeven voor de app, toon permissie-dialoog
+           //User is ingelogd op FB maar heeft (nog) geen toestemming gegeven voor de app, toon permissie-dialoog
             login();
         } else {
             // User is zelfs niet ingelogd op FB, toon dialoog om in te loggen (en dan toestemming te geven)
@@ -200,13 +247,25 @@ function fblogin() {
 function performLogin() {
 
 
-    FB.api('/me', function (response) {
-        var gegevens = JSON.stringify(response);
-        console.log(response);
-        $.post("/profile/fblogin", response, function (resultaat) {
-            window.location = "/profile/myprofile"
+    FB.api('/me', function(response) {
+    var gegevens= JSON.stringify(response);
+               console.log(response);
+        $.post("/profile/fblogin",response,function(resultaat)
+        {
+            window.location ="/profile/myprofile"
         })
 
     });
+}
+function invitefriendsdialog()
+{
+
+        FB.ui({method: 'apprequests',
+            message: 'Invite the friends yes.'
+        }, function(requestid,toids)
+        {
+            console.log("Friends waren: "+requestid.to);
+        });
+
 }
 
