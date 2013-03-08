@@ -4,7 +4,6 @@
  */
 package be.kdg.groepi.service;
 
-import be.kdg.groepi.model.Stop;
 import be.kdg.groepi.model.StopInstance;
 import be.kdg.groepi.utils.HibernateUtil;
 import org.hibernate.Session;

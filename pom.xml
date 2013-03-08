@@ -227,7 +227,7 @@
 
         <!-- Android -->
 
-        <!--<dependency>
+        <dependency>
             <groupId>org.springframework.android</groupId>
             <artifactId>spring-android-rest-template</artifactId>
             <version>1.0.1.RELEASE</version>
@@ -237,7 +237,7 @@
             <groupId>org.springframework.android</groupId>
             <artifactId>spring-android-core</artifactId>
             <version>1.0.1.RELEASE</version>
-        </dependency>-->
+        </dependency>
 
     </dependencies>
     <repositories>
