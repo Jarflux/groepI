@@ -35,7 +35,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class Controller {
-    final static String adres = "10.132.106.192:8080";
+    final static String adres = "http://tomcat.vincentverbist.be:8080/";
 
     public static List<TripInstance> getUserTripParticipations(Long userId){
         JSONObject jTrips = doRequest("trips/showUserTripParticipations",userId.toString());
