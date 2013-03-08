@@ -160,15 +160,7 @@ public class RestTripController {
     @RequestMapping(value = "/showUserTripParticipations/{userId}", method = RequestMethod.GET)
     public void getUserTripParticipations(@PathVariable(value = "userId") String userId,HttpServletRequest request, HttpServletResponse response) {
         List<TripInstance> trips = TripInstanceService.getTripInstancesByUserId(Long.parseLong(userId));
-        for (TripInstance trip : trips){
-
-        }
-        JSONObject jo = new JSONObject();
-        try {
-            jo.put("trips",trips);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        JSONObject jo = new JSONObject(trips);
         try {
             response.getWriter().print(jo.toString());
         } catch (IOException e) {
