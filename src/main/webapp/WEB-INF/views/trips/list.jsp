@@ -84,13 +84,6 @@
                                     <td>${publicTrip.description}</td>
                                     <td><a href="/trips/view/${publicTrip.id}" class="active"><spring:message
                                             code='text.detail'/></a></td>
-                                    <%--<td>
-                                        <form method="post" action="jointrip">
-                                            <input type="hidden" value="${publicTrip.id}" name="tripId"/>
-                                            <input type="submit" class="button"
-                                                   value="<spring:message code='text.jointrip'/>"/>
-                                        </form>
-                                    </td>--%>
                                 </tr>
                             </c:forEach>
                         </table>
