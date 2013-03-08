@@ -5,15 +5,13 @@ import be.kdg.groepi.service.UserService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.core.io.DescriptiveResource;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.mock.web.MockServletContext;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
 
 import static be.kdg.groepi.utils.DateUtil.dateToLong;
@@ -48,10 +46,10 @@ public class FileUtilTest {
         HttpSession mockHttpSession = new MockHttpSession(servletContext);
 
         assertEquals("File has not been uploaded", FileUtil.savePicture(mockHttpSession, file, user.getId()),
-                "/images/profilepictures/" + user.getId() + ".jpg");
+                File.separator + "images" + File.separator + "profilepictures" + File.separator + user.getId() + ".jpg");
 
 
         assertTrue("File paths are not equal", FileUtil.savePicture(mockHttpSession, file,
-                user.getId()).equals("/images/profilepictures/" + user.getId() + ".jpg"));
+                user.getId()).equals(File.separator + "images" + File.separator + "profilepictures" + File.separator + user.getId() + ".jpg"));
     }
 }

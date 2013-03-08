@@ -106,4 +106,23 @@ public class MessageService {
         }
         return messages;
     }
+
+    public static List<Message> getMessagesByTripInstanceId(Long Id) {
+        List<Message> messages = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            messages = session.createQuery("FROM Message message where message.fTripInstance = :Id")
+                    .setString("Id", String.valueOf(Id)).setReadOnly(true).list();
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return messages;
+    }
 }

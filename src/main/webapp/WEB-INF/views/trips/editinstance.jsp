@@ -16,6 +16,7 @@
         <c:when test="${tripInstanceObject != null}">
             <form method="post" action="/trips/updateinstance" class="mainstyle tooltips">
                 <input type="hidden" value="${tripInstanceObject.id}" name="tripInstanceId"/>
+
                 <div class="row">
                     <span><spring:message code='text.title'/></span>
                     <input type="text" class="" name="title" placeholder="" value="${tripInstanceObject.title}"

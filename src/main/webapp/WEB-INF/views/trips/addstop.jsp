@@ -63,7 +63,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
 <script src="/js/functions.js"></script>
 <script>
-    $(function(){
+    $(function () {
         google.maps.event.addDomListener(window, 'load', initializeGMaps);
     })
 </script>
