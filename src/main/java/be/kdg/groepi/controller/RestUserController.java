@@ -84,12 +84,13 @@ public class RestUserController {
     @RequestMapping(value = "/myprofile")
     public ModelAndView myProfile(HttpSession session) {
         User sessionUser = (User) session.getAttribute("userObject");
-        Map<Long, String> tripInstanceStartDates = new HashMap<>();
-        Map<Long, String> tripInstanceEndDates = new HashMap<>();
+        Map<Long, String> tripInstanceDates = new HashMap<>();
+        Map<Long, String> tripInstanceStartTimes = new HashMap<>();
+        Map<Long, String> tripInstanceEndTimes = new HashMap<>();
         List<TripInstance> userTripInstances = new ArrayList<>();
-        List<TripInstance> tripInstances = TripInstanceService.getAllTripInstances();
-        List<User> tripParticipants = new ArrayList<>();
-        for (TripInstance tripInstance : tripInstances) {
+//        List<TripInstance> tripInstances = TripInstanceService.getAllTripInstances();
+//        List<User> tripParticipants = new ArrayList<>();
+/*        for (TripInstance tripInstance : tripInstances) {
             tripInstanceStartDates.put(tripInstance.getTrip().getId(),
                     DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartTime())));
 
@@ -102,15 +103,28 @@ public class RestUserController {
                 }
             }
             tripParticipants.clear();
-        }
+        }*/
+        for (TripInstance tripInstance : TripInstanceService.getAllTripInstances()) {
+            if (tripInstance.getParticipants().contains(sessionUser)) {
+//                tripInstance.getParticipants().
+                tripInstanceDates.put(tripInstance.getId(),
+                        DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartTime())));
+                tripInstanceStartTimes.put(tripInstance.getId(),
+                        DateUtil.formatTime(DateUtil.longToDate(tripInstance.getStartTime())));
+                tripInstanceEndTimes.put(tripInstance.getId(),
+                        DateUtil.formatTime(DateUtil.longToDate(tripInstance.getEndTime())));
+                userTripInstances.add(tripInstance);
+            }
 
+        }
 
         ModelAndView modelAndView = new ModelAndView("profile/userprofile");
         modelAndView.addObject("userObject", session.getAttribute("userObject"));
         modelAndView.addObject("dob", DateUtil.formatDate(session));
         modelAndView.addObject("userTripInstances", userTripInstances);
-        modelAndView.addObject("tripInstanceStartDates", tripInstanceStartDates);
-        modelAndView.addObject("tripInstanceEndDates", tripInstanceEndDates);
+        modelAndView.addObject("tripInstanceDates", tripInstanceDates);
+        modelAndView.addObject("tripInstanceStartTimes", tripInstanceStartTimes);
+        modelAndView.addObject("tripInstanceEndTimes", tripInstanceEndTimes);
         return modelAndView;
     }
 

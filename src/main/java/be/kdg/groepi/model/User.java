@@ -51,7 +51,7 @@ public class User implements Serializable {
         this.fDateOfBirth = dateOfBirth;
     }
 
-    public long getId() {
+    public Long getId() {
         return fId;
     }
 
@@ -154,6 +154,7 @@ public class User implements Serializable {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+//        int hash = super.hashCode();
+        return getId().intValue();//super.hashCode();
     }
 }
