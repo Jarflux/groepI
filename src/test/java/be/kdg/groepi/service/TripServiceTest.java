@@ -3,6 +3,7 @@ package be.kdg.groepi.service;
 import be.kdg.groepi.model.Requirement;
 import be.kdg.groepi.model.Trip;
 import be.kdg.groepi.model.User;
+import be.kdg.groepi.utils.DateUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
