@@ -68,13 +68,13 @@ public class AnswerServiceTest {
 
     @Test
     public void saveAnswerCollection() {
-        stop.getAnswers().add(new Answer("Van Gogh", false, null));
-        stop.getAnswers().add(new Answer("Rubens", true, null));
-        stop.getAnswers().add(new Answer("Picasso", false, null));
-        stop.getAnswers().add(new Answer("Rembrandt", false, null));
+        stop.getAnswers().add(new Answer("Van Gogh", false, stop));
+        stop.getAnswers().add(new Answer("Rubens", true, stop));
+        stop.getAnswers().add(new Answer("Picasso", false, stop));
+        stop.getAnswers().add(new Answer("Rembrandt", false, stop));
         StopService.updateStop(stop);
-        stop = StopService.getStopById(stop.getId());
-        assertTrue(stop.getAnswers().size() == AnswerService.getAnswersByStopID(stop.getId()).size());
+        //stop = StopService.getStopById(stop.getId());
+        assertTrue(AnswerService.getAnswersByStopID(stop.getId()).size() == 5);
     }
 
     @Test

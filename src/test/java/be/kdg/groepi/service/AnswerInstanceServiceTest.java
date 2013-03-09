@@ -36,18 +36,16 @@ public class AnswerInstanceServiceTest {
         trip = new Trip("Stadswandeling, Antwerp Edition", "Een wandeling doorheen het centrum met als afsluiter een etentje op het nieuwe Zuid.", true, true, user);// trip aanmaken
         TripService.createTrip(trip);
         stop = new Stop("Groenplaats",  "4.399166", "51.221212", 1, 1, 1, "Van wie is dit stambeeld?", trip);
-        stop.getAnswers().add(new Answer("Van Gogh", false, null));
-        stop.getAnswers().add(new Answer("Rubens", true, null));
-        stop.getAnswers().add(new Answer("Picasso", false, null));
-        stop.getAnswers().add(new Answer("Rembrandt", false, null));
+        stop.getAnswers().add(new Answer("Van Gogh", false, stop));
+        stop.getAnswers().add(new Answer("Rubens", true, stop));
+        stop.getAnswers().add(new Answer("Picasso", false, stop));
+        stop.getAnswers().add(new Answer("Rembrandt", false, stop));
         StopService.createStop(stop);
         tripInstance = new TripInstance("KdG's Stadswandeling, Antwerp Edition", "Karel de Grote organizeert een stadswandeling met Trippie Trip Advisor", true,
                 DateUtil.dateToLong(2, 3, 2013, 12, 0, 0), DateUtil.dateToLong(2, 3, 2013, 16, 0, 0), user, trip);
-        stop = StopService.getStopById(stop.getId());
         TripInstanceService.createTripInstance(tripInstance);
         answerInstance = new AnswerInstance(stop.getAnswers().get(0),user,tripInstance);
         AnswerInstanceService.createAnswerInstance(answerInstance);
-        id = answerInstance.getId();
     }
 
     @After
@@ -59,7 +57,6 @@ public class AnswerInstanceServiceTest {
 
     @Test
     public void createAnswerInstance() {
-        long id2 = answerInstance.getId();
         assertTrue("createAnswerInstance: answerInstance was not created",
                 answerInstance.equals(AnswerInstanceService.getAnswerInstanceById(answerInstance.getId())));
     }
@@ -76,7 +73,9 @@ public class AnswerInstanceServiceTest {
     @Test
     public void deleteAnswerInstances() {
         AnswerInstanceService.deleteAnswerInstance(answerInstance);
-        assertTrue(AnswerInstanceService.getAllAnswerInstances().isEmpty());
+        assertTrue(AnswerInstanceService.getAnswerInstanceById(answerInstance.getId()) == null);
     }
+
+
 
 }
