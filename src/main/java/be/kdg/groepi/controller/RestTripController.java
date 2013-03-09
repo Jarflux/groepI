@@ -139,7 +139,7 @@ public class RestTripController {
         TripInstance tripInstance = TripInstanceService.getTripInstanceById(Long.parseLong(tripId));
         tripInstance.addParticipantToTripInstance(sessionUser);
         TripInstanceService.updateTripInstance(tripInstance);
-        return getPublicTrips(session);
+        return getPublicTripInstances(session);
     }
 
     @RequestMapping(value = "/editStop/{stopId}", method = RequestMethod.GET)

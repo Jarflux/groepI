@@ -25,7 +25,7 @@ import java.util.Set;
 @Entity
 @Table(name = "T_TRIP_INSTANCE")
 //@Inheritance(strategy=InheritanceType.JOINED)  //Hibernate Inheritance: Table Per Subclass
-public class TripInstance implements Serializable {
+public class TripInstance implements Serializable, Comparable {
 
     @Id
     @GeneratedValue
@@ -50,8 +50,8 @@ public class TripInstance implements Serializable {
     @ManyToMany(fetch = FetchType.EAGER)
     @Cascade(value = CascadeType.ALL)
     @JoinTable(name = "T_TRIP_INSTANCE_PARTICIPANT", joinColumns = {
-        @JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {
-        @JoinColumn(name = "user_id")})
+            @JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {
+            @JoinColumn(name = "user_id")})
     private Set<User> fParticipants = new HashSet<>();
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTripInstance")
     private Set<RequirementInstance> fRequirementInstances = new HashSet<RequirementInstance>();
@@ -213,26 +213,26 @@ public class TripInstance implements Serializable {
         if (o == null) {
             return false;
         }
-        TripInstance trip = (TripInstance) o;
-        if (!CompareUtil.compareString(fTitle, trip.getTitle())) {
+        TripInstance tripInstance = (TripInstance) o;
+        if (!CompareUtil.compareString(fTitle, tripInstance.getTitle())) {
             return false;
         }
-        if (!CompareUtil.compareString(fDescription, trip.getDescription())) {
+        if (!CompareUtil.compareString(fDescription, tripInstance.getDescription())) {
             return false;
         }
-        if (fAvailable != trip.getAvailable()) {
+        if (fAvailable != tripInstance.getAvailable()) {
             return false;
         }
-        if (!CompareUtil.compareLong(fStartTime, trip.getStartTime())) {
+        if (!CompareUtil.compareLong(fStartTime, tripInstance.getStartTime())) {
             return false;
         }
-        if (!CompareUtil.compareLong(fEndTime, trip.getEndTime())) {
+        if (!CompareUtil.compareLong(fEndTime, tripInstance.getEndTime())) {
             return false;
         }
-        if (!this.fOrganiser.equals(trip.getOrganiser())) {
+        if (!this.fOrganiser.equals(tripInstance.getOrganiser())) {
             return false;
         }
-        if (!this.fTrip.equals(trip.getTrip())) {
+        if (!this.fTrip.equals(tripInstance.getTrip())) {
             return false;
         } /*   
          if (!(CompareUtil.compareSet(this.fParticipants, trip.getParticipants()))) {
@@ -253,5 +253,13 @@ public class TripInstance implements Serializable {
     @Override
     public int hashCode() {
         return getId().intValue();
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        TripInstance tripInstance = (TripInstance) o;
+        if (this.equals(tripInstance)) return 0;
+
+        return (int) (this.fStartTime - tripInstance.getStartTime());
     }
 }

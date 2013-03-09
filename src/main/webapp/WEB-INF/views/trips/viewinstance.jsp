@@ -40,9 +40,6 @@
                 <a href="/trips/editinstance/${tripInstanceObject.id}" class="active"><spring:message
                         code='text.edittrip'/></a>
             </c:if>
-            <c:if test="${tripInstanceObject.organiser.id != userObject.id}">
-                Zo, jij wil deze trip aanpassen? MAG NIET!
-            </c:if>
 
 
         </section>
@@ -57,9 +54,9 @@
                     <c:when test="${!empty tripInstanceObject.trip.stops}">
                         <ul class='sortable'>
                             <c:forEach var="stop" items="${tripInstanceObject.trip.stops}">
-                                <li id="stop-${stop.id}">${stop.stopnumber}: <a href="/trips/editStop/${stop.id}"
-                                                                                class="active"><c:out
-                                        value="${stop.name}"/></a></li>
+                                <li id="stop-${stop.id}">${stop.stopnumber}:
+                                    <a href="/trips/editStop/${stop.id}" class="active"><c:out value="${stop.name}"/></a>
+                                </li>
                                 <%--<li>view die stop jongeuh</li>--%>
                             </c:forEach>
                         </ul>
