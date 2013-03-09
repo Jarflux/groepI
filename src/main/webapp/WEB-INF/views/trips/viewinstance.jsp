@@ -33,8 +33,8 @@
             <a href="/profile/view/${tripInstanceObject.organiser.id}"
                class="active">${tripInstanceObject.organiser.name}</a> <br/>
             <spring:message code='text.date'/>: ${date} <br/>
-            <spring:message code='text.from'/>: ${startTimeString} <br/>
-            <spring:message code='text.to'/>: ${endTimeString} <br/>
+            <spring:message code='text.time'/>: ${startTimeString} - ${endTimeString}<br/>
+            <%--<spring:message code='text.to'/>:  <br/>--%>
 
             <c:if test="${tripInstanceObject.organiser.id == userObject.id}">
                 <a href="/trips/editinstance/${tripInstanceObject.id}" class="active"><spring:message

@@ -62,10 +62,32 @@
                                     <td><spring:message code="text.date"/></td>
                                     <td><spring:message code="text.starttime"/></td>
                                     <td><spring:message code="text.endtime"/></td>
-                                </tr>
-                                <c:forEach var="tripInstance" items="${userTripInstances}">
+                                </tr><%--
+                                <tr>
+                                    <td rowspan="4"><spring:message code="text.plannedtrips"/></td>
+                                </tr>--%>
+                                <%--<tr>--%>
+                                <c:forEach var="tripInstance" items="${userFutureTripInstances}">
                                     <tr>
-                                        <td>${tripInstance.title}</td>
+                                        <td><a href="/trips/viewinstance/${tripInstance.id}" class="active">
+                                            <c:out value="${tripInstance.title}"/>
+                                        </a></td>
+                                        <td>${tripInstance.description}</td>
+                                        <td>${tripInstanceDates.get(tripInstance.id)}</td>
+                                        <td>${tripInstanceStartTimes.get(tripInstance.id)}</td>
+                                        <td>${tripInstanceEndTimes.get(tripInstance.id)}</td>
+                                    </tr>
+                                </c:forEach>
+                                <tr><td></td></tr><tr><td colspan="5"><spring:message code="text.pasttrips"/></td></tr>
+                                <%--
+                                <tr>
+                                    <td rowspan="4"><spring:message code="text.pasttrips"/></td>
+                                </tr>--%>
+                                <c:forEach var="tripInstance" items="${userPastTripInstances}">
+                                    <tr>
+                                        <td><a href="/trips/viewinstance/${tripInstance.id}" class="active">
+                                            <c:out value="${tripInstance.title}"/>
+                                        </a></td>
                                         <td>${tripInstance.description}</td>
                                         <td>${tripInstanceDates.get(tripInstance.id)}</td>
                                         <td>${tripInstanceStartTimes.get(tripInstance.id)}</td>

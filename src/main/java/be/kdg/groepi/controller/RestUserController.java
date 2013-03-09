@@ -87,14 +87,29 @@ public class RestUserController {
         Map<Long, String> tripInstanceDates = new HashMap<>();
         Map<Long, String> tripInstanceStartTimes = new HashMap<>();
         Map<Long, String> tripInstanceEndTimes = new HashMap<>();
-        SortedSet<TripInstance> userTripInstances = new TreeSet<>();
+        SortedSet<TripInstance> userPastTripInstances = new TreeSet<>();
+        SortedSet<TripInstance> userFutureTripInstances = new TreeSet<>();
+
+        long today = Calendar.getInstance().getTime().getTime();
 
         for (TripInstance tripInstance : TripInstanceService.getAllTripInstances()) {
             if (tripInstance.getParticipants().contains(sessionUser)) {
-                tripInstanceDates.put(tripInstance.getId(), DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartTime())));
+/*                char key;
+                if (tripInstance.getStartTime() < today) {
+                    key = 'A';
+                } else {
+                    key = 'B';
+                }*/
+
+                if (tripInstance.getStartTime() < today) {
+                    userPastTripInstances.add(tripInstance);
+                } else {
+                    userFutureTripInstances.add(tripInstance);
+                }
+
+                tripInstanceDates.put(/*key + */tripInstance.getId(), DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartTime())));
                 tripInstanceStartTimes.put(tripInstance.getId(), DateUtil.formatTime(DateUtil.longToDate(tripInstance.getStartTime())));
                 tripInstanceEndTimes.put(tripInstance.getId(), DateUtil.formatTime(DateUtil.longToDate(tripInstance.getEndTime())));
-                userTripInstances.add(tripInstance);
             }
         }
 
@@ -102,7 +117,8 @@ public class RestUserController {
         ModelAndView modelAndView = new ModelAndView("profile/userprofile");
         modelAndView.addObject("userObject", session.getAttribute("userObject"));
         modelAndView.addObject("dob", DateUtil.formatDate(session));
-        modelAndView.addObject("userTripInstances", userTripInstances);
+        modelAndView.addObject("userPastTripInstances", userPastTripInstances);
+        modelAndView.addObject("userFutureTripInstances", userFutureTripInstances);
         modelAndView.addObject("tripInstanceDates", tripInstanceDates);
         modelAndView.addObject("tripInstanceStartTimes", tripInstanceStartTimes);
         modelAndView.addObject("tripInstanceEndTimes", tripInstanceEndTimes);
