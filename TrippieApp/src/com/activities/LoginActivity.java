@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import com.controllers.Controller;
-import com.session.SessionManager;
 import org.json.JSONObject;
 
 public class LoginActivity extends Activity implements View.OnClickListener {
@@ -18,12 +17,13 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private Button button;
     private EditText passwordField;
     private EditText usernameField;
+    private Controller controller = new Controller();
     private Thread loginThread = new Thread("New Thread") {
         public void run(){
             Editor sessionEditor = getApplicationContext().getSharedPreferences("Session",0).edit();
             String password = passwordField.getText().toString();
             String email = usernameField.getText().toString();
-            JSONObject user = Controller.springSecurityCheck(email, password);
+            JSONObject user = controller.springSecurityCheck(email, password);
             if(user != null){
                 sessionEditor.putString("User",user.toString());
                 sessionEditor.commit();
@@ -45,6 +45,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+
         if(!loginThread.isAlive()){
         loginThread.start();
         }

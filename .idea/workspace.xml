@@ -24,15 +24,113 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/hibernateMySQL.cfg.xml" afterPath="$PROJECT_DIR$/src/main/resources/hibernateMySQL.cfg.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_android_auth_1_0_1_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_android_core_1_0_1_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_android_rest_template_1_0_1_RELEASE.xml" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__antlr_antlr_2_7_7.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__aopalliance_aopalliance_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__cglib_cglib_nodep_2_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__com_google_guava_guava_13_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__commons_codec_commons_codec_1_6.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__commons_collections_commons_collections_3_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__commons_fileupload_commons_fileupload_1_2_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__commons_io_commons_io_1_3_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__commons_logging_commons_logging_1_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__dom4j_dom4j_1_6_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__javax_activation_activation_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__javax_inject_javax_inject_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__javax_mail_mail_1_4_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__javax_servlet_jsp_jsp_api_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__javax_servlet_jstl_1_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__javax_servlet_servlet_api_2_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__junit_junit_4_7.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__log4j_log4j_1_2_17.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__mysql_mysql_connector_java_5_1_22.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__net_java_dev_jna_jna_3_4_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__net_java_dev_jna_platform_3_4_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_apache_commons_commons_exec_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_apache_httpcomponents_httpclient_4_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_apache_httpcomponents_httpcore_4_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_codehaus_jackson_jackson_core_asl_1_9_9.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_codehaus_jackson_jackson_mapper_asl_1_9_9.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_hibernate_common_hibernate_commons_annotations_4_0_1_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_hibernate_hibernate_commons_annotations_3_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_hibernate_hibernate_core_4_1_9_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_hibernate_hibernate_entitymanager_4_1_9_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_hibernate_javax_persistence_hibernate_jpa_2_0_api_1_0_1_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_hsqldb_hsqldb_2_2_9.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_javassist_javassist_3_17_1_GA.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_jboss_logging_jboss_logging_3_1_0_GA.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_1_spec_1_0_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_json_json_20080701.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_seleniumhq_selenium_selenium_api_2_28_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_seleniumhq_selenium_selenium_firefox_driver_2_28_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_seleniumhq_selenium_selenium_remote_driver_2_28_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_slf4j_slf4j_api_1_7_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_slf4j_slf4j_simple_1_7_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_android_spring_android_core_1_0_1_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_android_spring_android_rest_template_1_0_1_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_security_spring_security_acl_3_1_3_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_security_spring_security_config_3_1_3_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_security_spring_security_core_3_1_3_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_security_spring_security_taglibs_3_1_3_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_security_spring_security_web_3_1_3_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_social_spring_social_core_1_0_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_social_spring_social_facebook_1_0_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_social_spring_social_web_1_0_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_spring_aop_3_1_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_spring_asm_3_1_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_spring_beans_3_1_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_spring_context_3_1_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_spring_context_support_3_1_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_spring_core_3_2_1_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_spring_expression_3_1_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_spring_jdbc_3_0_7_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_spring_test_3_2_1_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_spring_tx_3_0_7_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__org_springframework_spring_webmvc_3_1_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\.idea\libraries\Maven__xml_apis_xml_apis_1_0_b2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\ant.properties" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\build.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\gen\com\activities\BuildConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\gen\com\activities\Manifest.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\gen\com\activities\R.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\local.properties" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\proguard-project.txt" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\project.properties" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\res\drawable-hdpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\res\drawable-ldpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\res\drawable-mdpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\res\layout\main.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\res\layout\usertrips.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\res\values\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\src\com\activities\LoginActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\src\com\controllers\Controller.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\src\com\model\Cost.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\src\com\model\Message.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\src\com\model\Requirement.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\src\com\model\RequirementInstance.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\src\com\model\Stop.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\src\com\model\Trip.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\src\com\model\TripInstance.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\src\com\model\User.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\src\com\session\SessionManager.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Trip Project\groepI Andoird kopie\TrippieApp\src\com\utils\DateUtil.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrippieApp/TrippieApp.iml" afterPath="$PROJECT_DIR$/TrippieApp/TrippieApp.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrippieApp/src/com/activities/UserTripsActivity.java" afterPath="$PROJECT_DIR$/TrippieApp/src/com/activities/UserTripsActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/groepI.iml" afterPath="$PROJECT_DIR$/groepI.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/groepI_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/groepI_war_exploded.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="groepI.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362772737967" ignored="false" />
+    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362868473543" ignored="false" />
     <file path="/README" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1359642779202" ignored="false" />
     <file path="/index.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360071317953" ignored="false" />
-    <file path="/fragment.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362763339252" ignored="false" />
+    <file path="/fragment.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362869716548" ignored="false" />
     <file path="/pom.xml" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362485915049" ignored="false" />
     <file path="$PROJECT_DIR$/src/resources/HomeController.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360137939666" ignored="false" />
     <file path="/home.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362516485246" ignored="false" />
@@ -108,6 +206,7 @@
     <file path="/AnswerServiceTest.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362762904628" ignored="false" />
     <file path="/AnswerInstanceServiceTest.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362772265110" ignored="false" />
     <file path="/AnswerInstance.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362764512555" ignored="false" />
+    <file path="$PROJECT_DIR$/TrippieApp/res/values/strings.xml" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362868821195" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,16 +215,16 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/groepI$RestUserControllerTest.coverage" NAME="RestUserControllerTest Coverage Results" MODIFIED="1360676180799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>be.kdg.groepi.controller.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/groepI$Tomcat.coverage" NAME="Tomcat Coverage Results" MODIFIED="1360424668954" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/groepI$All_in_groepI.coverage" NAME="All in groepI Coverage Results" MODIFIED="1362129241598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/groepI$UserServiceTest.coverage" NAME="UserServiceTest Coverage Results" MODIFIED="1360422651918" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>be.kdg.groepi.service.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/groepI$be_kdg_groepi_in_groepI.coverage" NAME="be.kdg.groepi in groepI Coverage Results" MODIFIED="1362167921731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>be.kdg.groepi.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/groepI$UserServiceTest.coverage" NAME="UserServiceTest Coverage Results" MODIFIED="1360422651918" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>be.kdg.groepi.service.*</FILTER>
+    <SUITE FILE_PATH="coverage/groepI$Tomcat.coverage" NAME="Tomcat Coverage Results" MODIFIED="1360424668954" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/groepI$RestUserControllerTest.coverage" NAME="RestUserControllerTest Coverage Results" MODIFIED="1360676180799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>be.kdg.groepi.controller.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/groepI$TripServiceTest.coverage" NAME="TripServiceTest Coverage Results" MODIFIED="1361527331936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>be.kdg.groepi.service.*</FILTER>
@@ -146,7 +245,40 @@
     <sortChildren value="false" />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </breakpoint_any>
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint url="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestTripController.java" line="164" class="be.kdg.groepi.controller.RestTripController" package="be.kdg.groepi.controller">
         <option name="ENABLED" value="true" />
@@ -232,41 +364,36 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/TrippieApp/src/com/activities/UserTripsActivity.java" line="43" class="com.activities.UserTripsActivity" package="com.activities">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/TrippieApp/src/com/activities/LoginActivity.java" line="26" class="com.activities.LoginActivity$1" package="com.activities">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
     </line_breakpoints>
-    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint>
-        <option name="NOTIFY_CAUGHT" value="true" />
-        <option name="NOTIFY_UNCAUGHT" value="true" />
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint>
-        <option name="NOTIFY_CAUGHT" value="true" />
-        <option name="NOTIFY_UNCAUGHT" value="true" />
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -276,73 +403,75 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AnswerServiceTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/AnswerServiceTest.java">
+      <file leaf-file-name="UserTripsActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TrippieApp/src/com/activities/UserTripsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="59" selection-start="2119" selection-end="2119" vertical-scroll-proportion="0.0">
+            <state line="54" column="28" selection-start="1877" selection-end="1877" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AnswerInstance.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/AnswerInstance.java">
+      <file leaf-file-name="LoginActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TrippieApp/src/com/activities/LoginActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="50" selection-start="303" selection-end="303" vertical-scroll-proportion="0.0">
+            <state line="26" column="0" selection-start="1000" selection-end="1000" vertical-scroll-proportion="0.33333334">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Controller.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TrippieApp/src/com/controllers/Controller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="57" column="13" selection-start="1986" selection-end="1986" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AnswerInstanceServiceTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/AnswerInstanceServiceTest.java">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TrippieApp/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="34" selection-start="1830" selection-end="1841" vertical-scroll-proportion="0.0">
+            <state line="14" column="0" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StopService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/StopService.java">
+      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TrippieApp/build.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="0" selection-start="1020" selection-end="1020" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hibernateMySQL.cfg.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/hibernateMySQL.cfg.xml">
+      <file leaf-file-name="local.properties" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TrippieApp/local.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="44" selection-start="1024" selection-end="1024" vertical-scroll-proportion="0.3846154">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Answer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Answer.java">
+      <file leaf-file-name="proguard-project.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TrippieApp/proguard-project.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="12" selection-start="1584" selection-end="1584" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Stop.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Stop.java">
+      <file leaf-file-name="TrippieApp.iml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TrippieApp/TrippieApp.iml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="13" selection-start="570" selection-end="570" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Trip.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Trip.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="13" selection-start="755" selection-end="755" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -368,9 +497,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsonresponse.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/User.java" />
         <option value="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/UserServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/utils/DateUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestUserController.java" />
@@ -384,6 +510,9 @@
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/AnswerInstance.java" />
         <option value="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/AnswerInstanceServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/resources/hibernateMySQL.cfg.xml" />
+        <option value="$PROJECT_DIR$/TrippieApp/src/com/activities/UserTripsActivity.java" />
+        <option value="$PROJECT_DIR$/TrippieApp/src/com/activities/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/TrippieApp/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -437,8 +566,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1066" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -635,7 +764,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -650,7 +778,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
+              <option name="myItemId" value="groepI Andoird kopie" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -660,7 +788,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
+              <option name="myItemId" value="groepI Andoird kopie" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -674,7 +802,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
+              <option name="myItemId" value="groepI Andoird kopie" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TrippieApp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -682,11 +814,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="com" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -696,7 +824,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
+              <option name="myItemId" value="groepI Andoird kopie" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TrippieApp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -704,15 +836,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="com" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepi" />
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -722,7 +850,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
+              <option name="myItemId" value="groepI Andoird kopie" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TrippieApp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -730,261 +862,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="com" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groepi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
+              <option name="myItemId" value="activities" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="42" />
-    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="148" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="166" />
     <property name="OverrideImplement.combined" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="71" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="76" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="261" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../groepI - kopie" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="53" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="355" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="418" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="77" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="76" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="167" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="539" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="842" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="262" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="261" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -992,9 +901,9 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/TrippieApp/src" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
@@ -1003,8 +912,8 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -1018,12 +927,6 @@
       <recent name="D:\Dropbox\Trip Project\groepI\TrippieApp" />
       <recent name="C:\Users\Vincent\IdeaProjects\groepI\src\main\webapp\WEB-INF\views\trips" />
     </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="trippie" />
-      <recent name="android" />
-      <recent name="" />
-      <recent name="be.kdg.groepi.service" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Vincent\IdeaProjects\groepI" />
       <recent name="D:\Dropbox\Trip Project\groepI\TrippieApp\src\controllers" />
@@ -1031,8 +934,14 @@
       <recent name="C:\Users\Vincent\IdeaProjects\groepI\src\main\webapp" />
       <recent name="C:\Users\Vincent\IdeaProjects\groepI\src\main\resources" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="trippie" />
+      <recent name="android" />
+      <recent name="" />
+      <recent name="be.kdg.groepi.service" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.AnswerInstanceServiceTest">
+  <component name="RunManager" selected="Android Application.TrippieApp">
     <configuration default="false" name="AnswerServiceTest.createAnswer" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -1197,6 +1106,23 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <method />
+    </configuration>
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -1216,23 +1142,6 @@
           </MavenRunnerParameters>
         </option>
       </MavenSettings>
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -1299,29 +1208,19 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
-      <method />
-    </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote">
-      <option name="LOCAL" value="false" />
-      <deployment />
-      <server-settings>
-        <data>
-          <option name="transportHostId" />
-        </data>
-      </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="50407" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="false" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0">
@@ -1370,28 +1269,38 @@
       </ConfigurationWrapper>
       <method />
     </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="DEPLOY" value="true" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote">
+      <option name="LOCAL" value="false" />
+      <deployment />
+      <server-settings>
+        <data>
+          <option name="transportHostId" />
+        </data>
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="50407" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
     <configuration default="false" name="TrippieApp" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="TrippieApp" />
-      <option name="ACTIVITY_CLASS" value="trippie.controllers.Controller" />
+      <option name="ACTIVITY_CLASS" value="com.activities.LoginActivity" />
       <option name="MODE" value="specific_activity" />
       <option name="DEPLOY" value="true" />
-      <option name="TARGET_SELECTION_MODE" value="USB_DEVICE" />
-      <option name="PREFERRED_AVD" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="PREFERRED_AVD" value="AndroidVirtualMachine" />
       <option name="COMMAND_LINE" value="" />
       <option name="WIPE_USER_DATA" value="false" />
       <option name="DISABLE_BOOT_ANIMATION" value="false" />
@@ -1513,13 +1422,13 @@
     </configuration>
     <list size="8">
       <item index="0" class="java.lang.String" itemvalue="Android Application.TrippieApp" />
-      <item index="1" class="java.lang.String" itemvalue="Tomcat Server.Tomcat" />
-      <item index="2" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 7.0" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.AnswerServiceTest.createAnswer" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.AnswerServiceTest" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.be.kdg.groepi in groepI" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.AnswerInstanceServiceTest" />
-      <item index="7" class="java.lang.String" itemvalue="JUnit.AnswerInstanceServiceTest.createAnswerInstance" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.AnswerServiceTest.createAnswer" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.AnswerServiceTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.be.kdg.groepi in groepI" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.AnswerInstanceServiceTest" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.AnswerInstanceServiceTest.createAnswerInstance" />
+      <item index="6" class="java.lang.String" itemvalue="Tomcat Server.Tomcat" />
+      <item index="7" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 7.0" />
     </list>
     <recent_temporary>
       <list size="5">
@@ -1677,30 +1586,31 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21412803" sideWeight="0.4850587" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21060605" sideWeight="0.22184874" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14727855" sideWeight="0.76048565" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14714494" sideWeight="0.76065576" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23951435" sideWeight="0.6983895" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23934427" sideWeight="0.6983895" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3091518" sideWeight="0.3778015" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.63468015" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24665178" sideWeight="0.4461046" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31456953" sideWeight="0.43276414" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24590164" sideWeight="0.4461046" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31311476" sideWeight="0.43276414" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850778" sideWeight="0.49786553" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21060605" sideWeight="0.23529412" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30884558" sideWeight="0.68526787" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18676628" sideWeight="0.76048565" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.303532" sideWeight="0.61846316" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18667643" sideWeight="0.76065576" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30327868" sideWeight="0.61846316" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329429" sideWeight="0.752459" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1755603" sideWeight="0.25165564" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
@@ -1709,7 +1619,6 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924226" sideWeight="0.75334823" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33670035" sideWeight="0.4848485" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850778" sideWeight="0.49786553" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3990878" sideWeight="0.49786553" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1800,105 +1709,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/text_nl.properties">
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="0" selection-start="3408" selection-end="3408" vertical-scroll-proportion="0.031135531" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestFillerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="0" selection-start="3526" selection-end="3526" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/hibernateMySQL.cfg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="84" selection-start="755" selection-end="755" vertical-scroll-proportion="-6.12">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestTripController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="164" column="0" selection-start="7169" selection-end="7169" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/utils/HibernateUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="770" selection-end="770" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Requirement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="48" selection-start="276" selection-end="299" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Trip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="13" selection-start="755" selection-end="755" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.7/junit-4.7-sources.jar!/org/junit/runners/model/FrameworkMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="0" selection-start="1291" selection-end="1291" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Answer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="12" selection-start="1584" selection-end="1584" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Stop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="13" selection-start="570" selection-end="570" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/AnswerInstance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="50" selection-start="303" selection-end="303" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/AnswerServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="59" selection-start="2119" selection-end="2119" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/AnswerInstanceServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="34" selection-start="1830" selection-end="1841" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/StopService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="0" selection-start="1020" selection-end="1020" vertical-scroll-proportion="0.0">
@@ -1906,10 +1716,110 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="23" selection-start="390" selection-end="390" vertical-scroll-proportion="0.33147633">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/hibernateMySQL.cfg.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="44" selection-start="1024" selection-end="1024" vertical-scroll-proportion="0.3846154">
+        <state line="20" column="44" selection-start="1024" selection-end="1024" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TrippieApp/ant.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TrippieApp/project.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TrippieApp/TrippieApp.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TrippieApp/proguard-project.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TrippieApp/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TrippieApp/local.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TrippieApp/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Software/Android/sources/android-17/android/os/Looper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="138" column="0" selection-start="4785" selection-end="4785" vertical-scroll-proportion="0.33333334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Software/Android/sources/android-17/android/os/Handler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="100" column="0" selection-start="4112" selection-end="4112" vertical-scroll-proportion="-3.8341584">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Software/Android/sources/android-17/android/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16966" column="0" selection-start="658559" selection-end="658559" vertical-scroll-proportion="0.33333334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TrippieApp/src/com/controllers/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="13" selection-start="1986" selection-end="1986" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TrippieApp/src/com/activities/UserTripsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="28" selection-start="1877" selection-end="1877" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TrippieApp/src/com/activities/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="0" selection-start="1000" selection-end="1000" vertical-scroll-proportion="0.33333334">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1968,7 +1878,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>TrippieApp</last-edited>
+          <last-edited>groepI</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1980,7 +1890,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>struts2-2.3.7</last-edited>
+          <last-edited>Maven: com.google.code.gson:gson:1.7.1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
