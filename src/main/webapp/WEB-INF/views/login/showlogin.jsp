@@ -41,6 +41,7 @@
                 <input type="submit" class="button" value="<spring:message code='text.login'/>"/>
             </div>
         </form>
+        <p id="fblogin">Login met Facebook</p>
     </div>
 </div>
 <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>

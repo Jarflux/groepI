@@ -4,7 +4,6 @@ import be.kdg.groepi.model.*;
 import be.kdg.groepi.service.*;
 import be.kdg.groepi.utils.DateUtil;
 import org.apache.log4j.Logger;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -13,12 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-//import java.sql.Date;
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+//import java.sql.Date;
 
 //import java.sql.Date;
 
@@ -36,9 +33,7 @@ public class RestTripController {
 
     @RequestMapping(value = "/createTrip", method = RequestMethod.POST)
     public ModelAndView createTrip(HttpSession session, @ModelAttribute("tripObject") Trip trip) {
-
         User user = (User) session.getAttribute("userObject");
-
         trip.setOrganiser(user);
         TripService.createTrip(trip);
         return new ModelAndView("trips/view", "tripId", trip.getId().toString());
@@ -116,10 +111,20 @@ public class RestTripController {
     }
 
     @RequestMapping(value = "/edittrip/{tripId}", method = RequestMethod.GET)
-    public ModelAndView editTripView(@PathVariable("tripId") String tripId) {
-        ModelAndView modelAndView = new ModelAndView("trips/edittrip");
-        modelAndView.addObject("tripObject", TripService.getTripById(Long.parseLong(tripId)));
-        return modelAndView;
+    public ModelAndView editTripView(@PathVariable("tripId") String tripId, HttpSession session) {
+        User user = (User) session.getAttribute("userObject");
+        Trip trip = TripService.getTripById(Long.parseLong(tripId));
+        if (trip.getOrganiser().getId() == user.getId())
+        {
+            ModelAndView modelAndView = new ModelAndView("trips/edittrip");
+            modelAndView.addObject("tripObject", trip);
+            return modelAndView;
+        }
+        else
+        {
+            //TODO correcte error weergeven
+            return new ModelAndView("error/displayerror");
+        }
     }
 
     @RequestMapping(value = "/updateTrip", method = RequestMethod.POST)
@@ -134,18 +139,28 @@ public class RestTripController {
         TripInstance tripInstance = TripInstanceService.getTripInstanceById(Long.parseLong(tripId));
         tripInstance.addParticipantToTripInstance(sessionUser);
         TripInstanceService.updateTripInstance(tripInstance);
-        return getPublicTrips(session);
+        return getPublicTripInstances(session);
     }
 
     @RequestMapping(value = "/editStop/{stopId}", method = RequestMethod.GET)
-    public ModelAndView editStopView(@PathVariable("stopId") String stopId) {
+    public ModelAndView editStopView(@PathVariable("stopId") String stopId, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("trips/editstop");
-        modelAndView.addObject("stopObject", StopService.getStopById(Long.parseLong(stopId)));
-        return modelAndView;
+        Stop stop = StopService.getStopById(Long.parseLong(stopId));
+        User user = (User) session.getAttribute("userObject");
+        if (stop.getTrip().getOrganiser().getId() == user.getId())
+        {
+            modelAndView.addObject("stopObject", stop);
+            return modelAndView;
+        }
+        else
+        {
+            //TODO correcte error weergeven
+            return new ModelAndView("error/displayerror");
+        }
+
     }
 
     @RequestMapping(value = "/updateStop", method = RequestMethod.POST)
-//    public ModelAndView updateStop(@ModelAttribute("tripObject") Stop stop) {
     public ModelAndView updateStop(@ModelAttribute("stopObject") Stop stop) {
         StopService.updateStop(stop);
         return new ModelAndView("trips/view", "stopObject", stop);
@@ -158,7 +173,7 @@ public class RestTripController {
     /*return new ModelAndView("trips/addtriprequirement", "tripId", trip.getId().toString());*/
 
     @RequestMapping(value = "/showUserTripParticipations/{userId}", method = RequestMethod.GET)
-    public void getUserTripParticipations(@PathVariable(value = "userId") String userId,HttpServletRequest request, HttpServletResponse response) {
+    public void getUserTripParticipations(@PathVariable(value = "userId") String userId, HttpServletRequest request, HttpServletResponse response) {
         List<TripInstance> trips = TripInstanceService.getTripInstancesByUserId(Long.parseLong(userId));
         JSONObject jo = new JSONObject(trips);
         try {
@@ -234,11 +249,6 @@ public class RestTripController {
         for (Requirement req : tempTripInstance.getTrip().getRequirements()) {
             RequirementInstance reqIns = new RequirementInstance(req, tripInstance);
             RequirementInstanceService.createRequirementInstance(reqIns);
-        }
-
-        for (Stop stop : tempTripInstance.getTrip().getStops()) {
-            StopInstance stopIns = new StopInstance(stop, tripInstance);
-            StopInstanceService.createStopInstance(stopIns);
         }
 
         return tripInstance;
@@ -347,21 +357,7 @@ public class RestTripController {
         if (tripInstance != null) {
             logger.debug("Returning TripInstance: " + tripInstance.toString() + " with tripInstance #" + tripInstanceId);
 
-            Map<Long, String> messageDates = new HashMap<>();
-            List<Message> messages = MessageService.getMessagesByTripInstanceId(Long.parseLong(tripInstanceId));
-
-            for (Message message : messages) {
-                messageDates.put(Long.parseLong(tripInstanceId), DateUtil.formatDate(DateUtil.longToDate(message.getDate())));
-            }
-
-            ModelAndView modelAndView = new ModelAndView("trips/viewinstance");
-            modelAndView.addObject("tripInstanceObject", tripInstance);
-            modelAndView.addObject("messageDates", messageDates);
-            modelAndView.addObject("userObject", session.getAttribute("userObject"));
-            modelAndView.addObject("date", DateUtil.formatDate(tripInstance.getStartTime()));
-            modelAndView.addObject("startTimeString", DateUtil.formatTime(tripInstance.getStartTime()));
-            modelAndView.addObject("endTimeString", DateUtil.formatTime(tripInstance.getEndTime()));
-            return modelAndView;
+            return getModelAndViewForViewInstance(session, tripInstance);
         } else {
             return new ModelAndView("error/displayerror");
         }
@@ -420,5 +416,72 @@ public class RestTripController {
         Cost cost = new Cost(description, Double.parseDouble(amount), tripInstance, sessionUser);
         CostService.createCost(cost);
         return new ModelAndView("redirect:/trips/addcost/" + tripInstanceId, "tripInstanceObject", tripInstance);
+    }
+
+    @RequestMapping(value = "/assignrequirementtouser", method = RequestMethod.POST)
+    public ModelAndView assignRequirement(HttpSession session,
+                                          @RequestParam(value = "responsibleuser") String userId,
+                                          @RequestParam(value = "requirementinstanceid") String requirementInstanceId) {
+        RequirementInstance requirementInstance = RequirementInstanceService
+                .getRequirementInstanceById(Long.parseLong(requirementInstanceId));
+        if (userId.equals("0")) {
+            requirementInstance.setUser(null);
+        } else {
+            requirementInstance.setUser(UserService.getUserById(Long.parseLong(userId)));
+        }
+        RequirementInstanceService.updateRequirementInstance(requirementInstance);
+
+        return getModelAndViewForViewInstance(session, requirementInstance.getTripInstance());
+    }
+
+    @RequestMapping(value = "/deletemessage", method = RequestMethod.POST)
+    public ModelAndView deleteMessageFromTripInstance(HttpSession session,
+                                                      @RequestParam(value = "messageId") String messageId,
+                                                      @RequestParam(value = "tripInstanceId") String tripInstanceId) {
+        MessageService.deleteMessage(MessageService.getMessageById(Long.parseLong(messageId)));
+        return getModelAndViewForViewInstance(session,
+                TripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId)));
+    }
+
+    @RequestMapping(value = "/deletecost", method = RequestMethod.POST)
+    public ModelAndView deleteCostFromTripInstance(HttpSession session,
+                                                   @RequestParam(value = "costId") String costId,
+                                                   @RequestParam(value = "tripInstanceId") String tripInstanceId) {
+        CostService.deleteCost(CostService.getCostById(Long.parseLong(costId)));
+        return getModelAndViewForViewInstance(session,
+                TripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId)));
+    }
+
+    @RequestMapping(value = "/editcost", method = RequestMethod.POST)
+    public ModelAndView editCost(HttpSession session,
+                                 @RequestParam(value = "description") String description,
+                                 @RequestParam(value = "amount") String amount,
+                                 @RequestParam(value = "costid") String costId) {
+        Cost cost = CostService.getCostById(Long.parseLong(costId));
+        cost.setDescription(description);
+        cost.setAmount(Double.parseDouble(amount));
+        CostService.updateCost(cost);
+        return getModelAndViewForViewInstance(session,
+                TripInstanceService.getTripInstanceById(cost.getTripInstance().getId()));
+    }
+
+    private ModelAndView getModelAndViewForViewInstance(HttpSession session, TripInstance tripInstance) {
+        Map<Long, String> messageDates = new HashMap<>();
+        List<Message> messages = MessageService.getMessagesByTripInstanceId(tripInstance.getId());
+
+        for (Message message : messages) {
+            messageDates.put(tripInstance.getId(), DateUtil.formatDate(DateUtil.longToDate(message.getDate())));
+        }
+        SortedSet<RequirementInstance> sortedRequirements = new TreeSet<>();
+        sortedRequirements.addAll(tripInstance.getRequirementInstances());
+        tripInstance.setRequirementInstances(sortedRequirements);
+        ModelAndView modelAndView = new ModelAndView("/trips/viewinstance");
+        modelAndView.addObject("tripInstanceObject", tripInstance);
+        modelAndView.addObject("messageDates", messageDates);
+        modelAndView.addObject("userObject", session.getAttribute("userObject"));
+        modelAndView.addObject("date", DateUtil.formatDate(tripInstance.getStartTime()));
+        modelAndView.addObject("startTimeString", DateUtil.formatTime(tripInstance.getStartTime()));
+        modelAndView.addObject("endTimeString", DateUtil.formatTime(tripInstance.getEndTime()));
+        return modelAndView;
     }
 }

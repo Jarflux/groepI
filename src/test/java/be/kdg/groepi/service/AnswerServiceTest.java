@@ -16,13 +16,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Tim
- * Date: 1/03/13
- * Time: 11:57
- * To change this template use File | Settings | File Templates.
- */
 public class AnswerServiceTest {
     User user;
     Trip trip;
@@ -31,29 +24,22 @@ public class AnswerServiceTest {
 
     @Before
     public void beforeEachTest() {
-        user = new User("Tim", "tim@junittest.com", "tim", dateToLong(4, 5, 2011, 15, 32, 0));
+        user = new User("Gregory", "gregory@trippie.com", "greg", dateToLong(4, 5, 1988, 15, 32, 0));
         UserService.createUser(user);
-        trip = new Trip("Onze eerste trip", "Hopelijk is deze niet te saai!", true, true, user);// trip aanmaken
+        trip = new Trip("Stadswandeling, Antwerp Edition", "Een wandeling doorheen het centrum met als afsluiter een etentje op het nieuwe Zuid.", true, true, user);// trip aanmaken
         TripService.createTrip(trip);
-        stop = new Stop("Stoppie", "lalala", "nog meer lalaal", 1, 1, 1, "STOP!", trip);
-        //public Stop(String fName, String fLongitude, String fLatitude, Integer fOrder, Integer fType, Integer fDisplayMode, String fStopText, Trip fTrip) {
-
+        stop = new Stop("Groenplaats",  "4.399166", "51.221212", 1, 1, 1, "Van wie is dit stambeeld?", trip);
         StopService.createStop(stop);
-
-        List<String> answers = new ArrayList<String>();
-        answers.add("Answer 1");
-        answers.add("Answer 2");
-        answers.add("Answer 3");
-        answer = new Answer(answers, 1, "Answer 2 is correct because it too is correct.", stop);
+        answer = new Answer("Den Tester", false, stop);
         AnswerService.createAnswer(answer);
+        stop = StopService.getStopById(stop.getId());
     }
 
     @After
     public void afterEachTest() {
-/*        if (AnswerService.getAllAnswers().contains(answer)) AnswerService.deleteAnswer(answer);
         StopService.deleteStop(stop);
         TripService.deleteTrip(trip);
-        UserService.deleteUser(user);*/
+        UserService.deleteUser(user);
     }
 
     @Test
@@ -61,76 +47,41 @@ public class AnswerServiceTest {
         assertTrue("createAnswer: answer was not created", answer.equals(AnswerService.getAnswerById(answer.getId())));
     }
 
-
     @Test
     public void updateAnswer() {
-        Answer originalAnswer = new Answer(answer.getAnswers(), answer.getCorrectAnswer(), answer.getCorrectAnswerDescription(), answer.getStop());
-
-        answer.setCorrectAnswer(1);
-        answer.setCorrectAnswerDescription("One is the one!");
-
+        answer.setAnswerText("Den Tester, Edited");
+        answer.setIsCorrect(true);
+        answer.setStop(stop);
         AnswerService.updateAnswer(answer);
-        Answer newAnswer = AnswerService.getAnswerById(answer.getId());
-        assertFalse("updateAnswer: answer was not updated", originalAnswer.equals(AnswerService.getAnswerById(answer.getId())));
+        assertTrue("updateAnswer: answer was not updated", answer.equals(AnswerService.getAnswerById(answer.getId())));
     }
 
     @Test
     public void deleteAnswer() {
 
-        while (!AnswerService.getAllAnswers().isEmpty()) {
-            Answer firstAnswer = AnswerService.getAllAnswers().get(0);
-            AnswerService.deleteAnswer(firstAnswer);
+        for (Answer answer : stop.getAnswers())
+        {
+            AnswerService.deleteAnswer(answer);
         }
-        assertTrue(AnswerService.getAllAnswers().isEmpty());
+        assertTrue(AnswerService.getAnswersByStopID(stop.getId()).isEmpty());
     }
 
     @Test
-    public void addAndRemoveAnswers() {
-        int initialSize = answer.getAnswers().size();
-        String newAnswer = "THE A-TEAM";
-        answer.addAnswer(newAnswer);
-        newAnswer = "THE B-TEAM";
-        answer.addAnswer(newAnswer);
-        newAnswer = "THE C-TEAM";
-        answer.addAnswer(newAnswer);
-        AnswerService.updateAnswer(answer);
-        assertTrue("addAndRemoveAnswers: answers have not been added", answer.getAnswers().size() > initialSize);
-
-        int tempSize = answer.getAnswers().size();
-
-        answer.removeAnswer("THE A-TEAM");
-        AnswerService.updateAnswer(answer);
-        tempSize--;
-        assertTrue("addAndRemoveAnswers: the answer has not been deleted [removeAnswer(String)]", tempSize == answer.getAnswers().size());
-
-//        answer.removeAnswer(answer.getAnswers().indexOf("THE B-TEAM"));
-        answer.setCorrectAnswer(1);
-        answer.removeAnswer(2);
-        AnswerService.updateAnswer(answer);
-        tempSize--;
-        assertTrue("addAndRemoveAnswers: the answer has not been deleted [removeAnswer(int) n°1]", tempSize == answer.getAnswers().size());
-
-        List<String> karen = AnswerService.getAllAnswers().get(0).getAnswers();
-
-        answer.setCorrectAnswer(2);
-        answer.removeAnswer(1);
-        AnswerService.updateAnswer(answer);
-        tempSize--;
-        assertTrue("addAndRemoveAnswers: the answer has not been deleted [removeAnswer(int) n°2]", tempSize == answer.getAnswers().size());
-        assertTrue("addAndRemoveAnswers: the correctAnswer was not changed", answer.getCorrectAnswer() == 1);
-        assertTrue("addAndRemoveAnswers: # creates != # deletes", initialSize == answer.getAnswers().size());
-
-        assertFalse("test: ophalen met arrAnswers 1", AnswerService.getAllAnswers().isEmpty());
-        Answer testAnswer = AnswerService.getAllAnswers().get(0);
-
-        List<String> testAnswers = testAnswer.getAnswers();
-        assertTrue("test: ophalen met arrAnswers 2", testAnswers.size() > 0);
+    public void saveAnswerCollection() {
+        stop.getAnswers().add(new Answer("Van Gogh", false, stop));
+        stop.getAnswers().add(new Answer("Rubens", true, stop));
+        stop.getAnswers().add(new Answer("Picasso", false, stop));
+        stop.getAnswers().add(new Answer("Rembrandt", false, stop));
+        StopService.updateStop(stop);
+        //stop = StopService.getStopById(stop.getId());
+        assertTrue(AnswerService.getAnswersByStopID(stop.getId()).size() == 5);
     }
 
     @Test
-    public void isAnswerCorrect() {
-        assertTrue("isAnswerCorrect", answer.isAnswerCorrect(1));
-        assertFalse("isAnswerCorrect", answer.isAnswerCorrect(0));
+    public void deleteStopWithAnswers() {
+        long stopId = stop.getId();
+        StopService.deleteStop(stop);
+        boolean test = AnswerService.getAnswersByStopID(stopId).isEmpty();
+        assertTrue(AnswerService.getAnswersByStopID(stopId).isEmpty());
     }
-
 }

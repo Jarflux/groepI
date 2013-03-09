@@ -13,6 +13,7 @@
 <head>
     <title><spring:message code='text.viewtripinformation'/></title>
     <link href="/css/blue.css" rel="stylesheet"/>
+    <link href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" rel="stylesheet"/>
 </head>
 <body>
 <div id="wrapper">
@@ -32,15 +33,12 @@
             <a href="/profile/view/${tripInstanceObject.organiser.id}"
                class="active">${tripInstanceObject.organiser.name}</a> <br/>
             <spring:message code='text.date'/>: ${date} <br/>
-            <spring:message code='text.from'/>: ${startTimeString} <br/>
-            <spring:message code='text.to'/>: ${endTimeString} <br/>
+            <spring:message code='text.time'/>: ${startTimeString} - ${endTimeString}<br/>
+            <%--<spring:message code='text.to'/>:  <br/>--%>
 
             <c:if test="${tripInstanceObject.organiser.id == userObject.id}">
                 <a href="/trips/editinstance/${tripInstanceObject.id}" class="active"><spring:message
                         code='text.edittrip'/></a>
-            </c:if>
-            <c:if test="${tripInstanceObject.organiser.id != userObject.id}">
-                Zo, jij wil deze trip aanpassen? MAG NIET!
             </c:if>
 
 
@@ -56,9 +54,9 @@
                     <c:when test="${!empty tripInstanceObject.trip.stops}">
                         <ul class='sortable'>
                             <c:forEach var="stop" items="${tripInstanceObject.trip.stops}">
-                                <li id="stop-${stop.id}">${stop.stopnumber}: <a href="/trips/editStop/${stop.id}"
-                                                                                class="active"><c:out
-                                        value="${stop.name}"/></a></li>
+                                <li id="stop-${stop.id}">${stop.stopnumber}:
+                                    <a href="/trips/editStop/${stop.id}" class="active"><c:out value="${stop.name}"/></a>
+                                </li>
                                 <%--<li>view die stop jongeuh</li>--%>
                             </c:forEach>
                         </ul>
@@ -92,11 +90,13 @@
                                             <td>${requirementInstance.user.name}</td>
                                         </c:when>
                                         <c:otherwise>
-                                            <td><spring:message code="text.requirementinstancebrings"/>: <spring:message
-                                                    code='text.requirementinstanceforallusers'/></td>
+                                            <td><spring:message code="text.requirementinstancebrings"/>:
+                                                <spring:message code='text.requirementinstanceforallusers'/></td>
                                         </c:otherwise>
                                     </c:choose>
-                                    <td>assign user to reqInstance (anchor of javascript? idk)</td>
+                                    <td class='addrequirement' inid='${requirementInstance.id}'>
+                                        Click to assign to participant
+                                    </td>
                                 </tr>
                             </c:forEach>
                         </table>
@@ -127,6 +127,15 @@
                                             </c:when>
                                         </c:choose>
                                     </c:forEach>
+                                    <td>
+                                        <form method="post" action="/trips/deletemessage">
+                                            <input type="hidden" value="${message.id}" name="messageId"/>
+                                            <input type="hidden" value="${tripInstanceObject.id}"
+                                                   name="tripInstanceId"/>
+                                            <input type="submit" class="button"
+                                                   value="<spring:message code='text.deletemessage'/>"/>
+                                        </form>
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -155,7 +164,20 @@
                                 <tr>
                                     <td>${cost.amount}</td>
                                     <td>${cost.description}</td>
+                                    <td class="editcost" inid="${tripInstanceObject.id}" incostid="${cost.id}"
+                                        indesc="${cost.description}" inam="${cost.amount}">
+                                            <spring:message code="text.edit"/>
+                                    <td>
+                                        <form method="post" action="/trips/deletecost">
+                                            <input type="hidden" value="${cost.id}" name="costId"/>
+                                            <input type="hidden" value="${tripInstanceObject.id}"
+                                                   name="tripInstanceId"/>
+                                            <input type="submit" class="button"
+                                                   value="<spring:message code='text.deletecost'/>"/>
+                                        </form>
+                                    </td>
                                 </tr>
+
                             </c:forEach>
                         </table>
                     </c:when>
@@ -173,8 +195,7 @@
                         <table>
                             <c:forEach var="user" items="${tripInstanceObject.participants}">
                                 <tr>
-                                        <%--TODO: link naar profiel maybe?--%>
-                                    <td>${user.name}</td>
+                                    <td><a href="/profile/view/${user.id}">${user.name}</a></td>
                                 </tr>
                             </c:forEach>
                         </table>
@@ -187,10 +208,43 @@
         </div>
     </div>
 </div>
+
+<div id="assignRequirementToParticipant" title="<spring:message code="text.assignrequirementtoparticipant"/>">
+    <p>
+
+    <form method="POST" action="/trips/assignrequirementtouser">
+        <input type="hidden" name="requirementinstanceid"/>
+        <select name="responsibleuser">
+            <option value="0">Iedereen</option>
+            <c:forEach var="participant" items="${tripInstanceObject.participants}">
+                <option value="${participant.id}">${participant.name}</option>
+            </c:forEach>
+            <input type="submit" class="button" value="<spring:message code="text.save"/>"/>
+        </select>
+    </form>
+    </p>
+</div>
+
+<div id="editCost" title="<spring:message code="text.editcost"/>">
+    <p>
+
+    <form method="POST" action="/trips/editcost">
+        <input type="hidden" id="costid" name="costid"/>
+        <input type="text" name="description" id="descval"
+               title="<spring:message code="text.costdescription"/>"/>
+        <input type="text" name="amount" id="amval"
+               title="<spring:message code="text.costamount"/>"/>
+        <input type="submit" class="button" value="<spring:message code="text.save"/>"/>
+    </form>
+    </p>
+
+</div>
+
 <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 <script src="/js/functions.js"></script>
-<script>makesortable();
+<script>maketripsortable();
+preparemodal();
 </script>
 </body>
 </html>

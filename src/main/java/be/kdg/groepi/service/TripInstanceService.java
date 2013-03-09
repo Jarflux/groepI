@@ -1,16 +1,13 @@
 package be.kdg.groepi.service;
 
-import be.kdg.groepi.model.Trip;
-import be.kdg.groepi.model.Trip;
 import be.kdg.groepi.model.TripInstance;
 import be.kdg.groepi.model.User;
-import be.kdg.groepi.utils.DateUtil;
 import be.kdg.groepi.utils.HibernateUtil;
-import org.hibernate.Query;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -97,7 +94,7 @@ public class TripInstanceService {
     }
 
     public static List<TripInstance> getAllTripInstances() {
-        List<TripInstance> tripinstances = null;
+        List<TripInstance> tripinstances = new ArrayList<>();
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
@@ -114,8 +111,8 @@ public class TripInstanceService {
         return tripinstances;
     }
 
-        public static List<TripInstance> getAllTripInstancesByTripId(long tripId) {
-        List<TripInstance> tripinstances = null;
+    public static List<TripInstance> getAllTripInstancesByTripId(long tripId) {
+        List<TripInstance> tripinstances = new ArrayList<>();
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
@@ -135,8 +132,8 @@ public class TripInstanceService {
         return tripinstances;
     }
 
-    public static List<TripInstance> getTripInstancesByOrganiserId(long id){
-        List<TripInstance> tripInstances = null;
+    public static List<TripInstance> getTripInstancesByOrganiserId(long id) {
+        List<TripInstance> tripInstances = new ArrayList<>();
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
@@ -155,8 +152,8 @@ public class TripInstanceService {
         return tripInstances;
     }
 
-    public static List<TripInstance> getPublicTripInstances(){
-        List<TripInstance> tripinstances = null;
+    public static List<TripInstance> getPublicTripInstances() {
+        List<TripInstance> tripinstances = new ArrayList<>();
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
@@ -175,12 +172,12 @@ public class TripInstanceService {
         return tripinstances;
     }
 
-    public static List<TripInstance> getTripInstancesByUserId(Long userId){
-        List<TripInstance> trips = null;
+    public static List<TripInstance> getTripInstancesByUserId(Long userId) {
+        List<TripInstance> trips = new ArrayList<>();
         List<TripInstance> tripInstances = TripInstanceService.getAllTripInstances();
-        for (TripInstance tripInstance : tripInstances){
-            for (User participant : tripInstance.getParticipants()){
-                if (userId == participant.getId()){
+        for (TripInstance tripInstance : tripInstances) {
+            for (User participant : tripInstance.getParticipants()) {
+                if (userId == participant.getId()) {
                     trips.add(tripInstance);
                 }
             }

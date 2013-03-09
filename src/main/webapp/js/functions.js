@@ -1,18 +1,92 @@
+
+window.fbAsyncInit = function() {
+    // init the FB JS SDK
+    FB.init({
+        appId      : '349005061872374', // App ID from the App Dashboard
+        channelUrl : '/fbloginpage', // Channel File for x-domain communication
+        status     : true, // check the login status upon init?
+        cookie     : true, // set sessions cookies to allow your server to access the session?
+        xfbml      : true  // parse XFBML tags on this page?
+    });
+
+    // Additional initialization code such as adding Event Listeners goes here
+
+};
+
+// Load the SDK's source Asynchronously
+// Note that the debug version is being actively developed and might
+// contain some type checks that are overly strict.
+// Please report such bugs using the bugs tool.
+(function(d, debug){
+    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement('script'); js.id = id; js.async = true;
+    js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
+    ref.parentNode.insertBefore(js, ref);
+}(document, /*debug*/ false));
+
+
 var formfout=false;
-/*$("#stopType option[stoptype=1]").attr({"selected":"selected"})*/
 
 $(function()
 {
     preparetooltips();
     validateform();
 
+    addhandlers();
+
+
+
+
+
+})
+function addhandlers()
+{
     $("#fblogin").on("click",function()
     {
         fblogin();
     })
-})
+
+    $("#invitefriends").on("click",function()
+    {
+        invitefriendsdialog();
+    })
+}
 function preparetooltips()
 {
+})
+
+function preparemodal() {
+    $("#assignRequirementToParticipant").dialog({
+        modal: true,
+        autoOpen: false
+
+    });
+
+    $('.addrequirement').on("click", function () {
+        $("#assignRequirementToParticipant").dialog('open');
+        var instid = $(this).attr("inid");
+        $("#requirementinstanceid").val(instid);
+
+    });
+
+    $("#editCost").dialog({
+        modal: true,
+        autoOpen: false
+    });
+
+    $('.editcost').on("click", function () {
+        $("#editCost").dialog("open");
+        var instcostid = $(this).attr("incostid");
+        var instdesc = $(this).attr("indesc");
+        var instam = $(this).attr("inam");
+        $("#costid").val(instcostid);
+        $("#descval").val(instdesc);
+        $("#amval").val(instam);
+    });
+}
+
+function preparetooltips() {
     $("form.tooltips input").tooltip({
         // place tooltip on the right edge
         position: "center right",
@@ -25,48 +99,38 @@ function preparetooltips()
 
     });
 }
-function validateform()
-{
-        $(".dateregister").dateinput({format: 'dd-mm-yyyy',yearRange: [-80, -12],firstDay: 1,selectors: true,value: "Today"  });
-        $(".date").dateinput({format: 'dd-mm-yyyy',yearRange: [0, 1],firstDay: 1,selectors: true,value: "Today"  });
-        $("form.validate input, form.validate textarea").each(function()
-        {
-           $(this).after("<span class='deerror'></span>");
-            /* Required validatie */
-            if ($(this).hasClass("required"))
-            {
-                $(this).prev("span").append("<span style='color: red;width:20px;margin:0;paddin'>*</span>");
-                $(this).on("blur",function()
-                {
-                    lengte=$(this).val().length;
-                    console.log("Lengte is "+lengte);
-                    if (lengte==0)
-                    {
-                        $(this).next(".deerror").addClass("inputerror").text("Dit veld is verplicht.");
-                    }
-                    else
-                    {
-                        $(this).next(".deerror").removeClass("inputerror").text("");
-                    }
-                })
-            }
-             /* Equalsto validatie */
-            if ($(this).hasClass("equalsto"))
-            {
-                andere=$(this).attr("equalsto");
-                $(this).on("blur",function()
-                {
-                    dezewaarde=$(this).val();
-                    anderewaarde=$("input[name="+andere+"]").val();
-                    if (dezewaarde!=anderewaarde)
-                    {
-                        $(this).next(".deerror").addClass("inputerror").text("Veld is niet gelijk");
-                    }
-                    else
-                    {
-                        $(this).next(".deerror").removeClass("inputerror").text("")
-                    }
-                })
+function validateform() {
+    $(".dateregister").dateinput({format: 'dd-mm-yyyy', yearRange: [-80, -12], firstDay: 1, selectors: true, value: "Today"  });
+    $(".date").dateinput({format: 'dd-mm-yyyy', yearRange: [0, 1], firstDay: 1, selectors: true, value: "Today"  });
+    $("form.validate input, form.validate textarea").each(function () {
+        $(this).after("<span class='deerror'></span>");
+        /* Required validatie */
+        if ($(this).hasClass("required")) {
+            $(this).prev("span").append("<span style='color: red;width:20px;margin:0;paddin'>*</span>");
+            $(this).on("blur", function () {
+                lengte = $(this).val().length;
+                console.log("Lengte is " + lengte);
+                if (lengte == 0) {
+                    $(this).next(".deerror").addClass("inputerror").text("Dit veld is verplicht.");
+                }
+                else {
+                    $(this).next(".deerror").removeClass("inputerror").text("");
+                }
+            })
+        }
+        /* Equalsto validatie */
+        if ($(this).hasClass("equalsto")) {
+            andere = $(this).attr("equalsto");
+            $(this).on("blur", function () {
+                dezewaarde = $(this).val();
+                anderewaarde = $("input[name=" + andere + "]").val();
+                if (dezewaarde != anderewaarde) {
+                    $(this).next(".deerror").addClass("inputerror").text("Veld is niet gelijk");
+                }
+                else {
+                    $(this).next(".deerror").removeClass("inputerror").text("")
+                }
+            })
 
             }
         })
@@ -192,5 +256,16 @@ function performLogin() {
         })
 
     });
+}
+function invitefriendsdialog()
+{
+
+        FB.ui({method: 'apprequests',
+            message: 'Invite the friends yes.'
+        }, function(requestid,toids)
+        {
+            console.log("Friends waren: "+requestid.to);
+        });
+
 }
 

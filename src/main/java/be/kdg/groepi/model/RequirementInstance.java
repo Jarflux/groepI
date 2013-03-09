@@ -1,6 +1,7 @@
 package be.kdg.groepi.model;
 
 import be.kdg.groepi.utils.CompareUtil;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -12,7 +13,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "T_REQUIREMENT_INSTANCE")
-public class RequirementInstance implements Serializable {
+public class RequirementInstance implements Serializable, Comparable {
 
     @Id
     @GeneratedValue
@@ -123,5 +124,16 @@ public class RequirementInstance implements Serializable {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        RequirementInstance requirementInstance = (RequirementInstance) o;
+        if (this.equals(requirementInstance)) return 0;
+        int comparison = this.fName.compareTo(requirementInstance.getName());
+        if (comparison != 0) {
+            return comparison;
+        }
+        return 0;
     }
 }

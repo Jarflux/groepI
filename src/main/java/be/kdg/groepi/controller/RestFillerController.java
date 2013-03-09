@@ -4,14 +4,8 @@
  */
 package be.kdg.groepi.controller;
 
-import be.kdg.groepi.model.Stop;
-import be.kdg.groepi.model.Trip;
-import be.kdg.groepi.model.TripInstance;
-import be.kdg.groepi.model.User;
-import be.kdg.groepi.service.StopService;
-import be.kdg.groepi.service.TripInstanceService;
-import be.kdg.groepi.service.TripService;
-import be.kdg.groepi.service.UserService;
+import be.kdg.groepi.model.*;
+import be.kdg.groepi.service.*;
 import be.kdg.groepi.utils.CompareUtil;
 import be.kdg.groepi.utils.DateUtil;
 import java.io.UnsupportedEncodingException;
@@ -54,9 +48,20 @@ public class RestFillerController {
             Trip tripA = new Trip("Onze eerste trip", "Hopelijk is deze niet saai!", true, true, ben);
             Trip tripB = new Trip("Onze tweede trip", "Hopelijk is deze niet saaier!", true, true, tim);
             Trip tripC = new Trip("Onze derde trip", "Hopelijk is deze niet de saaiste!", true, true, mitch);
+            Trip tripD = new Trip("The Candy Land Tour", "Een rit doorheen de domeinen van Mr Calvin Candy", true, true, django);
             TripService.createTrip(tripA);
             TripService.createTrip(tripB);
             TripService.createTrip(tripC);
+            TripService.createTrip(tripD);
+
+            Stop stop = new Stop("Front Gate",  "4.399166", "51.221212", 1, 1, 1, "Wie speelt Calvin Candy in de film Django Unchained?", tripD);
+            StopService.createStop(stop);
+            AnswerService.createAnswer(new Answer("Leonardo DiCaprio", true, stop));
+            AnswerService.createAnswer(new Answer("Jamie Foxx", false, stop));
+            AnswerService.createAnswer(new Answer("David Shultz", false, stop));
+            AnswerService.createAnswer(new Answer("Samuel L Jackson", false, stop));
+            StopService.createStop(new Stop("The Fields",  "4.399786", "51.221212", 1, 1, 1, "De velden waar allerlei stuff wordt geteeld.", tripD));
+            StopService.createStop(new Stop("The Mansion",  "4.392166", "51.227812", 1, 1, 1, "De residentie van Mr Candy himself.", tripD));
 
             StopService.createStop(new Stop("Stopplaats 1",  "4.399166", "51.221212", 1, 1, 1, "Dit is de eerste stopplaats", tripA));
             StopService.createStop(new Stop("Stopplaats 2", "4.399166", "51.221212", 2, 1, 1, "Dit is de tweede stopplaats", tripA));
