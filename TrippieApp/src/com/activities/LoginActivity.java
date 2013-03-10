@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import com.controllers.Controller;
-import com.session.SessionManager;
 import org.json.JSONObject;
 
 public class LoginActivity extends Activity implements View.OnClickListener {
