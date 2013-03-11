@@ -25,5 +25,6 @@
             android:layout_height="wrap_content"
             android:text="Inloggen"
             android:id="@+id/button" android:layout_gravity="center"/>
+
 </LinearLayout>
 

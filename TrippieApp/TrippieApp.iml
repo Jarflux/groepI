@@ -40,6 +40,10 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="spring-android" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:1.7.1" level="project" />
+    <orderEntry type="library" name="spring-android-auth-1.0.1.RELEASE" level="project" />
+    <orderEntry type="library" name="spring-android-core-1.0.1.RELEASE" level="project" />
+    <orderEntry type="library" name="spring-android-rest-template-1.0.1.RELEASE" level="project" />
   </component>
 </module>
 

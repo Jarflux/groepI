@@ -14,6 +14,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.model.TripInstance;
 import com.model.User;
+import com.tasks.HttpGetTask;
+import com.tasks.LoginTask;
 import com.utils.DateUtil;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
@@ -57,13 +59,12 @@ import java.util.concurrent.ExecutionException;
  */
 public class Controller {
     private final static String adres = "192.168.1.137:8080";
-    private static Gson gson = new Gson();
 
     public List<TripInstance> getUserTripParticipations(Long userId){
-        HttpAsyncTask requestTask = new HttpAsyncTask();
-        requestTask.execute("android/showUserTripParticipations",userId.toString());
+        HttpGetTask getTask = new HttpGetTask();
+        getTask.execute("android/showUserTripParticipations",userId.toString());
         try {
-            return (List)requestTask.get();
+            return (List)getTask.get();
         } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
@@ -71,40 +72,13 @@ public class Controller {
     }
 
     public  JSONObject springSecurityCheck(String username, String password) {
-        DefaultHttpClient client = new DefaultHttpClient();
-        HttpPost requestLogin = new HttpPost("http://"+ adres +"/j_spring_security_check?");
-        JSONObject jUser = null;
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("j_username", username));
-        params.add(new BasicNameValuePair("j_password", password));
-
+        LoginTask loginTask = new LoginTask();
+        loginTask.execute(username,password);
         try {
-            requestLogin.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-            HttpResponse response = client.execute(requestLogin);
-            String user = response.getFirstHeader("user").getValue();
-            jUser = new JSONObject(user);
-        }catch(Exception e){
-            e.printStackTrace();
+            return (JSONObject)loginTask.get();
+        } catch (Exception e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
-        return jUser;
-    }
-
-    private class HttpAsyncTask extends AsyncTask{
-
-        @Override
-        protected Object doInBackground(Object... objects) {
-            DefaultHttpClient client = new DefaultHttpClient();
-            List<TripInstance> trips = null;
-            HttpGet requestLogin = new HttpGet("http://"+adres+"/"+objects[0]+"/"+objects[1]);
-            try {
-                ResponseHandler<String> responseHandler=new BasicResponseHandler();
-                String responseBody = client.execute(requestLogin, responseHandler);
-                Type collectionType = new TypeToken<List<TripInstance>>(){}.getType();
-                trips = gson.fromJson(responseBody,collectionType);
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-            return trips;
-        }
+        return null;
     }
 }
