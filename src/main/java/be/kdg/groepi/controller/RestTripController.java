@@ -155,7 +155,7 @@ public class RestTripController {
         else
         {
             //TODO correcte error weergeven
-            return new ModelAndView("error/displayerror");
+            return new ModelAndView("error/displayerror/oops", "errorid", "");
         }
 
     }
@@ -164,6 +164,14 @@ public class RestTripController {
     public ModelAndView updateStop(@ModelAttribute("stopObject") Stop stop) {
         StopService.updateStop(stop);
         return new ModelAndView("trips/view", "stopObject", stop);
+    }
+
+    @RequestMapping(value = "/createAnswer", method = RequestMethod.POST)
+    public ModelAndView createAnswer(@RequestParam String answer, @RequestParam String stopId) {
+        Stop stop = StopService.getStopById(Long.parseLong(stopId));
+        stop.getAnswers().add(new Answer(answer, false, stop));
+        StopService.updateStop(stop);
+        return new ModelAndView("trips/editstop", "stopObject", stop);
     }
 
     @RequestMapping(value = "/addrequirement/{tripId}", method = RequestMethod.GET)

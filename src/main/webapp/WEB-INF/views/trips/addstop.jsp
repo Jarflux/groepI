@@ -61,6 +61,7 @@
 <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
 <script src="/js/functions.js"></script>
+<script src="/js/gmapfunctions.js"></script>
 <script>
     $(function () {
         google.maps.event.addDomListener(window, 'load', initializeGMaps);
