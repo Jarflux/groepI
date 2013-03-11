@@ -94,12 +94,12 @@ public class TripInstanceService {
     }
 
     public static List<TripInstance> getAllTripInstances() {
-        List<TripInstance> tripinstances = new ArrayList<>();
+        List<TripInstance> tripinstances = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            tripinstances = session.createQuery("FROM TripInstance tripinstance").list();
+            tripinstances = session.createQuery("FROM TripInstance").list();
             tx.commit();
         } catch (RuntimeException e) {
             if (tx != null) {

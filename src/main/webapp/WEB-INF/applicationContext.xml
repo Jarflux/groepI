@@ -29,6 +29,8 @@
         <intercept-url pattern="/profile/createUser" access="permitAll"/>
         <intercept-url pattern="/profile/fblogin" access="permitAll"/>
 
+        <intercept-url pattern="/android/**" access="permitAll"/>
+
         <intercept-url pattern="/**" access="isAuthenticated()"/>
         <form-login login-page="/login" authentication-failure-url="/login/incorrect"
                     authentication-success-handler-ref="successHandler" />

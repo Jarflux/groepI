@@ -172,17 +172,6 @@ public class RestTripController {
     }
     /*return new ModelAndView("trips/addtriprequirement", "tripId", trip.getId().toString());*/
 
-    @RequestMapping(value = "/showUserTripParticipations/{userId}", method = RequestMethod.GET)
-    public void getUserTripParticipations(@PathVariable(value = "userId") String userId, HttpServletRequest request, HttpServletResponse response) {
-        List<TripInstance> trips = TripInstanceService.getTripInstancesByUserId(Long.parseLong(userId));
-        JSONObject jo = new JSONObject(trips);
-        try {
-            response.getWriter().print(jo.toString());
-        } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-    }
-
 
     ////////////////////////////////////////
 
