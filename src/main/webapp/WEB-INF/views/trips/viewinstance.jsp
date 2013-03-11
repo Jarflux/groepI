@@ -38,8 +38,9 @@
 
             <c:if test="${tripInstanceObject.organiser.id == userObject.id}">
                 <a href="/trips/editinstance/${tripInstanceObject.id}" class="active"><spring:message
-                        code='text.edittrip'/></a>
+                        code='text.edittrip'/></a>           <p id="invitefriends" class="button" data-instance='${tripInstanceObject.id}' data-naam='${tripInstanceObject.title}'><spring:message code="text.invitefriendsfb"/></p>
             </c:if>
+
 
 
         </section>

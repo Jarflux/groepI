@@ -49,11 +49,10 @@ function addhandlers()
 
     $("#invitefriends").on("click",function()
     {
-        invitefriendsdialog();
+        naamtrip = $(this).attr('data-naam');
+        instance= $(this).attr('data-instance');
+        invitefriendsdialog(instance, naamtrip);
     })
-}
-function preparetooltips()
-{
 }
 
 function preparemodal() {
@@ -190,15 +189,30 @@ function performLogin() {
 
     });
 }
-function invitefriendsdialog()
+function invitefriendsdialog(instanceid,naamtrip)
 {
 
-        FB.ui({method: 'apprequests',
-            message: 'Invite the friends yes.'
-        }, function(requestid,toids)
+    FB.ui(
         {
-            console.log("Friends waren: "+requestid.to);
-        });
+            method: 'send',
+            name: 'Trippie: trip away!',
+            description: (
+                'Via trippie.be kan je gemakkelijk een trip plannen samen met je vrienden. Ik heb net een trip aangemaakt: ' +naamtrip+
+                    '. Ga je mee met mijn trip? '
+                ),
+            link: 'http://tomcat.vincentverbist.be:8080/trips/viewinstance/'+instanceid
+        },
+        function(response) {
+            if (response && response.post_id) {
+      console.log("Geplaatst op FB!")
+            } else {
+                console.log("Niet geplaatst op FB:(")
+            }
+        }
+    );
+
+
+
 
 }
 

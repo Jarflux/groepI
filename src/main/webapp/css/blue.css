@@ -314,13 +314,14 @@ form.mainstyle input[type="checkbox"] {
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box; /* Firefox, other Gecko */
     box-sizing: border-box; /* Opera/IE 8+ */
-
+           display: inline-block;
     background: #066178;
     font-size: 16px;
-    border: none !important;
     color: white !important;
     margin-left: 0px;
     font-family: "PT Sans Narrow";
+    border: 2px solid #0ac5f4 !important;
+    cursor: hand;
 }
 
 .row {
@@ -424,10 +425,9 @@ form.mainstyle input[type="checkbox"] {
 
     color: white;
 }
-#fblogin
+.button2
 {
-    display: inline;
-    width: 100px;
+    display: inline-block;
     padding: 3px;
     color:  white;
     border: 2px solid #1799b9;
@@ -435,6 +435,5 @@ form.mainstyle input[type="checkbox"] {
     cursor: hand;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-background: #0ac5f4;;
+background: #0ac5f4;
 }
-
