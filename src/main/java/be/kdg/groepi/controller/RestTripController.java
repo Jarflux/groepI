@@ -155,9 +155,8 @@ public class RestTripController {
         else
         {
             //TODO correcte error weergeven
-            return new ModelAndView("error/displayerror/oops", "errorid", "");
+            return new ModelAndView("error/displayerror/invaliduser", "errorid", "");
         }
-
     }
 
     @RequestMapping(value = "/updateStop", method = RequestMethod.POST)
@@ -178,11 +177,6 @@ public class RestTripController {
     public ModelAndView addRequirement(@PathVariable(value = "tripId") String tripId) {
         return new ModelAndView("trips/addtriprequirement", "tripId", tripId);
     }
-    /*return new ModelAndView("trips/addtriprequirement", "tripId", trip.getId().toString());*/
-
-
-    ////////////////////////////////////////
-
 
     @RequestMapping(value = "/addinstance/{tripId}")
     public ModelAndView addinstance(@PathVariable("tripId") String tripId, HttpSession session) {
@@ -480,5 +474,11 @@ public class RestTripController {
         modelAndView.addObject("startTimeString", DateUtil.formatTime(tripInstance.getStartTime()));
         modelAndView.addObject("endTimeString", DateUtil.formatTime(tripInstance.getEndTime()));
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/deleteAnswer", method = RequestMethod.POST)
+    public ModelAndView fbLogin(@RequestParam(value = "answerId") String answerId, HttpSession session) {
+        String response = "OK";
+        return new ModelAndView("jsonresponse", "antwoord", response);
     }
 }

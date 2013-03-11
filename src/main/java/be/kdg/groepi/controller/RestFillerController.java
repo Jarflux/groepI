@@ -54,26 +54,26 @@ public class RestFillerController {
             TripService.createTrip(tripC);
             TripService.createTrip(tripD);
 
-            Stop stop = new Stop("Front Gate",  "4.399166", "51.221212", 1, 1, 1, "Wie speelt Calvin Candy in de film Django Unchained?", tripD);
+            Stop stop = new Stop("Front Gate",  "4.399166", "51.221212", 1, 1, 1, "Wie speelt Calvin Candy in de film Django Unchained?", 1000, tripD);
             StopService.createStop(stop);
             AnswerService.createAnswer(new Answer("Leonardo DiCaprio", true, stop));
             AnswerService.createAnswer(new Answer("Jamie Foxx", false, stop));
             AnswerService.createAnswer(new Answer("David Shultz", false, stop));
             AnswerService.createAnswer(new Answer("Samuel L Jackson", false, stop));
-            StopService.createStop(new Stop("The Fields",  "4.399786", "51.221212", 1, 1, 1, "De velden waar allerlei stuff wordt geteeld.", tripD));
-            StopService.createStop(new Stop("The Mansion",  "4.392166", "51.227812", 1, 1, 1, "De residentie van Mr Candy himself.", tripD));
+            StopService.createStop(new Stop("The Fields",  "4.399786", "51.221212", 1, 1, 1, "De velden waar allerlei stuff wordt geteeld.", 1000,tripD));
+            StopService.createStop(new Stop("The Mansion",  "4.392166", "51.227812", 1, 1, 1, "De residentie van Mr Candy himself.", 1000, tripD));
 
-            StopService.createStop(new Stop("Stopplaats 1",  "4.399166", "51.221212", 1, 1, 1, "Dit is de eerste stopplaats", tripA));
-            StopService.createStop(new Stop("Stopplaats 2", "4.399166", "51.221212", 2, 1, 1, "Dit is de tweede stopplaats", tripA));
-            StopService.createStop(new Stop("Stopplaats 3",  "4.399166", "51.221212", 3, 1, 1, "Dit is de derde stopplaats", tripA));
+            StopService.createStop(new Stop("Stopplaats 1",  "4.399166", "51.221212", 1, 1, 1, "Dit is de eerste stopplaats", 1000, tripA));
+            StopService.createStop(new Stop("Stopplaats 2", "4.399166", "51.221212", 2, 1, 1, "Dit is de tweede stopplaats", 1000, tripA));
+            StopService.createStop(new Stop("Stopplaats 3",  "4.399166", "51.221212", 3, 1, 1, "Dit is de derde stopplaats", 1000, tripA));
 
-            StopService.createStop(new Stop("Stopplaats 1",  "4.399166", "51.221212", 1, 1, 1, "Dit is de eerste stopplaats", tripB));
-            StopService.createStop(new Stop("Stopplaats 2",  "4.399166", "51.221212", 2, 1, 1, "Dit is de tweede stopplaats", tripB));
-            StopService.createStop(new Stop("Stopplaats 3",  "4.399166", "51.221212", 3, 1, 1, "Dit is de derde stopplaats", tripB));
+            StopService.createStop(new Stop("Stopplaats 1",  "4.399166", "51.221212", 1, 1, 1, "Dit is de eerste stopplaats", 1000, tripB));
+            StopService.createStop(new Stop("Stopplaats 2",  "4.399166", "51.221212", 2, 1, 1, "Dit is de tweede stopplaats", 1000, tripB));
+            StopService.createStop(new Stop("Stopplaats 3",  "4.399166", "51.221212", 3, 1, 1, "Dit is de derde stopplaats", 1000, tripB));
 
-            StopService.createStop(new Stop("Stopplaats 1",  "4.399166", "51.221212", 1, 1, 1, "Dit is de eerste stopplaats", tripC));
-            StopService.createStop(new Stop("Stopplaats 2",  "4.399166", "51.221212", 2, 1, 1, "Dit is de tweede stopplaats", tripC));
-            StopService.createStop(new Stop("Stopplaats 3",  "4.399166", "51.221212", 3, 1, 1, "Dit is de derde stopplaats", tripC));
+            StopService.createStop(new Stop("Stopplaats 1",  "4.399166", "51.221212", 1, 1, 1, "Dit is de eerste stopplaats", 1000, tripC));
+            StopService.createStop(new Stop("Stopplaats 2",  "4.399166", "51.221212", 2, 1, 1, "Dit is de tweede stopplaats", 1000, tripC));
+            StopService.createStop(new Stop("Stopplaats 3",  "4.399166", "51.221212", 3, 1, 1, "Dit is de derde stopplaats", 1000, tripC));
 
             long startDate1 = DateUtil.dateToLong(27, 02, 2013, 16, 00, 00);
             long endDate1 = DateUtil.dateToLong(27, 02, 2013, 20, 00, 00);

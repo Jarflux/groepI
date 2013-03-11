@@ -28,7 +28,7 @@ public class AnswerServiceTest {
         UserService.createUser(user);
         trip = new Trip("Stadswandeling, Antwerp Edition", "Een wandeling doorheen het centrum met als afsluiter een etentje op het nieuwe Zuid.", true, true, user);// trip aanmaken
         TripService.createTrip(trip);
-        stop = new Stop("Groenplaats",  "4.399166", "51.221212", 1, 1, 1, "Van wie is dit stambeeld?", trip);
+        stop = new Stop("Groenplaats",  "4.399166", "51.221212", 1, 1, 1, "Van wie is dit stambeeld?",1000, trip);
         StopService.createStop(stop);
         answer = new Answer("Den Tester", false, stop);
         AnswerService.createAnswer(answer);

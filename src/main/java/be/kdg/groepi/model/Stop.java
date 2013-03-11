@@ -39,6 +39,8 @@ public class Stop {
     private Integer fDisplayMode;
     @Column(name = "stopText")
     private String fStopText;
+    @Column(name = "radius")
+    private Integer fRadius;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "trip_id", nullable = false)
@@ -51,7 +53,7 @@ public class Stop {
     public Stop() {
     }
 
-    public Stop(String fName, String fLongitude, String fLatitude, Integer fStopnumber, Integer fType, Integer fDisplayMode, String fStopText, Trip fTrip) {
+    public Stop(String fName, String fLongitude, String fLatitude, Integer fStopnumber, Integer fType, Integer fDisplayMode, String fStopText, Integer fRadius, Trip fTrip) {
         this.fName = fName;
         this.fLongitude = fLongitude;
         this.fLatitude = fLatitude;
@@ -59,6 +61,7 @@ public class Stop {
         this.fType = fType;
         this.fDisplayMode = fDisplayMode;
         this.fStopText = fStopText;
+        this.fRadius = fRadius;
         this.fTrip = fTrip;
     }
 
@@ -120,6 +123,14 @@ public class Stop {
 
     public void setStopText(String fStopText) {
         this.fStopText = fStopText;
+    }
+
+    public Integer getRadius() {
+        return fRadius;
+    }
+
+    public void setRadius(Integer fRadius) {
+        this.fRadius = fRadius;
     }
 
     public Trip getTrip() {

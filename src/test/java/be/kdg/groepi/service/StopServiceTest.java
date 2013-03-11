@@ -33,7 +33,7 @@ public class StopServiceTest {
 
     @Test
     public void createStop() {
-        Stop stop = new Stop("Stop 1", "", "", 1, 0, 0, "Eerste Stopplaats", trip);
+        Stop stop = new Stop("Stop 1", "", "", 1, 0, 0, "Eerste Stopplaats", 1000, trip);
         StopService.createStop(stop);
         assertEquals(stop, StopService.getStopById(stop.getId()));
     }
@@ -48,6 +48,7 @@ public class StopServiceTest {
             s.setStopnumber(s.getStopnumber() + 1);
             s.setType(s.getType() + 1);
             s.setDisplayMode(s.getDisplayMode() + 1);
+            s.setRadius(s.getRadius() + 1);
             StopService.updateStop(s);
             assertEquals(s, StopService.getStopById(s.getId()));
         }
@@ -63,8 +64,8 @@ public class StopServiceTest {
 
     @Test
     public void testCompareStop() {
-        Stop stop = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", trip);
-        Stop stop2 = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", trip);
+        Stop stop = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", 1000, trip);
+        Stop stop2 = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", 1000, trip);
         StopService.createStop(stop);
         StopService.createStop(stop2);
         assertTrue("Stops should be the same", stop.equals(stop2));
@@ -72,7 +73,7 @@ public class StopServiceTest {
 
     @Test
     public void testCompareStopNullObject() {
-        Stop stop = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", trip);
+        Stop stop = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", 1000, trip);
         Stop stop2 = null;
         StopService.createStop(stop);
         StopService.createStop(stop2);
@@ -81,8 +82,8 @@ public class StopServiceTest {
 
     @Test
     public void testCompareStopName() {
-        Stop stop = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", trip);
-        Stop stop2 = new Stop("Stap 2", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", trip);
+        Stop stop = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", 1000, trip);
+        Stop stop2 = new Stop("Stap 2", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", 1000, trip);
         StopService.createStop(stop);
         StopService.createStop(stop2);
         assertFalse("Stops should not be the same", stop.equals(stop2));
@@ -90,8 +91,8 @@ public class StopServiceTest {
 
     @Test
     public void testCompareStopLatitude() {
-        Stop stop = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", trip);
-        Stop stop2 = new Stop("Stop 1", "1545", "454845", 1, 2, 3, "Eerste Stopplaats", trip);
+        Stop stop = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", 1000, trip);
+        Stop stop2 = new Stop("Stop 1", "1545", "454845", 1, 2, 3, "Eerste Stopplaats", 1000, trip);
         StopService.createStop(stop);
         StopService.createStop(stop2);
         assertFalse("Stops should not be the same", stop.equals(stop2));
@@ -99,8 +100,8 @@ public class StopServiceTest {
 
     @Test
     public void testCompareStopLongtitude() {
-        Stop stop = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", trip);
-        Stop stop2 = new Stop("Stop 1", "154545", "455", 1, 2, 3, "Eerste Stopplaats", trip);
+        Stop stop = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", 1000, trip);
+        Stop stop2 = new Stop("Stop 1", "154545", "455", 1, 2, 3, "Eerste Stopplaats", 1000, trip);
         StopService.createStop(stop);
         StopService.createStop(stop2);
         assertFalse("Stops should not be the same", stop.equals(stop2));
@@ -108,8 +109,8 @@ public class StopServiceTest {
 
     @Test
     public void testCompareStopNumber() {
-        Stop stop = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", trip);
-        Stop stop2 = new Stop("Stop 1", "154545", "454845", 3, 2, 3, "Eerste Stopplaats", trip);
+        Stop stop = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", 1000, trip);
+        Stop stop2 = new Stop("Stop 1", "154545", "454845", 3, 2, 3, "Eerste Stopplaats", 1000, trip);
         StopService.createStop(stop);
         StopService.createStop(stop2);
         assertFalse("Stops should not be the same", stop.equals(stop2));
@@ -117,8 +118,8 @@ public class StopServiceTest {
 
     @Test
     public void testCompareStopText() {
-        Stop stop = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", trip);
-        Stop stop2 = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste bwahaha Stopplaats", trip);
+        Stop stop = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", 1000, trip);
+        Stop stop2 = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste bwahaha Stopplaats", 1000, trip);
         StopService.createStop(stop);
         StopService.createStop(stop2);
         assertFalse("Stops should not be the same", stop.equals(stop2));
@@ -126,8 +127,8 @@ public class StopServiceTest {
 
     @Test
     public void testCompareStopDisplayMode() {
-        Stop stop = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", trip);
-        Stop stop2 = new Stop("Stop 1", "154545", "454845", 1, 2, 0, "Eerste Stopplaats", trip);
+        Stop stop = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", 1000, trip);
+        Stop stop2 = new Stop("Stop 1", "154545", "454845", 1, 2, 0, "Eerste Stopplaats", 1000, trip);
         StopService.createStop(stop);
         StopService.createStop(stop2);
         assertFalse("Stops should not be the same", stop.equals(stop2));
@@ -135,8 +136,8 @@ public class StopServiceTest {
 
     @Test
     public void testCompareStopType() {
-        Stop stop = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste Stopplaats", trip);
-        Stop stop2 = new Stop("Stop 1", "154545", "454845", 1, 0, 3, "Eerste Stopplaats", trip);
+        Stop stop = new Stop("Stop 1", "154545", "454845", 1, 2, 3, "Eerste Stopplaats",1000, trip);
+        Stop stop2 = new Stop("Stop 1", "154545", "454845", 1, 0, 3, "Eerste Stopplaats",1000, trip);
         StopService.createStop(stop);
         StopService.createStop(stop2);
         assertFalse("Stops should not be the same", stop.equals(stop2));

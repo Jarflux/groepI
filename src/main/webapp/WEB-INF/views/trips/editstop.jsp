@@ -47,8 +47,12 @@
                                     </select>
                                 </div>
                                 <div class="row">
+                                    <span><spring:message code='text.radius'/></span>
+                                    <textarea name="stopText"><c:out value="${stopObject.radius}"/></textarea>
+                                </div>
+                                <div class="row">
                                     <span><spring:message code='text.question'/></span>
-                                    <textarea name="stopText"><c:out value="${stopObject.stopText}"/></textarea>
+                                    <input type="text" name="stopText"value="${stopObject.radius}" />
                                 </div>
                                 <div class="row">
                                     <input type="hidden" name="latitude" value="${stopObject.latitude}"/>
@@ -78,10 +82,10 @@
                                     <c:forEach var="answer" items="${stopObject.answers}" varStatus="status">
                                             <c:choose>
                                                 <c:when test="${answer.isCorrect}">
-                                                    <li class="active"><span><input type="radio" name="group1" checked="checked" onclick="setCorrectAnswer()"/><c:out value="${answer.answerText}"/></span></li>
+                                                    <li class="active"><span><input type="radio" name="group1" checked="checked" onclick="setCorrectAnswer(${answer.id})"/><c:out value="${answer.answerText}"/></span></li>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <li class="active"><span><input type="radio" name="group1" onclick="setCorrectAnswer()" /><c:out value="${answer.answerText}"/></span></li>
+                                                    <li class="active"><span><input type="radio" name="group1" onclick="setCorrectAnswer(${answer.id})" /><c:out value="${answer.answerText}"/></span></li>
                                                 </c:otherwise>
                                             </c:choose>
                                     </c:forEach>
@@ -112,24 +116,31 @@
 <script src="/js/gmapfunctions.js"></script>
 <script>
     $(function () {
-        //google.maps.event.addDomListener(window, 'load', initializeGMaps);
         initializeGMaps();
         placeStopMarker(parseInt(${stopObject.latitude}), parseInt(${stopObject.longitude}));
-        $('[name="type"]').change(stopVisibility());
-        $('[name="displayMode"]').change(stopVisibility());
-        stopVisibility()
-    })
-    function setCorrectAnswer(){
-
-    }
-    function newAnswerAjax()
-    {
-        $.ajax({
-            type: "POST",
-            url: "trips/addAnswer",
-            data: "question=" + $("newAnswer").value + "&stopId=" + ${stopObject.id}
+        /*$("#fblogin").on("click",function()
+        {
+            setCorrectAnswer();
+        });*/
+        $('[name="type"]').change(function()
+        {
+            stopVisibility();
         });
+        $('[name="displayMode"]').change(function()
+        {
+            stopVisibility();
+        });
+    });
+
+    function setCorrectAnswer(id){
+        $.post("/trips/setStopIsCorrect",{ answerId: id})
     }
+
+    function deleteAnswer(id)
+    {
+        $.post("/trips/deleteStopAnswer",{ answerId: id})
+    }
+
     function stopVisibility()
     {
         if ($('[name="type"]').value == 0)
