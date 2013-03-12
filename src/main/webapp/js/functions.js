@@ -54,6 +54,13 @@ function addhandlers()
         instance= $(this).attr('data-instance');
         invitefriendsdialog(instance, naamtrip);
     })
+
+    $("ul#theme li").on("click",function()
+    {
+
+        theme=$(this).data("theme");
+        changetheme(theme);
+    })
 }
 
 function preparemodal() {
@@ -223,6 +230,12 @@ function invitefriendsdialog(instanceid,naamtrip)
 
 
 
+
+}
+function changetheme(naam)
+{
+
+        $("link[href]").attr("href","/css/"+naam);
 
 }
 
