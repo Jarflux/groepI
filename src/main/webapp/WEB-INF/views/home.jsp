@@ -73,6 +73,20 @@
 
 
 </div>
+<div id="loader">
+    <div id="bowlG">
+        <div id="bowl_ringG">
+
+            <div class="ball_holderG">
+                <div class="ballG">
+                </div>
+            </div>
+        </div>
+       <p> Laden...       </p>
+    </div>
+
+
+</div>
 <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
 
 <div id="fb-root"></div>

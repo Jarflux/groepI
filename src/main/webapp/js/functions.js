@@ -44,6 +44,7 @@ function addhandlers()
 {
     $("#fblogin").on("click",function()
     {
+        $("#loader").fadeIn("fast");
         fblogin();
     })
 
@@ -184,7 +185,16 @@ function performLogin() {
                console.log(response);
         $.post("/profile/fblogin",response,function(resultaat)
         {
+            console.log("resultaat: "+resultaat)
+            if (resultaat=="OK")
+            {
             window.location ="/profile/myprofile"
+            }
+            else
+            {
+                    $("#bowlG").html("<h1>Error</h1><p>Kon niet laden. Ververs de pagina en probeer opnieuw.</p>").css({"width":"400px"});
+                $("#bowlG p").css({"text-align":"left","margin":"0"})
+            }
         })
 
     });
