@@ -31,7 +31,7 @@
                 <span class="small"><a href="/profile/reset/forgotPassword"><spring:message
                         code="text.resetpasswordlink"/></a></span>
                 </form>
-                <p id="fblogin">Login met FB</p>
+                <p id="fblogin" class="button">Login met FB</p>
                 <a href="profile/register"><spring:message code='text.createaccount'/></a>
             </div>
         </sec:authorize>

@@ -91,6 +91,18 @@ function preparemodal() {
         $("#descval").val(instdesc);
         $("#amval").val(instam);
     });
+
+    $("#invitemail").dialog({
+
+        modal: true,
+        width: 800,
+        autoOpen: false
+    })
+
+    $("#invitefriendsmail").click(function()
+    {
+        $("#invitemail").dialog("open");
+    })
 }
 
 function preparetooltips() {

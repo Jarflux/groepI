@@ -38,7 +38,7 @@
 
             <c:if test="${tripInstanceObject.organiser.id == userObject.id}">
                 <a href="/trips/editinstance/${tripInstanceObject.id}" class="button"><spring:message
-                        code='text.edittrip'/></a>           <p id="invitefriends" class="button" data-instance='${tripInstanceObject.id}' data-naam='${tripInstanceObject.title}'><spring:message code="text.invitefriendsfb"/></p>
+                        code='text.edittrip'/></a>           <p id="invitefriends" class="button" data-instance='${tripInstanceObject.id}' data-naam='${tripInstanceObject.title}'><spring:message code="text.invitefriendsfb"/></p> <p id="invitefriendsmail" class="button"><spring:message code="invite.bymail"/> </p>
             </c:if>
 
 
@@ -257,21 +257,7 @@
     </div>
 </div>
 
-<div id="assignRequirementToParticipant" title="<spring:message code="text.assignrequirementtoparticipant"/>">
-    <p>
 
-    <form method="POST" action="/trips/assignrequirementtouser">
-        <input type="hidden" name="requirementinstanceid"/>
-        <select name="responsibleuser">
-            <option value="0">Iedereen</option>
-            <c:forEach var="participant" items="${tripInstanceObject.participants}">
-                <option value="${participant.id}">${participant.name}</option>
-            </c:forEach>
-            <input type="submit" class="button" value="<spring:message code="text.save"/>"/>
-        </select>
-    </form>
-    </p>
-</div>
 
 <div id="editCost" title="<spring:message code="text.editcost"/>">
     <p>
@@ -285,6 +271,20 @@
         <input type="submit" class="button" value="<spring:message code="text.save"/>"/>
     </form>
     </p>
+
+</div>
+<div id="invitemail" title="<spring:message code="invite.bymail" />">
+    <form action="/trips/invitebymail" method="POST" class="mainstyle">
+        <input type="hidden" name="instanceid" value="${tripInstanceObject.id}"/>
+        <input type="hidden" name="instancename" value="${tripInstanceObject.title}"/>
+      <div class="row"><span><spring:message code="invite.receipients"/></span><textarea name="receipients"></textarea> </div>
+        <div class="row"><span><spring:message code="invite.personalmessage"/></span><textarea name="message"></textarea> </div>
+
+        <input type="submit" class="button" value="<spring:message code="invite.doinvite"/>"/>
+
+    </form>
+
+
 
 </div>
 

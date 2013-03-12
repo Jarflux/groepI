@@ -77,6 +77,16 @@ public class RestTripController {
         Trip trip = TripService.getTripById(Long.parseLong(tripId));
         return new ModelAndView("trips/addstop", "tripObject", trip);
     }
+    @RequestMapping(value = "/invitebymail", method = RequestMethod.POST)
+    public ModelAndView invitebymail( @RequestParam(value = "instanceid") String instanceid, @RequestParam(value = "receipients") String receivers, @RequestParam(value = "message") String message,HttpSession session) {
+        TripInstance tripInstance = TripInstanceService.getTripInstanceById(Long.parseLong(instanceid));
+
+        TripInstanceService.inviteByEmail(receivers,message,Long.parseLong(instanceid));
+
+
+        return getModelAndViewForViewInstance(session, tripInstance);
+    }
+
 
     @RequestMapping(value = "/createStop", method = RequestMethod.POST)
     public ModelAndView createStop(HttpSession session, @ModelAttribute("stopObject") Stop stop, @RequestParam(value = "tripId") String tripId) {

@@ -350,7 +350,7 @@ form.mainstyle input[type="checkbox"] {
 }
 
 .row {
-    height: 60px;
+    height: 70px;
     padding: 10px;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box; /* Firefox, other Gecko */
