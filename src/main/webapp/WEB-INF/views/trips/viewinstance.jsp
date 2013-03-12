@@ -22,11 +22,11 @@
     </div>
     <div id="content" class="column light">
         <h2><spring:message code='text.viewtripinformation'/></h2>
-        <section>
-            <h2>
+        <section class="fill">
+            <h3>
                 ${tripInstanceObject.id}
                 ${tripInstanceObject.title}
-            </h2>
+            </h3>
             ${tripInstanceObject.description}
             <br/>
             <spring:message code='text.triporganiser'/>:
@@ -37,7 +37,7 @@
             <%--<spring:message code='text.to'/>:  <br/>--%>
 
             <c:if test="${tripInstanceObject.organiser.id == userObject.id}">
-                <a href="/trips/editinstance/${tripInstanceObject.id}" class="active"><spring:message
+                <a href="/trips/editinstance/${tripInstanceObject.id}" class="button"><spring:message
                         code='text.edittrip'/></a>           <p id="invitefriends" class="button" data-instance='${tripInstanceObject.id}' data-naam='${tripInstanceObject.title}'><spring:message code="text.invitefriendsfb"/></p>
             </c:if>
 
@@ -45,8 +45,27 @@
 
         </section>
         <div class="quarter">
+
+                <section>
+                    <h4><spring:message code='text.participants'/></h4>
+                    <c:choose>
+                        <c:when test="${!empty tripInstanceObject.participants}">
+                            <table>
+                                <c:forEach var="user" items="${tripInstanceObject.participants}">
+                                    <tr>
+                                        <td><a href="/profile/view/${user.id}">${user.name}</a></td>
+                                    </tr>
+                                </c:forEach>
+                            </table>
+                        </c:when>
+                        <c:otherwise>
+                            <spring:message code='text.noparticipants'/>
+                        </c:otherwise>
+                    </c:choose>
+                </section>
+
             <section>
-                <h3><spring:message code='text.stops'/></h3>
+                <h4><spring:message code='text.stops'/></h4>
                 <%--<form method="get" action="/trips/addstop/${tripObject.id}">
                     <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
                 </form>--%>
@@ -67,12 +86,11 @@
                     </c:otherwise>
                 </c:choose>
             </section>
-        </div>
-        <div class="quarter">
+
+
             <section>
-                <h3><spring:message code='text.requirements'/></h3>
-                <a href="/trips/addinstancerequirement/${tripInstanceObject.id}" class="active"><spring:message
-                        code='text.add'/></a>
+                <h4><spring:message code='text.requirements'/></h4>
+
                 <c:choose>
                     <c:when test="${!empty tripInstanceObject.requirementInstances}">
                         <table>
@@ -107,13 +125,52 @@
                         <spring:message code='text.norequirementsfound'/>
                     </c:otherwise>
                 </c:choose>
-            </section>
-        </div>
-        <div class="quarter">
-            <section>
-                <h3><spring:message code='text.messages'/></h3>
-                <a href="/trips/addmessage/${tripInstanceObject.id}" class="active"><spring:message
+                <br>
+                <a href="/trips/addinstancerequirement/${tripInstanceObject.id}" class="button"><spring:message
                         code='text.add'/></a>
+            </section>
+        <section>
+            <h4><spring:message code='text.costs'/></h4>
+
+            <c:choose>
+                <c:when test="${!empty tripInstanceObject.costs}">
+                    <table>
+                        <c:forEach var="cost" items="${tripInstanceObject.costs}">
+                            <tr>
+                                <td>${cost.user.name}</td>
+                            </tr>
+                            <tr>
+                                <td>${cost.amount}</td>
+                                <td>${cost.description}</td>
+                                <td class="editcost" inid="${tripInstanceObject.id}" incostid="${cost.id}"
+                                    indesc="${cost.description}" inam="${cost.amount}">
+                                        <spring:message code="text.edit"/>
+                                <td>
+                                    <form method="post" action="/trips/deletecost">
+                                        <input type="hidden" value="${cost.id}" name="costId"/>
+                                        <input type="hidden" value="${tripInstanceObject.id}"
+                                               name="tripInstanceId"/>
+                                        <input type="submit" class="button"
+                                               value="<spring:message code='text.deletecost'/>"/>
+                                    </form>
+                                </td>
+                            </tr>
+
+                        </c:forEach>
+                    </table>
+                </c:when>
+                <c:otherwise>
+                    <spring:message code='text.nocostsfound'/>
+                </c:otherwise>
+            </c:choose>        <br>
+            <a href="/trips/addcost/${tripInstanceObject.id}" class="button"><spring:message code='text.add'/></a>
+        </section>
+                  </div>
+
+        <div class="three-quarter">
+            <section>
+                <h4><spring:message code='text.messages'/></h4>
+
                 <c:choose>
                     <c:when test="${!empty tripInstanceObject.messages}">
                         <table>
@@ -149,64 +206,13 @@
                         <spring:message code='text.nomessagesfound'/>
                     </c:otherwise>
                 </c:choose>
+                <br>
+                <a href="/trips/addmessage/${tripInstanceObject.id}" class="button"><spring:message
+                        code='text.add'/></a>
             </section>
         </div>
-        <div class="quarter">
-            <section>
-                <h3><spring:message code='text.costs'/></h3>
-                <a href="/trips/addcost/${tripInstanceObject.id}" class="active"><spring:message code='text.add'/></a>
-                <c:choose>
-                    <c:when test="${!empty tripInstanceObject.costs}">
-                        <table>
-                            <c:forEach var="cost" items="${tripInstanceObject.costs}">
-                                <tr>
-                                    <td>${cost.user.name}</td>
-                                </tr>
-                                <tr>
-                                    <td>${cost.amount}</td>
-                                    <td>${cost.description}</td>
-                                    <td class="editcost" inid="${tripInstanceObject.id}" incostid="${cost.id}"
-                                        indesc="${cost.description}" inam="${cost.amount}">
-                                            <spring:message code="text.edit"/>
-                                    <td>
-                                        <form method="post" action="/trips/deletecost">
-                                            <input type="hidden" value="${cost.id}" name="costId"/>
-                                            <input type="hidden" value="${tripInstanceObject.id}"
-                                                   name="tripInstanceId"/>
-                                            <input type="submit" class="button"
-                                                   value="<spring:message code='text.deletecost'/>"/>
-                                        </form>
-                                    </td>
-                                </tr>
 
-                            </c:forEach>
-                        </table>
-                    </c:when>
-                    <c:otherwise>
-                        <spring:message code='text.nocostsfound'/>
-                    </c:otherwise>
-                </c:choose>
-            </section>
-        </div>
-        <div class="quarter">
-            <section>
-                <h3><spring:message code='text.participants'/></h3>
-                <c:choose>
-                    <c:when test="${!empty tripInstanceObject.participants}">
-                        <table>
-                            <c:forEach var="user" items="${tripInstanceObject.participants}">
-                                <tr>
-                                    <td><a href="/profile/view/${user.id}">${user.name}</a></td>
-                                </tr>
-                            </c:forEach>
-                        </table>
-                    </c:when>
-                    <c:otherwise>
-                        <spring:message code='text.noparticipants'/>
-                    </c:otherwise>
-                </c:choose>
-            </section>
-        </div>
+
     </div>
 </div>
 
