@@ -22,6 +22,12 @@
                 <version>2.2.2</version>
                 <scope>compile</scope>
             </dependency>
+
+        <dependency>
+            <groupId>org.springframework.android</groupId>
+            <artifactId>spring-android-rest-template</artifactId>
+            <version>1.0.1.RELEASE</version>
+        </dependency>
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -213,6 +219,11 @@
         </dependency>
     </dependencies>
     <repositories>
+        <repository>
+            <id>springsource-repo</id>
+            <name>SpringSource Repository</name>
+            <url>http://repo.springsource.org/release</url>
+        </repository>
         <repository>
             <id>org.springframework.maven.release</id>
             <name>Spring Maven Release Repository</name>
