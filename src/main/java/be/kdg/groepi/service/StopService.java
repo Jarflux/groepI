@@ -6,9 +6,14 @@ package be.kdg.groepi.service;
 
 import be.kdg.groepi.model.Stop;
 import be.kdg.groepi.utils.HibernateUtil;
+import be.kdg.groepi.utils.VuforiaUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.json.JSONException;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 
 public class StopService {
@@ -124,4 +129,11 @@ public class StopService {
         }
         return stops;
     }
+
+    public static void addToVuforia(Long stopid,File image) throws JSONException, IOException, URISyntaxException {
+        VuforiaUtil.postTarget(image,stopid);
+    }
+
+
+
 }

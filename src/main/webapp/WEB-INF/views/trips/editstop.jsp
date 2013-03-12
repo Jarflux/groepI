@@ -70,6 +70,7 @@
                 </c:choose>
             </div>
         </section>
+
         <section class="full">
             <div class="half" id="divAnswers" style="display:none;">
                 <div class="row">
@@ -108,9 +109,14 @@
                     </form>
                 </div>
             </div>
-            <div class="half" id="divPictureAR" style="display:none;">
+            <div class="half" id="divPictureAR" style="display:block;">
                 <%--AR picture upload control--%>
-                <p>put file upload here</p>
+                <form action="/trips/addAR" enctype="multipart/form-data" method="POST">
+                    <input type="hidden" name="stopid" value="${stopObject.id}"/>
+                    <input type="file" name="photo"/>
+                                                     <input type="submit" value="<spring:message code="text.save" />"/>
+
+                </form>
             </div>
         </section>
     </div>

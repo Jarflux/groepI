@@ -3,16 +3,22 @@ package be.kdg.groepi.controller;
 import be.kdg.groepi.model.*;
 import be.kdg.groepi.service.*;
 import be.kdg.groepi.utils.DateUtil;
+import be.kdg.groepi.utils.VuforiaUtil;
 import org.apache.log4j.Logger;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.*;
 
 //import java.sql.Date;
@@ -205,6 +211,20 @@ public class RestTripController {
         return modelAndView;//("trips/addinstance", "tripObject", trip);
     }
 
+    @RequestMapping(value = "/addAR", method = RequestMethod.POST)
+    public ModelAndView addToVuforia( @RequestParam(value = "photo") MultipartFile uploadedFile,  @RequestParam(value = "stopid") Long stopId) throws IOException, JSONException, URISyntaxException {
+             File tempfile =       File.createTempFile("tijdelijk","juha");
+        System.out.println("Trying for Vuforia voor stopId: "+stopId);
+                     FileOutputStream fos = new FileOutputStream(tempfile);
+        fos.write(uploadedFile.getBytes());
+
+
+        StopService.addToVuforia(stopId,tempfile);
+       Stop stop = StopService.getStopById(stopId);
+        Trip trip= TripService.getTripById(stop.getTrip().getId());
+
+        return new ModelAndView("trips/editstop", "tripObject", trip);
+    }
     @RequestMapping(value = "/createinstance", method = RequestMethod.POST)
     public ModelAndView createinstance(HttpSession session, @ModelAttribute("tripInstanceObject") TripInstance tempTripInstance,
                                        @RequestParam(value = "tripId") Long tripId,
