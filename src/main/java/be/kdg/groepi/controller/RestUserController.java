@@ -90,7 +90,8 @@ public class RestUserController {
         SortedSet<TripInstance> userPastTripInstances = new TreeSet<>();
         SortedSet<TripInstance> userFutureTripInstances = new TreeSet<>();
 
-        long today = Calendar.getInstance().getTime().getTime();
+//        long today = Calendar.getInstance().getTime().getTime();
+        long today = DateUtil.dateStringToLong(DateUtil.formatDate(Calendar.getInstance().getTime()));
 
         for (TripInstance tripInstance : TripInstanceService.getAllTripInstances()) {
             if (tripInstance.getParticipants().contains(sessionUser)) {

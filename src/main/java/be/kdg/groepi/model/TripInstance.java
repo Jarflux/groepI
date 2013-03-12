@@ -7,6 +7,7 @@ import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -262,11 +263,20 @@ public class TripInstance implements Serializable, Comparable {
         return getId().intValue();
     }
 
+
     @Override
     public int compareTo(Object o) {
         TripInstance tripInstance = (TripInstance) o;
-        if (this.equals(tripInstance)) return 0;
 
-        return (int) (this.fStartTime - tripInstance.getStartTime());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        int dateCompare = dateFormat.format(this.fStartTime).
+                compareTo(dateFormat.format(tripInstance.getStartTime()));
+
+        if (dateCompare == 0) {
+            return this.fTitle.compareToIgnoreCase(tripInstance.getTitle());
+        } else {
+            return dateCompare;
+        }
     }
 }

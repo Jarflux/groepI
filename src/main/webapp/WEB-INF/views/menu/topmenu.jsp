@@ -9,4 +9,6 @@
         <li><a href="/profile/myprofile" class="active">Profile</a></li>
         <li><a href="j_spring_security_logout" class="active">LogOut</a></li>
     </ul>
+
+    <ul id="theme"><li data-theme="blue.css">Blue</li><li data-theme="funky.css">Funky</li></ul>
 </div>

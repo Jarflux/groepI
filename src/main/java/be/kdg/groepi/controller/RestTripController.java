@@ -77,6 +77,16 @@ public class RestTripController {
         Trip trip = TripService.getTripById(Long.parseLong(tripId));
         return new ModelAndView("trips/addstop", "tripObject", trip);
     }
+    @RequestMapping(value = "/invitebymail", method = RequestMethod.POST)
+    public ModelAndView invitebymail( @RequestParam(value = "instanceid") String instanceid, @RequestParam(value = "receipients") String receivers, @RequestParam(value = "message") String message,HttpSession session) {
+        TripInstance tripInstance = TripInstanceService.getTripInstanceById(Long.parseLong(instanceid));
+
+        TripInstanceService.inviteByEmail(receivers,message,Long.parseLong(instanceid));
+
+
+        return getModelAndViewForViewInstance(session, tripInstance);
+    }
+
 
     @RequestMapping(value = "/createStop", method = RequestMethod.POST)
     public ModelAndView createStop(HttpSession session, @ModelAttribute("stopObject") Stop stop, @RequestParam(value = "tripId") String tripId) {
@@ -90,18 +100,29 @@ public class RestTripController {
     @RequestMapping(value = "/list")
     public ModelAndView getPublicTrips(HttpSession session) {
         User user = (User) session.getAttribute("userObject");
-        List<Trip> publicTrips = TripService.getPublicTrips();
-        List<Trip> ownTrips = TripService.getTripsByOrganiserId(user.getId());
+//        List<Trip> publicTrips = TripService.getPublicTrips();
+//        List<Trip> ownTrips = TripService.getTripsByOrganiserId(user.getId());
 
-        if (publicTrips != null) {
+        SortedSet<Trip> publicTrips = new TreeSet<>();
+        SortedSet<Trip> ownTrips = new TreeSet<>();
+
+        for (Trip trip : TripService.getPublicTrips()) {
+            publicTrips.add(trip);
+        }
+
+        for (Trip trip : TripService.getTripsByOrganiserId(user.getId())) {
+            ownTrips.add(trip);
+        }
+
+        if (publicTrips.size() == 0) {
             logger.debug("Returning publicTrips containing " + publicTrips.size() + " Trips");
         } else {
-            logger.debug("Returning publicTrips = NULL");
+            logger.debug("Returning publicTrips is empty");
         }
-        if (ownTrips != null) {
+        if (ownTrips.size() == 0) {
             logger.debug("Returning ownTrips containing " + ownTrips.size() + " Trips");
         } else {
-            logger.debug("Returning ownTrips = NULL");
+            logger.debug("Returning ownTrips is empty");
         }
 
         ModelAndView modelAndView = new ModelAndView("trips/list");
@@ -114,14 +135,11 @@ public class RestTripController {
     public ModelAndView editTripView(@PathVariable("tripId") String tripId, HttpSession session) {
         User user = (User) session.getAttribute("userObject");
         Trip trip = TripService.getTripById(Long.parseLong(tripId));
-        if (trip.getOrganiser().getId() == user.getId())
-        {
+        if (trip.getOrganiser().getId() == user.getId()) {
             ModelAndView modelAndView = new ModelAndView("trips/edittrip");
             modelAndView.addObject("tripObject", trip);
             return modelAndView;
-        }
-        else
-        {
+        } else {
             //TODO correcte error weergeven
             return new ModelAndView("error/displayerror");
         }
@@ -147,13 +165,10 @@ public class RestTripController {
         ModelAndView modelAndView = new ModelAndView("trips/editstop");
         Stop stop = StopService.getStopById(Long.parseLong(stopId));
         User user = (User) session.getAttribute("userObject");
-        if (stop.getTrip().getOrganiser().getId() == user.getId())
-        {
+        if (stop.getTrip().getOrganiser().getId() == user.getId()) {
             modelAndView.addObject("stopObject", stop);
             return modelAndView;
-        }
-        else
-        {
+        } else {
             //TODO correcte error weergeven
             return new ModelAndView("error/displayerror/invaliduser", "errorid", "");
         }
@@ -282,24 +297,76 @@ public class RestTripController {
         return new ModelAndView("trips/view", "tripInstanceObject", tripInstance);
     }
 
+    /*
+
+        Map<Long, String> tripInstanceDates = new HashMap<>();
+        Map<Long, String> tripInstanceStartTimes = new HashMap<>();
+        Map<Long, String> tripInstanceEndTimes = new HashMap<>();
+        SortedSet<TripInstance> userPastTripInstances = new TreeSet<>();
+        SortedSet<TripInstance> userFutureTripInstances = new TreeSet<>();
+
+        long today = DateUtil.dateStringToLong(DateUtil.formatDate(Calendar.getInstance().getTime()));
+
+        for (TripInstance tripInstance : TripInstanceService.getAllTripInstances()) {
+            if (tripInstance.getParticipants().contains(sessionUser)) {
+
+    if (tripInstance.getStartTime() < today) {
+        userPastTripInstances.add(tripInstance);
+    } else {
+        userFutureTripInstances.add(tripInstance);
+    }
+
+    tripInstanceDates.put(tripInstance.getId(), DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartTime())));
+    tripInstanceStartTimes.put(tripInstance.getId(), DateUtil.formatTime(DateUtil.longToDate(tripInstance.getStartTime())));
+    tripInstanceEndTimes.put(tripInstance.getId(), DateUtil.formatTime(DateUtil.longToDate(tripInstance.getEndTime())));
+}
+}
+
+
+        ModelAndView modelAndView = new ModelAndView("profile/userprofile");
+modelAndView.addObject("userObject", session.getAttribute("userObject"));
+modelAndView.addObject("dob", DateUtil.formatDate(session));
+modelAndView.addObject("userPastTripInstances", userPastTripInstances);
+modelAndView.addObject("userFutureTripInstances", userFutureTripInstances);
+modelAndView.addObject("tripInstanceDates", tripInstanceDates);
+modelAndView.addObject("tripInstanceStartTimes", tripInstanceStartTimes);
+modelAndView.addObject("tripInstanceEndTimes", tripInstanceEndTimes);
+    */
+
 
     @RequestMapping(value = "/listinstance")
     public ModelAndView getPublicTripInstances(HttpSession session) {
         User user = (User) session.getAttribute("userObject");
-        List<TripInstance> publicTripInstances = TripInstanceService.getPublicTripInstances();
-        List<TripInstance> ownTripInstances = TripInstanceService.getTripInstancesByOrganiserId(user.getId());
+//        List<TripInstance> publicTripInstances = TripInstanceService.getPublicTripInstances();
+//        List<TripInstance> ownTripInstances = TripInstanceService.getTripInstancesByOrganiserId(user.getId());
 
-        if (publicTripInstances != null) {
+        SortedSet<TripInstance> publicTripInstances = new TreeSet<>();
+        SortedSet<TripInstance> ownTripInstances = new TreeSet<>();
+
+        long today = DateUtil.dateStringToLong(DateUtil.formatDate(Calendar.getInstance().getTime()));
+
+        for (TripInstance tripInstance : TripInstanceService.getPublicTripInstances()) {
+            if (tripInstance.getStartTime() > today) {
+                publicTripInstances.add(tripInstance);
+            }
+        }
+
+        for (TripInstance tripInstance : TripInstanceService.getTripInstancesByOrganiserId(user.getId())) {
+            if (tripInstance.getStartTime() > today) {
+                ownTripInstances.add(tripInstance);
+            }
+        }
+
+        if (publicTripInstances.size() == 0) {
             logger.debug("Returning publicTripInstances containing " + publicTripInstances.size() + " TripInstances");
         } else {
-            logger.debug("Returning publicTripInstances = NULL");
+            logger.debug("Returning publicTripInstances is empty");
         }
-        if (ownTripInstances != null) {
+        if (ownTripInstances.size() == 0) {
             logger.debug("Returning ownTripInstances containing " + ownTripInstances.size() + " TripInstances");
         } else {
-            logger.debug("Returning ownTripInstances = NULL");
+            logger.debug("Returning ownTripInstances is empty");
         }
-
 
         Map<Long, String> publicTripInstanceDates = new HashMap<>();
         Map<Long, String> publicTripInstanceStartTimes = new HashMap<>();
@@ -335,7 +402,6 @@ public class RestTripController {
         modelAndView.addObject("ownTripInstanceDates", ownTripInstanceDates);
         modelAndView.addObject("ownTripInstanceStartTimes", ownTripInstanceStartTimes);
         modelAndView.addObject("ownTripInstanceEndTimes", ownTripInstanceEndTimes);
-
 
         return modelAndView;
     }
@@ -379,7 +445,8 @@ public class RestTripController {
     }
 
     @RequestMapping(value = "/doaddmessage", method = RequestMethod.POST)
-    public ModelAndView doAddMessage(HttpSession session, @RequestParam(value = "tripInstanceId") String tripInstanceId,
+    public ModelAndView doAddMessage(HttpSession session, @RequestParam(value = "tripInstanceId") String
+            tripInstanceId,
                                      @RequestParam(value = "content") String content) {
 
         TripInstance tripInstance = TripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId));
@@ -398,7 +465,8 @@ public class RestTripController {
     }
 
     @RequestMapping(value = "/doaddcost", method = RequestMethod.POST)
-    public ModelAndView doAddCost(HttpSession session, @RequestParam(value = "tripInstanceId") String tripInstanceId,
+    public ModelAndView doAddCost(HttpSession session, @RequestParam(value = "tripInstanceId") String
+            tripInstanceId,
                                   @RequestParam(value = "description") String description,
                                   @RequestParam(value = "amount") String amount) {
 

@@ -24,38 +24,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/js/gmapfunctions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/AnswerInstanceServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/AnswerInstanceServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/AnswerServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/AnswerServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestFillerController.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestFillerController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Hibernate.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Java_EE_6_Java_EE_6.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/hibernate_4_1_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_3_1_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_data_jpa_1_0_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_mvc_3_1_2_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_security_3_1_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_webflow_2_3_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_ws_2_0_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/struts2_2_3_7.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestTripController.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestTripController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Stop.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/Stop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/StopServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/StopServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/addstop.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/addstop.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/TripInstanceService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/TripInstanceService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/css/blue.css" afterPath="$PROJECT_DIR$/src/main/webapp/css/blue.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/editstop.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/editstop.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/functions.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/functions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/groepI.iml" afterPath="$PROJECT_DIR$/groepI.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsonresponse.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsonresponse.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrippieApp/project.properties" afterPath="$PROJECT_DIR$/TrippieApp/project.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/showlogin.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/showlogin.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/text_nl.properties" afterPath="$PROJECT_DIR$/src/main/resources/text_nl.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/menu/topmenu.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/menu/topmenu.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/viewinstance.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/viewinstance.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="groepI.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1363093157368" ignored="false" />
+    <file path="/Dummy.txt" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1363122449393" ignored="false" />
     <file path="/README" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1359642779202" ignored="false" />
     <file path="/index.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360071317953" ignored="false" />
-    <file path="/fragment.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362913891196" ignored="false" />
+    <file path="/fragment.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1363096330836" ignored="false" />
     <file path="/pom.xml" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362485915049" ignored="false" />
     <file path="$PROJECT_DIR$/src/resources/HomeController.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360137939666" ignored="false" />
-    <file path="/home.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1363082260037" ignored="false" />
+    <file path="/home.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1363124737587" ignored="false" />
     <file path="/servlet-context.xml" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360332712010" ignored="false" />
     <file path="/web.xml" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360141584150" ignored="false" />
     <file path="/HomeController.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362496550028" ignored="false" />
@@ -63,7 +59,7 @@
     <file path="/mvc-dispatcher.xml" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360145465430" ignored="false" />
     <file path="/mvcController.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360145338683" ignored="false" />
     <file path="/text.properties" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360146316235" ignored="false" />
-    <file path="/text_nl.properties" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362739304805" ignored="false" />
+    <file path="/text_nl.properties" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1363125477957" ignored="false" />
     <file path="/text_en_US.properties" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360156119477" ignored="false" />
     <file path="/User.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362653995605" ignored="false" />
     <file path="/hibernateMySQL.cfg.xml" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361907821815" ignored="false" />
@@ -72,7 +68,7 @@
     <file path="/RestUserController.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362659041250" ignored="false" />
     <file path="/main.css" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360335641420" ignored="false" />
     <file path="/showlogin.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362923332311" ignored="false" />
-    <file path="/functions.js" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1363083241595" ignored="false" />
+    <file path="/functions.js" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1363125302769" ignored="false" />
     <file path="/RestUserControllerTest.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360516892537" ignored="false" />
     <file path="/UserServiceTest.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362654168474" ignored="false" />
     <file path="/user.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360516863970" ignored="false" />
@@ -83,19 +79,19 @@
     <file path="/TripServiceTest.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362086133120" ignored="false" />
     <file path="/TimedTrip.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1360832143625" ignored="false" />
     <file path="/TripService.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361524070122" ignored="false" />
-    <file path="/RestTripController.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362164272176" ignored="false" />
+    <file path="/RestTripController.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1363126869014" ignored="false" />
     <file path="/addtrip.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361885561042" ignored="false" />
-    <file path="/blue.css" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1363082413195" ignored="false" />
+    <file path="/blue.css" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1363100788123" ignored="false" />
     <file path="/Spring-Mail.xml" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361348360228" ignored="false" />
     <file path="/StopPictures.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361449827367" ignored="false" />
     <file path="/Answer.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361450002070" ignored="false" />
     <file path="/Trip.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362231561205" ignored="false" />
     <file path="/Message.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361527157809" ignored="false" />
     <file path="/applicationContext.xml" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362652673835" ignored="false" />
-    <file path="/userprofile.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361884756923" ignored="false" />
+    <file path="/userprofile.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1363099080047" ignored="false" />
     <file path="/addinstance.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361889334522" ignored="false" />
     <file path="/TripInstanceServiceTest.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361908490569" ignored="false" />
-    <file path="/TripInstanceService.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361889924994" ignored="false" />
+    <file path="/TripInstanceService.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1363126488419" ignored="false" />
     <file path="/TripInstance.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361890979319" ignored="false" />
     <file path="/MyUserDetailsService.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361953778497" ignored="false" />
     <file path="/StandardPasswordEncoder.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1361959021010" ignored="false" />
@@ -136,8 +132,11 @@
     <file path="C:/Program Files (x86)/Android/android-sdk/platforms/android-16/data/res/values/strings.xml" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362733438166" ignored="false" />
     <file path="C:/Program Files (x86)/Android/android-sdk/platforms/android-16/data/res/values-ar/donottranslate-cldr.xml" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362733438166" ignored="false" />
     <file path="C:/Development/Android/vuforia-sdk-android-2-0-31/samples/sample app/gen/com/qualcomm/QCARSamples/CloudRecognition/R.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362733457853" ignored="false" />
-    <file path="/viewinstance.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362923305457" ignored="false" />
+    <file path="/viewinstance.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1363125497196" ignored="false" />
     <file path="/MyAuthenticationSuccessHandler.java" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1362753236112" ignored="false" />
+    <file path="/editprofile.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1363099318149" ignored="false" />
+    <file path="/topmenu.jsp" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1363100884265" ignored="false" />
+    <file path="/funky.css" changelist="03d82e48-92ca-452c-b0fc-fcb92dc5c98c" time="1363101181980" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,10 +152,10 @@
     <SUITE FILE_PATH="coverage/groepI$be_kdg_groepi_in_groepI.coverage" NAME="be.kdg.groepi in groepI Coverage Results" MODIFIED="1362167921731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>be.kdg.groepi.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/groepI$Tomcat.coverage" NAME="Tomcat Coverage Results" MODIFIED="1360424668954" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/groepI$RestUserControllerTest.coverage" NAME="RestUserControllerTest Coverage Results" MODIFIED="1360676180799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>be.kdg.groepi.controller.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/groepI$Tomcat.coverage" NAME="Tomcat Coverage Results" MODIFIED="1360424668954" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/groepI$TripServiceTest.coverage" NAME="TripServiceTest Coverage Results" MODIFIED="1361527331936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>be.kdg.groepi.service.*</FILTER>
     </SUITE>
@@ -176,7 +175,7 @@
     <sortChildren value="false" />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -211,7 +210,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -221,46 +220,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="home.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="0" selection-start="3585" selection-end="3837" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="showlogin.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/showlogin.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="6" selection-start="1930" selection-end="1930" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="functions.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/js/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="120" column="47" selection-start="3744" selection-end="3744" vertical-scroll-proportion="0.0">
+            <state line="97" column="16" selection-start="2520" selection-end="2520" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1363125368374" expanded="true" signature="3544:3581" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="33" column="45" selection-start="1422" selection-end="1422" vertical-scroll-proportion="-18.038462">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fbloginpage.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/fbloginpage.jsp">
+      <file leaf-file-name="viewinstance.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/viewinstance.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="280" column="108" selection-start="14420" selection-end="14420" vertical-scroll-proportion="-11.653846">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jsonresponse.jsp" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsonresponse.jsp">
+      <file leaf-file-name="RestTripController.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestTripController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="65" selection-start="65" selection-end="65" vertical-scroll-proportion="0.0">
+            <state line="83" column="88" selection-start="3957" selection-end="3957" vertical-scroll-proportion="0.369863">
               <folding />
             </state>
           </provider>
@@ -269,7 +261,34 @@
       <file leaf-file-name="RestUserController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestUserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="0" selection-start="1440" selection-end="1440" vertical-scroll-proportion="0.0">
+            <state line="161" column="32" selection-start="7929" selection-end="7929" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="204" column="135" selection-start="6524" selection-end="7059" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TripInstanceService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/TripInstanceService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="127" column="17" selection-start="4169" selection-end="4169" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TripMail.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/utils/TripMail.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="16" selection-start="453" selection-end="453" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -278,36 +297,21 @@
       <file leaf-file-name="blue.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/css/blue.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="570" column="0" selection-start="10108" selection-end="10108" vertical-scroll-proportion="0.0">
+            <state line="352" column="13" selection-start="6402" selection-end="6402" vertical-scroll-proportion="42.72">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExclusionStrategyUtil.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/utils/ExclusionStrategyUtil.java">
+      <file leaf-file-name="text_nl.properties" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/text_nl.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="22" selection-start="52" selection-end="52" vertical-scroll-proportion="0.0">
+            <state line="131" column="44" selection-start="5188" selection-end="5188" vertical-scroll-proportion="-14.72">
               <folding />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="40" selection-start="990" selection-end="990" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidRestController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/AndroidRestController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="22" selection-start="260" selection-end="260" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
+          <provider editor-type-id="ResourceBundle">
+            <state />
           </provider>
         </entry>
       </file>
@@ -331,22 +335,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/model/User.java" />
-        <option value="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/UserServiceTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/utils/DateUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestUserController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/utils/FileUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/view.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/text_nl.properties" />
         <option value="$PROJECT_DIR$/src/test/java/be/kdg/groepi/service/TripServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/security/MyAuthenticationSuccessHandler.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/viewinstance.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/css/blue.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/showlogin.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/functions.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsonresponse.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/userprofile.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/editprofile.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/menu/topmenu.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/css/funky.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/functions.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/text_nl.properties" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/viewinstance.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/css/blue.css" />
+        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/TripInstanceService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestTripController.java" />
       </list>
     </option>
   </component>
@@ -400,8 +404,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -598,6 +602,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -606,23 +611,422 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trips" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resource Bundle 'text'" />
+              <option name="myItemType" value="com.intellij.lang.properties.projectView.ResourceBundleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groepI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Modules" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="42" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="71" />
-    <property name="OverrideImplement.combined" value="false" />
     <property name="project.structure.proportion" value="0.15" />
+    <property name="OverrideImplement.combined" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="71" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="recentsLimit" value="5" />
-    <property name="MemberChooser.sorted" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="76" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/TrippieApp" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="53" />
@@ -638,20 +1042,20 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/TrippieApp/src" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/TrippieApp/src" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="options.lastSelected" value="MavenSettings" />
     <property name="AndroidLayoutSelectedEditor" value="text-editor" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="S5660c02ce8ee" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="42f7551719649f09" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -659,17 +1063,11 @@
       <recent name="be.kdg.groepi.model" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Vincent\IdeaProjects\groepI\src\main\webapp\css" />
       <recent name="D:\Dropbox\Trip Project\groepI\TrippieApp\src\trippie\controllers" />
       <recent name="D:\Dropbox\Trip Project\groepI\TrippieApp\res\layout" />
       <recent name="D:\Dropbox\Trip Project\groepI\TrippieApp\src\trippieapp\activities" />
       <recent name="D:\Dropbox\Trip Project\groepI\TrippieApp" />
-      <recent name="C:\Users\Vincent\IdeaProjects\groepI\src\main\webapp\WEB-INF\views\trips" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="trippie" />
-      <recent name="android" />
-      <recent name="" />
-      <recent name="be.kdg.groepi.service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Vincent\IdeaProjects\groepI" />
@@ -677,6 +1075,12 @@
       <recent name="D:\Dropbox\Trip Project\groepI\TrippieApp\src\activities" />
       <recent name="C:\Users\Vincent\IdeaProjects\groepI\src\main\webapp" />
       <recent name="C:\Users\Vincent\IdeaProjects\groepI\src\main\resources" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="trippie" />
+      <recent name="android" />
+      <recent name="" />
+      <recent name="be.kdg.groepi.service" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat">
@@ -812,23 +1216,6 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <method />
-    </configuration>
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -848,6 +1235,23 @@
           </MavenRunnerParameters>
         </option>
       </MavenSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -914,19 +1318,29 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="DEPLOY" value="true" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
+      <method />
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote">
+      <option name="LOCAL" value="false" />
+      <deployment />
+      <server-settings>
+        <data>
+          <option name="transportHostId" />
+        </data>
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="50407" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0">
@@ -975,29 +1389,36 @@
       </ConfigurationWrapper>
       <method />
     </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote">
-      <option name="LOCAL" value="false" />
-      <deployment />
-      <server-settings>
-        <data>
-          <option name="transportHostId" />
-        </data>
-      </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="50407" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="false" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
+    <configuration default="false" name="Unnamed" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="TrippieApp" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <RunnerSettings RunnerId="AndroidDebugRunner" />
+      <ConfigurationWrapper RunnerId="AndroidDebugRunner" />
       <method />
     </configuration>
     <configuration default="false" name="Tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0">
@@ -1076,13 +1497,14 @@
         </option>
       </method>
     </configuration>
-    <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Tomcat" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.All in groepI" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.be.kdg.groepi in groepI" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.UserServiceTest.testGetByFBUserID" />
-      <item index="4" class="java.lang.String" itemvalue="Maven.groepI [clean]" />
-      <item index="5" class="java.lang.String" itemvalue="Maven.groepI [compile]" />
+    <list size="7">
+      <item index="0" class="java.lang.String" itemvalue="Android Application.Unnamed" />
+      <item index="1" class="java.lang.String" itemvalue="Tomcat Server.Tomcat" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.All in groepI" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.be.kdg.groepi in groepI" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.UserServiceTest.testGetByFBUserID" />
+      <item index="5" class="java.lang.String" itemvalue="Maven.groepI [clean]" />
+      <item index="6" class="java.lang.String" itemvalue="Maven.groepI [compile]" />
     </list>
     <recent_temporary>
       <list size="5">
@@ -1236,39 +1658,39 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21412803" sideWeight="0.4850587" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21060605" sideWeight="0.22184874" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15048026" sideWeight="0.6313466" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39285713" sideWeight="0.6983895" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30580357" sideWeight="0.4018143" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30491802" sideWeight="0.39647812" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24610245" sideWeight="0.43543223" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24553572" sideWeight="0.43329775" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31473213" sideWeight="0.4108858" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850778" sideWeight="0.49786553" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21060605" sideWeight="0.23529412" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15080526" sideWeight="0.69508195" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20863836" sideWeight="0.69508195" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30491802" sideWeight="0.5997866" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15101388" sideWeight="0.6941964" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20917822" sideWeight="0.6953125" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3046875" sideWeight="0.59445035" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329429" sideWeight="0.752459" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1755603" sideWeight="0.25165564" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329429" sideWeight="0.752459" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924226" sideWeight="0.69196427" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4621131" sideWeight="0.6941964" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33670035" sideWeight="0.4848485" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31473213" sideWeight="0.41568837" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3990878" sideWeight="0.49786553" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1310,7 +1732,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="FB/CSS" />
+    <option name="LAST_COMMIT_MESSAGE" value="css profile" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1323,9 +1745,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="User: attribute profile_picture (nullable) + tested" />
-    <MESSAGE value="Register.jsp + methode createUser in RestUserController (gepusht in commentaar want geeft nog errors)" />
-    <MESSAGE value="Trip test klasse" />
     <MESSAGE value="TODO's" />
     <MESSAGE value="addtrip.jsp, trip.jsp, wijzigingen Trip model, service &amp; controller, wijzgingen nl properties + homecontroller&#10;&#10;rest volgt nog :)" />
     <MESSAGE value="Input validatie (required + equalsto), zie voorbeeld register user" />
@@ -1348,6 +1767,9 @@
     <MESSAGE value="FB Login&#10;" />
     <MESSAGE value="FB Login  + save target url na inloggen (nog niet via FB)&#10;" />
     <MESSAGE value="FB/CSS" />
+    <MESSAGE value="Ajax Loader" />
+    <MESSAGE value="css" />
+    <MESSAGE value="css profile" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1359,108 +1781,119 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/TrippieApp/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/menu/topmenu.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="40" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0">
+        <state line="12" column="79" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/RequirementInstanceService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/funky.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="29" selection-start="61" selection-end="61" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TrippieApp/src/com/activities/UserTripsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="39" selection-start="442" selection-end="442" vertical-scroll-proportion="0.0">
+        <state line="416" column="8" selection-start="7583" selection-end="7587" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TrippieApp/src/com/controllers/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/Spring-Mail.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="59" selection-start="1045" selection-end="1045" vertical-scroll-proportion="0.0">
+        <state line="24" column="57" selection-start="1142" selection-end="1142" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile/userprofile.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="38" selection-start="2139" selection-end="2139" vertical-scroll-proportion="0.2977233">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/servlet-context.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="31" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/editstop.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/viewinstance.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="98" selection-start="1715" selection-end="1715" vertical-scroll-proportion="-0.65384614" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="40" selection-start="990" selection-end="990" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/utils/ExclusionStrategyUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="22" selection-start="52" selection-end="52" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/AndroidRestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="22" selection-start="260" selection-end="260" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/blue.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="570" column="0" selection-start="10108" selection-end="10108" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestUserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="1440" selection-end="1440" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="5.8846154">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="0" selection-start="3585" selection-end="3837" vertical-scroll-proportion="0.0">
+        <state line="33" column="45" selection-start="1422" selection-end="1422" vertical-scroll-proportion="-18.038462">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/showlogin.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/text_nl.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="6" selection-start="1930" selection-end="1930" vertical-scroll-proportion="0.0">
+        <state line="131" column="44" selection-start="5188" selection-end="5188" vertical-scroll-proportion="-14.72">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/blue.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="352" column="13" selection-start="6402" selection-end="6402" vertical-scroll-proportion="42.72">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="47" selection-start="3744" selection-end="3744" vertical-scroll-proportion="0.0">
+        <state line="97" column="16" selection-start="2520" selection-end="2520" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1363125368374" expanded="true" signature="3544:3581" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/trips/viewinstance.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="280" column="108" selection-start="14420" selection-end="14420" vertical-scroll-proportion="-11.653846">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/fbloginpage.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestUserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="161" column="32" selection-start="7929" selection-end="7929" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsonresponse.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="65" selection-start="65" selection-end="65" vertical-scroll-proportion="0.0">
+        <state line="204" column="135" selection-start="6524" selection-end="7059" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/utils/TripMail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="16" selection-start="453" selection-end="453" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/service/TripInstanceService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="127" column="17" selection-start="4169" selection-end="4169" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/groepi/controller/RestTripController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="88" selection-start="3957" selection-end="3957" vertical-scroll-proportion="0.369863">
           <folding />
         </state>
       </provider>

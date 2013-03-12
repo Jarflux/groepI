@@ -26,7 +26,7 @@ import java.util.Set;
 @Entity
 @Table(name = "T_TRIP")
 //@Inheritance(strategy=InheritanceType.JOINED)  //Hibernate Inheritance: Table Per Subclass
-public class Trip implements Serializable {
+public class Trip implements Serializable, Comparable {
 
     @Id
     @GeneratedValue
@@ -179,5 +179,12 @@ public class Trip implements Serializable {
     @Override
     public int hashCode() {
         return super.hashCode();
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Trip trip = (Trip) o;
+
+        return this.fTitle.compareToIgnoreCase(trip.getTitle());
     }
 }
