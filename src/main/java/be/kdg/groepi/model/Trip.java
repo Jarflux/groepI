@@ -1,5 +1,6 @@
 package be.kdg.groepi.model;
 
+import be.kdg.groepi.annotations.ExcludeFromGson;
 import be.kdg.groepi.utils.CompareUtil;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -39,13 +40,16 @@ public class Trip implements Serializable {
     private Boolean fAvailable;
     @Column(name = "repeatable")
     private Boolean fRepeatable;
+    @ExcludeFromGson
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     private User fOrganiser;
+    @ExcludeFromGson
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTrip")
     @Cascade(CascadeType.DELETE)
     @OrderBy(value = "stopnumber")
     private Set<Stop> fStops = new HashSet<>();
+    @ExcludeFromGson
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTrip")
     @Cascade(CascadeType.DELETE)
     private Set<Requirement> fRequirements = new HashSet<>();

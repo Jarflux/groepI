@@ -33,7 +33,7 @@ public class AndroidRestController {
     public void getUserTripParticipations(@PathVariable(value = "userId") String userId, HttpServletResponse response) {
         try {
             List<TripInstance> trips = TripInstanceService.getTripInstancesByUserId(Long.parseLong(userId));
-            Gson gson = new GsonBuilder().setExclusionStrategies(new ExclusionStrategyUtil(Trip.class)).serializeNulls().create();
+            Gson gson = new GsonBuilder().setExclusionStrategies(new ExclusionStrategyUtil()).serializeNulls().create();
             String json = gson.toJson(trips);
             response.getWriter().print(json);
         } catch (Exception e) {
