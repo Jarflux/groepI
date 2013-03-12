@@ -66,9 +66,8 @@
                             <div class="row">
                                 <span></span>
                                 <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
-                                    <%--<input type="submit" class="button" value="<spring:message code='text.cancel'/>"/>--%>
-                                <h3>Cancel knop maken? type=submit voert editUser uit tenzij de value nagekeken wordt
-                                    ofzo?</h3>
+                                    <input type="reset" class="button" value="<spring:message code='text.cancel'/>"/>
+
                             </div>
                         </form>
                     </c:when>
