@@ -155,9 +155,8 @@ public class RestTripController {
         else
         {
             //TODO correcte error weergeven
-            return new ModelAndView("error/displayerror");
+            return new ModelAndView("error/displayerror/invaliduser", "errorid", "");
         }
-
     }
 
     @RequestMapping(value = "/updateStop", method = RequestMethod.POST)
@@ -166,15 +165,18 @@ public class RestTripController {
         return new ModelAndView("trips/view", "stopObject", stop);
     }
 
+    @RequestMapping(value = "/createAnswer", method = RequestMethod.POST)
+    public ModelAndView createAnswer(@RequestParam String answer, @RequestParam String stopId) {
+        Stop stop = StopService.getStopById(Long.parseLong(stopId));
+        stop.getAnswers().add(new Answer(answer, false, stop));
+        StopService.updateStop(stop);
+        return new ModelAndView("trips/editstop", "stopObject", stop);
+    }
+
     @RequestMapping(value = "/addrequirement/{tripId}", method = RequestMethod.GET)
     public ModelAndView addRequirement(@PathVariable(value = "tripId") String tripId) {
         return new ModelAndView("trips/addtriprequirement", "tripId", tripId);
     }
-    /*return new ModelAndView("trips/addtriprequirement", "tripId", trip.getId().toString());*/
-
-
-    ////////////////////////////////////////
-
 
     @RequestMapping(value = "/addinstance/{tripId}")
     public ModelAndView addinstance(@PathVariable("tripId") String tripId, HttpSession session) {
@@ -472,5 +474,11 @@ public class RestTripController {
         modelAndView.addObject("startTimeString", DateUtil.formatTime(tripInstance.getStartTime()));
         modelAndView.addObject("endTimeString", DateUtil.formatTime(tripInstance.getEndTime()));
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/deleteAnswer", method = RequestMethod.POST)
+    public ModelAndView fbLogin(@RequestParam(value = "answerId") String answerId, HttpSession session) {
+        String response = "OK";
+        return new ModelAndView("jsonresponse", "antwoord", response);
     }
 }

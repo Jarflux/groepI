@@ -7,6 +7,6 @@
         <li><a href="/trips/list" class="active">Organise Trips</a></li>
         <li><a href="/trips/listinstance" class="active">Trips</a></li>
         <li><a href="/profile/myprofile" class="active">Profile</a></li>
-        <li><a href="/" class="active">LogOut</a></li>
+        <li><a href="j_spring_security_logout" class="active">LogOut</a></li>
     </ul>
 </div>

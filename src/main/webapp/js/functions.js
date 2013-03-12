@@ -44,17 +44,17 @@ function addhandlers()
 {
     $("#fblogin").on("click",function()
     {
+        $("#loader").fadeIn("fast");
         fblogin();
     })
 
     $("#invitefriends").on("click",function()
     {
-        invitefriendsdialog();
+        naamtrip = $(this).attr('data-naam');
+        instance= $(this).attr('data-instance');
+        invitefriendsdialog(instance, naamtrip);
     })
 }
-function preparetooltips()
-{
-})
 
 function preparemodal() {
     $("#assignRequirementToParticipant").dialog({
@@ -136,73 +136,6 @@ function validateform() {
         })
     }
 
-/*Google Map Functions*/
-/*http://jsfiddle.net/fatihacet/CKegk/*/
-var map;
-var myOptions = {
-    zoom: 7,
-    center: new google.maps.LatLng(51.221212,4.399166),
-    mapTypeId: 'roadmap'
-};
-var marker = new google.maps.Marker({});
-var info = new google.maps.InfoWindow({});
-var yMarker = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
-var gMarker = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
-var bMarker = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
-var pMarker = 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png';
-
-function initializeGMaps()
-{
-    map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
-    google.maps.event.addListener(map, 'click', function(e) {
-        var lat = e.latLng.lat(); // lat of clicked point
-        var lng = e.latLng.lng(); // lng of clicked point
-        marker.setMap(null);
-        marker = new google.maps.Marker({
-            position: getLatLng(lat, lng),
-            map: map,
-            draggable:true
-        });
-        setInputText(lat, "latitude");
-        setInputText(lng, "longitude");
-        bindMarkerEvents(marker); // bind right click event to marker
-    });
-}
-var getLatLng = function(lat, lng) {
-    return new google.maps.LatLng(lat, lng);
-};
-var bindMarkerEvents = function(marker) {
-    /*google.maps.event.addListener(marker, "click", function (point) {
-    });*/
-    google.maps.event.addListener(marker, "rightclick", function (point) {
-        /*window.close()
-        window.setPosition(point.latLng);
-        window.setContent(point.latLng.toString());
-        window.open(map, marker);*/
-        removeMarker(marker); // remove it
-    });
-    google.maps.event.addListener(marker, "dragend", function (point){
-        setInputText(point.latLng.lat(), "latitude");
-        setInputText(point.latLng.lat(), "longitude");
-    });
-
-};
-var removeMarker = function(marker) {
-    marker.setMap(null); // set markers setMap to null to remove it from map
-};
-function setInputText(text, controlId){
-    $('[name="' + controlId + '"]').val(text);
-}
-
-function placeStopMarker(latitude, longitude){
-    marker = new google.maps.Marker({
-        position: new google.maps.LatLng(latitude,longitude),
-        map: map,
-        draggable:true,
-        icon:gMarker
-    });
-    bindMarkerEvents(marker);
-}
 function maketripsortable()
 {
     $( ".sortable" ).sortable({
@@ -252,20 +185,44 @@ function performLogin() {
                console.log(response);
         $.post("/profile/fblogin",response,function(resultaat)
         {
+            console.log("resultaat: "+resultaat)
+            if (resultaat=="OK")
+            {
             window.location ="/profile/myprofile"
+            }
+            else
+            {
+                    $("#bowlG").html("<h1>Error</h1><p>Kon niet laden. Ververs de pagina en probeer opnieuw.</p>").css({"width":"400px"});
+                $("#bowlG p").css({"text-align":"left","margin":"0"})
+            }
         })
 
     });
 }
-function invitefriendsdialog()
+function invitefriendsdialog(instanceid,naamtrip)
 {
 
-        FB.ui({method: 'apprequests',
-            message: 'Invite the friends yes.'
-        }, function(requestid,toids)
+    FB.ui(
         {
-            console.log("Friends waren: "+requestid.to);
-        });
+            method: 'send',
+            name: 'Trippie: trip away!',
+            description: (
+                'Via trippie.be kan je gemakkelijk een trip plannen samen met je vrienden. Ik heb net een trip aangemaakt: ' +naamtrip+
+                    '. Ga je mee met mijn trip? '
+                ),
+            link: 'http://tomcat.vincentverbist.be:8080/trips/viewinstance/'+instanceid
+        },
+        function(response) {
+            if (response && response.post_id) {
+      console.log("Geplaatst op FB!")
+            } else {
+                console.log("Niet geplaatst op FB:(")
+            }
+        }
+    );
+
+
+
 
 }
 
