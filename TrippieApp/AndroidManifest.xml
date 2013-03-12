@@ -7,7 +7,7 @@
     <uses-sdk android:minSdkVersion="14"/>
     <application
             android:label="@string/app_name"
-            android:icon="@drawable/ic_launcher">
+            android:theme="@style/MyTheme">
         <activity
                 android:name="LoginActivity"
                 android:label="@string/app_name">
@@ -17,5 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".UserTripsActivity"/>
+        <activity android:name=".ShowTripActivity"/>
     </application>
 </manifest>

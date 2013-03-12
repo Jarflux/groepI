@@ -1,24 +1,17 @@
 package com.activities;
 
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Message;
-import android.util.Log;
+import android.view.*;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.controllers.Controller;
 import com.model.TripInstance;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import org.springframework.http.*;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,11 +24,6 @@ import java.util.List;
  */
 public class UserTripsActivity extends Activity {
     private Controller controller = new Controller();
-    /*private Thread getListDataThread = new Thread("New Thread") {
-        public void run(){
-
-        }
-    };*/
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +45,5 @@ public class UserTripsActivity extends Activity {
         ListView listView = (ListView) findViewById(R.id.tripList);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, tripNames);
         listView.setAdapter(adapter);
-        /*if(!getListDataThread.isAlive()){
-        getListDataThread.start();
-        }*/
     }
 }

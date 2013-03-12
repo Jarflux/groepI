@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">TrippieApp</string>
+    <string name="trips">Your Trips</string>
+    <string name="chat">Chat</string>
+    <string name="maps">Nearby Trips</string>
 </resources>
