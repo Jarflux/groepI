@@ -256,7 +256,7 @@ section {
     float: left;
 }
 
-.quarter section, .third section,.three-quarter section, .two-third section, .half  section
+.quarter section, .third section,.three-quarter section, .two-third section, .half  section, .full section
 {
     margin-bottom: 10px;
     border: 1px solid #eee;
