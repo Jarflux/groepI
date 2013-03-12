@@ -3,6 +3,8 @@ import com.model.TripInstance;
 import com.tasks.HttpGetTask;
 import com.tasks.LoginTask;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,13 +19,16 @@ public class Controller {
 
     public List<TripInstance> getUserTripParticipations(Long userId){
         HttpGetTask getTask = new HttpGetTask();
+        List tripParticipations = new ArrayList();
         getTask.execute("android/showUserTripParticipations",userId.toString());
         try {
+            if(getTask.get() != null){
             return (List)getTask.get();
+            }
         } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
-        return null;
+        return tripParticipations;
     }
 
     public  JSONObject springSecurityCheck(String username, String password) {
