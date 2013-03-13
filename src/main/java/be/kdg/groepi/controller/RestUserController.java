@@ -25,13 +25,6 @@ import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
-
-/**
- * Author: Ben Oeyen
- * Date: 7/02/13
- * Class: User REST Controller
- * Description: Controller to handle REST service calls
- */
 @Controller
 @RequestMapping("profile")
 public class RestUserController {
