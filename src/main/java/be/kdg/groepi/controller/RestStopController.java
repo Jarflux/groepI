@@ -52,9 +52,11 @@ public class RestStopController {
     }
 
     @RequestMapping(value = "/trips/updateStop", method = RequestMethod.POST)
-    public ModelAndView updateStop(@ModelAttribute("stopObject") Stop stop) {
+    public ModelAndView updateStop(@ModelAttribute("stopObject") Stop stop, @RequestParam String tripId) {
+        Trip trip = TripService.getTripById(Long.parseLong(tripId));
+        stop.setTrip(trip);
         StopService.updateStop(stop);
-        return new ModelAndView("trips/view", "stopObject", stop);
+        return new ModelAndView("trips/view", "tripObject", trip);
     }
 
     @RequestMapping(value = "/trips/setStopIsCorrect", method = RequestMethod.POST)
@@ -72,7 +74,6 @@ public class RestStopController {
         System.out.println("Trying for Vuforia voor stopId: " + stopId);
         FileOutputStream fos = new FileOutputStream(tempfile);
         fos.write(uploadedFile.getBytes());
-
 
         StopService.addToVuforia(stopId, tempfile);
         Stop stop = StopService.getStopById(stopId);
