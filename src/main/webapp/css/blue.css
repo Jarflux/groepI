@@ -273,9 +273,10 @@ section {
     border-radius: 10px;
 }
 
-th{
+th {
     text-align: left;
 }
+
 .small {
     font-size: 12px;
 }
@@ -611,10 +612,18 @@ form.mainstyle input[type="checkbox"] {
     }
 
 }
-div, p, span
-{
+
+div, p, span {
     transition: all 1s;
     -moz-transition: all 1s; /* Firefox 4 */
     -webkit-transition: all 1s; /* Safari and Chrome */
     -o-transition: all 1s; /* Opera */
+}
+
+.removeButton {
+    color: black;
+}
+
+.removeButton:hover {
+    color: red;
 }

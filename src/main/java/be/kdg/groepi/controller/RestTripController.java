@@ -83,11 +83,12 @@ public class RestTripController {
         Trip trip = TripService.getTripById(Long.parseLong(tripId));
         return new ModelAndView("trips/addstop", "tripObject", trip);
     }
+
     @RequestMapping(value = "/invitebymail", method = RequestMethod.POST)
-    public ModelAndView invitebymail( @RequestParam(value = "instanceid") String instanceid, @RequestParam(value = "receipients") String receivers, @RequestParam(value = "message") String message,HttpSession session) {
+    public ModelAndView invitebymail(@RequestParam(value = "instanceid") String instanceid, @RequestParam(value = "receipients") String receivers, @RequestParam(value = "message") String message, HttpSession session) {
         TripInstance tripInstance = TripInstanceService.getTripInstanceById(Long.parseLong(instanceid));
 
-        TripInstanceService.inviteByEmail(receivers,message,Long.parseLong(instanceid));
+        TripInstanceService.inviteByEmail(receivers, message, Long.parseLong(instanceid));
 
 
         return getModelAndViewForViewInstance(session, tripInstance);
@@ -194,6 +195,27 @@ public class RestTripController {
         return new ModelAndView("trips/editstop", "stopObject", stop);
     }
 
+    @RequestMapping(value = "/deleteAnswer", method = RequestMethod.POST)
+    public String deleteAnswer(@RequestParam(value = "answerId") String answerId) {
+        Answer answer = AnswerService.getAnswerById(Long.parseLong(answerId));
+        AnswerService.deleteAnswer(answer);
+        if (AnswerService.getAnswerById(Long.parseLong(answerId)) == null) {
+            return "fail";
+        } else {
+            return "succes";
+        }
+
+    }
+
+    @RequestMapping(value = "/setStopIsCorrect", method = RequestMethod.POST)
+    public String setStopIsCorrect(@RequestParam String answerId) {
+        Answer answer = AnswerService.getAnswerById(Long.parseLong(answerId));
+        Stop stop = StopService.getStopById(answer.getStop().getId());
+        stop.setCorrectAnswer(Long.parseLong(answerId));
+        StopService.updateStop(stop);
+        return "saved";
+    }
+
     @RequestMapping(value = "/addrequirement/{tripId}", method = RequestMethod.GET)
     public ModelAndView addRequirement(@PathVariable(value = "tripId") String tripId) {
         return new ModelAndView("trips/addtriprequirement", "tripId", tripId);
@@ -212,19 +234,20 @@ public class RestTripController {
     }
 
     @RequestMapping(value = "/addAR", method = RequestMethod.POST)
-    public ModelAndView addToVuforia( @RequestParam(value = "photo") MultipartFile uploadedFile,  @RequestParam(value = "stopid") Long stopId) throws IOException, JSONException, URISyntaxException {
-             File tempfile =       File.createTempFile("tijdelijk","juha");
-        System.out.println("Trying for Vuforia voor stopId: "+stopId);
-                     FileOutputStream fos = new FileOutputStream(tempfile);
+    public ModelAndView addToVuforia(@RequestParam(value = "photo") MultipartFile uploadedFile, @RequestParam(value = "stopid") Long stopId) throws IOException, JSONException, URISyntaxException {
+        File tempfile = File.createTempFile("tijdelijk", "juha");
+        System.out.println("Trying for Vuforia voor stopId: " + stopId);
+        FileOutputStream fos = new FileOutputStream(tempfile);
         fos.write(uploadedFile.getBytes());
 
 
-        StopService.addToVuforia(stopId,tempfile);
-       Stop stop = StopService.getStopById(stopId);
-        Trip trip= TripService.getTripById(stop.getTrip().getId());
+        StopService.addToVuforia(stopId, tempfile);
+        Stop stop = StopService.getStopById(stopId);
+        Trip trip = TripService.getTripById(stop.getTrip().getId());
 
         return new ModelAndView("trips/editstop", "tripObject", trip);
     }
+
     @RequestMapping(value = "/createinstance", method = RequestMethod.POST)
     public ModelAndView createinstance(HttpSession session, @ModelAttribute("tripInstanceObject") TripInstance tempTripInstance,
                                        @RequestParam(value = "tripId") Long tripId,
@@ -388,6 +411,7 @@ modelAndView.addObject("tripInstanceEndTimes", tripInstanceEndTimes);
             logger.debug("Returning ownTripInstances is empty");
         }
 
+
         Map<Long, String> publicTripInstanceDates = new HashMap<>();
         Map<Long, String> publicTripInstanceStartTimes = new HashMap<>();
         Map<Long, String> publicTripInstanceEndTimes = new HashMap<>();
@@ -422,6 +446,7 @@ modelAndView.addObject("tripInstanceEndTimes", tripInstanceEndTimes);
         modelAndView.addObject("ownTripInstanceDates", ownTripInstanceDates);
         modelAndView.addObject("ownTripInstanceStartTimes", ownTripInstanceStartTimes);
         modelAndView.addObject("ownTripInstanceEndTimes", ownTripInstanceEndTimes);
+
 
         return modelAndView;
     }
@@ -561,11 +586,5 @@ modelAndView.addObject("tripInstanceEndTimes", tripInstanceEndTimes);
         modelAndView.addObject("startTimeString", DateUtil.formatTime(tripInstance.getStartTime()));
         modelAndView.addObject("endTimeString", DateUtil.formatTime(tripInstance.getEndTime()));
         return modelAndView;
-    }
-
-    @RequestMapping(value = "/deleteAnswer", method = RequestMethod.POST)
-    public ModelAndView fbLogin(@RequestParam(value = "answerId") String answerId, HttpSession session) {
-        String response = "OK";
-        return new ModelAndView("jsonresponse", "antwoord", response);
     }
 }

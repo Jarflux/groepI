@@ -49,16 +49,17 @@
                                 </div>
                                 <div class="row">
                                     <span><spring:message code='stops.radius'/></span>
-                                    <textarea name="stopText"><c:out value="${stopObject.radius}"/></textarea>
+                                    <textarea name="radius"><c:out value="${stopObject.radius}"/></textarea>
                                 </div>
                                 <div class="row">
                                     <span><spring:message code='stops.question'/></span>
-                                    <input type="text" name="stopText" value="${stopObject.radius}"/>
+                                    <input type="text" name="stopText" value="${stopObject.stopText}"/>
                                 </div>
                                 <div class="row">
                                     <input type="hidden" name="latitude" value="${stopObject.latitude}"/>
                                     <input type="hidden" name="longitude" value="${stopObject.longitude}"/>
                                     <input type="hidden" name="tripId" value="${stopObject.trip.id}"/>
+                                    <input type="hidden" name="Id" value="${stopObject.id}"/>
                                     <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
                                 </div>
                             </div>
@@ -85,12 +86,16 @@
                                         <c:when test="${answer.isCorrect}">
                                             <li class="active"><span><input type="radio" name="group1" checked="checked"
                                                                             onclick="setCorrectAnswer(${answer.id})"/><c:out
-                                                    value="${answer.answerText}"/></span></li>
+                                                    value="${answer.answerText}"/><p class="removeButton"
+                                                                                     onclick="deleteAnswer(${answer.id})">
+                                                X</p></span></li>
                                         </c:when>
                                         <c:otherwise>
                                             <li class="active"><span><input type="radio" name="group1"
                                                                             onclick="setCorrectAnswer(${answer.id})"/><c:out
-                                                    value="${answer.answerText}"/></span></li>
+                                                    value="${answer.answerText}"/><p class="removeButton"
+                                                                                     onclick="deleteAnswer(${answer.id})">
+                                                X</p></span></li>
                                         </c:otherwise>
                                     </c:choose>
                                 </c:forEach>
@@ -114,7 +119,7 @@
                 <form action="/trips/addAR" enctype="multipart/form-data" method="POST">
                     <input type="hidden" name="stopid" value="${stopObject.id}"/>
                     <input type="file" name="photo"/>
-                                                     <input type="submit" value="<spring:message code="text.save" />"/>
+                    <input type="submit" value="<spring:message code="text.save" />"/>
 
                 </form>
             </div>
@@ -154,13 +159,13 @@
     });
 
     function setCorrectAnswer(id) {
-        console.log("Start");
-        //$.post("/trips/setStopIsCorrect",{ answerId: id})
+        console.log("setCorrectAnswer");
+        var feedback = $.post("/trips/setStopIsCorrect", { answerId: id})
     }
 
     function deleteAnswer(id) {
-        console.log("Start");
-        //$.post("/trips/deleteStopAnswer",{ answerId: id})
+        console.log("deleteAnswer");
+        var feedback = $.post("/trips/deleteStopAnswer", { answerId: id})
     }
 </script>
 </body>

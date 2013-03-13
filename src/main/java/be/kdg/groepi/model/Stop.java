@@ -69,6 +69,10 @@ public class Stop {
         return fId;
     }
 
+    public void setId(Long Id) {
+        this.fId = Id;
+    }
+
     public String getName() {
         return fName;
     }
@@ -147,6 +151,16 @@ public class Stop {
 
     public void setAnswers(List<Answer> fAnswers) {
         this.fAnswers = fAnswers;
+    }
+
+    public void setCorrectAnswer(long answerId) {
+        for (Answer answer : this.fAnswers) {
+            if (answer.getId() == answerId) {
+                answer.setIsCorrect(true);
+            } else {
+                answer.setIsCorrect(false);
+            }
+        }
     }
 
     @Override

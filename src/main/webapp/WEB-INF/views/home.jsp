@@ -66,9 +66,10 @@
                     "Dave@trippie.com", "dave"</p>
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
-                <p class="fp_navigation"><a href=""><spring:message code='home.organizeTrip'/></a></p>
+                <p class="fp_navigation"><a href="/trips/list"><spring:message code='home.organizeTrip'/></a></p>
 
-                <p class="fp_navigation"><a href=""><spring:message code='home.participateOnTrip'/></a></p>
+                <p class="fp_navigation"><a href="/trips/listinstance"><spring:message
+                        code='home.participateOnTrip'/></a></p>
             </sec:authorize>
         </div>
     </div>
