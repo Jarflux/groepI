@@ -33,39 +33,27 @@
                     <c:when test="${!empty ownTrips}">
                         <table>
                             <tr>
-                                <td>ID - moet nog weg</td>
                                 <td><spring:message code="text.tripname"/></td>
                                 <td><spring:message code="text.tripdescription"/></td>
+                                <td>tripInstancesCount? Wat kan er nog bij?</td>
                             </tr>
                             <c:forEach var="ownTrips" items="${ownTrips}">
                                 <tr>
-                                    <td>${ownTrips.id}</td>
-                                    <td>${ownTrips.title}</td>
+                                    <td><a href="/trips/view/${ownTrips.id}" class="active">${ownTrips.title}</a></td>
                                     <td>${ownTrips.description}</td>
-                                    <td><a href="/trips/view/${ownTrips.id}" class="active"><spring:message
-                                            code='text.detail'/></a></td>
-                                        <%--<td>
-                                            <form method="post" action="jointrip">
-                                                <input type="hidden" value="${ownTrips.id}" name="tripId"/>
-                                                <input type="submit" class="button"
-                                                       value="<spring:message code='text.jointrip'/>"/>
-                                            </form>
-                                        </td>--%>
                                 </tr>
                             </c:forEach>
                         </table>
                     </c:when>
                     <c:otherwise>
-                        <c:choose>
-                            <c:when test="${ownTrips == null}">ownTrips == null</c:when>
-                            <c:otherwise><spring:message code='text.noowntripsfound'/></c:otherwise>
-                        </c:choose>
+                        <spring:message code='text.noowntripsfound'/>
                     </c:otherwise>
                 </c:choose>
             </div>
             <br/>
             <c:forEach begin="1" end="${ownTrips.size()}">
                 <br/>
+                <%--TODO: fix this? (zorgt ervoor dat beide lijsten niet boven elkaar staan ... maar wel geen goeie manier)--%>
             </c:forEach>
             <div class="row">
                 <spring:message code="text.publictrips"/>
@@ -73,33 +61,21 @@
                     <c:when test="${!empty publicTrips}">
                         <table>
                             <tr>
-                                <td>ID - moet nog weg</td>
                                 <td><spring:message code="text.tripname"/></td>
                                 <td><spring:message code="text.tripdescription"/></td>
+                                <td>DATE _ TIME _ TIME</td>
                             </tr>
                             <c:forEach var="publicTrip" items="${publicTrips}">
                                 <tr>
-                                    <td>${publicTrip.id}</td>
-                                    <td>${publicTrip.title}</td>
+                                    <td><a href="/trips/view/${publicTrip.id}" class="active">${publicTrip.title}</a>
+                                    </td>
                                     <td>${publicTrip.description}</td>
-                                    <td><a href="/trips/view/${publicTrip.id}" class="active"><spring:message
-                                            code='text.detail'/></a></td>
-                                        <%--<td>
-                                            <form method="post" action="jointrip">
-                                                <input type="hidden" value="${publicTrip.id}" name="tripId"/>
-                                                <input type="submit" class="button"
-                                                       value="<spring:message code='text.jointrip'/>"/>
-                                            </form>
-                                        </td>--%>
                                 </tr>
                             </c:forEach>
                         </table>
                     </c:when>
                     <c:otherwise>
-                        <c:choose>
-                            <c:when test="${publicTrip == null}">publicTrip == null</c:when>
-                            <c:otherwise><spring:message code='text.notripsfound'/></c:otherwise>
-                        </c:choose>
+                        <spring:message code='text.notripsfound'/>
                     </c:otherwise>
                 </c:choose>
             </div>

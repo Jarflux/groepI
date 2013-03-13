@@ -27,7 +27,7 @@
 
         <form method="post" action="doResetPassword" class="mainstyle tooltips validate">
 
-            <div class="row"><span><spring:message code='text.mail'/></span>
+            <div class="row"><span><spring:message code='text.email'/></span>
                 <input type="text" class="required" name="email" placeholder=""
                        title="Gelieve je e-mailadres in te geven."/>
             </div>

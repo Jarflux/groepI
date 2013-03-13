@@ -47,13 +47,13 @@
                                        title="Gelieve uw volledige naam in te geven" value="${userObject.name}"/>
                             </div>
                             <div class="row">
-                                <span><spring:message code='text.mail'/></span>
+                                <span><spring:message code='text.email'/></span>
                                 <input type="text" class="required" name="email" placeholder=""
                                        title="Gelieve een geldig e-mailadres in te geven. Dit wordt ook uw gebruikernsaam."
                                        value="${userObject.email}"/>
                             </div>
                             <div class="row">
-                                <span><spring:message code='text.dateofbirth'/></span>
+                                <span><spring:message code='text.dateofbirthedit'/></span>
                                 <input type="text" class="required dateregister" name="dob" placeholder=""
                                        title="Gelieve uw geboortedatum in te geven" value="${dob}"/>
                             </div>

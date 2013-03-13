@@ -14,6 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -41,9 +42,15 @@ public class RestUserController {
     public ModelAndView getUser(@PathVariable("userId") String userId) {
         User user;
         user = UserService.getUserById(Long.parseLong(userId));
+
         if (user != null) {
             logger.debug("Returning User: " + user.toString() + " with user #" + userId);
-            return new ModelAndView("profile/user", "userObject", user);
+
+            ModelAndView modelAndView = new ModelAndView("profile/user");
+            modelAndView.addObject("userObject", user);
+            modelAndView.addObject("dob", DateUtil.formatDate(user.getDateOfBirth()));
+
+            return modelAndView;//ModelAndView("profile/user", "userObject", user);
         } else {
             return new ModelAndView("error/displayerror");
         }

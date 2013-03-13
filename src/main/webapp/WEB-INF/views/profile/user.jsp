@@ -21,26 +21,43 @@
     </div>
     <div id="content" class="column light">
         <h2><spring:message code='text.viewprofile'/></h2>
-
         <section>
-            <div class="quarter"><img src="/images/noprofile.png" width='150' class="profilepic"/></div>
-            <div class="three-quarter">
-                <c:choose>
-                    <c:when test="${userObject != null}">
+            <c:choose>
+                <c:when test="${userObject != null}">
+                    <div class="quarter">
+                        <c:choose>
+                            <c:when test="${userObject.profilePicture == null}">
+                                <img src="/images/noprofile.jpg" width="150"
+                                     class="profilepic"/>
+                            </c:when>
+                            <c:otherwise>
+                                <%--<c:when test="${userObject.profilePicture != null}">--%>
+                                <img src="${userObject.profilePicture}" width="150" class="profilepic"/>
+                                <%--</c:when>--%>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                    <div class="three-quarter">
+                            <%--<div class="row">--%>
+                            <%--<c:out value="Profile of user #${userObject.id}"/>--%>
+                            <%--</div>--%>
                         <div class="row">
-                            <c:out value="Profile of user #${userObject.id}"/>
+                            <spring:message code='text.name'/>: <c:out value="${userObject.name}"/>
                         </div>
-                        <div class="row"><c:out value="Name ${userObject.name}"/></div>
-                        <div class="row"><c:out value="Mail ${userObject.email}"/></div>
-                        <div class="row"><c:out value="Date of birth ${userObject.dateOfBirth}"/></div>
-                        <div class="row"><c:out value="Profile picture ${userObject.profilePicture}"/></div>
-                    </c:when>
-                    <c:when test="${userObject == null}">
-                        <jsp:forward page="/error/invaliduser"/>
-                    </c:when>
-
-                </c:choose>
-            </div>
+                        <div class="row">
+                            <spring:message code='text.email'/>: <c:out value="${userObject.email}"/>
+                        </div>
+                        <div class="row">
+                            <spring:message code='text.dateofbirth'/>: <c:out value="Date of birth ${dob}"/>
+                        </div>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <%--<c:when test="${userObject == null}">--%>
+                    <jsp:forward page="/error/invaliduser"/>
+                    <%--</c:when>--%>
+                </c:otherwise>
+            </c:choose>
         </section>
     </div>
 </div>
