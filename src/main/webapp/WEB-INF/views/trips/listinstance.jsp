@@ -64,10 +64,7 @@
                         </table>
                     </c:when>
                     <c:otherwise>
-                        <c:choose>
-                            <c:when test="${ownTripInstanceListObject == null}">tripInstanceList == null</c:when>
-                            <c:otherwise><spring:message code='text.notripinstancesfound'/></c:otherwise>
-                        </c:choose>
+                        <spring:message code='text.notripinstancesfound'/>
                     </c:otherwise>
                 </c:choose>
             </div>
@@ -76,6 +73,7 @@
             <c:forEach begin="1" end="${ownTripInstances.size()}">
                 <br/>
                 <br/>
+                <%--TODO: fix this? (zorgt ervoor dat beide lijsten niet boven elkaar staan ... maar wel geen goeie manier)--%>
             </c:forEach>
 
             <div class="row">
@@ -102,29 +100,6 @@
                                     <td>${publicTripInstanceDates.get(tripInstance.id)}</td>
                                     <td>${publicTripInstanceStartTimes.get(tripInstance.id)}</td>
                                     <td>${publicTripInstanceEndTimes.get(tripInstance.id)}</td>
-                                        <%--<c:forEach var="date" items="${publicTripInstanceDates}">
-                                            <c:choose>
-                                                <c:when test="${date.key == tripInstance.id}">
-                                                    <td>${date.value}</td>
-                                                </c:when>
-                                            </c:choose>
-                                        </c:forEach>
-                                        <c:forEach var="startTime" items="${publicTripInstanceStartTimes}">
-                                            <c:choose>
-                                                <c:when test="${startTime.key == tripInstance.id}">
-                                                    <td>${startTime.value}</td>
-                                                </c:when>
-                                            </c:choose>
-                                        </c:forEach>
-                                        <c:forEach var="endTime" items="${publicTripInstanceEndTimes}">
-                                            <c:choose>
-                                                <c:when test="${endTime.key == tripInstance.id}">
-                                                    <td>${endTime.value}</td>
-                                                </c:when>
-                                            </c:choose>
-                                        </c:forEach>
-                                        <td><a href="/trips/viewinstance/${tripInstance.id}" class="active"><spring:message
-                                                code='text.detail'/></a></td>  --%>
                                     <td>
                                         <form method="post" action="jointrip">
                                             <input type="hidden" value="${tripInstance.id}" name="tripId"/>
@@ -137,10 +112,7 @@
                         </table>
                     </c:when>
                     <c:otherwise>
-                        <c:choose>
-                            <c:when test="${publicTripInstanceListObject == null}">tripInstanceList == null</c:when>
-                            <c:otherwise><spring:message code='text.notripinstancesfound'/></c:otherwise>
-                        </c:choose>
+                        <spring:message code='text.notripinstancesfound'/>
                     </c:otherwise>
                 </c:choose>
             </div>
