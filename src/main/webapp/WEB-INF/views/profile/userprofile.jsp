@@ -12,7 +12,6 @@
 <head>
     <title><spring:message code='text.viewprofile'/></title>
     <link href="/css/blue.css" rel="stylesheet"/>
-
 </head>
 <body>
 <div id="wrapper">
@@ -21,14 +20,11 @@
     </div>
     <div id="content" class="column light">
         <h2><spring:message code='text.dashboard'/></h2>
-
         <div class="full">
             <c:choose>
                 <c:when test="${userObject != null}">
                     <section>
-
                         <h3><spring:message code='text.mydata'/></h3>
-
                         <div class="quarter">
                             <c:choose>
                                 <c:when test="${userObject.profilePicture == null}">
@@ -41,9 +37,7 @@
                                 </c:when>
                             </c:choose>
                         </div>
-
                         <div class="three-quarter">
-
                             <div class="row">
                                 <spring:message code='text.name'/>: <c:out value="${userObject.name}"/>
                             </div>
@@ -51,14 +45,13 @@
                                 <spring:message code='text.email'/>: <c:out value="${userObject.email}"/>
                             </div>
                             <div class="row">
-                                <spring:message code='text.dateofbirth'/>: <c:out value="Date of birth ${dob}"/>
+                                <spring:message code='text.dateofbirth'/>: <c:out value="${dob}"/>
                             </div>
                             <div class="row">
                                 <form action="/profile/myprofile/edit">
                                     <input type="submit" class="button" value="<spring:message code='text.edit'/>"/>
                                 </form>
                             </div>
-
                         </div>
                         <br style="clear: both"/>
                     </section>

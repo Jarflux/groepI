@@ -49,6 +49,7 @@ public class RestTripController {
     public ModelAndView getTrip(@PathVariable("tripId") String tripId, HttpSession session) {
         Trip trip;
         trip = TripService.getTripById(Long.parseLong(tripId));
+        User user = (User) session.getAttribute("userObject");
 
         if (trip != null) {
             logger.debug("Returning Trip: " + trip.toString() + " with trip #" + tripId);
@@ -56,32 +57,19 @@ public class RestTripController {
             Map<Long, String> tripInstanceDates = new HashMap<>();
             Map<Long, String> tripInstanceStartTimes = new HashMap<>();
             Map<Long, String> tripInstanceEndTimes = new HashMap<>();
-//            SortedSet<TripInstance> userPastTripInstances = new TreeSet<>();
-//            SortedSet<TripInstance> userFutureTripInstances = new TreeSet<>();
             SortedSet<TripInstance> tripInstances = new TreeSet<>();
 
-//            long today = DateUtil.dateStringToLong(DateUtil.formatDate(Calendar.getInstance().getTime()));
-
             for (TripInstance tripInstance : TripInstanceService.getAllTripInstancesByTripId(trip.getId())) {
-
-//                    if (tripInstance.getStartTime() < today) {
-//                        userPastTripInstances.add(tripInstance);
-                tripInstances.add(tripInstance);
-//                    } else {
-//                        userFutureTripInstances.add(tripInstance);
-//                    }
-
-                tripInstanceDates.put(tripInstance.getId(), DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartTime())));
-                tripInstanceStartTimes.put(tripInstance.getId(), DateUtil.formatTime(DateUtil.longToDate(tripInstance.getStartTime())));
-                tripInstanceEndTimes.put(tripInstance.getId(), DateUtil.formatTime(DateUtil.longToDate(tripInstance.getEndTime())));
+                if (tripInstance.getAvailable() || tripInstance.getOrganiser().getId().equals(user.getId())) {
+                    tripInstances.add(tripInstance);
+                    tripInstanceDates.put(tripInstance.getId(), DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartTime())));
+                    tripInstanceStartTimes.put(tripInstance.getId(), DateUtil.formatTime(DateUtil.longToDate(tripInstance.getStartTime())));
+                    tripInstanceEndTimes.put(tripInstance.getId(), DateUtil.formatTime(DateUtil.longToDate(tripInstance.getEndTime())));
+                }
             }
-
-
 
             ModelAndView modelAndView = new ModelAndView("trips/view");
             modelAndView.addObject("tripObject", trip);
-//            modelAndView.addObject("tripInstanceListObject", TripInstanceService.getAllTripInstancesByTripId(trip.getId()));
-
             modelAndView.addObject("tripInstances", tripInstances);
             modelAndView.addObject("tripInstanceDates", tripInstanceDates);
             modelAndView.addObject("tripInstanceStartTimes", tripInstanceStartTimes);

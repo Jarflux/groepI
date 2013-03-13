@@ -63,7 +63,7 @@
                             <tr>
                                 <td><spring:message code="text.tripname"/></td>
                                 <td><spring:message code="text.tripdescription"/></td>
-                                <td>DATE _ TIME _ TIME</td>
+                                <td>wat kan er nog bij?</td>
                             </tr>
                             <c:forEach var="publicTrip" items="${publicTrips}">
                                 <tr>

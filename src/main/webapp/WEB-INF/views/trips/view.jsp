@@ -100,7 +100,7 @@
                 </c:choose>
             </section>
         </div>
-        <div class="quarter">
+        <div class="half">
             <section>
                 <h3><spring:message code='text.instances'/></h3>
                 <c:if test="${tripObject.organiser.id == userObject.id}">
@@ -111,23 +111,14 @@
                         <table>
                             <c:forEach var="tripInstance" items="${tripInstances}">
                                 <tr>
-                                    <%--<td>${tripInstance.id}</td>--%>
                                     <td>
-                                        <c:if test="${tripObject.organiser.id == userObject.id}">
-                                            <a href="/trips/viewinstance/${tripInstance.id}" class="active">
-                                                <c:out value="${tripInstance.title}"/>
-                                            </a>
-                                        </c:if>
-                                        <c:if test="${tripObject.organiser.id != userObject.id}">
+                                        <a href="/trips/viewinstance/${tripInstance.id}" class="active">
                                             <c:out value="${tripInstance.title}"/>
-                                        </c:if>
+                                        </a>
                                     </td>
                                     <td>${tripInstance.description}</td>
-                                    <td>DATE</td>
-                                    <td>TIME - TIME</td>
-                                       <%-- <td>${ownTripInstanceDates.get(tripInstance.id)}</td>
-                                        <td>${ownTripInstanceStartTimes.get(tripInstance.id)}</td>
-                                        <td>${ownTripInstanceEndTimes.get(tripInstance.id)}</td>--%>
+                                    <td>${tripInstanceDates.get(tripInstance.id)}</td>
+                                    <td>${tripInstanceStartTimes.get(tripInstance.id)} - ${tripInstanceEndTimes.get(tripInstance.id)}</td>
                                 </tr>
                             </c:forEach>
                         </table>

@@ -107,7 +107,6 @@ public class RestUserController {
             }
         }
 
-
         ModelAndView modelAndView = new ModelAndView("profile/userprofile");
         modelAndView.addObject("userObject", session.getAttribute("userObject"));
         modelAndView.addObject("dob", DateUtil.formatDate(session));
@@ -135,12 +134,11 @@ public class RestUserController {
         sessionUser.setName(user.getName());
         sessionUser.setEmail(user.getEmail());
         sessionUser.setDateOfBirth(DateUtil.dateStringToLong(dateOfBirth, null));
-        sessionUser.setProfilePicture(FileUtil.savePicture(session, uploadedFile, sessionUser.getId()));
+        if (!uploadedFile.isEmpty()){
+            sessionUser.setProfilePicture(FileUtil.savePicture(session, uploadedFile, sessionUser.getId()));
+        }
         UserService.updateUser(sessionUser);
-        ModelAndView modelAndView = new ModelAndView("profile/userprofile");
-        modelAndView.addObject("userObject", sessionUser);
-        modelAndView.addObject("dob", DateUtil.formatDate(session));
-        return modelAndView;
+        return myProfile(session);
     }
 
     @RequestMapping(value = "/reset/forgotPassword")

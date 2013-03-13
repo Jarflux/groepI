@@ -48,7 +48,7 @@
                             <spring:message code='text.email'/>: <c:out value="${userObject.email}"/>
                         </div>
                         <div class="row">
-                            <spring:message code='text.dateofbirth'/>: <c:out value="Date of birth ${dob}"/>
+                            <spring:message code='text.dateofbirth'/>: <c:out value="${dob}"/>
                         </div>
                     </div>
                 </c:when>
