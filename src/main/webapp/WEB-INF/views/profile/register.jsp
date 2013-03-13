@@ -40,12 +40,12 @@
                        title="Herhaal uw wachtwoord"/>
             </div>
             <div class="row">
-                <span><spring:message code='text.mail'/></span>
+                <span><spring:message code='text.email'/></span>
                 <input type="text" class="required" name="email" placeholder=""
                        title="Gelieve een geldig e-mailadres in te geven. Dit wordt ook uw gebruikernsaam."/>
             </div>
             <div class="row">
-                <span><spring:message code='text.dateofbirth'/></span>
+                <span><spring:message code='text.dateofbirthedit'/></span>
                 <input type="datetime" class="required dateregister" name="dob" placeholder=""
                        title="Gelieve uw geboortedatum in te geven"/>
             </div>

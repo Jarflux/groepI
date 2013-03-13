@@ -30,7 +30,7 @@
         </c:if>
         <form method="post" action="j_spring_security_check" class="mainstyle validate">
             <div class="row">
-                <span><spring:message code='text.mail'/></span>
+                <span><spring:message code='text.email'/></span>
                 <input type="text" name="j_username" id="j_username"/>
             </div>
             <div class="row">

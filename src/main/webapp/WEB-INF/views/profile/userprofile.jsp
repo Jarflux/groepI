@@ -21,92 +21,104 @@
     </div>
     <div id="content" class="column light">
         <h2><spring:message code='text.dashboard'/></h2>
-            <div class="full">
-        <section>
 
-            <h3><spring:message code='text.mydata'/></h3>
-            <div class="quarter">
-                <c:choose>
-                    <c:when test="${userObject.profilePicture == null}">
-                        <img src="/images/noprofile.jpg" width="150"
-                             class="profilepic"/>
-                    </c:when>
-                    <c:when test="${userObject.profilePicture != null}">
-                        <img src="${userObject.profilePicture}" width="150"
-                             class="profilepic"/>
-                    </c:when>
-                </c:choose>
-            </div>
+        <div class="full">
+            <c:choose>
+                <c:when test="${userObject != null}">
+                    <section>
 
-            <div class="three-quarter">
-                <c:choose>
-                    <c:when test="${userObject != null}">
+                        <h3><spring:message code='text.mydata'/></h3>
 
-                        <div class="row"><c:out value="Naam ${userObject.name}"/></div>
-                        <div class="row"><c:out value="Mail ${userObject.email}"/></div>
-                        <div class="row">
-                            <c:out value="Date of birth ${dob}"/></div>
-                        <div class="row">
-                            <form action="/profile/myprofile/edit">
-                                <input type="submit" class="button" value="<spring:message code='text.edit'/>"/>
-                            </form>
+                        <div class="quarter">
+                            <c:choose>
+                                <c:when test="${userObject.profilePicture == null}">
+                                    <img src="/images/noprofile.jpg" width="150"
+                                         class="profilepic"/>
+                                </c:when>
+                                <c:when test="${userObject.profilePicture != null}">
+                                    <img src="${userObject.profilePicture}" width="150"
+                                         class="profilepic"/>
+                                </c:when>
+                            </c:choose>
                         </div>
 
-                </div>
-            <br style="clear: both" />
-                            </section>
-                <br style="clear: both" />
-                                  <section>
-                                            <h3><spring:message code="text.mytrips" /></h3>
-                            <table style="width: 100%">
-                                <caption><spring:message code="text.tripsparticipated"/></caption>
-                                <tr>
-                                    <th><spring:message code="text.tripname"/></th>
-                                    <th><spring:message code="text.tripdescription"/></th>
-                                    <th><spring:message code="text.date"/></th>
-                                    <th><spring:message code="text.starttime"/></th>
-                                    <th><spring:message code="text.endtime"/></th>
-                                </tr><%--
-                                <tr>
-                                    <td rowspan="4"><spring:message code="text.plannedtrips"/></td>
-                                </tr>--%>
+                        <div class="three-quarter">
+
+                            <div class="row">
+                                <spring:message code='text.name'/>: <c:out value="${userObject.name}"/>
+                            </div>
+                            <div class="row">
+                                <spring:message code='text.email'/>: <c:out value="${userObject.email}"/>
+                            </div>
+                            <div class="row">
+                                <spring:message code='text.dateofbirth'/>: <c:out value="Date of birth ${dob}"/>
+                            </div>
+                            <div class="row">
+                                <form action="/profile/myprofile/edit">
+                                    <input type="submit" class="button" value="<spring:message code='text.edit'/>"/>
+                                </form>
+                            </div>
+
+                        </div>
+                        <br style="clear: both"/>
+                    </section>
+                    <br style="clear: both"/>
+                    <section>
+                        <h3><spring:message code="text.mytrips"/></h3>
+                        <table style="width: 100%">
+                            <caption><spring:message code="text.tripsparticipated"/></caption>
+                            <tr>
+                                <th><spring:message code="text.tripname"/></th>
+                                <th><spring:message code="text.tripdescription"/></th>
+                                <th><spring:message code="text.date"/></th>
+                                <th><spring:message code="text.starttime"/></th>
+                                <th><spring:message code="text.endtime"/></th>
+                            </tr>
+                                <%--
+                                                                <tr>
+                                                                    <td rowspan="4"><spring:message code="text.plannedtrips"/></td>
+                                                                </tr>--%>
                                 <%--<tr>--%>
-                                <c:forEach var="tripInstance" items="${userFutureTripInstances}">
-                                    <tr>
-                                        <td><a href="/trips/viewinstance/${tripInstance.id}" class="active">
-                                            <c:out value="${tripInstance.title}"/>
-                                        </a></td>
-                                        <td>${tripInstance.description}</td>
-                                        <td>${tripInstanceDates.get(tripInstance.id)}</td>
-                                        <td>${tripInstanceStartTimes.get(tripInstance.id)}</td>
-                                        <td>${tripInstanceEndTimes.get(tripInstance.id)}</td>
-                                    </tr>
-                                </c:forEach>
-                                <tr><td></td></tr><tr><td colspan="5"><spring:message code="text.pasttrips"/></td></tr>
+                            <c:forEach var="tripInstance" items="${userFutureTripInstances}">
+                                <tr>
+                                    <td><a href="/trips/viewinstance/${tripInstance.id}" class="active">
+                                        <c:out value="${tripInstance.title}"/>
+                                    </a></td>
+                                    <td>${tripInstance.description}</td>
+                                    <td>${tripInstanceDates.get(tripInstance.id)}</td>
+                                    <td>${tripInstanceStartTimes.get(tripInstance.id)}</td>
+                                    <td>${tripInstanceEndTimes.get(tripInstance.id)}</td>
+                                </tr>
+                            </c:forEach>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="5"><spring:message code="text.pasttrips"/></td>
+                            </tr>
 
-                                <c:forEach var="tripInstance" items="${userPastTripInstances}">
-                                    <tr>
-                                        <td><a href="/trips/viewinstance/${tripInstance.id}" class="active">
-                                            <c:out value="${tripInstance.title}"/>
-                                        </a></td>
-                                        <td>${tripInstance.description}</td>
-                                        <td>${tripInstanceDates.get(tripInstance.id)}</td>
-                                        <td>${tripInstanceStartTimes.get(tripInstance.id)}</td>
-                                        <td>${tripInstanceEndTimes.get(tripInstance.id)}</td>
-                                    </tr>
-                                </c:forEach>
-                            </table>
-
-                    </c:when>
-                    <c:when test="${userObject == null}">
-                        <jsp:forward page="/error/invaliduser"/>
-                    </c:when>
-
-                </c:choose>
-
-            <br style="clear: both">
-        </section>
-                </div>
+                            <c:forEach var="tripInstance" items="${userPastTripInstances}">
+                                <tr>
+                                    <td><a href="/trips/viewinstance/${tripInstance.id}" class="active">
+                                        <c:out value="${tripInstance.title}"/>
+                                    </a></td>
+                                    <td>${tripInstance.description}</td>
+                                    <td>${tripInstanceDates.get(tripInstance.id)}</td>
+                                    <td>${tripInstanceStartTimes.get(tripInstance.id)}</td>
+                                    <td>${tripInstanceEndTimes.get(tripInstance.id)}</td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                        <br style="clear: both">
+                    </section>
+                </c:when>
+                <%--<c:when test="${userObject == null}">--%>
+                <c:otherwise>
+                    <jsp:forward page="/error/invaliduser"/>
+                </c:otherwise>
+                <%--</c:when>--%>
+            </c:choose>
+        </div>
     </div>
 </div>
 
