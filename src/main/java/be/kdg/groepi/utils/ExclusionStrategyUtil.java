@@ -1,5 +1,6 @@
 package be.kdg.groepi.utils;
 
+import be.kdg.groepi.annotations.ExcludeFromGson;
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 
@@ -11,17 +12,12 @@ import com.google.gson.FieldAttributes;
  * To change this template use File | Settings | File Templates.
  */
 public class ExclusionStrategyUtil implements ExclusionStrategy {
-    private final Class<?> excludedThisClass;
-
-    public ExclusionStrategyUtil(Class<?> excludedThisClass) {
-        this.excludedThisClass = excludedThisClass;
-    }
-
     public boolean shouldSkipClass(Class<?> clazz) {
-        return excludedThisClass.equals(clazz);
+        return clazz.getAnnotation(ExcludeFromGson.class) != null;
     }
 
     public boolean shouldSkipField(FieldAttributes f) {
-        return excludedThisClass.equals(f.getDeclaredClass());
+        return f.getAnnotation(ExcludeFromGson.class) != null;
+
     }
 }

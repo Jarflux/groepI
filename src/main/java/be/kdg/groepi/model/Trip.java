@@ -1,5 +1,6 @@
 package be.kdg.groepi.model;
 
+import be.kdg.groepi.annotations.ExcludeFromGson;
 import be.kdg.groepi.utils.CompareUtil;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -25,7 +26,7 @@ import java.util.Set;
 @Entity
 @Table(name = "T_TRIP")
 //@Inheritance(strategy=InheritanceType.JOINED)  //Hibernate Inheritance: Table Per Subclass
-public class Trip implements Serializable {
+public class Trip implements Serializable, Comparable {
 
     @Id
     @GeneratedValue
@@ -39,13 +40,16 @@ public class Trip implements Serializable {
     private Boolean fAvailable;
     @Column(name = "repeatable")
     private Boolean fRepeatable;
+    @ExcludeFromGson
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     private User fOrganiser;
+    @ExcludeFromGson
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTrip")
     @Cascade(CascadeType.DELETE)
     @OrderBy(value = "stopnumber")
     private Set<Stop> fStops = new HashSet<>();
+    @ExcludeFromGson
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTrip")
     @Cascade(CascadeType.DELETE)
     private Set<Requirement> fRequirements = new HashSet<>();
@@ -175,5 +179,12 @@ public class Trip implements Serializable {
     @Override
     public int hashCode() {
         return super.hashCode();
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Trip trip = (Trip) o;
+
+        return this.fTitle.compareToIgnoreCase(trip.getTitle());
     }
 }

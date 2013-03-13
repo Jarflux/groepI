@@ -31,12 +31,8 @@
             <a href="/profile/view/${tripObject.organiser.id}" class="active">${tripObject.organiser.name}</a>
             <br/>
 
-
             <c:if test="${tripObject.organiser.id == userObject.id}">
                 <a href="/trips/edittrip/${tripObject.id}" class="active"><spring:message code='text.edittrip'/></a>
-            </c:if>
-            <c:if test="${tripObject.organiser.id != userObject.id}">
-                Zo, jij wil deze trip aanpassen? MAG NIET!
             </c:if>
 
         </section>
@@ -46,14 +42,23 @@
                 <%--<form method="get" action="/trips/addstop/${tripObject.id}">
                     <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
                 </form>--%>
-                <a href="/trips/addstop/${tripObject.id}" class="active"><spring:message code='text.add'/></a>
+                <c:if test="${tripObject.organiser.id == userObject.id}">
+                    <a href="/trips/addstop/${tripObject.id}" class="active"><spring:message code='text.add'/></a>
+                </c:if>
                 <c:choose>
                     <c:when test="${!empty tripObject.stops}">
                         <ul class='sortable'>
                             <c:forEach var="stop" items="${tripObject.stops}">
-                                <li id="stop-${stop.id}">${stop.stopnumber}: <a href="/trips/editStop/${stop.id}"
-                                                                                class="active"><c:out
-                                        value="${stop.name}"/></a></li>
+                                <li id="stop-${stop.id}">${stop.stopnumber}:
+                                    <c:if test="${tripObject.organiser.id == userObject.id}">
+                                        <a href="/trips/editStop/${stop.id}" class="active">
+                                            <c:out value="${stop.name}"/>
+                                        </a>
+                                    </c:if>
+                                    <c:if test="${tripObject.organiser.id != userObject.id}">
+                                        <c:out value="${stop.name}"/>
+                                    </c:if>
+                                </li>
                             </c:forEach>
                         </ul>
                     </c:when>
@@ -69,14 +74,25 @@
                 <%--<form method="get" action="/trips/addRequirement/${tripObject.id}">
                     <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
                 </form>--%>
-                <a href="/trips/addrequirement/${tripObject.id}" class="active"><spring:message code='text.add'/></a>
+                <c:if test="${tripObject.organiser.id == userObject.id}">
+                    <a href="/trips/addrequirement/${tripObject.id}" class="active"><spring:message
+                            code='text.add'/></a>
+                </c:if>
                 <c:choose>
                     <c:when test="${!empty tripObject.requirements}">
                         <table>
                             <c:forEach var="requirement" items="${tripObject.requirements}">
                                 <tr>
-                                    <td><a href="/trips/editTriprequirement/${requirement.id}"
-                                           class="active">${requirement.name}</a></td>
+                                    <td>
+                                        <c:if test="${tripObject.organiser.id == userObject.id}">
+                                            <a href="/trips/editTriprequirement/${requirement.id}" class="active">
+                                                <c:out value="${requirement.name}"/>
+                                            </a>
+                                        </c:if>
+                                        <c:if test="${tripObject.organiser.id != userObject.id}">
+                                            <c:out value="${requirement.name}"/>
+                                        </c:if>
+                                    </td>
                                     <td>${requirement.amount}</td>
                                 </tr>
                                 <tr>
@@ -98,13 +114,25 @@
                 <%--<form method="post" action="/trips/addinstance/${tripObject.id}">
                     <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
                 </form>--%>
-                <a href="/trips/addinstance/${tripObject.id}" class="active"><spring:message code='text.add'/></a>
+                <c:if test="${tripObject.organiser.id == userObject.id}">
+                    <a href="/trips/addinstance/${tripObject.id}" class="active"><spring:message code='text.add'/></a>
+                </c:if>
                 <c:choose>
                     <c:when test="${!empty tripInstanceListObject}">
                         <table>
                             <c:forEach var="tripInstance" items="${tripInstanceListObject}">
                                 <tr>
                                     <td>${tripInstance.id}</td>
+                                    <td>
+                                        <c:if test="${tripObject.organiser.id == userObject.id}">
+                                            <a href="/trips/viewinstance/${tripInstance.id}" class="active">
+                                                <c:out value="${tripInstance.title}"/>
+                                            </a>
+                                        </c:if>
+                                        <c:if test="${tripObject.organiser.id != userObject.id}">
+                                            <c:out value="${tripInstance.title}"/>
+                                        </c:if>
+                                    </td>
                                     <td>${tripInstance.description}</td>
                                 </tr>
                             </c:forEach>

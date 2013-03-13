@@ -1,11 +1,13 @@
 package be.kdg.groepi.model;
 
+import be.kdg.groepi.annotations.ExcludeFromGson;
 import be.kdg.groepi.utils.CompareUtil;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -43,21 +45,27 @@ public class TripInstance implements Serializable, Comparable {
     private long fEndTime;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "trip_id", nullable = false)
+    @ExcludeFromGson
     private Trip fTrip;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
+    @ExcludeFromGson
     private User fOrganiser;
     @ManyToMany(fetch = FetchType.EAGER)
     @Cascade(value = CascadeType.ALL)
     @JoinTable(name = "T_TRIP_INSTANCE_PARTICIPANT", joinColumns = {
             @JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {
             @JoinColumn(name = "user_id")})
+    @ExcludeFromGson
     private Set<User> fParticipants = new HashSet<>();
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTripInstance")
+    @ExcludeFromGson
     private Set<RequirementInstance> fRequirementInstances = new HashSet<RequirementInstance>();
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTripInstance")
+    @ExcludeFromGson
     private Set<Cost> fCosts = new HashSet<Cost>();
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTripInstance")
+    @ExcludeFromGson
     private Set<Message> fMessages = new HashSet<Message>();
 
     // Hibernates needs empty constructor
@@ -255,11 +263,20 @@ public class TripInstance implements Serializable, Comparable {
         return getId().intValue();
     }
 
+
     @Override
     public int compareTo(Object o) {
         TripInstance tripInstance = (TripInstance) o;
-        if (this.equals(tripInstance)) return 0;
 
-        return (int) (this.fStartTime - tripInstance.getStartTime());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        int dateCompare = dateFormat.format(this.fStartTime).
+                compareTo(dateFormat.format(tripInstance.getStartTime()));
+
+        if (dateCompare == 0) {
+            return this.fTitle.compareToIgnoreCase(tripInstance.getTitle());
+        } else {
+            return dateCompare;
+        }
     }
 }

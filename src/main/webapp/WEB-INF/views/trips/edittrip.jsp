@@ -14,7 +14,7 @@
     <h2><spring:message code="text.createtrip"/></h2>
     <c:choose>
         <c:when test="${tripObject != null}">
-            <form method="post" action="updateTrip" class="mainstyle tooltips">
+            <form method="post" action="/trips/updateTrip" class="mainstyle tooltips">
                 <div class="row">
                     <span><spring:message code='text.title'/></span>
                     <input type="text" class="" name="title" placeholder="" value="${tripObject.title}"
@@ -35,9 +35,9 @@
                     <input type="checkbox" name="repeatable" value="true" title="Is je trip herhaalbaar?"
                            checked="${tripObject.repeatable}"/>
                 </div>
+                <input type="hidden" name="Id" value="${tripObject.id}"/>
                 <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
             </form>
-            <%--<a href="/trips/addstop/${tripObject.id}" class="active"><spring:message code='text.newstop'/></a>--%>
         </c:when>
         <c:when test="${tripObject == null}">
             <jsp:forward page="/error/emptyobject"/>
