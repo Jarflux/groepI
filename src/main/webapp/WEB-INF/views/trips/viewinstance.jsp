@@ -231,6 +231,7 @@
                                                 <input type="hidden" value="${message.id}" name="messageId"/>
                                                 <input type="hidden" value="${tripInstanceObject.id}"
                                                        name="tripInstanceId"/>
+
                                                 <input type="submit" class="button"
                                                        value="<spring:message code='text.deletemessage'/>"/>
                                             </form>
@@ -248,6 +249,16 @@
                     </c:otherwise>
                 </c:choose>
                 <br>
+                <form method="post" action="/trips/doaddmessage" class="mainstyle tooltips">
+                    <input type="hidden" name="tripInstanceId" title="tripInstanceId" value="${tripInstanceObject.id}"/>
+
+                    <div class="row">
+                        <span><spring:message code='text.messagecontent'/></span>
+                        <input name="content" title="<spring:message code='text.messagecontent'/>"/>
+                    </div>
+
+                    <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
+                </form>
                 <a href="/trips/addmessage/${tripInstanceObject.id}" class="button"><spring:message
                         code='text.add'/></a>
             </section>

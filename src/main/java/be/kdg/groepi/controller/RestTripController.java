@@ -466,8 +466,7 @@ modelAndView.addObject("tripInstanceEndTimes", tripInstanceEndTimes);
 
     @RequestMapping(value = "/doaddmessage", method = RequestMethod.POST)
     public ModelAndView doAddMessage(HttpSession session, @RequestParam(value = "tripInstanceId") String
-            tripInstanceId,
-                                     @RequestParam(value = "content") String content) {
+            tripInstanceId, @RequestParam(value = "content") String content) {
 
         TripInstance tripInstance = TripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId));
         User sessionUser = (User) session.getAttribute("userObject");
@@ -476,7 +475,7 @@ modelAndView.addObject("tripInstanceEndTimes", tripInstanceEndTimes);
         Long date = cal.getTime().getTime();
         Message message = new Message(content, date, tripInstance, sessionUser);
         MessageService.createMessage(message);
-        return new ModelAndView("redirect:/trips/addmessage/" + tripInstanceId, "tripInstanceObject", tripInstance);
+        return new ModelAndView("redirect:/trips/viewinstance/" + tripInstance.getId());
     }
 
     @RequestMapping(value = "/addcost/{tripInstanceId}", method = RequestMethod.GET)
