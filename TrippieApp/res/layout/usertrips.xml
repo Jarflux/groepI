@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="#0ac5f4"
               android:paddingLeft="10px"
-              android:paddingRight="10px">
-    <ListView
-            android:id="@+id/tripList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-    </ListView>
-</LinearLayout>
+              android:paddingRight="10px" android:layout_gravity="center">
+    <ImageView android:layout_width="138dp" android:layout_height="214dp" android:id="@+id/imageView1"
+               android:src="@drawable/box_bg"
+               android:cropToPadding="false" android:scaleType="fitXY"
+               android:layout_alignParentLeft="true"
+               android:layout_alignParentRight="true"
+               android:layout_alignParentBottom="true" android:layout_below="@+id/imageView"/>
+    <ImageView
+            android:layout_width="138dp"
+            android:layout_height="91dp"
+            android:id="@+id/imageView" android:layout_alignParentTop="true"
+            android:layout_marginTop="11dp" android:src="@drawable/box_bg"
+            android:cropToPadding="false" android:scaleType="fitXY"
+            android:layout_alignParentLeft="true" android:layout_alignParentRight="true"/>
+    <ListView android:id="@+id/tripList" android:layout_width="186dp" android:layout_height="363dp"
+              android:footerDividersEnabled="false" android:smoothScrollbar="true"
+              android:layout_below="@+id/imageView"
+              android:layout_alignLeft="@+id/imageView1" android:layout_alignParentRight="true"
+              android:paddingBottom="30dp"
+              android:scrollingCache="true" android:longClickable="true"
+              android:layout_alignBottom="@+id/imageView1" android:layout_alignBaseline="@+id/imageView1"
+              android:layout_centerInParent="true" android:paddingTop="23dp" android:paddingLeft="23dp"
+              android:paddingRight="23dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:layout_alignParentLeft="true" android:layout_marginLeft="29dp" android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp" android:layout_alignBottom="@+id/imageView" android:text="@string/tripsinfo"
+            style="@style/BoxedText" android:clickable="true" android:padding="3dp"/>
+</RelativeLayout>

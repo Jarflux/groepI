@@ -10,7 +10,7 @@ import android.os.Bundle;
  * Time: 17:47
  * To change this template use File | Settings | File Templates.
  */
-public class ShowTripActivity extends ParentActivity {
+public class TripDetailActivity extends ParentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }

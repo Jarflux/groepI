@@ -2,6 +2,13 @@
 <resources>
     <string name="app_name">TrippieApp</string>
     <string name="trips">Your Trips</string>
+    <string name="tripsinfo">Hier vind je alle trips waaraan je deelneemt.</string>
+
     <string name="chat">Chat</string>
     <string name="maps">Nearby Trips</string>
+    <string name="name">Name</string>
+    <string name="date">Date</string>
+    <string name="startTime">Start Date</string>
+    <string name="endTime">End Date</string>
+    <string name="description">Description</string>
 </resources>
