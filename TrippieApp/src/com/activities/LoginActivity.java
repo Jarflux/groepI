@@ -28,6 +28,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        getActionBar().setDisplayShowTitleEnabled(false);
+        getActionBar().setDisplayShowHomeEnabled(false);
         button = (Button)findViewById(R.id.button);
         button.setOnClickListener(this);
         passwordField = (EditText)findViewById(R.id.password);
@@ -56,36 +58,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 }
             });
             ad.show();
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        getActionBar().setDisplayShowTitleEnabled(false);
-        getActionBar().setDisplayShowHomeEnabled(false);
-        MenuInflater menuInflater = new MenuInflater(this);
-        menuInflater.inflate(R.menu.mainmenu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        Intent intent;
-        switch (item.getItemId())
-        {
-            case R.id.btnTrips:
-                intent = new Intent();
-                return true;
-            case R.id.btnMaps:
-                intent = new Intent();
-                return true;
-            case R.id.btnChat:
-                intent = new Intent();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
         }
     }
 

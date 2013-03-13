@@ -26,7 +26,7 @@ public class HttpGetTask extends AsyncTask {
         DefaultHttpClient client = new DefaultHttpClient();
         Gson gson = new Gson();
         List<TripInstance> trips = null;
-        HttpGet requestLogin = new HttpGet("tomcat.vincentverbist.be:8080/"+objects[0]+"/"+objects[1]);
+        HttpGet requestLogin = new HttpGet("http://tomcat.vincentverbist.be:8080/"+objects[0]+"/"+objects[1]);
         try {
             ResponseHandler<String> responseHandler=new BasicResponseHandler();
             String responseBody = client.execute(requestLogin, responseHandler);

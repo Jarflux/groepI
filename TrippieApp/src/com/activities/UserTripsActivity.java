@@ -22,7 +22,7 @@ import java.util.List;
  * Time: 15:24
  * To change this template use File | Settings | File Templates.
  */
-public class UserTripsActivity extends Activity {
+public class UserTripsActivity extends ParentActivity {
     private Controller controller = new Controller();
 
     public void onCreate(Bundle savedInstanceState) {

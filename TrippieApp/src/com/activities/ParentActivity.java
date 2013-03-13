@@ -13,13 +13,15 @@ import android.view.MenuItem;
  * Time: 22:25
  * To change this template use File | Settings | File Templates.
  */
-public class ActionbarActivity extends Activity {
+public class ParentActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        MenuInflater menuInflater = getMenuInflater();
+        getActionBar().setDisplayShowTitleEnabled(false);
+        getActionBar().setDisplayShowHomeEnabled(false);
+        MenuInflater menuInflater = new MenuInflater(this);
         menuInflater.inflate(R.menu.mainmenu, menu);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
