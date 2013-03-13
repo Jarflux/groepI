@@ -38,7 +38,7 @@
         <sec:authorize access="isAuthenticated()">
             <h2>Hallo</h2>
             <span>Welkom, ${userObject.name}</span><br/>
-            <a href="j_spring_security_logout">LogOut</a>
+            <a href="j_spring_security_logout" class="button"><spring:message code="text.logout" /> </a>
         </sec:authorize>
     </div>
     <div id="maincontainer" class="column dark">
