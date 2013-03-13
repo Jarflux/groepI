@@ -30,18 +30,13 @@
             <spring:message code='text.tripcreator'/>:
             <a href="/profile/view/${tripObject.organiser.id}" class="active">${tripObject.organiser.name}</a>
             <br/>
-
             <c:if test="${tripObject.organiser.id == userObject.id}">
                 <a href="/trips/edittrip/${tripObject.id}" class="active"><spring:message code='text.edittrip'/></a>
             </c:if>
-
         </section>
         <div class="quarter">
             <section>
                 <h3><spring:message code='text.stops'/></h3>
-                <%--<form method="get" action="/trips/addstop/${tripObject.id}">
-                    <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
-                </form>--%>
                 <c:if test="${tripObject.organiser.id == userObject.id}">
                     <a href="/trips/addstop/${tripObject.id}" class="active"><spring:message code='text.add'/></a>
                 </c:if>
@@ -71,9 +66,6 @@
         <div class="quarter">
             <section>
                 <h3><spring:message code='text.requirements'/></h3>
-                <%--<form method="get" action="/trips/addRequirement/${tripObject.id}">
-                    <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
-                </form>--%>
                 <c:if test="${tripObject.organiser.id == userObject.id}">
                     <a href="/trips/addrequirement/${tripObject.id}" class="active"><spring:message
                             code='text.add'/></a>
@@ -111,18 +103,15 @@
         <div class="quarter">
             <section>
                 <h3><spring:message code='text.instances'/></h3>
-                <%--<form method="post" action="/trips/addinstance/${tripObject.id}">
-                    <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
-                </form>--%>
                 <c:if test="${tripObject.organiser.id == userObject.id}">
                     <a href="/trips/addinstance/${tripObject.id}" class="active"><spring:message code='text.add'/></a>
                 </c:if>
                 <c:choose>
-                    <c:when test="${!empty tripInstanceListObject}">
+                    <c:when test="${!empty tripInstances}">
                         <table>
-                            <c:forEach var="tripInstance" items="${tripInstanceListObject}">
+                            <c:forEach var="tripInstance" items="${tripInstances}">
                                 <tr>
-                                    <td>${tripInstance.id}</td>
+                                    <%--<td>${tripInstance.id}</td>--%>
                                     <td>
                                         <c:if test="${tripObject.organiser.id == userObject.id}">
                                             <a href="/trips/viewinstance/${tripInstance.id}" class="active">
@@ -134,6 +123,11 @@
                                         </c:if>
                                     </td>
                                     <td>${tripInstance.description}</td>
+                                    <td>DATE</td>
+                                    <td>TIME - TIME</td>
+                                       <%-- <td>${ownTripInstanceDates.get(tripInstance.id)}</td>
+                                        <td>${ownTripInstanceStartTimes.get(tripInstance.id)}</td>
+                                        <td>${ownTripInstanceEndTimes.get(tripInstance.id)}</td>--%>
                                 </tr>
                             </c:forEach>
                         </table>
@@ -150,8 +144,6 @@
 <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 <script src="/js/functions.js"></script>
 <script>makesortable();
-
-
 </script>
 </body>
 </html>

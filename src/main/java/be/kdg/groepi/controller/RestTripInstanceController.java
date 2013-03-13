@@ -2,6 +2,7 @@ package be.kdg.groepi.controller;
 
 
 import be.kdg.groepi.model.*;
+import be.kdg.groepi.service.MessageService;
 import be.kdg.groepi.service.RequirementInstanceService;
 import be.kdg.groepi.service.TripInstanceService;
 import be.kdg.groepi.service.TripService;
@@ -17,7 +18,7 @@ import java.util.*;
 
 @Controller
 public class RestTripInstanceController {
-    private static final Logger logger = Logger.getLogger(RestTripController.class);
+    private static final Logger logger = Logger.getLogger(RestTripInstanceController.class);
 
     @RequestMapping(value = "/trips/addinstance/{tripId}")
     public ModelAndView addinstance(@PathVariable("tripId") String tripId, HttpSession session) {
@@ -215,5 +216,32 @@ public class RestTripInstanceController {
         }
     }
 
+    @RequestMapping(value = "/invitebymail", method = RequestMethod.POST)
+    public ModelAndView invitebymail(@RequestParam(value = "instanceid") String instanceid, @RequestParam(value = "receipients") String receivers, @RequestParam(value = "message") String message, HttpSession session) {
+        TripInstance tripInstance = TripInstanceService.getTripInstanceById(Long.parseLong(instanceid));
 
+        TripInstanceService.inviteByEmail(receivers, message, Long.parseLong(instanceid));
+
+        return getModelAndViewForViewInstance(session, tripInstance);
+    }
+
+    private ModelAndView getModelAndViewForViewInstance(HttpSession session, TripInstance tripInstance) {
+        Map<Long, String> messageDates = new HashMap<>();
+        List<Message> messages = MessageService.getMessagesByTripInstanceId(tripInstance.getId());
+
+        for (Message message : messages) {
+            messageDates.put(tripInstance.getId(), DateUtil.formatDate(DateUtil.longToDate(message.getDate())));
+        }
+        SortedSet<RequirementInstance> sortedRequirements = new TreeSet<>();
+        sortedRequirements.addAll(tripInstance.getRequirementInstances());
+        tripInstance.setRequirementInstances(sortedRequirements);
+        ModelAndView modelAndView = new ModelAndView("/trips/viewinstance");
+        modelAndView.addObject("tripInstanceObject", tripInstance);
+        modelAndView.addObject("messageDates", messageDates);
+        modelAndView.addObject("userObject", session.getAttribute("userObject"));
+        modelAndView.addObject("date", DateUtil.formatDate(tripInstance.getStartTime()));
+        modelAndView.addObject("startTimeString", DateUtil.formatTime(tripInstance.getStartTime()));
+        modelAndView.addObject("endTimeString", DateUtil.formatTime(tripInstance.getEndTime()));
+        return modelAndView;
+    }
 }

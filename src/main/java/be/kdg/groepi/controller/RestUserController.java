@@ -90,17 +90,10 @@ public class RestUserController {
         SortedSet<TripInstance> userPastTripInstances = new TreeSet<>();
         SortedSet<TripInstance> userFutureTripInstances = new TreeSet<>();
 
-//        long today = Calendar.getInstance().getTime().getTime();
         long today = DateUtil.dateStringToLong(DateUtil.formatDate(Calendar.getInstance().getTime()));
 
         for (TripInstance tripInstance : TripInstanceService.getAllTripInstances()) {
             if (tripInstance.getParticipants().contains(sessionUser)) {
-/*                char key;
-                if (tripInstance.getStartTime() < today) {
-                    key = 'A';
-                } else {
-                    key = 'B';
-                }*/
 
                 if (tripInstance.getStartTime() < today) {
                     userPastTripInstances.add(tripInstance);
@@ -108,7 +101,7 @@ public class RestUserController {
                     userFutureTripInstances.add(tripInstance);
                 }
 
-                tripInstanceDates.put(/*key + */tripInstance.getId(), DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartTime())));
+                tripInstanceDates.put(tripInstance.getId(), DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartTime())));
                 tripInstanceStartTimes.put(tripInstance.getId(), DateUtil.formatTime(DateUtil.longToDate(tripInstance.getStartTime())));
                 tripInstanceEndTimes.put(tripInstance.getId(), DateUtil.formatTime(DateUtil.longToDate(tripInstance.getEndTime())));
             }
