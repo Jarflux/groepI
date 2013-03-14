@@ -24,7 +24,7 @@ public interface TripInstanceDao {
 
     public List<TripInstance> getAllTripInstances() throws DataAccessException;
 
-    public List<TripInstance> getTripInstancesByUserId(Long userId) throws DataAccessException;
+    public List<Object[]> getTripInstancesByUserId(Long userId) throws DataAccessException;
 
     public List<TripInstance> getAllTripInstancesByTripId(long tripId) throws DataAccessException;
 

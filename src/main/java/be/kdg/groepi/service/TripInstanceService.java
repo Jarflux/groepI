@@ -55,7 +55,7 @@ public class TripInstanceService {
         return tripInstanceDao.getPublicTripInstances();
     }
 
-    public List<TripInstance> getTripInstancesByUserId(Long userId) {
+    public List<Object[]> getTripInstancesByUserId(Long userId) {
         return tripInstanceDao.getTripInstancesByUserId(userId);
     }
 

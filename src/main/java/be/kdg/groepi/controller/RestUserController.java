@@ -32,6 +32,9 @@ public class RestUserController {
     @Autowired
     protected UserService userService;
     @Autowired
+    protected MyUserDetailsService userDetailsService;
+
+    @Autowired
     protected TripInstanceService tripInstanceService;
 
     @RequestMapping(value = "/view/{userId}", method = RequestMethod.GET)
@@ -74,7 +77,7 @@ public class RestUserController {
             userService.createUser(user);
         }
 
-        MyUserDetailsService userDetailsService = new MyUserDetailsService();
+
         UserDetails userDetails = userDetailsService.loadUserByUsername(email);
         Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, " ", userDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);

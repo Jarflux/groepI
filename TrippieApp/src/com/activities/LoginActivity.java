@@ -2,6 +2,7 @@ package com.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences.*;
@@ -25,20 +26,22 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        getActionBar().setDisplayShowTitleEnabled(false);
-        getActionBar().setDisplayShowHomeEnabled(false);
+        getActionBar().hide();
+
         button = (Button)findViewById(R.id.button);
         button.setOnClickListener(this);
         passwordField = (EditText)findViewById(R.id.password);
         usernameField = (EditText)(findViewById(R.id.username));
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
 
     @Override
     public void onClick(View view) {
+
         Editor sessionEditor = getApplicationContext().getSharedPreferences("Session",0).edit();
         String password = passwordField.getText().toString();
         String email = usernameField.getText().toString();
-        JSONObject user = controller.springSecurityCheck(email, password);
+        JSONObject user = controller.springSecurityCheck(email, password, this);
         if(user != null){
             sessionEditor.putString("User", user.toString());
             sessionEditor.commit();

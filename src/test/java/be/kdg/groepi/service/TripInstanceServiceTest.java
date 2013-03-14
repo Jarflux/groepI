@@ -169,7 +169,7 @@ public class TripInstanceServiceTest {
         User testUser = users.get(0);
         tripinstance.addParticipantToTripInstance(testUser);
         tripInstanceService.updateTripInstance(tripinstance);
-        List<TripInstance> trips = tripInstanceService.getTripInstancesByUserId(testUser.getId());
+        List<Object[]> trips = tripInstanceService.getTripInstancesByUserId(testUser.getId());
         assertTrue("There should be tripinstances in the list", !trips.isEmpty());
     }
 

@@ -33,11 +33,13 @@ public class UserTripsActivity extends ParentActivity {
         super.onCreate(savedInstanceState);
         stylePage();
         addContent();
+
     }
 
     @Override
     public void stylePage() {
         setContentView(R.layout.usertrips);
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
 
     @Override
