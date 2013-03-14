@@ -30,7 +30,7 @@
             </div>
             <div class="row">
                 <span><spring:message code='text.available'/></span>
-                <input type="checkbox" class="" name="available" placeholder=""
+                <input type="checkbox" class="" name="available" value="true" placeholder=""
                        title="<spring:message code='text.availabletooltip'/>"/>
             </div>
             <div class="row">

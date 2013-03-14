@@ -14,7 +14,7 @@
         <jsp:include page="/topmenu"/>
     </div>
     <div id="content" class="column light">
-        <h2><spring:message code="text.addstop"/></h2>
+        <h2><spring:message code="stops.editstop"/></h2>
         <section class="full">
             <div class="half big">
                 <div class="gmap" id="map_canvas">
@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="row">
                                     <span><spring:message code='stops.radius'/></span>
-                                    <textarea name="radius"><c:out value="${stopObject.radius}"/></textarea>
+                                    <input type="text" name="radius" value="${stopObject.radius}"/>
                                 </div>
                                 <div class="row">
                                     <span><spring:message code='stops.question'/></span>
@@ -58,6 +58,7 @@
                                 <div class="row">
                                     <input type="hidden" name="latitude" value="${stopObject.latitude}"/>
                                     <input type="hidden" name="longitude" value="${stopObject.longitude}"/>
+                                    <input type="hidden" name="stopnumber" value="${stopObject.stopnumber}"/>
                                     <input type="hidden" name="tripId" value="${stopObject.trip.id}"/>
                                     <input type="hidden" name="Id" value="${stopObject.id}"/>
                                     <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
@@ -129,7 +130,33 @@
         initializeGMaps();
         placeStopMarker(parseInt(${stopObject.latitude}), parseInt(${stopObject.longitude}));
 
-        /*Eventhandlers*/
+        /*Page data init*/
+        if (parseInt(${stopObject.type}) == 0)
+        {
+            $("#stopType").val(0);
+            $("#divAnswers").hide();
+            console.log("divAnswers.hide");
+        }
+        else if (parseInt(${stopObject.type}) == 1)
+        {
+            $("#stopType").val(1);
+            $("#divAnswers").show();
+            console.log("divAnswers.hide");
+        }
+        if (parseInt(${stopObject.displayMode}) == 0)
+        {
+            $("#stopDisplayMode").val(0);
+            $("#divPictureAR").hide();
+            console.log("divPictureAR.hide");
+        }
+        else if (parseInt(${stopObject.displayMode}) == 1)
+        {
+            $("#stopDisplayMode").val(1);
+            $("#divPictureAR").show();
+            console.log("divPictureAR.show");
+        }
+
+        /*Event handlers*/
         $("#stopType").change(function () {
             console.log("Selected:" + $(this).val());
             var selectedValue = $(this).val();
@@ -137,47 +164,23 @@
                 $("#divAnswers").hide();
                 console.log("divAnswers.hide");
             }
-            else {
+            else if (selectedValue == 1) {
                 $("#divAnswers").show();
                 console.log("divAnswers.show");
             }
         });
-        $("#stopDisplayType").change(function () {
+        $("#stopDisplayMode").change(function () {
             console.log("Selected:" + $(this).val());
             var selectedValue = $(this).val();
             if (selectedValue == 0) {
                 $("#divPictureAR").hide();
                 console.log("divPictureAR.hide");
             }
-            else {
+            else if (selectedValue == 1) {
                 $("#divPictureAR").show();
                 console.log("divPictureAR.show");
             }
         });
-
-        /*Page data init*/
-        if (parseInt(${stopObject.type}) == 0)
-        {
-           $("#stopType").val(0);
-           $("#divAnswers").hide();
-        }
-        else if (parseInt(${stopObject.type}) == 1)
-        {
-            $("#stopType").val(1);
-            $("#divAnswers").show();
-        }
-
-        if (parseInt(${stopObject.displayMode}) == 0)
-        {
-            $("#stopDisplayType").val(0);
-            $("#divPictureAR").hide();
-        }
-        else if (parseInt(${stopObject.displayMode}) == 1)
-        {
-            $("#stopDisplayType").val(1);
-            $("#divPictureAR").show();
-        }
-        console.log("End--");
     });
 
     function setCorrectAnswer(id) {

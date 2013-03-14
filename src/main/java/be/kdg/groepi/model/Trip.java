@@ -73,6 +73,10 @@ public class Trip implements Serializable, Comparable {
         return fId;
     }
 
+    public void setId(Long fId) {
+        this.fId = fId;
+    }
+
     public String getTitle() {
         return fTitle;
     }
