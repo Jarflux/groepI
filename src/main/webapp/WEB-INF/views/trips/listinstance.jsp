@@ -22,9 +22,6 @@
     </div>
     <div id="content" class="column light">
         <h2><spring:message code='text.tripinstances'/>
-            <%--<form method="post" action="addinstance">
-                <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
-            </form>--%>
         </h2>
         <section>
 
@@ -52,13 +49,6 @@
                                     <td>${ownTripInstanceDates.get(tripInstance.id)}</td>
                                     <td>${ownTripInstanceStartTimes.get(tripInstance.id)}</td>
                                     <td>${ownTripInstanceEndTimes.get(tripInstance.id)}</td>
-                                    <td>
-                                        <form method="post" action="jointrip">
-                                            <input type="hidden" value="${tripInstance.id}" name="tripId"/>
-                                            <input type="submit" class="button"
-                                                   value="<spring:message code='text.jointrip'/>"/>
-                                        </form>
-                                    </td>
                                 </tr>
                             </c:forEach>
                         </table>
@@ -101,11 +91,16 @@
                                     <td>${publicTripInstanceStartTimes.get(tripInstance.id)}</td>
                                     <td>${publicTripInstanceEndTimes.get(tripInstance.id)}</td>
                                     <td>
-                                        <form method="post" action="jointrip">
-                                            <input type="hidden" value="${tripInstance.id}" name="tripId"/>
-                                            <input type="submit" class="button"
-                                                   value="<spring:message code='text.jointrip'/>"/>
-                                        </form>
+                                        <c:forEach var="participatingBoolean" items="${isUserParticipating}">
+                                            <c:if test="${(participatingBoolean.key eq tripInstance.id)
+                                                        && (participatingBoolean.value eq false)}">
+                                                <form method="post" action="/trips/jointrip">
+                                                    <input type="hidden" value="${tripInstance.id}" name="tripId"/>
+                                                    <input type="submit" class="button"
+                                                           value="<spring:message code='text.jointrip'/>"/>
+                                                </form>
+                                            </c:if>
+                                        </c:forEach>
                                     </td>
                                 </tr>
                             </c:forEach>

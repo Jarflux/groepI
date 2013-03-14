@@ -18,29 +18,29 @@ import org.springframework.transaction.annotation.Transactional;
 public class MessageService {
 
     @Autowired
-    private MessageDao messageDoa;
+    private MessageDao messageDao;
 
     public Message getMessageById(long id) {
-        return messageDoa.getMessageById(id);
+        return messageDao.getMessageById(id);
     }
 
     public void createMessage(Message message) {
-        messageDoa.createMessage(message);
+        messageDao.createMessage(message);
     }
 
     public void updateMessage(Message message) {
-        messageDoa.updateMessage(message);
+        messageDao.updateMessage(message);
     }
 
     public void deleteMessage(Message message) {
-        messageDoa.deleteMessage(message);
+        messageDao.deleteMessage(message);
     }
 
     public List<Message> getAllMessages() {
-        return messageDoa.getAllMessages();
+        return messageDao.getAllMessages();
     }
 
     public List<Message> getMessagesByTripInstanceId(Long id) {
-        return messageDoa.getMessagesByTripInstanceId(id);
+        return messageDao.getMessagesByTripInstanceId(id);
     }
 }

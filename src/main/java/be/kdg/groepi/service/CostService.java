@@ -18,25 +18,25 @@ import org.springframework.transaction.annotation.Transactional;
 public class CostService {
 
     @Autowired
-    private CostDao costDoa;
+    private CostDao costDao;
 
     public Cost getCostById(long id) {
-        return costDoa.getCostById(id);
+        return costDao.getCostById(id);
     }
 
     public void createCost(Cost cost) {
-        costDoa.createCost(cost);
+        costDao.createCost(cost);
     }
 
     public void updateCost(Cost cost) {
-        costDoa.updateCost(cost);
+        costDao.updateCost(cost);
     }
 
     public void deleteCost(Cost cost) {
-        costDoa.deleteCost(cost);
+        costDao.deleteCost(cost);
     }
 
     public List<Cost> getAllCosts() {
-        return costDoa.getAllCosts();
+        return costDao.getAllCosts();
     }
 }

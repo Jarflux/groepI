@@ -3,6 +3,7 @@ package be.kdg.groepi.model;
 import be.kdg.groepi.utils.CompareUtil;
 import java.io.Serializable;
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 
 /**
  * Author: Ben Oeyen
@@ -12,7 +13,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "T_MESSAGE")
-public class Message implements Serializable {
+public class Message implements Serializable, Comparable {
 
     @Id
     @GeneratedValue
@@ -96,5 +97,13 @@ public class Message implements Serializable {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Message message = (Message) o;
+        //Newest messages come first
+        return -this.getDate().compareTo(message.getDate());
+
     }
 }

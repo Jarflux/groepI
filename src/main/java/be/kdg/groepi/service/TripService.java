@@ -18,33 +18,33 @@ import org.springframework.transaction.annotation.Transactional;
 public class TripService {
 
     @Autowired
-    private TripDao tripDoa;
+    private TripDao tripDao;
 
     public Trip getTripById(long id) {
-        return tripDoa.getTripById(id);
+        return tripDao.getTripById(id);
     }
 
     public void createTrip(Trip trip) {
-        tripDoa.createTrip(trip);
+        tripDao.createTrip(trip);
     }
 
     public void updateTrip(Trip trip) {
-        tripDoa.updateTrip(trip);
+        tripDao.updateTrip(trip);
     }
 
     public void deleteTrip(Trip trip) {
-        tripDoa.deleteTrip(trip);
+        tripDao.deleteTrip(trip);
     }
 
     public List<Trip> getAllTrips() {
-        return tripDoa.getAllTrips();
+        return tripDao.getAllTrips();
     }
 
     public List<Trip> getTripsByOrganiserId(long id) {
-        return tripDoa.getTripsByOrganiserId(id);
+        return tripDao.getTripsByOrganiserId(id);
     }
 
     public List<Trip> getPublicTrips() {
-        return tripDoa.getPublicTrips();
+        return tripDao.getPublicTrips();
     }
 }

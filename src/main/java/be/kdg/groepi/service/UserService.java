@@ -18,38 +18,38 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
 
     @Autowired
-    private UserDao userDoa;
+    private UserDao userDao;
 
     public User getUserById(long id) {
-        return userDoa.getUserById(id);
+        return userDao.getUserById(id);
     }
 
     public User getUserByResetString(String resetString) {
-        return userDoa.getUserByResetString(resetString);
+        return userDao.getUserByResetString(resetString);
     }
 
     public User getUserByFbUserId(String fbUserId) {
-        return userDoa.getUserByFbUserId(fbUserId);
+        return userDao.getUserByFbUserId(fbUserId);
     }
 
     public User getUserByEmail(String email) {
-        return userDoa.getUserByEmail(email);
+        return userDao.getUserByEmail(email);
     }
 
     public void createUser(User user) {
-        userDoa.createUser(user);
+        userDao.createUser(user);
     }
 
     public void updateUser(User user) {
-        userDoa.updateUser(user);
+        userDao.updateUser(user);
     }
 
     public void deleteUser(User user) {
-        userDoa.deleteUser(user);
+        userDao.deleteUser(user);
     }
 
     public List<User> getAllUsers() {
-        return userDoa.getAllUsers();
+        return userDao.getAllUsers();
     }
 
     public boolean resetPassword(String email) {
@@ -66,11 +66,11 @@ public class UserService {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR, cal.get(Calendar.HOUR_OF_DAY) + RESET_TIME);
         Timestamp passwordResetTimestamp = new Timestamp(cal.getTime().getTime());
-        User user = userDoa.getUserByEmail(email);
+        User user = userDao.getUserByEmail(email);
         if (user != null) {
             user.setPasswordResetString(passwordResetString);
             user.setPasswordResetTimestamp(passwordResetTimestamp);
-            userDoa.updateUser(user);
+            userDao.updateUser(user);
             ApplicationContext context = new ClassPathXmlApplicationContext("Spring-Mail.xml");
             TripMail tim = (TripMail) context.getBean("tripMail");
             //TODO: pas email aan aan die van de gebruiker

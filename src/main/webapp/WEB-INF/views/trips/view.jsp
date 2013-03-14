@@ -118,7 +118,8 @@
                                     </td>
                                     <td>${tripInstance.description}</td>
                                     <td>${tripInstanceDates.get(tripInstance.id)}</td>
-                                    <td>${tripInstanceStartTimes.get(tripInstance.id)} - ${tripInstanceEndTimes.get(tripInstance.id)}</td>
+                                    <td>${tripInstanceStartTimes.get(tripInstance.id)}
+                                        - ${tripInstanceEndTimes.get(tripInstance.id)}</td>
                                 </tr>
                             </c:forEach>
                         </table>

@@ -22,29 +22,29 @@ import org.springframework.transaction.annotation.Transactional;
 public class AnswerService {
 
     @Autowired
-    private AnswerDao answerDoa;
+    private AnswerDao answerDao;
 
     public Answer getAnswerById(long id) {
-        return answerDoa.getAnswerById(id);
+        return answerDao.getAnswerById(id);
     }
 
     public void createAnswer(Answer answer) {
-        answerDoa.createAnswer(answer);
+        answerDao.createAnswer(answer);
     }
 
     public void updateAnswer(Answer answer) {
-        answerDoa.updateAnswer(answer);
+        answerDao.updateAnswer(answer);
     }
 
     public void deleteAnswer(Answer answer) {
-        answerDoa.deleteAnswer(answer);
+        answerDao.deleteAnswer(answer);
     }
 
     public List<Answer> getAllAnswers() {
-        return answerDoa.getAllAnswers();
+        return answerDao.getAllAnswers();
     }
 
     public List<Answer> getAnswersByStopID(long id) {
-        return answerDoa.getAnswersByStopId(id);
+        return answerDao.getAnswersByStopId(id);
     }
 }

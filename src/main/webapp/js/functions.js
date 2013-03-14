@@ -64,18 +64,48 @@ function addhandlers()
 }
 
 function preparemodal() {
+    $("#addMessage").dialog({
+        modal: true,
+        autoOpen: false
+    });
+
+    $(".addmessage").on("click", function (){
+        $("#addMessage").dialog("open");
+
+    });
+
+    $("#addRequirement").dialog({
+        modal: true,
+        autoOpen: false
+    });
+
+    $(".addrequirement").on("click", function (){
+        $("#addRequirement").dialog("open");
+        var instid = $(this).attr("instid");
+        $("#addRequirementTripInstanceId").val(instid);
+    });
+
     $("#assignRequirementToParticipant").dialog({
         modal: true,
         autoOpen: false
 
     });
 
-    $('.addrequirement').on("click", function () {
+    $('.assignrequirement').on("click", function () {
         $("#assignRequirementToParticipant").dialog('open');
         var instid = $(this).attr("inid");
         $("#requirementinstanceid").val(instid);
 
     });
+
+    $("#addCost").dialog({
+        modal: true,
+        autoOpen: false
+    });
+
+    $(".addcost").on("click", function() {
+        $("#addCost").dialog("open");
+    })
 
     $("#editCost").dialog({
         modal: true,

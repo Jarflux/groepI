@@ -18,25 +18,25 @@ import org.springframework.transaction.annotation.Transactional;
 public class RequirementInstanceService {
 
     @Autowired
-    private RequirementInstanceDao requirementInstanceDoa;
+    private RequirementInstanceDao requirementInstanceDao;
 
     public RequirementInstance getRequirementInstanceById(long id) {
-        return requirementInstanceDoa.getRequirementInstanceById(id);
+        return requirementInstanceDao.getRequirementInstanceById(id);
     }
 
     public void createRequirementInstance(RequirementInstance requirementInstance) {
-        requirementInstanceDoa.createRequirementInstance(requirementInstance);
+        requirementInstanceDao.createRequirementInstance(requirementInstance);
     }
 
     public void updateRequirementInstance(RequirementInstance requirementInstance) {
-        requirementInstanceDoa.updateRequirementInstance(requirementInstance);
+        requirementInstanceDao.updateRequirementInstance(requirementInstance);
     }
 
     public void deleteRequirementInstance(RequirementInstance requirementInstance) {
-        requirementInstanceDoa.deleteRequirementInstance(requirementInstance);
+        requirementInstanceDao.deleteRequirementInstance(requirementInstance);
     }
 
     public List<RequirementInstance> getAllRequirementInstances() {
-        return requirementInstanceDoa.getAllRequirementInstances();
+        return requirementInstanceDao.getAllRequirementInstances();
     }
 }
