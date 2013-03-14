@@ -42,7 +42,7 @@ public class MessageDaoImpl implements MessageDao {
 
     @Override
     public void updateMessage(Message user) throws DataAccessException {
-        getEntityManager().persist(user);
+        getEntityManager().merge(user);
     }
 
     @Override
