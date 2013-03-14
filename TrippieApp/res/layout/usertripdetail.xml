@@ -24,7 +24,7 @@
               android:layout_height="wrap_content">
     </TextView>
     <TextView android:id="@+id/dateLbl"
-              android:text="@string/date"
+              android:text="@string/startTime"
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
     </TextView>
@@ -48,7 +48,6 @@
     </TextView>
     <TextView android:id="@+id/endValue"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:textSize="12px">
+              android:layout_height="wrap_content">
     </TextView>
 </LinearLayout>

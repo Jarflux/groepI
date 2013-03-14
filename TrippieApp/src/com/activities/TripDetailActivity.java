@@ -5,6 +5,10 @@ import android.widget.TextView;
 import com.controllers.Controller;
 import com.model.TripInstance;
 import com.activities.R;
+import com.utils.DateUtil;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,18 +26,31 @@ public class TripDetailActivity extends ParentActivity {
     }
 
     @Override
-    public void addContent() {;
+    public void addContent() {
         TripInstance trip = null;
+        SimpleDateFormat date = new SimpleDateFormat("DD/MM/YYYY");
+        SimpleDateFormat time = new SimpleDateFormat("HH:mm");
+        Calendar cal = Calendar.getInstance();
         if(getIntent().hasExtra("trip")){
         trip = (TripInstance) getIntent().getSerializableExtra("trip");
         TextView textView = (TextView)findViewById(R.id.nameValue);
         textView.setText(trip.getfTitle());
         textView = (TextView)findViewById(R.id.descriptionValue);
         textView.setText(trip.getfDescription());
+
         textView = (TextView)findViewById(R.id.startValue);
-        textView.setText(String.valueOf(trip.getfStartTime()));
+        cal.setTime(DateUtil.longToDate(trip.getfStartTime()));
+        String dateString = date.format(cal.getTime());
+        textView.setText(String.valueOf(dateString));
+
+        textView = (TextView)findViewById(R.id.startValue);
+        String start = time.format(cal.getTime());
+        textView.setText(String.valueOf(start));
+
         textView = (TextView)findViewById(R.id.endValue);
-        textView.setText(String.valueOf(trip.getfEndTime()));
+        cal.setTime(DateUtil.longToDate(trip.getfEndTime()));
+        String end = time.format(cal.getTime());
+        textView.setText(end);
         }
     }
 }

@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.model.TripInstance;
+import com.utils.ServerUtil;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
@@ -21,12 +22,13 @@ import java.util.List;
  */
 public class HttpGetTask extends AsyncTask {
 
+
     @Override
     protected Object doInBackground(Object... objects) {
         DefaultHttpClient client = new DefaultHttpClient();
         Gson gson = new Gson();
         List<TripInstance> trips = null;
-        HttpGet requestLogin = new HttpGet("http://10.132.98.153:8080/"+objects[0]+"/"+objects[1]);
+        HttpGet requestLogin = new HttpGet("http://"+ ServerUtil.getServerAddres(false)+":8080/"+objects[0]+"/"+objects[1]);
         try {
             ResponseHandler<String> responseHandler=new BasicResponseHandler();
             String responseBody = client.execute(requestLogin, responseHandler);
