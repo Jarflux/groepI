@@ -1,17 +1,14 @@
 package be.kdg.groepi.service;
 
+import be.kdg.groepi.dao.TripInstanceDao;
 import be.kdg.groepi.model.TripInstance;
-import be.kdg.groepi.model.User;
-import be.kdg.groepi.utils.HibernateUtil;
 import be.kdg.groepi.utils.TripMail;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Author: Ben Oeyen
@@ -19,189 +16,58 @@ import java.util.List;
  * Class: Trip Service
  * Description:
  */
-
+@Service("tripInstanceService")
+@Transactional
 public class TripInstanceService {
 
-    public static TripInstance getTripInstanceById(long Id) {
-        TripInstance tripinstance = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
+    @Autowired
+    private TripInstanceDao tripInstanceDoa;
 
-            List<TripInstance> tripinstances = session.createQuery("FROM TripInstance tripinstance WHERE tripinstance.fId = :Id").
-                    setString("Id", String.valueOf(Id)).setReadOnly(true).list();
-            if (tripinstances.size() > 0) {
-                tripinstance = tripinstances.get(0);
-            }
-
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return tripinstance;
+    public TripInstance getTripInstanceById(long id) {
+        return tripInstanceDoa.getTripInstanceById(id);
     }
 
-    public static void createTripInstance(TripInstance tripinstance) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            session.save(tripinstance);
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void createTripInstance(TripInstance tripInstance) {
+        tripInstanceDoa.createTripInstance(tripInstance);
     }
 
-    public static void updateTripInstance(TripInstance tripinstance) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            session.update(tripinstance);
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void updateTripInstance(TripInstance tripInstance) {
+        tripInstanceDoa.updateTripInstance(tripInstance);
     }
 
-    public static void deleteTripInstance(TripInstance tripinstance) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-
-            session.delete(tripinstance);
-
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void deleteTripInstance(TripInstance tripInstance) {
+        tripInstanceDoa.deleteTripInstance(tripInstance);
     }
 
-    public static List<TripInstance> getAllTripInstances() {
-        List<TripInstance> tripinstances = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            tripinstances = session.createQuery("FROM TripInstance").list();
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return tripinstances;
+    public List<TripInstance> getAllTripInstances() {
+        return tripInstanceDoa.getAllTripInstances();
     }
 
-    public static void inviteByEmail(String receipients,String message,Long instanceId)
-    {
+    public List<TripInstance> getAllTripInstancesByTripId(long tripId) {
+        return tripInstanceDoa.getAllTripInstancesByTripId(tripId);
+    }
+
+    public List<TripInstance> getTripInstancesByOrganiserId(long id) {
+        return tripInstanceDoa.getTripInstancesByOrganiserId(id);
+    }
+
+    public List<TripInstance> getPublicTripInstances() {
+        return tripInstanceDoa.getPublicTripInstances();
+    }
+
+    public List<TripInstance> getTripInstancesByUserId(Long userId) {
+        return tripInstanceDoa.getTripInstancesByUserId(userId);
+    }
+
+    public static void inviteByEmail(String receipients, String message, Long instanceId) {
         ApplicationContext context = new ClassPathXmlApplicationContext("Spring-Mail.xml");
         TripMail tim = (TripMail) context.getBean("tripMail");
-       String[] receipient= receipients.split(",");
-        for (int i = 0; i < receipient.length; i++)
-        {
+        String[] receipient = receipients.split(",");
+        for (int i = 0; i < receipient.length; i++) {
             tim.sendMail("info@trippie.be", receipient[i], "Je bent uitgenodigd op Trippie.be!",
-                "Ga naar http://tomcat.vincentverbist.be:8080/trips/viewinstance/"+instanceId+" om deel te nemen aan deze trip. \n" +
-                        "De persoonlijke boodschap luidt: "+message+
-                    "\n\n Bedankt! \nTrippe.be");
+                    "Ga naar http://tomcat.vincentverbist.be:8080/trips/viewinstance/" + instanceId + " om deel te nemen aan deze trip. \n"
+                    + "De persoonlijke boodschap luidt: " + message
+                    + "\n\n Bedankt! \nTrippe.be");
         }
-
-
-
-
-    }
-    public static List<TripInstance> getAllTripInstancesByTripId(long tripId) {
-        List<TripInstance> tripinstances = new ArrayList<>();
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            tripinstances = session.createQuery("FROM TripInstance tripinstance WHERE tripinstance.fTrip = :tripId").
-                    setString("tripId", String.valueOf(tripId)).
-                    setReadOnly(true).
-                    list();
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return tripinstances;
-    }
-
-    public static List<TripInstance> getTripInstancesByOrganiserId(long id) {
-        List<TripInstance> tripInstances = new ArrayList<>();
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            Query query = session.createQuery("from TripInstance tripInstance where tripInstance.fOrganiser = :Organiser").
-                    setLong("Organiser", id);
-            tripInstances = (List<TripInstance>) query.list();
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return tripInstances;
-    }
-
-    public static List<TripInstance> getPublicTripInstances() {
-        List<TripInstance> tripinstances = new ArrayList<>();
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            Query query = session.createQuery("from TripInstance tripinstance where tripinstance.fAvailable = :Availability").
-                    setInteger("Availability", 1);
-            tripinstances = (List<TripInstance>) query.list();
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return tripinstances;
-    }
-
-    public static List<TripInstance> getTripInstancesByUserId(Long userId) {
-        List<TripInstance> trips = new ArrayList<>();
-        List<TripInstance> tripInstances = TripInstanceService.getAllTripInstances();
-        for (TripInstance tripInstance : tripInstances) {
-            for (User participant : tripInstance.getParticipants()) {
-                if (userId == participant.getId()) {
-                    trips.add(tripInstance);
-                }
-            }
-        }
-        return trips;
     }
 }

@@ -1,11 +1,11 @@
 package be.kdg.groepi.service;
 
+import be.kdg.groepi.dao.CostDao;
 import be.kdg.groepi.model.Cost;
-import be.kdg.groepi.utils.HibernateUtil;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Author: Ben Oeyen
@@ -13,97 +13,30 @@ import java.util.List;
  * Class: Cost Service
  * Description:
  */
-
+@Service("costService")
+@Transactional
 public class CostService {
-    public static Cost getCostById(long Id) {
-        Cost cost = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
 
-            List<Cost> costs = session.createQuery("FROM Cost cost WHERE cost.fId = :Id").
-                    setString("Id", String.valueOf(Id)).setReadOnly(true).list();
-            if (costs.size() > 0) {
-                cost = costs.get(0);
-            }
+    @Autowired
+    private CostDao costDoa;
 
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return cost;
+    public Cost getCostById(long id) {
+        return costDoa.getCostById(id);
     }
 
-    public static void createCost(Cost cost) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            session.save(cost);
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void createCost(Cost cost) {
+        costDoa.createCost(cost);
     }
 
-    public static void updateCost(Cost cost) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            session.update(cost);
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void updateCost(Cost cost) {
+        costDoa.updateCost(cost);
     }
 
-    public static void deleteCost(Cost cost) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-
-            session.delete(cost);
-
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void deleteCost(Cost cost) {
+        costDoa.deleteCost(cost);
     }
 
-    public static List<Cost> getAllCosts() {
-        List<Cost> costs = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            costs = session.createQuery("FROM Cost").list();
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return costs;
+    public List<Cost> getAllCosts() {
+        return costDoa.getAllCosts();
     }
 }

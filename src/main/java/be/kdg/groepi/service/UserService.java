@@ -1,179 +1,58 @@
 package be.kdg.groepi.service;
 
-import be.kdg.groepi.model.Trip;
+import be.kdg.groepi.dao.UserDao;
 import be.kdg.groepi.model.User;
-import be.kdg.groepi.utils.HibernateUtil;
 import be.kdg.groepi.utils.TripMail;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+@Service("userService")
+@Transactional
 public class UserService {
 
-    public static be.kdg.groepi.model.User getUserById(long Id) {
-        User user = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            List<User> users = session.createQuery("FROM User user WHERE user.fId = :Id").
-                    setString("Id", String.valueOf(Id)).setReadOnly(true).list();
-            if (users.size() > 0) {
-                user = users.get(0);
-            }
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return user;
+    @Autowired
+    private UserDao userDoa;
+
+    public User getUserById(long id) {
+        return userDoa.getUserById(id);
     }
 
-    public static User getUserByResetString(String resetString) {
-        User user = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            List<User> users = session.createQuery("FROM User user WHERE user.fPasswordResetString = :resetString").
-                    setString("resetString", resetString).setReadOnly(true).list();
-            if (users.size() > 0) {
-                user = users.get(0);
-            }
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return user;
+    public User getUserByResetString(String resetString) {
+        return userDoa.getUserByResetString(resetString);
     }
 
-    public static User getUserByFBUserID(String FBUserID) {
-        User user = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            List<User> users = session.createQuery("FROM User user WHERE user.fFBUserID = :FBUserID").
-                    setString("FBUserID", FBUserID).setReadOnly(true).list();
-            if (users.size() > 0) {
-                user = users.get(0);
-            }
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return user;
-    }
-    public static User getUserByEmail(String email) {
-        User user = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            String sql = "FROM User u WHERE u.fEmail = :email";
-            Query query = session.createQuery(sql);
-            query.setString("email", email);
-            query.setReadOnly(true);
-            List<User> users = (List<User>) query.list();
-            if (users.size() > 0) {
-                user = users.get(0);
-            }
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return user;
+    public User getUserByFbUserId(String fbUserId) {
+        return userDoa.getUserByFbUserId(fbUserId);
     }
 
-    public static void createUser(User user) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            session.save(user);
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public User getUserByEmail(String email) {
+        return userDoa.getUserByEmail(email);
     }
 
-    public static void updateUser(User user) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            session.update(user);
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void createUser(User user) {
+        userDoa.createUser(user);
     }
 
-    public static void deleteUser(User user) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            session.delete(user);
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void updateUser(User user) {
+        userDoa.updateUser(user);
     }
 
-    public static List<User> getAllUsers() {
-        List<User> users = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            users = session.createQuery("FROM User").list();
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return users;
+    public void deleteUser(User user) {
+        userDoa.deleteUser(user);
     }
 
-    public static boolean resetPassword(String email) {
+    public List<User> getAllUsers() {
+        return userDoa.getAllUsers();
+    }
+
+    public boolean resetPassword(String email) {
         final int RESET_TIME = 3;
         String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         Random rnd = new Random();
@@ -187,22 +66,17 @@ public class UserService {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR, cal.get(Calendar.HOUR_OF_DAY) + RESET_TIME);
         Timestamp passwordResetTimestamp = new Timestamp(cal.getTime().getTime());
-        User user = getUserByEmail(email);
+        User user = userDoa.getUserByEmail(email);
         if (user != null) {
             user.setPasswordResetString(passwordResetString);
             user.setPasswordResetTimestamp(passwordResetTimestamp);
-
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            Transaction tx = session.beginTransaction();
-            session.update(user);
-            tx.commit();
-
+            userDoa.updateUser(user);
             ApplicationContext context = new ClassPathXmlApplicationContext("Spring-Mail.xml");
             TripMail tim = (TripMail) context.getBean("tripMail");
             //TODO: pas email aan aan die van de gebruiker
             tim.sendMail("info@trippie.be", "info@trippie.be", "Reset password",
-                    "Please follow this link to reset your password:\n http://localhost:8080/profile/reset/" +
-                            /*user.getId() + "/" + */ passwordResetString + "\n\nThis link expires at:\n" + passwordResetTimestamp);
+                    "Please follow this link to reset your password:\n http://localhost:8080/profile/reset/"
+                    + /*user.getId() + "/" + */ passwordResetString + "\n\nThis link expires at:\n" + passwordResetTimestamp);
             return true;
         } else {
             return false;

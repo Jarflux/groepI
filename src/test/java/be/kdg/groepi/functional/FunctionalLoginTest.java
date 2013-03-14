@@ -8,5 +8,4 @@ package be.kdg.groepi.functional;
  * To change this template use File | Settings | File Templates.
  */
 public class FunctionalLoginTest {
-
 }

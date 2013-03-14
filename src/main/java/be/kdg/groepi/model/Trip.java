@@ -2,13 +2,12 @@ package be.kdg.groepi.model;
 
 import be.kdg.groepi.annotations.ExcludeFromGson;
 import be.kdg.groepi.utils.CompareUtil;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.*;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 /**
  * Author: Ben Oeyen
@@ -167,12 +166,12 @@ public class Trip implements Serializable, Comparable {
         if (!this.fOrganiser.equals(trip.getOrganiser())) {
             return false;
         } /*
-        if (!(CompareUtil.compareSet(this.fStops, trip.getStops()))) {
-            return false;
-        }
-        if (!(CompareUtil.compareSet(this.fRequirements, trip.getRequirements()))) {
-            return false;
-        } */
+         if (!(CompareUtil.compareSet(this.fStops, trip.getStops()))) {
+         return false;
+         }
+         if (!(CompareUtil.compareSet(this.fRequirements, trip.getRequirements()))) {
+         return false;
+         } */
         return true;
     }
 

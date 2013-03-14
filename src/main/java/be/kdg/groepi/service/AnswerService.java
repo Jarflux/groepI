@@ -4,13 +4,12 @@
  */
 package be.kdg.groepi.service;
 
+import be.kdg.groepi.dao.AnswerDao;
 import be.kdg.groepi.model.Answer;
-import be.kdg.groepi.utils.HibernateUtil;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Author: Ben Oeyen
@@ -18,99 +17,34 @@ import java.util.List;
  * Class: Requirement Service
  * Description:
  */
-
+@Service("answerService")
+@Transactional
 public class AnswerService {
-    public static Answer getAnswerById(long Id) {
-        Answer answer = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
 
-            List<Answer> answers = session.createQuery("FROM Answer answer WHERE answer.fId = :Id").
-                    setString("Id", String.valueOf(Id)).setReadOnly(true).list();
-            if (answers.size() > 0) {
-                answer = answers.get(0);
-            }
+    @Autowired
+    private AnswerDao answerDoa;
 
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return answer;
+    public Answer getAnswerById(long id) {
+        return answerDoa.getAnswerById(id);
     }
 
-    public static void createAnswer(Answer answer) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            session.save(answer);
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void createAnswer(Answer answer) {
+        answerDoa.createAnswer(answer);
     }
 
-    public static void updateAnswer(Answer answer) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            session.update(answer);
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void updateAnswer(Answer answer) {
+        answerDoa.updateAnswer(answer);
     }
 
-    public static void deleteAnswer(Answer answer) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-
-            session.delete(answer);
-
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void deleteAnswer(Answer answer) {
+        answerDoa.deleteAnswer(answer);
     }
 
-    public static List<Answer> getAnswersByStopID(long id) {
-        List<Answer> answers = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            Query query = session.createQuery("from Answer answer where answer.fStop = :Stop").
-                    setLong("Stop", id);
-            answers = query.list();
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return answers;
+    public List<Answer> getAllAnswers() {
+        return answerDoa.getAllAnswers();
+    }
+
+    public List<Answer> getAnswersByStopID(long id) {
+        return answerDoa.getAnswersByStopId(id);
     }
 }

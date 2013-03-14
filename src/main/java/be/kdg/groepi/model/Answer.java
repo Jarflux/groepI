@@ -1,11 +1,7 @@
 package be.kdg.groepi.model;
 
 import be.kdg.groepi.utils.CompareUtil;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-
 
 @Entity
 @Table(name = "T_ANSWER")
@@ -19,11 +15,10 @@ public class Answer {
     private String fAnswerText;
     @Column(name = "isCorrect")
     private boolean fIsCorrect;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "stop_id", nullable = false)
     private Stop fStop;
-    
+
     public Answer() {
     }
 
@@ -64,7 +59,7 @@ public class Answer {
     public void setStop(Stop fStop) {
         this.fStop = fStop;
     }
-    
+
     @Override
     public boolean equals(Object o) {
         if (o == null) {
@@ -78,8 +73,8 @@ public class Answer {
             return false;
         }
         /*if (!CompareUtil.compareList(this.fAnswers, answer.getAnswers())) {
-            return false;
-        }*/
+         return false;
+         }*/
         if (!fStop.equals(answer.getStop())) {
             return false;
         }

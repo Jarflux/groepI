@@ -4,6 +4,7 @@ import be.kdg.groepi.model.Requirement;
 import be.kdg.groepi.model.Trip;
 import be.kdg.groepi.service.RequirementService;
 import be.kdg.groepi.service.TripService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,19 +12,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@Controller("restRequirementController")
 public class RestRequirementController {
+
+    @Autowired
+    protected TripService tripService;
+    @Autowired
+    protected RequirementService requirementService;
 
     @RequestMapping(value = "/trips/doAddTripRequirement", method = RequestMethod.POST)
     public ModelAndView doAddTripRequirement(@RequestParam(value = "tripId") String tripId,
-                                             @RequestParam(value = "name") String name,
-                                             @RequestParam(value = "amount") Long amount,
-                                             @RequestParam(value = "description") String description) {
+            @RequestParam(value = "name") String name,
+            @RequestParam(value = "amount") Long amount,
+            @RequestParam(value = "description") String description) {
 
-        Trip trip = TripService.getTripById(Long.parseLong(tripId));
+        Trip trip = tripService.getTripById(Long.parseLong(tripId));
         Requirement requirement = new Requirement(name, amount, description, trip);
-        RequirementService.createRequirement(requirement);
-        trip = TripService.getTripById(trip.getId());
+        requirementService.createRequirement(requirement);
+        trip = tripService.getTripById(trip.getId());
         return new ModelAndView("trips/view", "tripObject", trip);
     }
 

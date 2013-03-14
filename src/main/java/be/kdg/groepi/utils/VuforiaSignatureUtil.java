@@ -1,13 +1,10 @@
 package be.kdg.groepi.utils;
 
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.security.SignatureException;
-
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
-
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;

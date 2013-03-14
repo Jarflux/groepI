@@ -4,47 +4,58 @@ import be.kdg.groepi.model.Answer;
 import be.kdg.groepi.model.Stop;
 import be.kdg.groepi.model.Trip;
 import be.kdg.groepi.model.User;
+import static be.kdg.groepi.utils.DateUtil.dateToLong;
 import org.junit.After;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static be.kdg.groepi.utils.DateUtil.dateToLong;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:testApplicationContext.xml"})
+@Transactional
 public class AnswerServiceTest {
+
     User user;
     Trip trip;
     Stop stop;
     Answer answer;
+    @Autowired
+    protected UserService userService;
+    @Autowired
+    protected TripService tripService;
+    @Autowired
+    protected StopService stopService;
+    @Autowired
+    protected AnswerService answerService;
 
     @Before
     public void beforeEachTest() {
         user = new User("Gregory", "gregory@trippie.com", "greg", dateToLong(4, 5, 1988, 15, 32, 0));
-        UserService.createUser(user);
+        userService.createUser(user);
         trip = new Trip("Stadswandeling, Antwerp Edition", "Een wandeling doorheen het centrum met als afsluiter een etentje op het nieuwe Zuid.", true, true, user);// trip aanmaken
-        TripService.createTrip(trip);
-        stop = new Stop("Groenplaats",  "4.399166", "51.221212", 1, 1, 1, "Van wie is dit stambeeld?",1000, trip);
-        StopService.createStop(stop);
+        tripService.createTrip(trip);
+        stop = new Stop("Groenplaats", "4.399166", "51.221212", 1, 1, 1, "Van wie is dit stambeeld?", 1000, trip);
+        stopService.createStop(stop);
         answer = new Answer("Den Tester", false, stop);
-        AnswerService.createAnswer(answer);
-        stop = StopService.getStopById(stop.getId());
+        answerService.createAnswer(answer);
+        stop = stopService.getStopById(stop.getId());
     }
 
     @After
     public void afterEachTest() {
-        StopService.deleteStop(stop);
-        TripService.deleteTrip(trip);
-        UserService.deleteUser(user);
+        stopService.deleteStop(stop);
+        tripService.deleteTrip(trip);
+        userService.deleteUser(user);
     }
 
     @Test
     public void createAnswer() {
-        assertTrue("createAnswer: answer was not created", answer.equals(AnswerService.getAnswerById(answer.getId())));
+        assertTrue("createAnswer: answer was not created", answer.equals(answerService.getAnswerById(answer.getId())));
     }
 
     @Test
@@ -52,36 +63,41 @@ public class AnswerServiceTest {
         answer.setAnswerText("Den Tester, Edited");
         answer.setIsCorrect(true);
         answer.setStop(stop);
-        AnswerService.updateAnswer(answer);
-        assertTrue("updateAnswer: answer was not updated", answer.equals(AnswerService.getAnswerById(answer.getId())));
+        answerService.updateAnswer(answer);
+        assertTrue("updateAnswer: answer was not updated", answer.equals(answerService.getAnswerById(answer.getId())));
     }
 
     @Test
     public void deleteAnswer() {
-
-        for (Answer answer : stop.getAnswers())
-        {
-            AnswerService.deleteAnswer(answer);
-        }
-        assertTrue(AnswerService.getAnswersByStopID(stop.getId()).isEmpty());
+        assertNotNull("deleteAnswer: Answer must exist", answerService.getAnswerById(answer.getId()));
+        answerService.deleteAnswer(answer);
+        assertNull("deleteAnswer: Answer may not exist", answerService.getAnswerById(answer.getId()));
     }
 
     @Test
     public void saveAnswerCollection() {
-        stop.getAnswers().add(new Answer("Van Gogh", false, stop));
-        stop.getAnswers().add(new Answer("Rubens", true, stop));
-        stop.getAnswers().add(new Answer("Picasso", false, stop));
-        stop.getAnswers().add(new Answer("Rembrandt", false, stop));
-        StopService.updateStop(stop);
-        //stop = StopService.getStopById(stop.getId());
-        assertTrue(AnswerService.getAnswersByStopID(stop.getId()).size() == 5);
+        Answer answer1 = new Answer("Van Gogh", false, stop);
+        answerService.createAnswer(answer1);
+        Answer answer2 = new Answer("Rubens", true, stop);
+        answerService.createAnswer(answer2);
+        Answer answer3 = new Answer("Picasso", false, stop);
+        answerService.createAnswer(answer3);
+        Answer answer4 = new Answer("Rembrandt", false, stop);
+        answerService.createAnswer(answer4);   
+        stop.getAnswers().add(answer1);
+        stop.getAnswers().add(answer2);
+        stop.getAnswers().add(answer3);
+        stop.getAnswers().add(answer4);
+        stopService.updateStop(stop);
+        //stop = stopService.getStopById(stop.getId());
+        //TODO: Add explanation string to assert
+        assertTrue(answerService.getAnswersByStopID(stop.getId()).size() == 5);
     }
 
     @Test
     public void deleteStopWithAnswers() {
-        long stopId = stop.getId();
-        StopService.deleteStop(stop);
-        boolean test = AnswerService.getAnswersByStopID(stopId).isEmpty();
-        assertTrue(AnswerService.getAnswersByStopID(stopId).isEmpty());
+        stopService.deleteStop(stop);
+        //TODO: Add explanation string to assert
+        assertTrue(answerService.getAnswersByStopID(stop.getId()).isEmpty());
     }
 }

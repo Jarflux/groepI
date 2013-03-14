@@ -12,6 +12,7 @@ import com.google.gson.FieldAttributes;
  * To change this template use File | Settings | File Templates.
  */
 public class ExclusionStrategyUtil implements ExclusionStrategy {
+
     public boolean shouldSkipClass(Class<?> clazz) {
         return clazz.getAnnotation(ExcludeFromGson.class) != null;
     }

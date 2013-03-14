@@ -1,11 +1,11 @@
 package be.kdg.groepi.service;
 
+import be.kdg.groepi.dao.RequirementInstanceDao;
 import be.kdg.groepi.model.RequirementInstance;
-import be.kdg.groepi.utils.HibernateUtil;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Author: Ben Oeyen
@@ -13,98 +13,30 @@ import java.util.List;
  * Class: Requirement Service
  * Description:
  */
-
+@Service("requirementInstanceService")
+@Transactional
 public class RequirementInstanceService {
-    public static RequirementInstance getRequirementInstanceById(long Id) {
-        RequirementInstance requirementInstance = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
 
-            List<RequirementInstance> requirementInstances = session.createQuery("FROM RequirementInstance requirementInstance WHERE requirementInstance.fId = :Id").
-                    setString("Id", String.valueOf(Id)).setReadOnly(true).list();
-            if (requirementInstances.size() > 0) {
-                requirementInstance = requirementInstances.get(0);
-            }
+    @Autowired
+    private RequirementInstanceDao requirementInstanceDoa;
 
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return requirementInstance;
+    public RequirementInstance getRequirementInstanceById(long id) {
+        return requirementInstanceDoa.getRequirementInstanceById(id);
     }
 
-    public static void createRequirementInstance(RequirementInstance requirementInstance) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            session.save(requirementInstance);
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void createRequirementInstance(RequirementInstance requirementInstance) {
+        requirementInstanceDoa.createRequirementInstance(requirementInstance);
     }
 
-    public static void updateRequirementInstance(RequirementInstance requirementInstance) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            session.update(requirementInstance);
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void updateRequirementInstance(RequirementInstance requirementInstance) {
+        requirementInstanceDoa.updateRequirementInstance(requirementInstance);
     }
 
-    public static void deleteRequirementInstance(RequirementInstance requirementInstance) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-
-            session.delete(requirementInstance);
-
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void deleteRequirementInstance(RequirementInstance requirementInstance) {
+        requirementInstanceDoa.deleteRequirementInstance(requirementInstance);
     }
 
-    public static List<RequirementInstance> getAllRequirementInstances() {
-        List<RequirementInstance> requirementInstances = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            requirementInstances = session.createQuery("FROM RequirementInstance").list();
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return requirementInstances;
+    public List<RequirementInstance> getAllRequirementInstances() {
+        return requirementInstanceDoa.getAllRequirementInstances();
     }
 }
-

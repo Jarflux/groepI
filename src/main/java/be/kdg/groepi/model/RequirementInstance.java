@@ -1,9 +1,8 @@
 package be.kdg.groepi.model;
 
 import be.kdg.groepi.utils.CompareUtil;
-
-import javax.persistence.*;
 import java.io.Serializable;
+import javax.persistence.*;
 
 /**
  * Author: Ben Oeyen
@@ -129,7 +128,9 @@ public class RequirementInstance implements Serializable, Comparable {
     @Override
     public int compareTo(Object o) {
         RequirementInstance requirementInstance = (RequirementInstance) o;
-        if (this.equals(requirementInstance)) return 0;
+        if (this.equals(requirementInstance)) {
+            return 0;
+        }
         int comparison = this.fName.compareTo(requirementInstance.getName());
         if (comparison != 0) {
             return comparison;

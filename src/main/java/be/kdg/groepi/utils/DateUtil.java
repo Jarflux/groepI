@@ -1,7 +1,6 @@
 package be.kdg.groepi.utils;
 
 import be.kdg.groepi.model.User;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -34,6 +33,7 @@ public class DateUtil {
         Long date = DateUtil.dateToLong(day, month, year, hour, min, sec);
         return date;
     }
+
     public static Long dateStringToLongAlt(String dateString, String timeString) {
         int day = 0, month = 0, year = 0, hour = 0, min = 0, sec = 0;
 
@@ -52,6 +52,7 @@ public class DateUtil {
         Long date = DateUtil.dateToLong(day, month, year, hour, min, sec);
         return date;
     }
+
     public static Long dateStringToLong(String dateString) {
         return dateStringToLong(dateString, null);
     }

@@ -1,6 +1,5 @@
 package be.kdg.groepi.model;
 
-import be.kdg.groepi.utils.CompareUtil;
 
 import javax.persistence.*;
 
@@ -63,8 +62,7 @@ public class AnswerInstance {
         this.fTripInstance = fTripInstance;
     }
 
-    public boolean isCorrect()
-    {
+    public boolean isCorrect() {
         return this.fAnswer.getIsCorrect();
     }
 

@@ -1,13 +1,11 @@
 package be.kdg.groepi.service;
 
+import be.kdg.groepi.dao.TripDao;
 import be.kdg.groepi.model.Trip;
-import be.kdg.groepi.model.User;
-import be.kdg.groepi.utils.HibernateUtil;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Author: Ben Oeyen
@@ -15,139 +13,38 @@ import java.util.List;
  * Class: Trip Service
  * Description:
  */
-
+@Service("tripService")
+@Transactional
 public class TripService {
 
-    public static Trip getTripById(long Id) {
-        Trip trip = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
+    @Autowired
+    private TripDao tripDoa;
 
-            List<Trip> trips = session.createQuery("FROM Trip trip WHERE trip.id = :Id").
-                    setString("Id", String.valueOf(Id)).setReadOnly(true).list();
-            if (trips.size() > 0) {
-                trip = trips.get(0);
-            }
-
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return trip;
+    public Trip getTripById(long id) {
+        return tripDoa.getTripById(id);
     }
 
-    public static void createTrip(Trip trip) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            session.save(trip);
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void createTrip(Trip trip) {
+        tripDoa.createTrip(trip);
     }
 
-    public static void updateTrip(Trip trip) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            session.update(trip);
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void updateTrip(Trip trip) {
+        tripDoa.updateTrip(trip);
     }
 
-    public static void deleteTrip(Trip trip) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-
-            session.delete(trip);
-
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void deleteTrip(Trip trip) {
+        tripDoa.deleteTrip(trip);
     }
 
-    public static List<Trip> getAllTrips() {
-        List<Trip> trips = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            Query query = session.createQuery("from Trip");
-            trips = (List<Trip>) query.list();
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return trips;
+    public List<Trip> getAllTrips() {
+        return tripDoa.getAllTrips();
     }
 
-    public static List<Trip> getTripsByOrganiserId(long id){
-        List<Trip> trips = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            Query query = session.createQuery("from Trip trip where trip.fOrganiser = :Organiser").
-                    setLong("Organiser", id);
-            trips = (List<Trip>) query.list();
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return trips;
+    public List<Trip> getTripsByOrganiserId(long id) {
+        return tripDoa.getTripsByOrganiserId(id);
     }
 
-    public static List<Trip> getPublicTrips() {
-        List<Trip> trips = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            Query query = session.createQuery("from Trip trip where trip.fAvailable = :available").
-                    setBoolean("available", true);
-            trips = (List<Trip>) query.list();
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return trips;
+    public List<Trip> getPublicTrips() {
+        return tripDoa.getPublicTrips();
     }
 }

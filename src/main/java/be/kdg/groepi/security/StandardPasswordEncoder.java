@@ -1,10 +1,9 @@
 package be.kdg.groepi.security;
 
 import be.kdg.groepi.utils.CompareUtil;
-import org.springframework.security.authentication.encoding.PasswordEncoder;
-
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import org.springframework.security.authentication.encoding.PasswordEncoder;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,7 +14,6 @@ import java.security.NoSuchAlgorithmException;
  */
 public class StandardPasswordEncoder implements PasswordEncoder {
 
-
     @Override
     public String encodePassword(String rawPass, Object o) {
         try {
@@ -25,7 +23,6 @@ public class StandardPasswordEncoder implements PasswordEncoder {
         }
         return null;
     }
-
 
     @Override
     public boolean isPasswordValid(String encPass, String rawPass, Object salt) {

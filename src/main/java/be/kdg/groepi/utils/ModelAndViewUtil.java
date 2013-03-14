@@ -4,10 +4,9 @@ import be.kdg.groepi.model.Message;
 import be.kdg.groepi.model.RequirementInstance;
 import be.kdg.groepi.model.TripInstance;
 import be.kdg.groepi.service.MessageService;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpSession;
 import java.util.*;
+import javax.servlet.http.HttpSession;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,9 +17,9 @@ import java.util.*;
  */
 public class ModelAndViewUtil {
 
-    public static ModelAndView getModelAndViewForViewInstance(HttpSession session, TripInstance tripInstance) {
+    public static ModelAndView getModelAndViewForViewInstance(MessageService messageService, HttpSession session, TripInstance tripInstance) {
         Map<Long, String> messageDates = new HashMap<>();
-        List<Message> messages = MessageService.getMessagesByTripInstanceId(tripInstance.getId());
+        List<Message> messages = messageService.getMessagesByTripInstanceId(tripInstance.getId());
 
         for (Message message : messages) {
             messageDates.put(tripInstance.getId(), DateUtil.formatDate(DateUtil.longToDate(message.getDate())));
@@ -37,5 +36,4 @@ public class ModelAndViewUtil {
         modelAndView.addObject("endTimeString", DateUtil.formatTime(tripInstance.getEndTime()));
         return modelAndView;
     }
-
 }
