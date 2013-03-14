@@ -7,47 +7,48 @@
               android:background="#0ac5f4">
     <TextView android:id="@+id/nameLbl"
               android:text="@string/name"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content">
     </TextView>
     <TextView android:id="@+id/nameValue"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content">
     </TextView>
     <TextView android:id="@+id/descriptionLbl"
               android:text="@string/description"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content">
     </TextView>
     <TextView android:id="@+id/descriptionValue"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content">
     </TextView>
     <TextView android:id="@+id/dateLbl"
               android:text="@string/date"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content">
     </TextView>
     <TextView android:id="@+id/dateValue"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content">
     </TextView>
     <TextView android:id="@+id/startLbl"
               android:text="@string/startTime"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content">
     </TextView>
     <TextView android:id="@+id/startValue"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content">
     </TextView>
     <TextView android:id="@+id/endLbl"
               android:text="@string/endTime"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content">
     </TextView>
     <TextView android:id="@+id/endValue"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content"
+              android:textSize="12px">
     </TextView>
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,7 +11,7 @@ import java.util.Set;
  * Time: 15:38
  * To change this template use File | Settings | File Templates.
  */
-public class TripInstance {
+public class TripInstance implements Serializable {
     private Long fId;
     private String fTitle;
     private String fDescription;
@@ -118,5 +119,10 @@ public class TripInstance {
 
     public void setfMessages(Set<Message> fMessages) {
         this.fMessages = fMessages;
+    }
+
+    @Override
+    public String toString() {
+        return fTitle;
     }
 }

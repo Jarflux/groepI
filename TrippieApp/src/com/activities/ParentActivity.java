@@ -43,4 +43,12 @@ public class ParentActivity extends Activity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    public void stylePage(){
+        //To be filled in by child classes
+    }
+
+    public void addContent(){
+        //To be filled in by child classes
+    }
 }

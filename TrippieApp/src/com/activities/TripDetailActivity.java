@@ -1,7 +1,10 @@
 package com.activities;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.widget.TextView;
+import com.controllers.Controller;
+import com.model.TripInstance;
+import com.activities.R;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,5 +16,24 @@ import android.os.Bundle;
 public class TripDetailActivity extends ParentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.usertripdetail);
+        addContent();
+
+    }
+
+    @Override
+    public void addContent() {;
+        TripInstance trip = null;
+        if(getIntent().hasExtra("trip")){
+        trip = (TripInstance) getIntent().getSerializableExtra("trip");
+        TextView textView = (TextView)findViewById(R.id.nameValue);
+        textView.setText(trip.getfTitle());
+        textView = (TextView)findViewById(R.id.descriptionValue);
+        textView.setText(trip.getfDescription());
+        textView = (TextView)findViewById(R.id.startValue);
+        textView.setText(String.valueOf(trip.getfStartTime()));
+        textView = (TextView)findViewById(R.id.endValue);
+        textView.setText(String.valueOf(trip.getfEndTime()));
+        }
     }
 }

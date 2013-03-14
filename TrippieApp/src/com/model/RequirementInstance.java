@@ -1,5 +1,7 @@
 package com.model;
 
+import java.io.Serializable;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Mitch Va Daele
@@ -7,7 +9,7 @@ package com.model;
  * Time: 15:44
  * To change this template use File | Settings | File Templates.
  */
-public class RequirementInstance {
+public class RequirementInstance implements Serializable {
     private long Id;
     private String Name;
     private long Amount;

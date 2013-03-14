@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.*;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.controllers.Controller;
@@ -15,6 +17,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * Created with IntelliJ IDEA.
  * User: Mitch Va Daele
@@ -22,12 +25,23 @@ import java.util.List;
  * Time: 15:24
  * To change this template use File | Settings | File Templates.
  */
+
 public class UserTripsActivity extends ParentActivity {
     private Controller controller = new Controller();
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        stylePage();
+        addContent();
+    }
+
+    @Override
+    public void stylePage() {
         setContentView(R.layout.usertrips);
+    }
+
+    @Override
+    public void addContent(){
         SharedPreferences session = getApplicationContext().getSharedPreferences("Session", 0 );
         JSONObject user = null;
         Long userId = null;
@@ -42,8 +56,18 @@ public class UserTripsActivity extends ParentActivity {
         for (TripInstance trip : trips) {
             tripNames.add(trip.getfTitle());
         }
+
         ListView listView = (ListView) findViewById(R.id.tripList);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, tripNames);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Intent intent = new Intent(getApplicationContext(),TripDetailActivity.class);
+                intent.putExtra("trip",((TripInstance)parent.getItemAtPosition(position)));
+                startActivity(intent);
+            }
+        });
+        ArrayAdapter<TripInstance> adapter = new ArrayAdapter<TripInstance>(this, android.R.layout.simple_list_item_1, trips);
         listView.setAdapter(adapter);
     }
 }

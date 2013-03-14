@@ -1,5 +1,6 @@
 package com.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,7 +11,7 @@ import java.util.Set;
  * Time: 15:42
  * To change this template use File | Settings | File Templates.
  */
-public class Trip {
+public class Trip implements Serializable {
     private Long Id;
     private String Title;
     private String Description;

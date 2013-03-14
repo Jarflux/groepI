@@ -31,6 +31,21 @@ public class Controller {
         return tripParticipations;
     }
 
+    public TripInstance getTripInstance(Long tripId){
+        HttpGetTask getTask = new HttpGetTask();
+        TripInstance trip = null;
+        getTask.execute("android/getTripInstance",tripId.toString());
+        try {
+            if(getTask.get() != null){
+                return (TripInstance)getTask.get();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return trip;
+    }
+
+
     public  JSONObject springSecurityCheck(String username, String password) {
         LoginTask loginTask = new LoginTask();
         loginTask.execute(username,password);

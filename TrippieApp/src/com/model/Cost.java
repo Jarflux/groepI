@@ -1,5 +1,7 @@
 package com.model;
 
+import java.io.Serializable;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Mitch Va Daele
@@ -7,7 +9,7 @@ package com.model;
  * Time: 15:49
  * To change this template use File | Settings | File Templates.
  */
-public class Cost {
+public class Cost implements Serializable {
     private long Id;
     private String Description;
     private Double Amount;
