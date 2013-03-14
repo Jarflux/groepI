@@ -1,18 +1,15 @@
 package be.kdg.groepi.model;
 
 import be.kdg.groepi.utils.CompareUtil;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import org.apache.commons.collections.FactoryUtils;
 import org.apache.commons.collections.list.LazyList;
 import org.hibernate.annotations.*;
 import org.hibernate.annotations.CascadeType;
-
-import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 //public enum STOPTYPE {
 //    INFORMATIVE (0),
@@ -21,6 +18,7 @@ import java.util.Set;
 @Entity
 @Table(name = "T_STOP")
 public class Stop {
+
     @Id
     @GeneratedValue
     @Column(name = "stop_id")
@@ -41,11 +39,9 @@ public class Stop {
     private String fStopText;
     @Column(name = "radius")
     private Integer fRadius;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "trip_id", nullable = false)
     private Trip fTrip;
-
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fStop")
     @Cascade({CascadeType.DELETE, CascadeType.SAVE_UPDATE})
     private List<Answer> fAnswers = LazyList.decorate(new ArrayList<Answer>(), FactoryUtils.instantiateFactory(Answer.class));

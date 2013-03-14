@@ -1,5 +1,11 @@
 package be.kdg.groepi.utils;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Date;
+import java.util.UUID;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.apache.http.HttpResponse;
@@ -15,13 +21,6 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.Date;
-import java.util.UUID;
-
 /**
  * Created with IntelliJ IDEA.
  * User: Vincent
@@ -31,23 +30,18 @@ import java.util.UUID;
  */
 public class VuforiaUtil {
 
-
     public static String accessKey = "dcb738253b204e4ca1626a024da20a3cf697a15f";
     public static String secretKey = "c036f9bc82ce53b0da82d9a3fcba5041519d8476";
-
     public static String url = "https://vws.vuforia.com";
-
-
-
     private final float pollingIntervalMinutes = 60;//poll at 1-hour interval
 
-    public static String postTarget(File image,Long stopid) throws URISyntaxException, ClientProtocolException, IOException, JSONException {
+    public static String postTarget(File image, Long stopid) throws URISyntaxException, ClientProtocolException, IOException, JSONException {
         HttpPost postRequest = new HttpPost();
         HttpClient client = new DefaultHttpClient();
         postRequest.setURI(new URI(url + "/targets"));
         JSONObject requestBody = new JSONObject();
         System.out.println("Ik kom binnen in posttarget");
-        setRequestBody(requestBody,image,stopid);
+        setRequestBody(requestBody, image, stopid);
         postRequest.setEntity(new StringEntity(requestBody.toString()));
         setHeaders(postRequest); // Must be done after setting the body
 
@@ -63,13 +57,13 @@ public class VuforiaUtil {
         return uniqueTargetId;
     }
 
-    public static void setRequestBody(JSONObject requestBody,File imageFile,Long stopId) throws IOException, JSONException {
+    public static void setRequestBody(JSONObject requestBody, File imageFile, Long stopId) throws IOException, JSONException {
 
 
         byte[] image = FileUtils.readFileToByteArray(imageFile);
         String uuid = UUID.randomUUID().toString();
 
-        requestBody.put("name", uuid.replace("-","")); // Mandatory
+        requestBody.put("name", uuid.replace("-", "")); // Mandatory
         requestBody.put("width", 200); // Mandatory
         requestBody.put("image", Base64.encodeBase64String(image)); // Mandatory
         requestBody.put("active_flag", 1); // Optional

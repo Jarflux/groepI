@@ -8,40 +8,35 @@ import be.kdg.groepi.service.UserService;
 import be.kdg.groepi.utils.CompareUtil;
 import be.kdg.groepi.utils.DateUtil;
 import be.kdg.groepi.utils.FileUtil;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import java.util.*;
+import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-import java.util.*;
-
-
-/**
- * Author: Ben Oeyen
- * Date: 7/02/13
- * Class: User REST Controller
- * Description: Controller to handle REST service calls
- */
-@Controller
+@Controller("restUserController")
 @RequestMapping("profile")
 public class RestUserController {
 
     private static final Logger logger = Logger.getLogger(RestUserController.class);
+    @Autowired
+    protected UserService userService;
+    @Autowired
+    protected TripInstanceService tripInstanceService;
 
     @RequestMapping(value = "/view/{userId}", method = RequestMethod.GET)
     public ModelAndView getUser(@PathVariable("userId") String userId) {
-        User user;
-        user = UserService.getUserById(Long.parseLong(userId));
+        User user = userService.getUserById(Long.parseLong(userId));
 
         if (user != null) {
             logger.debug("Returning User: " + user.toString() + " with user #" + userId);
@@ -58,17 +53,17 @@ public class RestUserController {
 
     @RequestMapping(value = "/createUser", method = RequestMethod.POST)
     public ModelAndView createUser(@ModelAttribute("userObject") User user,
-                                   @RequestParam(value = "dob") String dateOfBirth)
+            @RequestParam(value = "dob") String dateOfBirth)
             throws UnsupportedEncodingException, NoSuchAlgorithmException {
         user.setDateOfBirth(DateUtil.dateStringToLong(dateOfBirth, null));
         user.setPassword(CompareUtil.getHashedPassword(user.getPassword()));
-        UserService.createUser(user);
+        userService.createUser(user);
         return new ModelAndView("home", "userObject", user);
     }
 
     @RequestMapping(value = "/fblogin", method = RequestMethod.POST)
     public ModelAndView fbLogin(@RequestParam(value = "id") String FBUserID, @RequestParam(value = "name") String naam, @RequestParam(value = "email") String email, @RequestParam(value = "birthday") String verjaardag, HttpSession session) {
-        User user = UserService.getUserByFBUserID(FBUserID);
+        User user = userService.getUserByFbUserId(FBUserID);
         if (user == null) {
             user = new User();
             user.setName(naam);
@@ -76,7 +71,7 @@ public class RestUserController {
             user.setDateOfBirth(DateUtil.dateStringToLongAlt(verjaardag, null));
             user.setFBUserID(FBUserID);
             user.setPassword(" ");
-            UserService.createUser(user);
+            userService.createUser(user);
         }
 
         MyUserDetailsService userDetailsService = new MyUserDetailsService();
@@ -97,17 +92,10 @@ public class RestUserController {
         SortedSet<TripInstance> userPastTripInstances = new TreeSet<>();
         SortedSet<TripInstance> userFutureTripInstances = new TreeSet<>();
 
-//        long today = Calendar.getInstance().getTime().getTime();
         long today = DateUtil.dateStringToLong(DateUtil.formatDate(Calendar.getInstance().getTime()));
 
-        for (TripInstance tripInstance : TripInstanceService.getAllTripInstances()) {
+        for (TripInstance tripInstance : tripInstanceService.getAllTripInstances()) {
             if (tripInstance.getParticipants().contains(sessionUser)) {
-/*                char key;
-                if (tripInstance.getStartTime() < today) {
-                    key = 'A';
-                } else {
-                    key = 'B';
-                }*/
 
                 if (tripInstance.getStartTime() < today) {
                     userPastTripInstances.add(tripInstance);
@@ -115,12 +103,11 @@ public class RestUserController {
                     userFutureTripInstances.add(tripInstance);
                 }
 
-                tripInstanceDates.put(/*key + */tripInstance.getId(), DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartTime())));
+                tripInstanceDates.put(tripInstance.getId(), DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartTime())));
                 tripInstanceStartTimes.put(tripInstance.getId(), DateUtil.formatTime(DateUtil.longToDate(tripInstance.getStartTime())));
                 tripInstanceEndTimes.put(tripInstance.getId(), DateUtil.formatTime(DateUtil.longToDate(tripInstance.getEndTime())));
             }
         }
-
 
         ModelAndView modelAndView = new ModelAndView("profile/userprofile");
         modelAndView.addObject("userObject", session.getAttribute("userObject"));
@@ -143,18 +130,17 @@ public class RestUserController {
 
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)
     public ModelAndView editUser(HttpSession session, @ModelAttribute("userObject") User user,
-                                 @RequestParam(value = "dob") String dateOfBirth,
-                                 @RequestParam(value = "photo") MultipartFile uploadedFile) throws IOException {
+            @RequestParam(value = "dob") String dateOfBirth,
+            @RequestParam(value = "photo") MultipartFile uploadedFile) throws IOException {
         User sessionUser = (User) session.getAttribute("userObject");
         sessionUser.setName(user.getName());
         sessionUser.setEmail(user.getEmail());
         sessionUser.setDateOfBirth(DateUtil.dateStringToLong(dateOfBirth, null));
-        sessionUser.setProfilePicture(FileUtil.savePicture(session, uploadedFile, sessionUser.getId()));
-        UserService.updateUser(sessionUser);
-        ModelAndView modelAndView = new ModelAndView("profile/userprofile");
-        modelAndView.addObject("userObject", sessionUser);
-        modelAndView.addObject("dob", DateUtil.formatDate(session));
-        return modelAndView;
+        if (!uploadedFile.isEmpty()) {
+            sessionUser.setProfilePicture(FileUtil.savePicture(session, uploadedFile, sessionUser.getId()));
+        }
+        userService.updateUser(sessionUser);
+        return myProfile(session);
     }
 
     @RequestMapping(value = "/reset/forgotPassword")
@@ -166,7 +152,7 @@ public class RestUserController {
 
     @RequestMapping(value = "/reset/doResetPassword", method = RequestMethod.POST)
     public ModelAndView doResetPassword(@RequestParam(value = "email") String email) {
-        if (UserService.resetPassword(email)) {
+        if (userService.resetPassword(email)) {
             return new ModelAndView("profile/forgotpassword", "message", "An email has been sent. Please check your inbox for further instructions.");
         } else {
             return new ModelAndView("profile/forgotpassword", "message", "Email address not found!");
@@ -175,7 +161,7 @@ public class RestUserController {
 
     @RequestMapping(value = "/reset/{resetString}", method = RequestMethod.GET)
     public ModelAndView resetPassword(@PathVariable("resetString") String resetString) {
-        User user = UserService.getUserByResetString(resetString);
+        User user = userService.getUserByResetString(resetString);
         if (user != null) {
             if (user.getPasswordResetTimestamp().getTime() > Calendar.getInstance().getTime().getTime()) {
                 return new ModelAndView("profile/resetpassword", "passwordResetString", user.getPasswordResetString());
@@ -191,17 +177,15 @@ public class RestUserController {
 
     @RequestMapping(value = "/reset/setNewPassword", method = RequestMethod.POST)
     public String setNewPassword(/* @RequestParam(value = "userObject") */ /* @ModelAttribute("userObject") User user, */
-                                 @RequestParam(value = "passwordResetString") String passwordResetString,
-                                 @RequestParam(value = "password") String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        User user = UserService.getUserByResetString(passwordResetString);
+            @RequestParam(value = "passwordResetString") String passwordResetString,
+            @RequestParam(value = "password") String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        User user = userService.getUserByResetString(passwordResetString);
 
         user.setPassword(CompareUtil.getHashedPassword(password));
         user.setPasswordResetString(null);
         user.setPasswordResetTimestamp(null);
-        UserService.updateUser(user);
+        userService.updateUser(user);
 
         return "home";
     }
-
-
 }

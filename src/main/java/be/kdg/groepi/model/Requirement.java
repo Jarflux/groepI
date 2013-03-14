@@ -1,8 +1,8 @@
 package be.kdg.groepi.model;
 
 import be.kdg.groepi.utils.CompareUtil;
-import javax.persistence.*;
 import java.io.Serializable;
+import javax.persistence.*;
 
 /**
  * Author: Ben Oeyen

@@ -1,8 +1,6 @@
 package be.kdg.groepi.utils;
 
 import be.kdg.groepi.model.User;
-import org.junit.Test;
-
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
@@ -10,9 +8,13 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,6 +23,9 @@ import static org.junit.Assert.assertTrue;
  * Time: 13:41
  * To change this template use File | Settings | File Templates.
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:testApplicationContext.xml"})
+@Transactional
 public class CompareUtilTest {
 
     @Test
@@ -86,7 +91,7 @@ public class CompareUtilTest {
         assertTrue("Timestamps should be equal", CompareUtil.compareTimestamp(new Timestamp(911), new Timestamp(911)));
         assertTrue("Timestamps should be equal", CompareUtil.compareTimestamp(null, null));
     }
-    
+
     @Test
     public void testCompareUser() {
         User user1 = new User("TIMMEH", "TIM@M.EH", "hemmit", DateUtil.dateToLong(4, 5, 2011, 15, 32, 0));

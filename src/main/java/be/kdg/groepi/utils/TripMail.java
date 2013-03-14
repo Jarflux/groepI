@@ -3,7 +3,6 @@ package be.kdg.groepi.utils;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 
-
 /**
  * Created with IntelliJ IDEA.
  * User: Tim
@@ -12,6 +11,7 @@ import org.springframework.mail.SimpleMailMessage;
  * To change this template use File | Settings | File Templates.
  */
 public class TripMail {
+
     private MailSender mailSender;
 
     public void setMailSender(MailSender mailSender) {

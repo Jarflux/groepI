@@ -73,7 +73,7 @@
         </section>
 
         <section class="full">
-            <div class="half" id="divAnswers" style="display:none;">
+            <div class="half" id="divAnswers">
                 <div class="row">
                     <span><c:out value="${stopObject.stopText}"/></span>
                 </div>
@@ -84,18 +84,12 @@
                                 <c:forEach var="answer" items="${stopObject.answers}" varStatus="status">
                                     <c:choose>
                                         <c:when test="${answer.isCorrect}">
-                                            <li class="active"><span><input type="radio" name="group1" checked="checked"
-                                                                            onclick="setCorrectAnswer(${answer.id})"/><c:out
-                                                    value="${answer.answerText}"/><p class="removeButton"
-                                                                                     onclick="deleteAnswer(${answer.id})">
-                                                X</p></span></li>
+                                            <li class="active" id="answer_${answer.id}"><span><input type="radio" name="group1" checked="checked"
+                                                                            onclick="setCorrectAnswer(${answer.id})"/><c:out value="${answer.answerText}"/><p class="removeButton" onclick="deleteAnswer(${answer.id})">X</p></span></li>
                                         </c:when>
                                         <c:otherwise>
-                                            <li class="active"><span><input type="radio" name="group1"
-                                                                            onclick="setCorrectAnswer(${answer.id})"/><c:out
-                                                    value="${answer.answerText}"/><p class="removeButton"
-                                                                                     onclick="deleteAnswer(${answer.id})">
-                                                X</p></span></li>
+                                            <li class="active" id="answer_${answer.id}"><span><input type="radio" name="group1"
+                                                                            onclick="setCorrectAnswer(${answer.id})"/><c:out value="${answer.answerText}"/><p class="removeButton" onclick="deleteAnswer(${answer.id})">X</p></span></li>
                                         </c:otherwise>
                                     </c:choose>
                                 </c:forEach>
@@ -114,13 +108,11 @@
                     </form>
                 </div>
             </div>
-            <div class="half" id="divPictureAR" style="display:block;">
-                <%--AR picture upload control--%>
+            <div class="half" id="divPictureAR">
                 <form action="/trips/addAR" enctype="multipart/form-data" method="POST">
                     <input type="hidden" name="stopid" value="${stopObject.id}"/>
                     <input type="file" name="photo"/>
                     <input type="submit" value="<spring:message code="text.save" />"/>
-
                 </form>
             </div>
         </section>
@@ -133,16 +125,21 @@
 <script>
     $(function () {
         console.log("Start");
+        /*GMap functions*/
         initializeGMaps();
         placeStopMarker(parseInt(${stopObject.latitude}), parseInt(${stopObject.longitude}));
+
+        /*Eventhandlers*/
         $("#stopType").change(function () {
             console.log("Selected:" + $(this).val());
             var selectedValue = $(this).val();
             if (selectedValue == 0) {
                 $("#divAnswers").hide();
+                console.log("divAnswers.hide");
             }
             else {
                 $("#divAnswers").show();
+                console.log("divAnswers.show");
             }
         });
         $("#stopDisplayType").change(function () {
@@ -150,11 +147,36 @@
             var selectedValue = $(this).val();
             if (selectedValue == 0) {
                 $("#divPictureAR").hide();
+                console.log("divPictureAR.hide");
             }
             else {
                 $("#divPictureAR").show();
+                console.log("divPictureAR.show");
             }
         });
+
+        /*Page data init*/
+        if (parseInt(${stopObject.type}) == 0)
+        {
+           $("#stopType").val(0);
+           $("#divAnswers").hide();
+        }
+        else if (parseInt(${stopObject.type}) == 1)
+        {
+            $("#stopType").val(1);
+            $("#divAnswers").show();
+        }
+
+        if (parseInt(${stopObject.displayMode}) == 0)
+        {
+            $("#stopDisplayType").val(0);
+            $("#divPictureAR").hide();
+        }
+        else if (parseInt(${stopObject.displayMode}) == 1)
+        {
+            $("#stopDisplayType").val(1);
+            $("#divPictureAR").show();
+        }
         console.log("End--");
     });
 
@@ -165,7 +187,8 @@
 
     function deleteAnswer(id) {
         console.log("deleteAnswer");
-        var feedback = $.post("/trips/deleteStopAnswer", { answerId: id})
+        var feedback = $.post("/trips/deleteAnswer", { answerId: id})
+        $("#answer_" + id).remove();
     }
 </script>
 </body>

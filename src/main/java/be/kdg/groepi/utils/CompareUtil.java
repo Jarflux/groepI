@@ -51,7 +51,7 @@ public class CompareUtil {
         }
         return true;
     }
-    
+
     public static boolean compareUser(User x, User y) {
         if ((x == null || y == null) && !(x == null && y == null)) {
             return false;
@@ -82,7 +82,6 @@ public class CompareUtil {
         }
         return true;
     }
-
 
     public static String getHashedPassword(String text)
             throws NoSuchAlgorithmException, UnsupportedEncodingException {

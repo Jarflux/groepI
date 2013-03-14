@@ -2,14 +2,13 @@ package be.kdg.groepi.model;
 
 import be.kdg.groepi.annotations.ExcludeFromGson;
 import be.kdg.groepi.utils.CompareUtil;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.*;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 /**
  * Author: Ben Oeyen
@@ -54,8 +53,8 @@ public class TripInstance implements Serializable, Comparable {
     @ManyToMany(fetch = FetchType.EAGER)
     @Cascade(value = CascadeType.ALL)
     @JoinTable(name = "T_TRIP_INSTANCE_PARTICIPANT", joinColumns = {
-            @JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {
-            @JoinColumn(name = "user_id")})
+        @JoinColumn(name = "trip_instance_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "user_id")})
     @ExcludeFromGson
     private Set<User> fParticipants = new HashSet<>();
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fTripInstance")
@@ -262,7 +261,6 @@ public class TripInstance implements Serializable, Comparable {
     public int hashCode() {
         return getId().intValue();
     }
-
 
     @Override
     public int compareTo(Object o) {

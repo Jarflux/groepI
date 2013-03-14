@@ -2,19 +2,21 @@ package be.kdg.groepi.utils;
 
 import be.kdg.groepi.model.User;
 import be.kdg.groepi.service.UserService;
-import org.hibernate.Session;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.springframework.mock.web.MockHttpSession;
+import static be.kdg.groepi.utils.DateUtil.dateToLong;
 
-import javax.servlet.http.HttpSession;
 import java.util.Calendar;
 import java.util.Date;
-
-import static be.kdg.groepi.utils.DateUtil.dateToLong;
+import org.junit.After;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockHttpSession;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,8 +25,14 @@ import static org.junit.Assert.assertTrue;
  * Time: 15:39
  * To change this template use File | Settings | File Templates.
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:testApplicationContext.xml"})
+@Transactional
 public class DateUtilTest {
+
     private Calendar cal;
+    @Autowired
+    protected UserService userService;
 
     @Before
     public void beforeEachTest() {
@@ -60,7 +68,7 @@ public class DateUtilTest {
     public void testFormatDate() {
         MockHttpSession mockHttpSession = new MockHttpSession();
         User user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
-        UserService.createUser(user);
+        userService.createUser(user);
         mockHttpSession.setAttribute("userObject", user);
         assertTrue("Formatted date should be dd-MM-yyyy [mock]", DateUtil.formatDate(mockHttpSession).equals("04-05-2011"));
         Calendar cal = Calendar.getInstance();
@@ -88,17 +96,17 @@ public class DateUtilTest {
         assertTrue("Formatted time should be HH:mm [date]", DateUtil.formatTime(date).equals("15:30"));
         assertTrue("Formatted time should be HH:mm [long]", DateUtil.formatTime(date.getTime()).equals("15:30"));
     }
-/*
-    @Test
-    public void testLongToDateString() {
-        long date = DateUtil.dateToLong(15, 7, 1992, 16, 30, 0);
-        assertTrue("testLongToDateString: does not return correct date format", DateUtil.longToDateString(date).equals("15-07-1992"));
-    }
+    /*
+     @Test
+     public void testLongToDateString() {
+     long date = DateUtil.dateToLong(15, 7, 1992, 16, 30, 0);
+     assertTrue("testLongToDateString: does not return correct date format", DateUtil.longToDateString(date).equals("15-07-1992"));
+     }
 
-    @Test
-    public void testLongToTimeString() {
-        long date = DateUtil.dateToLong(15, 7, 1992, 16, 30, 0);
-        assertTrue("testLongToDateString: does not return correct date format", DateUtil.longToTimeString(date).equals("16:30"));
+     @Test
+     public void testLongToTimeString() {
+     long date = DateUtil.dateToLong(15, 7, 1992, 16, 30, 0);
+     assertTrue("testLongToDateString: does not return correct date format", DateUtil.longToTimeString(date).equals("16:30"));
 
-    }*/
+     }*/
 }

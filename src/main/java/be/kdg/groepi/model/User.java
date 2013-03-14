@@ -1,9 +1,9 @@
 package be.kdg.groepi.model;
 
 import be.kdg.groepi.utils.CompareUtil;
-import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import javax.persistence.*;
 
 /**
  * Author: Ben Oeyen
@@ -38,11 +38,9 @@ public class User implements Serializable {
     //@OneToMany
     //private Set<Trip> organizedTrips;
     // Hibernates needs empty constructor
+
     public User() {
     }
-
-
-
 
     public User(String name, String email, String password, Long dateOfBirth) {
         this.fName = name;

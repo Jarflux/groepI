@@ -1,11 +1,11 @@
 package be.kdg.groepi.service;
 
+import be.kdg.groepi.dao.MessageDao;
 import be.kdg.groepi.model.Message;
-import be.kdg.groepi.utils.HibernateUtil;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Author: Ben Oeyen
@@ -13,116 +13,34 @@ import java.util.List;
  * Class: Message Service
  * Description:
  */
-
+@Service("messageService")
+@Transactional
 public class MessageService {
-    public static Message getMessageById(long Id) {
-        Message message = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
 
-            List<Message> messages = session.createQuery("FROM Message message WHERE message.fId = :Id").
-                    setString("Id", String.valueOf(Id)).setReadOnly(true).list();
-            if (messages.size() > 0) {
-                message = messages.get(0);
-            }
+    @Autowired
+    private MessageDao messageDoa;
 
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return message;
+    public Message getMessageById(long id) {
+        return messageDoa.getMessageById(id);
     }
 
-    public static void createMessage(Message message) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            session.save(message);
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void createMessage(Message message) {
+        messageDoa.createMessage(message);
     }
 
-    public static void updateMessage(Message message) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            session.update(message);
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void updateMessage(Message message) {
+        messageDoa.updateMessage(message);
     }
 
-    public static void deleteMessage(Message message) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-
-            session.delete(message);
-
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void deleteMessage(Message message) {
+        messageDoa.deleteMessage(message);
     }
 
-    public static List<Message> getAllMessages() {
-        List<Message> messages = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            messages = session.createQuery("FROM Message").list();
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return messages;
+    public List<Message> getAllMessages() {
+        return messageDoa.getAllMessages();
     }
 
-    public static List<Message> getMessagesByTripInstanceId(Long Id) {
-        List<Message> messages = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            messages = session.createQuery("FROM Message message where message.fTripInstance = :Id")
-                    .setString("Id", String.valueOf(Id)).setReadOnly(true).list();
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return messages;
+    public List<Message> getMessagesByTripInstanceId(Long id) {
+        return messageDoa.getMessagesByTripInstanceId(id);
     }
 }

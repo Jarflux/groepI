@@ -4,13 +4,12 @@
  */
 package be.kdg.groepi.service;
 
-import be.kdg.groepi.model.Answer;
+import be.kdg.groepi.dao.AnswerInstanceDao;
 import be.kdg.groepi.model.AnswerInstance;
-import be.kdg.groepi.utils.HibernateUtil;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Author: Ben Oeyen
@@ -18,97 +17,30 @@ import java.util.List;
  * Class: Requirement Service
  * Description:
  */
-
+@Service("answerInstanceService")
+@Transactional
 public class AnswerInstanceService {
-    public static AnswerInstance getAnswerInstanceById(long Id) {
-        AnswerInstance answerInstance = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
 
-            List<AnswerInstance> answerInstances = session.createQuery("FROM AnswerInstance answerInstance WHERE answerInstance.fId = :Id").
-                    setString("Id", String.valueOf(Id)).setReadOnly(true).list();
-            if (answerInstances.size() > 0) {
-                answerInstance = answerInstances.get(0);
-            }
+    @Autowired
+    private AnswerInstanceDao answerInstanceDoa;
 
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return answerInstance;
+    public AnswerInstance getAnswerInstanceById(long id) {
+        return answerInstanceDoa.getAnswerInstanceById(id);
     }
 
-    public static void createAnswerInstance(AnswerInstance answerInstance) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            session.save(answerInstance);
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void createAnswerInstance(AnswerInstance answerInstance) {
+        answerInstanceDoa.createAnswerInstance(answerInstance);
     }
 
-    public static void updateAnswerInstance(AnswerInstance answerInstance) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            session.update(answerInstance);
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void updateAnswerInstance(AnswerInstance answerInstance) {
+        answerInstanceDoa.updateAnswerInstance(answerInstance);
     }
 
-    public static void deleteAnswerInstance(AnswerInstance answerInstance) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-
-            session.delete(answerInstance);
-
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
+    public void deleteAnswerInstance(AnswerInstance answerInstance) {
+        answerInstanceDoa.deleteAnswerInstance(answerInstance);
     }
 
-    public static List<AnswerInstance> getAllAnswerInstances() {
-        List<AnswerInstance> answerInstances = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            answerInstances = session.createQuery("FROM AnswerInstance").list();
-            tx.commit();
-        } catch (RuntimeException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return answerInstances;
+    public List<AnswerInstance> getAllAnswerInstances() {
+        return answerInstanceDoa.getAllAnswerInstances();
     }
 }

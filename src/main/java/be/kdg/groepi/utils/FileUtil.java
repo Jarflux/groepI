@@ -1,12 +1,11 @@
 package be.kdg.groepi.utils;
 
-import org.apache.commons.io.FileUtils;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import javax.servlet.http.HttpSession;
+import org.apache.commons.io.FileUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,6 +15,7 @@ import java.io.IOException;
  * To change this template use File | Settings | File Templates.
  */
 public class FileUtil {
+
     private static String destination = File.separator + "images" + File.separator + "profilepictures";
 
     public static String savePicture(HttpSession session, MultipartFile file, long id) throws IOException {
@@ -42,5 +42,4 @@ public class FileUtil {
         });
 
     }
-
 }

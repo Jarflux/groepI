@@ -71,9 +71,9 @@
                             </div>
                         </form>
                     </c:when>
-                    <c:when test="${userObject == null}">
+                    <c:otherwise>
                         <jsp:forward page="/error/invaliduser"/>
-                    </c:when>
+                    </c:otherwise>
 
                 </c:choose>
             </div>

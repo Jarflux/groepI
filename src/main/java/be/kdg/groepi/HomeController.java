@@ -7,7 +7,6 @@ package be.kdg.groepi;
  * Time: 9:05
  * To change this template use File | Settings | File Templates.
  */
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,16 +17,19 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class HomeController {
+
     @RequestMapping(value = "/")
     public String home() {
         System.out.println("HomeController: Passing through...");
         return "home";
     }
+
     @RequestMapping(value = "/fbloginpage")
     public String fbloginpage() {
         System.out.println("FBLOgin needed: Passing through...");
         return "fbloginpage";
     }
+
     @RequestMapping(value = "/login")
     public String login() {
         System.out.println("Login: Passing through...");
