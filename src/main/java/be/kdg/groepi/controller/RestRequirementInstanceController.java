@@ -1,5 +1,6 @@
 package be.kdg.groepi.controller;
 
+
 import be.kdg.groepi.model.RequirementInstance;
 import be.kdg.groepi.model.TripInstance;
 import be.kdg.groepi.service.MessageService;
@@ -35,22 +36,20 @@ public class RestRequirementInstanceController {
 
     @RequestMapping(value = "/trips/doaddinstancerequirement", method = RequestMethod.POST)
     public ModelAndView doAddInstanceRequirement(@RequestParam(value = "tripInstanceId") String tripInstanceId,
-            @RequestParam(value = "name") String name,
-            @RequestParam(value = "amount") Long amount,
-            @RequestParam(value = "description") String description) {
+                                                 @RequestParam(value = "name") String name,
+                                                 @RequestParam(value = "amount") Long amount,
+                                                 @RequestParam(value = "description") String description) {
 
         TripInstance tripInstance = tripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId));
         RequirementInstance requirementInstance = new RequirementInstance(name, amount, description, tripInstance);
         requirementInstanceService.createRequirementInstance(requirementInstance);
-        ModelAndView modelAndView = new ModelAndView("redirect:/trips/addinstancerequirement/" + tripInstanceId);
-        modelAndView.addObject("tripInstanceObject", tripInstance);
-        return modelAndView;
+        return new ModelAndView("redirect:/trips/viewinstance/" + tripInstanceId);
     }
 
     @RequestMapping(value = "/trips/assignrequirementtouser", method = RequestMethod.POST)
     public ModelAndView assignRequirement(HttpSession session,
-            @RequestParam(value = "responsibleuser") String userId,
-            @RequestParam(value = "requirementinstanceid") String requirementInstanceid) {
+                                          @RequestParam(value = "responsibleuser") String userId,
+                                          @RequestParam(value = "requirementinstanceid") String requirementInstanceid) {
         RequirementInstance requirementInstance = requirementInstanceService
                 .getRequirementInstanceById(Long.parseLong(requirementInstanceid));
         if (userId.equals("0")) {

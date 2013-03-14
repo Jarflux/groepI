@@ -1,5 +1,6 @@
 package be.kdg.groepi.controller;
 
+
 import be.kdg.groepi.model.*;
 import be.kdg.groepi.service.MessageService;
 import be.kdg.groepi.service.RequirementInstanceService;
@@ -39,12 +40,12 @@ public class RestTripInstanceController {
 
     @RequestMapping(value = "/trips/createinstance", method = RequestMethod.POST)
     public ModelAndView createinstance(HttpSession session, @ModelAttribute("tripInstanceObject") TripInstance tempTripInstance,
-            @RequestParam(value = "tripId") Long tripId,
-            @RequestParam(value = "date") String date,
-            @RequestParam(value = "startTimeString") String startTimeString,
-            @RequestParam(value = "endTimeString") String endTimeString,
-            @RequestParam(value = "repeatable") String repeatable,
-            @RequestParam(value = "endDate") String endDate) {
+                                       @RequestParam(value = "tripId") Long tripId,
+                                       @RequestParam(value = "date") String date,
+                                       @RequestParam(value = "startTimeString") String startTimeString,
+                                       @RequestParam(value = "endTimeString") String endTimeString,
+                                       @RequestParam(value = "repeatable") String repeatable,
+                                       @RequestParam(value = "endDate") String endDate) {
 
         User user = (User) session.getAttribute("userObject");
         Trip trip = tripService.getTripById(tripId);
@@ -112,12 +113,12 @@ public class RestTripInstanceController {
 
     @RequestMapping(value = "/trips/updateinstance", method = RequestMethod.POST)
     public ModelAndView updateInstance(@RequestParam(value = "tripInstanceId") Long tripInstanceId,
-            @RequestParam(value = "title") String title,
-            @RequestParam(value = "description") String description,
-            @RequestParam(value = "available") Boolean available,
-            @RequestParam(value = "date") String date,
-            @RequestParam(value = "startTimeString") String startTimeString,
-            @RequestParam(value = "endTimeString") String endTimeString) {
+                                       @RequestParam(value = "title") String title,
+                                       @RequestParam(value = "description") String description,
+                                       @RequestParam(value = "available") Boolean available,
+                                       @RequestParam(value = "date") String date,
+                                       @RequestParam(value = "startTimeString") String startTimeString,
+                                       @RequestParam(value = "endTimeString") String endTimeString) {
 
         TripInstance tripInstance = tripInstanceService.getTripInstanceById(tripInstanceId);
         tripInstance.setTitle(title);
@@ -173,6 +174,7 @@ public class RestTripInstanceController {
         Map<Long, String> publicTripInstanceDates = new HashMap<>();
         Map<Long, String> publicTripInstanceStartTimes = new HashMap<>();
         Map<Long, String> publicTripInstanceEndTimes = new HashMap<>();
+        Map<Long, Boolean> isUserParticipating = new HashMap<>();
         for (TripInstance tripInstance : publicTripInstances) {
             publicTripInstanceDates.put(tripInstance.getId(),
                     DateUtil.formatDate(DateUtil.longToDate(tripInstance.getStartTime())));
@@ -180,6 +182,11 @@ public class RestTripInstanceController {
                     DateUtil.formatTime(DateUtil.longToDate(tripInstance.getStartTime())));
             publicTripInstanceEndTimes.put(tripInstance.getId(),
                     DateUtil.formatTime(DateUtil.longToDate(tripInstance.getEndTime())));
+            if (tripInstance.getParticipants().contains(user)){
+                isUserParticipating.put(tripInstance.getId(), true);
+            } else {
+                isUserParticipating.put(tripInstance.getId(), false);
+            }
         }
 
         Map<Long, String> ownTripInstanceDates = new HashMap<>();
@@ -205,6 +212,7 @@ public class RestTripInstanceController {
         modelAndView.addObject("ownTripInstanceStartTimes", ownTripInstanceStartTimes);
         modelAndView.addObject("ownTripInstanceEndTimes", ownTripInstanceEndTimes);
 
+        modelAndView.addObject("isUserParticipating", isUserParticipating);
 
         return modelAndView;
     }
@@ -215,7 +223,7 @@ public class RestTripInstanceController {
         TripInstance tripInstance = tripInstanceService.getTripInstanceById(Long.parseLong(tripId));
         tripInstance.addParticipantToTripInstance(sessionUser);
         tripInstanceService.updateTripInstance(tripInstance);
-        return getTripInstances(session);
+        return new ModelAndView("redirect:/trips/viewinstance/" + tripId);
     }
 
     @RequestMapping(value = "/trips/viewinstance/{tripInstanceId}", method = RequestMethod.GET)
@@ -236,28 +244,10 @@ public class RestTripInstanceController {
     public ModelAndView invitebymail(@RequestParam(value = "instanceid") String instanceid, @RequestParam(value = "receipients") String receivers, @RequestParam(value = "message") String message, HttpSession session) {
         TripInstance tripInstance = tripInstanceService.getTripInstanceById(Long.parseLong(instanceid));
 
-        tripInstanceService.inviteByEmail(receivers, message, Long.parseLong(instanceid));
+        TripInstanceService.inviteByEmail(receivers, message, Long.parseLong(instanceid));
 
-        return getModelAndViewForViewInstance(session, tripInstance);
+        return ModelAndViewUtil.getModelAndViewForViewInstance(messageService, session, tripInstance);
     }
 
-    private ModelAndView getModelAndViewForViewInstance(HttpSession session, TripInstance tripInstance) {
-        Map<Long, String> messageDates = new HashMap<>();
-        List<Message> messages = messageService.getMessagesByTripInstanceId(tripInstance.getId());
 
-        for (Message message : messages) {
-            messageDates.put(tripInstance.getId(), DateUtil.formatDate(DateUtil.longToDate(message.getDate())));
-        }
-        SortedSet<RequirementInstance> sortedRequirements = new TreeSet<>();
-        sortedRequirements.addAll(tripInstance.getRequirementInstances());
-        tripInstance.setRequirementInstances(sortedRequirements);
-        ModelAndView modelAndView = new ModelAndView("/trips/viewinstance");
-        modelAndView.addObject("tripInstanceObject", tripInstance);
-        modelAndView.addObject("messageDates", messageDates);
-        modelAndView.addObject("userObject", session.getAttribute("userObject"));
-        modelAndView.addObject("date", DateUtil.formatDate(tripInstance.getStartTime()));
-        modelAndView.addObject("startTimeString", DateUtil.formatTime(tripInstance.getStartTime()));
-        modelAndView.addObject("endTimeString", DateUtil.formatTime(tripInstance.getEndTime()));
-        return modelAndView;
-    }
 }

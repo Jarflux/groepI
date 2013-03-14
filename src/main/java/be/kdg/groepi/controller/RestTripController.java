@@ -33,7 +33,7 @@ public class RestTripController {
         User user = (User) session.getAttribute("userObject");
         trip.setOrganiser(user);
         tripService.createTrip(trip);
-        return new ModelAndView("trips/view", "tripId", trip.getId().toString());
+        return new ModelAndView("trips/view", "tripObject", trip);
     }
 
     @RequestMapping(value = "/view/{tripId}", method = RequestMethod.GET)
@@ -120,8 +120,11 @@ public class RestTripController {
     }
 
     @RequestMapping(value = "/updateTrip", method = RequestMethod.POST)
-    public ModelAndView updateTrip(@ModelAttribute("tripObject") Trip trip) {
+    public ModelAndView updateTrip(@ModelAttribute("tripObject") Trip trip, HttpSession session) {
+        User user = (User) session.getAttribute("userObject");
+        trip.setOrganiser(user);
         tripService.updateTrip(trip);
+        trip = tripService.getTripById(trip.getId());
         return new ModelAndView("trips/view", "tripObject", trip);
     }
 }

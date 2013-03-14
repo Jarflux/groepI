@@ -42,7 +42,7 @@ public class AnswerInstanceDaoImpl implements AnswerInstanceDao {
 
     @Override
     public void updateAnswerInstance(AnswerInstance user) throws DataAccessException {
-        getEntityManager().persist(user);
+        getEntityManager().merge(user);
     }
 
     @Override

@@ -21,30 +21,30 @@ import org.springframework.transaction.annotation.Transactional;
 public class StopService {
 
     @Autowired
-    private StopDao stopDoa;
+    private StopDao stopDao;
 
     public Stop getStopById(long id) {
-        return stopDoa.getStopById(id);
+        return stopDao.getStopById(id);
     }
 
     public void createStop(Stop stop) {
-        stopDoa.createStop(stop);
+        stopDao.createStop(stop);
     }
 
     public void updateStop(Stop stop) {
-        stopDoa.updateStop(stop);
+        stopDao.updateStop(stop);
     }
 
     public void deleteStop(Stop stop) {
-        stopDoa.deleteStop(stop);
+        stopDao.deleteStop(stop);
     }
 
     public List<Stop> getAllStops() {
-        return stopDoa.getAllStops();
+        return stopDao.getAllStops();
     }
 
     public List<Stop> getAllTripStopsByTripId(Long tripId) {
-        return stopDoa.getAllTripStopsByTripId(tripId);
+        return stopDao.getAllTripStopsByTripId(tripId);
     }
 
     public static void addToVuforia(Long stopid, File image) throws JSONException, IOException, URISyntaxException {

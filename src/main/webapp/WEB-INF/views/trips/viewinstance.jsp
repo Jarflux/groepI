@@ -37,9 +37,19 @@
     <c:if test="${tripInstanceObject.organiser.id == userObject.id}">
         <a href="/trips/editinstance/${tripInstanceObject.id}" class="button"><spring:message
                 code='text.edittrip'/></a>
+
         <p id="invitefriends" class="button" data-instance='${tripInstanceObject.id}'
            data-naam='${tripInstanceObject.title}'><spring:message code="text.invitefriendsfb"/></p>
+
         <p id="invitefriendsmail" class="button"><spring:message code="invite.bymail"/></p>
+
+    </c:if>
+    <c:if test="${!isUserParticipating}">
+        <form method="post" action="/trips/jointrip">
+            <input type="hidden" value="${tripInstanceObject.id}" name="tripId"/>
+            <input type="submit" class="button"
+                   value="<spring:message code='text.jointrip'/>"/>
+        </form>
     </c:if>
 </section>
 <div class="quarter">
@@ -62,9 +72,8 @@
         <c:if test="${tripInstanceObject.organiser.id == userObject.id}">
             <div id="assignRequirementToParticipant"
                  title="<spring:message code="text.assignrequirementtoparticipant"/>">
-                <p>
                 <form method="POST" action="/trips/assignrequirementtouser">
-                    <input type="hidden" name="requirementinstanceid"/>
+                    <input type="hidden" name="requirementinstanceid" id="requirementinstanceid"/>
                     <select name="responsibleuser">
                         <option value="0">Iedereen</option>
                         <c:forEach var="participant" items="${tripInstanceObject.participants}">
@@ -73,29 +82,17 @@
                         <input type="submit" class="button" value="<spring:message code="text.save"/>"/>
                     </select>
                 </form>
-                </p>
             </div>
         </c:if>
     </section>
+
     <section>
-        <h4><spring:message code='text.stops'/></h4>
-        <c:choose>
-            <c:when test="${!empty tripInstanceObject.trip.stops}">
-                <ul class='sortable'>
-                    <c:forEach var="stop" items="${tripInstanceObject.trip.stops}">
-                        <li id="stop-${stop.id}">${stop.stopnumber}:
-                            <c:out value="${stop.name}"/>
-                        </li>
-                    </c:forEach>
-                </ul>
-            </c:when>
-            <c:otherwise>
-                <spring:message code='text.nostopsfound'/>
-            </c:otherwise>
-        </c:choose>
-    </section>
-    <section>
-        <h4><spring:message code='text.requirements'/></h4>
+        <h4>
+            <spring:message code='text.requirements'/>
+            <c:if test="${tripInstanceObject.organiser.id == userObject.id}">
+                <img src="/images/add.jpg" class="addrequirement" width="18" instid="${tripInstanceObject.id}"/>
+            </c:if>
+        </h4>
         <c:choose>
             <c:when test="${!empty tripInstanceObject.requirementInstances}">
                 <table>
@@ -127,7 +124,7 @@
                                 </c:otherwise>
                             </c:choose>
                             <c:if test="${tripInstanceObject.organiser.id == userObject.id}">
-                                <td class='addrequirement' inid='${requirementInstance.id}'>
+                                <td class='assignrequirement' inid="${requirementInstance.id}">
                                     Click to assign to participant
                                 </td>
                             </c:if>
@@ -140,14 +137,12 @@
                 <spring:message code='text.norequirementsfound'/>
             </c:otherwise>
         </c:choose>
-        <c:if test="${tripInstanceObject.organiser.id == userObject.id}"> <br>
-            <a href="/trips/addinstancerequirement/${tripInstanceObject.id}" class="button">
-                <spring:message code='text.add'/>
-            </a>
-        </c:if>
     </section>
     <section>
-        <h4><spring:message code='text.costs'/></h4>
+        <h4>
+            <spring:message code='text.costs'/>
+            <img class="addcost" src="/images/add.jpg" width="18"/>
+        </h4>
         <c:choose>
             <c:when test="${!empty tripInstanceObject.costs}">
                 <table>
@@ -167,9 +162,8 @@
                                         <input type="hidden" value="${cost.id}" name="costId"/>
                                         <input type="hidden" value="${tripInstanceObject.id}"
                                                name="tripInstanceId"/>
-                                        <input type="submit" class="button"
-                                               value="<spring:message code='text.deletecost'/>"/>
-                                    </form>
+                                        <input type="image" src="/images/remove.jpg" width="18" height="18"/>
+                                            </form>
                                 </td>
                             </c:if>
                         </tr>
@@ -181,44 +175,37 @@
             </c:otherwise>
         </c:choose>
         <br>
-        <a href="/trips/addcost/${tripInstanceObject.id}" class="button"><spring:message code='text.add'/></a>
     </section>
 </div>
 <div class="three-quarter">
     <section>
-        <h4><spring:message code='text.messages'/></h4>
+        <h4>
+            <spring:message code='text.messages'/>
+            <c:if test="${tripInstanceObject.organiser.id == userObject.id}">
+                <img class="addmessage" src="/images/add.jpg" width="18"/>
+            </c:if>
+        </h4>
         <c:if test="${tripInstanceObject.organiser.id == userObject.id}">
-            <a href="/trips/addmessage/${tripInstanceObject.id}" class="active">
-                <spring:message code='text.add'/>
-            </a>
+
         </c:if>
+
         <c:choose>
             <c:when test="${!empty tripInstanceObject.messages}">
                 <table>
                     <c:forEach var="message" items="${tripInstanceObject.messages}">
+                        <th>${messageDates.get(message.id)}</th>
                         <tr>
-                            <td>${message.user.name}</td>
-                            <c:forEach var="message" items="${tripInstanceObject.messages}">
-                                <%--<c:choose>--%>
-                                <%--<c:when test="${messageDate.key == tripInstanceObject.id}">--%>
-                                <td>${messageDates.get(message.id)}</td>
-                                <%--</c:when>--%>
-                                <%--</c:choose>--%>
-                            </c:forEach>
+                            <td>${message.content}</td>
                             <c:if test="${tripInstanceObject.organiser.id == userObject.id}">
                                 <td>
                                     <form method="post" action="/trips/deletemessage">
                                         <input type="hidden" value="${message.id}" name="messageId"/>
                                         <input type="hidden" value="${tripInstanceObject.id}"
                                                name="tripInstanceId"/>
-                                        <input type="submit" class="button"
-                                               value="<spring:message code='text.deletemessage'/>"/>
+                                        <input type="image" src="/images/remove.jpg" width="18" height="18"/>
                                     </form>
                                 </td>
                             </c:if>
-                        </tr>
-                        <tr>
-                            <td rowspan="2">${message.content}</td>
                         </tr>
                     </c:forEach>
                 </table>
@@ -228,23 +215,67 @@
             </c:otherwise>
         </c:choose>
         <br>
-        <form method="post" action="/trips/doaddmessage" class="mainstyle tooltips">
-            <input type="hidden" name="tripInstanceId" title="tripInstanceId" value="${tripInstanceObject.id}"/>
-
-            <div class="row">
-                <span><spring:message code='text.messagecontent'/></span>
-                <input name="content" title="<spring:message code='text.messagecontent'/>"/>
-            </div>
-            <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
-        </form>
-        <a href="/trips/addmessage/${tripInstanceObject.id}" class="button"><spring:message
-                code='text.add'/></a>
     </section>
 </div>
 </div>
 </div>
+
+<div id="addMessage" title="<spring:message code="text.addmessage"/>">
+    <form method="post" action="/trips/doaddmessage" class="mainstyle tooltips">
+        <input type="hidden" name="tripInstanceId" title="tripInstanceId" value="${tripInstanceObject.id}"/>
+
+        <div class="row">
+            <span><spring:message code='text.messagecontent'/></span>
+            <input name="content" id="addMessageContent"/>
+
+        </div>
+        <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
+
+    </form>
+</div>
+
+<div id="addRequirement" title="<spring:message code="text.createRequirement"/>">
+    <form method="post" action="/trips/doaddinstancerequirement" class="mainstyle tooltips">
+        <input type="hidden" name="tripInstanceId" id="addRequirementTripInstanceId"
+               title="tripInstanceId" value="${tripInstanceId}"/>
+
+        <div class="row">
+            <span><spring:message code='text.name'/></span>
+            <input name="name" id="addRequirementName" title="<spring:message code='text.requirementname'/>"/>
+        </div>
+        <div class="row">
+            <span><spring:message code='text.amount'/></span>
+            <input name="amount" class="required" id="addRequirementAmount"
+                   title="<spring:message code='text.requirementamount'/>"/> <%--TODO: number-validation--%>
+        </div>
+        <div class="row">
+            <span><spring:message code='text.description'/></span>
+            <textarea name="description" id="addRequirementDescription"
+                      title="<spring:message code='text.requirementdescription'/>"></textarea>
+        </div>
+        <input title="<spring:message code='text.save'/>" type="submit" class="button"
+               value="<spring:message code='text.save'/>"/>
+    </form>
+</div>
+
+<div id="addCost" title="<spring:message code="text.addcost"/>">
+    <form method="POST" action="/trips/doaddcost">
+        <input type="hidden" name="tripInstanceId" title="tripInstanceId" value="${tripInstanceId}"/>
+
+        <div class="row">
+            <span><spring:message code='text.costdescription'/></span>
+            <input name="description" id="addcostdesc" title="<spring:message code='text.costdescription'/>"/>
+        </div>
+        <div class="row">
+            <span><spring:message code='text.costamount'/></span>
+            <input name="amount" id="addcostam" title="<spring:message code='text.costamount'/>"/>
+        </div>
+        <input type="submit" class="button" value="<spring:message code="text.add"/>"/>
+    </form>
+</div>
+
+
 <div id="editCost" title="<spring:message code="text.editcost"/>">
-    <p>
     <form method="POST" action="/trips/editcost">
         <input type="hidden" id="costid" name="costid"/>
         <input type="text" name="description" id="descval"
@@ -253,8 +284,8 @@
                title="<spring:message code="text.costamount"/>"/>
         <input type="submit" class="button" value="<spring:message code="text.save"/>"/>
     </form>
-    </p>
 </div>
+
 <div id="invitemail" title="<spring:message code="invite.bymail" />">
     <form action="/trips/invitebymail" method="POST" class="mainstyle">
         <input type="hidden" name="instanceid" value="${tripInstanceObject.id}"/>

@@ -42,7 +42,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void updateUser(User user) throws DataAccessException {
-        getEntityManager().persist(user);
+        getEntityManager().merge(user);
     }
 
     @Override

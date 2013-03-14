@@ -21,42 +21,42 @@ import org.springframework.transaction.annotation.Transactional;
 public class TripInstanceService {
 
     @Autowired
-    private TripInstanceDao tripInstanceDoa;
+    private TripInstanceDao tripInstanceDao;
 
     public TripInstance getTripInstanceById(long id) {
-        return tripInstanceDoa.getTripInstanceById(id);
+        return tripInstanceDao.getTripInstanceById(id);
     }
 
     public void createTripInstance(TripInstance tripInstance) {
-        tripInstanceDoa.createTripInstance(tripInstance);
+        tripInstanceDao.createTripInstance(tripInstance);
     }
 
     public void updateTripInstance(TripInstance tripInstance) {
-        tripInstanceDoa.updateTripInstance(tripInstance);
+        tripInstanceDao.updateTripInstance(tripInstance);
     }
 
     public void deleteTripInstance(TripInstance tripInstance) {
-        tripInstanceDoa.deleteTripInstance(tripInstance);
+        tripInstanceDao.deleteTripInstance(tripInstance);
     }
 
     public List<TripInstance> getAllTripInstances() {
-        return tripInstanceDoa.getAllTripInstances();
+        return tripInstanceDao.getAllTripInstances();
     }
 
     public List<TripInstance> getAllTripInstancesByTripId(long tripId) {
-        return tripInstanceDoa.getAllTripInstancesByTripId(tripId);
+        return tripInstanceDao.getAllTripInstancesByTripId(tripId);
     }
 
     public List<TripInstance> getTripInstancesByOrganiserId(long id) {
-        return tripInstanceDoa.getTripInstancesByOrganiserId(id);
+        return tripInstanceDao.getTripInstancesByOrganiserId(id);
     }
 
     public List<TripInstance> getPublicTripInstances() {
-        return tripInstanceDoa.getPublicTripInstances();
+        return tripInstanceDao.getPublicTripInstances();
     }
 
     public List<TripInstance> getTripInstancesByUserId(Long userId) {
-        return tripInstanceDoa.getTripInstancesByUserId(userId);
+        return tripInstanceDao.getTripInstancesByUserId(userId);
     }
 
     public static void inviteByEmail(String receipients, String message, Long instanceId) {

@@ -22,8 +22,7 @@
                 </div>
                 <div class="row">
                     <span><spring:message code='text.available'/></span>
-                    <input type="checkbox" class="" name="available" placeholder="" checked="${tripObject.available}"
-                           title="<spring:message code='text.availabletooltip'/>"/>
+                    <input type="checkbox" id="chkAvailable" name="available" value="true" title="<spring:message code='text.availabletooltip'/>"/>
                 </div>
                 <div class="row">
                     <span><spring:message code='text.description'/></span>
@@ -32,10 +31,10 @@
                 </div>
                 <div class="row">
                     <span><spring:message code='text.repeatabletrip'/></span>
-                    <input type="checkbox" name="repeatable" value="true" title="Is je trip herhaalbaar?"
-                           checked="${tripObject.repeatable}"/>
+                    <input type="checkbox" id="chkRepeatable" name="repeatable" value="true" title="<spring:message code='trips.repeatabletooltip'/>" />
                 </div>
                 <input type="hidden" name="Id" value="${tripObject.id}"/>
+                <%--<input type="hidden" name="organizerId" value="${tripObject.organiser.id}"/>--%>
                 <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
             </form>
         </c:when>
@@ -44,5 +43,43 @@
         </c:when>
     </c:choose>
 </div>
+<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+<script src="/js/functions.js"></script>
+<script>
+    $(function () {
+        console.log("Start");
+        /*Page data init*/
+        if (${tripObject.available})
+        {
+            $("#chkAvailable").val(0);
+            console.log("chkAvailable.true");
+        }
+        else
+        {
+            $("#chkAvailable").val(1);
+            console.log("chkAvailable.false");
+        }
+        if (${tripObject.repeatable})
+        {
+            $("#chkRepeatable").val(0);
+            console.log("chkRepeatable.true");
+        }
+        else
+        {
+            $("#chkRepeatable").val(1);
+            console.log("chkRepeatable.false");
+        }
+
+        /*Event handlers*/
+        $("#chkAvailable").change(function () {
+            console.log("Selected:" + $(this).val());
+
+        });
+        $("#chkRepeatable").change(function () {
+            console.log("Selected:" + $(this).val());
+
+        });
+    });
+</script>
 </body>
 </html>

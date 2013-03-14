@@ -42,7 +42,7 @@ public class CostDaoImpl implements CostDao {
 
     @Override
     public void updateCost(Cost user) throws DataAccessException {
-        getEntityManager().persist(user);
+        getEntityManager().merge(user);
     }
 
     @Override

@@ -22,25 +22,25 @@ import org.springframework.transaction.annotation.Transactional;
 public class AnswerInstanceService {
 
     @Autowired
-    private AnswerInstanceDao answerInstanceDoa;
+    private AnswerInstanceDao answerInstanceDao;
 
     public AnswerInstance getAnswerInstanceById(long id) {
-        return answerInstanceDoa.getAnswerInstanceById(id);
+        return answerInstanceDao.getAnswerInstanceById(id);
     }
 
     public void createAnswerInstance(AnswerInstance answerInstance) {
-        answerInstanceDoa.createAnswerInstance(answerInstance);
+        answerInstanceDao.createAnswerInstance(answerInstance);
     }
 
     public void updateAnswerInstance(AnswerInstance answerInstance) {
-        answerInstanceDoa.updateAnswerInstance(answerInstance);
+        answerInstanceDao.updateAnswerInstance(answerInstance);
     }
 
     public void deleteAnswerInstance(AnswerInstance answerInstance) {
-        answerInstanceDoa.deleteAnswerInstance(answerInstance);
+        answerInstanceDao.deleteAnswerInstance(answerInstance);
     }
 
     public List<AnswerInstance> getAllAnswerInstances() {
-        return answerInstanceDoa.getAllAnswerInstances();
+        return answerInstanceDao.getAllAnswerInstances();
     }
 }

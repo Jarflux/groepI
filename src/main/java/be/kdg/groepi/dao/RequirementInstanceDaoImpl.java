@@ -42,7 +42,7 @@ public class RequirementInstanceDaoImpl implements RequirementInstanceDao {
 
     @Override
     public void updateRequirementInstance(RequirementInstance user) throws DataAccessException {
-        getEntityManager().persist(user);
+        getEntityManager().merge(user);
     }
 
     @Override
