@@ -97,7 +97,7 @@ public class RestStopController {
     public ModelAndView handleException(Exception e) {
         logger.debug("RestStopController - Unexpected exception", e);
         ModelAndView modelAndView = new ModelAndView("error/displayerror");
-        modelAndView.addObject("errorid", "defaulterror");
+        modelAndView.addObject("errorid", "defaultError");
         return modelAndView;
     }
 }

@@ -58,7 +58,7 @@ public class AndroidRestController {
     public ModelAndView handleException(Exception e) {
         logger.debug("AndroidRestController - Unexpected exception", e);
         ModelAndView modelAndView = new ModelAndView("error/displayerror");
-        modelAndView.addObject("errorid", "defaulterror");
+        modelAndView.addObject("errorid", "defaultError");
         return modelAndView;
     }
 }
