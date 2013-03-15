@@ -59,7 +59,7 @@ public class TripInstanceService {
         return tripInstanceDao.getTripInstancesByUserId(userId);
     }
 
-    public static void inviteByEmail(String receipients, String message, Long instanceId) {
+    public void inviteByEmail(String receipients, String message, Long instanceId) {
         ApplicationContext context = new ClassPathXmlApplicationContext("Spring-Mail.xml");
         TripMail tim = (TripMail) context.getBean("tripMail");
         String[] receipient = receipients.split(",");

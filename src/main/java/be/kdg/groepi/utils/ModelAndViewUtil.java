@@ -5,6 +5,7 @@ import be.kdg.groepi.model.RequirementInstance;
 import be.kdg.groepi.model.TripInstance;
 import be.kdg.groepi.model.User;
 import be.kdg.groepi.service.MessageService;
+
 import be.kdg.groepi.service.TripInstanceService;
 import java.util.*;
 import javax.servlet.http.HttpSession;
@@ -54,6 +55,12 @@ public class ModelAndViewUtil {
         modelAndView.addObject("startTimeString", DateUtil.formatTime(tripInstance.getStartTime()));
         modelAndView.addObject("endTimeString", DateUtil.formatTime(tripInstance.getEndTime()));
         return modelAndView;
+    }
+
+    public static ModelAndView getModelAndViewForViewInstance(MessageService messageService, HttpSession session, long tripInstanceId) {
+        TripInstanceService tripInstanceService = new TripInstanceService();
+        TripInstance tripInstance = tripInstanceService.getTripInstanceById(tripInstanceId);
+        return getModelAndViewForViewInstance(messageService, session, tripInstance);
     }
 
 }

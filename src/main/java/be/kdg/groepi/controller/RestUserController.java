@@ -8,11 +8,13 @@ import be.kdg.groepi.service.UserService;
 import be.kdg.groepi.utils.CompareUtil;
 import be.kdg.groepi.utils.DateUtil;
 import be.kdg.groepi.utils.FileUtil;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
 import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -56,7 +58,7 @@ public class RestUserController {
 
     @RequestMapping(value = "/createUser", method = RequestMethod.POST)
     public ModelAndView createUser(@ModelAttribute("userObject") User user,
-            @RequestParam(value = "dob") String dateOfBirth)
+                                   @RequestParam(value = "dob") String dateOfBirth)
             throws UnsupportedEncodingException, NoSuchAlgorithmException {
         user.setDateOfBirth(DateUtil.dateStringToLong(dateOfBirth, null));
         user.setPassword(CompareUtil.getHashedPassword(user.getPassword()));
@@ -77,7 +79,6 @@ public class RestUserController {
             userService.createUser(user);
         }
 
-
         UserDetails userDetails = userDetailsService.loadUserByUsername(email);
         Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, " ", userDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -88,6 +89,7 @@ public class RestUserController {
 
     @RequestMapping(value = "/myprofile")
     public ModelAndView myProfile(HttpSession session) {
+
         User sessionUser = (User) session.getAttribute("userObject");
         Map<Long, String> tripInstanceDates = new HashMap<>();
         Map<Long, String> tripInstanceStartTimes = new HashMap<>();
@@ -133,8 +135,8 @@ public class RestUserController {
 
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)
     public ModelAndView editUser(HttpSession session, @ModelAttribute("userObject") User user,
-            @RequestParam(value = "dob") String dateOfBirth,
-            @RequestParam(value = "photo") MultipartFile uploadedFile) throws IOException {
+                                 @RequestParam(value = "dob") String dateOfBirth,
+                                 @RequestParam(value = "photo") MultipartFile uploadedFile) throws IOException {
         User sessionUser = (User) session.getAttribute("userObject");
         sessionUser.setName(user.getName());
         sessionUser.setEmail(user.getEmail());
@@ -180,8 +182,8 @@ public class RestUserController {
 
     @RequestMapping(value = "/reset/setNewPassword", method = RequestMethod.POST)
     public String setNewPassword(/* @RequestParam(value = "userObject") */ /* @ModelAttribute("userObject") User user, */
-            @RequestParam(value = "passwordResetString") String passwordResetString,
-            @RequestParam(value = "password") String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+                                 @RequestParam(value = "passwordResetString") String passwordResetString,
+                                 @RequestParam(value = "password") String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         User user = userService.getUserByResetString(passwordResetString);
 
         user.setPassword(CompareUtil.getHashedPassword(password));
@@ -190,5 +192,13 @@ public class RestUserController {
         userService.updateUser(user);
 
         return "home";
+    }
+
+    @ExceptionHandler({Exception.class})
+    public ModelAndView handleException(Exception e) {
+        logger.debug("RestUserController - Unexpected exception", e);
+        ModelAndView modelAndView = new ModelAndView("error/displayerror");
+        modelAndView.addObject("errorid", "defaultError");
+        return modelAndView;
     }
 }

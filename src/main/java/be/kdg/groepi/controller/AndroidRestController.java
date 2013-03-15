@@ -9,11 +9,15 @@ import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,6 +29,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller("restAndroidController")
 @RequestMapping("android")
 public class AndroidRestController {
+
+    private static final Logger logger = Logger.getLogger(AndroidRestController.class);
 
     @Autowired
     protected TripInstanceService tripInstanceService;
@@ -46,5 +52,13 @@ public class AndroidRestController {
         } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
+    }
+
+    @ExceptionHandler({Exception.class})
+    public ModelAndView handleException(Exception e) {
+        logger.debug("AndroidRestController - Unexpected exception", e);
+        ModelAndView modelAndView = new ModelAndView("error/displayerror");
+        modelAndView.addObject("errorid", "defaultError");
+        return modelAndView;
     }
 }

@@ -61,8 +61,7 @@ public class UserServiceTest {
         user.setEmail("NOTTIM@M.EH");
         user.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
         userService.updateUser(user);
-        //TODO: Add explanation string to assert
-        assertEquals(user, userService.getUserById(user.getId()));
+        assertEquals("testUpdateUser: User was not updated", userService.getUserById(user.getId()));
     }
 
     @Test

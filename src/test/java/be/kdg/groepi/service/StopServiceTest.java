@@ -3,9 +3,13 @@ package be.kdg.groepi.service;
 import be.kdg.groepi.model.Stop;
 import be.kdg.groepi.model.Trip;
 import be.kdg.groepi.model.User;
+
 import static be.kdg.groepi.utils.DateUtil.dateToLong;
+
 import org.junit.After;
+
 import static org.junit.Assert.*;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,8 +50,7 @@ public class StopServiceTest {
     public void createStop() {
         Stop stop = new Stop("Stop 1", "", "", 1, 0, 0, "Eerste Stopplaats", 1000, trip);
         stopService.createStop(stop);
-        //TODO: Add explanation string to assert
-        assertEquals(stop, stopService.getStopById(stop.getId()));
+        assertEquals("createStop: Stop was not created", stopService.getStopById(stop.getId()));
     }
 
     @Test
@@ -62,18 +65,8 @@ public class StopServiceTest {
             s.setDisplayMode(s.getDisplayMode() + 1);
             s.setRadius(s.getRadius() + 1);
             stopService.updateStop(s);
-            //TODO: Add explanation string to assert
-            assertEquals(s, stopService.getStopById(s.getId()));
+            assertEquals("editStopFromTrip: Stop was not edited", stopService.getStopById(s.getId()));
         }
-    }
-
-    @Test
-    public void deleteStopsFromTrip() {
-        for (Stop s : trip.getStops()) {
-            stopService.deleteStop(s);
-        }
-        //TODO: Add explanation string to assert
-        assertTrue(trip.getStops().isEmpty());
     }
 
     @Test

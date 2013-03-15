@@ -9,6 +9,7 @@ package be.kdg.groepi;
  */
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class HomeController {
+
     private static final Logger logger = Logger.getLogger(HomeController.class);
 
     @RequestMapping(value = "/")
@@ -53,10 +55,8 @@ public class HomeController {
 
     @RequestMapping(value = "/error/{error}")
     public ModelAndView errorpage(@PathVariable("error") String errorid) {
-        if (errorid.isEmpty()){
-            errorid = "defaulterror";
-        }
-        logger.debug("HomeController: errorpage");
+        if (errorid.isEmpty()) errorid = "defaultError";
+        System.out.println("Error page");
         return new ModelAndView("error/displayerror", "errorid", errorid);
     }
 
@@ -64,5 +64,19 @@ public class HomeController {
     public String register() {
         logger.debug("HomeController: register");
         return "profile/register";
+    }
+
+
+    @RequestMapping(value = "/throwexception")
+    public void throwexception(){
+        throw new IllegalArgumentException();
+    }
+
+    @ExceptionHandler({Exception.class})
+    public ModelAndView handleException(Exception e) {
+        logger.debug("HomeController - Unexpected exception", e);
+        ModelAndView modelAndView = new ModelAndView("error/displayerror");
+        modelAndView.addObject("errorid", "error.defaultError");
+        return modelAndView;
     }
 }

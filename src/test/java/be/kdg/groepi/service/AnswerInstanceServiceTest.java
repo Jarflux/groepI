@@ -93,9 +93,8 @@ public class AnswerInstanceServiceTest {
     }
 
     @Test
-    public void deleteAnswerInstances() {
+    public void deleteAnswerInstance() {
         answerInstanceService.deleteAnswerInstance(answerInstance);
-        //TODO: Add explanation string to assert
-        assertTrue(answerInstanceService.getAnswerInstanceById(answerInstance.getId()) == null);
+        assertTrue("deleteAnswerInstance: Answer was not deleted",answerInstanceService.getAnswerInstanceById(answerInstance.getId()) == null);
     }
 }

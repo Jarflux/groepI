@@ -141,14 +141,6 @@ public class Trip implements Serializable, Comparable {
         this.fStops = fStops;
     }
 
-    public void addStopToTrip(Stop stop) {
-        this.fStops.add(stop);
-    }
-
-    public void removeStop(Stop stop) {
-        this.fStops.remove(stop);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == null) {

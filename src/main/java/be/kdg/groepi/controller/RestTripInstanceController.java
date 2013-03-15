@@ -8,8 +8,10 @@ import be.kdg.groepi.service.TripInstanceService;
 import be.kdg.groepi.service.TripService;
 import be.kdg.groepi.utils.DateUtil;
 import be.kdg.groepi.utils.ModelAndViewUtil;
+
 import java.util.*;
 import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,9 +35,16 @@ public class RestTripInstanceController {
     public ModelAndView addinstance(@PathVariable("tripId") String tripId, HttpSession session) {
         System.out.println("AddInstance: Passing through...");
         Trip trip = tripService.getTripById(Long.parseLong(tripId));
-        ModelAndView modelAndView = new ModelAndView("trips/addinstance");
-        modelAndView.addObject("tripObject", trip);
-        return modelAndView;
+        if (trip != null) {
+            ModelAndView modelAndView = new ModelAndView("trips/addinstance");
+            modelAndView.addObject("tripObject", trip);
+            return modelAndView;
+        } else {
+            logger.debug("RestTripInstanceController - addinstance - Trip not found");
+            ModelAndView modelAndView = new ModelAndView("error/displayerror");
+            modelAndView.addObject("errorid", "tripNotFound");
+            return modelAndView;
+        }
     }
 
     @RequestMapping(value = "/trips/createinstance", method = RequestMethod.POST)
@@ -49,41 +58,47 @@ public class RestTripInstanceController {
 
         User user = (User) session.getAttribute("userObject");
         Trip trip = tripService.getTripById(tripId);
-        tempTripInstance.setOrganiser(user);
-        tempTripInstance.setTrip(trip);
+        if (trip != null) {
+            tempTripInstance.setOrganiser(user);
+            tempTripInstance.setTrip(trip);
 
-        if (tempTripInstance.getAvailable() == null) {
-            tempTripInstance.setAvailable(false);
-        }
-
-        long startTime = DateUtil.dateStringToLong(date, startTimeString);
-        long endTime = DateUtil.dateStringToLong(date, endTimeString);
-
-        if (startTime >= endTime) {
-            endTime += 24 * 60 * 60 * 1000;
-        }
-
-        if (trip.getRepeatable() != null && trip.getRepeatable()) {
-            long timeBetween = DateUtil.dateStringToLong(endDate, startTimeString) - DateUtil.dateStringToLong(date, startTimeString);
-            long interval = 24 * 60 * 60 * 1000;
-            if (repeatable.equals("weekly")) {
-                interval *= 7;
+            if (tempTripInstance.getAvailable() == null) {
+                tempTripInstance.setAvailable(false);
             }
 
-            long repeatCount = timeBetween / interval + 1;
+            long startTime = DateUtil.dateStringToLong(date, startTimeString);
+            long endTime = DateUtil.dateStringToLong(date, endTimeString);
 
-            for (int i = 0; i < repeatCount; i++) {
-                long newStartTime = startTime + (i * interval);
-                long newEndTime = endTime + (i * interval);
-                createNewTripInstance(tempTripInstance, newStartTime, newEndTime, user);
+            if (startTime >= endTime) {
+                endTime += 24 * 60 * 60 * 1000;
             }
-            return getTripInstances(session);
-            //return getTrip(trip.getId().toString(), session);
+
+            if (trip.getRepeatable() != null && trip.getRepeatable()) {
+                long timeBetween = DateUtil.dateStringToLong(endDate, startTimeString) - DateUtil.dateStringToLong(date, startTimeString);
+                long interval = 24 * 60 * 60 * 1000;
+                if (repeatable.equals("weekly")) {
+                    interval *= 7;
+                }
+
+                long repeatCount = timeBetween / interval + 1;
+
+                for (int i = 0; i < repeatCount; i++) {
+                    long newStartTime = startTime + (i * interval);
+                    long newEndTime = endTime + (i * interval);
+                    createNewTripInstance(tempTripInstance, newStartTime, newEndTime, user);
+                }
+                return getTripInstanceList(session);
+                //return getTrip(trip.getId().toString(), session);
+            } else {
+                TripInstance tripInstance = createNewTripInstance(tempTripInstance, startTime, endTime, user);
+                return getTripInstance(tripInstance.getId().toString(), session);
+            }
         } else {
-            TripInstance tripInstance = createNewTripInstance(tempTripInstance, startTime, endTime, user);
-            return getTripInstance(tripInstance.getId().toString(), session);
+            logger.debug("RestTripInstanceController - createinstance - Trip not found");
+            ModelAndView modelAndView = new ModelAndView("error/displayerror");
+            modelAndView.addObject("errorid", "tripNotFound");
+            return modelAndView;
         }
-
     }
 
     private TripInstance createNewTripInstance(TripInstance tempTripInstance, long startTime, long endTime, User user) {
@@ -101,14 +116,26 @@ public class RestTripInstanceController {
 
     @RequestMapping(value = "/trips/editinstance/{tripInstanceId}", method = RequestMethod.GET)
     public ModelAndView editInstanceView(@PathVariable("tripInstanceId") String tripInstanceId) {
-        //TODO: tripInstance not found -> page not found (404)
-        //TODO: check user --> not valid = error page user not authorized (401)
-        ModelAndView modelAndView = new ModelAndView("trips/editinstance");
         TripInstance tripInstance = tripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId));
-        modelAndView.addObject("tripInstanceObject", tripInstance);
-        modelAndView.addObject("startTimeString", DateUtil.formatTime(tripInstance.getStartTime()));
-        modelAndView.addObject("endTimeString", DateUtil.formatTime(tripInstance.getEndTime()));
-        return modelAndView;
+        if (tripInstance != null) {
+            if (tripInstance.getOrganiser().getId().equals(tripInstance.getId())) {
+                ModelAndView modelAndView = new ModelAndView("trips/editinstance");
+                modelAndView.addObject("tripInstanceObject", tripInstance);
+                modelAndView.addObject("startTimeString", DateUtil.formatTime(tripInstance.getStartTime()));
+                modelAndView.addObject("endTimeString", DateUtil.formatTime(tripInstance.getEndTime()));
+                return modelAndView;
+            } else {
+                logger.debug("RestTripInstanceController - editInstanceView - User not authorized to edit trip");
+                ModelAndView modelAndView = new ModelAndView("error/displayerror");
+                modelAndView.addObject("errorid", "userNotAuthorizedToEditTrip");
+                return modelAndView;
+            }
+        } else {
+            logger.debug("RestTripInstanceController - editInstanceView - TripInstance not found");
+            ModelAndView modelAndView = new ModelAndView("error/displayerror");
+            modelAndView.addObject("errorid", "tripInstanceNotFound");
+            return modelAndView;
+        }
     }
 
     @RequestMapping(value = "/trips/updateinstance", method = RequestMethod.POST)
@@ -121,25 +148,32 @@ public class RestTripInstanceController {
                                        @RequestParam(value = "endTimeString") String endTimeString) {
 
         TripInstance tripInstance = tripInstanceService.getTripInstanceById(tripInstanceId);
-        tripInstance.setTitle(title);
-        tripInstance.setDescription(description);
-        tripInstance.setAvailable(available);
+        if (tripInstance != null) {
+            tripInstance.setTitle(title);
+            tripInstance.setDescription(description);
+            tripInstance.setAvailable(available);
 
-        long startTime = DateUtil.dateStringToLong(date, startTimeString);
-        long endTime = DateUtil.dateStringToLong(date, endTimeString);
+            long startTime = DateUtil.dateStringToLong(date, startTimeString);
+            long endTime = DateUtil.dateStringToLong(date, endTimeString);
 
-        if (startTime >= endTime) {
-            endTime += 24 * 60 * 60 * 1000;
+            if (startTime >= endTime) {
+                endTime += 24 * 60 * 60 * 1000;
+            }
+            tripInstance.setStartTime(startTime);
+            tripInstance.setEndTime(endTime);
+
+            tripInstanceService.updateTripInstance(tripInstance);
+            return new ModelAndView("trips/view", "tripInstanceObject", tripInstance);
+        } else {
+            logger.debug("RestTripInstanceController - updateInstance - TripInstance not found");
+            ModelAndView modelAndView = new ModelAndView("error/displayerror");
+            modelAndView.addObject("errorid", "tripInstanceNotFound");
+            return modelAndView;
         }
-        tripInstance.setStartTime(startTime);
-        tripInstance.setEndTime(endTime);
-
-        tripInstanceService.updateTripInstance(tripInstance);
-        return new ModelAndView("trips/view", "tripInstanceObject", tripInstance);
     }
 
     @RequestMapping(value = "/trips/listinstance")
-    public ModelAndView getTripInstances(HttpSession session) {
+    public ModelAndView getTripInstanceList(HttpSession session) {
         User user = (User) session.getAttribute("userObject");
 
         SortedSet<TripInstance> publicTripInstances = new TreeSet<>();
@@ -170,7 +204,6 @@ public class RestTripInstanceController {
             logger.debug("Returning ownTripInstances is empty");
         }
 
-
         Map<Long, String> publicTripInstanceDates = new HashMap<>();
         Map<Long, String> publicTripInstanceStartTimes = new HashMap<>();
         Map<Long, String> publicTripInstanceEndTimes = new HashMap<>();
@@ -182,7 +215,7 @@ public class RestTripInstanceController {
                     DateUtil.formatTime(DateUtil.longToDate(tripInstance.getStartTime())));
             publicTripInstanceEndTimes.put(tripInstance.getId(),
                     DateUtil.formatTime(DateUtil.longToDate(tripInstance.getEndTime())));
-            if (tripInstance.getParticipants().contains(user)){
+            if (tripInstance.getParticipants().contains(user)) {
                 isUserParticipating.put(tripInstance.getId(), true);
             } else {
                 isUserParticipating.put(tripInstance.getId(), false);
@@ -221,22 +254,31 @@ public class RestTripInstanceController {
     public ModelAndView joinTrip(HttpSession session, @RequestParam("tripId") String tripId) {
         User sessionUser = (User) session.getAttribute("userObject");
         TripInstance tripInstance = tripInstanceService.getTripInstanceById(Long.parseLong(tripId));
-        tripInstance.addParticipantToTripInstance(sessionUser);
-        tripInstanceService.updateTripInstance(tripInstance);
-        return new ModelAndView("redirect:/trips/viewinstance/" + tripId);
+        if (tripInstance != null) {
+            tripInstance.addParticipantToTripInstance(sessionUser);
+            tripInstanceService.updateTripInstance(tripInstance);
+            return new ModelAndView("redirect:/trips/viewinstance/" + tripId);
+        } else {
+            logger.debug("RestTripInstanceController - joinTrip - TripInstance not found");
+            ModelAndView modelAndView = new ModelAndView("error/displayerror");
+            modelAndView.addObject("errorid", "tripInstanceNotFound");
+            return modelAndView;
+        }
     }
 
     @RequestMapping(value = "/trips/viewinstance/{tripInstanceId}", method = RequestMethod.GET)
     public ModelAndView getTripInstance(@PathVariable("tripInstanceId") String tripInstanceId, HttpSession session) {
         TripInstance tripInstance;
         tripInstance = tripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId));
-
         if (tripInstance != null) {
             logger.debug("Returning TripInstance: " + tripInstance.toString() + " with tripInstance #" + tripInstanceId);
 
             return ModelAndViewUtil.getModelAndViewForViewInstance(messageService, session, tripInstance);
         } else {
-            return new ModelAndView("error/displayerror");
+            logger.debug("RestTripInstanceController - getTripInstance - TripInstance not found");
+            ModelAndView modelAndView = new ModelAndView("error/displayerror");
+            modelAndView.addObject("errorid", "tripInstanceNotFound");
+            return modelAndView;
         }
     }
 
@@ -244,10 +286,16 @@ public class RestTripInstanceController {
     public ModelAndView invitebymail(@RequestParam(value = "instanceid") String instanceid, @RequestParam(value = "receipients") String receivers, @RequestParam(value = "message") String message, HttpSession session) {
         TripInstance tripInstance = tripInstanceService.getTripInstanceById(Long.parseLong(instanceid));
 
-        TripInstanceService.inviteByEmail(receivers, message, Long.parseLong(instanceid));
+        tripInstanceService.inviteByEmail(receivers, message, Long.parseLong(instanceid));
 
         return ModelAndViewUtil.getModelAndViewForViewInstance(messageService, session, tripInstance);
     }
 
-
+    @ExceptionHandler({Exception.class})
+    public ModelAndView handleException(Exception e) {
+        logger.debug("RestTripInstanceController - Unexpected exception", e);
+        ModelAndView modelAndView = new ModelAndView("error/displayerror");
+        modelAndView.addObject("errorid", "defaultError");
+        return modelAndView;
+    }
 }
