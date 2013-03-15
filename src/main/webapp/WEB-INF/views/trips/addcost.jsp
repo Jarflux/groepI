@@ -16,7 +16,7 @@
     <div id="content" class="column light">
         <h2><spring:message code="text.addcost"/></h2>
 
-        <form method="post" action="/trips/doaddcost" class="mainstyle tooltips">
+        <form method="post" action="/cost/add" class="mainstyle tooltips">
             <input type="hidden" name="tripInstanceId" title="tripInstanceId" value="${tripInstanceId}"/>
 
             <div class="row">

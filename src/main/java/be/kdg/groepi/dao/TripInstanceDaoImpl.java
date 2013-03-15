@@ -5,7 +5,7 @@
 package be.kdg.groepi.dao;
 
 import be.kdg.groepi.model.TripInstance;
-import be.kdg.groepi.model.User;
+
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -59,10 +59,10 @@ public class TripInstanceDaoImpl implements TripInstanceDao {
     }
 
     @Override
-    public List<TripInstance> getTripInstancesByUserId(Long userId) {
+    public List<Object[]> getTripInstancesByUserId(Long userId) {
         Query query = getEntityManager().createQuery("from TripInstance t join t.fParticipants p where p.fId = :userId");
         query.setParameter("userId", userId);
-        List<TripInstance> result = query.getResultList();
+        List<Object[]> result = query.getResultList();
         return result; 
     }
 

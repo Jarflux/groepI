@@ -5,6 +5,8 @@ import be.kdg.groepi.service.TripInstanceService;
 import be.kdg.groepi.utils.ExclusionStrategyUtil;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +32,16 @@ public class AndroidRestController {
     @RequestMapping(value = "/showUserTripParticipations/{userId}", method = RequestMethod.GET)
     public void getUserTripParticipations(@PathVariable(value = "userId") String userId, HttpServletResponse response) {
         try {
-            List<TripInstance> trips = tripInstanceService.getTripInstancesByUserId(Long.parseLong(userId));
+            List<Object[]> trips = tripInstanceService.getTripInstancesByUserId(Long.parseLong(userId));
+            List<TripInstance> trips2= new ArrayList<TripInstance>();
             Gson gson = new GsonBuilder().setExclusionStrategies(new ExclusionStrategyUtil()).serializeNulls().create();
-            String json = gson.toJson(trips);
+            for (int i = 0; i < trips.size(); i++) {
+                        TripInstance temp = (TripInstance) trips.get(i)[0];
+                                        trips2.add(temp);
+            }
+
+
+                    String json = gson.toJson(trips2);
             response.getWriter().print(json);
         } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.

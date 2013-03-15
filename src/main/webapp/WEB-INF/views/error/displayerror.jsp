@@ -27,7 +27,7 @@
             <div class="three-quarter">
                 <p><spring:message code="text.sorry"/><p>
 
-                <div class="errormsg"><spring:message code='text.${errorid}'/><p class="small">Error: ${errorid}
+                <div class="errormsg"><spring:message code='error.${errorid}'/><p class="small">Error: ${errorid}
 
                 </p></div>
             </div>

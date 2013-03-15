@@ -1,4 +1,5 @@
 package com.controllers;
+import android.content.Context;
 import com.model.TripInstance;
 import com.tasks.HttpGetTask;
 import com.tasks.LoginTask;
@@ -46,8 +47,8 @@ public class Controller {
     }
 
 
-    public  JSONObject springSecurityCheck(String username, String password) {
-        LoginTask loginTask = new LoginTask();
+    public  JSONObject springSecurityCheck(String username, String password, Context ctx) {
+        LoginTask loginTask = new LoginTask(ctx);
         loginTask.execute(username,password);
         try {
             return (JSONObject)loginTask.get();

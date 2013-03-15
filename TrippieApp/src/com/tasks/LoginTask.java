@@ -1,5 +1,7 @@
 package com.tasks;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import com.utils.ServerUtil;
 import org.apache.http.HttpResponse;
@@ -22,6 +24,27 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class LoginTask extends AsyncTask{
+
+
+    private ProgressDialog mDialog;
+    private Context ctx;
+    @Override
+    protected void onPreExecute() {
+        mDialog = new ProgressDialog(ctx);
+        mDialog.setMessage("Validating...");
+        mDialog.setCancelable(false);
+        mDialog.show();
+    }
+
+    @Override
+    protected void onPostExecute(Object o) {
+mDialog.dismiss();
+    }
+
+    public LoginTask(Context ctx) {
+        this.ctx = ctx;
+    }
+
     @Override
     protected Object doInBackground(Object... parameters) {
         DefaultHttpClient client = new DefaultHttpClient();

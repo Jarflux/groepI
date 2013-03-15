@@ -1,6 +1,10 @@
 package com.tasks;
 
+import android.app.Application;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
+import com.activities.LoginActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.model.TripInstance;
@@ -21,7 +25,6 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class HttpGetTask extends AsyncTask {
-
 
     @Override
     protected Object doInBackground(Object... objects) {

@@ -45,7 +45,7 @@ public class ParentActivity extends Activity {
     }
 
     public void stylePage(){
-        //To be filled in by child classes
+
     }
 
     public void addContent(){
