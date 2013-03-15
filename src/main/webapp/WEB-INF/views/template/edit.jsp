@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title><spring:message code='text.edittrip'/></title>
+    <title><spring:message code='trip.edit'/></title>
     <link href="/css/blue.css" rel="stylesheet"/>
 </head>
 <body>
@@ -11,27 +11,27 @@
     <jsp:include page="/topmenu"/>
 </div>
 <div id="content" class="column light">
-    <h2><spring:message code="text.createtrip"/></h2>
+    <h2><spring:message code="trip.edit"/></h2>
     <c:choose>
         <c:when test="${tripObject != null}">
             <form method="post" action="/template/update" class="mainstyle tooltips">
                 <div class="row">
                     <span><spring:message code='text.title'/></span>
                     <input type="text" class="" name="title" placeholder="" value="${tripObject.title}"
-                           title="<spring:message code='text.titletooltip'/>"/>
+                           title="<spring:message code='trip.titletooltip'/>"/>
                 </div>
                 <div class="row">
-                    <span><spring:message code='text.available'/></span>
-                    <input type="checkbox" id="chkAvailable" name="available" value="true" title="<spring:message code='text.availabletooltip'/>"/>
+                    <span><spring:message code='trip.available'/></span>
+                    <input type="checkbox" id="chkAvailable" name="available" value="true" title="<spring:message code='trip.availabletooltip'/>"/>
                 </div>
                 <div class="row">
                     <span><spring:message code='text.description'/></span>
                     <textarea name="description"
-                              title="<spring:message code='text.descriptiontooltip'/>">${tripObject.description}</textarea>
+                              title="<spring:message code='trip.descriptiontooltip'/>">${tripObject.description}</textarea>
                 </div>
                 <div class="row">
-                    <span><spring:message code='text.repeatabletrip'/></span>
-                    <input type="checkbox" id="chkRepeatable" name="repeatable" value="true" title="<spring:message code='trips.repeatabletooltip'/>" />
+                    <span><spring:message code='trip.repeatable'/></span>
+                    <input type="checkbox" id="chkRepeatable" name="repeatable" value="true" title="<spring:message code='trip.repeatabletooltip'/>" />
                 </div>
                 <input type="hidden" name="Id" value="${tripObject.id}"/>
                 <%--<input type="hidden" name="organizerId" value="${tripObject.organiser.id}"/>--%>

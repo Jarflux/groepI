@@ -21,7 +21,7 @@
         <jsp:include page="/topmenu"/>
     </div>
     <div id="content" class="column light">
-        <h2><spring:message code="text.tripinstance"/></h2>
+        <h2><spring:message code="tripinstance.plannedtrips"/></h2>
 
         <p>Voor template: ${tripObject.title} </p>
 
@@ -32,42 +32,42 @@
             <div class="row">
                 <span><spring:message code='text.title'/></span>
                 <input type="text" class="" name="title" placeholder=""
-                       title="<spring:message code='text.titletooltip'/>"/>
+                       title="<spring:message code='trip.titletooltip'/>"/>
             </div>
             <div class="row">
-                <span><spring:message code='text.available'/></span>
+                <span><spring:message code='trip.available'/></span>
                 <input type="checkbox" class="" name="available" placeholder=""
-                       title="<spring:message code='text.availabletooltip'/>"/>
+                       title="<spring:message code='trip.availabletooltip'/>"/>
             </div>
             <div class="row">
                 <span><spring:message code='text.description'/></span>
-                <textarea name="description" title="<spring:message code='text.descriptiontooltip'/>"></textarea>
+                <textarea name="description" title="<spring:message code='trip.descriptiontooltip'/>"></textarea>
             </div>
             <%--date + starttime + endtime--%>
             <div class="row">
-                <span><spring:message code='text.date'/></span>
-                <input type="text" class="date" name="date" title="<spring:message code='text.instancedate'/>">
+                <span><spring:message code='tripinstance.date'/></span>
+                <input type="text" class="date" name="date" title="<spring:message code='tripinstance.datetooltip'/>">
             </div>
             <div class="row">
-                <span><spring:message code='text.starttime'/></span>
-                <input type="time" name="startTimeString" title="<spring:message code='text.instancestarttime'/>">
+                <span><spring:message code='tripinstance.starttime'/></span>
+                <input type="time" name="startTimeString" title="<spring:message code='tripinstance.starttimetooltip'/>">
             </div>
             <div class="row">
-                <span><spring:message code='text.endtime'/></span>
-                <input type="time" name="endTimeString" title="<spring:message code='text.instanceendtime'/>">
+                <span><spring:message code='tripinstance.endtime'/></span>
+                <input type="time" name="endTimeString" title="<spring:message code='tripinstance.endtimetooltip'/>">
             </div>
 
             <c:choose>
                 <c:when test="${tripObject.repeatable}">
-                    <label><input type="radio" name="repeatable" value="daily"><i><spring:message
-                            code='text.daily'/></i></label><br/>
-                    <label><input type="radio" name="repeatable" value="weekly"><i><spring:message
-                            code='text.weekly'/></i></label><br/>
+                    <label><input type="radio" name="repeatable" value="daily" title=""><i><spring:message
+                            code='tripinstance.daily'/></i></label><br/>
+                    <label><input type="radio" name="repeatable" value="weekly" title=""><i><spring:message
+                            code='tripinstance.weekly'/></i></label><br/>
 
                     <div class="row">
-                        <span><spring:message code='text.dateuntil'/></span>
+                        <span><spring:message code='tripinstance.dateuntil'/></span>
                         <input type="text" class="date" name="endDate"
-                               title="<spring:message code='text.dateuntiltooltip'/>">
+                               title="<spring:message code='tripinstance.dateuntiltooltip'/>">
                     </div>
                 </c:when>
                 <c:otherwise>

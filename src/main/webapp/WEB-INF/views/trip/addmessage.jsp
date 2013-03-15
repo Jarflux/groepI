@@ -14,14 +14,14 @@
         <jsp:include page="/topmenu"/>
     </div>
     <div id="content" class="column light">
-        <h2><spring:message code="text.addmessage"/></h2>
+        <h2><spring:message code="message.add"/></h2>
 
         <form method="post" action="/message/add" class="mainstyle tooltips">
             <input type="hidden" name="tripInstanceId" title="tripInstanceId" value="${tripInstanceId}"/>
 
             <div class="row">
-                <span><spring:message code='text.messagecontent'/></span>
-                <input name="content" title="<spring:message code='text.messagecontent'/>"/>
+                <span><spring:message code='message.content'/></span>
+                <input name="content" title="<spring:message code='message.content'/>"/>
             </div>
 
             <input type="submit" class="button" value="<spring:message code='text.save'/>"/>

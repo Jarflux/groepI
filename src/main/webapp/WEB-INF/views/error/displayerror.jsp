@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title><spring:message code='text.error'/></title>
+    <title><spring:message code='error.error'/></title>
     <link href="/css/blue.css" rel="stylesheet"/>
 
 </head>
@@ -20,12 +20,12 @@
         <jsp:include page="/topmenu"/>
     </div>
     <div id="content" class="column light">
-        <h2><spring:message code='text.error'/></h2>
+        <h2><spring:message code='error.error'/></h2>
 
         <section>
             <div class="quarter"><img src="/images/interdit-256.png" width="250"/></div>
             <div class="three-quarter">
-                <p><spring:message code="text.sorry"/><p>
+                <p><spring:message code="error.sorry"/><p>
 
                 <div class="errormsg"><spring:message code='error.${errorid}'/><p class="small">Error: ${errorid}
 

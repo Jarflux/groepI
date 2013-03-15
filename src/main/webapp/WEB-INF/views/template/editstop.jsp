@@ -26,7 +26,7 @@
                         <form method="post" action="/stop/update" class="mainstyle tooltips validate">
                             <div id="stopDetails">
                                 <div class="row">
-                                    <span><spring:message code='text.trip'/></span><c:out
+                                    <span><spring:message code='trip.trip'/></span><c:out
                                         value="${stopObject.trip.title}"/>
                                 </div>
                                 <div class="row">
@@ -34,17 +34,17 @@
                                     <input type="text" name="name" value="${stopObject.name}"/>
                                 </div>
                                 <div class="row">
-                                    <span><spring:message code='text.type'/></span>
+                                    <span><spring:message code='stop.type'/></span>
                                     <select name="type" id="stopType">
-                                        <option value="0"><spring:message code='text.informative'/></option>
-                                        <option value="1"><spring:message code='text.interactive'/></option>
+                                        <option value="0"><spring:message code='stop.informative'/></option>
+                                        <option value="1"><spring:message code='stop.interactive'/></option>
                                     </select>
                                 </div>
                                 <div class="row">
                                     <span><spring:message code='text.rending'/></span>
                                     <select name="displayMode" id="stopDisplayMode">
-                                        <option value="0"><spring:message code='text.normal'/></option>
-                                        <option value="1"><spring:message code='text.ar'/></option>
+                                        <option value="0"><spring:message code='stop.normal'/></option>
+                                        <option value="1"><spring:message code='stop.augmentedreality'/></option>
                                     </select>
                                 </div>
                                 <div class="row">
@@ -106,7 +106,7 @@
                             </ul>
                         </c:when>
                         <c:otherwise>
-                            <span><spring:message code='text.noaswersfound'/></span>
+                            <span><spring:message code='answer.noaswersfound'/></span>
                         </c:otherwise>
                     </c:choose>
                 </div>
