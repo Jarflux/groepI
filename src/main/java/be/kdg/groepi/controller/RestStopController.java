@@ -12,6 +12,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller("restStopController")
 public class RestStopController {
+
+    private static final Logger logger = Logger.getLogger(RestStopController.class);
 
     @Autowired
     protected TripService tripService;
@@ -87,5 +91,13 @@ public class RestStopController {
         Trip trip = tripService.getTripById(stop.getTrip().getId());
 
         return new ModelAndView("trips/editstop", "tripObject", trip);
+    }
+
+    @ExceptionHandler({Exception.class})
+    public ModelAndView handleException(Exception e) {
+        logger.debug("RestStopController - Unexpected exception", e);
+        ModelAndView modelAndView = new ModelAndView("error/displayerror");
+        modelAndView.addObject("errorid", "defaulterror");
+        return modelAndView;
     }
 }

@@ -7,6 +7,7 @@ import be.kdg.groepi.service.StopService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,9 +27,16 @@ public class RestAnswerController {
     public ModelAndView createAnswer(@RequestParam String answer, @RequestParam String stopId) {
         logger.debug("RestAnswerController: createAnswer");
         Stop stop = stopService.getStopById(Long.parseLong(stopId));
-        stop.getAnswers().add(new Answer(answer, false, stop));
-        stopService.updateStop(stop);
-        return new ModelAndView("trips/editstop", "stopObject", stop);
+        if (stop != null) {
+            stop.getAnswers().add(new Answer(answer, false, stop));
+            stopService.updateStop(stop);
+            return new ModelAndView("trips/editstop", "stopObject", stop);
+        } else {
+            logger.debug("RestAnswerController - createAnswer - Stop not found");
+            ModelAndView modelAndView = new ModelAndView("error/displayerror");
+            modelAndView.addObject("errorid", "stopNotFound");
+            return modelAndView;
+        }
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
@@ -42,5 +50,13 @@ public class RestAnswerController {
             return "succes";
         }
 
+    }
+
+    @ExceptionHandler({Exception.class})
+    public ModelAndView handleException(Exception e) {
+        logger.debug("RestAnswerController - Unexpected exception", e);
+        ModelAndView modelAndView = new ModelAndView("error/displayerror");
+        modelAndView.addObject("errorid", "defaultError");
+        return modelAndView;
     }
 }

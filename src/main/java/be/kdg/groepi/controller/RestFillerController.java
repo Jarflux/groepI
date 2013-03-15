@@ -10,9 +10,13 @@ import be.kdg.groepi.utils.CompareUtil;
 import be.kdg.groepi.utils.DateUtil;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Author: Ben Oeyen
@@ -23,6 +27,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller("restFillerController")
 @RequestMapping("database")
 public class RestFillerController {
+
+    private static final Logger logger = Logger.getLogger(RestFillerController.class);
 
     @Autowired
     protected UserService userService;
@@ -121,5 +127,13 @@ public class RestFillerController {
             e.printStackTrace();
         }
         return "home";
+    }
+
+    @ExceptionHandler({Exception.class})
+    public ModelAndView handleException(Exception e) {
+        logger.debug("RestFillerController - Unexpected exception", e);
+        ModelAndView modelAndView = new ModelAndView("error/displayerror");
+        modelAndView.addObject("errorid", "defaultError");
+        return modelAndView;
     }
 }

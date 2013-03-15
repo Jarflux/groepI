@@ -44,6 +44,11 @@
     <div id="maincontainer" class="column dark">
         <div class="loginmiddlebox">
             <h2><spring:message code='home.contentTitle'/></h2>
+
+            <form method="get" action="/throwexception"
+                  class="mainstyle tooltips">
+                <input type="submit" class="button" value="Throw an exception!"/>
+            </form>
             <%--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo, magna quis accumsan euismod, urna
                 purus viverra nulla, non commodo
                 erat risus ac sapien. Duis quis odio est. Mauris luctus odio eget dui accumsan nec mollis massa

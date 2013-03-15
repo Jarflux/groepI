@@ -191,4 +191,12 @@ public class RestUserController {
 
         return "home";
     }
+
+    @ExceptionHandler({Exception.class})
+    public ModelAndView handleException(Exception e) {
+        logger.debug("RestUserController - Unexpected exception", e);
+        ModelAndView modelAndView = new ModelAndView("error/displayerror");
+        modelAndView.addObject("errorid", "defaulterror");
+        return modelAndView;
+    }
 }
