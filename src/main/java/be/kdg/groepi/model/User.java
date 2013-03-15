@@ -35,9 +35,10 @@ public class User implements Serializable {
     private Timestamp fPasswordResetTimestamp;
     @Column(name = "FBUserID")
     private String fFBUserID;
-    //@OneToMany
-    //private Set<Trip> organizedTrips;
-    // Hibernates needs empty constructor
+    @Column(name = "longitude")
+    private String fLongitude;
+    @Column(name = "latitude")
+    private String fLatitude;
 
     public User() {
     }
@@ -117,6 +118,22 @@ public class User implements Serializable {
         this.fFBUserID = fFBUserID;
     }
 
+    public String getLongitude() {
+        return fLongitude;
+    }
+
+    public void setLongitude(String fLongitude) {
+        this.fLongitude = fLongitude;
+    }
+
+    public String getfLatitude() {
+        return fLatitude;
+    }
+
+    public void setfLatitude(String fLatitude) {
+        this.fLatitude = fLatitude;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null) {
@@ -147,12 +164,17 @@ public class User implements Serializable {
         if (!CompareUtil.compareString(fFBUserID, user.getFBUserID())) {
             return false;
         }
+        if (!CompareUtil.compareString(fLatitude, user.getfLatitude())) {
+            return false;
+        }
+        if (!CompareUtil.compareString(fLongitude, user.getLongitude())) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public int hashCode() {
-//        int hash = super.hashCode();
-        return getId().intValue();//super.hashCode();
+        return getId().intValue();
     }
 }

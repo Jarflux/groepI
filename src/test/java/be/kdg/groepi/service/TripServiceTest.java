@@ -34,7 +34,7 @@ public class TripServiceTest {
     public void beforeEachTest() {
         user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
         userService.createUser(user);
-        trip = new Trip("Onze eerste trip", "Hopelijk is deze niet te saai!", true, true, user);// trip aanmaken
+        trip = new Trip("Onze eerste trip", "Hopelijk is deze niet te saai!", true, true, true, user);
         tripService.createTrip(trip);
     }
 
@@ -82,9 +82,9 @@ public class TripServiceTest {
     @Test
     public void getPublicTrips() {
         int size = tripService.getPublicTrips().size();
-        Trip newFalseTrip = new Trip("falsetrip", "mdahnebzalem", false, true, user);
+        Trip newFalseTrip = new Trip("falsetrip", "mdahnebzalem", false, true, true, user);
         tripService.createTrip(newFalseTrip);
-        Trip newTrueTrip = new Trip("truetrip", "first false trip in test", true, true, user);
+        Trip newTrueTrip = new Trip("truetrip", "first false trip in test", true, true, true, user);
         tripService.createTrip(newTrueTrip);
         List<Trip> trips = tripService.getPublicTrips();
         assertTrue("getPublicTrips: didn't receive public-only trips", trips.size() == size + 1);
@@ -93,11 +93,11 @@ public class TripServiceTest {
     @Test
     public void getTripsByOrganiserId() {
         int size = tripService.getTripsByOrganiserId(user.getId()).size();
-        Trip oldOrganiserTrip = new Trip("newusertrip", "mdahnebzalem", false, true, user);
+        Trip oldOrganiserTrip = new Trip("newusertrip", "mdahnebzalem", false, true, true, user);
         tripService.createTrip(oldOrganiserTrip);
         User newUser = new User("newUser", "new@us.er", "yitfluyfkytfglkyu", DateUtil.dateToLong(15, 7, 1992, 0, 0, 0));
         userService.createUser(newUser);
-        Trip newOrganiserTrip = new Trip("newusertrip", "first new user trip in test", false, true, newUser);
+        Trip newOrganiserTrip = new Trip("newusertrip", "first new user trip in test", false, true, true, newUser);
         tripService.createTrip(newOrganiserTrip);
         List<Trip> trips = tripService.getTripsByOrganiserId(user.getId());
         assertTrue("getPublicTrips: didn't receive user-only trips", trips.size() == size + 1);

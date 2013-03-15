@@ -63,10 +63,10 @@ public class RestFillerController {
             userService.createUser(gregory);
             userService.createUser(dave);
 
-            Trip tripA = new Trip("Onze eerste trip", "Hopelijk is deze niet saai!", true, true, ben);
-            Trip tripB = new Trip("Onze tweede trip", "Hopelijk is deze niet saaier!", true, true, tim);
-            Trip tripC = new Trip("Onze derde trip", "Hopelijk is deze niet de saaiste!", true, true, mitch);
-            Trip tripD = new Trip("The Candy Land Tour", "Een rit doorheen de domeinen van Mr Calvin Candy", true, true, django);
+            Trip tripA = new Trip("Onze eerste trip", "Hopelijk is deze niet saai!", true, true, true, ben);
+            Trip tripB = new Trip("Onze tweede trip", "Hopelijk is deze niet saaier!", true, true,true, tim);
+            Trip tripC = new Trip("Onze derde trip", "Hopelijk is deze niet de saaiste!", true, true,true, mitch);
+            Trip tripD = new Trip("The Candy Land Tour", "Een rit doorheen de domeinen van Mr Calvin Candy", true, true,true, django);
             tripService.createTrip(tripA);
             tripService.createTrip(tripB);
             tripService.createTrip(tripC);

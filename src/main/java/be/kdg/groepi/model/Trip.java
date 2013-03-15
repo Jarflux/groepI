@@ -39,6 +39,8 @@ public class Trip implements Serializable, Comparable {
     private Boolean fAvailable;
     @Column(name = "repeatable")
     private Boolean fRepeatable;
+    @Column(name = "enableChat")
+    private Boolean fEnableChat;
     @ExcludeFromGson
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
@@ -53,19 +55,15 @@ public class Trip implements Serializable, Comparable {
     @Cascade(CascadeType.DELETE)
     private Set<Requirement> fRequirements = new HashSet<>();
 
-    // @ManyToMany(fetch = FetchType.EAGER)
-    // @Cascade(CascadeType.ALL)
-    // @JoinTable(name = "T_TRIP_REQUIREMENT", joinColumns = {@JoinColumn(name = "trip_id")}, inverseJoinColumns = {@JoinColumn(name = "requirement_id")})
-    // private Set<Requirement> fRequirements = new HashSet<>();
-    // Hibernates needs empty constructor
     public Trip() {
     }
 
-    public Trip(String fTitle, String fDescription, Boolean fAvailable, Boolean fRepeatable, User fOrganiser) {
+    public Trip(String fTitle, String fDescription, Boolean fAvailable, Boolean fRepeatable, Boolean fEnableChat, User fOrganiser) {
         this.fTitle = fTitle;
         this.fDescription = fDescription;
         this.fAvailable = fAvailable;
         this.fRepeatable = fRepeatable;
+        this.fEnableChat = fEnableChat;
         this.fOrganiser = fOrganiser;
     }
 
@@ -107,6 +105,14 @@ public class Trip implements Serializable, Comparable {
 
     public void setRepeatable(Boolean fRepeatable) {
         this.fRepeatable = fRepeatable;
+    }
+
+    public Boolean getEnableChat() {
+        return fEnableChat;
+    }
+
+    public void setEnableChat(Boolean fEnableChat) {
+        this.fEnableChat = fEnableChat;
     }
 
     public User getOrganiser() {
@@ -159,15 +165,12 @@ public class Trip implements Serializable, Comparable {
         if (fRepeatable != trip.getRepeatable()) {
             return false;
         }
+        if (fEnableChat != trip.getEnableChat()) {
+            return false;
+        }
         if (!this.fOrganiser.equals(trip.getOrganiser())) {
             return false;
-        } /*
-         if (!(CompareUtil.compareSet(this.fStops, trip.getStops()))) {
-         return false;
-         }
-         if (!(CompareUtil.compareSet(this.fRequirements, trip.getRequirements()))) {
-         return false;
-         } */
+        }
         return true;
     }
 
@@ -179,7 +182,6 @@ public class Trip implements Serializable, Comparable {
     @Override
     public int compareTo(Object o) {
         Trip trip = (Trip) o;
-
         return this.fTitle.compareToIgnoreCase(trip.getTitle());
     }
 }

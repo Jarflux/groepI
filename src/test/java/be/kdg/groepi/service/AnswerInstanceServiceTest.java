@@ -48,7 +48,7 @@ public class AnswerInstanceServiceTest {
     public void beforeEachTest() {
         user = new User("Gregory", "gregory@trippie.com", "greg", dateToLong(4, 5, 1988, 15, 32, 0));
         userService.createUser(user);
-        trip = new Trip("Stadswandeling, Antwerp Edition", "Een wandeling doorheen het centrum met als afsluiter een etentje op het nieuwe Zuid.", true, true, user);// trip aanmaken
+        trip = new Trip("Stadswandeling, Antwerp Edition", "Een wandeling doorheen het centrum met als afsluiter een etentje op het nieuwe Zuid.", true, true, true, user);
         tripService.createTrip(trip);
         stop = new Stop("Groenplaats", "4.399166", "51.221212", 1, 1, 1, "Van wie is dit stambeeld?", 1000, trip);
         stopService.createStop(stop);

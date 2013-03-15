@@ -50,7 +50,7 @@ public class TripInstanceServiceTest {
     public void beforeEachTest() {
         user = new User("TIMMEH", "TIM@M.EH", "hemmit", dateToLong(4, 5, 2011, 15, 32, 0));
         userService.createUser(user);
-        trip = new Trip("Onze eerste trip", "Hopelijk is deze niet te saai!", true, true, user);// trip aanmaken
+        trip = new Trip("Onze eerste trip", "Hopelijk is deze niet te saai!", true, true, true, user);// trip aanmaken
         tripService.createTrip(trip);
         long startDate = DateUtil.dateToLong(27, 02, 2013, 16, 00, 00);
         long endDate = DateUtil.dateToLong(27, 02, 2013, 20, 00, 00);
@@ -247,7 +247,7 @@ public class TripInstanceServiceTest {
     public void testCompareTripInstanceTrip() {
         long startDate = DateUtil.dateToLong(27, 02, 2013, 16, 00, 00);
         long endDate = DateUtil.dateToLong(27, 02, 2013, 20, 00, 00);
-        Trip trip2 = new Trip("NIET Onze eerste trip", "NIET Hopelijk is deze niet te saai!", true, true, user);
+        Trip trip2 = new Trip("NIET Onze eerste trip", "NIET Hopelijk is deze niet te saai!", true, true, true, user);
         tripService.createTrip(trip2);
         TripInstance tripinstance2 = new TripInstance("Bachelor feestje", "Iemand gaat trouwen, bier en vrouwen ole", false, startDate, endDate, user, trip2);
         tripInstanceService.createTripInstance(tripinstance2);
