@@ -25,7 +25,7 @@
 
         <p>Voor template: ${tripObject.title} </p>
 
-        <form method="post" action="/trips/createinstance" class="mainstyle tooltips">
+        <form method="post" action="/trip/create" class="mainstyle tooltips">
             <%--<input type="hidden" name="tripId" title="tripId" value="${tripObject.id}"/>--%>
             <input type="hidden" name="tripId" title="tripId" value="${tripObject.id}"/>
 

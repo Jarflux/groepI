@@ -42,7 +42,7 @@
                             <c:forEach var="tripInstance" items="${ownTripInstances}">
                                 <tr>
                                     <td>${tripInstance.id}</td>
-                                    <td><a href="/trips/viewinstance/${tripInstance.id}" class="active">
+                                    <td><a href="/trip/view/${tripInstance.id}" class="active">
                                             ${tripInstance.title}</a></td>
                                     <td>${tripInstance.description}</td>
                                     <td>${tripInstance.participants.size()}</td>
@@ -83,7 +83,7 @@
                             <c:forEach var="tripInstance" items="${publicTripInstances}">
                                 <tr>
                                     <td>${tripInstance.id}</td>
-                                    <td><a href="/trips/viewinstance/${tripInstance.id}" class="active">
+                                    <td><a href="/trip/view/${tripInstance.id}" class="active">
                                             ${tripInstance.title}</a></td>
                                     <td>${tripInstance.description}</td>
                                     <td>${tripInstance.participants.size()}</td>
@@ -94,7 +94,7 @@
                                         <c:forEach var="participatingBoolean" items="${isUserParticipating}">
                                             <c:if test="${(participatingBoolean.key eq tripInstance.id)
                                                         && (participatingBoolean.value eq false)}">
-                                                <form method="post" action="/trips/jointrip">
+                                                <form method="post" action="/trip/join">
                                                     <input type="hidden" value="${tripInstance.id}" name="tripId"/>
                                                     <input type="submit" class="button"
                                                            value="<spring:message code='text.jointrip'/>"/>

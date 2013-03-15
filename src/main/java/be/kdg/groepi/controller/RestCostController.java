@@ -6,15 +6,16 @@ import be.kdg.groepi.model.User;
 import be.kdg.groepi.service.CostService;
 import be.kdg.groepi.service.MessageService;
 import be.kdg.groepi.service.TripInstanceService;
-import be.kdg.groepi.utils.ModelAndViewUtil;
-
-import javax.servlet.http.HttpSession;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpSession;
 
 @Controller("restCostController")
 @RequestMapping("cost")
@@ -37,8 +38,9 @@ public class RestCostController {
         Cost cost = costService.getCostById(Long.parseLong(costId));
         if (cost != null) {
             costService.deleteCost(cost);
-            return ModelAndViewUtil.getModelAndViewForViewInstance(messageService, session,
-                    tripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId)));
+            return new ModelAndView("redirect:/trip/view/" + tripInstanceId);
+            /*return ModelAndViewUtil.getModelAndViewForViewInstance(messageService, session,
+                    tripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId)));*/
         } else {
             logger.debug("RestCostController - deleteCostFromTripInstance - Cost not found");
             ModelAndView modelAndView = new ModelAndView("error/displayerror");
@@ -58,7 +60,8 @@ public class RestCostController {
             cost.setDescription(description);
             cost.setAmount(Double.parseDouble(amount));
             costService.updateCost(cost);
-            return ModelAndViewUtil.getModelAndViewForViewInstance(messageService, session, cost.getTripInstance().getId());
+            return new ModelAndView("redirect:/trip/view/" + cost.getTripInstance().getId());
+           /* return ModelAndViewUtil.getModelAndViewForViewInstance(messageService, session, cost.getTripInstance().getId());*/
         } else {
             logger.debug("RestCostController - editCost - Cost not found");
             ModelAndView modelAndView = new ModelAndView("error/displayerror");
@@ -77,7 +80,7 @@ public class RestCostController {
             User sessionUser = (User) session.getAttribute("userObject");
             Cost cost = new Cost(description, Double.parseDouble(amount), tripInstance, sessionUser);
             costService.createCost(cost);
-            return new ModelAndView("redirect:/trips/viewinstance/" + tripInstanceId);
+            return new ModelAndView("redirect:/trip/view/" + tripInstanceId);
         } else {
             logger.debug("RestCostController - doAddCost - TripInstance not found");
             ModelAndView modelAndView = new ModelAndView("error/displayerror");

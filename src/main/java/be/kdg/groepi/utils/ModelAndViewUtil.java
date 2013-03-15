@@ -5,21 +5,14 @@ import be.kdg.groepi.model.RequirementInstance;
 import be.kdg.groepi.model.TripInstance;
 import be.kdg.groepi.model.User;
 import be.kdg.groepi.service.MessageService;
-
 import be.kdg.groepi.service.TripInstanceService;
-import java.util.*;
-import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.ModelAndView;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dave
- * Date: 13/03/13
- * Time: 11:15
- * To change this template use File | Settings | File Templates.
- */
-public class ModelAndViewUtil {
+import javax.servlet.http.HttpSession;
+import java.util.*;
 
+
+public class ModelAndViewUtil {
 
 
     public static ModelAndView getModelAndViewForViewInstance(MessageService messageService, HttpSession session, TripInstance tripInstance) {
@@ -30,14 +23,14 @@ public class ModelAndViewUtil {
 
         for (Message message : sortedMessages) {
             messageDates.put(message.getId(), DateUtil.formatDate(DateUtil.longToDate(message.getDate())) + " " +
-                                                    DateUtil.formatTime(DateUtil.longToDate(message.getDate())));
+                    DateUtil.formatTime(DateUtil.longToDate(message.getDate())));
         }
 
         Set<User> participants = tripInstance.getParticipants();
         User sessionUser = (User) session.getAttribute("userObject");
         Boolean isUserParticipating = false;
-        for (User user : participants){
-            if (user.getId().equals(sessionUser.getId())){
+        for (User user : participants) {
+            if (user.getId().equals(sessionUser.getId())) {
                 isUserParticipating = true;
             }
         }
@@ -46,7 +39,7 @@ public class ModelAndViewUtil {
         sortedRequirements.addAll(tripInstance.getRequirementInstances());
         tripInstance.setRequirementInstances(sortedRequirements);
 
-        ModelAndView modelAndView = new ModelAndView("/trips/viewinstance");
+        ModelAndView modelAndView = new ModelAndView("/trip/view");
         modelAndView.addObject("tripInstanceObject", tripInstance);
         modelAndView.addObject("isUserParticipating", isUserParticipating);
         modelAndView.addObject("messageDates", messageDates);

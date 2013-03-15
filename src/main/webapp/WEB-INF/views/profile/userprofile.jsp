@@ -20,11 +20,13 @@
     </div>
     <div id="content" class="column light">
         <h2><spring:message code='text.dashboard'/></h2>
+
         <div class="full">
             <c:choose>
                 <c:when test="${userObject != null}">
                     <section>
                         <h3><spring:message code='text.mydata'/></h3>
+
                         <div class="quarter">
                             <c:choose>
                                 <c:when test="${userObject.profilePicture == null}">
@@ -74,7 +76,7 @@
                                 <%--<tr>--%>
                             <c:forEach var="tripInstance" items="${userFutureTripInstances}">
                                 <tr>
-                                    <td><a href="/trips/viewinstance/${tripInstance.id}" class="active">
+                                    <td><a href="/trip/view/${tripInstance.id}" class="active">
                                         <c:out value="${tripInstance.title}"/>
                                     </a></td>
                                     <td>${tripInstance.description}</td>
@@ -92,7 +94,7 @@
 
                             <c:forEach var="tripInstance" items="${userPastTripInstances}">
                                 <tr>
-                                    <td><a href="/trips/viewinstance/${tripInstance.id}" class="active">
+                                    <td><a href="/trip/view/${tripInstance.id}" class="active">
                                         <c:out value="${tripInstance.title}"/>
                                     </a></td>
                                     <td>${tripInstance.description}</td>

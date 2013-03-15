@@ -7,13 +7,6 @@ import be.kdg.groepi.model.User;
 import be.kdg.groepi.service.AnswerService;
 import be.kdg.groepi.service.StopService;
 import be.kdg.groepi.service.TripService;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import javax.servlet.http.HttpSession;
-
 import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +15,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URISyntaxException;
+
 @Controller("restStopController")
+@RequestMapping("stop")
 public class RestStopController {
 
     private static final Logger logger = Logger.getLogger(RestStopController.class);
@@ -34,14 +34,16 @@ public class RestStopController {
     @Autowired
     protected AnswerService answerService;
 
-    @RequestMapping(value = "/trips/createStop", method = RequestMethod.POST)
-    public ModelAndView createStop(HttpSession session, @ModelAttribute("stopObject") Stop stop, @RequestParam(value = "tripId") String tripId) {
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public ModelAndView createStop(HttpSession session, @ModelAttribute("stopObject") Stop stop,
+                                   @RequestParam(value = "tripId") String tripId) {
+        logger.debug("RestStopController: createStop");
         Trip trip = tripService.getTripById(Long.parseLong(tripId));
         if (trip != null) {
             stop.setStopnumber(trip.getStops().size());
             stop.setTrip(trip);
             stopService.createStop(stop);
-            return new ModelAndView("trips/editstop", "tripObject", trip);
+            return new ModelAndView("template/editstop", "tripObject", trip);
         } else {
             logger.debug("RestStopController - createStop - Triptemplate not found");
             ModelAndView modelAndView = new ModelAndView("error/displayerror");
@@ -50,13 +52,15 @@ public class RestStopController {
         }
     }
 
-    @RequestMapping(value = "/trips/addstop/{tripId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/add/{tripId}", method = RequestMethod.GET)
     public ModelAndView addStop(@PathVariable("tripId") String tripId, HttpSession session) {
+        logger.debug("RestStopController: addStop");
         Trip trip = tripService.getTripById(Long.parseLong(tripId));
+
         if (trip != null) {
             User user = (User) session.getAttribute("userObject");
             if (user.getId().equals(trip.getOrganiser().getId())) {
-                return new ModelAndView("trips/addstop", "tripObject", trip);
+                return new ModelAndView("template/addstop", "tripObject", trip);
             } else {
                 logger.debug("RestStopController - addStop - User not Authorized");
                 ModelAndView modelAndView = new ModelAndView("error/displayerror");
@@ -71,13 +75,14 @@ public class RestStopController {
         }
     }
 
-    @RequestMapping(value = "/trips/editStop/{stopId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/edit/{stopId}", method = RequestMethod.GET)
     public ModelAndView editStopView(@PathVariable("stopId") String stopId, HttpSession session) {
+        logger.debug("RestStopController: editStopView");
         Stop stop = stopService.getStopById(Long.parseLong(stopId));
         User user = (User) session.getAttribute("userObject");
         if (stop != null) {
             if (stop.getTrip().getOrganiser().getId().equals(user.getId())) {
-                ModelAndView modelAndView = new ModelAndView("trips/editstop");
+                ModelAndView modelAndView = new ModelAndView("template/editstop");
                 modelAndView.addObject("stopObject", stop);
                 return modelAndView;
             } else {
@@ -94,13 +99,14 @@ public class RestStopController {
         }
     }
 
-    @RequestMapping(value = "/trips/updateStop", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ModelAndView updateStop(@ModelAttribute("stopObject") Stop stop, @RequestParam String tripId) {
+        logger.debug("RestStopController: updateStop");
         Trip trip = tripService.getTripById(Long.parseLong(tripId));
         if (trip != null) {
             stop.setTrip(trip);
             stopService.updateStop(stop);
-            return new ModelAndView("trips/view", "tripObject", trip);
+            return new ModelAndView("redirect:/template/view/" + tripId);
         } else {
             logger.debug("RestStopController - updateStop - Triptemplate not found");
             ModelAndView modelAndView = new ModelAndView("error/displayerror");
@@ -109,8 +115,9 @@ public class RestStopController {
         }
     }
 
-    @RequestMapping(value = "/trips/setStopIsCorrect", method = RequestMethod.POST)
+    @RequestMapping(value = "/setIsCorrect", method = RequestMethod.POST)
     public String setStopIsCorrect(@RequestParam String answerId) {
+        logger.debug("RestStopController: setStopIsCorrect");
         Answer answer = answerService.getAnswerById(Long.parseLong(answerId));
         Stop stop = stopService.getStopById(answer.getStop().getId());
         stop.setCorrectAnswer(Long.parseLong(answerId));
@@ -118,8 +125,11 @@ public class RestStopController {
         return "saved";
     }
 
-    @RequestMapping(value = "/trips/addAR", method = RequestMethod.POST)
-    public ModelAndView addToVuforia(@RequestParam(value = "photo") MultipartFile uploadedFile, @RequestParam(value = "stopid") Long stopId) throws IOException, JSONException, URISyntaxException {
+    @RequestMapping(value = "/addAR", method = RequestMethod.POST)
+    public ModelAndView addToVuforia(@RequestParam(value = "photo") MultipartFile uploadedFile,
+                                     @RequestParam(value = "stopid") Long stopId)
+            throws IOException, JSONException, URISyntaxException {
+        logger.debug("RestStopController: addToVuforia");
         File tempfile = File.createTempFile("tijdelijk", "juha");
         System.out.println("Trying for Vuforia voor stopId: " + stopId);
         FileOutputStream fos = new FileOutputStream(tempfile);
@@ -129,7 +139,7 @@ public class RestStopController {
         Stop stop = stopService.getStopById(stopId);
         Trip trip = tripService.getTripById(stop.getTrip().getId());
 
-        return new ModelAndView("trips/editstop", "tripObject", trip);
+        return new ModelAndView("template/editstop", "tripObject", trip);
     }
 
     @ExceptionHandler({Exception.class})

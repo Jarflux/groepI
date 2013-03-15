@@ -8,13 +8,6 @@ import be.kdg.groepi.service.UserService;
 import be.kdg.groepi.utils.CompareUtil;
 import be.kdg.groepi.utils.DateUtil;
 import be.kdg.groepi.utils.FileUtil;
-
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-import java.util.*;
-import javax.servlet.http.HttpSession;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,6 +18,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import java.util.*;
 
 @Controller("restUserController")
 @RequestMapping("profile")
@@ -41,6 +40,7 @@ public class RestUserController {
 
     @RequestMapping(value = "/view/{userId}", method = RequestMethod.GET)
     public ModelAndView getUser(@PathVariable("userId") String userId) {
+        logger.debug("RestUserController: getUser");
         User user = userService.getUserById(Long.parseLong(userId));
 
         if (user != null) {
@@ -56,10 +56,11 @@ public class RestUserController {
         }
     }
 
-    @RequestMapping(value = "/createUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ModelAndView createUser(@ModelAttribute("userObject") User user,
                                    @RequestParam(value = "dob") String dateOfBirth)
             throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        logger.debug("RestUserController: createUser");
         user.setDateOfBirth(DateUtil.dateStringToLong(dateOfBirth, null));
         user.setPassword(CompareUtil.getHashedPassword(user.getPassword()));
         userService.createUser(user);
@@ -67,7 +68,12 @@ public class RestUserController {
     }
 
     @RequestMapping(value = "/fblogin", method = RequestMethod.POST)
-    public ModelAndView fbLogin(@RequestParam(value = "id") String FBUserID, @RequestParam(value = "name") String naam, @RequestParam(value = "email") String email, @RequestParam(value = "birthday") String verjaardag, HttpSession session) {
+    public ModelAndView fbLogin(@RequestParam(value = "id") String FBUserID,
+                                @RequestParam(value = "name") String naam,
+                                @RequestParam(value = "email") String email,
+                                @RequestParam(value = "birthday") String verjaardag,
+                                HttpSession session) {
+        logger.debug("RestUserController: fbLogin");
         User user = userService.getUserByFbUserId(FBUserID);
         if (user == null) {
             user = new User();
@@ -89,6 +95,7 @@ public class RestUserController {
 
     @RequestMapping(value = "/myprofile")
     public ModelAndView myProfile(HttpSession session) {
+        logger.debug("RestUserController: myProfile");
 
         User sessionUser = (User) session.getAttribute("userObject");
         Map<Long, String> tripInstanceDates = new HashMap<>();
@@ -127,16 +134,18 @@ public class RestUserController {
 
     @RequestMapping(value = "/myprofile/edit", method = RequestMethod.GET)
     public ModelAndView editUserView(HttpSession session) {
+        logger.debug("RestUserController: editUserView");
         ModelAndView modelAndView = new ModelAndView("profile/editprofile");
         modelAndView.addObject("userObject", (User) session.getAttribute("userObject"));
         modelAndView.addObject("dob", DateUtil.formatDate(session));
         return modelAndView;
     }
 
-    @RequestMapping(value = "/editUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public ModelAndView editUser(HttpSession session, @ModelAttribute("userObject") User user,
                                  @RequestParam(value = "dob") String dateOfBirth,
                                  @RequestParam(value = "photo") MultipartFile uploadedFile) throws IOException {
+        logger.debug("RestUserController: editUser");
         User sessionUser = (User) session.getAttribute("userObject");
         sessionUser.setName(user.getName());
         sessionUser.setEmail(user.getEmail());
@@ -150,6 +159,7 @@ public class RestUserController {
 
     @RequestMapping(value = "/reset/forgotPassword")
     public ModelAndView forgotpassword() {
+        logger.debug("RestUserController: forgotpassword");
         System.out.println("forgotpassword: Passing through...");
 //        return "profile/forgotpassword";
         return new ModelAndView("profile/forgotpassword", "message", "");
@@ -157,6 +167,7 @@ public class RestUserController {
 
     @RequestMapping(value = "/reset/doResetPassword", method = RequestMethod.POST)
     public ModelAndView doResetPassword(@RequestParam(value = "email") String email) {
+        logger.debug("RestUserController: doResetPassword");
         if (userService.resetPassword(email)) {
             return new ModelAndView("profile/forgotpassword", "message", "An email has been sent. Please check your inbox for further instructions.");
         } else {
@@ -166,6 +177,7 @@ public class RestUserController {
 
     @RequestMapping(value = "/reset/{resetString}", method = RequestMethod.GET)
     public ModelAndView resetPassword(@PathVariable("resetString") String resetString) {
+        logger.debug("RestUserController: resetPassword");
         User user = userService.getUserByResetString(resetString);
         if (user != null) {
             if (user.getPasswordResetTimestamp().getTime() > Calendar.getInstance().getTime().getTime()) {
@@ -183,7 +195,9 @@ public class RestUserController {
     @RequestMapping(value = "/reset/setNewPassword", method = RequestMethod.POST)
     public String setNewPassword(/* @RequestParam(value = "userObject") */ /* @ModelAttribute("userObject") User user, */
                                  @RequestParam(value = "passwordResetString") String passwordResetString,
-                                 @RequestParam(value = "password") String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+                                 @RequestParam(value = "password") String password)
+            throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        logger.debug("RestUserController: setNewPassword");
         User user = userService.getUserByResetString(passwordResetString);
 
         user.setPassword(CompareUtil.getHashedPassword(password));

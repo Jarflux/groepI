@@ -38,7 +38,7 @@
         <sec:authorize access="isAuthenticated()">
             <h2>Hallo</h2>
             <span>Welkom, ${userObject.name}</span><br/>
-            <a href="j_spring_security_logout" class="button"><spring:message code="text.logout" /> </a>
+            <a href="j_spring_security_logout" class="button"><spring:message code="text.logout"/> </a>
         </sec:authorize>
     </div>
     <div id="maincontainer" class="column dark">
@@ -68,7 +68,7 @@
             <sec:authorize access="isAuthenticated()">
                 <p class="fp_navigation"><a href="/template/list"><spring:message code='home.organizeTrip'/></a></p>
 
-                <p class="fp_navigation"><a href="/trips/listinstance"><spring:message
+                <p class="fp_navigation"><a href="/trip/list"><spring:message
                         code='home.participateOnTrip'/></a></p>
             </sec:authorize>
         </div>

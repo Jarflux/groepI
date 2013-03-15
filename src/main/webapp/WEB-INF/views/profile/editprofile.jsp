@@ -39,7 +39,7 @@
                         <div class="row">
                             <c:out value="Profile of user #${userObject.id}"/>
                         </div>
-                        <form method="post" action="/profile/editUser" class="mainstyle tooltips validate"
+                        <form method="post" action="/profile/edit" class="mainstyle tooltips validate"
                               enctype="multipart/form-data">
                             <div class="row">
                                 <span><spring:message code='text.name'/></span>
@@ -66,7 +66,7 @@
                             <div class="row">
                                 <span></span>
                                 <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
-                                    <input type="reset" class="button" value="<spring:message code='text.cancel'/>"/>
+                                <input type="reset" class="button" value="<spring:message code='text.cancel'/>"/>
 
                             </div>
                         </form>

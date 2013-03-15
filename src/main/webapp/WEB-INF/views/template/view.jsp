@@ -38,7 +38,7 @@
             <section>
                 <h3><spring:message code='text.stops'/></h3>
                 <c:if test="${tripObject.organiser.id == userObject.id}">
-                    <a href="/trips/addstop/${tripObject.id}" class="active"><spring:message code='text.add'/></a>
+                    <a href="/stop/add/${tripObject.id}" class="active"><spring:message code='text.add'/></a>
                 </c:if>
                 <c:choose>
                     <c:when test="${!empty tripObject.stops}">
@@ -46,7 +46,7 @@
                             <c:forEach var="stop" items="${tripObject.stops}">
                                 <li id="stop-${stop.id}">${stop.stopnumber}:
                                     <c:if test="${tripObject.organiser.id == userObject.id}">
-                                        <a href="/trips/editStop/${stop.id}" class="active">
+                                        <a href="/stop/edit/${stop.id}" class="active">
                                             <c:out value="${stop.name}"/>
                                         </a>
                                     </c:if>
@@ -65,11 +65,16 @@
         </div>
         <div class="quarter">
             <section>
-                <h3><spring:message code='text.requirements'/></h3>
-                <c:if test="${tripObject.organiser.id == userObject.id}">
-                    <a href="/trips/addrequirement/${tripObject.id}" class="active"><spring:message
+                <h3>
+                    <spring:message code='text.requirements'/>
+                    <c:if test="${tripObject.organiser.id == userObject.id}">
+                        <img src="/images/add.jpg" class="addrequirement" width="18" instid="${tripObject.id}"/>
+                    </c:if>
+                </h3>
+                <%--<c:if test="${tripObject.organiser.id == userObject.id}">
+                    <a href="/requirement/add/${tripObject.id}" class="active"><spring:message
                             code='text.add'/></a>
-                </c:if>
+                </c:if>--%>
                 <c:choose>
                     <c:when test="${!empty tripObject.requirements}">
                         <table>
@@ -77,7 +82,7 @@
                                 <tr>
                                     <td>
                                         <c:if test="${tripObject.organiser.id == userObject.id}">
-                                            <a href="/trips/editTriprequirement/${requirement.id}" class="active">
+                                            <a href="/requirement/edit/${requirement.id}" class="active">
                                                 <c:out value="${requirement.name}"/>
                                             </a>
                                         </c:if>
@@ -104,7 +109,7 @@
             <section>
                 <h3><spring:message code='text.instances'/></h3>
                 <c:if test="${tripObject.organiser.id == userObject.id}">
-                    <a href="/trips/addinstance/${tripObject.id}" class="active"><spring:message code='text.add'/></a>
+                    <a href="/trip/add/${tripObject.id}" class="active"><spring:message code='text.add'/></a>
                 </c:if>
                 <c:choose>
                     <c:when test="${!empty tripInstances}">
@@ -112,7 +117,7 @@
                             <c:forEach var="tripInstance" items="${tripInstances}">
                                 <tr>
                                     <td>
-                                        <a href="/trips/viewinstance/${tripInstance.id}" class="active">
+                                        <a href="/trip/view/${tripInstance.id}" class="active">
                                             <c:out value="${tripInstance.title}"/>
                                         </a>
                                     </td>
@@ -132,10 +137,36 @@
         </div>
     </div>
 </div>
+
+<div id="addRequirement" title="<spring:message code="text.createRequirement"/>">
+    <form method="post" action="/requirement/add" class="mainstyle tooltips">
+        <input type="hidden" name="tripId" id="addRequirementTripId"
+               title="tripId" value="${tripObject.id}"/>
+
+        <div class="row">
+            <span><spring:message code='text.name'/></span>
+            <input name="name" id="addRequirementName" title="<spring:message code='text.requirementname'/>"/>
+        </div>
+        <div class="row">
+            <span><spring:message code='text.amount'/></span>
+            <input name="amount" class="required" id="addRequirementAmount"
+                   title="<spring:message code='text.requirementamount'/>"/> <%--TODO: number-validation--%>
+        </div>
+        <div class="row">
+            <span><spring:message code='text.description'/></span>
+            <textarea name="description" id="addRequirementDescription"
+                      title="<spring:message code='text.requirementdescription'/>"></textarea>
+        </div>
+        <input title="<spring:message code='text.save'/>" type="submit" class="button"
+               value="<spring:message code='text.save'/>"/>
+    </form>
+</div>
+
 <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 <script src="/js/functions.js"></script>
-<script>makesortable();
+<script>maketripsortable();
+preparemodal();
 </script>
 </body>
 </html>

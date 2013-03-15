@@ -5,12 +5,13 @@
 package be.kdg.groepi.dao;
 
 import be.kdg.groepi.model.Cost;
-import java.util.List;
+import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Repository;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import org.springframework.dao.DataAccessException;
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
 /**
  * @author: Ben Oeyen
@@ -31,13 +32,13 @@ public class CostDaoImpl implements CostDao {
     }
 
     @Override
-    public void createCost(Cost cost) throws DataAccessException {
-        getEntityManager().persist(cost);
+    public void createCost(Cost user) throws DataAccessException {
+        getEntityManager().persist(user);
     }
 
     @Override
     public void deleteCost(Cost cost) throws DataAccessException {
-        getEntityManager().remove(cost);
+        getEntityManager().remove(getEntityManager().merge(cost));
     }
 
     @Override

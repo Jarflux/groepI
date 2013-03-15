@@ -14,7 +14,7 @@
     <h2><spring:message code="text.editinstance"/></h2>
     <c:choose>
         <c:when test="${tripInstanceObject != null}">
-            <form method="post" action="/trips/updateinstance" class="mainstyle tooltips">
+            <form method="post" action="/trip/update" class="mainstyle tooltips">
                 <input type="hidden" value="${tripInstanceObject.id}" name="tripInstanceId"/>
 
                 <div class="row">
@@ -50,7 +50,7 @@
                 </div>
                 <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
             </form>
-            <%--<a href="/trips/addstop/${tripObject.id}" class="active"><spring:message code='text.newstop'/></a>--%>
+            <%--<a href="/stop/add/${tripObject.id}" class="active"><spring:message code='text.newstop'/></a>--%>
         </c:when>
         <c:when test="${tripObject == null}">
             <jsp:forward page="/error/emptyobject"/>

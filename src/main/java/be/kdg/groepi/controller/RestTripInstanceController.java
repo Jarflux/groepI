@@ -8,17 +8,17 @@ import be.kdg.groepi.service.TripInstanceService;
 import be.kdg.groepi.service.TripService;
 import be.kdg.groepi.utils.DateUtil;
 import be.kdg.groepi.utils.ModelAndViewUtil;
-
-import java.util.*;
-import javax.servlet.http.HttpSession;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+import java.util.*;
+
 @Controller("restTripInstanceController")
+@RequestMapping("trip")
 public class RestTripInstanceController {
 
     private static final Logger logger = Logger.getLogger(RestTripInstanceController.class);
@@ -31,12 +31,13 @@ public class RestTripInstanceController {
     @Autowired
     protected MessageService messageService;
 
-    @RequestMapping(value = "/trips/addinstance/{tripId}")
+    @RequestMapping(value = "/add/{tripId}")
     public ModelAndView addinstance(@PathVariable("tripId") String tripId, HttpSession session) {
+        logger.debug("RestTripInstanceController: addinstance");
         System.out.println("AddInstance: Passing through...");
         Trip trip = tripService.getTripById(Long.parseLong(tripId));
         if (trip != null) {
-            ModelAndView modelAndView = new ModelAndView("trips/addinstance");
+            ModelAndView modelAndView = new ModelAndView("trip/add");
             modelAndView.addObject("tripObject", trip);
             return modelAndView;
         } else {
@@ -47,7 +48,7 @@ public class RestTripInstanceController {
         }
     }
 
-    @RequestMapping(value = "/trips/createinstance", method = RequestMethod.POST)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ModelAndView createinstance(HttpSession session, @ModelAttribute("tripInstanceObject") TripInstance tempTripInstance,
                                        @RequestParam(value = "tripId") Long tripId,
                                        @RequestParam(value = "date") String date,
@@ -55,7 +56,7 @@ public class RestTripInstanceController {
                                        @RequestParam(value = "endTimeString") String endTimeString,
                                        @RequestParam(value = "repeatable") String repeatable,
                                        @RequestParam(value = "endDate") String endDate) {
-
+        logger.debug("RestTripInstanceController: createinstance");
         User user = (User) session.getAttribute("userObject");
         Trip trip = tripService.getTripById(tripId);
         if (trip != null) {
@@ -102,6 +103,7 @@ public class RestTripInstanceController {
     }
 
     private TripInstance createNewTripInstance(TripInstance tempTripInstance, long startTime, long endTime, User user) {
+        logger.debug("RestTripInstanceController: createNewTripInstance");
         TripInstance tripInstance = new TripInstance(tempTripInstance, startTime, endTime);
         tripInstance.addParticipantToTripInstance(user);
         tripInstanceService.createTripInstance(tripInstance);
@@ -114,12 +116,15 @@ public class RestTripInstanceController {
         return tripInstance;
     }
 
-    @RequestMapping(value = "/trips/editinstance/{tripInstanceId}", method = RequestMethod.GET)
-    public ModelAndView editInstanceView(@PathVariable("tripInstanceId") String tripInstanceId) {
+    @RequestMapping(value = "/edit/{tripInstanceId}", method = RequestMethod.GET)
+    public ModelAndView editInstanceView(HttpSession session,
+                                         @PathVariable("tripInstanceId") String tripInstanceId) {
+        logger.debug("RestTripInstanceController: editInstanceView");
         TripInstance tripInstance = tripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId));
         if (tripInstance != null) {
-            if (tripInstance.getOrganiser().getId().equals(tripInstance.getId())) {
-                ModelAndView modelAndView = new ModelAndView("trips/editinstance");
+            User sessionUser = (User) session.getAttribute("userObject");
+            if (tripInstance.getOrganiser().getId().equals(sessionUser.getId())) {
+                ModelAndView modelAndView = new ModelAndView("trip/edit");
                 modelAndView.addObject("tripInstanceObject", tripInstance);
                 modelAndView.addObject("startTimeString", DateUtil.formatTime(tripInstance.getStartTime()));
                 modelAndView.addObject("endTimeString", DateUtil.formatTime(tripInstance.getEndTime()));
@@ -138,7 +143,7 @@ public class RestTripInstanceController {
         }
     }
 
-    @RequestMapping(value = "/trips/updateinstance", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ModelAndView updateInstance(@RequestParam(value = "tripInstanceId") Long tripInstanceId,
                                        @RequestParam(value = "title") String title,
                                        @RequestParam(value = "description") String description,
@@ -146,7 +151,7 @@ public class RestTripInstanceController {
                                        @RequestParam(value = "date") String date,
                                        @RequestParam(value = "startTimeString") String startTimeString,
                                        @RequestParam(value = "endTimeString") String endTimeString) {
-
+        logger.debug("RestTripInstanceController: updateInstance");
         TripInstance tripInstance = tripInstanceService.getTripInstanceById(tripInstanceId);
         if (tripInstance != null) {
             tripInstance.setTitle(title);
@@ -163,7 +168,7 @@ public class RestTripInstanceController {
             tripInstance.setEndTime(endTime);
 
             tripInstanceService.updateTripInstance(tripInstance);
-            return new ModelAndView("trips/view", "tripInstanceObject", tripInstance);
+            return new ModelAndView("redirect:/trip/view/" + tripInstanceId);
         } else {
             logger.debug("RestTripInstanceController - updateInstance - TripInstance not found");
             ModelAndView modelAndView = new ModelAndView("error/displayerror");
@@ -172,8 +177,9 @@ public class RestTripInstanceController {
         }
     }
 
-    @RequestMapping(value = "/trips/listinstance")
+    @RequestMapping(value = "/list")
     public ModelAndView getTripInstanceList(HttpSession session) {
+        logger.debug("RestTripInstanceController: getTripInstanceList");
         User user = (User) session.getAttribute("userObject");
 
         SortedSet<TripInstance> publicTripInstances = new TreeSet<>();
@@ -234,7 +240,7 @@ public class RestTripInstanceController {
                     DateUtil.formatTime(DateUtil.longToDate(tripInstance.getEndTime())));
         }
 
-        ModelAndView modelAndView = new ModelAndView("trips/listinstance");
+        ModelAndView modelAndView = new ModelAndView("trip/list");
         modelAndView.addObject("publicTripInstances", publicTripInstances);
         modelAndView.addObject("publicTripInstanceDates", publicTripInstanceDates);
         modelAndView.addObject("publicTripInstanceStartTimes", publicTripInstanceStartTimes);
@@ -250,14 +256,15 @@ public class RestTripInstanceController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/trips/jointrip", method = RequestMethod.POST)
+    @RequestMapping(value = "/join", method = RequestMethod.POST)
     public ModelAndView joinTrip(HttpSession session, @RequestParam("tripId") String tripId) {
+        logger.debug("RestTripInstanceController: joinTrip");
         User sessionUser = (User) session.getAttribute("userObject");
         TripInstance tripInstance = tripInstanceService.getTripInstanceById(Long.parseLong(tripId));
         if (tripInstance != null) {
             tripInstance.addParticipantToTripInstance(sessionUser);
             tripInstanceService.updateTripInstance(tripInstance);
-            return new ModelAndView("redirect:/trips/viewinstance/" + tripId);
+            return new ModelAndView("redirect:/trip/view/" + tripId);
         } else {
             logger.debug("RestTripInstanceController - joinTrip - TripInstance not found");
             ModelAndView modelAndView = new ModelAndView("error/displayerror");
@@ -266,13 +273,13 @@ public class RestTripInstanceController {
         }
     }
 
-    @RequestMapping(value = "/trips/viewinstance/{tripInstanceId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/view/{tripInstanceId}", method = RequestMethod.GET)
     public ModelAndView getTripInstance(@PathVariable("tripInstanceId") String tripInstanceId, HttpSession session) {
+        logger.debug("RestTripInstanceController: getTripInstance");
         TripInstance tripInstance;
         tripInstance = tripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId));
         if (tripInstance != null) {
             logger.debug("Returning TripInstance: " + tripInstance.toString() + " with tripInstance #" + tripInstanceId);
-
             return ModelAndViewUtil.getModelAndViewForViewInstance(messageService, session, tripInstance);
         } else {
             logger.debug("RestTripInstanceController - getTripInstance - TripInstance not found");
@@ -283,12 +290,16 @@ public class RestTripInstanceController {
     }
 
     @RequestMapping(value = "/invitebymail", method = RequestMethod.POST)
-    public ModelAndView invitebymail(@RequestParam(value = "instanceid") String instanceid, @RequestParam(value = "receipients") String receivers, @RequestParam(value = "message") String message, HttpSession session) {
+    public ModelAndView invitebymail(@RequestParam(value = "instanceid") String instanceid,
+                                     @RequestParam(value = "receipients") String receivers,
+                                     @RequestParam(value = "message") String message,
+                                     HttpSession session) {
+        logger.debug("RestTripInstanceController: invitebymail");
         TripInstance tripInstance = tripInstanceService.getTripInstanceById(Long.parseLong(instanceid));
 
         tripInstanceService.inviteByEmail(receivers, message, Long.parseLong(instanceid));
-
-        return ModelAndViewUtil.getModelAndViewForViewInstance(messageService, session, tripInstance);
+        return new ModelAndView("redirect:/trip/view/" + tripInstance.getId());
+        //return ModelAndViewUtil.getModelAndViewForViewInstance(messageService, session, tripInstance);
     }
 
     @ExceptionHandler({Exception.class})

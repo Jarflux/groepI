@@ -23,7 +23,7 @@
             <div class="half">
                 <c:choose>
                     <c:when test="${stopObject != null}">
-                        <form method="post" action="/trips/updateStop" class="mainstyle tooltips validate">
+                        <form method="post" action="/stop/update" class="mainstyle tooltips validate">
                             <div id="stopDetails">
                                 <div class="row">
                                     <span><spring:message code='text.trip'/></span><c:out
@@ -85,12 +85,21 @@
                                 <c:forEach var="answer" items="${stopObject.answers}" varStatus="status">
                                     <c:choose>
                                         <c:when test="${answer.isCorrect}">
-                                            <li class="active" id="answer_${answer.id}"><span><input type="radio" name="group1" checked="checked"
-                                                                            onclick="setCorrectAnswer(${answer.id})"/><c:out value="${answer.answerText}"/><p class="removeButton" onclick="deleteAnswer(${answer.id})">X</p></span></li>
+                                            <li class="active" id="answer_${answer.id}"><span><input type="radio"
+                                                                                                     name="group1"
+                                                                                                     checked="checked"
+                                                                                                     onclick="setCorrectAnswer(${answer.id})"/><c:out
+                                                    value="${answer.answerText}"/><p class="removeButton"
+                                                                                     onclick="deleteAnswer(${answer.id})">
+                                                X</p></span></li>
                                         </c:when>
                                         <c:otherwise>
-                                            <li class="active" id="answer_${answer.id}"><span><input type="radio" name="group1"
-                                                                            onclick="setCorrectAnswer(${answer.id})"/><c:out value="${answer.answerText}"/><p class="removeButton" onclick="deleteAnswer(${answer.id})">X</p></span></li>
+                                            <li class="active" id="answer_${answer.id}"><span><input type="radio"
+                                                                                                     name="group1"
+                                                                                                     onclick="setCorrectAnswer(${answer.id})"/><c:out
+                                                    value="${answer.answerText}"/><p class="removeButton"
+                                                                                     onclick="deleteAnswer(${answer.id})">
+                                                X</p></span></li>
                                         </c:otherwise>
                                     </c:choose>
                                 </c:forEach>
@@ -110,7 +119,7 @@
                 </div>
             </div>
             <div class="half" id="divPictureAR">
-                <form action="/trips/addAR" enctype="multipart/form-data" method="POST">
+                <form action="/stop/addAR" enctype="multipart/form-data" method="POST">
                     <input type="hidden" name="stopid" value="${stopObject.id}"/>
                     <input type="file" name="photo"/>
                     <input type="submit" value="<spring:message code="text.save" />"/>
@@ -131,26 +140,22 @@
         placeStopMarker(parseInt(${stopObject.latitude}), parseInt(${stopObject.longitude}));
 
         /*Page data init*/
-        if (parseInt(${stopObject.type}) == 0)
-        {
+        if (parseInt(${stopObject.type}) == 0) {
             $("#stopType").val(0);
             $("#divAnswers").hide();
             console.log("divAnswers.hide");
         }
-        else if (parseInt(${stopObject.type}) == 1)
-        {
+        else if (parseInt(${stopObject.type}) == 1) {
             $("#stopType").val(1);
             $("#divAnswers").show();
             console.log("divAnswers.hide");
         }
-        if (parseInt(${stopObject.displayMode}) == 0)
-        {
+        if (parseInt(${stopObject.displayMode}) == 0) {
             $("#stopDisplayMode").val(0);
             $("#divPictureAR").hide();
             console.log("divPictureAR.hide");
         }
-        else if (parseInt(${stopObject.displayMode}) == 1)
-        {
+        else if (parseInt(${stopObject.displayMode}) == 1) {
             $("#stopDisplayMode").val(1);
             $("#divPictureAR").show();
             console.log("divPictureAR.show");
@@ -182,10 +187,10 @@
             }
         });
     });
-     /*TODO functions not working (Failed to load resource: the server responded with a status of 400 (Bad Request) )*/
+    /*TODO functions not working (Failed to load resource: the server responded with a status of 400 (Bad Request) )*/
     function setCorrectAnswer(id) {
         console.log("setCorrectAnswer");
-        var feedback = $.post("/trips/setStopIsCorrect", { answerId: id})
+        var feedback = $.post("/stop/setIsCorrect", { answerId: id})
     }
 
     function deleteAnswer(id) {

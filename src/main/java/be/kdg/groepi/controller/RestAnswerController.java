@@ -35,7 +35,7 @@ public class RestAnswerController {
             if (user.getId().equals(stop.getTrip().getOrganiser().getId())) {
                 stop.getAnswers().add(new Answer(answer, false, stop));
                 stopService.updateStop(stop);
-                return new ModelAndView("trips/editstop", "stopObject", stop);
+                return new ModelAndView("template/editstop", "stopObject", stop);
             } else {
                 logger.debug("RestAnswerController - createAnswer - User is not authorized to create answers");
                 ModelAndView modelAndView = new ModelAndView("error/displayerror");

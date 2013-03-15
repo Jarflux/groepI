@@ -16,7 +16,7 @@
     <div id="content" class="column light">
         <h2><spring:message code="text.addmessage"/></h2>
 
-        <form method="post" action="/trips/doaddmessage" class="mainstyle tooltips">
+        <form method="post" action="/message/add" class="mainstyle tooltips">
             <input type="hidden" name="tripInstanceId" title="tripInstanceId" value="${tripInstanceId}"/>
 
             <div class="row">
@@ -26,7 +26,7 @@
 
             <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
         </form>
-        <form method="get" action="/trips/viewinstance/${tripInstanceId}"
+        <form method="get" action="/trip/view/${tripInstanceId}"
               class="mainstyle tooltips">
             <input type="submit" class="button" value="<spring:message code='text.finishediting'/>"/>
         </form>

@@ -5,12 +5,13 @@
 package be.kdg.groepi.dao;
 
 import be.kdg.groepi.model.Message;
-import java.util.List;
+import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Repository;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import org.springframework.dao.DataAccessException;
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
 /**
  * @author: Ben Oeyen
@@ -37,7 +38,7 @@ public class MessageDaoImpl implements MessageDao {
 
     @Override
     public void deleteMessage(Message message) throws DataAccessException {
-        getEntityManager().remove(message);
+        getEntityManager().remove(getEntityManager().merge(message));
     }
 
     @Override
