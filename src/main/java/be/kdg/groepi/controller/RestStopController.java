@@ -51,10 +51,18 @@ public class RestStopController {
     }
 
     @RequestMapping(value = "/trips/addstop/{tripId}", method = RequestMethod.GET)
-    public ModelAndView addStop(@PathVariable("tripId") String tripId) {
+    public ModelAndView addStop(@PathVariable("tripId") String tripId, HttpSession session) {
         Trip trip = tripService.getTripById(Long.parseLong(tripId));
         if (trip != null) {
-            return new ModelAndView("trips/addstop", "tripObject", trip);
+            User user = (User) session.getAttribute("userObject");
+            if (user.getId().equals(trip.getOrganiser().getId())) {
+                return new ModelAndView("trips/addstop", "tripObject", trip);
+            } else {
+                logger.debug("RestStopController - addStop - User not Authorized");
+                ModelAndView modelAndView = new ModelAndView("error/displayerror");
+                modelAndView.addObject("errorid", "userNotAuthorizedToAddStop");
+                return modelAndView;
+            }
         } else {
             logger.debug("RestStopController - addStop - Triptemplate not found");
             ModelAndView modelAndView = new ModelAndView("error/displayerror");

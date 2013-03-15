@@ -31,8 +31,8 @@ public class RestCostController {
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public ModelAndView deleteCostFromTripInstance(HttpSession session,
-            @RequestParam(value = "costId") String costId,
-            @RequestParam(value = "tripInstanceId") String tripInstanceId) {
+                                                   @RequestParam(value = "costId") String costId,
+                                                   @RequestParam(value = "tripInstanceId") String tripInstanceId) {
         logger.debug("RestCostController: deleteCostFromTripInstance");
         Cost cost = costService.getCostById(Long.parseLong(costId));
         if (cost != null) {
@@ -49,9 +49,9 @@ public class RestCostController {
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public ModelAndView editCost(HttpSession session,
-            @RequestParam(value = "description") String description,
-            @RequestParam(value = "amount") String amount,
-            @RequestParam(value = "costid") String costId) {
+                                 @RequestParam(value = "description") String description,
+                                 @RequestParam(value = "amount") String amount,
+                                 @RequestParam(value = "costid") String costId) {
         logger.debug("RestCostController: editCost");
         Cost cost = costService.getCostById(Long.parseLong(costId));
         if (cost != null) {
@@ -69,21 +69,21 @@ public class RestCostController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ModelAndView doAddCost(HttpSession session, @RequestParam(value = "tripInstanceId") String tripInstanceId,
-            @RequestParam(value = "description") String description,
-            @RequestParam(value = "amount") String amount) {
+                                  @RequestParam(value = "description") String description,
+                                  @RequestParam(value = "amount") String amount) {
         logger.debug("RestCostController: doAddCost");
         TripInstance tripInstance = tripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId));
         if (tripInstance != null) {
-        User sessionUser = (User) session.getAttribute("userObject");
-        Cost cost = new Cost(description, Double.parseDouble(amount), tripInstance, sessionUser);
-        costService.createCost(cost);
-        return new ModelAndView("redirect:/trips/viewinstance/" + tripInstanceId);
-    } else {
-        logger.debug("RestCostController - doAddCost - TripInstance not found");
-        ModelAndView modelAndView = new ModelAndView("error/displayerror");
-        modelAndView.addObject("errorid", "tripInstanceNotFound");
-        return modelAndView;
-    }
+            User sessionUser = (User) session.getAttribute("userObject");
+            Cost cost = new Cost(description, Double.parseDouble(amount), tripInstance, sessionUser);
+            costService.createCost(cost);
+            return new ModelAndView("redirect:/trips/viewinstance/" + tripInstanceId);
+        } else {
+            logger.debug("RestCostController - doAddCost - TripInstance not found");
+            ModelAndView modelAndView = new ModelAndView("error/displayerror");
+            modelAndView.addObject("errorid", "tripInstanceNotFound");
+            return modelAndView;
+        }
     }
 
     @ExceptionHandler({Exception.class})

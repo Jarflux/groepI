@@ -33,7 +33,6 @@ public class RestMessageController {
 
     @RequestMapping(value = "/trips/doaddmessage", method = RequestMethod.POST)
     public ModelAndView doAddMessage(HttpSession session, @RequestParam(value = "tripInstanceId") String tripInstanceId, @RequestParam(value = "content") String content) {
-
         TripInstance tripInstance = tripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId));
         if (tripInstance != null) {
             if (tripInstance.getOrganiser().getId().equals(tripInstance.getId())) {
