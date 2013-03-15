@@ -79,7 +79,6 @@ public class RestUserController {
             userService.createUser(user);
         }
 
-
         UserDetails userDetails = userDetailsService.loadUserByUsername(email);
         Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, " ", userDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -88,16 +87,8 @@ public class RestUserController {
         return new ModelAndView("jsonresponse", "antwoord", response);
     }
 
-    private void throwException() {
-        throw new NullPointerException();
-    }
-
     @RequestMapping(value = "/myprofile")
     public ModelAndView myProfile(HttpSession session) {
-
-//        throw new NullPointerException();
-        throwException();
-
 
         User sessionUser = (User) session.getAttribute("userObject");
         Map<Long, String> tripInstanceDates = new HashMap<>();
