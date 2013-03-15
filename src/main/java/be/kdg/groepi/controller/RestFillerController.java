@@ -104,13 +104,13 @@ public class RestFillerController {
             TripInstance tripinstance2A = new TripInstance("Bachelor feestje", "eerste Trip, tweede Instance", true, startDate2, endDate2, vincent, tripA);
             TripInstance tripinstance3A = new TripInstance("Bachelor feestje", "eerste Trip, derde Instance", false, startDate3, endDate3, tim, tripA);
 
-            TripInstance tripinstance1B = new TripInstance("Bachelor feestje", "tweede  Trip, eerste Instance", false, startDate1, endDate1, ben, tripB);
-            TripInstance tripinstance2B = new TripInstance("Bachelor feestje", "tweede  Trip, tweede Instance", false, startDate2, endDate2, mitch, tripB);
-            TripInstance tripinstance3B = new TripInstance("Bachelor feestje", "tweede Trip, derde Instance", false, startDate3, endDate3, dave, tripB);
+            TripInstance tripinstance1B = new TripInstance("Stadswandeling Gent", "tweede  Trip, eerste Instance", false, startDate1, endDate1, ben, tripB);
+            TripInstance tripinstance2B = new TripInstance("Stadswandeling Gent", "tweede  Trip, tweede Instance", false, startDate2, endDate2, mitch, tripB);
+            TripInstance tripinstance3B = new TripInstance("Stadswandeling Gent", "tweede Trip, derde Instance", false, startDate3, endDate3, dave, tripB);
 
-            TripInstance tripinstance1C = new TripInstance("Bachelor feestje", "ederde Trip, eerste Instance", false, startDate1, endDate1, mitch, tripC);
-            TripInstance tripinstance2C = new TripInstance("Bachelor feestje", "derde Trip, tweede Instance", false, startDate2, endDate2, ben, tripC);
-            TripInstance tripinstance3C = new TripInstance("Bachelor feestje", "derde Trip, derde Instance", false, startDate3, endDate3, dave, tripC);
+            TripInstance tripinstance1C = new TripInstance("Stadswandeling Antwerpen", "ederde Trip, eerste Instance", false, startDate1, endDate1, mitch, tripC);
+            TripInstance tripinstance2C = new TripInstance("Stadswandeling Antwerpen", "derde Trip, tweede Instance", false, startDate2, endDate2, ben, tripC);
+            TripInstance tripinstance3C = new TripInstance("Stadswandeling Antwerpen", "derde Trip, derde Instance", false, startDate3, endDate3, dave, tripC);
 
             tripInstanceService.createTripInstance(tripinstance1A);
             tripInstanceService.createTripInstance(tripinstance2A);
@@ -121,7 +121,6 @@ public class RestFillerController {
             tripInstanceService.createTripInstance(tripinstance1C);
             tripInstanceService.createTripInstance(tripinstance2C);
             tripInstanceService.createTripInstance(tripinstance3C);
-
 
         } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
             e.printStackTrace();
