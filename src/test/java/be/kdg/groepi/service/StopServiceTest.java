@@ -36,7 +36,7 @@ public class StopServiceTest {
     public void beforeEachTest() {
         user = new User("Tim", "tim@junittest.com", "tim", dateToLong(4, 5, 2011, 15, 32, 0));
         userService.createUser(user);
-        trip = new Trip("Onze eerste trip", "Hopelijk is deze niet te saai!", true, true, user);// trip aanmaken
+        trip = new Trip("Onze eerste trip", "Hopelijk is deze niet te saai!", true, true, true, user);// trip aanmaken
         tripService.createTrip(trip);
     }
 

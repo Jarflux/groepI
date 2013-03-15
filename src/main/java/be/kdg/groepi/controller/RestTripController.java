@@ -1,21 +1,22 @@
 package be.kdg.groepi.controller;
 
-import be.kdg.groepi.model.*;
-import be.kdg.groepi.service.*;
+import be.kdg.groepi.model.Trip;
+import be.kdg.groepi.model.TripInstance;
+import be.kdg.groepi.model.User;
+import be.kdg.groepi.service.TripInstanceService;
+import be.kdg.groepi.service.TripService;
 import be.kdg.groepi.utils.DateUtil;
-
-import java.io.IOException;
-import java.util.*;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
+
+import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 
 @Controller("restTripController")
@@ -30,12 +31,14 @@ public class RestTripController {
 
     @RequestMapping(value = "/add")
     public String addtrip() {
+        logger.debug("RestTripController: addtrip");
         System.out.println("AddTrip: Passing through...");
         return "template/add";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ModelAndView createTrip(HttpSession session, @ModelAttribute("tripObject") Trip trip) {
+        logger.debug("RestTripController: createTrip");
         User user = (User) session.getAttribute("userObject");
         trip.setOrganiser(user);
         tripService.createTrip(trip);
@@ -44,6 +47,7 @@ public class RestTripController {
 
     @RequestMapping(value = "/view/{tripId}", method = RequestMethod.GET)
     public ModelAndView getTrip(@PathVariable("tripId") String tripId, HttpSession session) {
+        logger.debug("RestTripController: getTrip");
         Trip trip;
         trip = tripService.getTripById(Long.parseLong(tripId));
         User user = (User) session.getAttribute("userObject");
@@ -84,6 +88,7 @@ public class RestTripController {
 
     @RequestMapping(value = "/list")
     public ModelAndView getTripList(HttpSession session) {
+        logger.debug("RestTripController: getTripList");
         User user = (User) session.getAttribute("userObject");
 
         SortedSet<Trip> publicTrips = new TreeSet<>();
@@ -116,6 +121,7 @@ public class RestTripController {
 
     @RequestMapping(value = "/edit/{tripId}", method = RequestMethod.GET)
     public ModelAndView editTripView(@PathVariable("tripId") String tripId, HttpSession session) {
+        logger.debug("RestTripController: editTripView");
         User user = (User) session.getAttribute("userObject");
         Trip trip = tripService.getTripById(Long.parseLong(tripId));
         if (trip != null) {
@@ -138,7 +144,10 @@ public class RestTripController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public ModelAndView updateTrip(@ModelAttribute("tripObject") Trip trip) {    
+    public ModelAndView updateTrip(@ModelAttribute("tripObject") Trip trip, HttpSession session) {
+        logger.debug("RestTripController: updateTrip");
+        User user = (User) session.getAttribute("userObject");
+        trip.setOrganiser(user);
         tripService.updateTrip(trip);
         return new ModelAndView("redirect:/template/view/" + trip.getId());
     }

@@ -22,7 +22,7 @@
     <div id="content" class="column light">
         <h2><spring:message code="text.createtrip"/></h2>
 
-        <form method="post" action="createTrip" class="mainstyle tooltips">
+        <form method="post" action="create" class="mainstyle tooltips">
             <div class="row">
                 <span><spring:message code='text.title'/></span>
                 <input type="text" class="" name="title" placeholder=""

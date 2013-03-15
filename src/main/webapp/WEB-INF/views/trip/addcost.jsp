@@ -31,7 +31,7 @@
 
             <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
         </form>
-        <form method="get" action="/trips/viewinstance/${tripInstanceId}"
+        <form method="get" action="/trip/view/${tripInstanceId}"
               class="mainstyle tooltips">
             <input type="submit" class="button" value="<spring:message code='text.finishediting'/>"/>
         </form>

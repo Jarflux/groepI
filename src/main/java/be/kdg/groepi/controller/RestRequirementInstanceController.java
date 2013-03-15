@@ -7,16 +7,19 @@ import be.kdg.groepi.service.MessageService;
 import be.kdg.groepi.service.RequirementInstanceService;
 import be.kdg.groepi.service.TripInstanceService;
 import be.kdg.groepi.service.UserService;
-import be.kdg.groepi.utils.ModelAndViewUtil;
-import javax.servlet.http.HttpSession;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+
 @Controller("restRequirementInstanceController")
+@RequestMapping("requirementInstance")
 public class RestRequirementInstanceController {
 
     private static final Logger logger = Logger.getLogger(RestRequirementInstanceController.class);
@@ -30,27 +33,23 @@ public class RestRequirementInstanceController {
     @Autowired
     protected MessageService messageService;
 
-    @RequestMapping(value = "/trips/addinstancerequirement/{tripInstanceId}", method = RequestMethod.GET)
-    public ModelAndView addInstanceRequirement(@PathVariable(value = "tripInstanceId") String tripInstanceId) {
-        return new ModelAndView("trips/addinstancerequirement", "tripInstanceId", tripInstanceId);
-    }
-
-    @RequestMapping(value = "/trips/doaddinstancerequirement", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ModelAndView doAddInstanceRequirement(@RequestParam(value = "tripInstanceId") String tripInstanceId,
                                                  @RequestParam(value = "name") String name,
                                                  @RequestParam(value = "amount") Long amount,
                                                  @RequestParam(value = "description") String description) {
-
+        logger.debug("RestRequirementInstanceController: doAddInstanceRequirement");
         TripInstance tripInstance = tripInstanceService.getTripInstanceById(Long.parseLong(tripInstanceId));
         RequirementInstance requirementInstance = new RequirementInstance(name, amount, description, tripInstance);
         requirementInstanceService.createRequirementInstance(requirementInstance);
-        return new ModelAndView("redirect:/trips/viewinstance/" + tripInstanceId);
+        return new ModelAndView("redirect:/trip/view/" + tripInstanceId);
     }
 
-    @RequestMapping(value = "/trips/assignrequirementtouser", method = RequestMethod.POST)
+    @RequestMapping(value = "/assign", method = RequestMethod.POST)
     public ModelAndView assignRequirement(HttpSession session,
                                           @RequestParam(value = "responsibleuser") String userId,
                                           @RequestParam(value = "requirementinstanceid") String requirementInstanceid) {
+        logger.debug("RestRequirementInstanceController: assignRequirement");
         RequirementInstance requirementInstance = requirementInstanceService
                 .getRequirementInstanceById(Long.parseLong(requirementInstanceid));
         if (userId.equals("0")) {
@@ -59,8 +58,8 @@ public class RestRequirementInstanceController {
             requirementInstance.setUser(userService.getUserById(Long.parseLong(userId)));
         }
         requirementInstanceService.updateRequirementInstance(requirementInstance);
-
-        return ModelAndViewUtil.getModelAndViewForViewInstance(messageService, session, requirementInstance.getTripInstance());
+        return new ModelAndView("redirect:/trip/view/" + requirementInstance.getTripInstance().getId());
+        //return ModelAndViewUtil.getModelAndViewForViewInstance(messageService, session, requirementInstance.getTripInstance());
     }
 
     @ExceptionHandler({Exception.class})

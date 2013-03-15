@@ -3,12 +3,13 @@ package be.kdg.groepi.service;
 import be.kdg.groepi.dao.TripInstanceDao;
 import be.kdg.groepi.model.TripInstance;
 import be.kdg.groepi.utils.TripMail;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Author: Ben Oeyen
@@ -65,9 +66,9 @@ public class TripInstanceService {
         String[] receipient = receipients.split(",");
         for (int i = 0; i < receipient.length; i++) {
             tim.sendMail("info@trippie.be", receipient[i], "Je bent uitgenodigd op Trippie.be!",
-                    "Ga naar http://tomcat.vincentverbist.be:8080/trips/viewinstance/" + instanceId + " om deel te nemen aan deze trip. \n"
-                    + "De persoonlijke boodschap luidt: " + message
-                    + "\n\n Bedankt! \nTrippe.be");
+                    "Ga naar http://tomcat.vincentverbist.be:8080/trip/view/" + instanceId + " om deel te nemen aan deze trip. \n"
+                            + "De persoonlijke boodschap luidt: " + message
+                            + "\n\n Bedankt! \nTrippe.be");
         }
     }
 }
