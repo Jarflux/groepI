@@ -28,7 +28,7 @@ public class TripDetailActivity extends ParentActivity {
     @Override
     public void addContent() {
         TripInstance trip = null;
-        SimpleDateFormat date = new SimpleDateFormat("DD/MM/YYYY");
+        SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat time = new SimpleDateFormat("HH:mm");
         Calendar cal = Calendar.getInstance();
         if(getIntent().hasExtra("trip")){
@@ -38,7 +38,7 @@ public class TripDetailActivity extends ParentActivity {
         textView = (TextView)findViewById(R.id.descriptionValue);
         textView.setText(trip.getfDescription());
 
-        textView = (TextView)findViewById(R.id.startValue);
+        textView = (TextView)findViewById(R.id.dateValue);
         cal.setTime(DateUtil.longToDate(trip.getfStartTime()));
         String dateString = date.format(cal.getTime());
         textView.setText(String.valueOf(dateString));

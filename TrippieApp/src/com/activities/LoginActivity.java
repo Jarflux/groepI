@@ -25,6 +25,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+      //  MapView view = (MapView) findViewById(R.id.map);
+      //  view.setBuiltInZoomControls(true);
         getActionBar().setDisplayShowTitleEnabled(false);
         getActionBar().setDisplayShowHomeEnabled(false);
         button = (Button)findViewById(R.id.button);
@@ -57,5 +59,4 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             ad.show();
         }
     }
-
 }

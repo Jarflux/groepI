@@ -3,7 +3,7 @@
     <string name="app_name">TrippieApp</string>
     <string name="trips">Your Trips</string>
     <string name="tripsinfo">Hier vind je alle trips waaraan je deelneemt.</string>
-
+    <string name="start">Start Trip</string>
     <string name="chat">Chat</string>
     <string name="maps">Nearby Trips</string>
     <string name="name">Name</string>

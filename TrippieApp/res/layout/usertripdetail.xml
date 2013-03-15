@@ -24,7 +24,7 @@
               android:layout_height="wrap_content">
     </TextView>
     <TextView android:id="@+id/dateLbl"
-              android:text="@string/startTime"
+              android:text="@string/date"
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
     </TextView>
@@ -50,4 +50,9 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
     </TextView>
+    <Button android:id="@+id/startBtn"
+            android:layout_height="150px"
+            android:layout_width="450px"
+            android:text="@string/start">
+    </Button>
 </LinearLayout>
