@@ -52,11 +52,8 @@ public class FileUtilTest {
         userService.createUser(user);
         ServletContext servletContext = new MockServletContext("file:C:" + File.separator + "images");
         HttpSession mockHttpSession = new MockHttpSession(servletContext);
-
         assertEquals("File has not been uploaded", FileUtil.savePicture(mockHttpSession, file, user.getId()),
                 File.separator + "images" + File.separator + "profilepictures" + File.separator + user.getId() + ".jpg");
-
-
         assertTrue("File paths are not equal", FileUtil.savePicture(mockHttpSession, file,
                 user.getId()).equals(File.separator + "images" + File.separator + "profilepictures" + File.separator + user.getId() + ".jpg"));
     }

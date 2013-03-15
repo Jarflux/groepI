@@ -14,11 +14,11 @@ import org.springframework.dao.DataAccessException;
  */
 public interface TripDao {
 
-    public void createTrip(Trip user) throws DataAccessException;
+    public void createTrip(Trip trip) throws DataAccessException;
 
-    public void deleteTrip(Trip user) throws DataAccessException;
+    public void deleteTrip(Trip trip) throws DataAccessException;
 
-    public void updateTrip(Trip user) throws DataAccessException;
+    public void updateTrip(Trip trip) throws DataAccessException;
 
     public Trip getTripById(Long id) throws DataAccessException;
 

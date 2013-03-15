@@ -31,18 +31,18 @@ public class StopDaoImpl implements StopDao {
     }
 
     @Override
-    public void createStop(Stop user) throws DataAccessException {
-        getEntityManager().persist(user);
+    public void createStop(Stop stop) throws DataAccessException {
+        getEntityManager().persist(stop);
     }
 
     @Override
-    public void deleteStop(Stop user) throws DataAccessException {
-        getEntityManager().remove(user);
+    public void deleteStop(Stop stop) throws DataAccessException {
+        getEntityManager().remove(stop);
     }
 
     @Override
-    public void updateStop(Stop user) throws DataAccessException {
-        getEntityManager().merge(user);
+    public void updateStop(Stop stop) throws DataAccessException {
+        getEntityManager().merge(stop);
     }
 
     @Override

@@ -43,14 +43,11 @@ public class MessageServiceTest {
     public void beforeEachTest() {
         user = new User("Tim", "tim@junittest.com", "tim", dateToLong(4, 5, 2011, 15, 32, 0));
         userService.createUser(user);
-        trip = new Trip("Onze eerste trip", "Hopelijk is deze niet te saai!", true, true, user);// trip aanmaken
+        trip = new Trip("Onze eerste trip", "Hopelijk is deze niet te saai!", true, true, user);
         tripService.createTrip(trip);
-
         tripInstance = new TripInstance("Tripje 1", "Eerste uitvoering van de 'Onze eerste trip'-trip", true,
                 DateUtil.dateToLong(2, 3, 2013, 12, 0, 0), DateUtil.dateToLong(2, 3, 2013, 16, 0, 0), user, trip);
         tripInstanceService.createTripInstance(tripInstance);
-
-
         message = new Message("Voorbeeldbericht over voorbeelden en berichten waarin deze kunnen zitten",
                 DateUtil.dateToLong(2, 3, 2013, 17, 16, 0), tripInstance, user);
         messageService.createMessage(message);
@@ -62,19 +59,15 @@ public class MessageServiceTest {
 
     @Test
     public void createMessage() {
-        assertTrue("createMessage: message was not created",
-                message.equals(messageService.getMessageById(message.getId())));
+        assertTrue("createMessage: message was not created", message.equals(messageService.getMessageById(message.getId())));
     }
 
     @Test
     public void updateMessage() {
         Message originalMessage = new Message(message.getContent(), message.getDate(), message.getTripInstance(), message.getUser());
-
         message.setContent("Ofnee, we gaan het hebben over eenhoorns");
         message.setDate(DateUtil.dateToLong(2, 3, 2013, 17, 19, 0));
-
         messageService.createMessage(message);
-
         assertFalse("updateMessage: message was not updated", originalMessage.equals(messageService.getMessageById(message.getId())));
     }
 

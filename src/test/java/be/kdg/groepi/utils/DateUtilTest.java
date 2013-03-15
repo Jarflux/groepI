@@ -96,17 +96,4 @@ public class DateUtilTest {
         assertTrue("Formatted time should be HH:mm [date]", DateUtil.formatTime(date).equals("15:30"));
         assertTrue("Formatted time should be HH:mm [long]", DateUtil.formatTime(date.getTime()).equals("15:30"));
     }
-    /*
-     @Test
-     public void testLongToDateString() {
-     long date = DateUtil.dateToLong(15, 7, 1992, 16, 30, 0);
-     assertTrue("testLongToDateString: does not return correct date format", DateUtil.longToDateString(date).equals("15-07-1992"));
-     }
-
-     @Test
-     public void testLongToTimeString() {
-     long date = DateUtil.dateToLong(15, 7, 1992, 16, 30, 0);
-     assertTrue("testLongToDateString: does not return correct date format", DateUtil.longToTimeString(date).equals("16:30"));
-
-     }*/
 }

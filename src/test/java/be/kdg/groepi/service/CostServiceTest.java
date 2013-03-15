@@ -45,11 +45,9 @@ public class CostServiceTest {
         userService.createUser(user);
         trip = new Trip("Onze eerste trip", "Hopelijk is deze niet te saai!", true, true, user);// trip aanmaken
         tripService.createTrip(trip);
-
         tripInstance = new TripInstance("Tripje 1", "Eerste uitvoering van de 'Onze eerste trip'-trip", true,
                 DateUtil.dateToLong(2, 3, 2013, 12, 0, 0), DateUtil.dateToLong(2, 3, 2013, 16, 0, 0), user, trip);
         tripInstanceService.createTripInstance(tripInstance);
-
         cost = new Cost("Bak bier", 14.50, tripInstance, user);
         costService.createCost(cost);
     }
@@ -60,19 +58,15 @@ public class CostServiceTest {
 
     @Test
     public void createCost() {
-        assertTrue("createCost: cost was not created",
-                cost.equals(costService.getCostById(cost.getId())));
+        assertTrue("createCost: cost was not created", cost.equals(costService.getCostById(cost.getId())));
     }
 
     @Test
     public void updateCost() {
         Cost originalCost = new Cost(cost.getDescription(), cost.getAmount(), cost.getTripInstance(), cost.getUser());
-
         cost.setAmount(24.62);
         cost.setDescription("Bak Duvel");
-
         costService.updateCost(cost);
-
         assertFalse("updateCost: cost was not updated", originalCost.equals(costService.getCostById(cost.getId())));
     }
 

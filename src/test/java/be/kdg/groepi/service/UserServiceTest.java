@@ -25,8 +25,6 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(locations = {"classpath:testApplicationContext.xml"})
 @Transactional
 public class UserServiceTest {
-    //    private final Session session = HibernateUtil.getSessionFactory().openSession();
-    //private final userService userService = new userService();
 
     private User user;
     @Autowired
@@ -55,13 +53,13 @@ public class UserServiceTest {
     @Test
     public void testUpdateUser() {
         userService.createUser(user);
-        user.setName("NOT TIMMEH");
+        user.setName("Tim");
         user.setPassword("hemmitton");
         user.setDateOfBirth(dateToLong(3, 6, 2012, 12, 45, 0));
-        user.setEmail("NOTTIM@M.EH");
+        user.setEmail("tim@trippie.be");
         user.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
         userService.updateUser(user);
-        assertEquals("testUpdateUser: User was not updated", userService.getUserById(user.getId()));
+        assertEquals("testUpdateUser: User was not updated", user ,userService.getUserById(user.getId()));
     }
 
     @Test
@@ -145,7 +143,6 @@ public class UserServiceTest {
         userService.createUser(user2);
         user2.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
         userService.updateUser(user2);
-
         user2.setName("nope");
         userService.updateUser(user2);
         assertFalse("Users should not the same", user.equals(user2));
@@ -157,7 +154,6 @@ public class UserServiceTest {
         userService.createUser(user2);
         user2.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
         userService.updateUser(user2);
-
         user2.setEmail("email@nope.be");
         userService.updateUser(user2);
         assertFalse("Users should not the same", user.equals(user2));
@@ -169,7 +165,6 @@ public class UserServiceTest {
         userService.createUser(user2);
         user2.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
         userService.updateUser(user2);
-
         user2.setDateOfBirth(dateToLong(3, 6, 2013, 12, 45, 0));
         userService.updateUser(user2);
         assertFalse("Users should not the same", user.equals(user2));
@@ -181,7 +176,6 @@ public class UserServiceTest {
         userService.createUser(user2);
         user2.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
         userService.updateUser(user2);
-
         user2.setProfilePicture("nope");
         userService.updateUser(user2);
         assertFalse("Users should not the same", user.equals(user2));
@@ -195,7 +189,6 @@ public class UserServiceTest {
         user2.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
         user2.setPassword("heheheheheh");
         userService.updateUser(user2);
-
         user2.setPassword("hohohohoho");
         userService.updateUser(user2);
         assertFalse("Users should not the same", user.equals(user2));
@@ -209,7 +202,6 @@ public class UserServiceTest {
         user2.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
         user2.setPasswordResetString("heheheheheh");
         userService.updateUser(user2);
-
         user2.setPasswordResetString("hohohohoho");
         userService.updateUser(user2);
         assertFalse("Users should not the same", user.equals(user2));
@@ -223,7 +215,6 @@ public class UserServiceTest {
         user2.setProfilePicture("http://www.nawang.com/Photos/10Logos/Profile_LOGO.jpg");
         user.setPasswordResetTimestamp(new Timestamp(1500));
         userService.updateUser(user2);
-
         user.setPasswordResetTimestamp(new Timestamp(2000));
         userService.updateUser(user2);
         assertFalse("Users should not the same", user.equals(user2));

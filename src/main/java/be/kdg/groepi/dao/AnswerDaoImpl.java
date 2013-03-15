@@ -32,18 +32,18 @@ public class AnswerDaoImpl implements AnswerDao {
     }
 
     @Override
-    public void createAnswer(Answer user) throws DataAccessException {
-        getEntityManager().persist(user);
+    public void createAnswer(Answer answer) throws DataAccessException {
+        getEntityManager().persist(answer);
     }
 
     @Override
-    public void deleteAnswer(Answer user) throws DataAccessException {
-        getEntityManager().remove(user);
+    public void deleteAnswer(Answer answer) throws DataAccessException {
+        getEntityManager().remove(answer);
     }
 
     @Override
-    public void updateAnswer(Answer user) throws DataAccessException {
-        getEntityManager().merge(user);
+    public void updateAnswer(Answer answer) throws DataAccessException {
+        getEntityManager().merge(answer);
     }
 
     @Override

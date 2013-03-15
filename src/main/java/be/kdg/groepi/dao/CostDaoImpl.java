@@ -31,18 +31,18 @@ public class CostDaoImpl implements CostDao {
     }
 
     @Override
-    public void createCost(Cost user) throws DataAccessException {
-        getEntityManager().persist(user);
+    public void createCost(Cost cost) throws DataAccessException {
+        getEntityManager().persist(cost);
     }
 
     @Override
-    public void deleteCost(Cost user) throws DataAccessException {
-        getEntityManager().remove(user);
+    public void deleteCost(Cost cost) throws DataAccessException {
+        getEntityManager().remove(cost);
     }
 
     @Override
-    public void updateCost(Cost user) throws DataAccessException {
-        getEntityManager().merge(user);
+    public void updateCost(Cost cost) throws DataAccessException {
+        getEntityManager().merge(cost);
     }
 
     @Override

@@ -32,18 +32,18 @@ public class TripInstanceDaoImpl implements TripInstanceDao {
     }
 
     @Override
-    public void createTripInstance(TripInstance user) throws DataAccessException {
-        getEntityManager().persist(user);
+    public void createTripInstance(TripInstance tripInstance) throws DataAccessException {
+        getEntityManager().persist(tripInstance);
     }
 
     @Override
-    public void deleteTripInstance(TripInstance user) throws DataAccessException {
-        getEntityManager().remove(user);
+    public void deleteTripInstance(TripInstance tripInstance) throws DataAccessException {
+        getEntityManager().remove(tripInstance);
     }
 
     @Override
-    public void updateTripInstance(TripInstance user) throws DataAccessException {
-        getEntityManager().merge(user);
+    public void updateTripInstance(TripInstance tripInstance) throws DataAccessException {
+        getEntityManager().merge(tripInstance);
     }
 
     @Override
@@ -75,9 +75,9 @@ public class TripInstanceDaoImpl implements TripInstanceDao {
     }
 
     @Override
-    public List<TripInstance> getTripInstancesByOrganiserId(long id) {
+    public List<TripInstance> getTripInstancesByOrganiserId(long userId) {
         Query query = getEntityManager().createQuery("from TripInstance t where t.fOrganiser.fId = :id");
-        query.setParameter("id", id);
+        query.setParameter("id", userId);
         List<TripInstance> result = query.getResultList();
         return result;
     }

@@ -45,11 +45,9 @@ public class RequirementInstanceServiceTest {
         userService.createUser(user);
         trip = new Trip("Onze eerste trip", "Hopelijk is deze niet te saai!", true, true, user);// trip aanmaken
         tripService.createTrip(trip);
-
         tripInstance = new TripInstance("Tripje 1", "Eerste uitvoering van de 'Onze eerste trip'-trip", true,
                 DateUtil.dateToLong(2, 3, 2013, 12, 0, 0), DateUtil.dateToLong(2, 3, 2013, 16, 0, 0), user, trip);
         tripInstanceService.createTripInstance(tripInstance);
-
         requirementInstance = new RequirementInstance("Zaklamp", 5, "Zo een ding om licht te geven", tripInstance, user);
         requirementInstanceService.createRequirementInstance(requirementInstance);
     }
@@ -68,12 +66,9 @@ public class RequirementInstanceServiceTest {
     public void updateRequirementInstance() {
         RequirementInstance originalRequirementInstance = new RequirementInstance(requirementInstance.getName(),
                 requirementInstance.getAmount(), requirementInstance.getDescription(), requirementInstance.getTripInstance());
-
         requirementInstance.setAmount(25);
         requirementInstance.setDescription("HOLY SHITBALLS THAT'S A LOT OF FLASHLIGHTS");
-
         requirementInstanceService.updateRequirementInstance(requirementInstance);
-
         assertFalse("updateRequirementInstance: requirementInstance was not updated",
                 originalRequirementInstance.equals(requirementInstanceService.getRequirementInstanceById(requirementInstance.getId())));
     }

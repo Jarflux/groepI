@@ -95,12 +95,10 @@ public class TripServiceTest {
         int size = tripService.getTripsByOrganiserId(user.getId()).size();
         Trip oldOrganiserTrip = new Trip("newusertrip", "mdahnebzalem", false, true, user);
         tripService.createTrip(oldOrganiserTrip);
-
         User newUser = new User("newUser", "new@us.er", "yitfluyfkytfglkyu", DateUtil.dateToLong(15, 7, 1992, 0, 0, 0));
         userService.createUser(newUser);
         Trip newOrganiserTrip = new Trip("newusertrip", "first new user trip in test", false, true, newUser);
         tripService.createTrip(newOrganiserTrip);
-
         List<Trip> trips = tripService.getTripsByOrganiserId(user.getId());
         assertTrue("getPublicTrips: didn't receive user-only trips", trips.size() == size + 1);
     }

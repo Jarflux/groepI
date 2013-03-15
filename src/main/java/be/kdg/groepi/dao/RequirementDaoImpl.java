@@ -31,18 +31,18 @@ public class RequirementDaoImpl implements RequirementDao {
     }
 
     @Override
-    public void createRequirement(Requirement user) throws DataAccessException {
-        getEntityManager().persist(user);
+    public void createRequirement(Requirement requirement) throws DataAccessException {
+        getEntityManager().persist(requirement);
     }
 
     @Override
-    public void deleteRequirement(Requirement user) throws DataAccessException {
-        getEntityManager().remove(user);
+    public void deleteRequirement(Requirement requirement) throws DataAccessException {
+        getEntityManager().remove(requirement);
     }
 
     @Override
-    public void updateRequirement(Requirement user) throws DataAccessException {
-        getEntityManager().merge(user);
+    public void updateRequirement(Requirement requirement) throws DataAccessException {
+        getEntityManager().merge(requirement);
     }
 
     @Override

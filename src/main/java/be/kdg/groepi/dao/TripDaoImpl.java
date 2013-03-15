@@ -31,18 +31,18 @@ public class TripDaoImpl implements TripDao {
     }
 
     @Override
-    public void createTrip(Trip user) throws DataAccessException {
-        getEntityManager().persist(user);
+    public void createTrip(Trip trip) throws DataAccessException {
+        getEntityManager().persist(trip);
     }
 
     @Override
-    public void deleteTrip(Trip user) throws DataAccessException {
-        getEntityManager().remove(user);
+    public void deleteTrip(Trip trip) throws DataAccessException {
+        getEntityManager().remove(trip);
     }
 
     @Override
-    public void updateTrip(Trip user) throws DataAccessException {
-        getEntityManager().merge(user);
+    public void updateTrip(Trip trip) throws DataAccessException {
+        getEntityManager().merge(trip);
     }
 
     @Override

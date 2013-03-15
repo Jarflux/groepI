@@ -50,7 +50,7 @@ public class StopServiceTest {
     public void createStop() {
         Stop stop = new Stop("Stop 1", "", "", 1, 0, 0, "Eerste Stopplaats", 1000, trip);
         stopService.createStop(stop);
-        assertEquals("createStop: Stop was not created", stopService.getStopById(stop.getId()));
+        assertEquals("createStop: Stop was not created", stop, stopService.getStopById(stop.getId()));
     }
 
     @Test

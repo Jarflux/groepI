@@ -14,11 +14,11 @@ import org.springframework.dao.DataAccessException;
  */
 public interface AnswerInstanceDao {
 
-    public void createAnswerInstance(AnswerInstance user) throws DataAccessException;
+    public void createAnswerInstance(AnswerInstance answerInstance) throws DataAccessException;
 
-    public void deleteAnswerInstance(AnswerInstance user) throws DataAccessException;
+    public void deleteAnswerInstance(AnswerInstance answerInstance) throws DataAccessException;
 
-    public void updateAnswerInstance(AnswerInstance user) throws DataAccessException;
+    public void updateAnswerInstance(AnswerInstance answerInstance) throws DataAccessException;
 
     public AnswerInstance getAnswerInstanceById(Long id) throws DataAccessException;
 

@@ -31,18 +31,18 @@ public class MessageDaoImpl implements MessageDao {
     }
 
     @Override
-    public void createMessage(Message user) throws DataAccessException {
-        getEntityManager().persist(user);
+    public void createMessage(Message message) throws DataAccessException {
+        getEntityManager().persist(message);
     }
 
     @Override
-    public void deleteMessage(Message user) throws DataAccessException {
-        getEntityManager().remove(user);
+    public void deleteMessage(Message message) throws DataAccessException {
+        getEntityManager().remove(message);
     }
 
     @Override
-    public void updateMessage(Message user) throws DataAccessException {
-        getEntityManager().merge(user);
+    public void updateMessage(Message message) throws DataAccessException {
+        getEntityManager().merge(message);
     }
 
     @Override

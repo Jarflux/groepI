@@ -32,10 +32,8 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
         session.setAttribute("userObject", user);
         JSONObject jUser = new JSONObject(user);
         response.addHeader("user", jUser.toString());
-
         // Check of er een redirect gebeurde omdat user nog niet ingelogd was
-        SavedRequest savedRequest =
-                new HttpSessionRequestCache().getRequest(request, response);
+        SavedRequest savedRequest = new HttpSessionRequestCache().getRequest(request, response);
         RequestDispatcher dispatcher;
         // Er is een redirect gebeurd, fetch de URI en zet die als bestemming
         if (savedRequest != null) {
@@ -44,12 +42,10 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
             matcher.find();
             String uri = matcher.group(4);
             dispatcher = request.getRequestDispatcher(uri);
-
         } // Geen redirect, dus gewoon profiel pagina tonen
         else {
             dispatcher = request.getRequestDispatcher("/profile/myprofile");
         }
         dispatcher.forward(request, response);
-
     }
 }

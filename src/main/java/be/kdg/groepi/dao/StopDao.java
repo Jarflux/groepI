@@ -14,11 +14,11 @@ import org.springframework.dao.DataAccessException;
  */
 public interface StopDao {
 
-    public void createStop(Stop user) throws DataAccessException;
+    public void createStop(Stop stop) throws DataAccessException;
 
-    public void deleteStop(Stop user) throws DataAccessException;
+    public void deleteStop(Stop stop) throws DataAccessException;
 
-    public void updateStop(Stop user) throws DataAccessException;
+    public void updateStop(Stop stop) throws DataAccessException;
 
     public Stop getStopById(Long id) throws DataAccessException;
 

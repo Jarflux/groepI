@@ -41,7 +41,6 @@ public class RequirementServiceTest {
         userService.createUser(user);
         trip = new Trip("Onze eerste trip", "Hopelijk is deze niet te saai!", true, true, user);// trip aanmaken
         tripService.createTrip(trip);
-
         requirement = new Requirement("Zaklamp", 5, "Zo een ding om licht te geven", trip);
         requirementService.createRequirement(requirement);
     }
@@ -60,13 +59,10 @@ public class RequirementServiceTest {
     public void updateRequirement() {
         Requirement originalRequirement = new Requirement(requirement.getName(),
                 requirement.getAmount(), requirement.getDescription(), requirement.getTrip());
-
         requirement.setName("New name");
         requirement.setAmount(25);
         requirement.setDescription("HOLY SHITBALLS THAT'S A LOT OF FLASHLIGHTS");
-
         requirementService.updateRequirement(requirement);
-
         assertFalse("updateRequirement: requirement was not updated",
                 originalRequirement.equals(requirementService.getRequirementById(requirement.getId())));
     }

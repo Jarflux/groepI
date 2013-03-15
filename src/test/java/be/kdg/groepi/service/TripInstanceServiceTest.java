@@ -75,7 +75,6 @@ public class TripInstanceServiceTest {
     public void updateTripInstances() {
         tripinstance.setAvailable(Boolean.FALSE);
         tripinstance.setDescription("Ho-ho-ho edited");
-
         tripInstanceService.updateTripInstance(tripinstance);
         assertEquals("updateTripInstances: ", tripinstance, tripInstanceService.getTripInstanceById(tripinstance.getId()));
     }
@@ -275,12 +274,10 @@ public class TripInstanceServiceTest {
         long endDate = DateUtil.dateToLong(27, 2, 2013, 20, 0, 0);
         TripInstance oldOrganiserTripInstance = new TripInstance("Bachelor feestje", "Iemand gaat trouwen, bier en vrouwen ole", false, startDate, endDate, user, trip);
         tripInstanceService.createTripInstance(oldOrganiserTripInstance);
-
         User newUser = new User("newUser", "new@us.er", "yitfluyfkytfglkyu", DateUtil.dateToLong(15, 7, 1992, 0, 0, 0));
         userService.createUser(newUser);
         TripInstance newOrganiserTripInstance = new TripInstance("Bachelor feestje", "Iemand gaat trouwen, bier en vrouwen ole", false, startDate, endDate, newUser, trip);
         tripInstanceService.createTripInstance(newOrganiserTripInstance);
-
         List<TripInstance> tripInstances = tripInstanceService.getTripInstancesByOrganiserId(user.getId());
         assertTrue("getPublicTripInstances: didn't receive user-only tripInstances", tripInstances.size() == size + 1);
     }

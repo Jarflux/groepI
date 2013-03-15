@@ -31,18 +31,18 @@ public class AnswerInstanceDaoImpl implements AnswerInstanceDao {
     }
 
     @Override
-    public void createAnswerInstance(AnswerInstance user) throws DataAccessException {
-        getEntityManager().persist(user);
+    public void createAnswerInstance(AnswerInstance answerInstance) throws DataAccessException {
+        getEntityManager().persist(answerInstance);
     }
 
     @Override
-    public void deleteAnswerInstance(AnswerInstance user) throws DataAccessException {
-        getEntityManager().remove(user);
+    public void deleteAnswerInstance(AnswerInstance answerInstance) throws DataAccessException {
+        getEntityManager().remove(answerInstance);
     }
 
     @Override
-    public void updateAnswerInstance(AnswerInstance user) throws DataAccessException {
-        getEntityManager().merge(user);
+    public void updateAnswerInstance(AnswerInstance answerInstance) throws DataAccessException {
+        getEntityManager().merge(answerInstance);
     }
 
     @Override

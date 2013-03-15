@@ -14,11 +14,11 @@ import org.springframework.dao.DataAccessException;
  */
 public interface RequirementDao {
 
-    public void createRequirement(Requirement user) throws DataAccessException;
+    public void createRequirement(Requirement requirement) throws DataAccessException;
 
-    public void deleteRequirement(Requirement user) throws DataAccessException;
+    public void deleteRequirement(Requirement requirement) throws DataAccessException;
 
-    public void updateRequirement(Requirement user) throws DataAccessException;
+    public void updateRequirement(Requirement requirement) throws DataAccessException;
 
     public Requirement getRequirementById(Long id) throws DataAccessException;
 

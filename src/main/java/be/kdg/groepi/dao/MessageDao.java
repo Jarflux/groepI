@@ -14,11 +14,11 @@ import org.springframework.dao.DataAccessException;
  */
 public interface MessageDao {
 
-    public void createMessage(Message user) throws DataAccessException;
+    public void createMessage(Message message) throws DataAccessException;
 
-    public void deleteMessage(Message user) throws DataAccessException;
+    public void deleteMessage(Message message) throws DataAccessException;
 
-    public void updateMessage(Message user) throws DataAccessException;
+    public void updateMessage(Message message) throws DataAccessException;
 
     public Message getMessageById(Long id) throws DataAccessException;
 

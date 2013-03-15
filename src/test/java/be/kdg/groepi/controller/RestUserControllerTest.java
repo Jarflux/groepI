@@ -22,8 +22,6 @@ import org.springframework.web.servlet.ModelAndView;
 @ContextConfiguration(locations = {"classpath:testApplicationContext.xml"})
 @Transactional
 public class RestUserControllerTest {
-
-    
     User user;
     @Autowired
     protected UserService userService;
@@ -48,11 +46,7 @@ public class RestUserControllerTest {
         assertNotNull("Model should not be null", modelAndView.getModel());
         User returnedUser = (User) modelAndView.getModel().get("userObject");
         assertNotNull("User with ID 1 should be present in the ModelAndView", returnedUser);
-
         modelAndView = restUserController.getUser(String.valueOf(user.getId() + 1)); // + 1 om een user te krijgen die niet bestaat.
-/*        String str1 = String.valueOf(user.getId() + 1);
-         String str2 = modelAndView.getModel().get("userId").toString();*/
-
         assertEquals("This user does not exist, so getUser should return \"error/displayerror\"",
                 "error/displayerror", modelAndView.getViewName());
     }
@@ -71,6 +65,5 @@ public class RestUserControllerTest {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
-
     }
 }

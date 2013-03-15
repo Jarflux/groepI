@@ -14,11 +14,11 @@ import org.springframework.dao.DataAccessException;
  */
 public interface CostDao {
 
-    public void createCost(Cost user) throws DataAccessException;
+    public void createCost(Cost cost) throws DataAccessException;
 
-    public void deleteCost(Cost user) throws DataAccessException;
+    public void deleteCost(Cost cost) throws DataAccessException;
 
-    public void updateCost(Cost user) throws DataAccessException;
+    public void updateCost(Cost cost) throws DataAccessException;
 
     public Cost getCostById(Long id) throws DataAccessException;
 
