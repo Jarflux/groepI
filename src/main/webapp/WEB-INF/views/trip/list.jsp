@@ -11,7 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title><spring:message code='text.viewtripinformation'/></title>
+    <title><spring:message code='trip.viewinformation'/></title>
     <link href="/css/blue.css" rel="stylesheet"/>
 
 </head>
@@ -21,27 +21,25 @@
         <jsp:include page="/topmenu"/>
     </div>
     <div id="content" class="column light">
-        <h2><spring:message code='text.tripinstances'/>
+        <h2><spring:message code='tripinstance.tripinstances'/>
         </h2>
         <section>
 
             <div class="row">
-                <spring:message code="text.owntripinstances"/>
+                <spring:message code="tripinstance.owntripinstances"/>
                 <c:choose>
                     <c:when test="${!empty ownTripInstances}">
                         <table>
                             <tr>
-                                <td>ID - moet nog weg</td>
-                                <td><spring:message code="text.tripname"/></td>
-                                <td><spring:message code="text.tripdescription"/></td>
-                                <td><spring:message code="text.tripnumberofparticipants"/></td>
-                                <td><spring:message code="text.tripinstancedate"/></td>
-                                <td><spring:message code="text.tripinstancestarttime"/></td>
-                                <td><spring:message code="text.tripinstanceendtime"/></td>
+                                <td><spring:message code="trip.name"/></td>
+                                <td><spring:message code="trip.description"/></td>
+                                <td><spring:message code="tripinstance.numberofparticipants"/></td>
+                                <td><spring:message code="text.date"/></td>
+                                <td><spring:message code="tripinstance.starttime"/></td>
+                                <td><spring:message code="tripinstance.endtime"/></td>
                             </tr>
                             <c:forEach var="tripInstance" items="${ownTripInstances}">
                                 <tr>
-                                    <td>${tripInstance.id}</td>
                                     <td><a href="/trip/view/${tripInstance.id}" class="active">
                                             ${tripInstance.title}</a></td>
                                     <td>${tripInstance.description}</td>
@@ -54,7 +52,7 @@
                         </table>
                     </c:when>
                     <c:otherwise>
-                        <spring:message code='text.notripinstancesfound'/>
+                        <spring:message code='tripinstance.notripinstancesfound'/>
                     </c:otherwise>
                 </c:choose>
             </div>
@@ -67,22 +65,20 @@
             </c:forEach>
 
             <div class="row">
-                <spring:message code="text.publictripinstances"/>
+                <spring:message code="tripinstance.publictripinstances"/>
                 <c:choose>
                     <c:when test="${!empty publicTripInstances}">
                         <table>
                             <tr>
-                                <td>ID - moet nog weg</td>
-                                <td><spring:message code="text.tripname"/></td>
-                                <td><spring:message code="text.tripdescription"/></td>
-                                <td><spring:message code="text.tripnumberofparticipants"/></td>
-                                <td><spring:message code="text.tripinstancedate"/></td>
-                                <td><spring:message code="text.tripinstancestarttime"/></td>
-                                <td><spring:message code="text.tripinstanceendtime"/></td>
+                                <td><spring:message code="trip.name"/></td>
+                                <td><spring:message code="trip.description"/></td>
+                                <td><spring:message code="tripinstance.numberofparticipants"/></td>
+                                <td><spring:message code="text.date"/></td>
+                                <td><spring:message code="tripinstance.starttime"/></td>
+                                <td><spring:message code="tripinstance.endtime"/></td>
                             </tr>
                             <c:forEach var="tripInstance" items="${publicTripInstances}">
                                 <tr>
-                                    <td>${tripInstance.id}</td>
                                     <td><a href="/trip/view/${tripInstance.id}" class="active">
                                             ${tripInstance.title}</a></td>
                                     <td>${tripInstance.description}</td>
@@ -97,7 +93,7 @@
                                                 <form method="post" action="/trip/join">
                                                     <input type="hidden" value="${tripInstance.id}" name="tripId"/>
                                                     <input type="submit" class="button"
-                                                           value="<spring:message code='text.jointrip'/>"/>
+                                                           value="<spring:message code='tripinstance.join'/>"/>
                                                 </form>
                                             </c:if>
                                         </c:forEach>
@@ -107,7 +103,7 @@
                         </table>
                     </c:when>
                     <c:otherwise>
-                        <spring:message code='text.notripinstancesfound'/>
+                        <spring:message code='tripinstance.notripinstancesfound'/>
                     </c:otherwise>
                 </c:choose>
             </div>

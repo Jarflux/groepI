@@ -14,19 +14,19 @@
         <jsp:include page="/topmenu"/>
     </div>
     <div id="content" class="column light">
-        <h2><spring:message code="text.addcost"/></h2>
+        <h2><spring:message code="cost.add"/></h2>
 
         <form method="post" action="/cost/add" class="mainstyle tooltips">
             <input type="hidden" name="tripInstanceId" title="tripInstanceId" value="${tripInstanceId}"/>
 
             <div class="row">
-                <span><spring:message code='text.costdescription'/></span>
-                <input name="description" title="<spring:message code='text.costdescription'/>"/>
+                <span><spring:message code='text.description'/></span>
+                <input name="description" title="<spring:message code='cost.description'/>"/>
             </div>
 
             <div class="row">
-                <span><spring:message code='text.costamount'/></span>
-                <input name="amount" title="<spring:message code='text.costamount'/>"/>
+                <span><spring:message code='cost.amount'/></span>
+                <input name="amount" title="<spring:message code='cost.amount'/>"/>
             </div>
 
             <input type="submit" class="button" value="<spring:message code='text.save'/>"/>

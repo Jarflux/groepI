@@ -11,7 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title><spring:message code='text.viewtripinformation'/></title>
+    <title><spring:message code='trip.viewinformation'/></title>
     <link href="/css/blue.css" rel="stylesheet"/>
 
 </head>
@@ -21,20 +21,20 @@
         <jsp:include page="/topmenu"/>
     </div>
     <div id="content" class="column light">
-        <h2><spring:message code='text.trips'/>
+        <h2><spring:message code='trip.trips'/>
             <form method="post" action="add">
                 <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
             </form>
         </h2>
         <section>
             <div class="row">
-                <spring:message code="text.owntrips"/>
+                <spring:message code="trip.owntrips"/>
                 <c:choose>
                     <c:when test="${!empty ownTrips}">
                         <table>
                             <tr>
-                                <td><spring:message code="text.tripname"/></td>
-                                <td><spring:message code="text.tripdescription"/></td>
+                                <td><spring:message code="trip.name"/></td>
+                                <td><spring:message code="trip.description"/></td>
                                 <td>tripInstancesCount? Wat kan er nog bij?</td>
                             </tr>
                             <c:forEach var="ownTrips" items="${ownTrips}">
@@ -46,7 +46,7 @@
                         </table>
                     </c:when>
                     <c:otherwise>
-                        <spring:message code='text.noowntripsfound'/>
+                        <spring:message code='trip.noowntripsfound'/>
                     </c:otherwise>
                 </c:choose>
             </div>
@@ -56,13 +56,13 @@
                 <%--TODO: fix this? (zorgt ervoor dat beide lijsten niet boven elkaar staan ... maar wel geen goeie manier)--%>
             </c:forEach>
             <div class="row">
-                <spring:message code="text.publictrips"/>
+                <spring:message code="trip.publictrips"/>
                 <c:choose>
                     <c:when test="${!empty publicTrips}">
                         <table>
                             <tr>
-                                <td><spring:message code="text.tripname"/></td>
-                                <td><spring:message code="text.tripdescription"/></td>
+                                <td><spring:message code="trip.name"/></td>
+                                <td><spring:message code="trip.description"/></td>
                                 <td>wat kan er nog bij?</td>
                             </tr>
                             <c:forEach var="publicTrip" items="${publicTrips}">
@@ -75,7 +75,7 @@
                         </table>
                     </c:when>
                     <c:otherwise>
-                        <spring:message code='text.notripsfound'/>
+                        <spring:message code='trip.notripsfound'/>
                     </c:otherwise>
                 </c:choose>
             </div>

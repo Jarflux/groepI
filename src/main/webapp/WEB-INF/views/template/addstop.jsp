@@ -14,7 +14,7 @@
         <jsp:include page="/topmenu"/>
     </div>
     <div id="content" class="column light">
-        <h2><spring:message code="text.addstop"/></h2>
+        <h2><spring:message code="stop.add"/></h2>
         <section>
             <div class="half big">
                 <div class="gmap" id="map_canvas">
@@ -25,7 +25,7 @@
             <div class="half">
                 <form method="post" action="/stop/create" class="mainstyle tooltips validate">
                     <div class="row">
-                        <span><spring:message code='text.trip'/></span> <c:out value="${tripObject.title}"/>
+                        <span><spring:message code='trip.trip'/></span> <c:out value="${tripObject.title}"/>
                     </div>
                     <div id="stopDetails">
                         <div class="row">
@@ -33,17 +33,17 @@
                             <input type="text" name="name"/>
                         </div>
                         <div class="row">
-                            <span><spring:message code='text.type'/></span>
+                            <span><spring:message code='stop.type'/></span>
                             <select name="type">
-                                <option value="0"><spring:message code='text.interactive'/></option>
-                                <option value="1"><spring:message code='text.informative'/></option>
+                                <option value="0"><spring:message code='stop.interactive'/></option>
+                                <option value="1"><spring:message code='stop.informative'/></option>
                             </select>
                         </div>
                         <div class="row">
                             <span><spring:message code='text.rending'/></span>
                             <select name="displayMode">
-                                <option value="0"><spring:message code='text.normal'/></option>
-                                <option value="1"><spring:message code='text.ar'/></option>
+                                <option value="0"><spring:message code='stop.normal'/></option>
+                                <option value="1"><spring:message code='stop.augmentedreality'/></option>
                             </select>
                         </div>
                         <div class="row">

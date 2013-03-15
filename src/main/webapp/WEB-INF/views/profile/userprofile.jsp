@@ -61,19 +61,14 @@
                     <section>
                         <h3><spring:message code="text.mytrips"/></h3>
                         <table style="width: 100%">
-                            <caption><spring:message code="text.tripsparticipated"/></caption>
+                            <caption><spring:message code="tripinstance.participated"/></caption>
                             <tr>
-                                <th><spring:message code="text.tripname"/></th>
-                                <th><spring:message code="text.tripdescription"/></th>
+                                <th><spring:message code="trip.name"/></th>
+                                <th><spring:message code="trip.description"/></th>
                                 <th><spring:message code="text.date"/></th>
-                                <th><spring:message code="text.starttime"/></th>
-                                <th><spring:message code="text.endtime"/></th>
+                                <th><spring:message code="tripinstance.starttime"/></th>
+                                <th><spring:message code="tripinstance.endtime"/></th>
                             </tr>
-                                <%--
-                                                                <tr>
-                                                                    <td rowspan="4"><spring:message code="text.plannedtrips"/></td>
-                                                                </tr>--%>
-                                <%--<tr>--%>
                             <c:forEach var="tripInstance" items="${userFutureTripInstances}">
                                 <tr>
                                     <td><a href="/trip/view/${tripInstance.id}" class="active">
@@ -89,7 +84,7 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td colspan="5"><spring:message code="text.pasttrips"/></td>
+                                <td colspan="5"><spring:message code="tripinstance.pasttrips"/></td>
                             </tr>
 
                             <c:forEach var="tripInstance" items="${userPastTripInstances}">
@@ -107,11 +102,9 @@
                         <br style="clear: both">
                     </section>
                 </c:when>
-                <%--<c:when test="${userObject == null}">--%>
                 <c:otherwise>
                     <jsp:forward page="/error/invaliduser"/>
                 </c:otherwise>
-                <%--</c:when>--%>
             </c:choose>
         </div>
     </div>

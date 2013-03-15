@@ -41,7 +41,7 @@
                 <input type="submit" class="button" value="<spring:message code='text.login'/>"/>
             </div>
         </form>
-        <p id="fblogin" class="button">Login met Facebook</p>
+        <p id="fblogin" class="button"><spring:message code='login.loginfacebook'/></p>
     </div>
 </div>
 <div id="loader">
@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <p> Laden...       </p>
+        <p> <spring:message code='login.loading'/>...       </p>
     </div>
 
 

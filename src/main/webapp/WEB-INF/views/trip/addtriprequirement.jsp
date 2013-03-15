@@ -20,23 +20,23 @@
         <jsp:include page="/topmenu"/>
     </div>
     <div id="content" class="column light">
-        <h2><spring:message code="text.createRequirement"/></h2>
+        <h2><spring:message code="requirement.create"/></h2>
 
         <form method="post" action="/requirement/add" class="mainstyle tooltips">
             <input type="hidden" name="tripId" title="tripId" value="${tripId}"/>
 
             <div class="row">
                 <span><spring:message code='text.name'/></span>
-                <input name="name" title="<spring:message code='text.requirementname'/>"/>
+                <input name="name" title="<spring:message code='requirement.name'/>"/>
             </div>
             <div class="row">
                 <span><spring:message code='text.amount'/></span>
                 <input name="amount" class="required"
-                       title="<spring:message code='text.requirementamount'/>"/> <%--TODO: number-validation--%>
+                       title="<spring:message code='requirement.amount'/>"/> <%--TODO: number-validation--%>
             </div>
             <div class="row">
                 <span><spring:message code='text.description'/></span>
-                <textarea name="description" title="<spring:message code='text.requirementdescription'/>"></textarea>
+                <textarea name="description" title="<spring:message code='requirement.description'/>"></textarea>
             </div>
             <input type="submit" class="button" value="<spring:message code='text.save'/>"/>
         </form>
