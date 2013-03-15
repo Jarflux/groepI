@@ -20,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(locations = {"classpath:testApplicationContext.xml"})
 @Transactional
 public class TripServiceTest {
-    //TODO: cascade delete-dinges
 
     private Trip trip;
     private User user;

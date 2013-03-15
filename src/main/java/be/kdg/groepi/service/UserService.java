@@ -73,10 +73,10 @@ public class UserService {
             userDao.updateUser(user);
             ApplicationContext context = new ClassPathXmlApplicationContext("Spring-Mail.xml");
             TripMail tim = (TripMail) context.getBean("tripMail");
-            //TODO: pas email aan aan die van de gebruiker
-            tim.sendMail("info@trippie.be", "info@trippie.be", "Reset password",
+            //TODO: is dit volledig?
+            tim.sendMail("info@trippie.be", user.getEmail(), "Reset password",
                     "Please follow this link to reset your password:\n http://localhost:8080/profile/reset/"
-                    + /*user.getId() + "/" + */ passwordResetString + "\n\nThis link expires at:\n" + passwordResetTimestamp);
+                    + passwordResetString + "\n\nThis link expires at:\n" + passwordResetTimestamp);
             return true;
         } else {
             return false;

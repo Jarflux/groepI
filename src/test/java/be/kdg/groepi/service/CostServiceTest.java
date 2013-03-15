@@ -3,9 +3,9 @@ package be.kdg.groepi.service;
 import be.kdg.groepi.model.*;
 import be.kdg.groepi.utils.DateUtil;
 import static be.kdg.groepi.utils.DateUtil.dateToLong;
+import static org.junit.Assert.*;
+
 import org.junit.After;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -77,13 +77,9 @@ public class CostServiceTest {
     }
 
     @Test
-    public void deleteCosts() {
-        //TODO: Als Delete niet werkt dan faalt de test niet maar hebt ge een endless loop
-        while (!costService.getAllCosts().isEmpty()) {
-            Cost firstCost = costService.getAllCosts().get(0);
-            costService.deleteCost(firstCost);
-        }
-        //TODO: Add explanation string to assert
-        assertTrue(costService.getAllCosts().isEmpty());
+    public void deleteCost() {
+        assertNotNull("deleteCost: Cost must exist", costService.getCostById(cost.getId()));
+        costService.deleteCost(cost);
+        assertNull("deleteCost: Cost may not exist",  costService.getCostById(cost.getId()));
     }
 }

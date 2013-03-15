@@ -90,7 +90,6 @@ public class AnswerServiceTest {
         stop.getAnswers().add(answer4);
         stopService.updateStop(stop);
         //stop = stopService.getStopById(stop.getId());
-        //TODO: Add explanation string to assert
-        assertTrue(answerService.getAnswersByStopID(stop.getId()).size() == 5);
+        assertTrue("saveAnswerCollection: Answers were not added", answerService.getAnswersByStopID(stop.getId()).size() == 5);
     }
 }

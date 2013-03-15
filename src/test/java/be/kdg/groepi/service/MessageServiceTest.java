@@ -3,9 +3,9 @@ package be.kdg.groepi.service;
 import be.kdg.groepi.model.*;
 import be.kdg.groepi.utils.DateUtil;
 import static be.kdg.groepi.utils.DateUtil.dateToLong;
+import static org.junit.Assert.*;
+
 import org.junit.After;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -79,12 +79,9 @@ public class MessageServiceTest {
     }
 
     @Test
-    public void deleteCosts() {
-        while (!messageService.getAllMessages().isEmpty()) {
-            Message firstMessage = messageService.getAllMessages().get(0);
-            messageService.deleteMessage(firstMessage);
-        }
-        //TODO: Add explanation string to assert
-        assertTrue(messageService.getAllMessages().isEmpty());
+    public void deleteMessage() {
+        assertNotNull("deleteMessave: Message must exist", messageService.getMessageById(message.getId()));
+        messageService.deleteMessage(message);
+        assertNull("deleteMessage: Message may not exist", messageService.getMessageById(message.getId()));
     }
 }
