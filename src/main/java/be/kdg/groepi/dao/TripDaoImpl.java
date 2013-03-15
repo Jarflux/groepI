@@ -42,7 +42,7 @@ public class TripDaoImpl implements TripDao {
 
     @Override
     public void updateTrip(Trip user) throws DataAccessException {
-        getEntityManager().persist(user);
+        getEntityManager().merge(user);
     }
 
     @Override
