@@ -22,7 +22,7 @@
     </div>
     <div id="content" class="column light">
         <h2><spring:message code='text.trips'/>
-            <form method="post" action="addtrip">
+            <form method="post" action="add">
                 <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
             </form>
         </h2>
@@ -39,7 +39,7 @@
                             </tr>
                             <c:forEach var="ownTrips" items="${ownTrips}">
                                 <tr>
-                                    <td><a href="/trips/view/${ownTrips.id}" class="active">${ownTrips.title}</a></td>
+                                    <td><a href="/template/view/${ownTrips.id}" class="active">${ownTrips.title}</a></td>
                                     <td>${ownTrips.description}</td>
                                 </tr>
                             </c:forEach>
@@ -67,7 +67,7 @@
                             </tr>
                             <c:forEach var="publicTrip" items="${publicTrips}">
                                 <tr>
-                                    <td><a href="/trips/view/${publicTrip.id}" class="active">${publicTrip.title}</a>
+                                    <td><a href="/template/view/${publicTrip.id}" class="active">${publicTrip.title}</a>
                                     </td>
                                     <td>${publicTrip.description}</td>
                                 </tr>

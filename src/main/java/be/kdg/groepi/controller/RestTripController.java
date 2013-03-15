@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller("restTripController")
-@RequestMapping("trips")
+@RequestMapping("template")
 public class RestTripController {
 
     private static final Logger logger = Logger.getLogger(RestTripController.class);
@@ -22,18 +22,18 @@ public class RestTripController {
     @Autowired
     protected TripInstanceService tripInstanceService;
 
-    @RequestMapping(value = "/addtrip")
+    @RequestMapping(value = "/add")
     public String addtrip() {
         System.out.println("AddTrip: Passing through...");
-        return "trips/addtrip";
+        return "template/add";
     }
 
-    @RequestMapping(value = "/createTrip", method = RequestMethod.POST)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ModelAndView createTrip(HttpSession session, @ModelAttribute("tripObject") Trip trip) {
         User user = (User) session.getAttribute("userObject");
         trip.setOrganiser(user);
         tripService.createTrip(trip);
-        return new ModelAndView("trips/view", "tripObject", trip);
+        return new ModelAndView("template/view", "tripObject", trip);
     }
 
     @RequestMapping(value = "/view/{tripId}", method = RequestMethod.GET)
@@ -59,7 +59,7 @@ public class RestTripController {
                 }
             }
 
-            ModelAndView modelAndView = new ModelAndView("trips/view");
+            ModelAndView modelAndView = new ModelAndView("template/view");
             modelAndView.addObject("tripObject", trip);
             modelAndView.addObject("tripInstances", tripInstances);
             modelAndView.addObject("tripInstanceDates", tripInstanceDates);
@@ -99,18 +99,18 @@ public class RestTripController {
             logger.debug("Returning ownTrips is empty");
         }
 
-        ModelAndView modelAndView = new ModelAndView("trips/list");
+        ModelAndView modelAndView = new ModelAndView("template/list");
         modelAndView.addObject("publicTrips", publicTrips);
         modelAndView.addObject("ownTrips", ownTrips);
         return modelAndView;
     }
 
-    @RequestMapping(value = "/edittrip/{tripId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/edit/{tripId}", method = RequestMethod.GET)
     public ModelAndView editTripView(@PathVariable("tripId") String tripId, HttpSession session) {
         User user = (User) session.getAttribute("userObject");
         Trip trip = tripService.getTripById(Long.parseLong(tripId));
         if (trip.getOrganiser().getId() == user.getId()) {
-            ModelAndView modelAndView = new ModelAndView("trips/edittrip");
+            ModelAndView modelAndView = new ModelAndView("template/edit");
             modelAndView.addObject("tripObject", trip);
             return modelAndView;
         } else {
@@ -119,12 +119,12 @@ public class RestTripController {
         }
     }
 
-    @RequestMapping(value = "/updateTrip", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ModelAndView updateTrip(@ModelAttribute("tripObject") Trip trip, HttpSession session) {
         User user = (User) session.getAttribute("userObject");
         trip.setOrganiser(user);
         tripService.updateTrip(trip);
         trip = tripService.getTripById(trip.getId());
-        return new ModelAndView("trips/view", "tripObject", trip);
+        return new ModelAndView("redirect:/template/view/" + trip.getId());
     }
 }

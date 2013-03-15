@@ -158,7 +158,7 @@
                                     indesc="${cost.description}" inam="${cost.amount}">
                                         <spring:message code="text.edit"/>
                                 <td>
-                                    <form method="post" action="/trips/deletecost">
+                                    <form method="post" action="/cost/delete">
                                         <input type="hidden" value="${cost.id}" name="costId"/>
                                         <input type="hidden" value="${tripInstanceObject.id}"
                                                name="tripInstanceId"/>
@@ -259,7 +259,7 @@
 </div>
 
 <div id="addCost" title="<spring:message code="text.addcost"/>">
-    <form method="POST" action="/trips/doaddcost">
+    <form method="POST" action="/cost/add">
         <input type="hidden" name="tripInstanceId" title="tripInstanceId" value="${tripInstanceId}"/>
 
         <div class="row">
@@ -276,7 +276,7 @@
 
 
 <div id="editCost" title="<spring:message code="text.editcost"/>">
-    <form method="POST" action="/trips/editcost">
+    <form method="POST" action="/cost/edit">
         <input type="hidden" id="costid" name="costid"/>
         <input type="text" name="description" id="descval"
                title="<spring:message code="text.costdescription"/>"/>

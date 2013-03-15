@@ -102,7 +102,7 @@
                     </c:choose>
                 </div>
                 <div class="row">
-                    <form method="post" action="/trips/createAnswer" class="mainstyle tooltips validate">
+                    <form method="post" action="/answer/create" class="mainstyle tooltips validate">
                         <input type="text" name="answer"/>
                         <input type="hidden" name="stopId" value="${stopObject.id}"/>
                         <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
@@ -182,7 +182,7 @@
             }
         });
     });
-
+     /*TODO functions not working (Failed to load resource: the server responded with a status of 400 (Bad Request) )*/
     function setCorrectAnswer(id) {
         console.log("setCorrectAnswer");
         var feedback = $.post("/trips/setStopIsCorrect", { answerId: id})
@@ -190,7 +190,7 @@
 
     function deleteAnswer(id) {
         console.log("deleteAnswer");
-        var feedback = $.post("/trips/deleteAnswer", { answerId: id})
+        var feedback = $.post("/answer/delete", { answerId: id})
         $("#answer_" + id).remove();
     }
 </script>
