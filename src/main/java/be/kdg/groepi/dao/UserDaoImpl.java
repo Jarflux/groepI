@@ -71,7 +71,9 @@ public class UserDaoImpl implements UserDao {
         Query query = getEntityManager().createQuery("select u from User u Where u.fFBUserID = :fbUserId");
         query.setParameter("fbUserId", fbUserId);
         List<User> result = query.getResultList();
-        return result.get(0);
+        if (result.size()>0) {
+            return result.get(0);
+        }            else return null;
     }
 
     @Override
