@@ -1,6 +1,7 @@
 package com.controllers;
 import android.content.Context;
 import com.model.TripInstance;
+import com.model.User;
 import com.tasks.HttpGetTask;
 import com.tasks.LoginTask;
 import org.json.JSONObject;
@@ -56,5 +57,19 @@ public class Controller {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
         return null;
+    }
+
+    public List<User> getTripParticipants(Long tripId){
+        HttpGetTask getTask = new HttpGetTask();
+        List<User> participants = null;
+        getTask.execute("android/getTripParticipants",tripId.toString());
+        try {
+            if(getTask.get() != null){
+                return (List<User>)getTask.get();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return participants;
     }
 }

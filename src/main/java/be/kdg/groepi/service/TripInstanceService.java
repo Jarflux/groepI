@@ -2,6 +2,7 @@ package be.kdg.groepi.service;
 
 import be.kdg.groepi.dao.TripInstanceDao;
 import be.kdg.groepi.model.TripInstance;
+import be.kdg.groepi.model.User;
 import be.kdg.groepi.utils.TripMail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -58,6 +59,10 @@ public class TripInstanceService {
 
     public List<Object[]> getTripInstancesByUserId(Long userId) {
         return tripInstanceDao.getTripInstancesByUserId(userId);
+    }
+
+    public List<User> getTripParticipants(Long tripId){
+        return tripInstanceDao.getTripParticipants(tripId);
     }
 
     public void inviteByEmail(String receipients, String message, Long instanceId) {

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#0ac5f4">
+
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="350dp"
+            android:id="@+id/chatText"
+            android:layout_gravity="center"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_above="@+id/chatBar"
+            android:background="#dee9ec"
+            android:layout_alignParentTop="false"
+            android:layout_marginTop="72dp"/>
+
+    <EditText
+            android:inputType="text"
+            android:layout_width="50dp"
+            android:layout_height="80dp"
+            android:text="New EditText"
+            android:id="@+id/chatBar"
+            android:layout_alignParentBottom="true"
+            android:autoText="false"
+            android:gravity="fill_horizontal"
+            android:layout_alignWithParentIfMissing="false"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="false"
+            android:layout_toLeftOf="@+id/sendBtn"
+            android:background="#ffffff"/>
+
+    <Button
+            android:layout_width="90dp"
+            android:layout_height="80dp"
+            android:text="Send"
+            android:id="@+id/sendBtn"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="false"
+            android:background="#d2d2d2"/>
+
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tripDrp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/chatText"
+            android:spinnerMode="dialog"
+            android:focusableInTouchMode="false"
+            android:prompt="Select Trip"/>
+
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/participantDrp"
+            android:layout_alignLeft="@+id/chatText"
+            android:layout_below="@+id/tripDrp"
+            android:layout_alignRight="@+id/chatText"
+            android:visibility="visible"
+            android:spinnerMode="dialog"
+            android:prompt="Select Co-Participant"
+            android:clickable="false"/>
+
+</RelativeLayout>
