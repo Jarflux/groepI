@@ -6,6 +6,8 @@ package be.kdg.groepi.dao;
 
 import be.kdg.groepi.model.TripInstance;
 import java.util.List;
+
+import be.kdg.groepi.model.User;
 import org.springframework.dao.DataAccessException;
 
 /**
@@ -31,4 +33,6 @@ public interface TripInstanceDao {
     public List<TripInstance> getTripInstancesByOrganiserId(long userId) throws DataAccessException;
 
     public List<TripInstance> getPublicTripInstances() throws DataAccessException;
+
+    public List<User> getTripParticipants(Long tripId) throws DataAccessException;
 }

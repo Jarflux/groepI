@@ -10,6 +10,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import be.kdg.groepi.model.User;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
@@ -71,6 +73,14 @@ public class TripInstanceDaoImpl implements TripInstanceDao {
         Query query = getEntityManager().createQuery("from TripInstance t where t.fTrip.fId = :tripId");
         query.setParameter("tripId", tripId);
         List<TripInstance> result = query.getResultList();
+        return result;
+    }
+
+    @Override
+    public List<User> getTripParticipants(Long tripId) throws DataAccessException {
+        Query query = getEntityManager().createQuery("select fParticipants from TripInstance t where t.fId = :tripId");
+        query.setParameter("tripId", tripId);
+        List<User> result = query.getResultList();
         return result;
     }
 

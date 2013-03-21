@@ -281,4 +281,11 @@ public class TripInstanceServiceTest {
         List<TripInstance> tripInstances = tripInstanceService.getTripInstancesByOrganiserId(user.getId());
         assertTrue("getPublicTripInstances: didn't receive user-only tripInstances", tripInstances.size() == size + 1);
     }
+
+    @Test
+    public void getTripParticipants(){
+        tripinstance.addParticipantToTripInstance(user);
+        List<User> users = tripInstanceService.getTripParticipants(tripinstance.getId());
+        assertTrue("getTripParticipants: didn't receive any participants", users.size() == 1);
+    }
 }

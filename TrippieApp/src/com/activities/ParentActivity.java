@@ -37,7 +37,8 @@ public class ParentActivity extends Activity {
                 intent = new Intent();
                 return true;
             case R.id.btnChat:
-                intent = new Intent();
+                intent = new Intent(this,ChatActivity.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

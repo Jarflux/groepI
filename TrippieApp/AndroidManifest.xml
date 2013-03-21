@@ -22,6 +22,10 @@
         </activity>
         <activity android:name=".UserTripsActivity"/>
         <activity android:name=".TripDetailActivity"/>
+        <activity
+                android:name=".ChatActivity"
+                android:label="Chat"/>
+
         <meta-data android:name="com.google.android.maps.v2.API_KEY"
                    android:value="AIzaSyBqS9hK_j7vBk-8z4Rddok8fY5avJDugGs"/>
         <uses-library android:name="com.google.android.maps"/>

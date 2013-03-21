@@ -1,6 +1,7 @@
 package be.kdg.groepi.controller;
 
 import be.kdg.groepi.model.TripInstance;
+import be.kdg.groepi.model.User;
 import be.kdg.groepi.service.TripInstanceService;
 import be.kdg.groepi.utils.ExclusionStrategyUtil;
 import com.google.gson.Gson;
@@ -48,6 +49,18 @@ public class AndroidRestController {
 
 
                     String json = gson.toJson(trips2);
+            response.getWriter().print(json);
+        } catch (Exception e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+    }
+
+    @RequestMapping(value = "/getParticipants/{tripId}", method = RequestMethod.GET)
+    public void getParticipants(@PathVariable(value = "tripId") String tripId, HttpServletResponse response) {
+        try {
+            List<User> participants = tripInstanceService.getTripParticipants(Long.getLong(tripId));
+            Gson gson = new GsonBuilder().setExclusionStrategies(new ExclusionStrategyUtil()).serializeNulls().create();
+            String json = gson.toJson(participants);
             response.getWriter().print(json);
         } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.

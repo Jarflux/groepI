@@ -25,10 +25,10 @@
             android:layout_height="wrap_content"
             android:text="Inloggen"
             android:id="@+id/button" android:layout_gravity="center"/>
-    <fragment android:id="@+id/map"
+   <!-- <fragment android:id="@+id/map"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               class="com.google.android.gms.maps.MapFragment">
-    </fragment>
+    </fragment>-->
 </LinearLayout>
 
