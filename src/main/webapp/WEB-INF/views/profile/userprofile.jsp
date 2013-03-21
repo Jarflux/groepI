@@ -12,6 +12,8 @@
 <head>
     <title><spring:message code='text.viewprofile'/></title>
     <link href="/css/blue.css" rel="stylesheet"/>
+    <link href="/css/jquery.dataTables.css" rel="stylesheet"/>
+
 </head>
 <body>
 <div id="wrapper">
@@ -60,8 +62,9 @@
                     <br style="clear: both"/>
                     <section>
                         <h3><spring:message code="text.mytrips"/></h3>
-                        <table style="width: 100%">
+                        <table style="width: 100%" class="sorting">
                             <caption><spring:message code="tripinstance.participated"/></caption>
+                            <thead>
                             <tr>
                                 <th><spring:message code="trip.name"/></th>
                                 <th><spring:message code="trip.description"/></th>
@@ -69,6 +72,8 @@
                                 <th><spring:message code="tripinstance.starttime"/></th>
                                 <th><spring:message code="tripinstance.endtime"/></th>
                             </tr>
+                            </thead>
+                            <tbody>
                             <c:forEach var="tripInstance" items="${userFutureTripInstances}">
                                 <tr>
                                     <td><a href="/trip/view/${tripInstance.id}" class="active">
@@ -80,6 +85,7 @@
                                     <td>${tripInstanceEndTimes.get(tripInstance.id)}</td>
                                 </tr>
                             </c:forEach>
+                            </tbody>
                             <tr>
                                 <td></td>
                             </tr>
@@ -111,6 +117,7 @@
 </div>
 
 <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+<script src="/js/jquery.dataTables.min.js"></script>
 <script src="/js/functions.js"></script>
 </body>
 </html>

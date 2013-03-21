@@ -13,6 +13,7 @@
 <head>
     <title><spring:message code='trip.viewinformation'/></title>
     <link href="/css/blue.css" rel="stylesheet"/>
+    <link href="/css/jquery.dataTables.css" rel="stylesheet"/>
 
 </head>
 <body>
@@ -31,18 +32,22 @@
                 <spring:message code="trip.owntrips"/>
                 <c:choose>
                     <c:when test="${!empty ownTrips}">
-                        <table>
+                        <table class="sorting">
+                            <thead>
                             <tr>
-                                <td><spring:message code="trip.name"/></td>
-                                <td><spring:message code="trip.description"/></td>
-                                <td>tripInstancesCount? Wat kan er nog bij?</td>
+                                <th><spring:message code="trip.name"/></th>
+                                <th><spring:message code="trip.description"/></th>
+                                <th>tripInstancesCount? Wat kan er nog bij?</th>
                             </tr>
+                            </thead>
+                            <tbody>
                             <c:forEach var="ownTrips" items="${ownTrips}">
                                 <tr>
                                     <td><a href="/template/view/${ownTrips.id}" class="active">${ownTrips.title}</a></td>
                                     <td>${ownTrips.description}</td>
                                 </tr>
                             </c:forEach>
+                            </tbody>
                         </table>
                     </c:when>
                     <c:otherwise>
@@ -59,12 +64,14 @@
                 <spring:message code="trip.publictrips"/>
                 <c:choose>
                     <c:when test="${!empty publicTrips}">
-                        <table>
+                        <table class="sorting">
+                            <thead>
                             <tr>
-                                <td><spring:message code="trip.name"/></td>
-                                <td><spring:message code="trip.description"/></td>
-                                <td>wat kan er nog bij?</td>
+                                <th><spring:message code="trip.name"/></th>
+                                <th><spring:message code="trip.description"/></th>
                             </tr>
+                            </thead>
+                            <tbody>
                             <c:forEach var="publicTrip" items="${publicTrips}">
                                 <tr>
                                     <td><a href="/template/view/${publicTrip.id}" class="active">${publicTrip.title}</a>
@@ -72,6 +79,7 @@
                                     <td>${publicTrip.description}</td>
                                 </tr>
                             </c:forEach>
+                            </tbody>
                         </table>
                     </c:when>
                     <c:otherwise>
@@ -83,6 +91,7 @@
     </div>
 </div>
 <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+<script src="/js/jquery.dataTables.min.js"></script>
 <script src="/js/functions.js"></script>
 </body>
 </html>

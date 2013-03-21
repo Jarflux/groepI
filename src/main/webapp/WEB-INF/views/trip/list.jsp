@@ -13,6 +13,7 @@
 <head>
     <title><spring:message code='trip.viewinformation'/></title>
     <link href="/css/blue.css" rel="stylesheet"/>
+    <link href="/css/jquery.dataTables.css" rel="stylesheet"/>
 
 </head>
 <body>
@@ -29,15 +30,18 @@
                 <spring:message code="tripinstance.owntripinstances"/>
                 <c:choose>
                     <c:when test="${!empty ownTripInstances}">
-                        <table>
+                        <table class="sorting">
+                            <thead>
                             <tr>
-                                <td><spring:message code="trip.name"/></td>
-                                <td><spring:message code="trip.description"/></td>
-                                <td><spring:message code="tripinstance.numberofparticipants"/></td>
-                                <td><spring:message code="text.date"/></td>
-                                <td><spring:message code="tripinstance.starttime"/></td>
-                                <td><spring:message code="tripinstance.endtime"/></td>
+                                <th><spring:message code="trip.name"/></th>
+                                <th><spring:message code="trip.description"/></th>
+                                <th><spring:message code="tripinstance.numberofparticipants"/></th>
+                                <th><spring:message code="text.date"/></th>
+                                <th><spring:message code="tripinstance.starttime"/></th>
+                                <th><spring:message code="tripinstance.endtime"/></th>
                             </tr>
+                            </thead>
+                            <tbody>
                             <c:forEach var="tripInstance" items="${ownTripInstances}">
                                 <tr>
                                     <td><a href="/trip/view/${tripInstance.id}" class="active">
@@ -49,10 +53,11 @@
                                     <td>${ownTripInstanceEndTimes.get(tripInstance.id)}</td>
                                 </tr>
                             </c:forEach>
+                            </tbody>
                         </table>
                     </c:when>
                     <c:otherwise>
-                        <spring:message code='tripinstance.notripinstancesfound'/>
+                        <br><spring:message code='tripinstance.notripinstancesfound'/>
                     </c:otherwise>
                 </c:choose>
             </div>
@@ -68,15 +73,18 @@
                 <spring:message code="tripinstance.publictripinstances"/>
                 <c:choose>
                     <c:when test="${!empty publicTripInstances}">
-                        <table>
+                        <table class="sorting">
+                            <thead>
                             <tr>
-                                <td><spring:message code="trip.name"/></td>
-                                <td><spring:message code="trip.description"/></td>
-                                <td><spring:message code="tripinstance.numberofparticipants"/></td>
-                                <td><spring:message code="text.date"/></td>
-                                <td><spring:message code="tripinstance.starttime"/></td>
-                                <td><spring:message code="tripinstance.endtime"/></td>
+                                <th><spring:message code="trip.name"/></th>
+                                <th><spring:message code="trip.description"/></th>
+                                <th><spring:message code="tripinstance.numberofparticipants"/></th>
+                                <th><spring:message code="text.date"/></th>
+                                <th><spring:message code="tripinstance.starttime"/></th>
+                                <th><spring:message code="tripinstance.endtime"/></th>
                             </tr>
+                            </thead>
+                            <tbody>
                             <c:forEach var="tripInstance" items="${publicTripInstances}">
                                 <tr>
                                     <td><a href="/trip/view/${tripInstance.id}" class="active">
@@ -100,6 +108,7 @@
                                     </td>
                                 </tr>
                             </c:forEach>
+                            </tbody>
                         </table>
                     </c:when>
                     <c:otherwise>
@@ -111,6 +120,7 @@
     </div>
 </div>
 <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+<script src="/js/jquery.dataTables.min.js"></script>
 <script src="/js/functions.js"></script>
 </body>
 </html>

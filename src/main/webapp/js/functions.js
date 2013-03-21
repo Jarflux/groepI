@@ -36,9 +36,13 @@ $(function () {
     validateform();
 
     addhandlers();
-
+    preparetables();
 
 })
+function preparetables()
+{
+    $("table.sorting").dataTable();
+}
 function addhandlers() {
     $("#fblogin").on("click", function () {
         $("#loader").fadeIn("fast");
@@ -274,7 +278,7 @@ function invitefriendsdialog(instanceid, naamtrip) {
 }
 function changetheme(naam) {
 
-    $("link[href]").attr("href", "/css/" + naam);
+    $("link[href]:first").attr("href", "/css/" + naam);
 
 }
 
