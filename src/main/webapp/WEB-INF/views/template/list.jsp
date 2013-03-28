@@ -29,31 +29,32 @@
         </h2>
         <section>
             <div class="row">
-                <spring:message code="trip.owntrips"/>
-                <c:choose>
-                    <c:when test="${!empty ownTrips}">
-                        <table class="sorting">
+                <table class="sorting">
+                    <c:choose>
+                        <c:when test="${!empty ownTrips}">
+                            <caption><spring:message code="trip.owntrips"/></caption>
                             <thead>
                             <tr>
                                 <th><spring:message code="trip.name"/></th>
                                 <th><spring:message code="trip.description"/></th>
-                                <th>tripInstancesCount? Wat kan er nog bij?</th>
                             </tr>
                             </thead>
                             <tbody>
                             <c:forEach var="ownTrips" items="${ownTrips}">
                                 <tr>
-                                    <td><a href="/template/view/${ownTrips.id}" class="active">${ownTrips.title}</a></td>
+                                    <td><a href="/template/view/${ownTrips.id}" class="active">${ownTrips.title}</a>
+                                    </td>
                                     <td>${ownTrips.description}</td>
                                 </tr>
                             </c:forEach>
                             </tbody>
-                        </table>
-                    </c:when>
-                    <c:otherwise>
-                        <spring:message code='trip.noowntripsfound'/>
-                    </c:otherwise>
-                </c:choose>
+                        </c:when>
+                        <c:otherwise>
+                            <br/>
+                            <caption><spring:message code='trip.noowntripsfound'/></caption>
+                        </c:otherwise>
+                    </c:choose>
+                </table>
             </div>
             <br/>
             <c:forEach begin="1" end="${ownTrips.size()}">
@@ -61,10 +62,10 @@
                 <%--TODO: fix this? (zorgt ervoor dat beide lijsten niet boven elkaar staan ... maar wel geen goeie manier)--%>
             </c:forEach>
             <div class="row">
-                <spring:message code="trip.publictrips"/>
-                <c:choose>
-                    <c:when test="${!empty publicTrips}">
-                        <table class="sorting">
+                <table class="sorting">
+                    <c:choose>
+                        <c:when test="${!empty publicTrips}">
+                            <caption><spring:message code="trip.publictrips"/></caption>
                             <thead>
                             <tr>
                                 <th><spring:message code="trip.name"/></th>
@@ -80,12 +81,13 @@
                                 </tr>
                             </c:forEach>
                             </tbody>
-                        </table>
-                    </c:when>
-                    <c:otherwise>
-                        <spring:message code='trip.notripsfound'/>
-                    </c:otherwise>
-                </c:choose>
+                        </c:when>
+                        <c:otherwise>
+                            <br/>
+                            <caption><spring:message code='trip.nopublictripsfound'/></caption>
+                        </c:otherwise>
+                    </c:choose>
+                </table>
             </div>
         </section>
     </div>
