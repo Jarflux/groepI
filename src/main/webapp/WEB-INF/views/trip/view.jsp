@@ -244,17 +244,15 @@
 
         <div class="row">
             <span><spring:message code='text.name'/></span>
-            <input name="name" id="addRequirementName" title="<spring:message code='requirement.name'/>"/>
+            <input name="name" id="addRequirementName"/>
         </div>
         <div class="row">
             <span><spring:message code='text.amount'/></span>
-            <input name="amount" class="required" id="addRequirementAmount"
-                   title="<spring:message code='requirement.amount'/>"/> <%--TODO: number-validation--%>
+            <input name="amount" class="required" id="addRequirementAmount"/> <%--TODO: number-validation--%>
         </div>
         <div class="row">
             <span><spring:message code='text.description'/></span>
-            <textarea name="description" id="addRequirementDescription"
-                      title="<spring:message code='requirement.description'/>"></textarea>
+            <textarea name="description" id="addRequirementDescription"></textarea>
         </div>
         <input title="<spring:message code='text.save'/>" type="submit" class="button"
                value="<spring:message code='text.save'/>"/>
@@ -267,11 +265,11 @@
 
         <div class="row">
             <span><spring:message code='text.description'/></span>
-            <input name="description" id="addcostdesc" title="<spring:message code='cost.description'/>"/>
+            <input name="description" id="addcostdesc"/>
         </div>
         <div class="row">
             <span><spring:message code='cost.amount'/></span>
-            <input name="amount" id="addcostam" title="<spring:message code='cost.amount'/>"/>
+            <input name="amount" id="addcostam"/>
         </div>
         <input type="submit" class="button" value="<spring:message code="text.add"/>"/>
     </form>
@@ -306,7 +304,7 @@
 <script src="/js/functions.js"></script>
 <script>maketripsortable();
 preparemodal();
-    preparetables();
+preparetables();
 </script>
 </body>
 </html>

@@ -38,8 +38,7 @@ $(function () {
     addhandlers();
 
 })
-function preparetables()
-{
+function preparetables() {
     $("table.sorting").dataTable();
 }
 function addhandlers() {
@@ -64,7 +63,8 @@ function addhandlers() {
 function preparemodal() {
     $("#addMessage").dialog({
         modal: true,
-        autoOpen: false
+        autoOpen: false,
+        width: "75%"
     });
 
     $(".addmessage").on("click", function () {
@@ -74,7 +74,8 @@ function preparemodal() {
 
     $("#addRequirement").dialog({
         modal: true,
-        autoOpen: false
+        autoOpen: false,
+        width: "75%"
     });
 
     $(".addrequirement").on("click", function () {
@@ -85,7 +86,8 @@ function preparemodal() {
 
     $("#addRequirementInstance").dialog({
         modal: true,
-        autoOpen: false
+        autoOpen: false,
+        width: "75%"
     });
 
     $(".addrequirementinstance").on("click", function () {
@@ -96,7 +98,8 @@ function preparemodal() {
 
     $("#assignRequirementToParticipant").dialog({
         modal: true,
-        autoOpen: false
+        autoOpen: false,
+        width: "75%"
 
     });
 
@@ -109,7 +112,8 @@ function preparemodal() {
 
     $("#addCost").dialog({
         modal: true,
-        autoOpen: false
+        autoOpen: false,
+        width: "75%"
     });
 
     $(".addcost").on("click", function () {
@@ -118,7 +122,8 @@ function preparemodal() {
 
     $("#editCost").dialog({
         modal: true,
-        autoOpen: false
+        autoOpen: false,
+        width: "75%"
     });
 
     $('.editcost').on("click", function () {
