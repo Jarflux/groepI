@@ -122,5 +122,9 @@
 <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
 <script src="/js/jquery.dataTables.min.js"></script>
 <script src="/js/functions.js"></script>
+<script>
+
+    preparetables();
+</script>
 </body>
 </html>
