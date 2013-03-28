@@ -11,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.google.gson.Gson;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -28,10 +30,11 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         User user = userService.getUserByEmail(authentication.getName());
+        Gson gson = new Gson();
         HttpSession session = request.getSession();
         session.setAttribute("userObject", user);
-        JSONObject jUser = new JSONObject(user);
-        response.addHeader("user", jUser.toString());
+        String jUser = gson.toJson(user);
+        response.addHeader("user", jUser);
         // Check of er een redirect gebeurde omdat user nog niet ingelogd was
         SavedRequest savedRequest = new HttpSessionRequestCache().getRequest(request, response);
         RequestDispatcher dispatcher;

@@ -38,7 +38,7 @@ public class LoginTask extends AsyncTask{
 
     @Override
     protected void onPostExecute(Object o) {
-mDialog.dismiss();
+        mDialog.dismiss();
     }
 
     public LoginTask(Context ctx) {
@@ -48,7 +48,7 @@ mDialog.dismiss();
     @Override
     protected Object doInBackground(Object... parameters) {
         DefaultHttpClient client = new DefaultHttpClient();
-        HttpPost requestLogin = new HttpPost("http://"+ ServerUtil.getServerAddres(false)+":8080/j_spring_security_check?");
+        HttpPost requestLogin = new HttpPost(ServerUtil.getServerAddres(true)+"/j_spring_security_check?");
         JSONObject jUser = null;
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("j_username",(String)parameters[0]));

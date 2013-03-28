@@ -40,6 +40,10 @@ public class MessageService {
         return messageDao.getAllMessages();
     }
 
+    public List<Message> getLastTenMessages(){
+        return messageDao.getLastTenMessages();
+    }
+
     public List<Message> getMessagesByTripInstanceId(Long id) {
         return messageDao.getMessagesByTripInstanceId(id);
     }

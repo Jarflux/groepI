@@ -10,49 +10,57 @@ import java.io.Serializable;
  * To change this template use File | Settings | File Templates.
  */
 public class Message implements Serializable {
-    private long Id;
-    private String Content;
-    private Long Date;
-    private TripInstance TripInstance;
-    private User User;
+    private long fId;
+    private String fContent;
+    private Long fDate;
+    private TripInstance fTripInstance;
+    private User fUser;
 
-    public long getId() {
-        return Id;
+    public Message(String fContent, Long fDate, User fUser) {
+        this.fId = fId;
+        this.fContent = fContent;
+        this.fDate = fDate;
+        this.fTripInstance = fTripInstance;
+        this.fUser = fUser;
     }
 
-    public void setId(long id) {
-        Id = id;
+    public long getfId() {
+        return fId;
     }
 
-    public String getContent() {
-        return Content;
+    public void setfId(long fId) {
+        this.fId = fId;
     }
 
-    public void setContent(String content) {
-        Content = content;
+    public String getfContent() {
+        return fContent;
     }
 
-    public Long getDate() {
-        return Date;
+    public void setfContent(String fContent) {
+        this.fContent = fContent;
     }
 
-    public void setDate(Long date) {
-        Date = date;
+    public Long getfDate() {
+        return fDate;
     }
 
-    public TripInstance getTripInstance() {
-        return TripInstance;
+    public void setfDate(Long fDate) {
+        this.fDate = fDate;
     }
 
-    public void setTripInstance(TripInstance tripInstance) {
-        TripInstance = tripInstance;
+    public TripInstance getfTripInstance() {
+        return fTripInstance;
     }
 
-    public User getUser() {
-        return User;
+    public void setfTripInstance(TripInstance fTripInstance) {
+        this.fTripInstance = fTripInstance;
     }
 
-    public void setUser(User user) {
-        User = user;
+    public User getfUser() {
+        return fUser;
+    }
+
+    public void setfUser(User fUser) {
+        this.fUser = fUser;
     }
 }

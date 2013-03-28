@@ -13,7 +13,8 @@ import java.text.SimpleDateFormat;
  */
 @Entity
 @Table(name = "T_MESSAGE")
-public class Message implements Serializable, Comparable {
+public class
+        Message implements Serializable, Comparable {
 
     @Id
     @GeneratedValue
@@ -24,7 +25,7 @@ public class Message implements Serializable, Comparable {
     @Column(name = "date")
     Long fDate;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "trip_instance_id", nullable = false)
+    @JoinColumn(name = "trip_instance_id", nullable = true)
     private TripInstance fTripInstance;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)

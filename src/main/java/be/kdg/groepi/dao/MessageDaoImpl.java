@@ -52,8 +52,14 @@ public class MessageDaoImpl implements MessageDao {
     }
 
     @Override
-    public List<Message> getAllMessages() throws DataAccessException {
+     public List<Message> getAllMessages() throws DataAccessException {
         Query query = getEntityManager().createQuery("from Message m");
+        List<Message> result = query.getResultList();
+        return result;
+    }
+
+    public List<Message> getLastTenMessages() throws DataAccessException {
+        Query query = getEntityManager().createQuery("from Message m order by m.fDate desc limit 10");
         List<Message> result = query.getResultList();
         return result;
     }

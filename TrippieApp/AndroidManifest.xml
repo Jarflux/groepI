@@ -22,8 +22,7 @@
         </activity>
         <activity android:name=".UserTripsActivity"/>
         <activity android:name=".TripDetailActivity"/>
-        <activity
-                android:name=".ChatActivity"
+        <activity android:name=".ChatActivity"
                 android:label="Chat"/>
 
         <meta-data android:name="com.google.android.maps.v2.API_KEY"

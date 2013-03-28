@@ -30,16 +30,15 @@ public class HttpGetTask extends AsyncTask {
     protected Object doInBackground(Object... objects) {
         DefaultHttpClient client = new DefaultHttpClient();
         Gson gson = new Gson();
-        List<TripInstance> trips = null;
-        HttpGet requestLogin = new HttpGet("http://"+ ServerUtil.getServerAddres(false)+":8080/"+objects[0]+"/"+objects[1]);
+        String items = null;
+        HttpGet request = new HttpGet(ServerUtil.getServerAddres(true)+"/"+objects[0]+"/"+objects[1]);
         try {
-            ResponseHandler<String> responseHandler=new BasicResponseHandler();
-            String responseBody = client.execute(requestLogin, responseHandler);
-            Type collectionType = new TypeToken<List<TripInstance>>(){}.getType();
-            trips = gson.fromJson(responseBody,collectionType);
+            ResponseHandler<String> responseHandler = new BasicResponseHandler();
+            String responseBody = client.execute(request, responseHandler);
+            items = responseBody;
         }catch(Exception e){
             e.printStackTrace();
         }
-        return trips;
+        return items;
     }
 }

@@ -15,9 +15,9 @@ public class ServerUtil {
     public static String getServerAddres(Boolean local){
         String address = "";
             if(local){
-                address = "192.168.1.137";
+                address = "http://192.168.1.137:8080";
             }else{
-                address = "tomcat.vincentverbist.be";
+                address = "http://tomcat.vincentverbist.be:8080";
             }
         return address;
     }

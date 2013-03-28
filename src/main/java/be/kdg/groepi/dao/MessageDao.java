@@ -25,4 +25,6 @@ public interface MessageDao {
     public List<Message> getAllMessages() throws DataAccessException;
 
     public List<Message> getMessagesByTripInstanceId(Long id) throws DataAccessException;
+
+    public List<Message> getLastTenMessages() throws DataAccessException;
 }

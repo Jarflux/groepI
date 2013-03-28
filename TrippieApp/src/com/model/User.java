@@ -1,7 +1,6 @@
 package com.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,57 +10,57 @@ import java.sql.Timestamp;
  * To change this template use File | Settings | File Templates.
  */
 public class User implements Serializable {
-    private Long id;
-    private String name;
-    private String email;
-    private String password;
-    private Long dateOfBirth;
+    private Long fId;
+    private String fName;
+    private String fEmail;
+    private String fPassword;
+    private Long fDateOfBirth;
 
-    public User(Long id, String name, String email, String password, Long dateOfBirth) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.dateOfBirth = dateOfBirth;
+    public User(Long fId, String fName, String fEmail, String fPassword, Long fDateOfBirth) {
+        this.fId = fId;
+        this.fName = fName;
+        this.fEmail = fEmail;
+        this.fPassword = fPassword;
+        this.fDateOfBirth = fDateOfBirth;
     }
 
-    public Long getId() {
-        return id;
+    public Long getfId() {
+        return fId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setfId(Long fId) {
+        this.fId = fId;
     }
 
-    public String getName() {
-        return name;
+    public String getfName() {
+        return fName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setfName(String fName) {
+        this.fName = fName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getfEmail() {
+        return fEmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setfEmail(String fEmail) {
+        this.fEmail = fEmail;
     }
 
-    public String getPassword() {
-        return password;
+    public String getfPassword() {
+        return fPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setfPassword(String fPassword) {
+        this.fPassword = fPassword;
     }
 
-    public Long getDateOfBirth() {
-        return dateOfBirth;
+    public Long getfDateOfBirth() {
+        return fDateOfBirth;
     }
 
-    public void setDateOfBirth(Long dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setfDateOfBirth(Long fDateOfBirth) {
+        this.fDateOfBirth = fDateOfBirth;
     }
 }
