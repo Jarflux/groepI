@@ -67,7 +67,7 @@ public class AnswerInstanceServiceTest {
         tripInstance = new TripInstance("KdG's Stadswandeling, Antwerp Edition", "Karel de Grote organizeert een stadswandeling met Trippie Trip Advisor", true,
                 DateUtil.dateToLong(2, 3, 2013, 12, 0, 0), DateUtil.dateToLong(2, 3, 2013, 16, 0, 0), user, trip);
         tripInstanceService.createTripInstance(tripInstance);
-        answerInstance = new AnswerInstance(stop.getAnswers().get(0), user, tripInstance);
+        answerInstance = new AnswerInstance(answer2, user, tripInstance);
         answerInstanceService.createAnswerInstance(answerInstance);
     }
 
@@ -86,7 +86,7 @@ public class AnswerInstanceServiceTest {
 
     @Test
     public void updateAnswerInstance() {
-        answerInstance.setAnswer(stop.getAnswers().get(1));
+        /*answerInstance.setAnswer(stop.getAnswers().get(1));*/
         answerInstanceService.updateAnswerInstance(answerInstance);
         answerInstance = answerInstanceService.getAnswerInstanceById(answerInstance.getId());
         assertTrue("Answer should be correct now:", answerInstance.isCorrect());

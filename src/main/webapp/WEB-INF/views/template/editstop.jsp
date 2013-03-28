@@ -85,21 +85,10 @@
                                 <c:forEach var="answer" items="${stopObject.answers}" varStatus="status">
                                     <c:choose>
                                         <c:when test="${answer.isCorrect}">
-                                            <li class="active" id="answer_${answer.id}"><span><input type="radio"
-                                                                                                     name="group1"
-                                                                                                     checked="checked"
-                                                                                                     onclick="setCorrectAnswer(${answer.id})"/><c:out
-                                                    value="${answer.answerText}"/><p class="removeButton"
-                                                                                     onclick="deleteAnswer(${answer.id})">
-                                                X</p></span></li>
+                                            <li class="active" id="answer_${answer.id}"><span><input type="radio" name="group1" checked="checked" onclick="setCorrectAnswer(${answer.id})"/><c:out value="${answer.answerText}"/> <img class="removeButton" src="/images/remove.jpg" onclick="deleteAnswer(${answer.id})"/></span></li>
                                         </c:when>
                                         <c:otherwise>
-                                            <li class="active" id="answer_${answer.id}"><span><input type="radio"
-                                                                                                     name="group1"
-                                                                                                     onclick="setCorrectAnswer(${answer.id})"/><c:out
-                                                    value="${answer.answerText}"/><p class="removeButton"
-                                                                                     onclick="deleteAnswer(${answer.id})">
-                                                X</p></span></li>
+                                            <li class="active" id="answer_${answer.id}"><span><input type="radio" name="group1" onclick="setCorrectAnswer(${answer.id})"/><c:out value="${answer.answerText}"/> <img class="removeButton" src="/images/remove.jpg" onclick="deleteAnswer(${answer.id})"/></span></li>
                                         </c:otherwise>
                                     </c:choose>
                                 </c:forEach>
@@ -187,7 +176,7 @@
             }
         });
     });
-    /*TODO functions not working (Failed to load resource: the server responded with a status of 400 (Bad Request) )*/
+
     function setCorrectAnswer(id) {
         console.log("setCorrectAnswer");
         //var feedback = $.post("stop/setIsCorrect", { answerId: id})

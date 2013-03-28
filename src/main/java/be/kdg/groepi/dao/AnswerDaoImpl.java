@@ -43,7 +43,7 @@ public class AnswerDaoImpl implements AnswerDao {
 
     @Override
     public void updateAnswer(Answer answer) throws DataAccessException {
-        getEntityManager().merge(answer);
+        getEntityManager().persist(getEntityManager().merge(answer));
     }
 
     @Override

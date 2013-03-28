@@ -2,7 +2,9 @@ package be.kdg.groepi.model;
 
 import be.kdg.groepi.utils.CompareUtil;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -44,7 +46,7 @@ public class Stop {
     private Trip fTrip;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fStop")
     @Cascade({CascadeType.ALL})
-    private List<Answer> fAnswers = new ArrayList<Answer>();
+    private Set<Answer> fAnswers = new HashSet<Answer>();
 
     public Stop() {
     }
@@ -141,11 +143,11 @@ public class Stop {
         this.fTrip = fTrip;
     }
 
-    public List<Answer> getAnswers() {
+    public Set<Answer> getAnswers() {
         return fAnswers;
     }
 
-    public void setAnswers(List<Answer> fAnswers) {
+    public void setAnswers(Set<Answer> fAnswers) {
         this.fAnswers = fAnswers;
     }
 

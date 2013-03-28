@@ -173,7 +173,7 @@ section {
 }
 
 .half {
-    width: 50%;
+    width: 49%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -421,7 +421,7 @@ form.mainstyle input[type="checkbox"] {
 }
 
 .big {
-    height: 350px;
+    height: 475px;
 }
 
 .sortable {
@@ -621,7 +621,8 @@ div, p, span {
 }
 
 .removeButton {
-    color: black;
+    height:18px;
+    width:18px;
 }
 
 .removeButton:hover {

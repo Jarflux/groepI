@@ -13,6 +13,7 @@
 <head>
     <title><spring:message code='trip.viewinformation'/></title>
     <link href="/css/blue.css" rel="stylesheet"/>
+    <link href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" rel="stylesheet"/>
 </head>
 <body>
 <div id="wrapper">

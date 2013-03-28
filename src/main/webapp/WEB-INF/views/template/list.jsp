@@ -40,7 +40,7 @@
                             <tbody>
                                 <c:forEach var="trip" items="${ownTrips}">
                                     <tr>
-                                        <td><a href="/trip/view/${trip.id}" class="active">
+                                        <td><a href="/template/view/${trip.id}" class="active">
                                                 <c:out value="${trip.title}"/>
                                             </a></td>
                                         <td>${trip.description}</td>
