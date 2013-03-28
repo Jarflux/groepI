@@ -43,8 +43,8 @@ public class Stop {
     @JoinColumn(name = "trip_id", nullable = false)
     private Trip fTrip;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fStop")
-    @Cascade({CascadeType.DELETE, CascadeType.SAVE_UPDATE})
-    private List<Answer> fAnswers = LazyList.decorate(new ArrayList<Answer>(), FactoryUtils.instantiateFactory(Answer.class));
+    @Cascade({CascadeType.ALL})
+    private List<Answer> fAnswers = new ArrayList<Answer>();
 
     public Stop() {
     }

@@ -122,6 +122,7 @@ public class RestStopController {
         Stop stop = stopService.getStopById(answer.getStop().getId());
         stop.setCorrectAnswer(Long.parseLong(answerId));
         stopService.updateStop(stop);
+        //stop = stopService.getStopById(stop.getId());
         return "saved";
     }
 

@@ -26,6 +26,7 @@ public class Answer {
         this.fAnswerText = fAnswerText;
         this.fIsCorrect = fIsCorrect;
         this.fStop = fStop;
+        this.fStop.getAnswers().add(this);
     }
 
     public Long getId() {

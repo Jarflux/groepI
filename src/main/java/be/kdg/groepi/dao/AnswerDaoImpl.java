@@ -38,7 +38,7 @@ public class AnswerDaoImpl implements AnswerDao {
 
     @Override
     public void deleteAnswer(Answer answer) throws DataAccessException {
-        getEntityManager().remove(answer);
+        getEntityManager().remove(getEntityManager().merge(answer));
     }
 
     @Override

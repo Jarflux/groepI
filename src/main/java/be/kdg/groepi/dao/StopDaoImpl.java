@@ -42,7 +42,8 @@ public class StopDaoImpl implements StopDao {
 
     @Override
     public void updateStop(Stop stop) throws DataAccessException {
-        getEntityManager().merge(stop);
+        getEntityManager().persist(getEntityManager().merge(stop));
+        //getEntityManager().merge(stop);
     }
 
     @Override

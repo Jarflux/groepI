@@ -84,12 +84,16 @@ public class AnswerServiceTest {
         answerService.createAnswer(answer3);
         Answer answer4 = new Answer("Rembrandt", false, stop);
         answerService.createAnswer(answer4);   
-        stop.getAnswers().add(answer1);
+        /*stop.getAnswers().add(answer1);
         stop.getAnswers().add(answer2);
         stop.getAnswers().add(answer3);
-        stop.getAnswers().add(answer4);
-        stopService.updateStop(stop);
-        //stop = stopService.getStopById(stop.getId());
+        stop.getAnswers().add(answer4);*/
+        /*stopService.updateStop(stop);*/
+        stop = stopService.getStopById(stop.getId());
         assertTrue("saveAnswerCollection: Answers were not added", answerService.getAnswersByStopID(stop.getId()).size() == 5);
+        stop.setCorrectAnswer(answer4.getId());
+        stopService.updateStop(stop);
+        stop = stopService.getStopById(stop.getId());
+        assertTrue("New Correct Answer:", stop.getAnswers().get(4).getIsCorrect());
     }
 }

@@ -190,12 +190,14 @@
     /*TODO functions not working (Failed to load resource: the server responded with a status of 400 (Bad Request) )*/
     function setCorrectAnswer(id) {
         console.log("setCorrectAnswer");
-        var feedback = $.post("/stop/setIsCorrect", { answerId: id})
+        //var feedback = $.post("stop/setIsCorrect", { answerId: id})
+        $.post("/stop/setIsCorrect", { answerId: id})
     }
 
     function deleteAnswer(id) {
         console.log("deleteAnswer");
-        var feedback = $.post("/answer/delete", { answerId: id})
+        //var feedback = $.post("answer/delete", { answerId: id})
+        $.post("/answer/delete", { answerId: id})
         $("#answer_" + id).remove();
     }
 </script>
