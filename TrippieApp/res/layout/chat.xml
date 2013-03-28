@@ -5,22 +5,51 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="#0ac5f4">
-
-    <TextView
+    <!--<ScrollView
+            android:layout_height="wrap_content"
             android:layout_width="fill_parent"
-            android:layout_height="350dp"
-            android:id="@+id/chatText"
-            android:layout_gravity="center"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
             android:layout_above="@+id/chatBar"
-            android:background="#dee9ec"
             android:layout_alignParentTop="true"
-            android:gravity="top"
+            android:id="@+id/scrollView"
+            android:layout_alignLeft="@+id/chatBar"
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="3dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:scrollbars="vertical"
+            android:fillViewport="false">
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/chatText"
+                android:layout_gravity="center"
+                android:background="#dee9ec"
+                android:layout_alignLeft="@+id/scrollView"
+                android:layout_alignTop="@+id/scrollView"
+                android:layout_alignBottom="@+id/scrollView"
+                android:layout_alignParentTop="true"
+                android:layout_below="@+id/scrollView"
+                android:layout_toRightOf="@+id/scrollView"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="false"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_alignParentRight="true"
+                android:textSize="12dp"
+                android:paddingBottom="0dp"
+                android:phoneNumber="false"
+                android:isScrollContainer="false"/>
+    </ScrollView>-->
+    <ListView
+            android:id="@+id/messageList"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:orientation="vertical"
+            android:layout_above="@+id/chatBar">
 
+    </ListView>
     <EditText
             android:inputType="text"
             android:layout_width="50dp"
@@ -34,9 +63,9 @@
             android:layout_alignParentTop="false"
             android:layout_toLeftOf="@+id/sendBtn"
             android:background="#ffffff"
-            android:layout_marginLeft="3dp"
             android:layout_marginBottom="3dp"
-            android:layout_alignParentStart="true"/>
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="3dp"/>
 
     <Button
             android:layout_width="90dp"

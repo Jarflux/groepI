@@ -14,10 +14,7 @@ import com.model.User;
 import com.utils.DateUtil;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -28,23 +25,24 @@ import java.util.TimerTask;
  */
 public class ChatActivity extends ParentActivity {
     private final Controller controller = new Controller();
-    private TextView chatText;
+    //private TextView chatText;
+    private ListView messageList;
     private EditText chatBar;
     private Button sendBtn;
 
     private Runnable Timer_Tick = new Runnable() {
         public void run() {
-            setChatText(chatText);
+            setChatText(messageList);
         }
     };
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chat);
-        chatText = (TextView)findViewById(R.id.chatText);
+        messageList = (ListView)findViewById(R.id.messageList);
         chatBar = (EditText)findViewById(R.id.chatBar);
         sendBtn = (Button)findViewById(R.id.sendBtn);
-        setChatText(chatText);
+        setChatText(messageList);
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,12 +53,12 @@ public class ChatActivity extends ParentActivity {
                 Message message = new Message(text,Calendar.getInstance().getTime().getTime(),user);
                 controller.sendMessage(message);
                 chatBar.setText("");
-                setChatText(chatText);
+                setChatText(messageList);
             }
         });
 
         int delay = 5000; // delay for 5 sec.
-        int period = 5000; // repeat every sec.
+        int period = 10000; // repeat every sec.
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask()
         {
@@ -78,15 +76,16 @@ public class ChatActivity extends ParentActivity {
     }
 
 
-    public void setChatText(TextView chatText){
+    public void setChatText(ListView messageList){
         List<Message> messages = controller.getMessages();
-        StringBuilder messageBuilder = new StringBuilder();
+        List<String> messageStrings = new ArrayList<String>();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         for(Message message: messages){
-            String str = String.format("%s: %-50s %s\n\n",message.getfUser().getfName(),message.getfContent(),dateFormat.format(DateUtil.longToDate(message.getfDate())));
-            messageBuilder.append(str);
+            String str = String.format("%s:\n%s\n%s",message.getfUser().getfName(),message.getfContent(),dateFormat.format(DateUtil.longToDate(message.getfDate())));
+            messageStrings.add(str);
         }
-        chatText.setText(messageBuilder.toString());
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messageStrings);
+        messageList.setAdapter(adapter);
     }
 
 }
