@@ -36,7 +36,6 @@ $(function () {
     validateform();
 
     addhandlers();
-    preparetables();
 
 })
 function preparetables()

@@ -306,6 +306,7 @@
 <script src="/js/functions.js"></script>
 <script>maketripsortable();
 preparemodal();
+    preparetables();
 </script>
 </body>
 </html>
