@@ -31,7 +31,7 @@ public class HttpGetTask extends AsyncTask {
         DefaultHttpClient client = new DefaultHttpClient();
         Gson gson = new Gson();
         String items = null;
-        HttpGet request = new HttpGet(ServerUtil.getServerAddres(true)+"/"+objects[0]+"/"+objects[1]);
+        HttpGet request = new HttpGet(ServerUtil.getServerAddres(false)+"/"+objects[0]+"/"+objects[1]);
         try {
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
             String responseBody = client.execute(request, responseHandler);

@@ -28,13 +28,23 @@ import java.util.TimerTask;
  */
 public class ChatActivity extends ParentActivity {
     private final Controller controller = new Controller();
+    private TextView chatText;
+    private EditText chatBar;
+    private Button sendBtn;
+
+    private Runnable Timer_Tick = new Runnable() {
+        public void run() {
+            setChatText(chatText);
+        }
+    };
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chat);
-        final EditText chatBar = (EditText)findViewById(R.id.chatBar);
-        final Button sendBtn = (Button)findViewById(R.id.sendBtn);
-        final TextView chatText = (TextView)findViewById(R.id.chatText);
+        chatText = (TextView)findViewById(R.id.chatText);
+        chatBar = (EditText)findViewById(R.id.chatBar);
+        sendBtn = (Button)findViewById(R.id.sendBtn);
+        setChatText(chatText);
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,18 +58,25 @@ public class ChatActivity extends ParentActivity {
                 setChatText(chatText);
             }
         });
-        int delay = 5000; // delay for 5 sec.
-        int period = 1000; // repeat every sec.
 
+        int delay = 5000; // delay for 5 sec.
+        int period = 5000; // repeat every sec.
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask()
         {
+            @Override
             public void run()
             {
-                setChatText(chatText);
+                TimerMethod();
             }
         }, delay, period);
     }
+
+    private void TimerMethod()
+    {
+        this.runOnUiThread(Timer_Tick);
+    }
+
 
     public void setChatText(TextView chatText){
         List<Message> messages = controller.getMessages();

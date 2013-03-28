@@ -48,7 +48,7 @@ public class LoginTask extends AsyncTask{
     @Override
     protected Object doInBackground(Object... parameters) {
         DefaultHttpClient client = new DefaultHttpClient();
-        HttpPost requestLogin = new HttpPost(ServerUtil.getServerAddres(true)+"/j_spring_security_check?");
+        HttpPost requestLogin = new HttpPost(ServerUtil.getServerAddres(false)+"/j_spring_security_check?");
         JSONObject jUser = null;
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("j_username",(String)parameters[0]));

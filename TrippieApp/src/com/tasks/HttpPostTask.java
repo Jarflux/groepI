@@ -26,7 +26,7 @@ public class HttpPostTask extends AsyncTask {
     @Override
     protected Object doInBackground(Object... parameters) {
         DefaultHttpClient client = new DefaultHttpClient();
-        HttpPost messagePost = new HttpPost(ServerUtil.getServerAddres(true) + "/" + parameters[0]);
+        HttpPost messagePost = new HttpPost(ServerUtil.getServerAddres(false) + "/" + parameters[0]);
         JSONObject jUser = null;
         try {
             messagePost.setEntity(new UrlEncodedFormEntity((List<NameValuePair>)parameters[1], HTTP.UTF_8));
