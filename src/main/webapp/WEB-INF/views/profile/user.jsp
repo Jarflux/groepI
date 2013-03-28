@@ -26,7 +26,7 @@
                 <c:when test="${userObject != null}">
                     <div class="quarter">
                         <c:choose>
-                            <c:when test="${userObject.profilePicture == null}">
+                            <c:when test="${userObject.profilePicture == null && userObject.FBUserID== null}">
                                 <img src="/images/noprofile.jpg" width="150"
                                      class="profilepic"/>
                             </c:when>
