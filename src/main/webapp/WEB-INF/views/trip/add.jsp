@@ -59,9 +59,9 @@
 
             <c:choose>
                 <c:when test="${tripObject.repeatable}">
-                    <label><input type="radio" name="repeatable" value="daily" title=""><i><spring:message
+                    <label title=""><input type="radio" name="repeatable" value="daily" title=""><i><spring:message
                             code='tripinstance.daily'/></i></label><br/>
-                    <label><input type="radio" name="repeatable" value="weekly" title=""><i><spring:message
+                    <label title=""><input type="radio" name="repeatable" value="weekly" title=""><i><spring:message
                             code='tripinstance.weekly'/></i></label><br/>
 
                     <div class="row">

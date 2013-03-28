@@ -61,6 +61,10 @@ public class RequirementInstance implements Serializable, Comparable {
         return fUser;
     }
 
+    public void setId(long fId) {
+        this.fId = fId;
+    }
+
     public void setUser(User fUser) {
         this.fUser = fUser;
     }

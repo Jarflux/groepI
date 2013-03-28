@@ -47,6 +47,10 @@ public class
         return fId;
     }
 
+    public void setId(long fId) {
+        this.fId = fId;
+    }
+
     public String getContent() {
         return fContent;
     }

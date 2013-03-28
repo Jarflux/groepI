@@ -32,8 +32,8 @@ public class CostDaoImpl implements CostDao {
     }
 
     @Override
-    public void createCost(Cost user) throws DataAccessException {
-        getEntityManager().persist(user);
+    public void createCost(Cost cost) throws DataAccessException {
+        getEntityManager().persist(cost);
     }
 
     @Override

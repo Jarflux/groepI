@@ -27,6 +27,10 @@ public class StopPictures {
         return fId;
     }
 
+    public void setId(Long fId) {
+        this.fId = fId;
+    }
+
     public String getPath() {
         return fPath;
     }

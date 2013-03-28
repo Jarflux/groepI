@@ -25,43 +25,42 @@
         <h2><spring:message code='tripinstance.tripinstances'/>
         </h2>
         <section>
-
-            <div class="row">
-                <table class="sorting">
-                    <c:choose>
-                        <c:when test="${!empty ownTripInstances}">
-                            <caption><spring:message code="tripinstance.owntripinstances"/></caption>
-                            <thead>
+            <%--<div class="row">--%>
+            <h4><spring:message code="tripinstance.owntripinstances"/></h4>
+            <table class="sorting">
+                <c:choose>
+                    <c:when test="${!empty ownTripInstances}">
+                        <thead>
+                        <tr>
+                            <th><spring:message code="trip.name"/></th>
+                            <th><spring:message code="trip.description"/></th>
+                            <th><spring:message code="tripinstance.numberofparticipants"/></th>
+                            <th><spring:message code="text.date"/></th>
+                            <th><spring:message code="tripinstance.starttime"/></th>
+                            <th><spring:message code="tripinstance.endtime"/></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="tripInstance" items="${ownTripInstances}">
                             <tr>
-                                <th><spring:message code="trip.name"/></th>
-                                <th><spring:message code="trip.description"/></th>
-                                <th><spring:message code="tripinstance.numberofparticipants"/></th>
-                                <th><spring:message code="text.date"/></th>
-                                <th><spring:message code="tripinstance.starttime"/></th>
-                                <th><spring:message code="tripinstance.endtime"/></th>
+                                <td><a href="/trip/view/${tripInstance.id}" class="active">
+                                        ${tripInstance.title}</a></td>
+                                <td>${tripInstance.description}</td>
+                                <td>${tripInstance.participants.size()}</td>
+                                <td>${ownTripInstanceDates.get(tripInstance.id)}</td>
+                                <td>${ownTripInstanceStartTimes.get(tripInstance.id)}</td>
+                                <td>${ownTripInstanceEndTimes.get(tripInstance.id)}</td>
                             </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach var="tripInstance" items="${ownTripInstances}">
-                                <tr>
-                                    <td><a href="/trip/view/${tripInstance.id}" class="active">
-                                            ${tripInstance.title}</a></td>
-                                    <td>${tripInstance.description}</td>
-                                    <td>${tripInstance.participants.size()}</td>
-                                    <td>${ownTripInstanceDates.get(tripInstance.id)}</td>
-                                    <td>${ownTripInstanceStartTimes.get(tripInstance.id)}</td>
-                                    <td>${ownTripInstanceEndTimes.get(tripInstance.id)}</td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </c:when>
-                        <c:otherwise>
-                            <br/>
-                            <caption><spring:message code='tripinstance.noowntripinstancesfound'/></caption>
-                        </c:otherwise>
-                    </c:choose>
-                </table>
-            </div>
+                        </c:forEach>
+                        </tbody>
+                    </c:when>
+                    <c:otherwise>
+                        <br/>
+                        <caption><spring:message code='tripinstance.noowntripinstancesfound'/></caption>
+                    </c:otherwise>
+                </c:choose>
+            </table>
+            <%--</div>--%>
             <br/>
             <br/>
             <c:forEach begin="1" end="${ownTripInstances.size()}">
@@ -70,54 +69,54 @@
                 <%--TODO: fix this? (zorgt ervoor dat beide lijsten niet boven elkaar staan ... maar wel geen goeie manier)--%>
             </c:forEach>
 
-            <div class="row">
-                <table class="sorting">
-                    <c:choose>
-                        <c:when test="${!empty publicTripInstances}">
-                            <caption><spring:message code="tripinstance.publictripinstances"/></caption>
-                            <thead>
+            <%--<div class="row">--%>
+            <h4><spring:message code="tripinstance.publictripinstances"/></h4>
+            <table class="sorting">
+                <c:choose>
+                    <c:when test="${!empty publicTripInstances}">
+                        <thead>
+                        <tr>
+                            <th><spring:message code="trip.name"/></th>
+                            <th><spring:message code="trip.description"/></th>
+                            <th><spring:message code="tripinstance.numberofparticipants"/></th>
+                            <th><spring:message code="text.date"/></th>
+                            <th><spring:message code="tripinstance.starttime"/></th>
+                            <th><spring:message code="tripinstance.endtime"/></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="tripInstance" items="${publicTripInstances}">
                             <tr>
-                                <th><spring:message code="trip.name"/></th>
-                                <th><spring:message code="trip.description"/></th>
-                                <th><spring:message code="tripinstance.numberofparticipants"/></th>
-                                <th><spring:message code="text.date"/></th>
-                                <th><spring:message code="tripinstance.starttime"/></th>
-                                <th><spring:message code="tripinstance.endtime"/></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach var="tripInstance" items="${publicTripInstances}">
-                                <tr>
-                                    <td><a href="/trip/view/${tripInstance.id}" class="active">
-                                            ${tripInstance.title}</a></td>
-                                    <td>${tripInstance.description}</td>
-                                    <td>${tripInstance.participants.size()}</td>
-                                    <td>${publicTripInstanceDates.get(tripInstance.id)}</td>
-                                    <td>${publicTripInstanceStartTimes.get(tripInstance.id)}</td>
-                                    <td>${publicTripInstanceEndTimes.get(tripInstance.id)}</td>
-                                    <td>
-                                        <c:forEach var="participatingBoolean" items="${isUserParticipating}">
-                                            <c:if test="${(participatingBoolean.key eq tripInstance.id)
+                                <td><a href="/trip/view/${tripInstance.id}" class="active">
+                                        ${tripInstance.title}</a></td>
+                                <td>${tripInstance.description}</td>
+                                <td>${tripInstance.participants.size()}</td>
+                                <td>${publicTripInstanceDates.get(tripInstance.id)}</td>
+                                <td>${publicTripInstanceStartTimes.get(tripInstance.id)}</td>
+                                <td>${publicTripInstanceEndTimes.get(tripInstance.id)}</td>
+                                <td>
+                                    <c:forEach var="participatingBoolean" items="${isUserParticipating}">
+                                        <c:if test="${(participatingBoolean.key eq tripInstance.id)
                                                         && (participatingBoolean.value eq false)}">
-                                                <form method="post" action="/trip/join">
-                                                    <input type="hidden" value="${tripInstance.id}" name="tripId"/>
-                                                    <input type="submit" class="button"
-                                                           value="<spring:message code='tripinstance.join'/>"/>
-                                                </form>
-                                            </c:if>
-                                        </c:forEach>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </c:when>
-                        <c:otherwise>
-                            <br/>
-                            <caption><spring:message code='tripinstance.nopublictripinstancesfound'/></caption>
-                        </c:otherwise>
-                    </c:choose>
-                </table>
-            </div>
+                                            <form method="post" action="/trip/join">
+                                                <input type="hidden" value="${tripInstance.id}" name="tripId"/>
+                                                <input type="submit" class="button"
+                                                       value="<spring:message code='tripinstance.join'/>"/>
+                                            </form>
+                                        </c:if>
+                                    </c:forEach>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </c:when>
+                    <c:otherwise>
+                        <br/>
+                        <caption><spring:message code='tripinstance.nopublictripinstancesfound'/></caption>
+                    </c:otherwise>
+                </c:choose>
+            </table>
+            <%--</div>--%>
         </section>
     </div>
 </div>

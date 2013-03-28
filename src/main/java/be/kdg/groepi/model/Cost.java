@@ -44,6 +44,10 @@ public class Cost implements Serializable {
         return fId;
     }
 
+    public void setId(long fId) {
+        this.fId = fId;
+    }
+
     public String getDescription() {
         return fDescription;
     }

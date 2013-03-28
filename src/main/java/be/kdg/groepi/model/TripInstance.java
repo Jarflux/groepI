@@ -119,6 +119,10 @@ public class TripInstance implements Serializable, Comparable {
         return fId;
     }
 
+    public void setfId(Long fId) {
+        this.fId = fId;
+    }
+
     public String getTitle() {
         return fTitle;
     }

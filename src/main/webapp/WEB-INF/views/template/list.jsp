@@ -28,67 +28,73 @@
             </form>
         </h2>
         <section>
-            <div class="row">
-                <table class="sorting">
-                    <c:choose>
-                        <c:when test="${!empty ownTrips}">
-                            <caption><spring:message code="trip.owntrips"/></caption>
-                            <thead>
+            <%--<div class="row">--%>
+            <h4><spring:message code="trip.owntrips"/></h4>
+            <table class="sorting">
+                <c:choose>
+                    <c:when test="${!empty ownTrips}">
+                        <thead>
+                        <tr>
+                            <th><spring:message code="trip.name"/></th>
+                            <th><spring:message code="trip.description"/></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="ownTrips" items="${ownTrips}">
                             <tr>
-                                <th><spring:message code="trip.name"/></th>
-                                <th><spring:message code="trip.description"/></th>
+                                <td><a href="/template/view/${ownTrips.id}" class="active">${ownTrips.title}</a>
+                                </td>
+                                <td>${ownTrips.description}</td>
                             </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach var="ownTrips" items="${ownTrips}">
-                                <tr>
-                                    <td><a href="/template/view/${ownTrips.id}" class="active">${ownTrips.title}</a>
-                                    </td>
-                                    <td>${ownTrips.description}</td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </c:when>
-                        <c:otherwise>
-                            <br/>
-                            <caption><spring:message code='trip.noowntripsfound'/></caption>
-                        </c:otherwise>
-                    </c:choose>
-                </table>
-            </div>
+                        </c:forEach>
+                        </tbody>
+                    </c:when>
+                    <c:otherwise>
+                        <br/>
+                        <caption><spring:message code='trip.noowntripsfound'/></caption>
+                    </c:otherwise>
+                </c:choose>
+            </table>
+            <%--</div>--%>
+            <br/>
             <br/>
             <c:forEach begin="1" end="${ownTrips.size()}">
                 <br/>
                 <%--TODO: fix this? (zorgt ervoor dat beide lijsten niet boven elkaar staan ... maar wel geen goeie manier)--%>
             </c:forEach>
-            <div class="row">
-                <table class="sorting">
-                    <c:choose>
-                        <c:when test="${!empty publicTrips}">
-                            <caption><spring:message code="trip.publictrips"/></caption>
-                            <thead>
+            <%--<div class="row">--%>
+            <%--<h1><spring:message code="trip.publictrips"/></h1>--%>
+            <%--<h2><spring:message code="trip.publictrips"/></h2>--%>
+            <%--<h3><spring:message code="trip.publictrips"/></h3>--%>
+            <h4><spring:message code="trip.publictrips"/></h4>
+            <%--<h5><spring:message code="trip.publictrips"/></h5>--%>
+            <%--<h6><spring:message code="trip.publictrips"/></h6>--%>
+            <table class="sorting">
+                <c:choose>
+                    <c:when test="${!empty publicTrips}">
+                        <thead>
+                        <tr>
+                            <th><spring:message code="trip.name"/></th>
+                            <th><spring:message code="trip.description"/></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="publicTrip" items="${publicTrips}">
                             <tr>
-                                <th><spring:message code="trip.name"/></th>
-                                <th><spring:message code="trip.description"/></th>
+                                <td><a href="/template/view/${publicTrip.id}" class="active">${publicTrip.title}</a>
+                                </td>
+                                <td>${publicTrip.description}</td>
                             </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach var="publicTrip" items="${publicTrips}">
-                                <tr>
-                                    <td><a href="/template/view/${publicTrip.id}" class="active">${publicTrip.title}</a>
-                                    </td>
-                                    <td>${publicTrip.description}</td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </c:when>
-                        <c:otherwise>
-                            <br/>
-                            <caption><spring:message code='trip.nopublictripsfound'/></caption>
-                        </c:otherwise>
-                    </c:choose>
-                </table>
-            </div>
+                        </c:forEach>
+                        </tbody>
+                    </c:when>
+                    <c:otherwise>
+                        <br/>
+                        <caption><spring:message code='trip.nopublictripsfound'/></caption>
+                    </c:otherwise>
+                </c:choose>
+            </table>
+            <%--</div>--%>
         </section>
     </div>
 </div>

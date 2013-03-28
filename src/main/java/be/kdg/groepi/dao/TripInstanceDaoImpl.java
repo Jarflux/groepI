@@ -35,7 +35,7 @@ public class TripInstanceDaoImpl implements TripInstanceDao {
 
     @Override
     public void createTripInstance(TripInstance tripInstance) throws DataAccessException {
-        getEntityManager().persist(tripInstance);
+        getEntityManager().persist(getEntityManager().merge(tripInstance));
     }
 
     @Override

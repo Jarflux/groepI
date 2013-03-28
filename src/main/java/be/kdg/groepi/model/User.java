@@ -54,6 +54,10 @@ public class User implements Serializable {
         return fId;
     }
 
+    public void setId(Long fId) {
+        this.fId = fId;
+    }
+
     public String getName() {
         return fName;
     }

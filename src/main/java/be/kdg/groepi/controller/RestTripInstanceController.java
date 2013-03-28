@@ -92,7 +92,8 @@ public class RestTripInstanceController {
                 //return getTrip(trip.getId().toString(), session);
             } else {
                 TripInstance tripInstance = createNewTripInstance(tempTripInstance, startTime, endTime, user);
-                return getTripInstance(tripInstance.getId().toString(), session);
+//                return getTripInstance(tripInstance.getId().toString(), session);
+                return getTripInstanceList(session);
             }
         } else {
             logger.debug("RestTripInstanceController - createinstance - Trip not found");

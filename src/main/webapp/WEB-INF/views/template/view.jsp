@@ -33,6 +33,8 @@
             <c:if test="${tripObject.organiser.id == userObject.id}">
                 <a href="/template/edit/${tripObject.id}" class="active"><spring:message code='trip.edit'/></a>
             </c:if>
+            <br/>
+            <a href="/trip/add/${tripObject.id}" class="active"><button class="button"><spring:message code='trip.planinstance'/></button></a>
         </section>
         <div class="quarter">
             <section>
@@ -108,9 +110,7 @@
         <div class="half">
             <section>
                 <h3><spring:message code='tripinstance.tripinstancesofthistrip'/></h3>
-                <c:if test="${tripObject.organiser.id == userObject.id}">
-                    <a href="/trip/add/${tripObject.id}" class="active"><spring:message code='text.add'/></a>
-                </c:if>
+                <a href="/trip/add/${tripObject.id}" class="active"><spring:message code='trip.planinstance'/></a>
                 <c:choose>
                     <c:when test="${!empty tripInstances}">
                         <table>
@@ -167,7 +167,7 @@
 <script src="/js/functions.js"></script>
 <script>maketripsortable();
 preparemodal();
-    preparetables();
+preparetables();
 </script>
 </body>
 </html>

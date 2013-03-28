@@ -36,9 +36,6 @@
             <div class="three-quarter">
                 <c:choose>
                     <c:when test="${userObject != null}">
-                        <div class="row">
-                            <c:out value="Profile of user #${userObject.id}"/>
-                        </div>
                         <form method="post" action="/profile/edit" class="mainstyle tooltips validate"
                               enctype="multipart/form-data">
                             <div class="row">

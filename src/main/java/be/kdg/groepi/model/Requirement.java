@@ -43,6 +43,10 @@ public class Requirement implements Serializable {
         return fId;
     }
 
+    public void setId(long fId) {
+        this.fId = fId;
+    }
+
     public String getName() {
         return fName;
     }
