@@ -10,100 +10,80 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title><spring:message code='trip.viewinformation'/></title>
-    <link href="/css/blue.css" rel="stylesheet"/>
-    <link href="/css/jquery.dataTables.css" rel="stylesheet"/>
+    <head>
+        <title><spring:message code='trip.viewinformation'/></title>
+        <link href="/css/blue.css" rel="stylesheet"/>
+        <link href="/css/jquery.dataTables.css" rel="stylesheet"/>
 
-</head>
-<body>
-<div id="wrapper">
-    <div id="topmenu" class="column dark">
-        <jsp:include page="/topmenu"/>
-    </div>
-    <div id="content" class="column light">
-        <h2><spring:message code='trip.trips'/>
-            <form method="post" action="add">
-                <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
-            </form>
-        </h2>
-        <section>
-            <%--<div class="row">--%>
-            <h4><spring:message code="trip.owntrips"/></h4>
-            <table class="sorting">
-                <c:choose>
-                    <c:when test="${!empty ownTrips}">
-                        <thead>
-                        <tr>
-                            <th><spring:message code="trip.name"/></th>
-                            <th><spring:message code="trip.description"/></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach var="ownTrips" items="${ownTrips}">
-                            <tr>
-                                <td><a href="/template/view/${ownTrips.id}" class="active">${ownTrips.title}</a>
-                                </td>
-                                <td>${ownTrips.description}</td>
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </c:when>
-                    <c:otherwise>
-                        <br/>
-                        <caption><spring:message code='trip.noowntripsfound'/></caption>
-                    </c:otherwise>
-                </c:choose>
-            </table>
-            <%--</div>--%>
-            <br/>
-            <br/>
-            <c:forEach begin="1" end="${ownTrips.size()}">
-                <br/>
-                <%--TODO: fix this? (zorgt ervoor dat beide lijsten niet boven elkaar staan ... maar wel geen goeie manier)--%>
-            </c:forEach>
-            <%--<div class="row">--%>
-            <%--<h1><spring:message code="trip.publictrips"/></h1>--%>
-            <%--<h2><spring:message code="trip.publictrips"/></h2>--%>
-            <%--<h3><spring:message code="trip.publictrips"/></h3>--%>
-            <h4><spring:message code="trip.publictrips"/></h4>
-            <%--<h5><spring:message code="trip.publictrips"/></h5>--%>
-            <%--<h6><spring:message code="trip.publictrips"/></h6>--%>
-            <table class="sorting">
-                <c:choose>
-                    <c:when test="${!empty publicTrips}">
-                        <thead>
-                        <tr>
-                            <th><spring:message code="trip.name"/></th>
-                            <th><spring:message code="trip.description"/></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach var="publicTrip" items="${publicTrips}">
-                            <tr>
-                                <td><a href="/template/view/${publicTrip.id}" class="active">${publicTrip.title}</a>
-                                </td>
-                                <td>${publicTrip.description}</td>
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </c:when>
-                    <c:otherwise>
-                        <br/>
-                        <caption><spring:message code='trip.nopublictripsfound'/></caption>
-                    </c:otherwise>
-                </c:choose>
-            </table>
-            <%--</div>--%>
-        </section>
-    </div>
-</div>
-<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
-<script src="/js/jquery.dataTables.min.js"></script>
-<script src="/js/functions.js"></script>
-<script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="topmenu" class="column dark">
+                <jsp:include page="/topmenu"/>
+            </div>
+            <div id="content" class="column light">
+                <div class="full">
+                    <section>
+                        <h3><spring:message code="trip.trips"/>
+                            <form method="post" action="add">
+                                <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
+                            </form></h3>
+                        <caption><h4><spring:message code="trip.owntrips"/></h4></caption>
+                        <table style="width: 100%" class="sorting">                   
+                            <thead>
+                                <tr>
+                                    <th style="width: 30%"><spring:message code="trip.name"/></th>
+                                    <th style="width: 50%"><spring:message code="trip.description"/></th>
+                                    <th style="width: 20%"><spring:message code="tripinstance.organiser"/></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="trip" items="${ownTrips}">
+                                    <tr>
+                                        <td><a href="/trip/view/${trip.id}" class="active">
+                                                <c:out value="${trip.title}"/>
+                                            </a></td>
+                                        <td>${trip.description}</td>
+                                        <td>${trip.organiser.name}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                        <p></p>
+                        <caption><h4><spring:message code="trip.publictrips"/></h4></caption>
+                        <table style="width: 100%" class="sorting">
 
-    preparetables();
-</script>
-</body>
+                            <thead>
+                                <tr>
+                                    <th style="width: 30%"><spring:message code="trip.name"/></th>
+                                    <th style="width: 50%"><spring:message code="trip.description"/></th>
+                                    <th style="width: 20%"><spring:message code="tripinstance.organiser"/></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <c:forEach var="trip" items="${publicTrips}">
+                                    <tr>
+                                        <td><a href="/trip/view/${trip.id}" class="active">
+                                                <c:out value="${trip.title}"/>
+                                            </a></td>
+                                        <td>${trip.description}</td>
+                                        <td>${trip.organiser.name}</td>
+                                    </tr>                            
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                        <br style="clear: both">
+                    </section>
+
+                </div>
+            </div>
+        </div>
+        <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+        <script src="/js/jquery.dataTables.min.js"></script>
+        <script src="/js/functions.js"></script>
+        <script>
+            preparetables();
+        </script>
+    </body>
 </html>
