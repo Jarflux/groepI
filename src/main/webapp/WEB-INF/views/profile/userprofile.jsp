@@ -89,13 +89,21 @@
                                     <td>${tripInstanceEndTimes.get(tripInstance.id)}</td>
                                 </tr>
                             </c:forEach>
+                                
                             </tbody>
+                            </table>
+                            <table style="width: 100%" class="sorting">
+                            <caption><spring:message code="tripinstance.pasttrips"/></caption>
+                            <thead>
                             <tr>
-                                <td></td>
+                                <th><spring:message code="trip.name"/></th>
+                                <th><spring:message code="trip.description"/></th>
+                                <th><spring:message code="text.date"/></th>
+                                <th><spring:message code="tripinstance.starttime"/></th>
+                                <th><spring:message code="tripinstance.endtime"/></th>
                             </tr>
-                            <tr>
-                                <td colspan="5"><spring:message code="tripinstance.pasttrips"/></td>
-                            </tr>
+                            </thead>
+                            <tbody>
 
                             <c:forEach var="tripInstance" items="${userPastTripInstances}">
                                 <tr>
