@@ -30,11 +30,14 @@
                                 <img src="/images/noprofile.jpg" width="150"
                                      class="profilepic"/>
                             </c:when>
-                            <c:otherwise>
-                                <%--<c:when test="${userObject.profilePicture != null}">--%>
-                                <img src="${userObject.profilePicture}" width="150" class="profilepic"/>
-                                <%--</c:when>--%>
-                            </c:otherwise>
+                            <c:when test="${userObject.profilePicture != null && userObject.FBUserID == null}">
+                                <img src="${userObject.profilePicture}" width="150"
+                                     class="profilepic"/>
+                            </c:when>
+                            <c:when test="${userObject.FBUserID != null}">
+                                <img src="https://graph.facebook.com/${userObject.FBUserID}/picture?type=large" width="150"
+                                     class="profilepic"/>
+                            </c:when>
                         </c:choose>
                     </div>
                     <div class="three-quarter">
