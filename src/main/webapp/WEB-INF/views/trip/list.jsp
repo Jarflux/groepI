@@ -27,10 +27,10 @@
         <section>
 
             <div class="row">
-                <spring:message code="tripinstance.owntripinstances"/>
-                <c:choose>
-                    <c:when test="${!empty ownTripInstances}">
-                        <table class="sorting">
+                <table class="sorting">
+                    <c:choose>
+                        <c:when test="${!empty ownTripInstances}">
+                            <caption><spring:message code="tripinstance.owntripinstances"/></caption>
                             <thead>
                             <tr>
                                 <th><spring:message code="trip.name"/></th>
@@ -54,12 +54,13 @@
                                 </tr>
                             </c:forEach>
                             </tbody>
-                        </table>
-                    </c:when>
-                    <c:otherwise>
-                        <br><spring:message code='tripinstance.notripinstancesfound'/>
-                    </c:otherwise>
-                </c:choose>
+                        </c:when>
+                        <c:otherwise>
+                            <br/>
+                            <caption><spring:message code='tripinstance.noowntripinstancesfound'/></caption>
+                        </c:otherwise>
+                    </c:choose>
+                </table>
             </div>
             <br/>
             <br/>
@@ -70,10 +71,10 @@
             </c:forEach>
 
             <div class="row">
-                <spring:message code="tripinstance.publictripinstances"/>
-                <c:choose>
-                    <c:when test="${!empty publicTripInstances}">
-                        <table class="sorting">
+                <table class="sorting">
+                    <c:choose>
+                        <c:when test="${!empty publicTripInstances}">
+                            <caption><spring:message code="tripinstance.publictripinstances"/></caption>
                             <thead>
                             <tr>
                                 <th><spring:message code="trip.name"/></th>
@@ -109,12 +110,13 @@
                                 </tr>
                             </c:forEach>
                             </tbody>
-                        </table>
-                    </c:when>
-                    <c:otherwise>
-                        <spring:message code='tripinstance.notripinstancesfound'/>
-                    </c:otherwise>
-                </c:choose>
+                        </c:when>
+                        <c:otherwise>
+                            <br/>
+                            <caption><spring:message code='tripinstance.nopublictripinstancesfound'/></caption>
+                        </c:otherwise>
+                    </c:choose>
+                </table>
             </div>
         </section>
     </div>

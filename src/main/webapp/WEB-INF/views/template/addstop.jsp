@@ -40,7 +40,7 @@
                             </select>
                         </div>
                         <div class="row">
-                            <span><spring:message code='text.rending'/></span>
+                            <span><spring:message code='text.rendering'/></span>
                             <select name="displayMode">
                                 <option value="0"><spring:message code='stop.normal'/></option>
                                 <option value="1"><spring:message code='stop.augmentedreality'/></option>
