@@ -1,58 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="#0ac5f4">
-    <TextView android:id="@+id/nameLbl"
-              android:text="@string/fName"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content">
-    </TextView>
+              android:background="#0ac5f4" android:padding="20dp">
     <TextView android:id="@+id/nameValue"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
-    </TextView>
-    <TextView android:id="@+id/descriptionLbl"
-              android:text="@string/description"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content" android:textSize="40dp" android:textColor="@android:color/white"
+              android:layout_alignRight="@+id/descriptionValue" android:layout_alignParentTop="true">
     </TextView>
     <TextView android:id="@+id/descriptionValue"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content" android:layout_alignParentLeft="true"
+              android:layout_marginLeft="15dp" android:layout_alignParentTop="true" android:layout_marginTop="51dp">
     </TextView>
     <TextView android:id="@+id/dateLbl"
               android:text="@string/date"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content" android:layout_alignParentLeft="true"
+              android:layout_marginLeft="15dp" android:layout_alignParentTop="true" android:layout_marginTop="65dp">
     </TextView>
     <TextView android:id="@+id/dateValue"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content" android:layout_alignParentLeft="true"
+              android:layout_marginLeft="15dp" android:layout_alignParentTop="true" android:layout_marginTop="79dp">
     </TextView>
     <TextView android:id="@+id/startLbl"
               android:text="@string/startTime"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content" android:layout_alignParentLeft="true"
+              android:layout_marginLeft="15dp" android:layout_alignParentTop="true" android:layout_marginTop="93dp">
     </TextView>
     <TextView android:id="@+id/startValue"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content" android:layout_alignParentLeft="true"
+              android:layout_marginLeft="15dp" android:layout_alignParentTop="true" android:layout_marginTop="107dp">
     </TextView>
     <TextView android:id="@+id/endLbl"
               android:text="@string/endTime"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content" android:layout_alignParentLeft="true"
+              android:layout_marginLeft="15dp" android:layout_alignParentTop="true" android:layout_marginTop="121dp">
     </TextView>
     <TextView android:id="@+id/endValue"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content" android:layout_alignParentLeft="true"
+              android:layout_marginLeft="15dp" android:layout_alignParentTop="true" android:layout_marginTop="135dp">
     </TextView>
     <Button android:id="@+id/startBtn"
-            android:layout_height="150px"
-            android:layout_width="450px"
-            android:text="@string/start">
+            android:layout_height="143dp"
+            android:layout_width="fill_parent"
+            android:text="@string/start"
+            android:layout_alignLeft="@+id/nameValue" android:layout_alignParentTop="true"
+            android:layout_marginTop="279dp">
     </Button>
-</LinearLayout>
+</RelativeLayout>

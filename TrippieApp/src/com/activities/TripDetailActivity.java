@@ -1,11 +1,13 @@
 package com.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-import com.controllers.Controller;
 import com.model.TripInstance;
-import com.activities.R;
 import com.utils.DateUtil;
+import com.qualcomm.QCARSamples.CloudRecognition.CloudReco;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -23,6 +25,14 @@ public class TripDetailActivity extends ParentActivity {
         setContentView(R.layout.usertripdetail);
         addContent();
         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+            Button startBtn = (Button)findViewById(R.id.startBtn);
+        startBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                  Intent intent = new Intent(getApplicationContext(), CloudReco.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

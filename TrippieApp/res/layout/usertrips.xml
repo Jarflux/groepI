@@ -19,15 +19,14 @@
             android:layout_marginTop="11dp" android:src="@drawable/box_bg"
             android:cropToPadding="false" android:scaleType="fitXY"
             android:layout_alignParentLeft="true" android:layout_alignParentRight="true"/>
-    <ListView android:id="@+id/tripList" android:layout_width="186dp" android:layout_height="363dp"
+    <ListView android:id="@+id/tripList" android:layout_width="214dp" android:layout_height="338dp"
               android:footerDividersEnabled="false" android:smoothScrollbar="true"
-              android:layout_below="@+id/imageView"
-              android:layout_alignLeft="@+id/imageView1" android:layout_alignParentRight="true"
               android:paddingBottom="30dp"
               android:scrollingCache="true" android:longClickable="true"
-              android:layout_alignBottom="@+id/imageView1" android:layout_alignBaseline="@+id/imageView1"
-              android:layout_centerInParent="true" android:paddingTop="23dp" android:paddingLeft="23dp"
-              android:paddingRight="23dp"/>
+              android:paddingTop="23dp" android:paddingLeft="23dp"
+              android:paddingRight="23dp"
+              android:layout_centerHorizontal="true" android:layout_alignParentTop="true"
+              android:layout_marginTop="148dp"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

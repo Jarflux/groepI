@@ -19,6 +19,7 @@ public class ParentActivity extends Activity {
     {
         getActionBar().setDisplayShowTitleEnabled(false);
         getActionBar().setDisplayShowHomeEnabled(false);
+
         MenuInflater menuInflater = new MenuInflater(this);
         menuInflater.inflate(R.menu.mainmenu, menu);
         return super.onCreateOptionsMenu(menu);

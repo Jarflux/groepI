@@ -24,10 +24,10 @@
             <div id="content" class="column light">
                 <div class="full">
                     <section>
-                        <h3><spring:message code="trip.trips"/>
+                        <h3><spring:message code="trip.trips"/>    </h3>
                             <form method="post" action="add">
                                 <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
-                            </form></h3>
+                            </form>
                         <caption><h4><spring:message code="trip.owntrips"/></h4></caption>
                         <table style="width: 100%" class="sorting">                   
                             <thead>

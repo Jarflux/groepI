@@ -111,7 +111,6 @@
         <div class="half">
             <section>
                 <h3><spring:message code='tripinstance.tripinstancesofthistrip'/></h3>
-                <a href="/trip/add/${tripObject.id}" class="active"><spring:message code='trip.planinstance'/></a>
                 <c:choose>
                     <c:when test="${!empty tripInstances}">
                         <table>

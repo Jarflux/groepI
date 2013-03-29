@@ -32,7 +32,7 @@ public class VuforiaUtil {
 
     public static String accessKey = "dcb738253b204e4ca1626a024da20a3cf697a15f";
     public static String secretKey = "c036f9bc82ce53b0da82d9a3fcba5041519d8476";
-    public static String url = "https://vws.vuforia.com";
+    public static String url = "https://vws.qualcomm.com";
     private final float pollingIntervalMinutes = 60;//poll at 1-hour interval
 
     public static String postTarget(File image, Long stopid) throws URISyntaxException, ClientProtocolException, IOException, JSONException {
