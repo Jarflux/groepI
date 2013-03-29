@@ -23,7 +23,7 @@
         <h2><spring:message code="text.createaccount"/></h2>
 
 
-        <form method="post" action="createUser" class="mainstyle tooltips validate">
+        <form method="post" action="create" class="mainstyle tooltips validate">
             <div class="row">
                 <span><spring:message code='text.name'/></span>
                 <input type="text" class="required" name="name" placeholder=""

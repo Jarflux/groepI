@@ -26,9 +26,9 @@
                 <div class="full">
                     <section>
                         <h3><spring:message code="trip.trips"/>
-                            <form method="post" action="add">
+                            <%--<form method="post" action="add">
                                 <input type="submit" class="button" value="<spring:message code='text.add'/>"/>
-                            </form></h3>
+                            </form>--%></h3>
                         <caption><h4><spring:message code="tripinstance.owntripinstances"/></h4></caption>
                         <table style="width: 100%" class="sorting">                   
                             <thead>
